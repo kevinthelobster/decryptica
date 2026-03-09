@@ -42,7 +42,17 @@
             --gradient-hero: linear-gradient(180deg, #1d1d1f 0%, #000000 100%);
         }
         
-        /* Base Styles */
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            width: 400px;
+        }
+        
+        @media (max-width: 640px) {
+            .hero img {
+                width: 280px;
+            }
+        }
         a { color: #7eb8ff; text-decoration: none; transition: color 0.3s; }
         a:hover { color: #fff; }
         
