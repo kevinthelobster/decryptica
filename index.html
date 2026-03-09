@@ -3,285 +3,617 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decryptica - AI & Crypto Tools Guide</title>
-    <meta name="description" content="Your ultimate guide to the best AI tools, crypto platforms, and automation software. Reviews, tutorials, and recommendations.">
+    <title>Decryptica - Trusted Reviews & Guides for AI & Crypto Tools</title>
+    <meta name="description" content="Decryptica provides unbiased reviews, tutorials, and guides for AI tools, cryptocurrency, and automation software. Make informed decisions with our expert analysis.">
+    <meta name="keywords" content="AI tools reviews, crypto guides, cryptocurrency tutorials, AI software, best crypto tools">
+    <meta name="author" content="Decryptica - Renegade Reels LLC">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Decryptica - Trusted Reviews for AI & Crypto Tools">
+    <meta property="og:description" content="Your trusted source for AI and crypto tool reviews, tutorials, and guides.">
+    <meta property="og:type" content="website">
+    
     <style>
-        * {
+        /* CSS Reset & Base */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #1d1d1f;
+            --bg-tertiary: #2d2d2f;
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent: #2997ff;
+            --accent-hover: #0071e3;
+            --border: #424245;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #0a0a0a;
-            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.47059;
+            letter-spacing: -0.022em;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
         }
-        header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 2rem;
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 44px;
+        }
+        
+        .logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.022em;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 20px 80px;
             text-align: center;
-            border-bottom: 3px solid #00d4ff;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
         }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #00d4ff, #00ff88);
+        
+        .hero h1 {
+            font-size: 80px;
+            font-weight: 700;
+            line-height: 1.07143;
+            letter-spacing: -0.005em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff 0%, #a2a2a5 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .tagline {
-            color: #888;
-            font-size: 1.1rem;
+        
+        .hero .subtitle {
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.10722;
+            letter-spacing: 0.004em;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
         }
-        nav {
-            background: #111;
-            padding: 1rem;
-            text-align: center;
-        }
-        nav a {
-            color: #00d4ff;
-            text-decoration: none;
-            margin: 0 1.5rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #00ff88;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%);
-            border-radius: 1rem;
-            margin-bottom: 2rem;
-        }
-        .hero h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-        .hero p {
-            color: #aaa;
+        
+        .hero .description {
+            font-size: 21px;
+            color: var(--text-secondary);
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 40px;
+            line-height: 1.381;
         }
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(90deg, #00d4ff, #00ff88);
-            color: #000;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 18px 32px;
+            border-radius: 980px;
+            font-size: 17px;
+            font-weight: 500;
             text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s;
+            transition: all 0.3s;
         }
-        .cta-button:hover {
-            transform: scale(1.05);
-        }
-        .section {
-            margin: 3rem 0;
-        }
-        .section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+        
+        .btn-primary {
+            background: var(--accent);
             color: #fff;
-            border-bottom: 2px solid #00d4ff;
-            padding-bottom: 0.5rem;
         }
+        
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+        }
+        
+        .btn-secondary:hover {
+            text-decoration: underline;
+        }
+        
+        /* Categories Grid */
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-dark {
+            background: var(--bg-secondary);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            font-size: 21px;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
+        
         .card {
-            background: #1a1a2e;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            border: 1px solid #333;
-            transition: border-color 0.3s, transform 0.3s;
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
         }
+        
         .card:hover {
-            border-color: #00d4ff;
-            transform: translateY(-3px);
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
+        
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
         .card h3 {
-            color: #00d4ff;
-            margin-bottom: 0.75rem;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
+        
         .card p {
-            color: #aaa;
-            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.4;
         }
-        .card .tag {
-            display: inline-block;
-            background: #00ff88;
-            color: #000;
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.75rem;
-            font-weight: bold;
-            margin-top: 1rem;
+        
+        .card-link {
+            margin-top: auto;
+            padding-top: 20px;
+            color: var(--accent);
+            font-size: 15px;
+            font-weight: 500;
         }
-        .tag.ai { background: #ff6b6b; }
-        .tag.crypto { background: #00d4ff; }
-        .tag.automation { background: #00ff88; }
-        footer {
-            background: #111;
-            padding: 2rem;
+        
+        /* Featured Articles */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .article-card {
+            background: var(--bg-primary);
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.3s;
+        }
+        
+        .article-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .article-image {
+            height: 160px;
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        
+        .article-content {
+            padding: 24px;
+        }
+        
+        .article-category {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+        
+        .article-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .article-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        
+        /* Trust Section */
+        .trust-section {
+            background: var(--bg-secondary);
+            padding: 80px 20px;
             text-align: center;
-            margin-top: 4rem;
-            border-top: 1px solid #333;
         }
-        footer p {
-            color: #666;
-            font-size: 0.9rem;
+        
+        .trust-section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .trust-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .trust-item {
+            text-align: center;
+        }
+        
+        .trust-number {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .trust-label {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 40px 20px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-content {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+        
+        .footer-copyright {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+            .hero .subtitle {
+                font-size: 21px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .section-header h2 {
+                font-size: 36px;
+            }
+            .trust-grid {
+                gap: 30px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Decryptica</h1>
-        <p class="tagline">Your Guide to AI & Crypto Tools | Built by Renegade Reels LLC</p>
-    </header>
-    
+    <!-- Navigation -->
     <nav>
-        <a href="#ai">AI Tools</a>
-        <a href="#crypto">Crypto</a>
-        <a href="#automation">Automation</a>
-        <a href="#tutorials">Tutorials</a>
-        <a href="#resources">Resources</a>
+        <div class="nav-container">
+            <a href="https://decryptica.com" class="logo">Decryptica<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#ai-tools">AI Tools</a></li>
+                <li><a href="#crypto">Crypto</a></li>
+                <li><a href="#guides">Guides</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
     </nav>
     
-    <div class="container">
-        <div class="hero">
-            <h2>Master the Future of Technology</h2>
-            <p>In-depth reviews, tutorials, and recommendations for the best AI tools, crypto platforms, and automation software. Built by experts, for you.</p>
-            <a href="#ai" class="cta-button">Explore Tools →</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Decryptica.</h1>
+        <p class="subtitle">Your Trusted Source for Tech Reviews</p>
+        <p class="description">Expert reviews, tutorials, and guides for AI tools, cryptocurrency, and automation software. Make informed decisions with unbiased analysis.</p>
+        <div class="cta-buttons">
+            <a href="#ai-tools" class="btn btn-primary">Explore Reviews</a>
+            <a href="#about" class="btn btn-secondary">Learn More →</a>
         </div>
-        
-        <div class="section" id="ai">
-            <h2>🤖 AI Tools & Agents</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>OpenClaw Review</h3>
-                    <p>The ultimate AI assistant for automation. Personal assistant that lives in your command line, manages tasks, and integrates with your digital life.</p>
-                    <span class="tag ai">AI Assistant</span>
-                </div>
-                <div class="card">
-                    <h3>Best AI Writing Tools (2026)</h3>
-                    <p>Comparing Jasper, Copy.ai, Writesonic, and more. Find the perfect AI writing assistant for your content needs.</p>
-                    <span class="tag ai">Content</span>
-                </div>
-                <div class="card">
-                    <h3>Claude vs ChatGPT</h3>
-                    <p>Deep dive comparison of the top AI chatbots. Performance, pricing, and use cases tested.</p>
-                    <span class="tag ai">Comparison</span>
-                </div>
-                <div class="card">
-                    <h3>AI Agents Explained</h3>
-                    <p>What are AI agents and why do they matter? Complete guide to automating your workflow with autonomous AI.</p>
-                    <span class="tag ai">Guide</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section" id="crypto">
-            <h2>₿ Crypto & DeFi</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Best Solana Wallets (2026)</h3>
-                    <p>Phantom, Backpack, Solflare, and more. Find the perfect wallet for your Solana journey.</p>
-                    <span class="tag crypto">Solana</span>
-                </div>
-                <div class="card">
-                    <h3>Best RPC Providers</h3>
-                    <p>Helius, QuickNode, Alchemy, and Triton. Speed up your dApps with the best RPC infrastructure.</p>
-                    <span class="tag crypto">Infrastructure</span>
-                </div>
-                <div class="card">
-                    <h3>How to Track Whale Wallets</h3>
-                    <p>Follow the money. Tools and techniques for tracking crypto whale movements and smart money.</p>
-                    <span class="tag crypto">Analytics</span>
-                </div>
-                <div class="card">
-                    <h3>Solana vs Ethereum</h3>
-                    <p>2026 comparison. Fees, speed, ecosystem, and DeFi opportunities on both chains.</p>
-                    <span class="tag crypto">Comparison</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section" id="automation">
-            <h2>⚡ Automation & Tools</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Token Sniper Bots</h3>
-                    <p>How to automate your crypto trading. Setup guides for sniper bots on Solana and Ethereum.</p>
-                    <span class="tag automation">Trading</span>
-                </div>
-                <div class="card">
-                    <h3>Best Chrome Extensions</h3>
-                    <p>Productivity, crypto, and AI Chrome extensions that supercharge your browser.</p>
-                    <span class="tag automation">Tools</span>
-                </div>
-                <div class="card">
-                    <h3>API as a Product</h3>
-                    <p>Turn your skills into income. How to build and sell APIs that developers need.</p>
-                    <span class="tag automation">Business</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section" id="tutorials">
-            <h2>📚 Tutorials</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>How to Buy Your First Crypto</h3>
-                    <p>Step-by-step guide for beginners. From setting up a wallet to making your first trade.</p>
-                    <span class="tag">Beginner</span>
-                </div>
-                <div class="card">
-                    <h3>Setting Up Auto-Trading Bots</h3>
-                    <p>Configure automated trading strategies. DCA, grid trading, and sniper bot setup guides.</p>
-                    <span class="tag">Intermediate</span>
-                </div>
-                <div class="card">
-                    <h3>AI Automation for Beginners</h3>
-                    <p>No code required. How to automate your daily tasks with AI assistants.</p>
-                    <span class="tag">Beginner</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section" id="resources">
-            <h2>🔗 Resources</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Tool Comparisons</h3>
-                    <p>Head-to-head comparisons of similar tools. Make informed decisions.</p>
-                </div>
-                <div class="card">
-                    <h3>Affiliate Deals</h3>
-                    <p>Exclusive deals and commissions on tools we recommend.</p>
-                </div>
-                <div class="card">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe for weekly updates on AI and crypto tools.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
     
+    <!-- Categories -->
+    <section class="section section-dark" id="ai-tools">
+        <div class="section-header">
+            <h2>AI & Tech Reviews</h2>
+            <p>Comprehensive reviews of the latest AI tools, software, and services to help you choose the right tools.</p>
+        </div>
+        <div class="grid">
+            <a href="best-ai-writing-tools-2026.html" class="card">
+                <div class="card-icon">✍️</div>
+                <h3>Best AI Writing Tools</h3>
+                <p>Compare Jasper, Copy.ai, Writesonic, and more for content creation.</p>
+                <span class="card-link">Read Review →</span>
+            </a>
+            <a href="best-ai-coding-tools-2026.html" class="card">
+                <div class="card-icon">💻</div>
+                <h3>Best AI Coding Assistants</h3>
+                <p>GitHub Copilot, Cursor, Claude, and more. Find your perfect pair programmer.</p>
+                <span class="card-link">Read Review →</span>
+            </a>
+            <a href="openclaw-review.html" class="card">
+                <div class="card-icon">🤖</div>
+                <h3>OpenClaw Review</h3>
+                <p>The AI assistant that lives in your terminal. Automate your workflow.</p>
+                <span class="card-link">Read Review →</span>
+            </a>
+            <a href="ai-agents-explained.html" class="card">
+                <div class="card-icon">🧠</div>
+                <h3>AI Agents Explained</h3>
+                <p>What are AI agents and how they can automate your life.</p>
+                <span class="card-link">Read Guide →</span>
+            </a>
+            <a href="claude-vs-chatgpt-2026.html" class="card">
+                <div class="card-icon">⚔️</div>
+                <h3>Claude vs ChatGPT</h3>
+                <p>Complete comparison of the top AI chatbots in 2026.</p>
+                <span class="card-link">Compare →</span>
+            </a>
+            <a href="ai-automation-beginners-2026.html" class="card">
+                <div class="card-icon">⚡</div>
+                <h3>AI Automation Guide</h3>
+                <p>Learn how to automate your work with AI. No coding required.</p>
+                <span class="card-link">Get Started →</span>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Crypto Section -->
+    <section class="section" id="crypto">
+        <div class="section-header">
+            <h2>Crypto & Blockchain</h2>
+            <p>Everything you need to know about cryptocurrency, wallets, DeFi, and trading.</p>
+        </div>
+        <div class="grid">
+            <a href="best-solana-wallets-2026.html" class="card">
+                <div class="card-icon">👛</div>
+                <h3>Best Solana Wallets</h3>
+                <p>Phantom, Backpack, Solflare and more. Find the perfect wallet.</p>
+                <span class="card-link">Read Review →</span>
+            </a>
+            <a href="best-hardware-wallets-2026.html" class="card">
+                <div class="card-icon">🔐</div>
+                <h3>Best Hardware Wallets</h3>
+                <p>Ledger vs Trezor. Keep your crypto safe with cold storage.</p>
+                <span class="card-link">Read Review →</span>
+            </a>
+            <a href="best-solana-rpc-providers-2026.html" class="card">
+                <div class="card-icon">🌐</div>
+                <h3>Best RPC Providers</h3>
+                <p>Helius, QuickNode, Alchemy. Speed up your dApps.</p>
+                <span class="card-link">Read Review →</span>
+            </a>
+            <a href="solana-vs-ethereum-2026.html" class="card">
+                <div class="card-icon">⚖️</div>
+                <h3>Solana vs Ethereum</h3>
+                <p>Complete comparison of the two biggest chains in 2026.</p>
+                <span class="card-link">Compare →</span>
+            </a>
+            <a href="what-is-defi-2026.html" class="card">
+                <div class="card-icon">🏦</div>
+                <h3>What is DeFi?</h3>
+                <p>Decentralized finance explained. Lending, yield farming, and more.</p>
+                <span class="card-link">Learn More →</span>
+            </a>
+            <a href="track-whale-wallets-solana.html" class="card">
+                <div class="card-icon">🐋</div>
+                <h3>Track Whale Wallets</h3>
+                <p>Follow smart money on Solana. Copy trade successful investors.</p>
+                <span class="card-link">Learn How →</span>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Guides Section -->
+    <section class="section section-dark" id="guides">
+        <div class="section-header">
+            <h2>Beginner Guides</h2>
+            <p>Step-by-step tutorials to get you started with crypto, AI, and automation.</p>
+        </div>
+        <div class="articles-grid">
+            <a href="how-to-buy-crypto-2026.html" class="article-card">
+                <div class="article-image">💰</div>
+                <div class="article-content">
+                    <div class="article-category">Beginner</div>
+                    <h3>How to Buy Your First Crypto</h3>
+                    <p>Step-by-step guide to making your first cryptocurrency purchase.</p>
+                </div>
+            </a>
+            <a href="token-sniper-bots-guide.html" class="article-card">
+                <div class="article-image">🎯</div>
+                <div class="article-content">
+                    <div class="article-category">Trading</div>
+                    <h3>Token Sniper Bots Guide</h3>
+                    <p>How to set up automated token sniping on Solana.</p>
+                </div>
+            </a>
+            <a href="crypto-trading-strategies-2026.html" class="article-card">
+                <div class="article-image">📈</div>
+                <div class="article-content">
+                    <div class="article-category">Strategy</div>
+                    <h3>Crypto Trading Strategies</h3>
+                    <p>DCA, swing trading, staking, and more strategies explained.</p>
+                </div>
+            </a>
+            <a href="crypto-security-guide-2026.html" class="article-card">
+                <div class="article-image">🛡️</div>
+                <div class="article-content">
+                    <div class="article-category">Security</div>
+                    <h3>Crypto Security Guide</h3>
+                    <p>Essential practices to protect your crypto assets.</p>
+                </div>
+            </a>
+            <a href="best-chrome-extensions-crypto-2026.html" class="article-card">
+                <div class="article-image">🔌</div>
+                <div class="article-content">
+                    <div class="article-category">Tools</div>
+                    <h3>Best Chrome Extensions for Crypto</h3>
+                    <p>Essential browser extensions for every crypto trader.</p>
+                </div>
+            </a>
+            <a href="best-crypto-podcasts-2026.html" class="article-card">
+                <div class="article-image">🎙️</div>
+                <div class="article-content">
+                    <div class="article-category">Resources</div>
+                    <h3>Best Crypto Podcasts</h3>
+                    <p>Stay informed with the top crypto podcasts in 2026.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Trust Section -->
+    <section class="trust-section" id="about">
+        <h2>Why Trust Decryptica?</h2>
+        <p style="color: var(--text-secondary); font-size: 19px; max-width: 600px; margin: 0 auto;">We're independent and unbiased. Our reviews are based on hands-on testing and thorough research.</p>
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-number">19+</div>
+                <div class="trust-label">In-Depth Reviews</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number">100%</div>
+                <div class="trust-label">Independent</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number">Weekly</div>
+                <div class="trust-label">Updated Content</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Decryptica. All rights reserved. | Renegade Reels LLC</p>
+        <div class="footer-content">
+            <div class="footer-logo">Decryptica.</div>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Advertise</a></li>
+            </ul>
+        </div>
+        <div class="footer-copyright">
+            Copyright © 2026 Decryptica. All rights reserved. | Renegade Reels LLC
+        </div>
     </footer>
 </body>
 </html>
