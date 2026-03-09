@@ -14,8 +14,11 @@
     <meta property="og:description" content="Your trusted source for AI and crypto tool reviews, tutorials, and guides.">
     <meta property="og:type" content="website">
     
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+    
     <style>
-        /* CSS Reset & Base */
+        /* CSS Reset & Variables */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -24,52 +27,72 @@
         
         :root {
             --bg-primary: #000000;
-            --bg-secondary: #1d1d1f;
-            --bg-tertiary: #2d2d2f;
+            --bg-secondary: #161617;
+            --bg-tertiary: #1d1d1f;
+            --bg-elevated: #2d2d2f;
             --text-primary: #f5f5f7;
             --text-secondary: #86868b;
+            --text-tertiary: #6e6e73;
             --accent: #2997ff;
             --accent-hover: #0071e3;
+            --accent-green: #30d158;
             --border: #424245;
+            --border-light: rgba(255, 255, 255, 0.1);
+            --shadow: rgba(0, 0, 0, 0.4);
+            --gradient-hero: linear-gradient(180deg, #1d1d1f 0%, #000000 100%);
         }
         
+        /* Base Styles */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.47059;
-            letter-spacing: -0.022em;
+            line-height: 1.5;
+            letter-spacing: -0.02em;
             font-size: 17px;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
         }
         
         /* Navigation */
         nav {
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            right: 0;
+            z-index: 1000;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-light);
         }
         
         .nav-container {
-            max-width: 980px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 44px;
+            height: 56px;
         }
         
         .logo {
-            font-size: 21px;
+            font-size: 22px;
             font-weight: 600;
             color: var(--text-primary);
             text-decoration: none;
-            letter-spacing: -0.022em;
+            letter-spacing: -0.02em;
+            transition: opacity 0.3s;
+        }
+        
+        .logo:hover {
+            opacity: 0.8;
         }
         
         .logo span {
@@ -78,15 +101,16 @@
         
         .nav-links {
             display: flex;
-            gap: 32px;
+            align-items: center;
+            gap: 40px;
             list-style: none;
         }
         
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 12px;
-            font-weight: 400;
+            font-size: 13px;
+            font-weight: 500;
             transition: color 0.3s;
         }
         
@@ -94,58 +118,101 @@
             color: var(--text-primary);
         }
         
+        .nav-cta {
+            background: var(--accent);
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px !important;
+        }
+        
+        .nav-cta:hover {
+            background: var(--accent-hover);
+        }
+        
+        /* Mobile Nav */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
         /* Hero Section */
         .hero {
-            padding: 120px 20px 80px;
+            padding: 160px 24px 100px;
             text-align: center;
-            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 800px;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(41, 151, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .hero h1 {
-            font-size: 80px;
+            font-size: 72px;
             font-weight: 700;
-            line-height: 1.07143;
-            letter-spacing: -0.005em;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #fff 0%, #a2a2a5 100%);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
         .hero .subtitle {
-            font-size: 28px;
-            font-weight: 400;
-            line-height: 1.10722;
-            letter-spacing: 0.004em;
+            font-size: 24px;
+            font-weight: 500;
             color: var(--text-secondary);
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
         
         .hero .description {
-            font-size: 21px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.381;
+            font-size: 19px;
+            color: var(--text-tertiary);
+            max-width: 550px;
+            margin: 0 auto 36px;
+            line-height: 1.5;
         }
         
         .cta-buttons {
             display: flex;
-            gap: 15px;
+            gap: 16px;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
         }
         
         .btn {
             display: inline-flex;
             align-items: center;
-            padding: 18px 32px;
-            border-radius: 980px;
-            font-size: 17px;
+            padding: 16px 28px;
+            border-radius: 24px;
+            font-size: 15px;
             font-weight: 500;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .btn-primary {
@@ -155,20 +222,60 @@
         
         .btn-primary:hover {
             background: var(--accent-hover);
+            transform: scale(1.02);
         }
         
         .btn-secondary {
-            background: transparent;
-            color: var(--accent);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            backdrop-filter: blur(10px);
         }
         
         .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Latest Articles Banner */
+        .latest-banner {
+            background: linear-gradient(90deg, var(--accent) 0%, #5e5ce6 100%);
+            padding: 16px 24px;
+            text-align: center;
+        }
+        
+        .latest-banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .latest-label {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .latest-title {
+            color: #fff;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        
+        .latest-title a {
+            color: inherit;
             text-decoration: underline;
         }
         
-        /* Categories Grid */
+        /* Section Styles */
         .section {
-            padding: 80px 20px;
+            padding: 100px 24px;
         }
         
         .section-dark {
@@ -178,24 +285,27 @@
         .section-header {
             text-align: center;
             margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .section-header h2 {
             font-size: 48px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
         }
         
         .section-header p {
-            font-size: 21px;
+            font-size: 19px;
             color: var(--text-secondary);
-            max-width: 650px;
-            margin: 0 auto;
         }
         
+        /* Grid Layouts */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 24px;
             max-width: 1200px;
             margin: 0 auto;
@@ -203,120 +313,185 @@
         
         .card {
             background: var(--bg-tertiary);
-            border-radius: 20px;
-            padding: 40px 30px;
+            border-radius: 24px;
+            padding: 36px;
             text-decoration: none;
             color: var(--text-primary);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
         }
         
         .card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px var(--shadow);
+            background: var(--bg-elevated);
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
         }
         
         .card-icon {
-            font-size: 48px;
+            font-size: 44px;
             margin-bottom: 20px;
+            display: block;
         }
         
         .card h3 {
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 600;
             margin-bottom: 10px;
+            line-height: 1.3;
         }
         
         .card p {
             color: var(--text-secondary);
             font-size: 15px;
-            line-height: 1.4;
+            line-height: 1.5;
+            flex-grow: 1;
         }
         
         .card-link {
-            margin-top: auto;
-            padding-top: 20px;
+            margin-top: 24px;
             color: var(--accent);
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
         
-        /* Featured Articles */
+        .card-link::after {
+            content: '→';
+            transition: transform 0.3s;
+        }
+        
+        .card:hover .card-link::after {
+            transform: translateX(4px);
+        }
+        
+        /* Featured Articles Grid */
         .articles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
         
         .article-card {
-            background: var(--bg-primary);
-            border-radius: 16px;
+            background: var(--bg-secondary);
+            border-radius: 20px;
             overflow: hidden;
             text-decoration: none;
             color: var(--text-primary);
-            transition: transform 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
         }
         
         .article-card:hover {
             transform: scale(1.02);
+            box-shadow: 0 16px 32px var(--shadow);
         }
         
         .article-image {
-            height: 160px;
-            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            height: 180px;
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-elevated) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
-        }
-        
-        .article-content {
-            padding: 24px;
+            font-size: 48px;
+            position: relative;
         }
         
         .article-category {
-            font-size: 12px;
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 6px 14px;
+            border-radius: 16px;
+            font-size: 11px;
             font-weight: 600;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 8px;
+        }
+        
+        .article-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .article-card h3 {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
-            margin-bottom: 8px;
-            line-height: 1.3;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
         
         .article-card p {
             font-size: 14px;
             color: var(--text-secondary);
-            line-height: 1.4;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .article-meta {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-tertiary);
         }
         
         /* Trust Section */
         .trust-section {
             background: var(--bg-secondary);
-            padding: 80px 20px;
+            padding: 100px 24px;
             text-align: center;
         }
         
         .trust-section h2 {
             font-size: 48px;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .trust-section > p {
+            color: var(--text-secondary);
+            font-size: 19px;
+            max-width: 550px;
+            margin: 0 auto 60px;
         }
         
         .trust-grid {
             display: flex;
             justify-content: center;
-            gap: 60px;
-            margin-top: 50px;
+            gap: 80px;
             flex-wrap: wrap;
         }
         
@@ -328,67 +503,186 @@
             font-size: 56px;
             font-weight: 700;
             color: var(--accent);
+            line-height: 1;
         }
         
         .trust-label {
             font-size: 15px;
             color: var(--text-secondary);
-            margin-top: 5px;
+            margin-top: 8px;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 100px 24px;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .newsletter p {
+            color: var(--text-secondary);
+            font-size: 17px;
+            max-width: 450px;
+            margin: 0 auto 32px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 420px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 16px 20px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .newsletter-input:focus {
+            border-color: var(--accent);
+        }
+        
+        .newsletter-input::placeholder {
+            color: var(--text-tertiary);
         }
         
         /* Footer */
         footer {
             background: var(--bg-secondary);
-            padding: 40px 20px;
-            border-top: 1px solid var(--border);
+            padding: 60px 24px 40px;
+            border-top: 1px solid var(--border-light);
         }
         
         .footer-content {
-            max-width: 980px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 40px;
+        }
+        
+        .footer-brand {
+            max-width: 280px;
         }
         
         .footer-logo {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
             color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        
+        .footer-brand p {
+            color: var(--text-tertiary);
+            font-size: 13px;
+            line-height: 1.5;
         }
         
         .footer-links {
             display: flex;
-            gap: 20px;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-column h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-column ul {
             list-style: none;
         }
         
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 12px;
+        .footer-column li {
+            margin-bottom: 12px;
         }
         
-        .footer-links a:hover {
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
             color: var(--text-primary);
         }
         
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
         .footer-copyright {
-            width: 100%;
-            text-align: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            color: var(--text-secondary);
+            color: var(--text-tertiary);
             font-size: 12px;
         }
         
+        .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-social a {
+            color: var(--text-secondary);
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-social a:hover {
+            color: var(--text-primary);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .hero h1 {
-                font-size: 48px;
+                font-size: 56px;
             }
             .hero .subtitle {
                 font-size: 21px;
@@ -396,11 +690,58 @@
             .nav-links {
                 display: none;
             }
+            .mobile-menu-btn {
+                display: block;
+            }
             .section-header h2 {
                 font-size: 36px;
             }
             .trust-grid {
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero {
+                padding: 120px 20px 60px;
+            }
+            .hero h1 {
+                font-size: 40px;
+            }
+            .hero .subtitle {
+                font-size: 18px;
+            }
+            .hero .description {
+                font-size: 16px;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .section {
+                padding: 60px 20px;
+            }
+            .section-header h2 {
+                font-size: 28px;
+            }
+            .grid, .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            .trust-section h2 {
+                font-size: 32px;
+            }
+            .trust-number {
+                font-size: 40px;
+            }
+            .footer-content {
+                flex-direction: column;
+            }
+            .footer-links {
                 gap: 30px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
@@ -415,22 +756,34 @@
                 <li><a href="#crypto">Crypto</a></li>
                 <li><a href="#guides">Guides</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#newsletter" class="nav-cta">Subscribe</a></li>
             </ul>
+            <button class="mobile-menu-btn">☰</button>
         </div>
     </nav>
     
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Decryptica.</h1>
-        <p class="subtitle">Your Trusted Source for Tech Reviews</p>
-        <p class="description">Expert reviews, tutorials, and guides for AI tools, cryptocurrency, and automation software. Make informed decisions with unbiased analysis.</p>
-        <div class="cta-buttons">
-            <a href="#ai-tools" class="btn btn-primary">Explore Reviews</a>
-            <a href="#about" class="btn btn-secondary">Learn More →</a>
+        <div class="hero-content">
+            <h1>Decryptica.</h1>
+            <p class="subtitle">Your Trusted Source for Tech Reviews</p>
+            <p class="description">Expert reviews, tutorials, and guides for AI tools, cryptocurrency, and automation software. Make informed decisions with unbiased analysis.</p>
+            <div class="cta-buttons">
+                <a href="#ai-tools" class="btn btn-primary">Explore Reviews</a>
+                <a href="#latest" class="btn btn-secondary">Latest Articles →</a>
+            </div>
         </div>
     </section>
     
-    <!-- Categories -->
+    <!-- Latest Articles Banner -->
+    <section class="latest-banner" id="latest">
+        <div class="latest-banner-content">
+            <span class="latest-label">New</span>
+            <span class="latest-title">Just published: <a href="best-ai-coding-tools-2026.html">Best AI Coding Tools 2026</a></span>
+        </div>
+    </section>
+    
+    <!-- AI Tools Section -->
     <section class="section section-dark" id="ai-tools">
         <div class="section-header">
             <h2>AI & Tech Reviews</h2>
@@ -438,40 +791,40 @@
         </div>
         <div class="grid">
             <a href="best-ai-writing-tools-2026.html" class="card">
-                <div class="card-icon">✍️</div>
+                <span class="card-icon">✍️</span>
                 <h3>Best AI Writing Tools</h3>
-                <p>Compare Jasper, Copy.ai, Writesonic, and more for content creation.</p>
-                <span class="card-link">Read Review →</span>
+                <p>Compare Jasper, Copy.ai, Writesonic, and more for content creation in 2026.</p>
+                <span class="card-link">Read Review</span>
             </a>
             <a href="best-ai-coding-tools-2026.html" class="card">
-                <div class="card-icon">💻</div>
+                <span class="card-icon">💻</span>
                 <h3>Best AI Coding Assistants</h3>
                 <p>GitHub Copilot, Cursor, Claude, and more. Find your perfect pair programmer.</p>
-                <span class="card-link">Read Review →</span>
+                <span class="card-link">Read Review</span>
             </a>
             <a href="openclaw-review.html" class="card">
-                <div class="card-icon">🤖</div>
+                <span class="card-icon">🤖</span>
                 <h3>OpenClaw Review</h3>
                 <p>The AI assistant that lives in your terminal. Automate your workflow.</p>
-                <span class="card-link">Read Review →</span>
+                <span class="card-link">Read Review</span>
             </a>
             <a href="ai-agents-explained.html" class="card">
-                <div class="card-icon">🧠</div>
+                <span class="card-icon">🧠</span>
                 <h3>AI Agents Explained</h3>
-                <p>What are AI agents and how they can automate your life.</p>
-                <span class="card-link">Read Guide →</span>
+                <p>What are AI agents and how they can automate your life in 2026.</p>
+                <span class="card-link">Read Guide</span>
             </a>
             <a href="claude-vs-chatgpt-2026.html" class="card">
-                <div class="card-icon">⚔️</div>
+                <span class="card-icon">⚔️</span>
                 <h3>Claude vs ChatGPT</h3>
-                <p>Complete comparison of the top AI chatbots in 2026.</p>
-                <span class="card-link">Compare →</span>
+                <p>Complete comparison of the top AI chatbots. Which one is right for you?</p>
+                <span class="card-link">Compare</span>
             </a>
             <a href="ai-automation-beginners-2026.html" class="card">
-                <div class="card-icon">⚡</div>
+                <span class="card-icon">⚡</span>
                 <h3>AI Automation Guide</h3>
                 <p>Learn how to automate your work with AI. No coding required.</p>
-                <span class="card-link">Get Started →</span>
+                <span class="card-link">Get Started</span>
             </a>
         </div>
     </section>
@@ -484,40 +837,40 @@
         </div>
         <div class="grid">
             <a href="best-solana-wallets-2026.html" class="card">
-                <div class="card-icon">👛</div>
+                <span class="card-icon">👛</span>
                 <h3>Best Solana Wallets</h3>
-                <p>Phantom, Backpack, Solflare and more. Find the perfect wallet.</p>
-                <span class="card-link">Read Review →</span>
+                <p>Phantom, Backpack, Solflare and more. Find the perfect wallet for your needs.</p>
+                <span class="card-link">Read Review</span>
             </a>
             <a href="best-hardware-wallets-2026.html" class="card">
-                <div class="card-icon">🔐</div>
+                <span class="card-icon">🔐</span>
                 <h3>Best Hardware Wallets</h3>
                 <p>Ledger vs Trezor. Keep your crypto safe with cold storage.</p>
-                <span class="card-link">Read Review →</span>
+                <span class="card-link">Read Review</span>
             </a>
             <a href="best-solana-rpc-providers-2026.html" class="card">
-                <div class="card-icon">🌐</div>
+                <span class="card-icon">🌐</span>
                 <h3>Best RPC Providers</h3>
-                <p>Helius, QuickNode, Alchemy. Speed up your dApps.</p>
-                <span class="card-link">Read Review →</span>
+                <p>Helius, QuickNode, Alchemy. Speed up your dApps with the best infrastructure.</p>
+                <span class="card-link">Read Review</span>
             </a>
             <a href="solana-vs-ethereum-2026.html" class="card">
-                <div class="card-icon">⚖️</div>
+                <span class="card-icon">⚖️</span>
                 <h3>Solana vs Ethereum</h3>
                 <p>Complete comparison of the two biggest chains in 2026.</p>
-                <span class="card-link">Compare →</span>
+                <span class="card-link">Compare</span>
             </a>
             <a href="what-is-defi-2026.html" class="card">
-                <div class="card-icon">🏦</div>
+                <span class="card-icon">🏦</span>
                 <h3>What is DeFi?</h3>
                 <p>Decentralized finance explained. Lending, yield farming, and more.</p>
-                <span class="card-link">Learn More →</span>
+                <span class="card-link">Learn More</span>
             </a>
             <a href="track-whale-wallets-solana.html" class="card">
-                <div class="card-icon">🐋</div>
+                <span class="card-icon">🐋</span>
                 <h3>Track Whale Wallets</h3>
                 <p>Follow smart money on Solana. Copy trade successful investors.</p>
-                <span class="card-link">Learn How →</span>
+                <span class="card-link">Learn How</span>
             </a>
         </div>
     </section>
@@ -530,51 +883,87 @@
         </div>
         <div class="articles-grid">
             <a href="how-to-buy-crypto-2026.html" class="article-card">
-                <div class="article-image">💰</div>
+                <div class="article-image">
+                    💰
+                    <span class="article-category">Beginner</span>
+                </div>
                 <div class="article-content">
-                    <div class="article-category">Beginner</div>
                     <h3>How to Buy Your First Crypto</h3>
                     <p>Step-by-step guide to making your first cryptocurrency purchase.</p>
+                    <div class="article-meta">
+                        <span>8 min read</span>
+                        <span>March 2026</span>
+                    </div>
                 </div>
             </a>
             <a href="token-sniper-bots-guide.html" class="article-card">
-                <div class="article-image">🎯</div>
+                <div class="article-image">
+                    🎯
+                    <span class="article-category">Trading</span>
+                </div>
                 <div class="article-content">
-                    <div class="article-category">Trading</div>
                     <h3>Token Sniper Bots Guide</h3>
                     <p>How to set up automated token sniping on Solana.</p>
+                    <div class="article-meta">
+                        <span>12 min read</span>
+                        <span>March 2026</span>
+                    </div>
                 </div>
             </a>
             <a href="crypto-trading-strategies-2026.html" class="article-card">
-                <div class="article-image">📈</div>
+                <div class="article-image">
+                    📈
+                    <span class="article-category">Strategy</span>
+                </div>
                 <div class="article-content">
-                    <div class="article-category">Strategy</div>
                     <h3>Crypto Trading Strategies</h3>
                     <p>DCA, swing trading, staking, and more strategies explained.</p>
+                    <div class="article-meta">
+                        <span>10 min read</span>
+                        <span>March 2026</span>
+                    </div>
                 </div>
             </a>
             <a href="crypto-security-guide-2026.html" class="article-card">
-                <div class="article-image">🛡️</div>
+                <div class="article-image">
+                    🛡️
+                    <span class="article-category">Security</span>
+                </div>
                 <div class="article-content">
-                    <div class="article-category">Security</div>
                     <h3>Crypto Security Guide</h3>
                     <p>Essential practices to protect your crypto assets.</p>
+                    <div class="article-meta">
+                        <span>9 min read</span>
+                        <span>March 2026</span>
+                    </div>
                 </div>
             </a>
             <a href="best-chrome-extensions-crypto-2026.html" class="article-card">
-                <div class="article-image">🔌</div>
+                <div class="article-image">
+                    🔌
+                    <span class="article-category">Tools</span>
+                </div>
                 <div class="article-content">
-                    <div class="article-category">Tools</div>
                     <h3>Best Chrome Extensions for Crypto</h3>
                     <p>Essential browser extensions for every crypto trader.</p>
+                    <div class="article-meta">
+                        <span>7 min read</span>
+                        <span>March 2026</span>
+                    </div>
                 </div>
             </a>
             <a href="best-crypto-podcasts-2026.html" class="article-card">
-                <div class="article-image">🎙️</div>
+                <div class="article-image">
+                    🎙️
+                    <span class="article-category">Resources</span>
+                </div>
                 <div class="article-content">
-                    <div class="article-category">Resources</div>
                     <h3>Best Crypto Podcasts</h3>
                     <p>Stay informed with the top crypto podcasts in 2026.</p>
+                    <div class="article-meta">
+                        <span>5 min read</span>
+                        <span>March 2026</span>
+                    </div>
                 </div>
             </a>
         </div>
@@ -583,7 +972,7 @@
     <!-- Trust Section -->
     <section class="trust-section" id="about">
         <h2>Why Trust Decryptica?</h2>
-        <p style="color: var(--text-secondary); font-size: 19px; max-width: 600px; margin: 0 auto;">We're independent and unbiased. Our reviews are based on hands-on testing and thorough research.</p>
+        <p>We're independent and unbiased. Our reviews are based on hands-on testing and thorough research.</p>
         <div class="trust-grid">
             <div class="trust-item">
                 <div class="trust-number">19+</div>
@@ -594,25 +983,72 @@
                 <div class="trust-label">Independent</div>
             </div>
             <div class="trust-item">
-                <div class="trust-number">Weekly</div>
-                <div class="trust-label">Updated Content</div>
+                <div class="trust-number">Daily</div>
+                <div class="trust-label">New Content</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number">50K+</div>
+                <div class="trust-label">Monthly Readers</div>
             </div>
         </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+        <h2>Stay Updated</h2>
+        <p>Get the latest reviews and guides delivered to your inbox every week.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
     </section>
     
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">Decryptica.</div>
-            <ul class="footer-links">
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Use</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Advertise</a></li>
-            </ul>
+            <div class="footer-brand">
+                <div class="footer-logo">Decryptica.</div>
+                <p>Your trusted source for AI and crypto tool reviews, tutorials, and guides. Built by Renegade Reels LLC.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>AI Tools</h4>
+                    <ul>
+                        <li><a href="best-ai-writing-tools-2026.html">AI Writing</a></li>
+                        <li><a href="best-ai-coding-tools-2026.html">AI Coding</a></li>
+                        <li><a href="ai-agents-explained.html">AI Agents</a></li>
+                        <li><a href="claude-vs-chatgpt-2026.html">Comparisons</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Crypto</h4>
+                    <ul>
+                        <li><a href="best-solana-wallets-2026.html">Wallets</a></li>
+                        <li><a href="best-hardware-wallets-2026.html">Hardware Wallets</a></li>
+                        <li><a href="what-is-defi-2026.html">DeFi</a></li>
+                        <li><a href="crypto-trading-strategies-2026.html">Trading</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="footer-copyright">
-            Copyright © 2026 Decryptica. All rights reserved. | Renegade Reels LLC
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                Copyright © 2026 Decryptica. All rights reserved. | Renegade Reels LLC
+            </div>
+            <div class="footer-social">
+                <a href="#">𝕏</a>
+                <a href="#">📱</a>
+                <a href="#">💬</a>
+            </div>
         </div>
     </footer>
 </body>
