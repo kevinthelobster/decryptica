@@ -4,68 +4,214 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automation & Productivity Guides - Decryptica</title>
-    <meta name="description" content="Explore automation guides, productivity tools, and tutorials. Learn how to automate your workflow with the best tools.">
+    <meta name="description" content="Explore our automation guides, productivity tools, and workflow optimization tutorials.">
     <script>
         window.va = window.va || function() { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src='https://cdn.jsdelivr.net/npm/vercel-analytics@1.3.1'></script>
     <style>
-        :root { --bg-primary: #000000; --bg-secondary: #161617; --bg-tertiary: #1d1d1f; --text-primary: #f5f5f7; --text-secondary: #86868b; --accent: #2997ff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
-        nav { background: rgba(0,0,0,0.8); padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        nav a { color: var(--accent); text-decoration: none; font-weight: 600; }
-        .container { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
-        h1 { font-size: 42px; margin-bottom: 16px; }
-        .subtitle { color: var(--text-secondary); font-size: 18px; margin-bottom: 40px; }
-        .articles-grid { display: grid; gap: 24px; }
-        .article-card { background: var(--bg-secondary); border-radius: 16px; overflow: hidden; text-decoration: none; color: var(--text-primary); transition: transform 0.3s, box-shadow 0.3s; display: block; }
-        .article-card:hover { transform: scale(1.02); box-shadow: 0 16px 32px rgba(0,0,0,0.3); }
-        .article-content { padding: 24px; }
-        .article-card h2 { font-size: 20px; margin-bottom: 8px; }
-        .article-card p { color: var(--text-secondary); font-size: 15px; }
-        .meta { color: var(--text-secondary); font-size: 13px; margin-top: 12px; }
-        footer { background: var(--bg-secondary); padding: 40px 24px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; }
-        footer p { color: var(--text-secondary); font-size: 13px; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #161617;
+            --bg-tertiary: #1d1d1f;
+            --bg-elevated: #2d2d2f;
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --text-tertiary: #6e6e73;
+            --accent: #2997ff;
+            --accent-hover: #0071e3;
+            --accent-green: #30d158;
+            --border: #424245;
+            --border-light: rgba(255, 255, 255, 0.1);
+            --shadow: rgba(0, 0, 0, 0.4);
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            letter-spacing: -0.02em;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: #7eb8ff; text-decoration: none; transition: color 0.3s; }
+        a:hover { color: #fff; }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+        }
+        .logo { font-size: 22px; font-weight: 600; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { color: var(--text-secondary); font-size: 14px; }
+        .nav-links a:hover { color: var(--text-primary); }
+        
+        /* Hero */
+        .hero {
+            padding: 80px 24px 100px;
+            text-align: center;
+            background: linear-gradient(180deg, #1d1d1f 0%, #000000 100%);
+        }
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+        }
+        .hero p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Section */
+        .section { padding: 80px 24px; }
+        .section-dark { background: var(--bg-secondary); }
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .section-header p { font-size: 18px; color: var(--text-secondary); }
+        
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            padding: 28px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            background: var(--bg-elevated);
+        }
+        .card-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+        .card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .card p { color: var(--text-secondary); font-size: 14px; line-height: 1.5; flex-grow: 1; }
+        .card-link {
+            margin-top: 20px;
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        /* Back Button */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+        .back-link:hover { color: var(--text-primary); }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 50px 24px;
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+            margin-top: 60px;
+        }
+        footer p { color: var(--text-tertiary); font-size: 13px; }
+        
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 36px; }
+            .section-header h2 { font-size: 28px; }
+            .grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-    <nav><a href="https://decryptica.com">← Back to Decryptica</a></nav>
-    <div class="container">
-        <h1>⚡ Automation</h1>
-        <p class="subtitle">Guides for productivity, automation, and workflow tools.</p>
-        <div class="articles-grid">
-            <a href="best-chrome-extensions-crypto-2026.html" class="article-card">
-                <div class="article-content">
-                    <h2>Best Chrome Extensions for Crypto</h2>
-                    <p>Essential browser extensions for every crypto trader.</p>
-                    <div class="meta">March 2026 • Tools</div>
-                </div>
+    <nav>
+        <div class="nav-container">
+            <a href="https://decryptica.com" class="logo">🔐 <span>Decryptica</span></a>
+            <ul class="nav-links">
+                <li><a href="https://decryptica.com#ai-tools">AI Tools</a></li>
+                <li><a href="https://decryptica.com#crypto">Crypto</a></li>
+                <li><a href="https://decryptica.com#guides">Guides</a></li>
+                <li><a href="https://decryptica.com">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="hero">
+        <a href="https://decryptica.com" class="back-link">← Back to Home</a>
+        <h1>⚡ Automation & Productivity</h1>
+        <p>Tools and guides to automate your workflow and boost productivity.</p>
+    </div>
+    
+    <section class="section section-dark">
+        <div class="grid">
+            <a href="https://decryptica.com/ai-automation-beginners-2026.html" class="card">
+                <span class="card-icon">🤖</span>
+                <h3>AI Automation for Beginners</h3>
+                <p>Learn how to automate your life with AI. No coding required.</p>
+                <span class="card-link">Get Started →</span>
             </a>
-            <a href="best-crypto-podcasts-2026.html" class="article-card">
-                <div class="article-content">
-                    <h2>Best Crypto Podcasts</h2>
-                    <p>Stay informed with the top crypto podcasts in 2026.</p>
-                    <div class="meta">March 2026 • Resources</div>
-                </div>
+            <a href="https://decryptica.com/best-task-management-apps-0309.html" class="card">
+                <span class="card-icon">✅</span>
+                <h3>Best Task Management Apps</h3>
+                <p>Organize your life with these productivity apps.</p>
+                <span class="card-link">Read Review →</span>
             </a>
-            <a href="create-api-product-guide.html" class="article-card">
-                <div class="article-content">
-                    <h2>How to Create an API Product</h2>
-                    <p>Turn your skills into income by creating and selling APIs.</p>
-                    <div class="meta">March 2026 • Guide</div>
-                </div>
+            <a href="https://decryptica.com/create-api-product-guide.html" class="card">
+                <span class="card-icon">🔌</span>
+                <h3>How to Create an API Product</h3>
+                <p>Turn your code into a revenue-generating API.</p>
+                <span class="card-link">Read Guide →</span>
+            </a>
+            <a href="https://decryptica.com/best-chrome-extensions-crypto-2026.html" class="card">
+                <span class="card-icon">🧩</span>
+                <h3>Best Chrome Extensions for Crypto</h3>
+                <p>Must-have extensions for crypto traders.</p>
+                <span class="card-link">Read Review →</span>
             </a>
         </div>
-    </div>
-    <footer><p>© 2026 Decryptica. All rights reserved. | Renegade Reels LLC</p></footer>
-
-    <style>
-        @media (max-width: 640px) {
-            .container { padding: 40px 20px !important; }
-            h1 { font-size: 28px !important; }
-            .subtitle { font-size: 16px !important; }
-            .article-card h2 { font-size: 18px !important; }
-        }
-    </style></body>
+    </section>
+    
+    <footer>
+        <p>© 2026 Decryptica. All rights reserved. | Renegade Reels LLC</p>
+    </footer>
+</body>
 </html>
