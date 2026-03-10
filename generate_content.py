@@ -106,8 +106,8 @@ def generate_list_article(category, topic):
         body {{ font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.7; }}
         nav {{ background: rgba(0,0,0,0.8); padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); }}
         nav a {{ color: var(--accent); text-decoration: none; font-weight: 600; }}
-        .container {{ max-width: 720px; margin: 0 auto; padding: 60px 24px; }}
-        h1 {{ font-size: 38px; margin-bottom: 12px; letter-spacing: -0.02em; }}
+        .container {{ max-width: 900px; margin: 0 auto; padding: 60px 24px; }}
+        h1 {{ font-size: 48px; margin-bottom: 12px; letter-spacing: -0.02em; }}
         .meta {{ color: var(--text-secondary); font-size: 14px; margin-bottom: 40px; }}
         .intro {{ font-size: 18px; color: var(--text-secondary); margin-bottom: 40px; line-height: 1.8; }}
         h2 {{ font-size: 26px; margin: 50px 0 16px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }}
@@ -252,7 +252,7 @@ def generate_news_article(topic):
         body {{ font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.7; }}
         nav {{ background: rgba(0,0,0,0.8); padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); }}
         nav a {{ color: var(--accent); text-decoration: none; font-weight: 600; }}
-        .container {{ max-width: 720px; margin: 0 auto; padding: 60px 24px; }}
+        .container {{ max-width: 900px; margin: 0 auto; padding: 60px 24px; }}
         h1 {{ font-size: 36px; margin-bottom: 12px; letter-spacing: -0.02em; }}
         .meta {{ color: var(--text-secondary); font-size: 14px; margin-bottom: 30px; }}
         .tag {{ background: rgba(41,151,255,0.2); color: var(--accent); padding: 6px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; }}
