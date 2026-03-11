@@ -758,6 +758,72 @@
             }
         }
     </style>
+    <script>
+        // Dynamic Article Loader - Shows 3 newest articles per section
+        async function loadArticles() {
+            try {
+                const response = await fetch('articles.json');
+                const articles = await response.json();
+                
+                // AI Tools - 3 newest
+                const aiContainer = document.getElementById('ai-tools-grid');
+                if (aiContainer) {
+                    aiContainer.innerHTML = articles['ai-tools'].slice(0, 3).map(article => `
+                        <a href="${article.file}" class="card">
+                            <span class="card-icon">${article.icon}</span>
+                            <h3>${article.title}</h3>
+                            <p>Latest review - March 2026</p>
+                            <span class="card-link">Read Review</span>
+                        </a>
+                    `).join('');
+                }
+                
+                // Crypto - 3 newest
+                const cryptoContainer = document.getElementById('crypto-grid');
+                if (cryptoContainer) {
+                    cryptoContainer.innerHTML = articles['crypto'].slice(0, 3).map(article => `
+                        <a href="${article.file}" class="card">
+                            <span class="card-icon">${article.icon}</span>
+                            <h3>${article.title}</h3>
+                            <p>Latest analysis - March 2026</p>
+                            <span class="card-link">Read More</span>
+                        </a>
+                    `).join('');
+                }
+                
+                // Guides - 3 newest
+                const guidesContainer = document.getElementById('guides-grid');
+                if (guidesContainer) {
+                    guidesContainer.innerHTML = articles['guides'].slice(0, 3).map(article => `
+                        <a href="${article.file}" class="article-card">
+                            <div class="article-image">
+                                ${article.icon}
+                                <span class="article-category">Guide</span>
+                            </div>
+                            <div class="article-content">
+                                <h3>${article.title}</h3>
+                                <p>Step-by-step tutorial for 2026.</p>
+                                <div class="article-meta">
+                                    <span>8 min read</span>
+                                </div>
+                            </div>
+                        </a>
+                    `).join('');
+                }
+                
+                // Update latest banner with newest article
+                const newestArticle = articles['ai-tools'][0] || articles['crypto'][0];
+                const latestBanner = document.getElementById('latest-title');
+                if (latestBanner && newestArticle) {
+                    latestBanner.innerHTML = `Just published: <a href="${newestArticle.file}">${newestArticle.title}</a>`;
+                }
+                
+            } catch (e) {
+                console.log('Article loader ready');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', loadArticles);
+    </script>
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
@@ -790,7 +856,7 @@
     <section class="latest-banner" id="latest">
         <div class="latest-banner-content">
             <span class="latest-label">New</span>
-            <span class="latest-title">Just published: <a href="best-ai-agents-for-automation-in-2026-0310.html">Best AI Coding Tools 2026</a></span>
+            <span class="latest-title" id="latest-title">Just published: <a href="best-ai-agents-for-automation-in-2026-0310.html">Best AI Coding Tools 2026</a></span>
         </div>
     </section>
     
@@ -801,25 +867,8 @@
             <p>Comprehensive reviews of the latest AI tools, software, and services.</p>
             <a href="category/ai.html" class="btn btn-secondary" style="margin-top:20px;">View All AI Articles →</a>
         </div>
-        <div class="grid">
-            <a href="best-ai-image-generators-0309.html" class="card">
-                <span class="card-icon">✍️</span>
-                <h3>Best AI Writing Tools</h3>
-                <p>Compare Jasper, Copy.ai, Writesonic, and more.</p>
-                <span class="card-link">Read Review</span>
-            </a>
-            <a href="best-ai-agents-for-automation-in-2026-0310.html" class="card">
-                <span class="card-icon">💻</span>
-                <h3>Best AI Coding Assistants</h3>
-                <p>GitHub Copilot, Cursor, Claude, and more.</p>
-                <span class="card-link">Read Review</span>
-            </a>
-            <a href="top-ai-plugins-for-chatgpt-0310.html" class="card">
-                <span class="card-icon">🤖</span>
-                <h3>OpenClaw Review</h3>
-                <p>The AI assistant that lives in your terminal.</p>
-                <span class="card-link">Read Review</span>
-            </a>
+        <div class="grid" id="ai-tools-grid">
+            <!-- Loaded dynamically from articles.json -->
         </div>
     </section>
                 <p>What are AI agents and how they can automate your life in 2026.</p>
@@ -847,29 +896,9 @@
             <p>Everything you need to know about cryptocurrency, wallets, DeFi, and trading.</p>
             <a href="category/crypto.html" class="btn btn-secondary" style="margin-top:20px;">View All Crypto Articles →</a>
         </div>
-        <div class="grid">
-            <a href="best-crypto-wallets-for-beginners-0309.html" class="card">
-                <span class="card-icon">👛</span>
-                <h3>Best Solana Wallets</h3>
-                <p>Phantom, Backpack, Solflare and more.</p>
-                <span class="card-link">Read Review</span>
-            </a>
-            <a href="best-hardware-wallets-compared-0309.html" class="card">
-                <span class="card-icon">🔐</span>
-                <h3>Best Hardware Wallets</h3>
-                <p>Ledger vs Trezor. Keep your crypto safe.</p>
-                <span class="card-link">Read Review</span>
-            </a>
-            <a href="top-defi-protocols-for-2026-0310.html" class="card">
-                <span class="card-icon">⚖️</span>
-                <h3>Solana vs Ethereum</h3>
-                <p>Complete comparison of the two biggest chains.</p>
-                <span class="card-link">Compare</span>
-            </a>
+        <div class="grid" id="crypto-grid">
+            <!-- Loaded dynamically from articles.json -->
         </div>
-    </section>
-            <a href="best-hardware-wallets-compared-0309.html" class="card">
-                <span class="card-icon">🔐</span>
     </section>
     
     <!-- Guides Section -->
@@ -879,46 +908,8 @@
             <p>Step-by-step tutorials to get you started with crypto, AI, and automation.</p>
             <a href="category/automation.html" class="btn btn-secondary" style="margin-top:20px;">View All Guides →</a>
         </div>
-        <div class="articles-grid">
-            <a href="best-crypto-learning-resources-0310.html" class="article-card">
-                <div class="article-image">
-                    💰
-                    <span class="article-category">Beginner</span>
-                </div>
-                <div class="article-content">
-                    <h3>How to Buy Your First Crypto</h3>
-                    <p>Step-by-step guide to making your first purchase.</p>
-                    <div class="article-meta">
-                        <span>8 min read</span>
-                    </div>
-                </div>
-            </a>
-            <a href="tools-to-automate-your-daily-tasks-0310.html" class="article-card">
-                <div class="article-image">
-                    🎯
-                    <span class="article-category">Trading</span>
-                </div>
-                <div class="article-content">
-                    <h3>Token Sniper Bots Guide</h3>
-                    <p>How to set up automated sniping on Solana.</p>
-                    <div class="article-meta">
-                        <span>12 min read</span>
-                    </div>
-                </div>
-            </a>
-            <a href="best-automation-tools-in-2026-0310.html" class="article-card">
-                <div class="article-image">
-                    🛡️
-                    <span class="article-category">Security</span>
-                </div>
-                <div class="article-content">
-                    <h3>Crypto Security Guide</h3>
-                    <p>Essential practices to protect your assets.</p>
-                    <div class="article-meta">
-                        <span>9 min read</span>
-                    </div>
-                </div>
-            </a>
+        <div class="articles-grid" id="guides-grid">
+            <!-- Loaded dynamically from articles.json -->
         </div>
     </section>
             <a href="best-crypto-learning-resources-0310.html" class="article-card">

@@ -1,0 +1,31 @@
+{
+  "ai-tools": [
+    {"title": "AI Productivity Tools Worth Using", "file": "ai-productivity-tools-worth-using-0311.html", "date": "2026-03-11", "icon": "⚡"},
+    {"title": "Best AI Tools for Crypto Traders", "file": "best-ai-tools-for-crypto-traders-0310.html", "date": "2026-03-10", "icon": "💹"},
+    {"title": "Best AI Agents for Automation in 2026", "file": "best-ai-agents-for-automation-in-2026-0310.html", "date": "2026-03-10", "icon": "🤖"},
+    {"title": "Top AI Plugins for ChatGPT", "file": "top-ai-plugins-for-chatgpt-0310.html", "date": "2026-03-10", "icon": "⚔️"},
+    {"title": "Best AI Image Generators", "file": "best-ai-image-generators-0309.html", "date": "2026-03-09", "icon": "🎨"},
+    {"title": "Best AI Tools for Crypto", "file": "best-ai-tools-for-crypto-0309.html", "date": "2026-03-09", "icon": "🪙"}
+  ],
+  "crypto": [
+    {"title": "Crypto Tax Tools Compared", "file": "crypto-tax-tools-compared-0311.html", "date": "2026-03-11", "icon": "📊"},
+    {"title": "Crypto Regulation News: March 2026", "file": "news-crypto-regulation-news-0311.html", "date": "2026-03-11", "icon": "⚖️"},
+    {"title": "Web3 Development News: March 2026", "file": "news-web3-development-news-0311.html", "date": "2026-03-11", "icon": "🌐"},
+    {"title": "Most Secure Exchanges", "file": "most-secure-exchanges-0310.html", "date": "2026-03-10", "icon": "🛡️"},
+    {"title": "Solana Price Analysis: March 2026", "file": "news-solana-price-analysis-0310.html", "date": "2026-03-10", "icon": "📈"},
+    {"title": "Bitcoin ETF Updates: March 2026", "file": "news-bitcoin-etf-updates-0310.html", "date": "2026-03-10", "icon": "🏦"},
+    {"title": "DeFi Market Trends: March 2026", "file": "news-defi-market-trends-0310.html", "date": "2026-03-10", "icon": "🔥"},
+    {"title": "NFT Market Updates: March 2026", "file": "news-nft-market-updates-0310.html", "date": "2026-03-10", "icon": "🎨"},
+    {"title": "Top DeFi Protocols for 2026", "file": "top-defi-protocols-for-2026-0310.html", "date": "2026-03-10", "icon": "⚖️"},
+    {"title": "Best Hardware Wallets Compared", "file": "best-hardware-wallets-compared-0309.html", "date": "2026-03-09", "icon": "🔐"},
+    {"title": "Best Crypto Wallets for Beginners", "file": "best-crypto-wallets-for-beginners-0309.html", "date": "2026-03-09", "icon": "👛"}
+  ],
+  "guides": [
+    {"title": "Tools to Automate Your Daily Tasks", "file": "tools-to-automate-your-daily-tasks-0311.html", "date": "2026-03-11", "icon": "⚙️"},
+    {"title": "Automation Tools for Small Business", "file": "automation-tools-for-small-business-0310.html", "date": "2026-03-10", "icon": "🏢"},
+    {"title": "Best Automation Tools in 2026", "file": "best-automation-tools-in-2026-0310.html", "date": "2026-03-10", "icon": "🚀"},
+    {"title": "Top No-Code Platforms", "file": "top-no-code-platforms-0310.html", "date": "2026-03-10", "icon": "🔧"},
+    {"title": "Best Crypto Learning Resources", "file": "best-crypto-learning-resources-0310.html", "date": "2026-03-10", "icon": "📚"},
+    {"title": "Best Task Management Apps", "file": "best-task-management-apps-0309.html", "date": "2026-03-09", "icon": "✅"}
+  ]
+}
