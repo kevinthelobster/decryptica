@@ -166,9 +166,29 @@ TOPIC_CATEGORIES = {
 }
 
 LIST_TOPICS = {
-    "ai": ["Best AI Coding Assistants", "Best AI Writing Tools", "Best AI Image Generators"],
-    "crypto": ["Best Crypto Wallets", "Best Hardware Wallets", "Most Secure Exchanges", "Top DeFi Protocols", "Best NFT Marketplaces"],
-    "automation": ["Best Automation Tools", "Best Productivity Apps", "Top No-Code Platforms"]
+    "ai": [
+        "Best AI Coding Assistants",
+        "Best AI Writing Tools", 
+        "Best AI Image Generators",
+        "Best AI Agents for Automation",
+        "Best AI Plugins for ChatGPT",
+        "Top AI Productivity Tools",
+    ],
+    "crypto": [
+        "Best Crypto Wallets",
+        "Best Hardware Wallets",
+        "Most Secure Exchanges",
+        "Top DeFi Protocols",
+        "Best NFT Marketplaces",
+        "Best Crypto Tax Tools",
+    ],
+    "automation": [
+        "Best Automation Tools",
+        "Best Productivity Apps",
+        "Top No-Code Platforms",
+        "Best Task Management Apps",
+        "Best API Tools for Developers",
+    ]
 }
 
 NEWS_TOPICS = ["Bitcoin ETF Updates", "Solana Price Analysis", "Crypto Regulation News", "DeFi Market Trends", "NFT Market Updates", "Web3 Development News"]
@@ -390,23 +410,20 @@ def main():
     published = get_published_articles()
     print(f"Already published: {len(published)} articles\n")
     
-    # Generate list articles (one per category)
-    categories = ["ai", "crypto", "automation"]
-    for category in categories:
+    # Generate ALL list articles (all topics)
+    for category in ["ai", "crypto", "automation"]:
         topics = LIST_TOPICS[category]
-        available = [t for t in topics if t not in published]
-        if not available:
-            available = topics
-        topic = random.choice(available)
-        
-        # Get product category
-        cat_key = TOPIC_CATEGORIES.get(topic, "automation")
-        print(f"Generating: {topic}")
-        generate_real_list_article(cat_key, topic)
+        for topic in topics:
+            if topic in published:
+                continue
+            cat_key = TOPIC_CATEGORIES.get(topic, "automation")
+            print(f"Generating: {topic}")
+            generate_real_list_article(cat_key, topic)
     
     # Generate news articles
-    for _ in range(3):
-        topic = random.choice(NEWS_TOPICS)
+    for topic in NEWS_TOPICS:
+        if topic in published:
+            continue
         print(f"Generating: {topic}")
         generate_news_article(topic)
     
