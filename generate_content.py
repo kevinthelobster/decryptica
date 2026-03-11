@@ -7,11 +7,27 @@ Following SEO_GUIDE.md for best practices
 
 import os
 import random
+import json
 from datetime import datetime
 
 # Configuration
 BASE_PATH = "/Users/kevinsimac/.openclaw/workspace/decryptica"
 ARTICLES_LOG = BASE_PATH + "/articles_log.txt"
+ARTICLES_JSON = BASE_PATH + "/articles.json"
+
+# Category mapping for articles.json
+CATEGORY_MAP = {
+    "ai": "ai-tools",
+    "crypto": "crypto", 
+    "automation": "guides"
+}
+
+# Icons for each category
+CATEGORY_ICONS = {
+    "ai": "🤖",
+    "crypto": "💰",
+    "automation": "⚙️"
+}
 
 # Article topics - expanded for variety
 LIST_TOPICS = {
@@ -345,6 +361,65 @@ def generate_news_article(topic):
     log_article(title, filename)
     return filename
 
+def update_articles_json():
+    """Update articles.json with all current articles"""
+    if not os.path.exists(ARTICLES_LOG):
+        return
+    
+    # Read all articles from log
+    articles = {"ai-tools": [], "crypto": [], "guides": []}
+    
+    with open(ARTICLES_LOG, 'r') as f:
+        for line in f:
+            if '|' not in line:
+                continue
+            parts = line.strip().split('|')
+            if len(parts) < 3:
+                continue
+            
+            date, title, filename = parts[0], parts[1], parts[2]
+            
+            # Determine category from filename
+            category = "guides"
+            if filename.startswith("best-") or filename.startswith("top-"):
+                if any(x in filename for x in ["ai-", "chatgpt", "productivity"]):
+                    category = "ai-tools"
+                elif any(x in filename for x in ["crypto", "wallet", "defi", "exchange", "solana", "bitcoin", "ethereum", "nft", "tax"]):
+                    category = "crypto"
+            elif filename.startswith("news-"):
+                if any(x in filename for x in ["ai-", "chatgpt"]):
+                    category = "ai-tools"
+                else:
+                    category = "crypto"
+            
+            # Determine icon
+            icon = "📄"
+            if "ai" in category or "AI" in title:
+                icon = "🤖"
+            elif "crypto" in category or any(x in title.lower() for x in ["crypto", "bitcoin", "solana", "eth", "defi", "nft", "trading"]):
+                icon = "💰"
+            else:
+                icon = "⚙️"
+            
+            article_entry = {
+                "title": title,
+                "file": filename,
+                "date": date,
+                "icon": icon
+            }
+            
+            articles[category].append(article_entry)
+    
+    # Sort each category by date (newest first)
+    for cat in articles:
+        articles[cat] = sorted(articles[cat], key=lambda x: x['date'], reverse=True)
+    
+    # Write to JSON
+    with open(ARTICLES_JSON, 'w') as f:
+        json.dump(articles, f, indent=4)
+    
+    print(f"Updated articles.json with {len(articles['ai-tools']) + len(articles['crypto']) + len(articles['guides'])} articles")
+
 def main():
     """Generate 6 articles: 3 lists + 3 news"""
     print(f"Generating content for {datetime.now().date()}")
@@ -369,6 +444,9 @@ def main():
         topic = random.choice(NEWS_TOPICS)
         print(f"Generating news article: {topic}")
         generate_news_article(topic)
+    
+    # Update articles.json
+    update_articles_json()
     
     print("Content generation complete!")
     print(f"Total articles: {len(get_published_articles())}")
