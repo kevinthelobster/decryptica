@@ -255,7 +255,9 @@ def generate_real_list_article(category_key, topic):
 </body>
 </html>'''
     
-    filename = f"best-{topic.lower().replace(' ', '-').replace('/', '-')}-{datetime.now().strftime('%m%d')}.html"
+    # Clean topic for filename (remove "Best " prefix if present)
+    topic_for_file = topic.replace("Best ", "").replace("Top ", "")
+    filename = f"best-{topic_for_file.lower().replace(' ', '-').replace('/', '-')}-{datetime.now().strftime('%m%d')}.html"
     filepath = BASE_PATH + "/" + filename
     
     with open(filepath, 'w') as f:
