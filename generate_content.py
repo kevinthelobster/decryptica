@@ -245,7 +245,7 @@ def generate_real_list_article(category_key, topic):
     </style>
 </head>
 <body>
-    <nav><a href="https://decryptica.com">← Back to Decryptica</a></nav>
+    <nav><a href="/">← Back to Decryptica</a></nav>
     <div class="container">
         <h1>{title}</h1>
         <p class="meta">Published: {datetime.now().strftime('%B %d, %Y')} | 15 min read</p>
@@ -269,7 +269,7 @@ def generate_real_list_article(category_key, topic):
     content += f'''
         <h2 style="margin-top: 50px;">Our Top Pick</h2>
         <p style="color: var(--text-secondary);">After extensive testing, <strong>{product_list[0]['name']}</strong> stands out as our top recommendation. It offers the best combination of features, ease of use, and value for money.</p>
-        <a href="https://decryptica.com" class="cta">Explore More Articles</a>
+        <a href="/" class="cta">Explore More Articles</a>
     </div>
     <footer><p>© 2026 Decryptica. All rights reserved. | Renegade Reels LLC</p></footer>
 </body>
@@ -330,7 +330,7 @@ def generate_news_article(topic):
     </style>
 </head>
 <body>
-    <nav><a href="https://decryptica.com">← Back to Decryptica</a></nav>
+    <nav><a href="/">← Back to Decryptica</a></nav>
     <div class="container">
         <h1>{title}</h1>
         <p class="meta">{datetime.now().strftime('%B %d, %Y')} | 8 min read</p>
@@ -347,7 +347,7 @@ def generate_news_article(topic):
         <p>• Regulatory decisions</p>
         <h2>Our Analysis</h2>
         <p>We believe the fundamentals remain strong despite short-term volatility. Long-term trends suggest continued growth.</p>
-        <a href="https://decryptica.com" class="cta">More Articles</a>
+        <a href="/" class="cta">More Articles</a>
     </div>
     <footer><p>© 2026 Decryptica. All rights reserved.</p></footer>
 </body>
