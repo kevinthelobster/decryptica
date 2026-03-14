@@ -402,6 +402,77 @@ def update_articles_json():
         json.dump(articles, f, indent=4)
     
     print(f"Updated articles.json with {len(articles['ai-tools']) + len(articles['crypto']) + len(articles['guides'])} articles")
+    
+    # Regenerate category pages
+    generate_category_pages(articles)
+
+
+def generate_category_pages(articles):
+    """Generate category HTML pages from articles list"""
+    category_templates = {
+        "ai-tools": {
+            "title": "🤖 AI Tools",
+            "icon": "🤖",
+            "desc": "Reviews, comparisons, and guides for the best AI tools in 2026.",
+            "file": "category/ai.html"
+        },
+        "crypto": {
+            "title": "💰 Crypto",
+            "icon": "💰",
+            "desc": "Cryptocurrency reviews, DeFi guides, and blockchain tools.",
+            "file": "category/crypto.html"
+        },
+        "guides": {
+            "title": "⚙️ Guides",
+            "icon": "⚙️",
+            "desc": "How-to guides, tutorials, and best practices for tech tools.",
+            "file": "category/automation.html"
+        }
+    }
+    
+    for cat_key, cat_info in category_templates.items():
+        cat_articles = articles.get(cat_key, [])
+        
+        # Build article cards HTML
+        cards_html = ""
+        for article in cat_articles:
+            # Extract slug for display title
+            title = article['title']
+            icon = article.get('icon', '📄')
+            filename = article['file']
+            
+            cards_html += f'''            <a href="/{filename}" class="card">
+                <span class="card-icon">{icon}</span>
+                <h3>{title}</h3>
+                <p>Read Article →</p>
+                <span class="card-link">Read More →</span>
+            </a>
+'''
+        
+        # Read the template to get the HTML structure
+        template_path = BASE_PATH + "/" + cat_info["file"]
+        if not os.path.exists(template_path):
+            print(f"Warning: Template not found for {cat_key}")
+            continue
+            
+        with open(template_path, 'r') as f:
+            template = f.read()
+        
+        # Replace the grid section with new cards
+        # Find the grid div and replace everything between <div class="grid"> and </div>
+        import re
+        grid_pattern = r'<div class="grid">.*?</div>\s*</section>'
+        grid_replacement = f'''<div class="grid">
+{cards_html}        </div>
+    </section>'''
+        
+        new_html = re.sub(grid_pattern, grid_replacement, template, flags=re.DOTALL)
+        
+        # Write the updated category page
+        with open(template_path, 'w') as f:
+            f.write(new_html)
+        
+        print(f"Updated {cat_info['file']} with {len(cat_articles)} articles")
 
 def main():
     print(f"Generating content for {datetime.now().date()}")

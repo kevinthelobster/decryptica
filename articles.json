@@ -2,6 +2,90 @@
     "ai-tools": [
         {
             "title": "10 Best AI Coding Assistants",
+            "file": "best-ai-coding-assistants-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Best AI Writing Tools",
+            "file": "best-ai-writing-tools-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Best AI Image Generators",
+            "file": "best-ai-image-generators-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Best AI Agents for Automation",
+            "file": "best-ai-agents-for-automation-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Best AI Plugins for ChatGPT",
+            "file": "best-ai-plugins-for-chatgpt-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Top AI Productivity Tools",
+            "file": "best-ai-productivity-tools-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Best Productivity Apps",
+            "file": "best-productivity-apps-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Best AI Coding Assistants",
+            "file": "best-ai-coding-assistants-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Best AI Writing Tools",
+            "file": "best-ai-writing-tools-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Best AI Image Generators",
+            "file": "best-ai-image-generators-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Best AI Agents for Automation",
+            "file": "best-ai-agents-for-automation-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Best AI Plugins for ChatGPT",
+            "file": "best-ai-plugins-for-chatgpt-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Top AI Productivity Tools",
+            "file": "best-ai-productivity-tools-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Best Productivity Apps",
+            "file": "best-productivity-apps-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83e\udd16"
+        },
+        {
+            "title": "10 Best AI Coding Assistants",
             "file": "best-ai-coding-assistants-0313.html",
             "date": "2026-03-13",
             "icon": "\ud83e\udd16"
@@ -170,6 +254,150 @@
         }
     ],
     "crypto": [
+        {
+            "title": "10 Best Crypto Wallets",
+            "file": "best-crypto-wallets-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "10 Best Hardware Wallets",
+            "file": "best-hardware-wallets-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "10 Most Secure Exchanges",
+            "file": "best-most-secure-exchanges-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "10 Top DeFi Protocols",
+            "file": "best-defi-protocols-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "10 Best NFT Marketplaces",
+            "file": "best-nft-marketplaces-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "10 Best Crypto Tax Tools",
+            "file": "best-crypto-tax-tools-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "Bitcoin ETF Updates: Complete Analysis for March 2026",
+            "file": "news-bitcoin-etf-updates-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "Solana Price Analysis: Complete Analysis for March 2026",
+            "file": "news-solana-price-analysis-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "Crypto Regulation News: Complete Analysis for March 2026",
+            "file": "news-crypto-regulation-news-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "DeFi Market Trends: Complete Analysis for March 2026",
+            "file": "news-defi-market-trends-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "NFT Market Updates: Complete Analysis for March 2026",
+            "file": "news-nft-market-updates-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "Web3 Development News: Complete Analysis for March 2026",
+            "file": "news-web3-development-news-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "10 Best Crypto Wallets",
+            "file": "best-crypto-wallets-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "10 Best Hardware Wallets",
+            "file": "best-hardware-wallets-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "10 Most Secure Exchanges",
+            "file": "best-most-secure-exchanges-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "10 Top DeFi Protocols",
+            "file": "best-defi-protocols-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "10 Best NFT Marketplaces",
+            "file": "best-nft-marketplaces-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "10 Best Crypto Tax Tools",
+            "file": "best-crypto-tax-tools-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "Bitcoin ETF Updates: Complete Analysis for March 2026",
+            "file": "news-bitcoin-etf-updates-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "Solana Price Analysis: Complete Analysis for March 2026",
+            "file": "news-solana-price-analysis-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "Crypto Regulation News: Complete Analysis for March 2026",
+            "file": "news-crypto-regulation-news-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "DeFi Market Trends: Complete Analysis for March 2026",
+            "file": "news-defi-market-trends-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "NFT Market Updates: Complete Analysis for March 2026",
+            "file": "news-nft-market-updates-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
+        {
+            "title": "Web3 Development News: Complete Analysis for March 2026",
+            "file": "news-web3-development-news-0314.html",
+            "date": "2026-03-14",
+            "icon": "\ud83d\udcb0"
+        },
         {
             "title": "10 Best Crypto Wallets",
             "file": "best-crypto-wallets-0313.html",
@@ -460,6 +688,54 @@
         }
     ],
     "guides": [
+        {
+            "title": "10 Best Automation Tools",
+            "file": "best-automation-tools-0314.html",
+            "date": "2026-03-14",
+            "icon": "\u2699\ufe0f"
+        },
+        {
+            "title": "10 Top No-Code Platforms",
+            "file": "best-no-code-platforms-0314.html",
+            "date": "2026-03-14",
+            "icon": "\u2699\ufe0f"
+        },
+        {
+            "title": "10 Best Task Management Apps",
+            "file": "best-task-management-apps-0314.html",
+            "date": "2026-03-14",
+            "icon": "\u2699\ufe0f"
+        },
+        {
+            "title": "10 Best API Tools for Developers",
+            "file": "best-api-tools-for-developers-0314.html",
+            "date": "2026-03-14",
+            "icon": "\u2699\ufe0f"
+        },
+        {
+            "title": "10 Best Automation Tools",
+            "file": "best-automation-tools-0314.html",
+            "date": "2026-03-14",
+            "icon": "\u2699\ufe0f"
+        },
+        {
+            "title": "10 Top No-Code Platforms",
+            "file": "best-no-code-platforms-0314.html",
+            "date": "2026-03-14",
+            "icon": "\u2699\ufe0f"
+        },
+        {
+            "title": "10 Best Task Management Apps",
+            "file": "best-task-management-apps-0314.html",
+            "date": "2026-03-14",
+            "icon": "\u2699\ufe0f"
+        },
+        {
+            "title": "10 Best API Tools for Developers",
+            "file": "best-api-tools-for-developers-0314.html",
+            "date": "2026-03-14",
+            "icon": "\u2699\ufe0f"
+        },
         {
             "title": "10 Best Automation Tools",
             "file": "best-automation-tools-0313.html",
