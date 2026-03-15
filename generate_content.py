@@ -890,52 +890,82 @@ def main():
     print(f"Generating content for {datetime.now().date()}")
     print("=" * 50)
     
+    # MAX 5 ARTICLES PER DAY
+    MAX_ARTICLES_PER_DAY = 5
+    
     published = get_published_articles()
     print(f"Already published: {len(published)} articles\n")
     
-    # Generate list articles (best X tools)
+    articles_generated = 0
+    
+    # Collect all available article types
+    available_articles = []
+    
+    # 1. List articles (best X tools)
     for category in ["ai", "crypto", "automation"]:
         topics = LIST_TOPICS[category]
         for topic in topics:
             if topic in published:
                 continue
             cat_key = TOPIC_CATEGORIES.get(topic, "automation")
-            print(f"Generating: {topic}")
-            generate_real_list_article(cat_key, topic)
+            available_articles.append(("list", cat_key, topic))
     
-    # Generate news articles
+    # 2. News articles
     for topic in NEWS_TOPICS:
         if topic in published:
             continue
-        print(f"Generating: {topic}")
-        generate_news_article(topic)
+        available_articles.append(("news", None, topic))
     
-    # Generate single tool reviews (one per run, rotating)
+    # 3. Single tool reviews
     import random
-    available_tools = [t for t in SINGLE_REVIEW_TOOLS if f"{t['name']} Review" not in published]
-    if available_tools:
-        tool = random.choice(available_tools)
-        print(f"Generating: {tool['name']} Review")
-        generate_single_review(tool)
+    for t in SINGLE_REVIEW_TOOLS:
+        if f"{t['name']} Review" not in published:
+            available_articles.append(("review", t, None))
     
-    # Generate comparisons (one per run, rotating)
-    available_comps = [c for c in COMPARISONS if c["title"] not in published]
-    if available_comps:
-        comp = random.choice(available_comps)
-        print(f"Generating: {comp['title']}")
-        generate_comparison(comp)
+    # 4. Comparisons
+    for c in COMPARISONS:
+        if c["title"] not in published:
+            available_articles.append(("comparison", c, None))
     
-    # Generate how-to guides (one per run, rotating)
-    available_guides = [g for g in HOWTO_GUIDES if g["title"] not in published]
-    if available_guides:
-        guide = random.choice(available_guides)
-        print(f"Generating: {guide['title']}")
-        generate_howto_guide(guide)
+    # 5. How-to guides
+    for g in HOWTO_GUIDES:
+        if g["title"] not in published:
+            available_articles.append(("guide", g, None))
     
-    update_articles_json()
+    # Shuffle and pick max 5
+    random.shuffle(available_articles)
+    to_generate = available_articles[:MAX_ARTICLES_PER_DAY]
+    
+    print(f"Generating {len(to_generate)} articles (max {MAX_ARTICLES_PER_DAY})\n")
+    
+    # Generate the selected articles
+    for article_type, data, topic in to_generate:
+        if article_type == "list":
+            print(f"Generating: {topic}")
+            generate_real_list_article(data, topic)
+            articles_generated += 1
+        elif article_type == "news":
+            print(f"Generating: {topic}")
+            generate_news_article(topic)
+            articles_generated += 1
+        elif article_type == "review":
+            print(f"Generating: {data['name']} Review")
+            generate_single_review(data)
+            articles_generated += 1
+        elif article_type == "comparison":
+            print(f"Generating: {data['title']}")
+            generate_comparison(data)
+            articles_generated += 1
+        elif article_type == "guide":
+            print(f"Generating: {data['title']}")
+            generate_howto_guide(data)
+            articles_generated += 1
+    
+    if articles_generated > 0:
+        update_articles_json()
     
     print("\n" + "=" * 50)
-    print("Content generation complete!")
+    print(f"Content generation complete! ({articles_generated} articles)")
 
 if __name__ == "__main__":
     main()
