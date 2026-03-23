@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decryptica - Trusted Reviews & Guides for AI & Crypto Tools</title>
+    <meta name="description" content="Decryptica provides unbiased reviews, tutorials, and guides for AI tools, cryptocurrency, and automation software. Make informed decisions with our expert analysis.">
+    <meta name="keywords" content="AI tools reviews, crypto guides, cryptocurrency tutorials, AI software, best crypto tools">
+    <meta name="author" content="Decryptica - Renegade Reels LLC">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Decryptica - Trusted Reviews for AI & Crypto Tools">
+    <meta property="og:description" content="Your trusted source for AI and crypto tool reviews, tutorials, and guides.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/logo-mark.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/logo-mark.png" type="image/png"><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+    
+    <style>
+        /* CSS Reset & Variables */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #161617;
+            --bg-tertiary: #1d1d1f;
+            --bg-elevated: #2d2d2f;
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --text-tertiary: #6e6e73;
+            --accent: #2997ff;
+            --accent-hover: #0071e3;
+            --accent-green: #30d158;
+            --border: #424245;
+            --border-light: rgba(255, 255, 255, 0.1);
+            --shadow: rgba(0, 0, 0, 0.4);
+            --gradient-hero: linear-gradient(180deg, #1d1d1f 0%, #000000 100%);
+        }
+        
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            width: 400px;
+        }
+        
+        @media (max-width: 640px) {
+            .hero img {
+                width: 280px;
+            }
+        }
+        a { color: #7eb8ff; text-decoration: none; transition: color 0.3s; }
+        a:hover { color: #fff; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            letter-spacing: -0.02em;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            transition: opacity 0.3s;
+        }
+        
+        .logo:hover {
+            opacity: 0.8;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        
+        .nav-cta {
+            background: var(--accent);
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px !important;
+        }
+        
+        .nav-cta:hover {
+            background: var(--accent-hover);
+        }
+        
+        /* Mobile Nav */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 24px 100px;
+            text-align: center;
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 800px;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(41, 151, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        
+        .hero .description {
+            font-size: 19px;
+            color: var(--text-tertiary);
+            max-width: 550px;
+            margin: 0 auto 36px;
+            line-height: 1.5;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 16px 28px;
+            border-radius: 24px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Latest Articles Banner */
+        .latest-banner {
+            background: linear-gradient(90deg, var(--accent) 0%, #5e5ce6 100%);
+            padding: 16px 24px;
+            text-align: center;
+        }
+        
+        .latest-banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .latest-label {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .latest-title {
+            color: #fff;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        
+        .latest-title a {
+            color: inherit;
+            text-decoration: underline;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 100px 24px;
+        }
+        
+        .section-dark {
+            background: var(--bg-secondary);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        
+        .section-header p {
+            font-size: 19px;
+            color: var(--text-secondary);
+        }
+        
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: var(--bg-tertiary);
+            border-radius: 24px;
+            padding: 36px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px var(--shadow);
+            background: var(--bg-elevated);
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card-icon {
+            font-size: 44px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        
+        .card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .card-link {
+            margin-top: 24px;
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .card-link::after {
+            content: '→';
+            transition: transform 0.3s;
+        }
+        
+        .card:hover .card-link::after {
+            transform: translateX(4px);
+        }
+        
+        /* Featured Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .article-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 16px 32px var(--shadow);
+        }
+        
+        .article-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-elevated) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            position: relative;
+        }
+        
+        .article-category {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 6px 14px;
+            border-radius: 16px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .article-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .article-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .article-meta {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+        
+        /* Trust Section */
+        .trust-section {
+            background: var(--bg-secondary);
+            padding: 100px 24px;
+            text-align: center;
+        }
+        
+        .trust-section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .trust-section > p {
+            color: var(--text-secondary);
+            font-size: 19px;
+            max-width: 550px;
+            margin: 0 auto 60px;
+        }
+        
+        .trust-grid {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+        
+        .trust-item {
+            text-align: center;
+        }
+        
+        .trust-number {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+        
+        .trust-label {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 100px 24px;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .newsletter p {
+            color: var(--text-secondary);
+            font-size: 17px;
+            max-width: 450px;
+            margin: 0 auto 32px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 420px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 16px 20px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .newsletter-input:focus {
+            border-color: var(--accent);
+        }
+        
+        .newsletter-input::placeholder {
+            color: var(--text-tertiary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 60px 24px 40px;
+            border-top: 1px solid var(--border-light);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .footer-brand {
+            max-width: 280px;
+        }
+        
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        
+        .footer-brand p {
+            color: var(--text-tertiary);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-column h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--text-primary);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .footer-copyright {
+            color: var(--text-tertiary);
+            font-size: 12px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-social a {
+            color: var(--text-secondary);
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-social a:hover {
+            color: var(--text-primary);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 56px;
+            }
+            .hero .subtitle {
+                font-size: 21px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .section-header h2 {
+                font-size: 36px;
+            }
+            .trust-grid {
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero {
+                padding: 120px 20px 60px;
+            }
+            .hero h1 {
+                font-size: 40px;
+            }
+            .hero .subtitle {
+                font-size: 18px;
+            }
+            .hero .description {
+                font-size: 16px;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .section {
+                padding: 60px 20px;
+            }
+            .section-header h2 {
+                font-size: 28px;
+            }
+            .grid, .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            .trust-section h2 {
+                font-size: 32px;
+            }
+            .trust-number {
+                font-size: 40px;
+            }
+            .footer-content {
+                flex-direction: column;
+            }
+            .footer-links {
+                gap: 30px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+    <script>
+        // Dynamic Article Loader - Shows 3 newest articles per section
+        async function loadArticles() {
+            try {
+                const response = await fetch('articles.json');
+                const articles = await response.json();
+                
+                // AI Tools - 3 newest
+                const aiContainer = document.getElementById('ai-tools-grid');
+                if (aiContainer) {
+                    aiContainer.innerHTML = articles['ai-tools'].slice(0, 3).map(article => `
+                        <a href="${article.file}" class="card">
+                            <span class="card-icon">${article.icon}</span>
+                            <h3>${article.title}</h3>
+                            <p>Latest review - March 2026</p>
+                            <span class="card-link">Read Review</span>
+                        </a>
+                    `).join('');
+                }
+                
+                // Crypto - 3 newest
+                const cryptoContainer = document.getElementById('crypto-grid');
+                if (cryptoContainer) {
+                    cryptoContainer.innerHTML = articles['crypto'].slice(0, 3).map(article => `
+                        <a href="${article.file}" class="card">
+                            <span class="card-icon">${article.icon}</span>
+                            <h3>${article.title}</h3>
+                            <p>Latest analysis - March 2026</p>
+                            <span class="card-link">Read More</span>
+                        </a>
+                    `).join('');
+                }
+                
+                // Guides - 3 newest
+                const guidesContainer = document.getElementById('guides-grid');
+                if (guidesContainer) {
+                    guidesContainer.innerHTML = articles['guides'].slice(0, 3).map(article => `
+                        <a href="${article.file}" class="article-card">
+                            <div class="article-image">
+                                ${article.icon}
+                                <span class="article-category">Guide</span>
+                            </div>
+                            <div class="article-content">
+                                <h3>${article.title}</h3>
+                                <p>Step-by-step tutorial for 2026.</p>
+                                <div class="article-meta">
+                                    <span>8 min read</span>
+                                </div>
+                            </div>
+                        </a>
+                    `).join('');
+                }
+                
+                // Update latest banner with newest article
+                const newestArticle = articles['ai-tools'][0] || articles['crypto'][0];
+                const latestBanner = document.getElementById('latest-title');
+                if (latestBanner && newestArticle) {
+                    latestBanner.innerHTML = `Just published: <a href="${newestArticle.file}">${newestArticle.title}</a>`;
+                }
+                
+            } catch (e) {
+                console.log('Article loader ready');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', loadArticles);
+    </script>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/"><img src="assets/decryptica-logo.png" alt="Decryptica" style="height:40px;"></a>
+            <ul class="nav-links">
+                <li><a href="#ai-tools">AI Tools</a></li>
+                <li><a href="#crypto">Crypto</a></li>
+                <li><a href="#guides">Guides</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#newsletter" class="nav-cta">Subscribe</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="assets/logo-header.png" alt="Decryptica" style="height:100px; margin-bottom:20px;">
+            <p class="subtitle">Your Trusted Source for Tech Reviews</p>
+            <p class="description">Expert reviews, tutorials, and guides for AI tools, cryptocurrency, and automation software. Make informed decisions with unbiased analysis.</p>
+            <div class="cta-buttons">
+                <a href="#ai-tools" class="btn btn-primary">Explore Reviews</a>
+                <a href="#latest" class="btn btn-secondary">Latest Articles →</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Latest Articles Banner -->
+    <section class="latest-banner" id="latest">
+        <div class="latest-banner-content">
+            <span class="latest-label">New</span>
+            <span class="latest-title" id="latest-title">Just published: <a href="best-ai-agents-for-automation-in-2026-0310.html">Best AI Coding Tools 2026</a></span>
+        </div>
+    </section>
+    
+    <!-- AI Tools Section -->
+    <section class="section section-dark" id="ai-tools">
+        <div class="section-header">
+            <h2>AI & Tech Reviews</h2>
+            <p>Comprehensive reviews of the latest AI tools, software, and services.</p>
+            <a href="category/ai.html" class="btn btn-secondary" style="margin-top:20px;">View All AI Articles →</a>
+        </div>
+        <div class="grid" id="ai-tools-grid">
+            <!-- Loaded dynamically from articles.json -->
+        </div>
+    </section>
+    
+    <!-- Crypto Section -->
+    <section class="section" id="crypto">
+        <div class="section-header">
+            <h2>Crypto & Blockchain</h2>
+            <p>Everything you need to know about cryptocurrency, wallets, DeFi, and trading.</p>
+            <a href="category/crypto.html" class="btn btn-secondary" style="margin-top:20px;">View All Crypto Articles →</a>
+        </div>
+        <div class="grid" id="crypto-grid">
+            <!-- Loaded dynamically from articles.json -->
+        </div>
+    </section>
+    
+    <!-- Guides Section -->
+    <section class="section section-dark" id="guides">
+        <div class="section-header">
+            <h2>Beginner Guides</h2>
+            <p>Step-by-step tutorials to get you started with crypto, AI, and automation.</p>
+            <a href="category/automation.html" class="btn btn-secondary" style="margin-top:20px;">View All Guides →</a>
+        </div>
+        <div class="articles-grid" id="guides-grid">
+            <!-- Loaded dynamically from articles.json -->
+        </div>
+    </section>
+    
+    
+    
+    <!-- Trust Section -->
+    <section class="trust-section" id="about">
+        <h2>Why Trust Decryptica?</h2>
+        <p>We're independent and unbiased. Our reviews are based on thorough research and expert analysis.</p>
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-number">12+</div>
+                <div class="trust-label">In-Depth Articles</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number">100%</div>
+                <div class="trust-label">Independent</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number">Daily</div>
+                <div class="trust-label">New Content</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+        <h2>Stay Updated</h2>
+        <p>Get the latest reviews and guides delivered to your inbox every week.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo"><img src="assets/logo-mark.png" alt="Decryptica" style="height:24px;"></div>
+                <p>Your trusted source for AI and crypto tool reviews, tutorials, and guides. Built by Renegade Reels LLC.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>AI Tools</h4>
+                    <ul>
+                        <li><a href="best-ai-image-generators-0309.html">AI Writing</a></li>
+                        <li><a href="best-ai-agents-for-automation-in-2026-0310.html">AI Coding</a></li>
+                        <li><a href="best-ai-agents-for-automation-in-2026-0310.html">AI Agents</a></li>
+                        <li><a href="top-ai-plugins-for-chatgpt-0310.html">Comparisons</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Crypto</h4>
+                    <ul>
+                        <li><a href="best-crypto-wallets-for-beginners-0309.html">Wallets</a></li>
+                        <li><a href="best-hardware-wallets-compared-0309.html">Hardware Wallets</a></li>
+                        <li><a href="top-defi-protocols-for-2026-0310.html">DeFi</a></li>
+                        <li><a href="news-defi-market-trends-0310.html">Trading</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                Copyright © 2026 Decryptica. All rights reserved. | Renegade Reels LLC
+            </div>
+            <div class="footer-social">
+                <a href="#">𝕏</a>
+                <a href="#">📱</a>
+                <a href="#">💬</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
