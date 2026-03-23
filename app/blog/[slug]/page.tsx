@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   };
 }
 
-export async function generateJsonLd(post: { title: string; description: string; slug: string }) {
+function generateJsonLd(post: { title: string; description: string; slug: string }) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -61,7 +61,7 @@ export default async function BlogPostPage({ params }: PostPageProps) {
   const { slug } = await params;
   const post = samplePost; // In production, fetch by slug
 
-  const jsonLd = await generateJsonLd(post);
+  const jsonLd = generateJsonLd(post);
 
   return (
     <>
