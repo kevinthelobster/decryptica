@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -58,6 +59,7 @@ export default function RootLayout({
             </div>
           </footer>
         </div>
+        <SpeedInsights />
       </body>
     </html>
   );
