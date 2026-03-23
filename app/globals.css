@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: "Inter", system-ui, sans-serif;
+    --font-jetbrains: "JetBrains Mono", monospace;
+  }
+
+  body {
+    font-family: var(--font-inter);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-jetbrains);
+  }
+}
+
+@layer components {
+  .prose pre {
+    @apply bg-slate-900 border border-slate-800 rounded-lg overflow-x-auto;
+  }
+
+  .prose code {
+    @apply font-mono text-cyan-400 bg-slate-900 px-1.5 py-0.5 rounded text-sm;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .link-cyber {
+    @apply text-cyan-400 hover:text-cyan-300 transition-colors underline underline-offset-4 decoration-cyan-400/30 hover:decoration-cyan-400;
+  }
+
+  .btn-cyber {
+    @apply inline-flex items-center justify-center px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold rounded-md transition-colors;
+  }
+
+  .card-glow {
+    @apply bg-slate-900/50 border border-slate-800 hover:border-cyan-500/50 transition-all duration-300;
+  }
+}
