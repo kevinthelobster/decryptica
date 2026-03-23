@@ -31,6 +31,7 @@ function generateJsonLd(post: { title: string; description: string; slug: string
 
 const post = {
   title: "Ethereum's 'Make-or-Break' Moment Is a False Narrative",
+  description: "The real threat to Ethereum isn't quantum computing or AI competition - it's Layer 2 fragmentation destroying network effects.",
   slug: "ethereums-make-or-break-moment-is-a-false-narrative",
   publishedAt: "2026-03-22",
   author: "Decryptica",
