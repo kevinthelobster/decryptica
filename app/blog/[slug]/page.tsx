@@ -29,7 +29,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     description: article.excerpt,
     keywords: [article.category, 'crypto', 'ai', 'automation', 'technical'],
     authors: [{ name: 'Decryptica' }],
-    canonical: canonicalUrl,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     robots: 'index, follow',
     
     // Open Graph (Facebook, LinkedIn, Pinterest)
