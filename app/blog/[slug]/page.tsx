@@ -23,6 +23,195 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   };
 }
 
+// Content renderer with design standards
+function renderContent(content: string) {
+  const elements: React.ReactNode[] = [];
+  const blocks = content.split(/(?:^|\n)(?=## )/);
+  
+  blocks.forEach((block, blockIndex) => {
+    const trimmedBlock = block.trim();
+    if (!trimmedBlock) return;
+    
+    // Check if it's a heading block
+    if (trimmedBlock.startsWith('## ')) {
+      const title = trimmedBlock.replace(/^## /, '').split('\n')[0];
+      elements.push(
+        <h2 key={`h2-${blockIndex}`} className="font-display text-xl font-semibold text-white mt-10 mb-4 pb-2 border-b border-zinc-800">
+          {title}
+        </h2>
+      );
+      
+      const rest = trimmedBlock.replace(/^## .*\n?/, '').trim();
+      if (rest) {
+        elements.push(...parseContent(rest, blockIndex));
+      }
+    } else {
+      elements.push(...parseContent(trimmedBlock, blockIndex));
+    }
+  });
+  
+  return elements;
+}
+
+function parseContent(text: string, keyPrefix: number): React.ReactNode[] {
+  const elements: React.ReactNode[] = [];
+  const paragraphs = text.split(/\n\n+/);
+  
+  paragraphs.forEach((para, paraIndex) => {
+    const trimmed = para.trim();
+    if (!trimmed) return;
+    
+    // Code block (```language ... ```)
+    if (trimmed.startsWith('```')) {
+      const match = trimmed.match(/^```(\w*)\n?([\s\S]*?)```$/);
+      if (match) {
+        const language = match[1] || 'code';
+        const code = match[2].trim();
+        elements.push(
+          <div key={`code-${keyPrefix}-${paraIndex}`} className="my-6 rounded-xl overflow-hidden border border-zinc-700 bg-zinc-900">
+            <div className="flex items-center justify-between px-4 py-2 bg-zinc-800/50 border-b border-zinc-700">
+              <span className="text-xs text-zinc-400 font-mono uppercase">{language}</span>
+            </div>
+            <pre className="p-4 overflow-x-auto">
+              <code className="text-sm font-mono text-zinc-300 whitespace-pre">{code}</code>
+            </pre>
+          </div>
+        );
+        return;
+      }
+    }
+    
+    // Table
+    if (trimmed.includes('|') && trimmed.includes('---')) {
+      const lines = trimmed.split('\n');
+      const tableLines = lines.filter(line => line.trim().startsWith('|'));
+      
+      if (tableLines.length >= 2) {
+        const headers = tableLines[0].split('|').filter(c => c.trim()).map(h => h.trim());
+        const rows = tableLines.slice(2);
+        
+        elements.push(
+          <div key={`table-${keyPrefix}-${paraIndex}`} className="my-6 overflow-x-auto">
+            <table className="w-full text-sm border border-zinc-700 rounded-xl overflow-hidden">
+              <thead className="bg-zinc-800">
+                <tr>
+                  {headers.map((header, i) => (
+                    <th key={i} className="px-4 py-3 text-left text-white font-semibold border-b border-zinc-700">
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row, rowIndex) => {
+                  const cells = row.split('|').filter(c => c.trim()).map(c => c.trim());
+                  return (
+                    <tr key={rowIndex} className="border-b border-zinc-700/50 hover:bg-zinc-800/30">
+                      {cells.map((cell, cellIndex) => (
+                        <td key={cellIndex} className="px-4 py-3 text-zinc-300">
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        );
+        return;
+      }
+    }
+    
+    // Blockquote (starts with >)
+    if (trimmed.startsWith('> ')) {
+      const quote = trimmed.replace(/^> /, '');
+      elements.push(
+        <blockquote key={`quote-${keyPrefix}-${paraIndex}`} className="my-6 border-l-4 border-indigo-500 pl-5 py-2 italic text-zinc-400 bg-zinc-800/30 rounded-r-xl">
+          {quote}
+        </blockquote>
+      );
+      return;
+    }
+    
+    // Horizontal rule
+    if (trimmed === '---') {
+      elements.push(
+        <hr key={`hr-${keyPrefix}-${paraIndex}`} className="my-8 border-t border-zinc-700" />
+      );
+      return;
+    }
+    
+    // List items
+    if (trimmed.match(/^[-•*] |^\d+\. /m)) {
+      const isOrdered = /^\d+\. /m.test(trimmed);
+      const items = trimmed.split('\n').filter(line => line.trim());
+      
+      if (isOrdered) {
+        elements.push(
+          <ol key={`ol-${keyPrefix}-${paraIndex}`} className="my-4 space-y-2 list-decimal list-inside">
+            {items.map((item, i) => {
+              const text = item.replace(/^\d+\. /, '').replace(/^[-•*] /, '');
+              return (
+                <li key={i} className="text-zinc-300 pl-2">
+                  {renderInline(text)}
+                </li>
+              );
+            })}
+          </ol>
+        );
+      } else {
+        elements.push(
+          <ul key={`ul-${keyPrefix}-${paraIndex}`} className="my-4 space-y-2">
+            {items.map((item, i) => {
+              const text = item.replace(/^[-•*] /, '');
+              const isBold = text.match(/^\*\*/);
+              return (
+                <li key={i} className="text-zinc-300 pl-4 relative">
+                  <span className="absolute left-0 text-indigo-400">•</span>
+                  <span className="pl-3">{renderInline(text)}</span>
+                </li>
+              );
+            })}
+          </ul>
+        );
+      }
+      return;
+    }
+    
+    // Regular paragraph
+    if (trimmed) {
+      elements.push(
+        <p key={`p-${keyPrefix}-${paraIndex}`} className="text-zinc-300 leading-relaxed mb-4">
+          {renderInline(trimmed)}
+        </p>
+      );
+    }
+  });
+  
+  return elements;
+}
+
+function renderInline(text: string): React.ReactNode {
+  // Handle bold (**text**)
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i} className="text-white font-semibold">{part.slice(2, -2)}</strong>;
+    }
+    
+    // Handle inline code (`code`)
+    const codeParts = part.split(/(`[^`]+`)/g);
+    return codeParts.map((cp, j) => {
+      if (cp.startsWith('`') && cp.endsWith('`')) {
+        return <code key={`${i}-${j}`} className="mx-1 bg-zinc-800 px-2 py-1 rounded-lg text-pink-400 font-mono text-sm">{cp.slice(1, -1)}</code>;
+      }
+      return cp;
+    });
+  });
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
@@ -88,28 +277,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Article Content */}
           <div className="prose prose-invert prose-zinc max-w-none">
-            {article.content.split('\n\n').map((paragraph, i) => {
-              // Handle headings
-              if (paragraph.startsWith('## ')) {
-                return (
-                  <h2 key={i} className="font-display text-xl font-semibold text-white mt-8 mb-4">
-                    {paragraph.replace('## ', '')}
-                  </h2>
-                );
-              }
-              // Handle bold text
-              const parts = paragraph.split(/(\*\*[^*]+\*\*)/g);
-              return (
-                <p key={i} className="text-zinc-300 leading-relaxed mb-4">
-                  {parts.map((part, j) => {
-                    if (part.startsWith('**') && part.endsWith('**')) {
-                      return <strong key={j} className="text-white font-semibold">{part.slice(2, -2)}</strong>;
-                    }
-                    return part;
-                  })}
-                </p>
-              );
-            })}
+            {renderContent(article.content)}
           </div>
 
           {/* Related Articles */}
