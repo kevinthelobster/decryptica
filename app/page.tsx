@@ -1,38 +1,26 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import SubscribeForm from "./components/SubscribeForm";
+import { articles } from "./data/articles";
 
 export const metadata: Metadata = {
   title: "Decryptica | Technical Intelligence",
   description: "Expert insights on Crypto, AI, and Automation. Stay ahead of the curve with technical intelligence.",
 };
 
-const featuredArticles = [
-  {
-    id: 1,
-    category: "AI",
-    title: "The Rise of Local AI: Why Developers Are Leaving the Cloud",
-    excerpt: "As privacy concerns grow and hardware becomes more powerful, running AI models locally is becoming increasingly viable.",
-    readTime: "6 min read",
-    date: "Mar 28, 2026",
-  },
-  {
-    id: 2,
-    category: "Crypto",
-    title: "Understanding Solana's Transaction Finality in 2026",
-    excerpt: "A deep dive into how Solana achieves sub-second finality and why it matters for DeFi applications.",
-    readTime: "8 min read",
-    date: "Mar 27, 2026",
-  },
-  {
-    id: 3,
-    category: "Automation",
-    title: "Building Your First n8n Workflow: A Beginner's Guide",
-    excerpt: "Learn how to automate repetitive tasks without writing a single line of code.",
-    readTime: "12 min read",
-    date: "Mar 26, 2026",
-  },
-];
+// Get the 3 most recent articles
+const featuredArticles = [...articles]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 3)
+  .map((article) => ({
+    id: article.id,
+    category: article.category === 'crypto' ? 'Crypto' : article.category === 'ai' ? 'AI' : 'Automation',
+    title: article.title,
+    excerpt: article.excerpt,
+    readTime: article.readTime,
+    date: new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+    slug: article.slug,
+  }));
 
 const topics = [
   {
@@ -41,7 +29,7 @@ const topics = [
     description: "Deep dives into blockchain protocols, DeFi strategies, and market analysis.",
     icon: "M13 10V3L4 14h7v7l9-11h-7z",
     color: "from-amber-500 to-orange-600",
-    count: 24,
+    count: articles.filter(a => a.category === 'crypto').length,
   },
   {
     slug: "ai",
@@ -49,7 +37,7 @@ const topics = [
     description: "Stay ahead with insights on LLMs, AI agents, and emerging technology.",
     icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
     color: "from-indigo-500 to-purple-600",
-    count: 31,
+    count: articles.filter(a => a.category === 'ai').length,
   },
   {
     slug: "automation",
@@ -57,7 +45,7 @@ const topics = [
     description: "Tools, workflows, and strategies to automate your work and life.",
     icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v.01M4.582 9H4.582m0 0a8.001 8.001 0 0115.356-2M15.356 9a8.001 8.001 0 00-15.356 2m15.356-2a8.001 8.001 0 01-15.356 2M12 12l-3 3m0 0l3 3m-3-3v8",
     color: "from-emerald-500 to-teal-600",
-    count: 18,
+    count: articles.filter(a => a.category === 'automation').length,
   },
 ];
 
@@ -120,7 +108,7 @@ export default function IndexPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredArticles.map((article) => (
-            <article key={article.id} className="article-card group cursor-pointer">
+            <Link key={article.id} href={`/blog/${article.slug}`} className="article-card group cursor-pointer">
               {/* Article Image Placeholder */}
               <div className="aspect-video bg-gradient-to-br from-zinc-800 to-zinc-900 relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -157,7 +145,7 @@ export default function IndexPage() {
                   </svg>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
