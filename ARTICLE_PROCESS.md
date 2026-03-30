@@ -62,7 +62,14 @@
 - **Sentence length:** Mix 5-word "punch" sentences with 25-word technical explanations.
 - **Format:** Use Markdown. Use bolding for Technical Keywords only.
 - **Content:** You must explain how to implement the {{technical_entity}} mentioned in the research.
-- **Word Count:** 1,200+ words of high-density utility.
+- **Word Count:** 1,500-2,500 words of high-density utility.
+
+**SEO Word Count Rule:**
+- Target: **1,800-2,500 words** for competitive keywords
+- Minimum: **1,500 words** for shorter queries
+- The average top-10 Google result is ~2,200 words
+- Longer content performs better for shares and authority
+- Prioritize depth over length — every word must add value
 
 ## Step 4: The SEO Optimizer (Final Polish & Internal Linking)
 
