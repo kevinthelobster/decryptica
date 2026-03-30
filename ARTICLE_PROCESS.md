@@ -83,7 +83,60 @@
 3. Add a "Technical TL;DR" box at the top with 3 bullet points.
 4. Add a placeholder [AFFILIATE_LINK: ToolName] where the reader would naturally look for a solution.
 
-## Step 5: The Designer (Visual Polish & Formatting)
+## Step 5: The SEO Metadata Master (Meta Tags & Social Cards)
+
+**Input:** Article with title, excerpt, and featured image
+
+**Role:** SEO Metadata Specialist
+
+**Task:** Ensure each article page has proper meta tags for Google and social sharing.
+
+**Requirements:**
+
+### Meta Tags (for Google/SEO)
+```
+- title: "{Article Title} | Decryptica" (max 60 chars)
+- description: "{excerpt}" (max 160 chars)
+- canonical: "https://decryptica.com/blog/{slug}"
+- robots: "index, follow"
+```
+
+### Open Graph Tags (Facebook, LinkedIn, Pinterest)
+```
+- og:title: "{Article Title}" (max 55-60 chars)
+- og:description: "{excerpt}" (max 120 chars)
+- og:image: "https://decryptica.com/og/{slug}.jpg" (1200x630px)
+- og:url: "https://decryptica.com/blog/{slug}"
+- og:type: "article"
+- og:site_name: "Decryptica"
+- og:locale: "en_US"
+```
+
+### Twitter Card Tags
+```
+- twitter:card: "summary_large_image"
+- twitter:title: "{Article Title}"
+- twitter:description: "{excerpt}"
+- twitter:image: "https://decryptica.com/og/{slug}.jpg"
+- twitter:site: "@decryptica"
+- twitter:creator: "@decryptica"
+```
+
+### Best Practices
+- **Title:** 55-60 characters max (truncates after)
+- **Description:** 120-160 characters max
+- **Image:** 1200x630px, JPEG or PNG, high-res
+- **URL:** Use canonical URL (no duplicates)
+- **Article type:** Use `article` for blog posts
+- **Locale:** Use `en_US` for English US
+
+**Implementation Notes:**
+- Next.js uses `generateMetadata()` in the page file
+- Generate dynamic OG images per article (use a service like @vercel/og or social-cards)
+- Ensure consistent brand across all tags
+- Test with Facebook Debugger and Twitter Card Validator
+
+## Step 6: The Designer (Visual Polish & Formatting)
 
 **Input:** Draft from Step 4
 
@@ -123,7 +176,7 @@
 
 **Design Standards Reference:** See `ARTICLE_DESIGN_STANDARDS.md`
 
-## Step 6: The Deployer (Commit & Publish)
+## Step 7: The Deployer (Commit & Publish)
 
 **Input:** Final article ready in `/app/blog/[slug]/page.tsx`
 

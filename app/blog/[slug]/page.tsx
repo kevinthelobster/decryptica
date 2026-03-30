@@ -14,12 +14,53 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const article = getArticleBySlug(slug);
   
   if (!article) {
-    return { title: 'Article Not Found | Decryptica' };
+    return { 
+      title: 'Article Not Found | Decryptica',
+      robots: 'noindex'
+    };
   }
   
+  const canonicalUrl = `https://decryptica.com/blog/${slug}`;
+  const ogImage = `https://decryptica.com/og/${slug}.jpg`;
+  
   return {
+    // Basic SEO
     title: `${article.title} | Decryptica`,
     description: article.excerpt,
+    keywords: [article.category, 'crypto', 'ai', 'automation', 'technical'],
+    authors: [{ name: 'Decryptica' }],
+    canonical: canonicalUrl,
+    robots: 'index, follow',
+    
+    // Open Graph (Facebook, LinkedIn, Pinterest)
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      url: canonicalUrl,
+      siteName: 'Decryptica',
+      locale: 'en_US',
+      type: 'article',
+      publishedTime: article.date,
+      authors: ['Decryptica'],
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: article.title
+        }
+      ]
+    },
+    
+    // Twitter Card
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.excerpt,
+      images: [ogImage],
+      site: '@decryptica',
+      creator: '@decryptica'
+    }
   };
 }
 
