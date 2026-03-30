@@ -70,7 +70,47 @@
 3. Add a "Technical TL;DR" box at the top with 3 bullet points.
 4. Add a placeholder [AFFILIATE_LINK: ToolName] where the reader would naturally look for a solution.
 
-## Step 5: The Deployer (Commit & Publish)
+## Step 5: The Designer (Visual Polish & Formatting)
+
+**Input:** Draft from Step 4
+
+**Role:** UI/UX Designer for Technical Content
+
+**Task:** Apply design standards per `ARTICLE_DESIGN_STANDARDS.md`
+
+**Requirements:**
+
+- **Code blocks:** Wrap in styled container with language label
+  - Background: `bg-zinc-900 border border-zinc-700 rounded-xl p-4`
+  - Font: `font-mono text-sm text-zinc-300`
+  - Add language identifier: \`\`\`javascript
+
+- **Inline code:** Wrap single backticks in styled span
+  - Style: `bg-zinc-800 px-2 py-1 rounded-lg text-pink-400 font-mono text-sm`
+
+- **Tables:** Use markdown table syntax with proper styling
+  - Render with `overflow-x-auto` for mobile
+  - Header: `bg-zinc-800 text-white font-semibold`
+
+- **Lists:** 
+  - Unordered: Use • prefix, add left border accent for key points
+  - Ordered: Numbered steps for tutorials
+
+- **Blockquotes:** Use `>` with style
+  - Style: `border-l-4 border-indigo-500 pl-4 italic text-zinc-400`
+
+- **TL;DR Box:** Must include at top of article
+  - Background: `bg-indigo-500/10 border border-indigo-500/30 rounded-xl p-5`
+  - Title: `font-display font-semibold text-white mb-3`
+
+- **Scanability checks:**
+  - No paragraphs > 4 sentences
+  - Code blocks break up text walls
+  - Consistent heading hierarchy (H2 → H3, no skipping)
+
+**Design Standards Reference:** See `ARTICLE_DESIGN_STANDARDS.md`
+
+## Step 6: The Deployer (Commit & Publish)
 
 **Input:** Final article ready in `/app/blog/[slug]/page.tsx`
 
