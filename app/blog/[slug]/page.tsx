@@ -55,13 +55,44 @@ function renderContent(content: string) {
 
 function parseContent(text: string, keyPrefix: number): React.ReactNode[] {
   const elements: React.ReactNode[] = [];
+  
+  // First pass: extract and render ### headings within the text
+  const parts = text.split(/(?:^|\n)(?=### )/);
+  
+  parts.forEach((part, partIndex) => {
+    const trimmed = part.trim();
+    if (!trimmed) return;
+    
+    // Check if this part starts with ###
+    if (trimmed.startsWith('### ')) {
+      const title = trimmed.replace(/^### /, '').split('\n')[0];
+      elements.push(
+        <h3 key={`h3-${keyPrefix}-${partIndex}`} className="font-display text-lg font-semibold text-white mt-6 mb-3 text-indigo-300">
+          {title}
+        </h3>
+      );
+      
+      const rest = trimmed.replace(/^### .*\n?/, '').trim();
+      if (rest) {
+        elements.push(...parseListOrParagraph(rest, `${keyPrefix}-${partIndex}`));
+      }
+    } else {
+      elements.push(...parseListOrParagraph(trimmed, `${keyPrefix}-${partIndex}`));
+    }
+  });
+  
+  return elements;
+}
+
+function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[] {
+  const elements: React.ReactNode[] = [];
   const paragraphs = text.split(/\n\n+/);
   
   paragraphs.forEach((para, paraIndex) => {
     const trimmed = para.trim();
     if (!trimmed) return;
     
-    // Code block (```language ... ```)
+    // Code block
     if (trimmed.startsWith('```')) {
       const match = trimmed.match(/^```(\w*)\n?([\s\S]*?)```$/);
       if (match) {
@@ -123,7 +154,7 @@ function parseContent(text: string, keyPrefix: number): React.ReactNode[] {
       }
     }
     
-    // Blockquote (starts with >)
+    // Blockquote
     if (trimmed.startsWith('> ')) {
       const quote = trimmed.replace(/^> /, '');
       elements.push(
@@ -142,16 +173,17 @@ function parseContent(text: string, keyPrefix: number): React.ReactNode[] {
       return;
     }
     
-    // List items
-    if (trimmed.match(/^[-•*] |^\d+\. /m)) {
+    // List items (only if starts with - or • or numbered)
+    if (trimmed.match(/^[-•*] /m) || trimmed.match(/^\d+\. /m)) {
       const isOrdered = /^\d+\. /m.test(trimmed);
-      const items = trimmed.split('\n').filter(line => line.trim());
+      const isUnordered = /^[-•*] /m.test(trimmed);
       
       if (isOrdered) {
+        const items = trimmed.split('\n').filter(line => line.trim().match(/^\d+\. /));
         elements.push(
           <ol key={`ol-${keyPrefix}-${paraIndex}`} className="my-4 space-y-2 list-decimal list-inside">
             {items.map((item, i) => {
-              const text = item.replace(/^\d+\. /, '').replace(/^[-•*] /, '');
+              const text = item.replace(/^\d+\. /, '');
               return (
                 <li key={i} className="text-zinc-300 pl-2">
                   {renderInline(text)}
@@ -160,12 +192,12 @@ function parseContent(text: string, keyPrefix: number): React.ReactNode[] {
             })}
           </ol>
         );
-      } else {
+      } else if (isUnordered) {
+        const items = trimmed.split('\n').filter(line => line.trim().match(/^[-•*] /));
         elements.push(
           <ul key={`ul-${keyPrefix}-${paraIndex}`} className="my-4 space-y-2">
             {items.map((item, i) => {
               const text = item.replace(/^[-•*] /, '');
-              const isBold = text.match(/^\*\*/);
               return (
                 <li key={i} className="text-zinc-300 pl-4 relative">
                   <span className="absolute left-0 text-indigo-400">•</span>
