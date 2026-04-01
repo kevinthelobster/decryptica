@@ -81,15 +81,15 @@ export default function IndexPage() {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4">
-            <button className="btn-primary">
+            <Link href="/articles" className="btn-primary">
               Start Reading
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </button>
-            <button className="btn-secondary">
+            </Link>
+            <Link href="#subscribe" className="btn-secondary">
               Browse Topics
-            </button>
+            </Link>
           </div>
         </div>
       </section>
