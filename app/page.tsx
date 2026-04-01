@@ -87,7 +87,7 @@ export default function IndexPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <Link href="#subscribe" className="btn-secondary">
+            <Link href="#topics" className="btn-secondary">
               Browse Topics
             </Link>
           </div>
@@ -139,7 +139,7 @@ export default function IndexPage() {
       </section>
 
       {/* Topics Grid */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
+      <section id="topics" className="max-w-7xl mx-auto px-6 py-16">
         <h2 className="section-heading mb-8">Explore Topics</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
