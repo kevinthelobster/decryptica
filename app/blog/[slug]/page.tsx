@@ -470,9 +470,11 @@ function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[
 }
 
 function renderInline(text: string): React.ReactNode {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  // Split on bold, code blocks, and markdown links
+  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g);
 
   return parts.map((part, i) => {
+    // Bold: **text**
     if (part.startsWith('**') && part.endsWith('**')) {
       return (
         <strong key={i} className="text-white font-semibold">
@@ -481,20 +483,35 @@ function renderInline(text: string): React.ReactNode {
       );
     }
 
-    const codeParts = part.split(/(`[^`]+`)/g);
-    return codeParts.map((cp, j) => {
-      if (cp.startsWith('`') && cp.endsWith('`')) {
-        return (
-          <code
-            key={`${i}-${j}`}
-            className="mx-1 bg-zinc-800 px-2 py-1 rounded-lg text-pink-400 font-mono text-sm"
-          >
-            {cp.slice(1, -1)}
-          </code>
-        );
-      }
-      return cp;
-    });
+    // Inline code: `code`
+    if (part.startsWith('`') && part.endsWith('`')) {
+      return (
+        <code
+          key={i}
+          className="mx-1 bg-zinc-800 px-2 py-1 rounded-lg text-pink-400 font-mono text-sm"
+        >
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+
+    // Markdown links: [text](url)
+    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (linkMatch) {
+      return (
+        <a
+          key={i}
+          href={linkMatch[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 hover:no-underline transition-colors"
+        >
+          {linkMatch[1]}
+        </a>
+      );
+    }
+
+    return part;
   });
 }
 

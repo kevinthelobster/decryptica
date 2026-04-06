@@ -155,28 +155,22 @@ def generate_article(topic):
 
     product_md = ""
     for i, p in enumerate(products[:10], 1):
-        product_md += """
-
-## {}. {}
-
-**Price:** {} | **Category:** {}
-
-{}
-
-**Why it matters:** {}
-
-Based on our research, {} performs best when you need [specific strength] and is well-suited for [use case].
-
-Key considerations:
-- Established user base with active community support
-- Regular updates with meaningful new features
-- Free tier available if pricing is a concern
-- Good onboarding resources and documentation
-
-[View {}]({})
-
----
-""".format(i, p['name'], p['price'], cat_key.replace('_', ' ').title(), p['desc'], persp[i-1], p['name'], p['name'], p['url'])
+        strength = persp[i-1]
+        product_md += (
+            "\n\n## " + str(i) + ". " + p['name'] + "\n\n"
+            "**Price:** " + p['price'] + " | **Category:** " + cat_key.replace('_', ' ').title() + "\n\n"
+            + p['desc'] + "\n\n"
+            "**Why it matters:** " + strength + "\n\n"
+            "Based on our research, " + p['name'] + " performs best when you need strong integration capabilities "
+            "and is well-suited for teams that prioritize ease of use.\n\n"
+            "Key considerations:\n"
+            "- Established user base with active community support\n"
+            "- Regular updates with meaningful new features\n"
+            "- Free tier available if pricing is a concern\n"
+            "- Good onboarding resources and documentation\n\n"
+            "[View " + p['name'] + "](" + p['url'] + ")\n\n"
+            "---"
+        )
 
     content = (
         "10 Best " + display + " in 2026\n\n"
