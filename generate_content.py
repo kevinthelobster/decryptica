@@ -7,6 +7,7 @@ Generates articles with actual products, prices, and links
 import os
 import random
 import json
+import re
 from datetime import datetime
 
 # Configuration
@@ -199,9 +200,110 @@ def get_published_articles():
     with open(ARTICLES_LOG, 'r') as f:
         return [line.strip().split('|')[1] for line in f.readlines() if '|' in line]
 
-def log_article(title, filename):
-    with open(ARTICLES_LOG, 'a') as f:
-        f.write(f"{datetime.now().date()}|{title}|{filename}\n")
+def count_words(text):
+    """Strip HTML tags and count words"""
+    clean = re.sub(r'<[^>]+>', '', text)
+    words = clean.split()
+    return len(words)
+
+def update_nextjs_articles():
+    """Update the Next.js articles.ts data file with new articles"""
+    articles_ts_path = BASE_PATH + "/app/data/articles.ts"
+
+    if not os.path.exists(articles_ts_path):
+        print("  Warning: articles.ts not found — skipping Next.js update")
+        return
+
+    # Read existing articles.ts
+    with open(articles_ts_path, 'r') as f:
+        content = f.read()
+
+    # Read articles log to find new articles since last update
+    if not os.path.exists(ARTICLES_LOG):
+        return
+
+    new_entries = []
+    with open(ARTICLES_LOG, 'r') as f:
+        for line in f:
+            parts = line.strip().split('|')
+            if len(parts) < 4:
+                continue
+            date, title, filename, word_count = parts[0], parts[1], parts[2], int(parts[3])
+
+            # Determine category from filename
+            if filename.startswith("best-"):
+                if any(x in filename for x in ["ai-", "chatgpt", "writing", "image", "coding", "productivity"]):
+                    category = "ai"
+                elif any(x in filename for x in ["crypto", "wallet", "defi", "exchange", "solana", "bitcoin", "ethereum", "nft", "tax"]):
+                    category = "crypto"
+                else:
+                    category = "automation"
+            elif filename.startswith("news-"):
+                category = "crypto"
+            elif filename.startswith("review-"):
+                category = "ai"
+            elif filename.startswith("comparison-"):
+                category = "ai"
+            else:
+                category = "automation"
+
+            # Build slug from filename
+            slug = filename.replace('.html', '')
+
+            # Estimate read time
+            read_time = max(1, word_count // 200)
+
+            entry = f"""  {{
+    id: '{slug}',
+    slug: '{slug}',
+    title: '{title.replace("'", "'")}',
+    excerpt: 'Our analysis of {title.lower().replace("'", "'")}. Compare features, pricing, and performance to make an informed decision.',
+    content: `[Content loaded from static file: {filename}]`,
+    category: '{category}',
+    readTime: '{read_time} min read',
+    date: '{date}',
+    author: 'Decryptica',
+    wordCount: {word_count},
+    tags: ['{category}', 'review', '2026'],
+    faqs: [
+      {{
+        question: 'Is this still relevant in 2026?',
+        answer: 'We regularly update our articles to reflect the latest developments. Always verify with current sources.',
+      }},
+      {{
+        question: 'How did you research this?',
+        answer: 'We analyze official documentation, user reviews, expert opinions, and pricing pages. No paid placements.',
+      }},
+    ],
+  }},
+"""
+            new_entries.append((slug, entry))
+
+    if not new_entries:
+        return
+
+    print(f"  Found {len(new_entries)} new articles to add to Next.js data layer")
+
+    # Find the articles array in articles.ts and append new entries
+    # Look for the last }, in the articles array
+    marker = '// --- NEW ARTICLES INSERT MARKER ---'
+    if marker not in content:
+        # Find the last article entry in the array
+        import re
+        # Find the end of the articles array (before the export functions)
+        pattern = r'(export const articles:.*?\])'
+        match = re.search(pattern, content, re.DOTALL)
+        if match:
+            old_array = match.group(1)
+            # Build new array by appending new entries before the closing ]
+            new_array = old_array[:-1] + '\n' + ''.join(e for _, e in new_entries) + '  ]'
+            content = content.replace(old_array, new_array)
+
+            with open(articles_ts_path, 'w') as f:
+                f.write(content)
+            print(f"  ✓ Updated articles.ts with {len(new_entries)} new articles")
+    else:
+        print("  Marker found — articles already up to date")
 
 def generate_real_list_article(category_key, topic):
     products = PRODUCTS.get(category_key, PRODUCTS["automation"])
@@ -310,25 +412,69 @@ def generate_real_list_article(category_key, topic):
         </div>
 '''
     
-    content += f'''
-        <h2 style="margin-top: 50px;">Our Top Pick</h2>
+    # Add FAQ section
+    faq_content = f'''
+        <h2 style="margin-top: 50px;">Frequently Asked Questions</h2>
+        <div style="margin-top: 24px;">
+            <details style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                <summary style="padding: 16px 20px; cursor: pointer; font-weight: 500; color: white;">
+                    Is {product_list[0]['name']} really the best choice?
+                </summary>
+                <p style="padding: 0 20px 16px; color: var(--text-secondary);">
+                    Based on our analysis of features, pricing, and user reviews, {product_list[0]['name']} offers the best overall value. However, the right choice depends on your specific needs — our full reviews cover alternatives.
+                </p>
+            </details>
+            <details style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                <summary style="padding: 16px 20px; cursor: pointer; font-weight: 500; color: white;">
+                    Are these tools really free to start?
+                </summary>
+                <p style="padding: 0 20px 16px; color: var(--text-secondary);">
+                    Yes — all tools listed offer free tiers or trials. We always note any limitations in the pricing section.
+                </p>
+            </details>
+            <details style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                <summary style="padding: 16px 20px; cursor: pointer; font-weight: 500; color: white;">
+                    How do you research these tools?
+                </summary>
+                <p style="padding: 0 20px 16px; color: var(--text-secondary);">
+                    We analyze user reviews, expert opinions, feature documentation, and pricing pages from official sources. We do not accept payment for placement.
+                </p>
+            </details>
+        </div>
+
+        <h3 style="margin-top: 40px;">Our Top Pick</h3>
         <p style="color: var(--text-secondary);">After extensive research, <strong>{product_list[0]['name']}</strong> stands out as our top recommendation. It offers the best combination of features, ease of use, and value for money based on our analysis.</p>
+
+        <!-- Internal Links -->
+        <h3 style="margin-top: 40px;">Related Articles</h3>
+        <p style="color: var(--text-secondary);">Explore more from Decryptica:</p>
+        <ul style="color: var(--accent); margin-top: 12px; padding-left: 20px;">
+            <li><a href="/articles" style="color: var(--accent);">Browse All AI Tools Articles</a></li>
+            <li><a href="/topic/ai" style="color: var(--accent);">More AI Comparisons and Reviews</a></li>
+        </ul>
         <a href="/" class="cta">Explore More Articles</a>
     </div>
     <footer><p>© 2026 Decryptica. All rights reserved. | Renegade Reels LLC</p></footer>
 </body>
 </html>'''
+
+    content += faq_content
     
     # Clean topic for filename (remove "Best " prefix if present)
     topic_for_file = topic.replace("Best ", "").replace("Top ", "")
     filename = f"best-{topic_for_file.lower().replace(' ', '-').replace('/', '-')}-{datetime.now().strftime('%m%d')}.html"
     filepath = BASE_PATH + "/" + filename
-    
+
+    # Word count check — SEO minimum is 1500 words
+    word_count = count_words(content)
+    if word_count < 1500:
+        print(f"  ⚠ Warning: '{title}' has only {word_count} words (minimum 1500 for SEO)")
+
     with open(filepath, 'w') as f:
         f.write(content)
-    
-    log_article(title, filename)
-    print(f"  ✓ Generated: {title}")
+
+    log_article(title, filename, word_count)
+    print(f"  ✓ Generated: {title} ({word_count} words)")
     return filename
 
 def generate_news_article(topic):
@@ -963,7 +1109,8 @@ def main():
     
     if articles_generated > 0:
         update_articles_json()
-    
+        update_nextjs_articles()
+
     print("\n" + "=" * 50)
     print(f"Content generation complete! ({articles_generated} articles)")
 

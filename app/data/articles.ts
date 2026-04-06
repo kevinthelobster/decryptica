@@ -1,3 +1,8 @@
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
 export interface Article {
   id: string;
   slug: string;
@@ -8,6 +13,9 @@ export interface Article {
   readTime: string;
   date: string;
   author?: string;
+  tags?: string[];
+  lastUpdated?: string;
+  faqs?: FAQ[];
 }
 
 export interface Topic {
