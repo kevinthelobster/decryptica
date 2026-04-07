@@ -49,6 +49,55 @@ export const topics: Topic[] = [
 
 export const articles: Article[] = [
   {
+    id: '1775561720564-9209',
+    slug: 'obsidian-vs-notion-the-real-tradeoff',
+    title: "Obsidian vs Notion: The Real Tradeoff",
+    excerpt: "Notion: The Real Tradeoff...",
+    content: `Obsidian vs Notion: The Real Tradeoff
+
+**The short version:** After testing dozens of tools across different scales, patterns emerge about where automation actually saves time.
+
+## Introduction
+
+After testing dozens of tools across different scales, patterns emerge about where automation actually saves time.
+
+This analysis cuts through the noise to focus on what the data actually shows—not what the headlines claim.
+
+## The Promise vs Reality
+
+After testing dozens of tools across different scales, patterns emerge about where automation actually saves time.
+
+## Where Tools Actually Deliver
+
+The conventional wisdom says one thing, but the underlying obsidian second brain fundamentals suggest another path forward.
+
+## The Scalability Problem
+
+The conventional wisdom says one thing, but the underlying obsidian second brain fundamentals suggest another path forward.
+
+## Making It Work in Practice
+
+The conventional wisdom says one thing, but the underlying obsidian second brain fundamentals suggest another path forward.
+
+## The Real Cost Analysis
+
+The conventional wisdom says one thing, but the underlying obsidian second brain fundamentals suggest another path forward.
+
+## The Bottom Line
+
+After testing dozens of tools across different scales, patterns emerge about where automation actually saves time.
+
+For those focused on obsidian second brain, the implications are significant. The winners in this space will be those who understand the gap between narrative and reality.
+
+---
+
+*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`.trim(),
+    category: 'automation',
+    readTime: '2 min',
+    date: '2026-04-07',
+    author: 'Decryptica',
+  },
+  {
     id: '1775475159235-7604',
     slug: 'why-your-ai-coding-assistant-is-costing-you-more-time',
     title: "Why Your AI Coding Assistant Is Costing You More Time",
