@@ -691,8 +691,12 @@ async function main() {
     const pushed = await pushToGitHub(slug);
     
     if (pushed) {
-      await waitForDeployment();
+      // Send notification immediately after push (before deployment check)
+      // This ensures Brian gets notified even if deployment check times out
       await sendNotification(article);
+      
+      // Wait for deployment in background (don't block notification)
+      waitForDeployment().catch(() => {});
     }
     
     log('=== Complete ===');
