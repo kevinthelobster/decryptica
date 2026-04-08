@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import Header from "./components/Header";
 
 const inter = Inter({ 
   subsets: ["latin"], 
@@ -48,50 +49,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
-        {/* Header */}
-        <header className="sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-800/50">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex items-center justify-between h-16">
-              {/* Logo */}
-              <a href="/" className="flex items-center gap-3 group">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                </div>
-                <span className="font-display font-bold text-xl text-white group-hover:text-indigo-400 transition-colors">
-                  Decryptica
-                </span>
-              </a>
-
-              {/* Nav */}
-              <nav className="hidden md:flex items-center gap-1">
-                <a href="/" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
-                  Home
-                </a>
-                <a href="/topic/crypto" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
-                  Crypto
-                </a>
-                <a href="/topic/ai" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
-                  AI
-                </a>
-                <a href="/topic/automation" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
-                  Automation
-                </a>
-                <a href="/tools/ai-price-calculator" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
-                  Tools
-                </a>
-              </nav>
-
-              {/* CTA */}
-              <div className="flex items-center gap-3">
-                <a href="/#subscribe" className="btn-secondary text-sm">
-                  Subscribe
-                </a>
-              </div>
-            </div>
-          </div>
-        </header>
+        <Header />
 
         {/* Main Content */}
         <main className="flex-1">{children}</main>

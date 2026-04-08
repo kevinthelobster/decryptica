@@ -178,6 +178,77 @@ export default function IndexPage() {
         </div>
       </section>
 
+      {/* AI Calculator Section */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900 via-zinc-900 to-indigo-950/30 border border-zinc-800 p-8 md:p-12">
+          {/* Background glow */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px]" />
+          
+          <div className="relative flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+            {/* Left: Text content */}
+            <div className="flex-1 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-medium">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                Free Tool
+              </div>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+                AI Model Price Calculator
+              </h2>
+              <p className="text-zinc-400 text-lg mb-6 max-w-xl mx-auto lg:mx-0">
+                Compare costs across {32} AI models from OpenAI, Anthropic, Google, Meta, DeepSeek, and more. See exactly how much you'll pay before you build.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <Link href="/tools/ai-price-calculator" className="btn-primary">
+                  Try the Calculator
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+                <div className="flex items-center gap-2 justify-center lg:justify-start text-sm text-zinc-500">
+                  <span>32 models</span>
+                  <span className="text-zinc-700">&#xb7;</span>
+                  <span>Updated April 2026</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Mini preview */}
+            <div className="w-full lg:w-auto flex-shrink-0">
+              <div className="bg-zinc-950/80 rounded-2xl border border-zinc-700/50 p-6 max-w-md mx-auto lg:mx-0">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">$</span>
+                  </div>
+                  <div>
+                    <p className="text-white font-medium">100K input + 20K output</p>
+                    <p className="text-zinc-500 text-sm">Typical AI query</p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between py-2 border-b border-zinc-800">
+                    <span className="text-emerald-400 font-medium">Cheapest</span>
+                    <span className="text-white font-semibold">$0.044 — Gemini 1.5 Flash</span>
+                  </div>
+                  <div className="flex items-center justify-between py-2 border-b border-zinc-800">
+                    <span className="text-indigo-400 font-medium">Most Popular</span>
+                    <span className="text-white font-semibold">$0.95 — GPT-4o mini</span>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-red-400 font-medium">Most Expensive</span>
+                    <span className="text-white font-semibold">$3.15 — Claude Opus 4.6</span>
+                  </div>
+                </div>
+                <div className="mt-4 pt-4 border-t border-zinc-800">
+                  <p className="text-xs text-zinc-500 text-center">Save up to 98% by choosing the right model</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Newsletter Section */}
       <section id="subscribe" className="max-w-7xl mx-auto px-6 py-16">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-10 md:p-16">
