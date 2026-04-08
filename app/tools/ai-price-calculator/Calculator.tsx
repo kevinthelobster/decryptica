@@ -288,7 +288,7 @@ export default function AIPriceCalculator() {
 
           <div className="divide-y divide-zinc-800/50">
             {results.map((p, i) => {
-              const isWinner = i === 0 && p.total !== null;
+              const isWinner = cheapest?.id === p.id;
               const isFree = p.input === null;
               return (
                 <a key={p.id} href={p.link} target="_blank" rel="noopener noreferrer" className={`grid grid-cols-2 md:grid-cols-7 gap-2 md:gap-4 px-6 py-4 hover:bg-zinc-900/50 transition-colors group ${isWinner ? 'bg-emerald-950/20' : ''} ${isFree ? 'opacity-70' : ''}`}>
@@ -299,7 +299,7 @@ export default function AIPriceCalculator() {
                         <span className="font-medium text-white group-hover:text-indigo-400 transition-colors truncate">{p.name}</span>
                         {isWinner && <span className="text-xs font-medium text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full flex-shrink-0">Best value</span>}
                         {isFree && <span className="text-xs font-medium text-zinc-400 bg-zinc-700/50 px-2 py-0.5 rounded-full flex-shrink-0">Free</span>}
-                        {p.openSource && !isFree && <span className="text-xs font-medium text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded-full flex-shrink-0">Open</span>}
+                        {p.openSource && !isFree && <span className="text-xs font-medium text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded-full flex-shrink-0">Open Source</span>}
                       </div>
                       <div className="flex items-center gap-1 mt-0.5">
                         <span className="text-xs text-zinc-500">{p.provider}</span>
