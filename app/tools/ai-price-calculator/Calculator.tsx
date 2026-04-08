@@ -186,6 +186,21 @@ export default function AIPriceCalculator() {
           <p className="text-zinc-400">Compare LLM API costs across {PROVIDERS.length}+ models from OpenAI, Anthropic, Google, Meta, DeepSeek, and more.</p>
         </div>
 
+        <div className="card-elevated p-5 mb-6 border border-zinc-800">
+          <h2 className="text-lg font-semibold text-white mb-3">What is this tool?</h2>
+          <p className="text-zinc-400 text-sm leading-relaxed mb-3">
+            When you use AI APIs like GPT-4o, Claude, or Gemini, you pay per token — roughly $0.001–$15 per 1,000 tokens depending on the model. A token is about 4 characters or ¾ of a word. This calculator helps you estimate exactly how much your AI usage will cost before you write a single line of code.
+          </p>
+          <p className="text-zinc-400 text-sm leading-relaxed mb-3">
+            Whether you're building an app, running a business, or just exploring AI costs — enter your expected input and output tokens above, and instantly compare prices across 75+ models from every major provider.
+          </p>
+          <div className="flex flex-wrap gap-2 mt-3">
+            <span className="text-xs px-2 py-1 rounded-md bg-zinc-800 text-zinc-400">💰 API pricing is per 1K tokens</span>
+            <span className="text-xs px-2 py-1 rounded-md bg-zinc-800 text-zinc-400">📝 1K tokens ≈ 750 words</span>
+            <span className="text-xs px-2 py-1 rounded-md bg-zinc-800 text-zinc-400">⚡ Input = your prompts · Output = AI responses</span>
+          </div>
+        </div>
+
         <div className="card-elevated p-6 mb-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
