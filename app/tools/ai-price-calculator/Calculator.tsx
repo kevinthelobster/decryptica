@@ -30,7 +30,7 @@ export const PROVIDERS = [
   { id: "google-gemma-3-27b", name: "Gemma 3 27B", provider: "Google", input: 0.08, output: 0.16, supports: ["text"], contextWindow: 128000, color: "#4285f4", link: "https://ai.google.dev/pricing", openSource: true },
 
   // DeepSeek
-  { id: "deepseek-chat", name: "DeepSeek Chat V3", provider: "DeepSeek", input: 0.28, output: 1.1, supports: ["text", "function"], contextWindow: 164000, color: "#6366f1", link: "https://www.deepseek.com", openSource: true },
+  { id: "deepseek-chat", name: "DeepSeek Chat V3", provider: "DeepSeek", input: 0.28, output: 1.1, supports: ["text", "vision", "function"], contextWindow: 164000, color: "#6366f1", link: "https://www.deepseek.com", openSource: true },
   { id: "deepseek-r1", name: "DeepSeek R1", provider: "DeepSeek", input: 0.55, output: 2.19, supports: ["text", "reasoning"], contextWindow: 128000, color: "#6366f1", link: "https://www.deepseek.com", openSource: true },
   { id: "deepseek-coder-2", name: "DeepSeek Coder 2.0", provider: "DeepSeek", input: 0.27, output: 1.1, supports: ["text", "coding"], contextWindow: 128000, color: "#6366f1", link: "https://www.deepseek.com", openSource: true },
 
@@ -58,8 +58,8 @@ export const PROVIDERS = [
   { id: "amazon-nova-lite", name: "Nova Lite", provider: "Amazon", input: 0.06, output: 0.24, supports: ["text", "vision"], contextWindow: 300000, color: "#ff9900", link: "https://aws.amazon.com/bedrock/pricing", openSource: false },
 
   // MiniMax
-  { id: "minimax-m2.7", name: "MiniMax M2.7", provider: "MiniMax", input: 0.3, output: 1.2, supports: ["text", "function"], contextWindow: 200000, color: "#00d474", link: "https://platform.minimax.io/docs/pricing/overview", openSource: false },
-  { id: "minimax-m2.5", name: "MiniMax M2.5", provider: "MiniMax", input: 0.3, output: 1.2, supports: ["text", "function"], contextWindow: 128000, color: "#00d474", link: "https://platform.minimax.io/docs/pricing/overview", openSource: false },
+  { id: "minimax-m2.7", name: "MiniMax M2.7", provider: "MiniMax", input: 0.3, output: 1.2, supports: ["text", "vision", "function"], contextWindow: 200000, color: "#00d474", link: "https://platform.minimax.io/docs/pricing/overview", openSource: false },
+  { id: "minimax-m2.5", name: "MiniMax M2.5", provider: "MiniMax", input: 0.3, output: 1.2, supports: ["text", "vision", "function"], contextWindow: 128000, color: "#00d474", link: "https://platform.minimax.io/docs/pricing/overview", openSource: false },
 ];
 
 type SortKey = 'total' | 'input' | 'output' | 'provider' | 'context';
