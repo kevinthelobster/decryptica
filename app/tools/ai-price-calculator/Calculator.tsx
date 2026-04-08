@@ -22,10 +22,10 @@ export const PROVIDERS = [
   { id: "openai-o4-mini", name: "o4-mini", provider: "OpenAI", input: 1.1, output: 4.4, supports: ["text", "reasoning"], contextWindow: 200000, color: "#10a37f", link: "https://openai.com/api/pricing", openSource: false },
   { id: "openai-gpt-oss-20b", name: "GPT-OSS 20B", provider: "OpenAI", input: 0.03, output: 0.1, supports: ["text"], contextWindow: 131000, color: "#10a37f", link: "https://openai.com/api/pricing", openSource: false },
   { id: "openai-gpt-oss-120b", name: "GPT-OSS 120B", provider: "OpenAI", input: 0.039, output: 0.1, supports: ["text"], contextWindow: 131000, color: "#10a37f", link: "https://openai.com/api/pricing", openSource: false },
-  { id: "anthropic-opus-4", name: "Claude Opus 4.6", provider: "Anthropic", input: 15.0, output: 75.0, supports: ["text", "vision", "function", "extended"], contextWindow: 1000000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
+  { id: "anthropic-opus-4", name: "Claude Opus 4.6", provider: "Anthropic", input: 5.0, output: 25.0, supports: ["text", "vision", "function", "extended"], contextWindow: 1000000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
   { id: "anthropic-sonnet-4", name: "Claude Sonnet 4.6", provider: "Anthropic", input: 3.0, output: 15.0, supports: ["text", "vision", "function", "extended"], contextWindow: 200000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
-  { id: "anthropic-haiku-4", name: "Claude Haiku 4.5", provider: "Anthropic", input: 0.8, output: 4.0, supports: ["text", "vision", "function"], contextWindow: 200000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
-  { id: "anthropic-haiku-3", name: "Claude 3.5 Haiku", provider: "Anthropic", input: 0.8, output: 4.0, supports: ["text", "vision", "function"], contextWindow: 200000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
+  { id: "anthropic-haiku-4", name: "Claude Haiku 4.5", provider: "Anthropic", input: 1.0, output: 5.0, supports: ["text", "vision", "function"], contextWindow: 200000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
+  { id: "anthropic-haiku-3-5", name: "Claude 3.5 Haiku", provider: "Anthropic", input: 0.8, output: 4.0, supports: ["text", "vision", "function"], contextWindow: 200000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
   { id: "anthropic-sonnet-3-5", name: "Claude 3.5 Sonnet", provider: "Anthropic", input: 3.0, output: 15.0, supports: ["text", "vision", "function", "extended"], contextWindow: 200000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
   { id: "google-gemini-2-5-pro", name: "Gemini 2.5 Pro", provider: "Google", input: 1.25, output: 5.0, supports: ["text", "vision", "function"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/pricing", openSource: false },
   { id: "google-gemini-2-5-flash", name: "Gemini 2.5 Flash", provider: "Google", input: 0.15, output: 0.6, supports: ["text", "vision", "function"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/pricing", openSource: false },
@@ -138,8 +138,8 @@ export default function AIPriceCalculator() {
     });
 
     return filtered.map(p => {
-      const inputCost = p.input !== null ? (p.input * inputNum) / 1000 : null;
-      const outputCost = p.output !== null ? (p.output * outputNum) / 1000 : null;
+      const inputCost = p.input !== null ? (p.input * inputNum) / 1_000_000 : null;
+      const outputCost = p.output !== null ? (p.output * outputNum) / 1_000_000 : null;
       const total = inputCost !== null && outputCost !== null ? inputCost + outputCost : null;
       const per1M = total !== null && totalTokens > 0 ? total / totalTokens * 1000000 : null;
       return { ...p, inputCost, outputCost, total, per1M };
