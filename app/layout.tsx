@@ -78,6 +78,9 @@ export default function RootLayout({
                 <a href="/topic/automation" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
                   Automation
                 </a>
+                <a href="/tools/ai-price-calculator" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
+                  Tools
+                </a>
               </nav>
 
               {/* CTA */}
