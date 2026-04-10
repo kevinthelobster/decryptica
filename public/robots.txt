@@ -1,0 +1,17 @@
+# Decryptica Robots.txt
+# https://www.decryptica.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Block Next.js internals
+Disallow: /_next/static/
+Disallow: /_next/data/
+
+# Allow all important pages
+Sitemap: https://www.decryptica.com/sitemap.xml
+Sitemap: https://www.decryptica.com/sitemaps/articles.xml
+Sitemap: https://www.decryptica.com/sitemaps/news.xml
+
+# Crawl-delay for polite crawlers
+Crawl-delay: 1

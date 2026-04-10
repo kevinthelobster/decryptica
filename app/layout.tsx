@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
+import SeoCwvTracker from "./components/SeoCwvTracker";
 
 const inter = Inter({ 
   subsets: ["latin"], 
@@ -53,6 +54,9 @@ export default function RootLayout({
 
         {/* Main Content */}
         <main className="flex-1">{children}</main>
+
+        {/* SEO CWV & Telemetry Collector */}
+        <SeoCwvTracker />
 
         {/* Footer */}
         <footer className="bg-zinc-950 border-t border-zinc-800/50 mt-20">

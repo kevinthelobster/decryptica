@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seo:checkpoint": "node scripts/seo_daily_checkpoint.js",
+    "seo:checkpoint:date": "node scripts/seo_daily_checkpoint.js"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",

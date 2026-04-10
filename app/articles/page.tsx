@@ -6,6 +6,9 @@ import SubscribeForm from '../components/SubscribeForm';
 export const metadata: Metadata = {
   title: 'Articles | Decryptica',
   description: 'Expert insights on Crypto, AI, and Automation. Browse all articles.',
+  alternates: {
+    canonical: '/articles',
+  },
 };
 
 export default function ArticlesPage() {

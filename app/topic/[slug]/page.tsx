@@ -19,6 +19,9 @@ export async function generateMetadata({ params }: TopicPageProps): Promise<Meta
   return {
     title: `${topic.name} | Decryptica`,
     description: topic.description,
+    alternates: {
+      canonical: `/topic/${slug}`,
+    },
   };
 }
 
