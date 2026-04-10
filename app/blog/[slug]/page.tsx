@@ -637,6 +637,33 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 >
                   {categoryNames[article.category] || article.category}
                 </Link>
+                {/* Editorial State Indicator */}
+                {article.status && article.status !== 'published' && (
+                  <span
+                    className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${
+                      article.status === 'draft'
+                        ? 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30'
+                        : article.status === 'in_review'
+                        ? 'bg-blue-500/10 text-blue-400 border-blue-500/30'
+                        : article.status === 'archived'
+                        ? 'bg-zinc-500/10 text-zinc-400 border-zinc-500/30'
+                        : 'bg-green-500/10 text-green-400 border-green-500/30'
+                    }`}
+                  >
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        article.status === 'draft'
+                          ? 'bg-yellow-400'
+                          : article.status === 'in_review'
+                          ? 'bg-blue-400'
+                          : article.status === 'archived'
+                          ? 'bg-zinc-400'
+                          : 'bg-green-400'
+                      }`}
+                    />
+                    {article.status === 'in_review' ? 'In Review' : article.status.charAt(0).toUpperCase() + article.status.slice(1)}
+                  </span>
+                )}
                 <span className="text-zinc-600">•</span>
                 <span className="text-sm text-zinc-500">{article.readTime}</span>
                 <span className="text-zinc-600">•</span>
@@ -806,6 +833,11 @@ function generateAutoFAQs(article: any): { question: string; answer: string }[] 
         answer:
           'Decryptica covers crypto, AI, and automation topics in depth. Browse our articles section or check the related articles above for more coverage.',
       },
+      {
+        question: 'Are the tools and services mentioned free to use?',
+        answer:
+          'We always note free tiers, trial periods, and paid features. Check individual tool websites for the most current pricing information.',
+      },
     ],
     ai: [
       {
@@ -817,6 +849,11 @@ function generateAutoFAQs(article: any): { question: string; answer: string }[] 
         question: 'What AI tools are mentioned in this article?',
         answer:
           'We only mention real, currently-available tools with accurate pricing. All links go to official product pages.',
+      },
+      {
+        question: 'How do these AI tools compare to each other?',
+        answer:
+          'We evaluate AI tools across key dimensions including accuracy, ease of use, pricing, and real-world performance. Our verdicts are based on hands-on testing.',
       },
     ],
     automation: [
@@ -830,6 +867,11 @@ function generateAutoFAQs(article: any): { question: string; answer: string }[] 
         answer:
           'We always mention free tiers, one-time costs, and subscription pricing. Most automation tools have free plans to get started.',
       },
+      {
+        question: 'How long does setup typically take?',
+        answer:
+          'Simple automations can be set up in 15–30 minutes. More complex workflows involving multiple integrations may take a few hours to configure properly.',
+      },
     ],
   };
 
@@ -838,6 +880,16 @@ function generateAutoFAQs(article: any): { question: string; answer: string }[] 
       question: 'Is this article still accurate?',
       answer:
         'We aim to keep articles updated. Check the date and verify with official sources for the most current information.',
+    },
+    {
+      question: 'What tools are covered in this article?',
+      answer:
+        'We research and cover real, currently-available tools. All products mentioned are verified before publication.',
+    },
+    {
+      question: 'How often is this content updated?',
+      answer:
+        'We review articles monthly and update them when tools change pricing, features, or availability.',
     },
   ];
 }

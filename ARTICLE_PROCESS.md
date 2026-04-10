@@ -1,5 +1,7 @@
 # Decryptica Article Creation Process
 
+> **Architecture Reference:** See [SEO_ARCHITECTURE.md](./SEO_ARCHITECTURE.md) for the full content model, taxonomy, slug strategy, authoring fields, and validation rules that underpin this process.
+
 ## Step 1: The Researcher (Scraper & Data Extractor)
 
 **Input:** Trending URLs or RSS feeds.

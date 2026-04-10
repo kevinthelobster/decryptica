@@ -17,6 +17,7 @@ export interface Article {
   lastUpdated?: string;
   wordCount?: number;
   faqs?: FAQ[];
+  status?: 'draft' | 'in_review' | 'published' | 'archived';
 }
 
 export interface Topic {
