@@ -36,22 +36,39 @@ type Submission = {
 };
 
 const DB_PATH = path.join(process.cwd(), 'data/prompts/prompts.json');
+const SUBMISSIONS_PATH = '/tmp/decryptica_submissions.json';
 
 function readDb(): { prompts: Prompt[]; submissions: Submission[]; votes: Record<number, string[]> } {
   const raw = fs.readFileSync(DB_PATH, 'utf8');
   const data = JSON.parse(raw);
+  // Merge submissions from /tmp (writable) with prompts from deployed JSON (read-only)
+  let submissions: Submission[] = [];
+  try {
+    const tmpRaw = fs.readFileSync(SUBMISSIONS_PATH, 'utf8');
+    submissions = JSON.parse(tmpRaw);
+  } catch {
+    // No submissions in /tmp yet
+  }
   return {
     prompts: (data.prompts || []).map((p: Prompt) => ({
       ...p,
       is_staff_pick: Boolean(p.is_staff_pick),
     })),
-    submissions: data.submissions || [],
+    submissions,
     votes: data.votes || {},
   };
 }
 
 function writeDb(data: any) {
-  fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+  // Write only prompts DB to deployed file (read-only on Vercel after deploy)
+  // Submissions are stored in /tmp which is writable on Vercel
+  try {
+    fs.writeFileSync(DB_PATH, JSON.stringify({ prompts: data.prompts, votes: data.votes }, null, 2));
+  } catch {
+    // Fails on Vercel if file is in read-only deploy (ok - prompts are deployed, not user-generated)
+  }
+  // Always write submissions to /tmp
+  fs.writeFileSync(SUBMISSIONS_PATH, JSON.stringify(data.submissions || [], null, 2));
 }
 
 export function getPrompts(sort: string = 'recent', category: string = '', voterIp: string = '') {
