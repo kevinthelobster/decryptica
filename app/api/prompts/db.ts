@@ -133,8 +133,17 @@ export function toggleVote(promptId: number, voterIp: string) {
 
 export function getCategories() {
   const db = readDb();
-  const cats = [...new Set(db.prompts.map(p => p.category))].sort();
-  return cats;
+  const cats = [...new Set(db.prompts.map(p => p.category))];
+  // Always include the full category list so new submissions can use any of them
+  const ALL_CATS = [
+    'Memory Management',
+    'Monitoring & Health Checks',
+    'Communication & Automation',
+    'Coding & Automation',
+    'Research & Feeds',
+    'Other',
+  ];
+  return [...new Set([...cats, ...ALL_CATS])].sort();
 }
 
 export function addSubmission(data: any) {
