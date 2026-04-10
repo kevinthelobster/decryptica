@@ -5,14 +5,10 @@ import Link from 'next/link';
 
 const CATEGORIES = [
   'Memory Management',
-  'Monitoring & Operations',
   'Monitoring & Health Checks',
-  'Communication & Summarization',
-  'Communication & Notifications',
+  'Communication & Automation',
   'Coding & Automation',
   'Research & Feeds',
-  'Research & Discovery',
-  'Task Orchestration',
   'Other',
 ];
 

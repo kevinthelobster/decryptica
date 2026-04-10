@@ -62,7 +62,7 @@
       "id": 3,
       "slug": "daily-channel-digest",
       "title": "Daily Channel Digest",
-      "category": "Communication & Summarization",
+      "category": "Communication & Automation",
       "description": "Set up an always-on automation that runs every morning at 8 AM, retrieves the previous 24 hours of messages from your Slack or Discord channel, summarizes key discussions and action items, and sends a digest to your Telegram.",
       "prompt_text": "Set up an always-on automation that runs every morning at 8 AM, retrieves the previous 24 hours of messages from your configured Slack or Discord channel, summarizes the key discussions, decisions, and action items, and sends a digest to your Telegram.\n\nPROCESS:\n1. Use sessions_list to identify active messaging sessions\n2. Use sessions_history to fetch messages from the target channel for the last 24 hours\n3. Identify: key topics discussed, decisions made, action items assigned, unanswered questions\n4. Format as a clean digest: sectioned by topic, bullet points, owner assigned where visible\n5. Send digest to Telegram via message tool\n\nTOOLS: sessions_list, sessions_history, message, cron",
       "tools": [
@@ -91,7 +91,7 @@
       "id": 4,
       "slug": "disk-space-alert-system",
       "title": "Disk Space Alert System",
-      "category": "Monitoring & Operations",
+      "category": "Monitoring & Health Checks",
       "description": "Set up an always-on automation that checks disk usage on all mounted volumes every 10 minutes and alerts you via Telegram when any volume exceeds 85% capacity. Logs all readings. Critical alerts at 90%.",
       "prompt_text": "Set up an always-on automation that checks disk usage on all mounted volumes every 10 minutes and alerts you via Telegram when any volume exceeds 85% capacity.\n\nPROCESS:\n1. Run: df -h (excluding tmpfs/snap/virtual filesystems)\n2. Parse output to extract: filesystem, total size, used space, usage percentage\n3. For each volume, check if usage % > 85\n4. Log all readings to ~/logs/disk_usage.log with timestamp\n5. If any volume > 85%, immediately send Telegram alert\n\nALERT FORMAT:\n\"💾 Disk Alert: [VOLUME] at [USAGE]%\nTotal: [SIZE] | Used: [USED] | Available: [AVAIL]\nTime: [TIMESTAMP]\"\n\nFor volumes > 90%: escalate with '🔴 CRITICAL' prefix.\n\nTOOLS: exec, cron, filesystem, message",
       "tools": [
@@ -120,7 +120,7 @@
       "id": 5,
       "slug": "session-health-monitor",
       "title": "Session Health Monitor",
-      "category": "Monitoring & Operations",
+      "category": "Monitoring & Health Checks",
       "description": "Set up an always-on automation that checks the health of all OpenClaw sessions every 15 minutes, identifies stale or unresponsive sessions, recovers or archives them, and sends you a Telegram digest of what was found.",
       "prompt_text": "Set up an always-on automation that checks the health of all OpenClaw sessions every 15 minutes, identifies stale or unresponsive sessions, and either recovers or archives them.\n\nPROCESS:\n1. Use sessions_list to retrieve all active sessions with their last activity timestamps\n2. For each session, determine if last activity > 30 minutes ago\n3. For sessions inactive > 30 min: use sessions_send with a lightweight echo to test responsiveness\n4. If no response within 10 seconds: mark as stale\n5. For stale sessions: log to ~/logs/stale_sessions.log\n6. Archive stale sessions using exec to remove their session files from ~/.openclaw/sessions/\n7. Send a summary digest to Telegram\n\nTHRESHOLD: 30 minutes of inactivity = stale\n\nTOOLS: sessions_list, sessions_send, exec, filesystem, message, cron",
       "tools": [
@@ -182,7 +182,7 @@
       "id": 7,
       "slug": "nightly-backup-automation",
       "title": "Nightly Backup Automation",
-      "category": "Monitoring & Operations",
+      "category": "Monitoring & Health Checks",
       "description": "Set up an always-on automation that runs every night at 2 AM, creates a compressed timestamped backup of your critical directories (workspace, memory, config, scripts), stores it locally, verifies with checksum, and sends you a confirmation via Telegram. Auto-deletes backups older than 30 days.",
       "prompt_text": "Set up an always-on automation that runs every night at 2 AM, creates a compressed timestamped backup of your critical directories, stores it locally with a dated filename, and sends you a confirmation when complete.\n\nDIRECTORIES TO BACKUP:\n- ~/.openclaw/workspace/\n- ~/.openclaw/memory/\n- ~/.openclaw/config/\n- ~/scripts/\n\nPROCESS:\n1. Create backup directory: ~/backups/\n2. Create filename: backup_YYYY-MM-DD.tar.gz\n3. Run: tar -czf ~/backups/backup_YYYY-MM-DD.tar.gz [directories above]\n4. Verify backup with: tar -tzf filename.tar.gz | wc -l (confirm file count)\n5. Calculate checksum: shasum -a 256 filename.tar.gz\n6. Log backup details to ~/logs/backups.log\n7. Send Telegram confirmation with backup size, file count, and checksum\n\nRETENTION: Delete backups older than 30 days automatically.\n\nTOOLS: exec, cron, filesystem, message",
       "tools": [
