@@ -10,7 +10,7 @@ export function middleware(request: NextRequest) {
     "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
-    "img-src 'self' data: https://",
+    "img-src 'self' data: https:",
     "connect-src 'self' https://api.minimax.io",
     "frame-ancestors 'none'",
     "base-uri 'self'",
