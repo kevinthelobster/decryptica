@@ -7,7 +7,7 @@
  * with proper change frequency, priority, and lastmod dates.
  */
 
-import { articles } from '../app/data/articles';
+import { articles } from '../app/data/articles.js';
 import * as fs from 'fs';
 import * as path from 'path';
 

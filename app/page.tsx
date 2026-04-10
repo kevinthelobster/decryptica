@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import SubscribeForm from "./components/SubscribeForm";
+import TrackedLink from "./components/TrackedLink";
 import { articles } from "./data/articles";
 
 export const metadata: Metadata = {
@@ -53,7 +54,7 @@ export default function IndexPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden min-h-[34rem]">
         {/* Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/50 via-zinc-950 to-zinc-950" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px]" />
@@ -80,16 +81,51 @@ export default function IndexPage() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <Link href="/articles" className="btn-primary">
+          <div className="flex flex-wrap gap-4 mb-10">
+            <TrackedLink
+              href="/articles"
+              className="btn-primary"
+              eventType="cta_click"
+              metadata={{ location: "home_hero", cta: "start_reading" }}
+            >
               Start Reading
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </Link>
-            <Link href="#topics" className="btn-secondary">
+            </TrackedLink>
+            <TrackedLink
+              href="#topics"
+              className="btn-secondary"
+              eventType="cta_click"
+              metadata={{ location: "home_hero", cta: "browse_topics" }}
+            >
               Browse Topics
-            </Link>
+            </TrackedLink>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {[
+              "Trusted by builders, operators, and technical teams",
+              "New research snapshots every week",
+              "Field-tested guides with practical implementation details",
+            ].map((point) => (
+              <div
+                key={point}
+                className="min-h-[74px] rounded-xl border border-zinc-800 bg-zinc-900/60 px-4 py-4 text-sm text-zinc-300"
+              >
+                {point}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative border-t border-b border-zinc-800/80 bg-zinc-950/60">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs md:text-sm text-zinc-400">
+              <li>Fast-loading article templates</li>
+              <li>Schema-first technical publishing</li>
+              <li>CTR and scroll-depth instrumentation ready</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -98,17 +134,30 @@ export default function IndexPage() {
       <section className="max-w-7xl mx-auto px-6 py-16">
         <div className="flex items-center justify-between mb-8">
           <h2 className="section-heading">Latest Articles</h2>
-          <Link href="/articles" className="text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1">
+          <TrackedLink
+            href="/articles"
+            className="text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1"
+            eventType="cta_click"
+            metadata={{ location: "home_latest_articles", cta: "view_all" }}
+          >
             View all
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </Link>
+          </TrackedLink>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredArticles.map((article) => (
-            <Link key={article.id} href={`/blog/${article.slug}`} className="article-card group cursor-pointer">
+            <TrackedLink
+              key={article.id}
+              href={`/blog/${article.slug}`}
+              className="article-card group cursor-pointer"
+              eventType="article_click"
+              articleSlug={article.slug}
+              metadata={{ location: "home_latest_articles", category: article.category }}
+            >
+              <div className="h-24 bg-gradient-to-r from-zinc-900 to-zinc-800 border-b border-zinc-800" />
               {/* Article Content */}
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
@@ -133,7 +182,7 @@ export default function IndexPage() {
                   </svg>
                 </div>
               </div>
-            </Link>
+            </TrackedLink>
           ))}
         </div>
       </section>
@@ -200,12 +249,17 @@ export default function IndexPage() {
                 Compare costs across {32} AI models from OpenAI, Anthropic, Google, Meta, DeepSeek, and more. See exactly how much you'll pay before you build.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <Link href="/tools/ai-price-calculator" className="btn-primary">
+                <TrackedLink
+                  href="/tools/ai-price-calculator"
+                  className="btn-primary"
+                  eventType="cta_click"
+                  metadata={{ location: "home_calculator", cta: "try_calculator" }}
+                >
                   Try the Calculator
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </Link>
+                </TrackedLink>
                 <div className="flex items-center gap-2 justify-center lg:justify-start text-sm text-zinc-500">
                   <span>32 models</span>
                   <span className="text-zinc-700">&#xb7;</span>

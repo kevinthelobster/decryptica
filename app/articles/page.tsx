@@ -2,6 +2,28 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { articles, type Article } from '../data/articles';
 import SubscribeForm from '../components/SubscribeForm';
+import TrackedLink from '../components/TrackedLink';
+
+// ─── SEO Copy Framework: Meta Title/Description Variants for Articles Listing ─
+
+function getListingMetaVariants(articleCount: number): {
+  primary: { title: string; description: string };
+  variantB: { title: string; description: string };
+} {
+  // Primary variant: directory-style
+  const primary = {
+    title: `All Articles | Decryptica — ${articleCount} Guides on Crypto, AI & Automation`,
+    description: `Browse ${articleCount}+ expert articles on crypto, AI tools, and automation workflows. Data-driven guides, comparisons, and how-tos updated for 2026.`,
+  };
+
+  // Variant B: benefit-driven, action-oriented
+  const variantB = {
+    title: `${articleCount}+ Expert Guides: Crypto, AI & Automation | Decryptica`,
+    description: `Stop searching. Decryptica's expert team publishes actionable crypto analysis, AI tool comparisons, and automation tutorials. Updated weekly.`,
+  };
+
+  return { primary, variantB };
+}
 
 export const metadata: Metadata = {
   title: 'Articles | Decryptica',
@@ -10,6 +32,52 @@ export const metadata: Metadata = {
     canonical: '/articles',
   },
 };
+
+// ─── SEO Copy Framework: Funnel-Stage CTA Blocks for Listing Page ────────────
+
+function ListingCTAExplore() {
+  return (
+    <div className="p-5 bg-zinc-900/60 border border-zinc-800 rounded-xl">
+      <h3 className="font-display text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-2">Explore</h3>
+      <p className="text-white font-medium mb-1">Not sure where to start?</p>
+      <p className="text-zinc-400 text-sm mb-3">Browse by topic to find articles that match your current goal.</p>
+      <div className="flex flex-wrap gap-2">
+        <Link href="/topic/ai" className="text-xs px-3 py-1.5 bg-zinc-800 hover:bg-indigo-500/20 text-indigo-400 rounded-full transition-colors">AI Tools</Link>
+        <Link href="/topic/crypto" className="text-xs px-3 py-1.5 bg-zinc-800 hover:bg-indigo-500/20 text-indigo-400 rounded-full transition-colors">Crypto & DeFi</Link>
+        <Link href="/topic/automation" className="text-xs px-3 py-1.5 bg-zinc-800 hover:bg-indigo-500/20 text-indigo-400 rounded-full transition-colors">Automation</Link>
+      </div>
+    </div>
+  );
+}
+
+function ListingCTACompare() {
+  return (
+    <div className="p-5 bg-zinc-900/60 border border-zinc-800 rounded-xl">
+      <h3 className="font-display text-sm font-semibold text-blue-400 uppercase tracking-wider mb-2">Compare</h3>
+      <p className="text-white font-medium mb-1">Making a decision?</p>
+      <p className="text-zinc-400 text-sm mb-3">See side-by-side comparisons of the top tools before you commit.</p>
+      <TrackedLink
+        href="/articles?sort=comparison"
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+        eventType="cta_click"
+        metadata={{ location: 'listing_cta_compare', cta: 'browse_comparisons' }}
+      >
+        Browse Comparisons →
+      </TrackedLink>
+    </div>
+  );
+}
+
+function ListingCTAStart() {
+  return (
+    <div className="p-5 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/30 rounded-xl">
+      <h3 className="font-display text-sm font-semibold text-purple-400 uppercase tracking-wider mb-2">Get Started</h3>
+      <p className="text-white font-medium mb-1">Ready to dive in?</p>
+      <p className="text-zinc-400 text-sm mb-3">Get the latest guides delivered to your inbox so you never miss a new article.</p>
+      <SubscribeForm />
+    </div>
+  );
+}
 
 export default function ArticlesPage() {
   // Sort by date (newest first)
@@ -23,6 +91,8 @@ export default function ArticlesPage() {
     { name: 'Artificial Intelligence', slug: 'ai', count: articles.filter(a => a.category === 'ai').length },
     { name: 'Automation', slug: 'automation', count: articles.filter(a => a.category === 'automation').length },
   ];
+
+  const { primary } = getListingMetaVariants(articles.length);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
@@ -77,6 +147,13 @@ export default function ArticlesPage() {
             </div>
           </Link>
         ))}
+      </div>
+
+      {/* SEO Copy Framework: Funnel-Stage CTA Blocks */}
+      <div className="grid md:grid-cols-3 gap-4 mb-12">
+        <ListingCTAExplore />
+        <ListingCTACompare />
+        <ListingCTAStart />
       </div>
 
       {/* Subscribe Section */}

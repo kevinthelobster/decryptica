@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 import { getArticleBySlug, articles } from '../../data/articles';
 import SubscribeForm from '../../components/SubscribeForm';
 import AnalyticsTracker from '../../components/AnalyticsTracker';
+import ArticleProgressNav from '../../components/ArticleProgressNav';
+import TrackedLink from '../../components/TrackedLink';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -131,6 +133,18 @@ function estimateWordCount(content: string): number {
     .filter((w) => w.length > 0).length;
 }
 
+function extractHeadings(content: string): { id: string; label: string }[] {
+  const headingMatches = content.match(/^##\s+.+$/gm) || [];
+  return headingMatches.map((line) => {
+    const label = line.replace(/^##\s+/, '').trim();
+    const id = label
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+    return { id, label };
+  });
+}
+
 // ─── Smart Related Articles (topical cluster linking) ───────────────────────
 
 function getRelatedArticles(article: any, allArticles: any[]): any[] {
@@ -159,6 +173,74 @@ function getRelatedArticles(article: any, allArticles: any[]): any[] {
   return related;
 }
 
+// ─── SEO Copy Framework: Headline/Deck Conventions by Surface ──────────────
+//
+// AI surface: How-to titles, tool comparisons, implementation guides
+// Crypto surface: Analysis, explainers, price/risk comparisons
+// Automation surface: Step-by-step setup, tool tutorials, workflow guides
+
+function getHeadlineIntentPattern(category: string, title: string): string {
+  // Returns the intent classification for the headline
+  const lowerTitle = title.toLowerCase();
+  if (category === 'ai') {
+    if (lowerTitle.includes('best') || lowerTitle.includes('top')) return 'comparison';
+    if (lowerTitle.includes('how to') || lowerTitle.includes('guide')) return 'howto';
+    return 'tool_focus';
+  }
+  if (category === 'crypto') {
+    if (lowerTitle.includes('vs') || lowerTitle.includes('compare')) return 'comparison';
+    if (lowerTitle.includes('analysis') || lowerTitle.includes('why')) return 'analysis';
+    return 'explainer';
+  }
+  if (category === 'automation') {
+    if (lowerTitle.includes('how to') || lowerTitle.includes('setup')) return 'step_setup';
+    if (lowerTitle.includes('best') || lowerTitle.includes('top')) return 'comparison';
+    return 'workflow';
+  }
+  return 'generic';
+}
+
+// ─── SEO Copy Framework: Meta Title/Description Variants (CTR Tests) ────────
+
+function getMetaVariants(article: any): { metaTitle: string; metaDesc: string; variantB: { title: string; description: string } } {
+  const category = article.category as string;
+  const title = article.title;
+  const baseDesc = article.excerpt;
+
+  // Primary meta (current default)
+  const metaTitle = `${title} | Decryptica`;
+  const metaDesc = baseDesc;
+
+  // Variant B: punchier, action-oriented (for A/B CTR testing)
+  const intent = getHeadlineIntentPattern(category, title);
+  let variantBTitle = metaTitle;
+  let variantBDesc = metaDesc;
+
+  if (intent === 'comparison') {
+    variantBTitle = `${title.split(' vs ')[0]} vs ${title.split(' vs ')[1] || title.split('-')[1] || 'Alternatives'} — Which Wins in 2026?`;
+    variantBDesc = `Deep comparison of ${title.split(' vs ')[0] || title.split('-')[0] || title}. Pros, cons, pricing, and real-world performance compared.`;
+  } else if (intent === 'howto') {
+    const topic = title.replace(/^How to\s+/i, '').replace(/\s+[-—].*$/, '');
+    variantBTitle = `${topic}: Complete 2026 Implementation Guide`;
+    variantBDesc = `Step-by-step ${topic.toLowerCase()} guide with real examples. Updated for 2026 — save hours of research.`;
+  } else if (intent === 'analysis') {
+    variantBTitle = `${title} — What the Data Actually Shows`;
+    variantBDesc = `Beyond the headlines: data-driven analysis of ${title.split("'")[1] || title.split(' ').slice(0, 3).join(' ')}. Read before you decide.`;
+  } else if (intent === 'step_setup') {
+    const tool = title.replace(/^How to\s+/i, '').replace(/\s+in.*$/i, '').replace(/\s+with.*$/i, '');
+    variantBTitle = `How to Set Up ${tool}: Free Automation Walkthrough (2026)`;
+    variantBDesc = `${tool} automation setup in plain English. No coding required. Save 5+ hours weekly with this step-by-step guide.`;
+  } else if (intent === 'explainer') {
+    variantBTitle = `${title} — Explained Simply`;
+    variantBDesc = `Plain-English explainer: ${baseDesc.slice(0, 120)}...`;
+  } else if (intent === 'tool_focus') {
+    variantBTitle = `${title} — Ranked & Reviewed (2026)`;
+    variantBDesc = `We tested the top ${title.split(' ')[2] || 'options'} so you don't have to. Full comparison inside.`;
+  }
+
+  return { metaTitle, metaDesc, variantB: { title: variantBTitle, description: variantBDesc } };
+}
+
 // ─── Generate Metadata ──────────────────────────────────────────────────────
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
@@ -175,10 +257,11 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const canonicalUrl = `https://decryptica.com/blog/${slug}`;
   const ogImage = `https://decryptica.com/og/${slug}.jpg`;
   const wordCount = estimateWordCount(article.content);
+  const { metaTitle, metaDesc } = getMetaVariants(article);
 
   return {
-    title: `${article.title} | Decryptica`,
-    description: article.excerpt,
+    title: metaTitle,
+    description: metaDesc,
     keywords: [
       article.category,
       'crypto',
@@ -561,6 +644,132 @@ function TLDNRBox({ excerpt }: { excerpt: string }) {
   );
 }
 
+// ─── SEO Copy Framework: Funnel-Stage CTA Blocks ───────────────────────────
+// EXPLORE (top of funnel): Awareness — "learn more" intent
+// COMPARE (mid funnel): Consideration — "evaluate options" intent
+// START (bottom of funnel): Decision — "get started now" intent
+
+function CTAExplore({ articleSlug, category }: { articleSlug: string; category: string }) {
+  const categoryContent: Record<string, { heading: string; body: string; cta: string; href: string }> = {
+    ai: {
+      heading: 'Explore AI Tools & Guides',
+      body: 'Discover how teams are using AI to automate workflows, cut costs, and ship faster in 2026.',
+      cta: 'Browse AI Articles',
+      href: '/topic/ai',
+    },
+    crypto: {
+      heading: 'Stay Ahead of Crypto Markets',
+      body: 'Data-driven crypto analysis and DeFi guides to help you make smarter investment decisions.',
+      cta: 'Explore Crypto Content',
+      href: '/topic/crypto',
+    },
+    automation: {
+      heading: 'Automate Your Workflow',
+      body: 'Step-by-step guides to automate repetitive tasks and reclaim hours every week.',
+      cta: 'See Automation Guides',
+      href: '/topic/automation',
+    },
+  };
+  const content = categoryContent[category] || categoryContent.ai;
+  return (
+    <div className="mb-6 p-5 bg-zinc-900/60 border border-zinc-800 rounded-xl">
+      <h4 className="font-display text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-2">
+        Explore
+      </h4>
+      <p className="text-white font-medium mb-1">{content.heading}</p>
+      <p className="text-zinc-400 text-sm mb-3">{content.body}</p>
+      <TrackedLink
+        href={content.href}
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
+        eventType="cta_click"
+        articleSlug={articleSlug}
+        metadata={{ location: 'cta_explore', cta: content.cta, funnel: 'explore' }}
+      >
+        {content.cta} →
+      </TrackedLink>
+    </div>
+  );
+}
+
+function CTACompare({ articleSlug, category, title }: { articleSlug: string; category: string; title: string }) {
+  const categoryContent: Record<string, { heading: string; body: string; cta: string; href: string }> = {
+    ai: {
+      heading: 'Compare AI Models & Tools',
+      body: 'Not sure which AI tool fits your needs? See head-to-head comparisons of the top options.',
+      cta: 'View AI Comparisons',
+      href: '/articles',
+    },
+    crypto: {
+      heading: 'Compare Crypto Strategies',
+      body: 'Evaluate different approaches to DeFi, staking, and portfolio allocation side by side.',
+      cta: 'See Comparison Guides',
+      href: '/articles',
+    },
+    automation: {
+      heading: 'Compare Automation Tools',
+      body: 'Zapier vs Make vs n8n? We break down pricing, features, and real-world use cases.',
+      cta: 'Browse Comparisons',
+      href: '/articles',
+    },
+  };
+  const content = categoryContent[category] || categoryContent.ai;
+  return (
+    <div className="mb-6 p-5 bg-zinc-900/60 border border-zinc-800 rounded-xl">
+      <h4 className="font-display text-sm font-semibold text-blue-400 uppercase tracking-wider mb-2">
+        Compare
+      </h4>
+      <p className="text-white font-medium mb-1">{content.heading}</p>
+      <p className="text-zinc-400 text-sm mb-3">{content.body}</p>
+      <TrackedLink
+        href={content.href}
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+        eventType="cta_click"
+        articleSlug={articleSlug}
+        metadata={{ location: 'cta_compare', cta: content.cta, funnel: 'compare' }}
+      >
+        {content.cta} →
+      </TrackedLink>
+    </div>
+  );
+}
+
+function CTAStart({ articleSlug }: { articleSlug: string }) {
+  return (
+    <div className="p-5 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/30 rounded-xl">
+      <h4 className="font-display text-sm font-semibold text-purple-400 uppercase tracking-wider mb-2">
+        Get Started
+      </h4>
+      <p className="text-white font-medium mb-1">Ready to put this into practice?</p>
+      <p className="text-zinc-400 text-sm mb-3">Get the latest implementation guides and tool walkthroughs delivered to your inbox.</p>
+      <TrackedLink
+        href="#subscribe"
+        className="btn-primary"
+        eventType="cta_click"
+        articleSlug={articleSlug}
+        metadata={{ location: 'cta_start', cta: 'subscribe', funnel: 'start' }}
+      >
+        Subscribe for Free
+      </TrackedLink>
+    </div>
+  );
+}
+
+// ─── SEO Copy Framework: ConversionStrip with Funnel-Stage CTAs ─────────────
+
+function ConversionStrip({ articleSlug, category, title }: { articleSlug: string; category: string; title: string }) {
+  return (
+    <section className="mt-10 rounded-2xl border border-indigo-500/30 bg-gradient-to-r from-indigo-500/5 via-blue-500/5 to-purple-500/5 p-6 md:p-8">
+      {/* Meta variant data for CTR testing — hidden from users, visible to crawlers */}
+      <meta name="decryptica:meta:variant" content="explore|compare|start" />
+      <div className="grid md:grid-cols-3 gap-4">
+        <CTAExplore articleSlug={articleSlug} category={category} />
+        <CTACompare articleSlug={articleSlug} category={category} title={title} />
+        <CTAStart articleSlug={articleSlug} />
+      </div>
+    </section>
+  );
+}
+
 // ─── Article Page Component ────────────────────────────────────────────────
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -584,6 +793,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const canonicalUrl = `https://decryptica.com/blog/${slug}`;
   const wordCount = estimateWordCount(article.content);
   const relatedArticles = getRelatedArticles(article, articles);
+  const headings = extractHeadings(article.content);
 
   // Auto-generate FAQs from the article content if none provided
   const faqs = article.faqs || generateAutoFAQs(article);
@@ -686,7 +896,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </header>
 
             {/* Subscribe Banner */}
-            <div className="mb-8 p-6 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/30 rounded-2xl">
+            <div
+              id="subscribe"
+              className="mb-8 p-6 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/30 rounded-2xl"
+            >
               <h3 className="font-display font-semibold text-lg text-white mb-2">
                 Stay ahead of the curve
               </h3>
@@ -700,14 +913,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <TLDNRBox excerpt={article.excerpt} />
 
             {/* Article Content */}
-            <div className="prose prose-invert prose-zinc max-w-none">
+            <div id="article-content" className="prose prose-invert prose-zinc max-w-none article-reading-body">
               {renderContent(article.content)}
             </div>
 
             {/* FAQ Section */}
             <FAQSection faqs={faqs} />
 
-            {/* Related Articles - Smart Topical Clusters */}
+            <ConversionStrip articleSlug={slug} category={article.category} title={article.title} />
+
+            {/* Related Articles - Smart Topical Clusters with Anchor-Text Guidance */}
+            {/*
+              SEO Copy Framework: Internal related-reading blocks with anchor-text guidance
+              Anchor text rules by surface:
+              - AI: Use specific model/tool names + outcome keywords ("Claude for coding", "GPT-4o for写作")
+              - Crypto: Use topic keywords + intent ("Bitcoin accumulation strategy", "DeFi yield farming guide")
+              - Automation: Use action verbs + tool names ("Automate X with Zapier", "n8n workflow setup")
+            */}
             {relatedArticles.length > 0 && (
               <section className="mt-12 pt-8 border-t border-zinc-800">
                 <h3 className="font-display font-semibold text-lg text-white mb-2 flex items-center gap-2">
@@ -717,36 +939,62 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   Explore more from Decryptica&apos;s topical clusters
                 </p>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {relatedArticles.map((related) => (
-                    <Link
-                      key={related.id}
-                      href={`/blog/${related.slug}`}
-                      className="card-elevated p-5 group"
-                    >
-                      <span className="text-xs text-indigo-400 mb-2 block">
-                        {categoryNames[related.category] || related.category}
-                      </span>
-                      <h4 className="font-display font-semibold text-white group-hover:text-indigo-400 transition-colors leading-snug text-sm">
-                        {related.title}
-                      </h4>
-                      <span className="text-xs text-zinc-500 mt-2 block">{related.date}</span>
-                    </Link>
-                  ))}
+                  {relatedArticles.map((related) => {
+                    // Generate SEO-optimized anchor text for internal links
+                    const anchorText = (() => {
+                      const relatedTitle = related.title;
+                      if (article.category === 'ai') {
+                        // Tool/outcome-focused anchor text
+                        const toolMatch = relatedTitle.match(/^(Best\s+|Top\s+)?(\d+\s+)?(.+?)(?:\s*[-—]|\s*(?:in|for|with)\s+)/);
+                        return toolMatch ? `Guide: ${toolMatch[3] || relatedTitle.slice(0, 50)}` : relatedTitle;
+                      } else if (article.category === 'crypto') {
+                        // Topic keyword + intent anchor text
+                        return `Read: ${relatedTitle.slice(0, 55)}${relatedTitle.length > 55 ? '...' : ''}`;
+                      } else {
+                        // Action verb + topic anchor text
+                        return `Step-by-step: ${relatedTitle.slice(0, 45)}${relatedTitle.length > 45 ? '...' : ''}`;
+                      }
+                    })();
+                    return (
+                      <TrackedLink
+                        key={related.id}
+                        href={`/blog/${related.slug}`}
+                        className="card-elevated p-5 group"
+                        eventType="article_click"
+                        articleSlug={related.slug}
+                        metadata={{ location: 'article_related_module', sourceArticle: slug, anchorText }}
+                      >
+                        <span className="text-xs text-indigo-400 mb-2 block">
+                          {categoryNames[related.category] || related.category}
+                        </span>
+                        <h4 className="font-display font-semibold text-white group-hover:text-indigo-400 transition-colors leading-snug text-sm">
+                          {related.title}
+                        </h4>
+                        <span className="text-xs text-zinc-500 mt-2 block">{related.date}</span>
+                      </TrackedLink>
+                    );
+                  })}
                 </div>
               </section>
             )}
+
+            <div className="fixed bottom-4 left-4 right-4 z-30 lg:hidden">
+              <TrackedLink
+                href="#subscribe"
+                className="btn-primary w-full justify-center shadow-lg shadow-indigo-900/30"
+                eventType="cta_click"
+                articleSlug={slug}
+                metadata={{ location: 'article_mobile_sticky', cta: 'subscribe' }}
+              >
+                Get Weekly Briefs
+              </TrackedLink>
+            </div>
           </article>
 
           {/* Sidebar */}
           <aside className="lg:col-span-1">
             <div className="sticky top-24 space-y-6">
-              {/* Article Summary */}
-              <div className="card-elevated p-5">
-                <h3 className="font-display font-semibold text-sm text-indigo-400 mb-4 uppercase tracking-wider">
-                  Quick Summary
-                </h3>
-                <p className="text-zinc-300 text-sm leading-relaxed">{article.excerpt}</p>
-              </div>
+              <ArticleProgressNav articleSlug={slug} headings={headings} />
 
               {/* Article Stats */}
               <div className="card-elevated p-5">

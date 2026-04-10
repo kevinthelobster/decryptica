@@ -18,7 +18,19 @@ import { NextRequest, NextResponse } from 'next/server';
 import { kv } from '@vercel/kv';
 
 const TTL_90_DAYS = 60 * 60 * 24 * 90;
-const ALLOWED_TYPES = new Set(['page_view', 'signup', 'activation', 'paid_conversion', 'mrr', 'churn', 'ranking']);
+const ALLOWED_TYPES = new Set([
+  'page_view',
+  'signup',
+  'activation',
+  'paid_conversion',
+  'mrr',
+  'churn',
+  'ranking',
+  'article_click',
+  'cta_click',
+  'scroll_depth',
+  'toc_jump',
+]);
 
 export async function POST(request: NextRequest) {
   try {
@@ -82,7 +94,18 @@ export async function GET(request: NextRequest) {
     // Scan for recent event keys (KV SCAN pattern)
     // We approximate by checking known counter keys and sampling recent keys
     const date = new Date().toISOString().split('T')[0];
-    const counterTypes = ['page_view', 'signup', 'activation', 'paid_conversion', 'mrr', 'churn'];
+    const counterTypes = [
+      'page_view',
+      'signup',
+      'activation',
+      'paid_conversion',
+      'mrr',
+      'churn',
+      'article_click',
+      'cta_click',
+      'scroll_depth',
+      'toc_jump',
+    ];
     const counters: Record<string, number> = {};
 
     for (const type of counterTypes) {

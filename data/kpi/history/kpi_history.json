@@ -1,0 +1,433 @@
+[
+  {
+    "week": "2026-W15",
+    "weekStart": "2026-04-06",
+    "weekEnd": "2026-04-12",
+    "generatedAt": "2026-04-10T13:06:03.261Z",
+    "rankings": {
+      "totalTrackedKeywords": 0,
+      "top3": 0,
+      "top10": 0,
+      "top20": 0,
+      "top50": 0,
+      "top100": 0,
+      "newKeywordsThisWeek": 0,
+      "droppedKeywordsThisWeek": 0,
+      "avgPosition": 0,
+      "bestMovers": [],
+      "worstMovers": []
+    },
+    "ctr": {
+      "totalImpressions": 0,
+      "totalClicks": 0,
+      "overallCtr": 0,
+      "byPosition": {},
+      "byDevice": {},
+      "byCountry": {}
+    },
+    "sessions": {
+      "totalOrganicSessions": 0,
+      "byCategory": {
+        "crypto": 0,
+        "ai": 0,
+        "automation": 0
+      },
+      "byPage": [],
+      "newVsReturning": {
+        "new": 0,
+        "returning": 0
+      }
+    },
+    "indexation": {
+      "indexed": 44,
+      "notIndexed": 3,
+      "totalUrls": 47,
+      "indexRate": 0.936,
+      "newlyIndexedThisWeek": [],
+      "removedFromIndex": []
+    },
+    "content": {
+      "totalArticles": 47,
+      "publishedThisWeek": 30,
+      "totalWordCount": 5383,
+      "avgWordCount": 1076,
+      "thinContent": 0,
+      "needsRefresh": 0,
+      "stale": 0,
+      "topArticles": [
+        {
+          "slug": "ai-coding-assistants-2026",
+          "title": "10 Best AI Coding Assistants in 2026",
+          "category": "ai",
+          "wordCount": 1110,
+          "date": "2026-04-06"
+        },
+        {
+          "slug": "ai-writing-tools-2026",
+          "title": "10 Best AI Writing Tools in 2026",
+          "category": "ai",
+          "wordCount": 1094,
+          "date": "2026-04-06"
+        },
+        {
+          "slug": "hardware-wallets-2026",
+          "title": "10 Best Hardware Wallets in 2026",
+          "category": "crypto",
+          "wordCount": 1076,
+          "date": "2026-04-06"
+        },
+        {
+          "slug": "crypto-wallets-2026",
+          "title": "10 Best Crypto Wallets in 2026",
+          "category": "crypto",
+          "wordCount": 1059,
+          "date": "2026-04-06"
+        },
+        {
+          "slug": "productivity-apps-2026",
+          "title": "10 Best Productivity Apps in 2026",
+          "category": "automation",
+          "wordCount": 1044,
+          "date": "2026-04-06"
+        }
+      ],
+      "_articles": [
+        {
+          "slug": "why-bitcoin-s-institutional-inflows-tell-a-different-story",
+          "title": "Why Bitcoin's Institutional Inflows Tell a Different Story",
+          "category": "crypto",
+          "date": "2026-04-10",
+          "wordCount": null
+        },
+        {
+          "slug": "the-web3-developer-experience-is-still-broken",
+          "title": "The Web3 Developer Experience Is Still Broken",
+          "category": "crypto",
+          "date": "2026-04-09",
+          "wordCount": null
+        },
+        {
+          "slug": "ethereum-s-next-upgrade-could-change-everything",
+          "title": "Ethereum's Next Upgrade Could Change Everything",
+          "category": "crypto",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "the-human-in-the-loop-problem-for-automation",
+          "title": "The Human-in-the-Loop Problem for Automation",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "why-your-integration-architecture-matters",
+          "title": "Why Your Integration Architecture Matters",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "the-webhook-reliability-problem-nobody-fixes",
+          "title": "The Webhook Reliability Problem Nobody Fixes",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "why-your-second-brain-system-is-failing-you",
+          "title": "Why Your Second Brain System Is Failing You",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "the-state-of-api-documentation-in-2026",
+          "title": "The State of API Documentation in 2026",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "process-mining-finding-automation-opportunities",
+          "title": "Process Mining: Finding Automation Opportunities",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "task-management-in-2026-what-s-actually-working",
+          "title": "Task Management in 2026: What's Actually Working",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "the-api-tools-actually-worth-your-time",
+          "title": "The API Tools Actually Worth Your Time",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "the-no-code-ceiling-when-tools-hit-their-limit",
+          "title": "The No-Code Ceiling: When Tools Hit Their Limit",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "when-to-abandon-no-code-for-real-code",
+          "title": "When to Abandon No-Code for Real Code",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "why-bubble-io-is-both-winning-and-losing",
+          "title": "Why Bubble.io Is Both Winning and Losing",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "building-internal-tools-what-actually-scales",
+          "title": "Building Internal Tools: What Actually Scales",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "the-pomodoro-problem-why-timers-don-t-work",
+          "title": "The Pomodoro Problem: Why Timers Don't Work",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "the-roi-of-business-automation-real-numbers",
+          "title": "The ROI of Business Automation: Real Numbers",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "why-most-automation-projects-fail-at-scale",
+          "title": "Why Most Automation Projects Fail at Scale",
+          "category": "automation",
+          "date": "2026-04-08",
+          "wordCount": null
+        },
+        {
+          "slug": "the-productivity-system-that-actually-works",
+          "title": "The Productivity System That Actually Works",
+          "category": "automation",
+          "date": "2026-04-07",
+          "wordCount": null
+        },
+        {
+          "slug": "obsidian-vs-notion-the-real-tradeoff",
+          "title": "Obsidian vs Notion: The Real Tradeoff",
+          "category": "automation",
+          "date": "2026-04-07",
+          "wordCount": null
+        },
+        {
+          "slug": "the-hidden-costs-of-no-code-solutions",
+          "title": "The Hidden Costs of No-Code Solutions",
+          "category": "automation",
+          "date": "2026-04-07",
+          "wordCount": null
+        },
+        {
+          "slug": "why-developer-portals-are-getting-worse",
+          "title": "Why Developer Portals Are Getting Worse",
+          "category": "automation",
+          "date": "2026-04-07",
+          "wordCount": null
+        },
+        {
+          "slug": "zapier-vs-make-which-automation-tool-wins",
+          "title": "Zapier vs Make: Which Automation Tool Wins?",
+          "category": "automation",
+          "date": "2026-04-07",
+          "wordCount": null
+        },
+        {
+          "slug": "event-driven-architecture-when-it-actually-helps",
+          "title": "Event-Driven Architecture: When It Actually Helps",
+          "category": "automation",
+          "date": "2026-04-07",
+          "wordCount": null
+        },
+        {
+          "slug": "best-solana-wallets-2026",
+          "title": "Best Solana Wallets 2026: Which One Should You Use?",
+          "category": "crypto",
+          "date": "2026-03-30",
+          "wordCount": null
+        },
+        {
+          "slug": "how-to-buy-solana-2026",
+          "title": "How to Buy Solana in 2026: Complete Beginner Guide",
+          "category": "crypto",
+          "date": "2026-03-30",
+          "wordCount": null
+        },
+        {
+          "slug": "solana-rpc-providers-compared",
+          "title": "Solana RPC Providers Compared 2026: Which One to Use?",
+          "category": "crypto",
+          "date": "2026-03-30",
+          "wordCount": null
+        },
+        {
+          "slug": "best-ai-coding-assistants-2026",
+          "title": "Best AI Coding Assistants 2026: Cursor vs Windsurf vs GitHub Copilot",
+          "category": "ai",
+          "date": "2026-03-30",
+          "wordCount": null
+        },
+        {
+          "slug": "how-to-run-llama-3-locally",
+          "title": "How to Run Llama 3 Locally: Complete Ollama Setup Guide",
+          "category": "ai",
+          "date": "2026-03-30",
+          "wordCount": null
+        },
+        {
+          "slug": "ai-agents-explained",
+          "title": "AI Agents Explained: A Practical Guide for 2026",
+          "category": "ai",
+          "date": "2026-3-30",
+          "wordCount": null
+        },
+        {
+          "slug": "n8n-setup-guide-2026",
+          "title": "n8n Setup Guide: From Zero to First Workflow",
+          "category": "automation",
+          "date": "2026-03-30",
+          "wordCount": null
+        },
+        {
+          "slug": "best-automation-tools-crypto-trading",
+          "title": "Best Automation Tools for Crypto Trading 2026",
+          "category": "automation",
+          "date": "2026-03-30",
+          "wordCount": null
+        },
+        {
+          "slug": "track-whale-wallet-alerts",
+          "title": "How to Track Whale Wallet Alerts on Solana",
+          "category": "automation",
+          "date": "2026-03-30",
+          "wordCount": null
+        },
+        {
+          "slug": "ethereums-make-or-break-moment-is-a-false-narrative",
+          "title": "Ethereum's 'Make-or-Break' Moment Is a False Narrative",
+          "category": "crypto",
+          "date": "2026-03-22",
+          "wordCount": null
+        },
+        {
+          "slug": "solana-vs-ethereum-2026",
+          "title": "Solana vs Ethereum 2026: The Landscape Shifts",
+          "category": "crypto",
+          "date": "2026-03-18",
+          "wordCount": null
+        },
+        {
+          "slug": "bitcoin-etf-institutional-inflows",
+          "title": "Bitcoin ETF Institutional Inflows: A Deep Dive",
+          "category": "crypto",
+          "date": "2026-03-15",
+          "wordCount": null
+        },
+        {
+          "slug": "ai-agents-the-next-frontier",
+          "title": "AI Agents: The Next Frontier in Artificial Intelligence",
+          "category": "ai",
+          "date": "2026-03-20",
+          "wordCount": null
+        },
+        {
+          "slug": "local-llm-setup-guide",
+          "title": "Running LLMs Locally: A Practical Guide",
+          "category": "ai",
+          "date": "2026-03-17",
+          "wordCount": null
+        },
+        {
+          "slug": "cursor-vs-windsurf-ai-coding",
+          "title": "Cursor vs Windsurf: AI Coding Tools Compared",
+          "category": "ai",
+          "date": "2026-03-14",
+          "wordCount": null
+        },
+        {
+          "slug": "n8n-workflow-automation",
+          "title": "n8n: Open-Source Workflow Automation That Actually Works",
+          "category": "automation",
+          "date": "2026-03-19",
+          "wordCount": null
+        },
+        {
+          "slug": "github-actions-automation",
+          "title": "GitHub Actions: Beyond CI/CD",
+          "category": "automation",
+          "date": "2026-03-16",
+          "wordCount": null
+        },
+        {
+          "slug": "make-internet-homelab",
+          "title": "The Modern Homelab: From Zero to Hero",
+          "category": "automation",
+          "date": "2026-03-12",
+          "wordCount": null
+        },
+        {
+          "slug": "ai-coding-assistants-2026",
+          "title": "10 Best AI Coding Assistants in 2026",
+          "category": "ai",
+          "date": "2026-04-06",
+          "wordCount": 1110
+        },
+        {
+          "slug": "hardware-wallets-2026",
+          "title": "10 Best Hardware Wallets in 2026",
+          "category": "crypto",
+          "date": "2026-04-06",
+          "wordCount": 1076
+        },
+        {
+          "slug": "crypto-wallets-2026",
+          "title": "10 Best Crypto Wallets in 2026",
+          "category": "crypto",
+          "date": "2026-04-06",
+          "wordCount": 1059
+        },
+        {
+          "slug": "productivity-apps-2026",
+          "title": "10 Best Productivity Apps in 2026",
+          "category": "automation",
+          "date": "2026-04-06",
+          "wordCount": 1044
+        },
+        {
+          "slug": "ai-writing-tools-2026",
+          "title": "10 Best AI Writing Tools in 2026",
+          "category": "ai",
+          "date": "2026-04-06",
+          "wordCount": 1094
+        }
+      ]
+    },
+    "conversions": {
+      "totalAffiliateClicks": 0,
+      "byCategory": {},
+      "topAffiliateArticles": []
+    },
+    "overallScore": 39
+  }
+]

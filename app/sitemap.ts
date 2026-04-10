@@ -54,6 +54,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
+    {
+      url: `${baseUrl}/services/ai-automation-consulting`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
   ];
 
   // Add blog article pages
