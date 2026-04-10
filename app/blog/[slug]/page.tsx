@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { getArticleBySlug, articles } from '../../data/articles';
 import SubscribeForm from '../../components/SubscribeForm';
+import AnalyticsTracker from '../../components/AnalyticsTracker';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -599,6 +600,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <ArticleSchema article={article} url={canonicalUrl} />
       <FAQSchema faqs={faqs} />
       <BreadcrumbSchema slug={slug} category={article.category} />
+      <AnalyticsTracker articleSlug={slug} category={article.category} />
 
       <div className="max-w-6xl mx-auto px-6 py-12">
         {/* Breadcrumb */}
