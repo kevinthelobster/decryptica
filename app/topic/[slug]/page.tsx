@@ -6,7 +6,9 @@ import IntentContextBanner from '../../components/IntentContextBanner';
 import TrackedLink from '../../components/TrackedLink';
 import HubSectionNav from '../../components/HubSectionNav';
 import HubRelatedModule from '../../components/HubRelatedModule';
+import RouteDepthTracker from '../../components/RouteDepthTracker';
 import { articles, getTopicBySlug, getArticlesByCategory } from '../../data/articles';
+import { getSubpillarPath, getSubpillarsForPillar, type PillarSlug } from '../../data/topic-routing';
 
 interface TopicPageProps {
   params: Promise<{
@@ -26,7 +28,7 @@ export async function generateMetadata({ params }: TopicPageProps): Promise<Meta
     title: `${topic.name} | Decryptica`,
     description: topic.description,
     alternates: {
-      canonical: `/topic/${slug}`,
+      canonical: `https://decryptica.com/topic/${slug}`,
     },
   };
 }
@@ -49,9 +51,7 @@ const topicIcons: Record<string, ReactNode> = {
   ),
 };
 
-type TopicSlug = 'crypto' | 'ai' | 'automation';
-
-function getTopicSecondaryCta(slug: TopicSlug) {
+function getTopicSecondaryCta(slug: PillarSlug) {
   if (slug === 'ai') {
     return {
       href: '/tools/ai-price-calculator',
@@ -86,8 +86,8 @@ function getIntentBadge(title: string): 'Learn' | 'Calculate' | 'Implement' {
   return 'Learn';
 }
 
-function getContinueLearningItems(topicCategory: TopicSlug, topicArticles: ReturnType<typeof getArticlesByCategory>) {
-  const adjacentByCategory: Record<TopicSlug, TopicSlug> = {
+function getContinueLearningItems(topicCategory: PillarSlug, topicArticles: ReturnType<typeof getArticlesByCategory>) {
+  const adjacentByCategory: Record<PillarSlug, PillarSlug> = {
     ai: 'automation',
     automation: 'ai',
     crypto: 'ai',
@@ -115,9 +115,10 @@ function getContinueLearningItems(topicCategory: TopicSlug, topicArticles: Retur
 export default async function TopicPage({ params }: TopicPageProps) {
   const { slug } = await params;
   const topic = getTopicBySlug(slug);
-  const topicCategory = slug as TopicSlug;
+  const topicCategory = slug as PillarSlug;
   const topicArticles = getArticlesByCategory(topicCategory);
   const secondaryCta = getTopicSecondaryCta(topicCategory);
+  const subpillars = getSubpillarsForPillar(topicCategory);
 
   if (!topic) {
     return (
@@ -145,6 +146,8 @@ export default async function TopicPage({ params }: TopicPageProps) {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 pb-28 md:pb-12">
+      <RouteDepthTracker depth={1} pillar={topicCategory} />
+
       <section id="overview" className="mb-8 scroll-mt-28">
         <div className="card-elevated p-8">
           <div className="flex items-start gap-6">
@@ -157,6 +160,24 @@ export default async function TopicPage({ params }: TopicPageProps) {
                 <span className="topic-tag">{topicArticles.length} articles</span>
               </div>
               <p className="text-zinc-400 text-lg leading-relaxed">{topic.description}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {subpillars.map((subpillar) => (
+                  <TrackedLink
+                    key={subpillar.slug}
+                    href={getSubpillarPath(topicCategory, subpillar.slug)}
+                    className="rounded-full border border-zinc-700 bg-zinc-900/60 px-3 py-1.5 text-xs text-zinc-300 hover:border-indigo-400/50 hover:text-white transition-colors"
+                    eventType="hub_nav_click"
+                    metadata={{
+                      location: 'topic_subpillar_chips',
+                      category: topicCategory,
+                      pillar: topicCategory,
+                      subpillar: subpillar.slug,
+                    }}
+                  >
+                    {subpillar.name}
+                  </TrackedLink>
+                ))}
+              </div>
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <TrackedLink
                   href="/#subscribe"

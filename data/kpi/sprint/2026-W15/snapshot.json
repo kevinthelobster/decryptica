@@ -1,0 +1,74 @@
+{
+  "generatedAt": "2026-04-11T17:32:36.447Z",
+  "week": "2026-W15",
+  "weekStart": "2026-04-06",
+  "weekEnd": "2026-04-12",
+  "weekLabel": "W1",
+  "metrics": {
+    "sessions": 0,
+    "organicCtrPct": 0,
+    "cvrPct": 0,
+    "epcUsd": 0,
+    "rpmUsd": 0,
+    "netNewMrrUsd": 0
+  },
+  "sourceMap": {
+    "sessions": {
+      "source": "data/kpi/weekly/{week}/kpi.json.sessions.totalOrganicSessions",
+      "status": "missing"
+    },
+    "organicCtr": {
+      "source": "data/kpi/weekly/{week}/kpi.json.ctr.overallCtr",
+      "status": "missing"
+    },
+    "cvr": {
+      "source": "data/kpi/daily/{yyyy}/{mm}/{yyyy-mm-dd}.json (signups/pageViews)",
+      "status": "placeholder"
+    },
+    "epc": {
+      "source": "data/kpi/daily/{yyyy}/{mm}/{yyyy-mm-dd}.json (revenue/affiliateClicks)",
+      "status": "placeholder"
+    },
+    "rpm": {
+      "source": "data/kpi/daily/{yyyy}/{mm}/{yyyy-mm-dd}.json ((revenue*1000)/pageViews)",
+      "status": "placeholder"
+    },
+    "netNewMrr": {
+      "source": "data/kpi/daily/{yyyy}/{mm}/{yyyy-mm-dd}.json.revenueCents (proxy until subscription MRR feed)",
+      "status": "placeholder"
+    }
+  },
+  "netNewMrrAttribution": {
+    "sourceOfTruth": [
+      "billing.subscription_events",
+      "billing.invoices",
+      "analytics.attribution_touches"
+    ],
+    "grain": "weekly by event_date (America/New_York), rolled up by channel and campaign",
+    "formula": "net_new_mrr_attributed = new_logo_mrr + expansion_mrr + trial_conversion_mrr - refund_mrr - churn_mrr_offset",
+    "exclusions": [
+      "internal/test accounts",
+      "one-time services revenue",
+      "reactivations older than 90 days",
+      "fully unattributed conversions routed to channel=unknown"
+    ],
+    "assistedAttributionRule": "70% credit to last non-direct touch, 30% credit to first qualifying touch; direct-only paths get 100% direct",
+    "trialConversionRule": "Include only when trial converts to paid and first successful invoice posts; use conversion date for recognition",
+    "exportFields": [
+      "week_start",
+      "channel",
+      "campaign",
+      "new_logo_mrr",
+      "expansion_mrr",
+      "trial_conversion_mrr",
+      "refund_mrr",
+      "churn_mrr_offset",
+      "net_new_mrr_attributed"
+    ]
+  },
+  "telemetryGaps": [
+    "GSC_API_KEY missing in runtime for non-placeholder sessions/CTR.",
+    "KV_REST_API_URL and/or KV_REST_API_TOKEN missing in runtime for non-placeholder CVR/EPC/RPM.",
+    "Subscription-grade net new MRR source is not wired; current value is revenue proxy."
+  ]
+}

@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-
-const ADMIN_PASSWORD = process.env.PROMPTS_ADMIN_PASSWORD || 'kevin123';
+import { MissingSecretError, requireSecret } from '@/app/lib/server-secrets';
 
 // Simple in-memory rate limiter
 // For Vercel serverless: this resets on each cold start, so it's a best-effort demo
@@ -35,6 +34,7 @@ function recordSuccess(ip: string): void {
 
 export async function POST(request: Request) {
   try {
+    const adminPassword = requireSecret('PROMPTS_ADMIN_PASSWORD');
     const ip = request.headers.get('x-forwarded-for') || 
                 request.headers.get('x-real-ip') || 
                 'anonymous';
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
 
     const { password } = await request.json();
 
-    if (password !== ADMIN_PASSWORD) {
+    if (password !== adminPassword) {
       recordFailure(ip);
       const record = RATE_LIMIT_STORE.get(ip);
       const remaining = record ? MAX_ATTEMPTS - record.count : MAX_ATTEMPTS;
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
     recordSuccess(ip);
 
     const cookieStore = await cookies();
-    cookieStore.set('prompts_admin', ADMIN_PASSWORD, {
+    cookieStore.set('prompts_admin', adminPassword, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
@@ -71,6 +71,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
+    if (error instanceof MissingSecretError) {
+      return NextResponse.json({ error: 'Admin auth is not configured' }, { status: 503 });
+    }
     console.error('POST /api/prompts/admin/login error:', error);
     return NextResponse.json({ error: 'Login failed' }, { status: 500 });
   }

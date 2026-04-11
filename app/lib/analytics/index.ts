@@ -13,6 +13,8 @@ export interface AnalyticsEvent {
   metadata?: Record<string, string | number | boolean>;
 }
 
+type MetadataValue = string | number | boolean;
+
 const SESSION_COOKIE = 'dc_sid';
 const ANON_STORAGE_KEY = 'dc_aid';
 
@@ -99,7 +101,56 @@ export async function trackPageView(
   });
 }
 
-export function isOrganicReferrer(): boolean {
-  if (typeof document === 'undefined') return false;
-  return /google|bing|duckduckgo|yahoo/i.test(document.referrer);
+export async function trackAffiliateClick(params: {
+  affiliateId: string;
+  program: string;
+  partnerId?: string;
+  targetUrl: string;
+  articleSlug?: string;
+  category?: string;
+  intent?: string;
+  position?: number;
+  metadata?: Record<string, MetadataValue>;
+}): Promise<void> {
+  await trackEvent({
+    type: 'affiliate_click',
+    articleSlug: params.articleSlug,
+    metadata: {
+      affiliateId: params.affiliateId,
+      program: params.program,
+      partnerId: params.partnerId ?? '',
+      targetUrl: params.targetUrl,
+      category: params.category ?? '',
+      intent: params.intent ?? '',
+      position: params.position ?? 0,
+      ...params.metadata,
+    },
+  });
+}
+
+export async function trackSponsorshipLead(params: {
+  leadType: 'demo_request' | 'audit_request' | 'consulting_inquiry' | 'partnership_inquiry';
+  email?: string;
+  company?: string;
+  name?: string;
+  message?: string;
+  sourceContent?: string;
+  category?: string;
+  intent?: string;
+  metadata?: Record<string, MetadataValue>;
+}): Promise<void> {
+  await trackEvent({
+    type: 'sponsorship_lead',
+    metadata: {
+      leadType: params.leadType,
+      email: params.email ?? '',
+      company: params.company ?? '',
+      name: params.name ?? '',
+      message: params.message ?? '',
+      sourceContent: params.sourceContent ?? '',
+      category: params.category ?? '',
+      intent: params.intent ?? '',
+      ...params.metadata,
+    },
+  });
 }

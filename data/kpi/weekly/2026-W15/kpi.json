@@ -1,8 +1,8 @@
 {
   "week": "2026-W15",
-  "weekStart": "2026-04-07",
-  "weekEnd": "2026-04-13",
-  "generatedAt": "2026-04-11T00:06:00.775Z",
+  "weekStart": "2026-04-06",
+  "weekEnd": "2026-04-12",
+  "generatedAt": "2026-04-11T17:38:27.967Z",
   "rankings": {
     "totalTrackedKeywords": 0,
     "top3": 0,
@@ -38,15 +38,16 @@
     }
   },
   "indexation": {
-    "indexed": 56,
+    "indexed": 57,
     "notIndexed": 0,
-    "totalUrls": 56,
+    "totalUrls": 57,
+    "indexRate": 1,
     "newlyIndexedThisWeek": [],
     "removedFromIndex": []
   },
   "content": {
-    "totalArticles": 47,
-    "publishedThisWeek": 30,
+    "totalArticles": 48,
+    "publishedThisWeek": 31,
     "totalWordCount": 5383,
     "avgWordCount": 1076,
     "thinContent": 0,
@@ -90,6 +91,13 @@
       }
     ],
     "_articles": [
+      {
+        "slug": "defi-s-real-problem-isn-t-regulatory-it-s-ux",
+        "title": "DeFi's Real Problem Isn't Regulatory—It's UX",
+        "category": "crypto",
+        "date": "2026-04-11",
+        "wordCount": null
+      },
       {
         "slug": "why-bitcoin-s-institutional-inflows-tell-a-different-story",
         "title": "Why Bitcoin's Institutional Inflows Tell a Different Story",
@@ -426,5 +434,5 @@
     "byCategory": {},
     "topAffiliateArticles": []
   },
-  "overallScore": null
+  "overallScore": 40
 }

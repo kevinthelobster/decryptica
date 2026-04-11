@@ -157,6 +157,10 @@ interface GSCResult {
   indexation: WeeklyKPI['indexation'];
 }
 
+function safeNumber(value: unknown, fallback = 0): number {
+  return typeof value === 'number' && Number.isFinite(value) ? value : fallback;
+}
+
 async function fetchGSCData(startDate: string, endDate: string): Promise<GSCResult> {
   const apiKey = process.env.GSC_API_KEY;
 
@@ -356,7 +360,7 @@ async function buildPlaceholderGSCData(): Promise<GSCResult> {
 
 // ─── Adapter 2: Sitemap Index Coverage ──────────────────────────────────────
 
-async function fetchIndexCoverage(): Promise<{ indexed: number; notIndexed: number; totalUrls: number }> {
+async function fetchIndexCoverage(): Promise<WeeklyKPI['indexation']> {
   try {
     const response = await fetch(CONFIG.sitemapUrl, {
       headers: { 'User-Agent': 'Decryptica-KPI-Pipeline/1.0' },
@@ -370,14 +374,21 @@ async function fetchIndexCoverage(): Promise<{ indexed: number; notIndexed: numb
     const xml = await response.text();
     const urlMatches = xml.match(/<loc>([^<]+)<\/loc>/g) || [];
     const totalUrls = urlMatches.length;
-    return { indexed: totalUrls, notIndexed: 0, totalUrls, newlyIndexedThisWeek: [], removedFromIndex: [] };
+    return {
+      indexed: totalUrls,
+      notIndexed: 0,
+      totalUrls,
+      indexRate: totalUrls > 0 ? 1 : 0,
+      newlyIndexedThisWeek: [],
+      removedFromIndex: [],
+    };
   } catch (err) {
     console.warn('[Sitemap] Error:', err);
     return estimateFromArticles();
   }
 }
 
-function estimateFromArticles(): { indexed: number; notIndexed: number; totalUrls: number } {
+function estimateFromArticles(): WeeklyKPI['indexation'] {
   try {
     // Try to load via Python analyzer if available
     const articleDataPath = path.join(__dirname, '..', 'data', 'kpi', 'article_data.json');
@@ -386,11 +397,32 @@ function estimateFromArticles(): { indexed: number; notIndexed: number; totalUrl
       const totalUrls = data.totalArticles || 0;
       // Assume 95% index rate for published articles (realistic for a live site)
       const indexed = Math.floor(totalUrls * 0.95);
-    return { indexed, notIndexed: Math.ceil(totalUrls * 0.05), totalUrls, indexRate: totalUrls > 0 ? Math.round((indexed / totalUrls) * 1000) / 1000 : 0, newlyIndexedThisWeek: [], removedFromIndex: [] };
+      return {
+        indexed,
+        notIndexed: Math.ceil(totalUrls * 0.05),
+        totalUrls,
+        indexRate: totalUrls > 0 ? Math.round((indexed / totalUrls) * 1000) / 1000 : 0,
+        newlyIndexedThisWeek: [],
+        removedFromIndex: [],
+      };
     }
-    return { indexed: 0, notIndexed: 0, totalUrls: 0 };
+    return {
+      indexed: 0,
+      notIndexed: 0,
+      totalUrls: 0,
+      indexRate: 0,
+      newlyIndexedThisWeek: [],
+      removedFromIndex: [],
+    };
   } catch {
-    return { indexed: 0, notIndexed: 0, totalUrls: 0 };
+    return {
+      indexed: 0,
+      notIndexed: 0,
+      totalUrls: 0,
+      indexRate: 0,
+      newlyIndexedThisWeek: [],
+      removedFromIndex: [],
+    };
   }
 }
 
@@ -553,17 +585,27 @@ function loadArticleMeta(): Record<string, { title: string; category: string }> 
 // ─── KPI Score Calculator ────────────────────────────────────────────────────
 
 function computeOverallScore(kpi: WeeklyKPI): number {
-  const rankScore = kpi.rankings.top10 > 0
-    ? Math.min(30, (kpi.rankings.top10 / Math.max(1, kpi.rankings.totalTrackedKeywords)) * 30)
-    : 0;
-  const ctrScore = Math.min(20, kpi.ctr.overallCtr * 2);
-  const indexScore = kpi.indexation.indexRate * 20;
-  const contentFreshness = kpi.content.totalArticles > 0
-    ? Math.max(0, 20 - (kpi.content.stale * 2) - (kpi.content.thinContent * 1))
-    : 0;
-  const sessionScore = Math.min(10, (kpi.sessions.totalOrganicSessions / 1000) * 10);
+  const trackedKeywords = Math.max(1, safeNumber(kpi.rankings.totalTrackedKeywords));
+  const top10 = safeNumber(kpi.rankings.top10);
+  const ctr = safeNumber(kpi.ctr.overallCtr);
+  const indexRate = safeNumber(kpi.indexation.indexRate);
+  const stale = safeNumber(kpi.content.stale);
+  const thinContent = safeNumber(kpi.content.thinContent);
+  const totalArticles = safeNumber(kpi.content.totalArticles);
+  const sessions = safeNumber(kpi.sessions.totalOrganicSessions);
 
-  return Math.min(100, Math.max(0, Math.round(rankScore + ctrScore + indexScore + contentFreshness + sessionScore)));
+  const rankScore = top10 > 0
+    ? Math.min(30, (top10 / trackedKeywords) * 30)
+    : 0;
+  const ctrScore = Math.min(20, ctr * 2);
+  const indexScore = Math.min(20, Math.max(0, indexRate * 20));
+  const contentFreshness = totalArticles > 0
+    ? Math.max(0, 20 - (stale * 2) - thinContent)
+    : 0;
+  const sessionScore = Math.min(10, (sessions / 1000) * 10);
+
+  const total = rankScore + ctrScore + indexScore + contentFreshness + sessionScore;
+  return Math.min(100, Math.max(0, Math.round(safeNumber(total))));
 }
 
 // ─── History Manager ──────────────────────────────────────────────────────────
@@ -596,6 +638,12 @@ function topPagesMarkdown(pages: TopPage[]): string {
 }
 
 function generateMarkdownReport(kpi: WeeklyKPI): string {
+  const hasTelemetry =
+    safeNumber(kpi.rankings.totalTrackedKeywords) > 0 ||
+    safeNumber(kpi.ctr.totalImpressions) > 0 ||
+    safeNumber(kpi.sessions.totalOrganicSessions) > 0;
+  const cwvGuardrailStatus = hasTelemetry ? 'PASS' : 'FAIL-CLOSED';
+
   const lines: string[] = [
     `# SEO Weekly KPI Report — ${kpi.week}`,
     `*${kpi.weekStart} → ${kpi.weekEnd} | Generated: ${kpi.generatedAt}*`,
@@ -670,6 +718,15 @@ function generateMarkdownReport(kpi: WeeklyKPI): string {
     `- **Total Affiliate Clicks:** ${kpi.conversions.totalAffiliateClicks}`,
     '',
     `*Note: Click-tracking source active — attach Vercel KV credentials (KV_REST_API_URL, KV_REST_API_TOKEN) to see live metrics.*`,
+    '',
+    '---',
+    '',
+    '## 🧪 CWV Guardrail Gate',
+    `- **Status:** ${cwvGuardrailStatus}`,
+    hasTelemetry
+      ? '- **Reason:** Telemetry present; CWV/SEO guardrails can be evaluated from this artifact.'
+      : '- **Reason:** Telemetry missing (no GSC/KV signal), so release gate must fail closed.',
+    '- **Remediation:** Run `node scripts/seo_daily_checkpoint.js <YYYY-MM-DD>` and `npx tsx scripts/seo_kpi_feed.ts`, then re-attach refreshed artifacts to [DEC-179](/DEC/issues/DEC-179).',
     '',
     '---',
     '',

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Calculator from './Calculator';
 import SubscribeForm from '../../components/SubscribeForm';
+import DestinationConfidenceLayer from '../../components/DestinationConfidenceLayer';
 
 // ─── SEO Copy Framework: Meta Title/Description Variants (CTR Tests) ─────────
 //
@@ -116,6 +117,7 @@ export default function AIPriceCalculatorPage() {
       />
       {/* SEO Copy Framework: Meta variant data for CTR testing */}
       <meta name="decryptica:meta:variant:a" content="feature-led" />
+      <DestinationConfidenceLayer pageType="calculator" />
       <div>
         <Calculator />
       </div>

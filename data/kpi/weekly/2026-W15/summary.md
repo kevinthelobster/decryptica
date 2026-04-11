@@ -1,9 +1,9 @@
 # SEO Weekly KPI Report — 2026-W15
-*2026-04-07 → 2026-04-13 | Generated: 2026-04-11T00:06:00.775Z*
+*2026-04-06 → 2026-04-12 | Generated: 2026-04-11T17:38:27.967Z*
 
 ---
 
-## 📊 Overall SEO Score: NaN/100
+## 📊 Overall SEO Score: 40/100
 
 ---
 
@@ -36,15 +36,15 @@
 ---
 
 ## 🔎 Index Coverage
-- **Indexed:** 56 / 56
-- **Index Rate:** NaN%
+- **Indexed:** 57 / 57
+- **Index Rate:** 100.0%
 - **Not Indexed:** 0
 
 ---
 
 ## 📝 Content Health
-- **Total Articles:** 47
-- **Published This Week:** 30
+- **Total Articles:** 48
+- **Published This Week:** 31
 - **Avg Word Count:** 1,076
 - **⚠️ Thin Content (<800w):** 0
 - **🔴 Needs Refresh (>90d):** 0
@@ -56,6 +56,13 @@
 - **Total Affiliate Clicks:** 0
 
 *Note: Click-tracking source active — attach Vercel KV credentials (KV_REST_API_URL, KV_REST_API_TOKEN) to see live metrics.*
+
+---
+
+## 🧪 CWV Guardrail Gate
+- **Status:** FAIL-CLOSED
+- **Reason:** Telemetry missing (no GSC/KV signal), so release gate must fail closed.
+- **Remediation:** Run `node scripts/seo_daily_checkpoint.js <YYYY-MM-DD>` and `npx tsx scripts/seo_kpi_feed.ts`, then re-attach refreshed artifacts to [DEC-179](/DEC/issues/DEC-179).
 
 ---
 

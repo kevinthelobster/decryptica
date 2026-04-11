@@ -8,8 +8,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { kv } from '@vercel/kv';
-
-const ANALYTICS_DEBUG_TOKEN = process.env.ANALYTICS_DEBUG_TOKEN || 'decryptica-debug';
+import { MissingSecretError, requireSecret } from '@/app/lib/server-secrets';
 
 interface WeeklyCounter {
   pageViews: number;
@@ -37,8 +36,9 @@ function getWeekDates(): string[] {
 
 export async function GET(request: NextRequest) {
   try {
+    const analyticsDebugToken = requireSecret('ANALYTICS_DEBUG_TOKEN');
     const authHeader = request.headers.get('authorization');
-    if (authHeader !== `Bearer ${ANALYTICS_DEBUG_TOKEN}`) {
+    if (authHeader !== `Bearer ${analyticsDebugToken}`) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -158,6 +158,9 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(response, { status: 200 });
   } catch (err) {
+    if (err instanceof MissingSecretError) {
+      return NextResponse.json({ error: 'Debug auth is not configured' }, { status: 503 });
+    }
     console.error('[Analytics Dashboard] error:', err);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

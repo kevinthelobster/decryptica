@@ -14,6 +14,7 @@ import {
   detectTemplateFromUrl,
   todayDate,
 } from '@/app/data/seo-telemetry';
+import { MissingSecretError, requireSecret } from '@/app/lib/server-secrets';
 
 // ── Channel detection from referrer URL ───────────────────────────────────────
 
@@ -174,7 +175,7 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     const authHeader = request.headers.get('authorization');
-    const expectedToken = process.env.ANALYTICS_DEBUG_TOKEN || 'decryptica-debug';
+    const expectedToken = requireSecret('ANALYTICS_DEBUG_TOKEN');
     if (authHeader !== `Bearer ${expectedToken}`) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -208,6 +209,9 @@ export async function GET(request: NextRequest) {
       },
     }, { status: 200 });
   } catch (err) {
+    if (err instanceof MissingSecretError) {
+      return NextResponse.json({ error: 'Debug auth is not configured' }, { status: 503 });
+    }
     console.error('[SEO API] GET error:', err);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

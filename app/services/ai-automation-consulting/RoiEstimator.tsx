@@ -14,6 +14,12 @@ type EstimatorForm = {
   stack: string;
 };
 
+type QuickIntakeForm = {
+  teamSize: string;
+  primaryWorkflow: string;
+  targetOutcome: string;
+};
+
 const INITIAL_FORM: EstimatorForm = {
   teamSize: '8',
   hoursPerWeek: '18',
@@ -23,6 +29,12 @@ const INITIAL_FORM: EstimatorForm = {
   email: '',
   workflow: '',
   stack: '',
+};
+
+const INITIAL_QUICK_INTAKE: QuickIntakeForm = {
+  teamSize: '8',
+  primaryWorkflow: '',
+  targetOutcome: '',
 };
 
 const MONTHS_PER_YEAR = 12;
@@ -43,9 +55,12 @@ function inferImplementationCost(teamSize: number): number {
 
 export default function RoiEstimator() {
   const [form, setForm] = useState<EstimatorForm>(INITIAL_FORM);
+  const [quickIntake, setQuickIntake] = useState<QuickIntakeForm>(INITIAL_QUICK_INTAKE);
   const [submitted, setSubmitted] = useState(false);
   const [leadStatus, setLeadStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [leadMessage, setLeadMessage] = useState('');
+  const [quickIntakeStatus, setQuickIntakeStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [quickIntakeMessage, setQuickIntakeMessage] = useState('');
 
   const teamSize = parseNumber(form.teamSize);
   const hoursPerWeek = parseNumber(form.hoursPerWeek);
@@ -113,6 +128,36 @@ export default function RoiEstimator() {
       setLeadStatus('error');
       setLeadMessage(error instanceof Error ? error.message : 'Failed to submit request. Please try again.');
     }
+  }
+
+  function handleQuickIntakeSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!quickIntake.primaryWorkflow.trim() || !quickIntake.targetOutcome.trim()) {
+      setQuickIntakeStatus('error');
+      setQuickIntakeMessage('Please complete all quick-intake fields.');
+      return;
+    }
+
+    setQuickIntakeStatus('success');
+    setQuickIntakeMessage('Quick intake saved. Continue below to request your full plan.');
+
+    setForm((prev) => ({
+      ...prev,
+      teamSize: quickIntake.teamSize,
+      workflow: quickIntake.primaryWorkflow,
+      stack: quickIntake.targetOutcome,
+    }));
+    setSubmitted(true);
+
+    trackEvent({
+      type: 'quick_capture_submit',
+      metadata: {
+        location: 'quick_capture',
+        pageType: 'consulting',
+        capturedIntent: 'implement',
+      },
+    }).catch(() => undefined);
   }
 
   return (
@@ -212,6 +257,47 @@ export default function RoiEstimator() {
           </div>
         </div>
       </div>
+
+      <section id="quick-intake" className="mt-8 rounded-2xl border border-indigo-500/25 bg-indigo-500/5 p-5">
+        <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Quick intake</p>
+        <h3 className="mt-2 font-display text-xl font-semibold text-white">Save context before full request</h3>
+        <p className="mt-1 text-sm text-zinc-300">
+          Share three details now. You can complete the full contact flow after this step.
+        </p>
+
+        <form className="mt-4 grid gap-4 md:grid-cols-3" onSubmit={handleQuickIntakeSubmit}>
+          <input
+            required
+            placeholder="Team size"
+            className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-white"
+            value={quickIntake.teamSize}
+            onChange={(event) => setQuickIntake((prev) => ({ ...prev, teamSize: event.target.value }))}
+          />
+          <input
+            required
+            placeholder="Primary workflow"
+            className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-white"
+            value={quickIntake.primaryWorkflow}
+            onChange={(event) => setQuickIntake((prev) => ({ ...prev, primaryWorkflow: event.target.value }))}
+          />
+          <input
+            required
+            placeholder="Target outcome"
+            className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-white"
+            value={quickIntake.targetOutcome}
+            onChange={(event) => setQuickIntake((prev) => ({ ...prev, targetOutcome: event.target.value }))}
+          />
+          <button type="submit" className="btn-secondary w-fit">
+            Continue to Full Plan Request
+          </button>
+        </form>
+
+        {quickIntakeMessage && (
+          <p className={`mt-3 text-sm ${quickIntakeStatus === 'error' ? 'text-red-300' : 'text-emerald-300'}`}>
+            {quickIntakeMessage}
+          </p>
+        )}
+      </section>
 
       {submitted && (
         <form className="mt-8 rounded-2xl border border-zinc-700 bg-zinc-950/80 p-5" onSubmit={handleLeadSubmit}>

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildSeoDashboard } from '@/app/lib/seo-dashboard';
+import { requireBoardSession } from '@/app/lib/board-auth';
 
 export const metadata: Metadata = {
   title: 'SEO Dashboard | Decryptica',
@@ -41,6 +42,19 @@ export default async function SeoDashboardPage({
 }: {
   searchParams?: Promise<{ range?: string }>;
 }) {
+  const isBoardAuth = await requireBoardSession();
+  if (!isBoardAuth) {
+    return (
+      <div className="max-w-5xl mx-auto px-6 py-12">
+        <h1 className="section-heading mb-4">Daily Traffic Dashboard</h1>
+        <div className="card-elevated p-8">
+          <p className="text-zinc-300 text-lg mb-4">Access restricted to board members.</p>
+          <p className="text-zinc-400 text-sm">Contact your administrator for access credentials.</p>
+        </div>
+      </div>
+    );
+  }
+
   const params = (await searchParams) ?? {};
   const selectedRange = parseRange(params.range);
   const dashboard = await buildSeoDashboard({ rangeDays: selectedRange });

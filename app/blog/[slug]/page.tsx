@@ -13,6 +13,9 @@ import IntentAwareConversionStrip from '../../components/IntentAwareConversionSt
 import TrackedFAQSection from '../../components/TrackedFAQSection';
 import HubSectionNav from '../../components/HubSectionNav';
 import HubRelatedModule from '../../components/HubRelatedModule';
+import { ArticleMilestoneStrip, ArticleSerpPromiseModules } from '../../components/ArticleSerpPromiseModules';
+import RouteDepthTracker from '../../components/RouteDepthTracker';
+import { getSubpillarBySlug, getSubpillarPath, inferSubpillarFromArticle, type PillarSlug } from '../../data/topic-routing';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -85,7 +88,17 @@ function FAQSchema({ faqs }: { faqs: any[] }) {
   );
 }
 
-function BreadcrumbSchema({ slug, category }: { slug: string; category: string }) {
+function BreadcrumbSchema({
+  slug,
+  category,
+  subpillar,
+  subpillarName,
+}: {
+  slug: string;
+  category: string;
+  subpillar: string;
+  subpillarName: string;
+}) {
   const categoryNames: Record<string, string> = {
     crypto: 'Crypto & DeFi',
     ai: 'Artificial Intelligence',
@@ -105,14 +118,14 @@ function BreadcrumbSchema({ slug, category }: { slug: string; category: string }
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Articles',
-        item: 'https://decryptica.com/articles',
+        name: categoryNames[category] || category,
+        item: `https://decryptica.com/topic/${category}`,
       },
       {
         '@type': 'ListItem',
         position: 3,
-        name: categoryNames[category] || category,
-        item: `https://decryptica.com/topic/${category}`,
+        name: subpillarName,
+        item: `https://decryptica.com/topic/${category}/${subpillar}`,
       },
       {
         '@type': 'ListItem',
@@ -681,36 +694,35 @@ function TLDNRBox({ excerpt }: { excerpt: string }) {
   );
 }
 
-function TrustSignalStrip({
+function FreshnessEvidenceStrip({
   article,
-  categoryLabel,
+  methodAnchorId,
 }: {
   article: any;
-  categoryLabel: string;
+  methodAnchorId: string;
 }) {
   const updated = article.lastUpdated || article.date;
-  const owner = article.author || 'Decryptica Editorial';
+  const sourcesReviewed = Number(article?.sourcesReviewed);
+  const hasSourcesCount = Number.isFinite(sourcesReviewed) && sourcesReviewed > 0;
 
   return (
     <section
-      className="my-8 rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-4"
-      aria-label="Trust signals"
+      className="mb-6 rounded-xl border border-zinc-800 bg-zinc-950/70 px-4 py-3"
+      aria-label="Freshness and evidence"
     >
-      <ul className="grid grid-cols-2 gap-2">
-        <li className="min-h-11 rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-2 text-sm text-zinc-300">
+      <ul className="grid gap-2 sm:grid-cols-3">
+        <li className="rounded-lg border border-zinc-800 bg-zinc-900/70 px-3 py-2 text-xs text-zinc-300">
           <span className="text-zinc-500">Last updated:</span> {updated}
         </li>
-        <li className="min-h-11 rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-2 text-sm text-zinc-300">
-          <span className="text-zinc-500">Evidence policy:</span>{' '}
-          <Link href="/privacy" className="text-emerald-300 underline underline-offset-4 hover:text-emerald-200">
-            Source and data standards
-          </Link>
+        <li className="rounded-lg border border-zinc-800 bg-zinc-900/70 px-3 py-2 text-xs text-zinc-300">
+          <span className="text-zinc-500">Sources reviewed:</span>{' '}
+          {hasSourcesCount ? sourcesReviewed : 'Editorially reviewed'}
         </li>
-        <li className="min-h-11 rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-2 text-sm text-zinc-300">
-          <span className="text-zinc-500">Disclosure:</span> Informational content only, not financial or legal advice.
-        </li>
-        <li className="min-h-11 rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-2 text-sm text-zinc-300">
-          <span className="text-zinc-500">Editorial owner:</span> {owner} ({categoryLabel})
+        <li className="rounded-lg border border-zinc-800 bg-zinc-900/70 px-3 py-2 text-xs text-zinc-300">
+          <span className="text-zinc-500">Method:</span>{' '}
+          <a href={`#${methodAnchorId}`} className="text-indigo-300 underline underline-offset-4 hover:text-indigo-200">
+            View methodology
+          </a>
         </li>
       </ul>
     </section>
@@ -884,14 +896,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     { id: 'tools-comparisons', label: 'Tools/Comparisons' },
     { id: 'next-step', label: 'Next Step' },
   ];
+  const subpillarSlug = inferSubpillarFromArticle(article);
+  const subpillarConfig = getSubpillarBySlug(article.category as PillarSlug, subpillarSlug);
+  const subpillarName = subpillarConfig?.name || subpillarSlug;
+  const subpillarPath = getSubpillarPath(article.category as PillarSlug, subpillarSlug);
 
   return (
     <>
       {/* JSON-LD Schemas */}
       <ArticleSchema article={article} url={canonicalUrl} />
       <FAQSchema faqs={faqs} />
-      <BreadcrumbSchema slug={slug} category={article.category} />
+      <BreadcrumbSchema
+        slug={slug}
+        category={article.category}
+        subpillar={subpillarSlug}
+        subpillarName={subpillarName}
+      />
       <AnalyticsTracker articleSlug={slug} category={article.category} />
+      <RouteDepthTracker depth={3} pillar={article.category} subpillar={subpillarSlug} />
 
       <div className="max-w-6xl mx-auto px-6 py-12">
         {/* Breadcrumb */}
@@ -900,15 +922,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             Home
           </Link>
           <span>/</span>
-          <Link href="/articles" className="hover:text-white transition-colors">
-            Articles
-          </Link>
-          <span>/</span>
           <Link
             href={`/topic/${article.category}`}
             className="hover:text-white transition-colors"
           >
             {categoryNames[article.category] || article.category}
+          </Link>
+          <span>/</span>
+          <Link href={subpillarPath} className="hover:text-white transition-colors">
+            {subpillarName}
           </Link>
           <span>/</span>
           <span className="text-zinc-400 truncate max-w-[200px]">
@@ -929,6 +951,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   className="topic-tag hover:bg-indigo-500/20 transition-colors"
                 >
                   {categoryNames[article.category] || article.category}
+                </Link>
+                <Link
+                  href={subpillarPath}
+                  className="topic-tag hover:bg-indigo-500/20 transition-colors"
+                >
+                  {subpillarName}
                 </Link>
                 {/* Editorial State Indicator */}
                 {article.status && article.status !== 'published' && (
@@ -989,6 +1017,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               />
             </div>
 
+            <ArticleMilestoneStrip articleSlug={slug} category={article.category} />
+            <FreshnessEvidenceStrip article={article} methodAnchorId="methodology" />
+
             {/* Subscribe Banner */}
             <div
               id="subscribe"
@@ -1005,6 +1036,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             <section id="key-questions" className="scroll-mt-28">
               <TLDNRBox excerpt={article.excerpt} />
+              <ArticleSerpPromiseModules
+                articleSlug={slug}
+                category={article.category}
+                title={article.title}
+                excerpt={article.excerpt}
+              />
             </section>
 
             {/* Article Content */}
@@ -1012,12 +1049,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div id="article-content" className="prose prose-invert prose-zinc max-w-none article-reading-body">
                 <div className="max-w-[75ch]">
                   {renderContent(article.content, {
-                    trustStrip: (
-                      <TrustSignalStrip
-                        article={article}
-                        categoryLabel={categoryNames[article.category] || article.category}
-                      />
-                    ),
                     relatedMid: (
                       <HubRelatedModule
                         heading="Related Guides"
@@ -1034,6 +1065,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   })}
                 </div>
               </div>
+            </section>
+
+            <section id="methodology" className="mt-8 scroll-mt-28 rounded-xl border border-zinc-800 bg-zinc-950/65 p-4">
+              <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-zinc-400">Method & Sources</h3>
+              <p className="mt-2 text-sm text-zinc-300">
+                Articles are reviewed by Decryptica editorial and updated when source conditions change. Treat this content as informational research, then validate assumptions with current primary data before execution.
+              </p>
             </section>
 
             {/* FAQ Section */}

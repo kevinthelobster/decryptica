@@ -3,6 +3,8 @@
  * Defines all funnel events with deterministic identifiers for joins.
  */
 
+export type IntentValue = 'learn' | 'calculate' | 'implement';
+
 export type FunnelStage =
   | 'impression'
   | 'ranking'
@@ -11,7 +13,9 @@ export type FunnelStage =
   | 'activation'
   | 'paid_conversion'
   | 'net_new_mrr'
-  | 'churn';
+  | 'churn'
+  | 'affiliate_click'
+  | 'sponsorship_lead';
 
 export interface BaseEvent {
   /** ISO 8601 timestamp */
@@ -140,6 +144,82 @@ export interface ChurnEvent extends BaseEvent {
   tenureMonths: number;
 }
 
+export interface AffiliateClickEvent extends BaseEvent {
+  event: 'affiliate_click';
+  /** Affiliate program identifier (e.g. "amazon-associates", "aesirx-affiliate") */
+  affiliateId: string;
+  /** Program name */
+  program: string;
+  /** Sub-partner ID within the program */
+  partnerId?: string;
+  /** Actual affiliate link clicked */
+  targetUrl: string;
+  /** Source article slug */
+  articleSlug?: string;
+  /** Content category */
+  category?: string;
+  /** User intent at click time */
+  intent?: IntentValue;
+  /** Position in list/grid */
+  position?: number;
+  /** UTM source */
+  utmSource?: string;
+  /** UTM medium */
+  utmMedium?: string;
+  /** UTM campaign */
+  utmCampaign?: string;
+}
+
+export interface SponsorshipLeadEvent extends BaseEvent {
+  event: 'sponsorship_lead';
+  /** Lead type */
+  leadType: 'demo_request' | 'audit_request' | 'consulting_inquiry' | 'partnership_inquiry';
+  /** Email hash (privacy-safe) */
+  emailHash?: string;
+  /** Company name */
+  company?: string;
+  /** Contact name */
+  name?: string;
+  /** Message/inquiry text */
+  message?: string;
+  /** Source article or page */
+  sourceContent?: string;
+  /** Content category */
+  category?: string;
+  /** User intent */
+  intent?: IntentValue;
+  /** UTM source */
+  utmSource?: string;
+  /** UTM medium */
+  utmMedium?: string;
+  /** UTM campaign */
+  utmCampaign?: string;
+  /** Pipeline status */
+  pipelineStatus: 'new' | 'contacted' | 'qualified' | 'closed_won' | 'closed_lost';
+}
+
+export interface DailyRollupFields {
+  date: string; // YYYY-MM-DD
+  /** Total page views */
+  pageViews: number;
+  /** Total affiliate clicks */
+  affiliateClicks: number;
+  /** Total sponsorship leads */
+  sponsorshipLeads: number;
+  /** Signups */
+  signups: number;
+  /** Subscribers (email confirmed) */
+  subscribers: number;
+  /** AI category page views */
+  aiImpressions: number;
+  /** Crypto category page views */
+  cryptoImpressions: number;
+  /** Automation category page views */
+  automationImpressions: number;
+  /** Revenue (cents) — for affiliate payouts or ad revenue */
+  revenueCents: number;
+}
+
 export type KpiEvent =
   | ImpressionEvent
   | RankingEvent
@@ -148,4 +228,6 @@ export type KpiEvent =
   | ActivationEvent
   | PaidConversionEvent
   | NetNewMrrEvent
-  | ChurnEvent;
+  | ChurnEvent
+  | AffiliateClickEvent
+  | SponsorshipLeadEvent;

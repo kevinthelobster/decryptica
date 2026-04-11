@@ -41,14 +41,16 @@ const SUBMISSIONS_PATH = path.join(process.cwd(), 'data/prompts/submissions.json
 const VOTES_PATH = path.join(process.cwd(), 'data/prompts/votes.json');
 const PROMPT_EDITS_PATH = path.join(process.cwd(), 'data/prompts/prompt_edits.json');
 
-// Telegram bot config
-const TELEGRAM_BOT_TOKEN = '8332002226:AAG5PEkMAjgjVtYzQYJ0kEM1XROPN2MxXU8';
-const TELEGRAM_CHAT_ID = '8324073314';
-
 async function sendTelegramMessage(text: string) {
   try {
-    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-    const body = JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text });
+    const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
+    const telegramChatId = process.env.TELEGRAM_CHAT_ID;
+    if (!telegramBotToken || !telegramChatId) {
+      return false;
+    }
+
+    const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+    const body = JSON.stringify({ chat_id: telegramChatId, text });
 
     const res = await fetch(url, {
       method: 'POST',

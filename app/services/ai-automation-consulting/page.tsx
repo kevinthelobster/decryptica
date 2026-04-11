@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import TrackedLink from '@/app/components/TrackedLink';
 import RoiEstimator from './RoiEstimator';
+import DestinationConfidenceLayer from '@/app/components/DestinationConfidenceLayer';
 
 export const metadata: Metadata = {
   title: 'AI Automation ROI Calculator + Workflow Strategy',
@@ -14,14 +15,14 @@ export const metadata: Metadata = {
     'automation consulting',
   ],
   alternates: {
-    canonical: 'https://www.decryptica.com/services/ai-automation-consulting',
+    canonical: 'https://decryptica.com/services/ai-automation-consulting',
   },
   openGraph: {
     title: 'AI Automation ROI Calculator + Workflow Strategy',
     description:
       'Estimate workflow automation savings, payback period, and annual ROI. Get a practical AI automation plan tailored to your team.',
     type: 'website',
-    url: 'https://www.decryptica.com/services/ai-automation-consulting',
+    url: 'https://decryptica.com/services/ai-automation-consulting',
   },
 };
 
@@ -72,7 +73,7 @@ const serviceSchema = {
   provider: {
     '@type': 'Organization',
     name: 'Decryptica',
-    url: 'https://www.decryptica.com',
+    url: 'https://decryptica.com',
   },
   description:
     'Workflow automation assessment and implementation planning focused on measurable ROI, payback period, and operational risk reduction.',
@@ -87,13 +88,13 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://www.decryptica.com',
+      item: 'https://decryptica.com',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Services',
-      item: 'https://www.decryptica.com/services/ai-automation-consulting',
+      item: 'https://decryptica.com/services/ai-automation-consulting',
     },
   ],
 };
@@ -198,6 +199,8 @@ export default function AIAutomationConsultingPage() {
             </p>
           </div>
         </section>
+
+        <DestinationConfidenceLayer pageType="consulting" />
 
         <section className="mx-auto grid max-w-7xl gap-8 px-6 py-14 lg:grid-cols-3">
           <article className="card-elevated p-6">

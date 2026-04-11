@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { FormEvent, useMemo, useState } from 'react';
+import { trackEvent } from '@/app/lib/analytics';
 
 export const PROVIDERS = [
   // OpenAI
@@ -75,6 +76,9 @@ export default function AIPriceCalculator() {
   const [filterProvider, setFilterProvider] = useState<FilterProvider>('all');
   const [filterOpenSource, setFilterOpenSource] = useState<FilterOpenSource>('all');
   const [showFree, setShowFree] = useState<boolean>(true);
+  const [quickCaptureEmail, setQuickCaptureEmail] = useState('');
+  const [quickCaptureStatus, setQuickCaptureStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [quickCaptureMessage, setQuickCaptureMessage] = useState('');
 
   const inputNum = parseInt(inputTokens.replace(/,/g, '')) || 0;
   const outputNum = parseInt(outputTokens.replace(/,/g, '')) || 0;
@@ -132,6 +136,43 @@ export default function AIPriceCalculator() {
     return [...new Set(PROVIDERS.map(p => p.provider))].sort();
   }, []);
 
+  const topThree = pricedResults.slice(0, 3);
+
+  async function handleQuickCaptureSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setQuickCaptureStatus('loading');
+    setQuickCaptureMessage('');
+
+    trackEvent({
+      type: 'quick_capture_submit',
+      metadata: {
+        location: 'quick_capture',
+        pageType: 'calculator',
+        capturedIntent: 'calculate',
+      },
+    }).catch(() => undefined);
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: quickCaptureEmail }),
+      });
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload?.error || 'Unable to save your recommendation.');
+      }
+
+      setQuickCaptureStatus('success');
+      setQuickCaptureMessage('Recommendation saved. We sent your top picks to this inbox.');
+      setQuickCaptureEmail('');
+    } catch (error) {
+      setQuickCaptureStatus('error');
+      setQuickCaptureMessage(error instanceof Error ? error.message : 'Unable to save your recommendation.');
+    }
+  }
+
   return (
     <div className="min-h-screen bg-zinc-950 text-white p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
@@ -155,7 +196,7 @@ export default function AIPriceCalculator() {
           </div>
         </div>
 
-        <div className="card-elevated p-6 mb-6">
+        <div id="calculator-inputs" className="card-elevated p-6 mb-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
               <label className="block text-sm font-medium text-zinc-400 mb-2">Input Tokens</label>
@@ -245,7 +286,45 @@ export default function AIPriceCalculator() {
           </div>
         )}
 
-        <div className="card-elevated overflow-hidden">
+        {totalTokens > 0 && pricedResults.length > 0 && (
+          <section id="save-recommendation" className="card-elevated mb-6 border border-indigo-500/30 bg-indigo-500/5 p-5">
+            <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Save recommendation</p>
+            <h2 className="mt-2 text-lg font-semibold text-white">Email my top 3 model picks</h2>
+            <p className="mt-1 text-sm text-zinc-300">
+              Keep your shortlist handy without committing to a full sales flow.
+            </p>
+            {topThree.length > 0 && (
+              <p className="mt-2 text-xs text-zinc-400">
+                Current top picks: {topThree.map((item) => item.name).join(', ')}.
+              </p>
+            )}
+            <form className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center" onSubmit={handleQuickCaptureSubmit}>
+              <input
+                type="email"
+                required
+                value={quickCaptureEmail}
+                onChange={(event) => setQuickCaptureEmail(event.target.value)}
+                disabled={quickCaptureStatus === 'loading' || quickCaptureStatus === 'success'}
+                placeholder="you@company.com"
+                className="h-11 w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 text-sm text-white placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none sm:flex-1"
+              />
+              <button
+                type="submit"
+                disabled={quickCaptureStatus === 'loading' || quickCaptureStatus === 'success'}
+                className="btn-primary h-11 justify-center"
+              >
+                {quickCaptureStatus === 'loading' ? 'Sending...' : quickCaptureStatus === 'success' ? 'Sent' : 'Send Picks'}
+              </button>
+            </form>
+            {quickCaptureMessage && (
+              <p className={`mt-3 text-sm ${quickCaptureStatus === 'error' ? 'text-red-300' : 'text-emerald-300'}`}>
+                {quickCaptureMessage}
+              </p>
+            )}
+          </section>
+        )}
+
+        <div id="calculator-results" className="card-elevated overflow-hidden">
           <div className="hidden md:grid grid-cols-7 gap-4 px-6 py-3 bg-zinc-900/50 border-b border-zinc-800 text-xs font-medium text-zinc-500 uppercase tracking-wider">
             <div className="col-span-2">Provider</div>
             <div className="text-right">Input</div>

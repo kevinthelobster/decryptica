@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "seo:checkpoint": "node scripts/seo_daily_checkpoint.js",
-    "seo:checkpoint:date": "node scripts/seo_daily_checkpoint.js"
+    "seo:checkpoint:date": "node scripts/seo_daily_checkpoint.js",
+    "kpi:sprint-dashboard": "tsx scripts/export_sprint_dashboard.ts"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
@@ -29,6 +30,7 @@
     "eslint-config-next": "15.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.0",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

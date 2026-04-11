@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { updatePrompt, toggleStaffPick, getPromptById } from '@/app/api/prompts/db';
-
-const ADMIN_PASSWORD = process.env.PROMPTS_ADMIN_PASSWORD || 'kevin123';
+import { MissingSecretError, requireSecret } from '@/app/lib/server-secrets';
 
 export async function GET(request: Request) {
   try {
+    const adminPassword = requireSecret('PROMPTS_ADMIN_PASSWORD');
     const cookieStore = await cookies();
-    if (cookieStore.get('prompts_admin')?.value !== ADMIN_PASSWORD) {
+    if (cookieStore.get('prompts_admin')?.value !== adminPassword) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -20,6 +20,9 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ prompt });
   } catch (error) {
+    if (error instanceof MissingSecretError) {
+      return NextResponse.json({ error: 'Admin auth is not configured' }, { status: 503 });
+    }
     console.error('GET /api/prompts/admin/edit error:', error);
     return NextResponse.json({ error: 'Failed to fetch prompt' }, { status: 500 });
   }
@@ -27,8 +30,9 @@ export async function GET(request: Request) {
 
 export async function PUT(request: Request) {
   try {
+    const adminPassword = requireSecret('PROMPTS_ADMIN_PASSWORD');
     const cookieStore = await cookies();
-    if (cookieStore.get('prompts_admin')?.value !== ADMIN_PASSWORD) {
+    if (cookieStore.get('prompts_admin')?.value !== adminPassword) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -40,6 +44,9 @@ export async function PUT(request: Request) {
 
     return NextResponse.json({ success: true, prompt: updated });
   } catch (error) {
+    if (error instanceof MissingSecretError) {
+      return NextResponse.json({ error: 'Admin auth is not configured' }, { status: 503 });
+    }
     console.error('PUT /api/prompts/admin/edit error:', error);
     return NextResponse.json({ error: 'Failed to update prompt' }, { status: 500 });
   }
@@ -47,8 +54,9 @@ export async function PUT(request: Request) {
 
 export async function POST(request: Request) {
   try {
+    const adminPassword = requireSecret('PROMPTS_ADMIN_PASSWORD');
     const cookieStore = await cookies();
-    if (cookieStore.get('prompts_admin')?.value !== ADMIN_PASSWORD) {
+    if (cookieStore.get('prompts_admin')?.value !== adminPassword) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -63,6 +71,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ error: 'Unknown action' }, { status: 400 });
   } catch (error) {
+    if (error instanceof MissingSecretError) {
+      return NextResponse.json({ error: 'Admin auth is not configured' }, { status: 503 });
+    }
     console.error('POST /api/prompts/admin/edit error:', error);
     return NextResponse.json({ error: 'Failed to perform action' }, { status: 500 });
   }

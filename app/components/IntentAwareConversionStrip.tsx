@@ -61,6 +61,12 @@ export default function IntentAwareConversionStrip({ articleSlug, category }: In
     setContext(resolveIntentContext());
   }, []);
 
+  useEffect(() => {
+    const onIntentUpdated = () => setContext(resolveIntentContext());
+    window.addEventListener('dc:intent-updated', onIntentUpdated);
+    return () => window.removeEventListener('dc:intent-updated', onIntentUpdated);
+  }, []);
+
   // Track CTA_view when section enters the viewport
   useEffect(() => {
     if (!sectionRef.current || viewTracked.current) return;

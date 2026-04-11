@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
-import { articles, topics } from './data/articles';
+import { articles } from './data/articles';
+import { SUBPILLARS_BY_PILLAR } from './data/topic-routing';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.decryptica.com';
+  const baseUrl = 'https://decryptica.com';
   const now = new Date();
   
   const staticPages: MetadataRoute.Sitemap = [
@@ -28,19 +29,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/topic/crypto`,
       lastModified: now,
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/topic/ai`,
       lastModified: now,
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/topic/automation`,
       lastModified: now,
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/about`,
@@ -60,7 +61,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.85,
     },
+    {
+      url: `${baseUrl}/tools/ai-price-calculator`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
   ];
+
+  const subpillarPages: MetadataRoute.Sitemap = (Object.entries(SUBPILLARS_BY_PILLAR) as [string, { slug: string }[]][])
+    .flatMap(([pillar, subpillars]) =>
+      subpillars.map((subpillar) => ({
+        url: `${baseUrl}/topic/${pillar}/${subpillar.slug}`,
+        lastModified: now,
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      }))
+    );
 
   // Add blog article pages
   const articlePages: MetadataRoute.Sitemap = articles.map((article) => {
@@ -75,5 +92,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...staticPages, ...articlePages];
+  return [...staticPages, ...subpillarPages, ...articlePages];
 }

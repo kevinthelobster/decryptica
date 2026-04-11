@@ -1,6 +1,6 @@
 {
-  "totalArticles": 47,
-  "publishedThisWeek": 30,
+  "totalArticles": 48,
+  "publishedThisWeek": 31,
   "totalWordCount": 5383,
   "avgWordCount": 1076,
   "thinContent": 0,
@@ -44,6 +44,13 @@
     }
   ],
   "_articles": [
+    {
+      "slug": "defi-s-real-problem-isn-t-regulatory-it-s-ux",
+      "title": "DeFi's Real Problem Isn't Regulatory\u2014It's UX",
+      "category": "crypto",
+      "date": "2026-04-11",
+      "wordCount": null
+    },
     {
       "slug": "why-bitcoin-s-institutional-inflows-tell-a-different-story",
       "title": "Why Bitcoin's Institutional Inflows Tell a Different Story",

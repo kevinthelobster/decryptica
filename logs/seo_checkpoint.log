@@ -1,0 +1,12 @@
+[SEO Checkpoint] Generating report for 2026-04-11...
+[SEO Checkpoint] Fatal error: Error: @vercel/kv: Missing required environment variables KV_REST_API_URL and KV_REST_API_TOKEN
+    at Object.get (/Users/kevinsimac/.openclaw/workspace/decryptica/node_modules/@vercel/kv/dist/index.cjs:100:17)
+    at getOr0 (/Users/kevinsimac/.openclaw/workspace/decryptica/scripts/seo_daily_checkpoint.js:29:22)
+    at generateDailyReport (/Users/kevinsimac/.openclaw/workspace/decryptica/scripts/seo_daily_checkpoint.js:124:29)
+    at Object.<anonymous> (/Users/kevinsimac/.openclaw/workspace/decryptica/scripts/seo_daily_checkpoint.js:320:1)
+    at Module._compile (node:internal/modules/cjs/loader:1705:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1838:10)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Module._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)

@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server';
 import { rejectSubmission } from '@/app/api/prompts/db';
 import { cookies } from 'next/headers';
-
-const ADMIN_PASSWORD = process.env.PROMpts_ADMIN_PASSWORD || 'kevin123';
+import { MissingSecretError, requireSecret } from '@/app/lib/server-secrets';
 
 export async function POST(request: Request) {
   try {
+    const adminPassword = requireSecret('PROMPTS_ADMIN_PASSWORD');
     const cookieStore = await cookies();
-    if (cookieStore.get('prompts_admin')?.value !== ADMIN_PASSWORD) {
+    if (cookieStore.get('prompts_admin')?.value !== adminPassword) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -19,6 +19,9 @@ export async function POST(request: Request) {
     rejectSubmission(submission_id);
     return NextResponse.json({ success: true });
   } catch (error) {
+    if (error instanceof MissingSecretError) {
+      return NextResponse.json({ error: 'Admin auth is not configured' }, { status: 503 });
+    }
     console.error('POST /api/prompts/admin/reject error:', error);
     return NextResponse.json({ error: 'Failed to reject' }, { status: 500 });
   }

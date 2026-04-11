@@ -16,6 +16,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { kv } from '@vercel/kv';
+import { MissingSecretError, requireSecret } from '@/app/lib/server-secrets';
 
 const TTL_90_DAYS = 60 * 60 * 24 * 90;
 const ALLOWED_TYPES = new Set([
@@ -36,6 +37,13 @@ const ALLOWED_TYPES = new Set([
   'intent_set',
   'intent_switch',
   'intent_banner_dismiss',
+  'route_depth_progress',
+  'conversion_confidence_impression',
+  'conversion_confidence_cta_click',
+  'destination_step_progress',
+  'quick_capture_submit',
+  'exit_rescue_impression',
+  'exit_rescue_click',
   'scroll_depth',
   'toc_jump',
   'hub_nav_click',
@@ -44,6 +52,12 @@ const ALLOWED_TYPES = new Set([
   'hub_primary_cta_click',
   'hub_secondary_cta_click',
   'faq_expand',
+  'affiliate_click',
+  'sponsorship_lead',
+  'serp_promise_impression',
+  'serp_promise_action_click',
+  'article_milestone_reached',
+  'article_outcome_selected',
 ]);
 
 export async function POST(request: NextRequest) {
@@ -141,7 +155,7 @@ export async function GET(request: NextRequest) {
   try {
     // Basic auth check — in production, tie to a real admin session
     const authHeader = request.headers.get('authorization');
-    const expectedToken = process.env.ANALYTICS_DEBUG_TOKEN || 'decryptica-debug';
+    const expectedToken = requireSecret('ANALYTICS_DEBUG_TOKEN');
     if (authHeader !== `Bearer ${expectedToken}`) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -165,6 +179,13 @@ export async function GET(request: NextRequest) {
       'intent_set',
       'intent_switch',
       'intent_banner_dismiss',
+      'route_depth_progress',
+      'conversion_confidence_impression',
+      'conversion_confidence_cta_click',
+      'destination_step_progress',
+      'quick_capture_submit',
+      'exit_rescue_impression',
+      'exit_rescue_click',
       'scroll_depth',
       'toc_jump',
       'hub_nav_click',
@@ -173,6 +194,10 @@ export async function GET(request: NextRequest) {
       'hub_primary_cta_click',
       'hub_secondary_cta_click',
       'faq_expand',
+      'serp_promise_impression',
+      'serp_promise_action_click',
+      'article_milestone_reached',
+      'article_outcome_selected',
     ];
     const counters: Record<string, number> = {};
 
@@ -228,6 +253,9 @@ export async function GET(request: NextRequest) {
       },
     }, { status: 200 });
   } catch (err) {
+    if (err instanceof MissingSecretError) {
+      return NextResponse.json({ error: 'Debug auth is not configured' }, { status: 503 });
+    }
     console.error('[Analytics API] GET debug error:', err);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
