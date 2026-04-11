@@ -99,11 +99,11 @@ export default function PromptsPage() {
           </button>
         </div>
 
-        <div className="flex items-center gap-2 text-sm text-zinc-400">
-          <span>Category:</span>
+        <div className="flex gap-2 text-sm text-zinc-400 overflow-x-auto px-6 -mx-6 md:overflow-visible md:px-0 md:mx-0 md:flex-nowrap flex-nowrap">
+          <span className="shrink-0">Category:</span>
           <button
             onClick={() => setCategory('')}
-            className={`px-3 py-1.5 rounded-lg transition-colors ${!category ? 'bg-indigo-600 text-white' : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300'}`}
+            className={`px-3 py-1.5 rounded-lg transition-colors shrink-0 ${!category ? 'bg-indigo-600 text-white' : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300'}`}
           >
             All
           </button>
@@ -111,7 +111,7 @@ export default function PromptsPage() {
             <button
               key={cat}
               onClick={() => setCategory(cat)}
-              className={`px-3 py-1.5 rounded-lg transition-colors ${category === cat ? 'bg-indigo-600 text-white' : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300'}`}
+              className={`px-3 py-1.5 rounded-lg transition-colors shrink-0 ${category === cat ? 'bg-indigo-600 text-white' : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300'}`}
             >
               {cat}
             </button>
