@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackEvent } from '../lib/analytics';
 
 export default function SubscribeForm() {
   const [email, setEmail] = useState('');
@@ -10,6 +11,11 @@ export default function SubscribeForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
+
+    trackEvent({
+      type: 'form_submit',
+      metadata: { location: 'article_subscribe_form', cta: 'subscribe' },
+    }).catch(() => undefined);
 
     try {
       const res = await fetch('/api/subscribe', {
@@ -53,6 +59,12 @@ export default function SubscribeForm() {
         required
         disabled={status === 'loading'}
         className="flex-1 px-5 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-indigo-200 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all disabled:opacity-50"
+        onFocus={() => {
+          trackEvent({
+            type: 'form_start',
+            metadata: { location: 'article_subscribe_form', cta: 'subscribe' },
+          }).catch(() => undefined);
+        }}
       />
       <button
         type="submit"

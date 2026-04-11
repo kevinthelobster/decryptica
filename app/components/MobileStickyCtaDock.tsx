@@ -1,7 +1,9 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { trackEvent } from '../lib/analytics';
 import TrackedLink from './TrackedLink';
+import { resolveIntentContext } from '../lib/intent-continuity';
 
 interface MobileStickyCtaDockProps {
   articleSlug: string;
@@ -10,13 +12,37 @@ interface MobileStickyCtaDockProps {
 }
 
 export default function MobileStickyCtaDock({ articleSlug, category, endMarkerId }: MobileStickyCtaDockProps) {
+  const [context, setContext] = useState(() => resolveIntentContext());
   const storageKey = useMemo(() => `dc_mobile_cta_dismissed_${articleSlug}`, [articleSlug]);
   const [dismissed, setDismissed] = useState(false);
   const [visible, setVisible] = useState(false);
+  const viewTracked = useRef(false);
+
+  const ctaConfig = useMemo(() => {
+    if (context.intent === 'calculate') {
+      return {
+        href: '/tools/ai-price-calculator',
+        label: 'Calculate ROI',
+      };
+    }
+
+    if (context.intent === 'implement') {
+      return {
+        href: '/services/ai-automation-consulting',
+        label: 'Start Implementation',
+      };
+    }
+
+    return {
+      href: '#subscribe',
+      label: 'Get Insights',
+    };
+  }, [context.intent]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
     setDismissed(sessionStorage.getItem(storageKey) === '1');
+    setContext(resolveIntentContext());
   }, [storageKey]);
 
   useEffect(() => {
@@ -38,7 +64,21 @@ export default function MobileStickyCtaDock({ articleSlug, category, endMarkerId
       const marker = document.getElementById(endMarkerId);
       const nearFooter = marker ? marker.getBoundingClientRect().top <= viewport - 96 : false;
 
-      setVisible(pct >= 35 && !nearFooter);
+      // Track CTA_view when sticky dock first becomes visible
+      if (pct >= 40 && !nearFooter && !viewTracked.current) {
+        viewTracked.current = true;
+        trackEvent({
+          type: 'cta_view',
+          articleSlug,
+          metadata: {
+            location: 'article_mobile_sticky',
+            cta: context.intent || 'learn',
+            category,
+          },
+        }).catch(() => undefined);
+      }
+
+      setVisible(pct >= 40 && !nearFooter);
     };
 
     onScroll();
@@ -68,17 +108,17 @@ export default function MobileStickyCtaDock({ articleSlug, category, endMarkerId
       <div className="rounded-2xl border border-indigo-400/40 bg-zinc-950/95 p-3 shadow-xl shadow-indigo-900/30 backdrop-blur">
         <div className="flex items-center gap-2">
           <TrackedLink
-            href="#subscribe"
+            href={ctaConfig.href}
             className="btn-primary h-11 flex-1 justify-center"
             eventType="cta_click"
             articleSlug={articleSlug}
             metadata={{
               location: 'article_mobile_sticky',
-              cta: 'subscribe',
+              cta: context.intent || 'learn',
               category,
             }}
           >
-            Get Weekly Briefs
+            {ctaConfig.label}
           </TrackedLink>
           <button
             type="button"

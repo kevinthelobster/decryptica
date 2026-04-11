@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { trackEvent } from '../lib/analytics';
+import { resolveIntentContext } from '../lib/intent-continuity';
 
 type CaptureState = 'idle' | 'loading' | 'success' | 'error';
 
@@ -12,9 +13,41 @@ interface MidArticleLeadCaptureProps {
 }
 
 export default function MidArticleLeadCapture({ articleSlug, category }: MidArticleLeadCaptureProps) {
+  const [context, setContext] = useState(() => resolveIntentContext());
   const [email, setEmail] = useState('');
   const [state, setState] = useState<CaptureState>('idle');
   const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    setContext(resolveIntentContext());
+  }, []);
+
+  const variantCopy = useMemo(() => {
+    if (context.intent === 'calculate') {
+      return {
+        heading: 'Estimate ROI before you build',
+        body: 'Run the numbers first, then decide where to invest effort.',
+        secondaryHref: '/tools/ai-price-calculator',
+        secondaryLabel: 'Open the free calculator',
+      };
+    }
+
+    if (context.intent === 'implement') {
+      return {
+        heading: 'Turn strategy into a 7-day rollout plan',
+        body: 'Get scoped execution guidance so your team can ship faster.',
+        secondaryHref: '/services/ai-automation-consulting',
+        secondaryLabel: 'Book an automation audit',
+      };
+    }
+
+    return {
+      heading: 'Get weekly operator insights for your stack',
+      body: 'One practical breakdown each week on AI, crypto, and automation shifts that matter.',
+      secondaryHref: '/articles',
+      secondaryLabel: 'Read more tactical guides',
+    };
+  }, [context.intent]);
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -23,12 +56,26 @@ export default function MidArticleLeadCapture({ articleSlug, category }: MidArti
     setMessage('');
 
     trackEvent({
+      type: 'form_submit',
+      articleSlug,
+      metadata: {
+        location: 'article_mid_capture',
+        cta: 'subscribe',
+        category,
+        intent: context.intent || 'learn',
+      },
+    }).catch(() => undefined);
+
+    trackEvent({
       type: 'cta_click',
       articleSlug,
       metadata: {
         location: 'article_mid_capture',
         cta: 'subscribe',
         category,
+        intent: context.intent || 'learn',
+        intentSource: context.intentSource,
+        intentDerivedFrom: context.intentDerivedFrom,
       },
     }).catch(() => undefined);
 
@@ -58,6 +105,9 @@ export default function MidArticleLeadCapture({ articleSlug, category }: MidArti
           location: 'article_mid_capture',
           cta: 'subscribe',
           category,
+          intent: context.intent || 'learn',
+          intentSource: context.intentSource,
+          intentDerivedFrom: context.intentDerivedFrom,
         },
       }).catch(() => undefined);
     } catch {
@@ -72,10 +122,8 @@ export default function MidArticleLeadCapture({ articleSlug, category }: MidArti
       aria-label="Mid-article signup"
     >
       <p className="text-xs font-semibold uppercase tracking-wider text-cyan-300">Mid-Article Brief</p>
-      <h3 className="mt-2 font-display text-xl font-semibold text-white">Want the next signal before everyone else?</h3>
-      <p className="mt-2 text-sm leading-relaxed text-zinc-300">
-        Get one practical breakdown each week on AI, crypto, and automation trends that actually matter.
-      </p>
+      <h3 className="mt-2 font-display text-xl font-semibold text-white">{variantCopy.heading}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-zinc-300">{variantCopy.body}</p>
 
       <div className="mt-4 min-h-24">
         <form onSubmit={onSubmit} className="flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -86,6 +134,18 @@ export default function MidArticleLeadCapture({ articleSlug, category }: MidArti
             onChange={(e) => setEmail(e.target.value)}
             disabled={state === 'loading' || state === 'success'}
             placeholder="you@company.com"
+            onFocus={() => {
+              trackEvent({
+                type: 'form_start',
+                articleSlug,
+                metadata: {
+                  location: 'article_mid_capture',
+                  cta: 'subscribe',
+                  category,
+                  intent: context.intent || 'learn',
+                },
+              }).catch(() => undefined);
+            }}
             className="h-11 w-full rounded-lg border border-cyan-200/20 bg-zinc-950/70 px-4 text-sm text-white placeholder:text-zinc-500 focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/30 sm:flex-1"
           />
           <button
@@ -107,10 +167,10 @@ export default function MidArticleLeadCapture({ articleSlug, category }: MidArti
       </div>
 
       <Link
-        href="/tools/ai-price-calculator"
+        href={variantCopy.secondaryHref}
         className="mt-3 inline-flex text-sm text-cyan-300 underline decoration-cyan-400/60 underline-offset-4 hover:text-cyan-200"
       >
-        Prefer to compare tools first? Open the free calculator.
+        {variantCopy.secondaryLabel}
       </Link>
     </section>
   );

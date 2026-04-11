@@ -8,6 +8,11 @@ import MidArticleLeadCapture from '../../components/MidArticleLeadCapture';
 import MobileProgressSheet from '../../components/MobileProgressSheet';
 import MobileStickyCtaDock from '../../components/MobileStickyCtaDock';
 import TrackedLink from '../../components/TrackedLink';
+import IntentContextBanner from '../../components/IntentContextBanner';
+import IntentAwareConversionStrip from '../../components/IntentAwareConversionStrip';
+import TrackedFAQSection from '../../components/TrackedFAQSection';
+import HubSectionNav from '../../components/HubSectionNav';
+import HubRelatedModule from '../../components/HubRelatedModule';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -176,6 +181,28 @@ function getRelatedArticles(article: any, allArticles: any[]): any[] {
   return related;
 }
 
+function getIntentBadgeFromTitle(title: string): 'Learn' | 'Calculate' | 'Implement' {
+  const lower = title.toLowerCase();
+  if (lower.includes('best') || lower.includes('vs') || lower.includes('compare')) {
+    return 'Calculate';
+  }
+  if (lower.includes('how to') || lower.includes('setup') || lower.includes('guide')) {
+    return 'Implement';
+  }
+  return 'Learn';
+}
+
+function toRelatedModuleItems(related: any[]) {
+  return related.slice(0, 3).map((item) => ({
+    href: `/blog/${item.slug}`,
+    title: item.title,
+    valueProp: item.excerpt,
+    readTime: item.readTime,
+    intentBadge: getIntentBadgeFromTitle(item.title),
+    articleSlug: item.slug,
+  }));
+}
+
 // ─── SEO Copy Framework: Headline/Deck Conventions by Surface ──────────────
 //
 // AI surface: How-to titles, tool comparisons, implementation guides
@@ -326,12 +353,14 @@ function renderContent(
   insertions?: {
     trustStrip?: React.ReactNode;
     midCapture?: React.ReactNode;
+    relatedMid?: React.ReactNode;
   }
 ) {
   const elements: React.ReactNode[] = [];
   const blocks = content.split(/(?:^|\n)(?=## )/);
   let majorSectionsSeen = 0;
   let trustInserted = false;
+  let relatedInserted = false;
   let midInserted = false;
 
   blocks.forEach((block, blockIndex) => {
@@ -364,7 +393,12 @@ function renderContent(
         trustInserted = true;
       }
 
-      if (majorSectionsSeen === 2 && insertions?.midCapture && !midInserted) {
+      if (majorSectionsSeen === 2 && insertions?.relatedMid && !relatedInserted) {
+        elements.push(<div key="related-mid">{insertions.relatedMid}</div>);
+        relatedInserted = true;
+      }
+
+      if (majorSectionsSeen === 3 && insertions?.midCapture && !midInserted) {
         elements.push(<div key="mid-capture">{insertions.midCapture}</div>);
         midInserted = true;
       }
@@ -379,6 +413,10 @@ function renderContent(
 
   if (!midInserted && insertions?.midCapture) {
     elements.push(<div key="mid-capture-fallback">{insertions.midCapture}</div>);
+  }
+
+  if (!relatedInserted && insertions?.relatedMid) {
+    elements.push(<div key="related-mid-fallback">{insertions.relatedMid}</div>);
   }
 
   return elements;
@@ -629,39 +667,7 @@ function renderInline(text: string): React.ReactNode {
     return part;
   });
 }
-
 // ─── FAQ Section Renderer ───────────────────────────────────────────────────
-
-function FAQSection({ faqs }: { faqs: any[] }) {
-  if (!faqs || faqs.length === 0) return null;
-
-  return (
-    <section className="mt-12 pt-8 border-t border-zinc-800">
-      <h2 className="font-display text-2xl font-bold text-white mb-6 flex items-center gap-2">
-        <span className="text-indigo-400">❓</span> Frequently Asked Questions
-      </h2>
-      <div className="space-y-4">
-        {faqs.map((faq, i) => (
-          <details
-            key={i}
-            className="group bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden"
-          >
-            <summary className="flex items-center justify-between cursor-pointer p-5 text-white font-medium list-none hover:bg-zinc-800/30 transition-colors">
-              <span>{faq.question}</span>
-              <span className="text-indigo-400 group-open:rotate-45 transition-transform text-xl ml-4">
-                +
-              </span>
-            </summary>
-            <div className="px-5 pb-5 text-zinc-400 leading-relaxed">
-              {faq.answer}
-            </div>
-          </details>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 // ─── TL;DR Box ─────────────────────────────────────────────────────────────
 
 function TLDNRBox({ excerpt }: { excerpt: string }) {
@@ -860,6 +866,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const canonicalUrl = `https://decryptica.com/blog/${slug}`;
   const wordCount = estimateWordCount(article.content);
   const relatedArticles = getRelatedArticles(article, articles);
+  const relatedModuleItems = toRelatedModuleItems(relatedArticles);
   const headings = extractHeadings(article.content);
 
   // Auto-generate FAQs from the article content if none provided
@@ -870,6 +877,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     ai: 'Artificial Intelligence',
     automation: 'Automation',
   };
+
+  const navSections = [
+    { id: 'overview', label: 'Overview' },
+    { id: 'key-questions', label: 'Key Questions' },
+    { id: 'tools-comparisons', label: 'Tools/Comparisons' },
+    { id: 'next-step', label: 'Next Step' },
+  ];
 
   return (
     <>
@@ -908,7 +922,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Main Content */}
           <article className="lg:col-span-3">
             {/* Header */}
-            <header className="mb-8">
+            <header id="overview" className="mb-8 scroll-mt-28">
               <div className="flex items-center gap-3 mb-4">
                 <Link
                   href={`/topic/${article.category}`}
@@ -962,6 +976,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             </header>
 
+            <IntentContextBanner pageType="article" category={article.category} articleSlug={slug} />
+
+            <div className="mb-8">
+              <HubSectionNav
+                sections={navSections}
+                surface="article"
+                category={article.category}
+                slug={slug}
+                location="article_local_nav"
+                moduleVariant="sticky"
+              />
+            </div>
+
             {/* Subscribe Banner */}
             <div
               id="subscribe"
@@ -976,82 +1003,58 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <SubscribeForm />
             </div>
 
-            {/* TL;DR Box */}
-            <TLDNRBox excerpt={article.excerpt} />
+            <section id="key-questions" className="scroll-mt-28">
+              <TLDNRBox excerpt={article.excerpt} />
+            </section>
 
             {/* Article Content */}
-            <div id="article-content" className="prose prose-invert prose-zinc max-w-none article-reading-body">
-              <div className="max-w-[75ch]">
-                {renderContent(article.content, {
-                  trustStrip: (
-                    <TrustSignalStrip
-                      article={article}
-                      categoryLabel={categoryNames[article.category] || article.category}
-                    />
-                  ),
-                  midCapture: <MidArticleLeadCapture articleSlug={slug} category={article.category} />,
-                })}
-              </div>
-            </div>
-
-            {/* FAQ Section */}
-            <FAQSection faqs={faqs} />
-
-            <ConversionStrip articleSlug={slug} category={article.category} title={article.title} />
-
-            {/* Related Articles - Smart Topical Clusters with Anchor-Text Guidance */}
-            {/*
-              SEO Copy Framework: Internal related-reading blocks with anchor-text guidance
-              Anchor text rules by surface:
-              - AI: Use specific model/tool names + outcome keywords ("Claude for coding", "GPT-4o for写作")
-              - Crypto: Use topic keywords + intent ("Bitcoin accumulation strategy", "DeFi yield farming guide")
-              - Automation: Use action verbs + tool names ("Automate X with Zapier", "n8n workflow setup")
-            */}
-            {relatedArticles.length > 0 && (
-              <section className="mt-12 pt-8 border-t border-zinc-800">
-                <h3 className="font-display font-semibold text-lg text-white mb-2 flex items-center gap-2">
-                  <span className="text-indigo-400">→</span> Related Intelligence
-                </h3>
-                <p className="text-zinc-500 text-sm mb-6">
-                  Explore more from Decryptica&apos;s topical clusters
-                </p>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {relatedArticles.map((related) => {
-                    // Generate SEO-optimized anchor text for internal links
-                    const anchorText = (() => {
-                      const relatedTitle = related.title;
-                      if (article.category === 'ai') {
-                        // Tool/outcome-focused anchor text
-                        const toolMatch = relatedTitle.match(/^(Best\s+|Top\s+)?(\d+\s+)?(.+?)(?:\s*[-—]|\s*(?:in|for|with)\s+)/);
-                        return toolMatch ? `Guide: ${toolMatch[3] || relatedTitle.slice(0, 50)}` : relatedTitle;
-                      } else if (article.category === 'crypto') {
-                        // Topic keyword + intent anchor text
-                        return `Read: ${relatedTitle.slice(0, 55)}${relatedTitle.length > 55 ? '...' : ''}`;
-                      } else {
-                        // Action verb + topic anchor text
-                        return `Step-by-step: ${relatedTitle.slice(0, 45)}${relatedTitle.length > 45 ? '...' : ''}`;
-                      }
-                    })();
-                    return (
-                      <TrackedLink
-                        key={related.id}
-                        href={`/blog/${related.slug}`}
-                        className="card-elevated p-5 group"
-                        eventType="article_click"
-                        articleSlug={related.slug}
-                        metadata={{ location: 'article_related_module', sourceArticle: slug, anchorText }}
-                      >
-                        <span className="text-xs text-indigo-400 mb-2 block">
-                          {categoryNames[related.category] || related.category}
-                        </span>
-                        <h4 className="font-display font-semibold text-white group-hover:text-indigo-400 transition-colors leading-snug text-sm">
-                          {related.title}
-                        </h4>
-                        <span className="text-xs text-zinc-500 mt-2 block">{related.date}</span>
-                      </TrackedLink>
-                    );
+            <section id="tools-comparisons" className="scroll-mt-28">
+              <div id="article-content" className="prose prose-invert prose-zinc max-w-none article-reading-body">
+                <div className="max-w-[75ch]">
+                  {renderContent(article.content, {
+                    trustStrip: (
+                      <TrustSignalStrip
+                        article={article}
+                        categoryLabel={categoryNames[article.category] || article.category}
+                      />
+                    ),
+                    relatedMid: (
+                      <HubRelatedModule
+                        heading="Related Guides"
+                        description="Continue with adjacent implementation and comparison guides."
+                        items={relatedModuleItems}
+                        surface="article"
+                        location="article_related_module"
+                        moduleVariant="mid_article"
+                        slug={slug}
+                        category={article.category}
+                      />
+                    ),
+                    midCapture: <MidArticleLeadCapture articleSlug={slug} category={article.category} />,
                   })}
                 </div>
+              </div>
+            </section>
+
+            {/* FAQ Section */}
+            <TrackedFAQSection faqs={faqs} articleSlug={slug} />
+
+            <section id="next-step" className="scroll-mt-28">
+              <IntentAwareConversionStrip articleSlug={slug} category={article.category} />
+            </section>
+
+            {relatedModuleItems.length > 0 && (
+              <section className="mt-12 pt-8 border-t border-zinc-800">
+                <HubRelatedModule
+                  heading="Related Guides"
+                  description="Keep reading with matched intent and adjacent comparisons."
+                  items={relatedModuleItems}
+                  surface="article"
+                  location="article_related_module"
+                  moduleVariant="post_content"
+                  slug={slug}
+                  category={article.category}
+                />
               </section>
             )}
 
