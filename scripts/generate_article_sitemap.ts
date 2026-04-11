@@ -1,15 +1,20 @@
-#!/usr/bin/env npx ts-node
+#!/usr/bin/env node
 /**
  * Article Sitemap Generator for Decryptica
  * Run: npx ts-node scripts/generate_article_sitemap.ts
+ * Run (dry-run, no file writes): npx ts-node scripts/generate_article_sitemap.ts --dry-run
  *
  * Generates a comprehensive article sitemap that includes ALL blog posts
  * with proper change frequency, priority, and lastmod dates.
  */
 
-import { articles } from '../app/data/articles.js';
+import { getPublishedArticles } from '../app/data/content-store.js';
+import { Article } from '../app/data/content-model.js';
 import * as fs from 'fs';
 import * as path from 'path';
+
+const args = process.argv.slice(2);
+const dryRun = args.includes('--dry-run');
 
 const BASE_URL = 'https://decryptica.com';
 
@@ -52,10 +57,10 @@ function getChangeFreq(
   return 'monthly';
 }
 
-function generateSitemap(): string {
+function generateSitemap(published: Article[]): string {
   const entries: SitemapEntry[] = [];
 
-  articles.forEach((article) => {
+  published.forEach((article) => {
     const wordCount = estimateWordCount(article.content);
     const lastmod = article.lastUpdated || article.date;
     const url = `${BASE_URL}/blog/${article.slug}`;
@@ -96,12 +101,12 @@ ${urlsXml}
 </urlset>`;
 }
 
-function generateNewsSitemap(): string {
+function generateNewsSitemap(published: Article[]): string {
   // Only include articles from the last 2 days for Google News
   const twoDaysAgo = new Date();
   twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
 
-  const recentArticles = articles.filter((a) => {
+  const recentArticles = published.filter((a) => {
     const pubDate = new Date(a.date);
     return pubDate >= twoDaysAgo;
   });
@@ -132,25 +137,41 @@ ${urlsXml}
 function main() {
   const outDir = path.join(__dirname, '..');
 
-  // Generate article sitemap
-  const sitemap = generateSitemap();
+  // Get published articles from the content store
+  const published = getPublishedArticles();
+  console.log(`  Total published articles: ${published.length}`);
+
+  // Generate article sitemap (validates content structure)
+  const sitemap = generateSitemap(published);
   const sitemapPath = path.join(outDir, 'public', 'sitemaps', 'articles.xml');
   const sitemapDir = path.dirname(sitemapPath);
 
-  if (!fs.existsSync(sitemapDir)) {
-    fs.mkdirSync(sitemapDir, { recursive: true });
+  if (dryRun) {
+    console.log('[dry-run] Would write article sitemap:', sitemapPath);
+    console.log(`  Entries: ${published.length} | Size: ${sitemap.length} bytes`);
+  } else {
+    if (!fs.existsSync(sitemapDir)) {
+      fs.mkdirSync(sitemapDir, { recursive: true });
+    }
+    fs.writeFileSync(sitemapPath, sitemap, 'utf-8');
+    console.log(`✓ Article sitemap written: ${sitemapPath}`);
+    console.log(`  Total articles: ${published.length}`);
   }
 
-  fs.writeFileSync(sitemapPath, sitemap, 'utf-8');
-  console.log(`✓ Article sitemap written: ${sitemapPath}`);
-  console.log(`  Total articles: ${articles.length}`);
-
   // Generate news sitemap
-  const newsSitemap = generateNewsSitemap();
+  const newsSitemap = generateNewsSitemap(published);
   const newsSitemapPath = path.join(outDir, 'public', 'sitemaps', 'news.xml');
 
-  fs.writeFileSync(newsSitemapPath, newsSitemap, 'utf-8');
-  console.log(`✓ News sitemap written: ${newsSitemapPath}`);
+  if (dryRun) {
+    console.log('[dry-run] Would write news sitemap:', newsSitemapPath);
+    console.log(`  Recent articles (≤2 days): ${published.filter((a) => {
+      const twoDaysAgo = new Date(); twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
+      return new Date(a.date) >= twoDaysAgo;
+    }).length}`);
+  } else {
+    fs.writeFileSync(newsSitemapPath, newsSitemap, 'utf-8');
+    console.log(`✓ News sitemap written: ${newsSitemapPath}`);
+  }
 
   // Update the main sitemap to include the article sitemap
   const mainSitemapPath = path.join(outDir, 'sitemap.xml');
@@ -169,13 +190,17 @@ function main() {
       `${articleSitemapEntry}\n</sitemapindex>`
     );
 
-    fs.writeFileSync(mainSitemapPath, mainSitemap, 'utf-8');
-    console.log(`✓ Updated main sitemap with article sitemap reference`);
+    if (dryRun) {
+      console.log('[dry-run] Would update main sitemap:', mainSitemapPath);
+    } else {
+      fs.writeFileSync(mainSitemapPath, mainSitemap, 'utf-8');
+      console.log(`✓ Updated main sitemap with article sitemap reference`);
+    }
   }
 
   console.log('\n📋 Sitemap Summary:');
   console.log(
-    `   Articles: ${articles.length} | Priority 0.9 (fresh): ${articles.filter((a) => {
+    `   Articles: ${published.length} | Priority 0.9 (fresh): ${published.filter((a) => {
       const days = (Date.now() - new Date(a.date).getTime()) / (1000 * 60 * 60 * 24);
       return days < 7;
     }).length}`
