@@ -23,7 +23,7 @@
       ],
       "example_output": "=== Consolidation 2026-04-08 ===\nFiles: 2 processed\nEntries: 34 examined\nAdded: 12 new\nSkipped: 22 duplicates\nNext run: 2026-04-09 03:00",
       "is_staff_pick": true,
-      "vote_count": 12,
+      "vote_count": 18,
       "created_at": 1744156800,
       "updated_at": 1744156800
     },
@@ -50,7 +50,7 @@
       ],
       "example_output": "14:30:01 | https://api.example.com | 200 | 45ms | OK\n14:30:01 | https://db.example.com | 200 | 23ms | OK\n14:30:02 | https://backup.example.com | 000 | 0ms | TIMEOUT\n[TG ALERT] 🚨 Service Down: https://backup.example.com returned 000 at 14:30:02",
       "is_staff_pick": true,
-      "vote_count": 8,
+      "vote_count": 4,
       "created_at": 1744156800,
       "updated_at": 1744156800
     },
@@ -77,7 +77,7 @@
       ],
       "example_output": "📊 Channel Digest - Apr 8 2026\n\n🗣️ Top Topics:\n- Deploy pipeline: Team discussed moving to canary deployments. Decision deferred to next meeting.\n- API rate limits: Engineering flagged customer X hitting 10x quota.\n\n✅ Decisions Made:\n- Ship v2.4 by Friday\n- Switch to Postgres 16 for all new instances\n\n📋 Action Items:\n- Set up canary monitoring → @alice (by Thu)\n- Draft rate limit policy → @bob (by Wed)",
       "is_staff_pick": true,
-      "vote_count": 5,
+      "vote_count": 14,
       "created_at": 1744156800,
       "updated_at": 1744156800
     },
@@ -104,7 +104,7 @@
       ],
       "example_output": "14:40:01 | /dev/disk1s1 | 67% | 912GB/1TB | OK\n14:40:01 | /dev/disk1s2 | 91% | 455GB/500GB | 🔴 CRITICAL\n[TG ALERT] 💾 Disk Alert: /dev/disk1s2 at 91%. Available: 45GB",
       "is_staff_pick": false,
-      "vote_count": 3,
+      "vote_count": 14,
       "created_at": 1744156800,
       "updated_at": 1744156800
     },
@@ -134,7 +134,7 @@
       ],
       "example_output": "=== Session Health 14:45:01 ===\nActive sessions:\n  agent:main:session-abc123 (active 2m ago) ✓\n  agent:main:session-def456 (active 8m ago) ✓\nStale sessions:\n  agent:main:session-xyz789 (inactive 47m) → archived\n[TG DIGEST] 2 stale sessions archived. No unresponsive sessions.",
       "is_staff_pick": false,
-      "vote_count": 2,
+      "vote_count": 9,
       "created_at": 1744156800,
       "updated_at": 1744156800
     },
@@ -162,7 +162,7 @@
       ],
       "example_output": "=== Git Watcher 14:50:01 ===\nChanges detected:\n  M src/index.js\n  M src/utils.js\n  A tests/new_test.js\nCommit: [AUTOMATED] Updates 2026-04-08_14:50: Changed files: src/index.js, src/utils.js, tests/new_test.js\nBranch: development\nPushed: origin/development\n[TG] ✅ Auto-commit: 3 files pushed to dev",
       "is_staff_pick": false,
-      "vote_count": 7,
+      "vote_count": 18,
       "created_at": 1744156800,
       "updated_at": 1744156800
     },
@@ -190,7 +190,7 @@
       ],
       "example_output": "=== Nightly Backup 02:00:15 ===\nDirectories: workspace, memory, config, scripts\nBackup: ~/backups/backup_2026-04-08.tar.gz\nSize: 234MB\nFiles archived: 1,847\nChecksum: a3f8d2c9...\nRetention: 2 old backups purged\n[TG] ✅ Backup complete: backup_2026-04-08.tar.gz (234MB, 1,847 files)",
       "is_staff_pick": false,
-      "vote_count": 4,
+      "vote_count": 3,
       "created_at": 1744156800,
       "updated_at": 1744156800
     },
@@ -218,7 +218,7 @@
       ],
       "example_output": "=== Memory Access Stats - Apr 8 ===\nHOT (most accessed this week):\n  memory/project-a.md: 47 reads\n  memory/todos.md: 31 reads\n  memory/contacts.md: 22 reads\n\nCOLD (not accessed in 30 days):\n  memory/old-ideas-2025.md: 0 reads\n  memory/archived-notes.md: 0 reads\n\nRecommendation: Archive cold files. Promote hot files to long-term memory.",
       "is_staff_pick": false,
-      "vote_count": 6,
+      "vote_count": 2,
       "created_at": 1744156800,
       "updated_at": 1744156800
     }

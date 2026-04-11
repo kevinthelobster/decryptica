@@ -37,9 +37,9 @@ type Submission = {
 };
 
 const DB_PATH = path.join(process.cwd(), 'data/prompts/prompts.json');
-const SUBMISSIONS_PATH = '/tmp/decryptica_submissions.json';
-const VOTES_PATH = '/tmp/decryptica_votes.json';
-const PROMPT_EDITS_PATH = '/tmp/decryptica_prompt_edits.json';
+const SUBMISSIONS_PATH = path.join(process.cwd(), 'data/prompts/submissions.json');
+const VOTES_PATH = path.join(process.cwd(), 'data/prompts/votes.json');
+const PROMPT_EDITS_PATH = path.join(process.cwd(), 'data/prompts/prompt_edits.json');
 
 // Telegram bot config
 const TELEGRAM_BOT_TOKEN = '8332002226:AAG5PEkMAjgjVtYzQYJ0kEM1XROPN2MxXU8';
@@ -104,7 +104,7 @@ function readDb(): { prompts: Prompt[]; submissions: Submission[]; votes: Record
 }
 
 function writeDb(data: any) {
-  // Votes and prompt edits go to /tmp (writable on Vercel)
+  // Votes and prompt edits are persisted to data/prompts/ (git-tracked, survives cold starts)
   fs.writeFileSync(VOTES_PATH, JSON.stringify(data.votes || {}, null, 2));
   fs.writeFileSync(SUBMISSIONS_PATH, JSON.stringify(data.submissions || [], null, 2));
   if (data.promptEdits) {
