@@ -105,12 +105,12 @@ export default function ArticlesPage() {
       </div>
 
       {/* Category Pills */}
-      <div className="flex flex-wrap gap-3 mb-10">
+      <div className="flex gap-3 mb-10 overflow-x-auto px-6 -mx-6 md:overflow-visible md:px-0 md:mx-0 flex-nowrap">
         {categories.map((cat) => (
           <Link
             key={cat.slug}
             href={`/topic/${cat.slug}`}
-            className="topic-tag hover:bg-indigo-500/20 hover:text-indigo-300 transition-colors"
+            className="topic-tag shrink-0 hover:bg-indigo-500/20 hover:text-indigo-300 transition-colors"
           >
             {cat.name}
             <span className="ml-2 opacity-50">({cat.count})</span>
