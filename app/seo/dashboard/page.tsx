@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { buildSeoDashboard } from '@/app/lib/seo-dashboard';
 import { requireBoardSession } from '@/app/lib/board-auth';
 
@@ -44,15 +45,7 @@ export default async function SeoDashboardPage({
 }) {
   const isBoardAuth = await requireBoardSession();
   if (!isBoardAuth) {
-    return (
-      <div className="max-w-5xl mx-auto px-6 py-12">
-        <h1 className="section-heading mb-4">Daily Traffic Dashboard</h1>
-        <div className="card-elevated p-8">
-          <p className="text-zinc-300 text-lg mb-4">Access restricted to board members.</p>
-          <p className="text-zinc-400 text-sm">Contact your administrator for access credentials.</p>
-        </div>
-      </div>
-    );
+    redirect('/seo/board-login');
   }
 
   const params = (await searchParams) ?? {};

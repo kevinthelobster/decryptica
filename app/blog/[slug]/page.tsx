@@ -740,19 +740,19 @@ function CTAExplore({ articleSlug, category }: { articleSlug: string; category: 
       heading: 'Explore AI Tools & Guides',
       body: 'Discover how teams are using AI to automate workflows, cut costs, and ship faster in 2026.',
       cta: 'Browse AI Articles',
-      href: '/topic/ai',
+      href: '/topic/ai/tooling',
     },
     crypto: {
       heading: 'Stay Ahead of Crypto Markets',
       body: 'Data-driven crypto analysis and DeFi guides to help you make smarter investment decisions.',
       cta: 'Explore Crypto Content',
-      href: '/topic/crypto',
+      href: '/topic/crypto/trading',
     },
     automation: {
       heading: 'Automate Your Workflow',
       body: 'Step-by-step guides to automate repetitive tasks and reclaim hours every week.',
       cta: 'See Automation Guides',
-      href: '/topic/automation',
+      href: '/topic/automation/workflows',
     },
   };
   const content = categoryContent[category] || categoryContent.ai;
@@ -1138,7 +1138,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </h3>
                 <div className="space-y-2">
                   <Link
-                    href="/topic/crypto"
+                    href="/topic/crypto/trading"
                     className="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors text-sm group"
                   >
                     <span>₿</span>
@@ -1146,7 +1146,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <span className="ml-auto text-zinc-600 group-hover:text-indigo-400">→</span>
                   </Link>
                   <Link
-                    href="/topic/ai"
+                    href="/topic/ai/tooling"
                     className="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors text-sm group"
                   >
                     <span>🤖</span>
@@ -1154,7 +1154,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <span className="ml-auto text-zinc-600 group-hover:text-indigo-400">→</span>
                   </Link>
                   <Link
-                    href="/topic/automation"
+                    href="/topic/automation/workflows"
                     className="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors text-sm group"
                   >
                     <span>⚡</span>

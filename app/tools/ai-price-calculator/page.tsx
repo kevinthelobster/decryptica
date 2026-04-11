@@ -77,7 +77,7 @@ function ToolCTAExplore() {
       <p className="text-white font-medium mb-1">New to AI model selection?</p>
       <p className="text-zinc-400 text-sm mb-3">Read our expert comparisons before you pick a model.</p>
       <Link
-        href="/topic/ai"
+        href="/topic/ai/tooling"
         className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
       >
         Browse AI Tool Comparisons →

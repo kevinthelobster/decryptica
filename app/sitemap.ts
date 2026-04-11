@@ -26,19 +26,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/topic/crypto`,
+      url: `${baseUrl}/topic/crypto/trading`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/topic/ai`,
+      url: `${baseUrl}/topic/ai/tooling`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/topic/automation`,
+      url: `${baseUrl}/topic/automation/workflows`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.9,

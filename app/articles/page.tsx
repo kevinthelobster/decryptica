@@ -42,9 +42,9 @@ function ListingCTAExplore() {
       <p className="text-white font-medium mb-1">Not sure where to start?</p>
       <p className="text-zinc-400 text-sm mb-3">Browse by topic to find articles that match your current goal.</p>
       <div className="flex flex-wrap gap-2">
-        <Link href="/topic/ai" className="text-xs px-3 py-1.5 bg-zinc-800 hover:bg-indigo-500/20 text-indigo-400 rounded-full transition-colors">AI Tools</Link>
-        <Link href="/topic/crypto" className="text-xs px-3 py-1.5 bg-zinc-800 hover:bg-indigo-500/20 text-indigo-400 rounded-full transition-colors">Crypto & DeFi</Link>
-        <Link href="/topic/automation" className="text-xs px-3 py-1.5 bg-zinc-800 hover:bg-indigo-500/20 text-indigo-400 rounded-full transition-colors">Automation</Link>
+        <Link href="/topic/ai/tooling" className="text-xs px-3 py-1.5 bg-zinc-800 hover:bg-indigo-500/20 text-indigo-400 rounded-full transition-colors">AI Tools</Link>
+        <Link href="/topic/crypto/trading" className="text-xs px-3 py-1.5 bg-zinc-800 hover:bg-indigo-500/20 text-indigo-400 rounded-full transition-colors">Crypto & DeFi</Link>
+        <Link href="/topic/automation/workflows" className="text-xs px-3 py-1.5 bg-zinc-800 hover:bg-indigo-500/20 text-indigo-400 rounded-full transition-colors">Automation</Link>
       </div>
     </div>
   );

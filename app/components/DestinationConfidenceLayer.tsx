@@ -115,7 +115,7 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
             : 'Use a fast estimate to turn research into an action-ready model shortlist.',
         primaryHref: steps[0].href,
         primaryLabel: 'Estimate Cost Now',
-        secondaryHref: effectiveIntent === 'learn' ? '/topic/ai' : '/services/ai-automation-consulting#roi-calculator',
+        secondaryHref: effectiveIntent === 'learn' ? '/topic/ai/tooling' : '/services/ai-automation-consulting#roi-calculator',
         secondaryLabel: effectiveIntent === 'learn' ? 'Browse AI Guides' : 'Move to ROI Planning',
         stage: steps[0].step,
         stickySteps: steps,

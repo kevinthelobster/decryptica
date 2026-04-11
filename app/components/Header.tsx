@@ -27,13 +27,13 @@ export default function Header() {
             <Link href="/" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
               Home
             </Link>
-            <Link href="/topic/crypto" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
+            <Link href="/topic/crypto/trading" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
               Crypto
             </Link>
-            <Link href="/topic/ai" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
+            <Link href="/topic/ai/tooling" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
               AI
             </Link>
-            <Link href="/topic/automation" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
+            <Link href="/topic/automation/workflows" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
               Automation
             </Link>
             <Link href="/tools/ai-price-calculator" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
@@ -79,13 +79,13 @@ export default function Header() {
               <Link href="/" className="px-4 py-3 text-sm font-medium text-white bg-zinc-800/50 rounded-lg">
                 Home
               </Link>
-              <Link href="/topic/crypto" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">
+              <Link href="/topic/crypto/trading" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">
                 Crypto
               </Link>
-              <Link href="/topic/ai" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">
+              <Link href="/topic/ai/tooling" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">
                 AI
               </Link>
-              <Link href="/topic/automation" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">
+              <Link href="/topic/automation/workflows" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">
                 Automation
               </Link>
               <Link href="/tools/ai-price-calculator" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">

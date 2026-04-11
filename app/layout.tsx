@@ -81,9 +81,9 @@ export default function RootLayout({
               <div>
                 <h4 className="font-display font-semibold text-white mb-4">Topics</h4>
                 <ul className="space-y-2">
-                  <li><a href="/topic/crypto" className="text-zinc-400 hover:text-indigo-400 text-sm transition-colors">Crypto & DeFi</a></li>
-                  <li><a href="/topic/ai" className="text-zinc-400 hover:text-indigo-400 text-sm transition-colors">Artificial Intelligence</a></li>
-                  <li><a href="/topic/automation" className="text-zinc-400 hover:text-indigo-400 text-sm transition-colors">Automation</a></li>
+                  <li><a href="/topic/crypto/trading" className="text-zinc-400 hover:text-indigo-400 text-sm transition-colors">Crypto & DeFi</a></li>
+                  <li><a href="/topic/ai/tooling" className="text-zinc-400 hover:text-indigo-400 text-sm transition-colors">Artificial Intelligence</a></li>
+                  <li><a href="/topic/automation/workflows" className="text-zinc-400 hover:text-indigo-400 text-sm transition-colors">Automation</a></li>
                 </ul>
               </div>
 
