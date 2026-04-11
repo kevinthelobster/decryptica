@@ -1,9 +1,9 @@
 # SEO Weekly KPI Report — 2026-W15
-*2026-04-06 → 2026-04-12 | Generated: 2026-04-10T13:06:03.261Z*
+*2026-04-07 → 2026-04-13 | Generated: 2026-04-11T00:06:00.775Z*
 
 ---
 
-## 📊 Overall SEO Score: 39/100
+## 📊 Overall SEO Score: NaN/100
 
 ---
 
@@ -36,9 +36,9 @@
 ---
 
 ## 🔎 Index Coverage
-- **Indexed:** 44 / 47
-- **Index Rate:** 93.6%
-- **Not Indexed:** 3
+- **Indexed:** 56 / 56
+- **Index Rate:** NaN%
+- **Not Indexed:** 0
 
 ---
 
@@ -55,7 +55,7 @@
 ## 💰 Conversions
 - **Total Affiliate Clicks:** 0
 
-*Note: Conversion tracking requires click-tracking endpoint deployment.*
+*Note: Click-tracking source active — attach Vercel KV credentials (KV_REST_API_URL, KV_REST_API_TOKEN) to see live metrics.*
 
 ---
 

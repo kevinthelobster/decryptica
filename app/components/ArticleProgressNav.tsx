@@ -11,12 +11,13 @@ interface HeadingItem {
 
 interface ArticleProgressNavProps {
   articleSlug: string;
+  category: string;
   headings: HeadingItem[];
 }
 
 const SCROLL_MILESTONES = [25, 50, 75, 100] as const;
 
-export default function ArticleProgressNav({ articleSlug, headings }: ArticleProgressNavProps) {
+export default function ArticleProgressNav({ articleSlug, category, headings }: ArticleProgressNavProps) {
   const [progress, setProgress] = useState(0);
   const [activeHeading, setActiveHeading] = useState<string | null>(headings[0]?.id ?? null);
   const sentMilestones = useMemo(() => new Set<number>(), []);
@@ -88,7 +89,11 @@ export default function ArticleProgressNav({ articleSlug, headings }: ArticlePro
             href={`#${item.id}`}
             eventType="toc_jump"
             articleSlug={articleSlug}
-            metadata={{ section: item.id }}
+            metadata={{
+              location: 'article_progress_nav',
+              category,
+              section: item.id,
+            }}
             className={`block text-sm transition-colors ${
               activeHeading === item.id ? 'text-indigo-300' : 'text-zinc-400 hover:text-zinc-200'
             }`}

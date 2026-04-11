@@ -1,8 +1,8 @@
 {
   "week": "2026-W15",
-  "weekStart": "2026-04-06",
-  "weekEnd": "2026-04-12",
-  "generatedAt": "2026-04-10T13:06:03.261Z",
+  "weekStart": "2026-04-07",
+  "weekEnd": "2026-04-13",
+  "generatedAt": "2026-04-11T00:06:00.775Z",
   "rankings": {
     "totalTrackedKeywords": 0,
     "top3": 0,
@@ -38,10 +38,9 @@
     }
   },
   "indexation": {
-    "indexed": 44,
-    "notIndexed": 3,
-    "totalUrls": 47,
-    "indexRate": 0.936,
+    "indexed": 56,
+    "notIndexed": 0,
+    "totalUrls": 56,
     "newlyIndexedThisWeek": [],
     "removedFromIndex": []
   },
@@ -427,5 +426,5 @@
     "byCategory": {},
     "topAffiliateArticles": []
   },
-  "overallScore": 39
+  "overallScore": null
 }

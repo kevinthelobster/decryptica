@@ -25,7 +25,7 @@ import * as path from 'path';
 
 const CONFIG = {
   siteUrl: 'https://decryptica.com',
-  sitemapUrl: 'https://decryptica.com/sitemaps/articles.xml',
+  sitemapUrl: process.env.SEO_SITEMAP_URL || 'https://www.decryptica.com/sitemap.xml',
   gscSiteUrl: 'sc-domain:decryptica.com',
   outputDir: path.join(__dirname, '..', 'data', 'kpi'),
   historyFile: path.join(__dirname, '..', 'data', 'kpi', 'history', 'kpi_history.json'),
@@ -438,12 +438,116 @@ function execSync(cmd: string, opts: { cwd?: string; encoding?: string }): strin
 
 // ─── Adapter 4: Affiliate Conversions ────────────────────────────────────────
 
-function analyzeConversions(): WeeklyKPI['conversions'] {
-  return {
+interface ConversionResult {
+  totalAffiliateClicks: number;
+  byCategory: Record<string, number>;
+  topAffiliateArticles: TopAffiliateArticle[];
+  articleData: Record<string, { slug: string; title: string; category: string; ctaClicks: number; articleClicks: number }>;
+}
+
+function getDateRange(start: string, end: string): string[] {
+  const dates: string[] = [];
+  const cur = new Date(start);
+  const last = new Date(end);
+  while (cur <= last) {
+    dates.push(cur.toISOString().split('T')[0]);
+    cur.setDate(cur.getDate() + 1);
+  }
+  return dates;
+}
+
+async function analyzeConversions(): Promise<ConversionResult> {
+  const result: ConversionResult = {
     totalAffiliateClicks: 0,
     byCategory: {},
     topAffiliateArticles: [],
+    articleData: {},
   };
+
+  const { start, end } = getISOWeek(new Date());
+  const dates = getDateRange(start, end);
+
+  try {
+    // Dynamically import @vercel/kv only when needed
+    const { kv } = await import('@vercel/kv');
+
+    // Read daily CTA click totals for the week
+    let weeklyCtaTotal = 0;
+    let weeklyClickTotal = 0;
+    for (const date of dates) {
+      const ctaCount = await (kv as any).get<number>(`kpi:counter:cta_click:${date}`).catch(() => 0);
+      const clickCount = await (kv as any).get<number>(`kpi:counter:article_click:${date}`).catch(() => 0);
+      weeklyCtaTotal += ctaCount ?? 0;
+      weeklyClickTotal += clickCount ?? 0;
+    }
+
+    result.totalAffiliateClicks = weeklyCtaTotal + weeklyClickTotal;
+
+    // Load article metadata for category mapping
+    const articleMeta = loadArticleMeta();
+    const articleSlugs = Object.keys(articleMeta);
+
+    // Read per-article CTA and article_click counters
+    const articleCtas: Record<string, number> = {};
+    const articleClicks: Record<string, number> = {};
+    for (const slug of articleSlugs) {
+      let ctaSum = 0;
+      let clickSum = 0;
+      for (const date of dates) {
+        const cta = await (kv as any).get<number>(`kpi:cta:${slug}:${date}`).catch(() => 0);
+        const clk = await (kv as any).get<number>(`kpi:click:${slug}:${date}`).catch(() => 0);
+        ctaSum += cta ?? 0;
+        clickSum += clk ?? 0;
+      }
+      if (ctaSum > 0 || clickSum > 0) {
+        articleCtas[slug] = ctaSum;
+        articleClicks[slug] = clickSum;
+        result.articleData[slug] = {
+          slug,
+          title: articleMeta[slug]?.title ?? slug,
+          category: articleMeta[slug]?.category ?? 'unknown',
+          ctaClicks: ctaSum,
+          articleClicks: clickSum,
+        };
+        // Aggregate by category
+        const cat = articleMeta[slug]?.category ?? 'unknown';
+        result.byCategory[cat] = (result.byCategory[cat] ?? 0) + ctaSum + clickSum;
+      }
+    }
+
+    // Build top affiliate articles (sorted by total clicks)
+    const ranked = Object.values(result.articleData)
+      .filter(a => a.ctaClicks > 0 || a.articleClicks > 0)
+      .sort((a, b) => (b.ctaClicks + b.articleClicks) - (a.ctaClicks + a.articleClicks))
+      .slice(0, 10)
+      .map(a => ({ slug: a.slug, title: a.title, affiliateClicks: a.ctaClicks + a.articleClicks }));
+
+    result.topAffiliateArticles = ranked;
+    console.log(`[Conversions] CTA clicks: ${weeklyCtaTotal}, article clicks: ${weeklyClickTotal}, articles with data: ${Object.keys(result.articleData).length}`);
+
+    return result;
+  } catch (err) {
+    console.warn('[Conversions] KV read failed, returning placeholder data:', err);
+    return result;
+  }
+}
+
+function loadArticleMeta(): Record<string, { title: string; category: string }> {
+  try {
+    const articlesPath = path.join(__dirname, '..', 'app', 'data', 'articles.ts');
+    const content = fs.readFileSync(articlesPath, 'utf8');
+    // Lightweight extraction of slugs and categories from articles.ts
+    const meta: Record<string, { title: string; category: string }> = {};
+    // Match objects with slug, title, category fields
+    const regex = /slug:\s*['"]([^'"]+)['"][\s\S]*?title:\s*['"]([^'"]+)['"][\s\S]*?category:\s*['"]([^'"]+)['"]/g;
+    let m;
+    while ((m = regex.exec(content)) !== null) {
+      meta[m[1]] = { title: m[2], category: m[3] };
+    }
+    return meta;
+  } catch {
+    return {};
+  }
 }
 
 // ─── KPI Score Calculator ────────────────────────────────────────────────────
@@ -565,7 +669,7 @@ function generateMarkdownReport(kpi: WeeklyKPI): string {
     '## 💰 Conversions',
     `- **Total Affiliate Clicks:** ${kpi.conversions.totalAffiliateClicks}`,
     '',
-    '*Note: Conversion tracking requires click-tracking endpoint deployment.*',
+    `*Note: Click-tracking source active — attach Vercel KV credentials (KV_REST_API_URL, KV_REST_API_TOKEN) to see live metrics.*`,
     '',
     '---',
     '',
@@ -585,7 +689,7 @@ async function runWeeklyKPIPipeline(dateOverride?: string): Promise<WeeklyKPI> {
 
   const gscData = await fetchGSCData(start, end);
   const contentData = analyzeContent();
-  const conversionsData = analyzeConversions();
+  const conversionsData = await analyzeConversions();
 
   // Distribute organic sessions across categories
   const sessionPerCat = contentData.totalArticles > 0
@@ -609,7 +713,11 @@ async function runWeeklyKPIPipeline(dateOverride?: string): Promise<WeeklyKPI> {
     },
     indexation: gscData.indexation,
     content: contentData,
-    conversions: conversionsData,
+    conversions: {
+      totalAffiliateClicks: conversionsData.totalAffiliateClicks,
+      byCategory: conversionsData.byCategory,
+      topAffiliateArticles: conversionsData.topAffiliateArticles,
+    },
     overallScore: 0,
   };
 

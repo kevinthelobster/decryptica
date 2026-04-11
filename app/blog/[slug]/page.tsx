@@ -4,6 +4,9 @@ import { getArticleBySlug, articles } from '../../data/articles';
 import SubscribeForm from '../../components/SubscribeForm';
 import AnalyticsTracker from '../../components/AnalyticsTracker';
 import ArticleProgressNav from '../../components/ArticleProgressNav';
+import MidArticleLeadCapture from '../../components/MidArticleLeadCapture';
+import MobileProgressSheet from '../../components/MobileProgressSheet';
+import MobileStickyCtaDock from '../../components/MobileStickyCtaDock';
 import TrackedLink from '../../components/TrackedLink';
 
 interface BlogPostPageProps {
@@ -318,15 +321,25 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
 // ─── Content Renderer ──────────────────────────────────────────────────────
 
-function renderContent(content: string) {
+function renderContent(
+  content: string,
+  insertions?: {
+    trustStrip?: React.ReactNode;
+    midCapture?: React.ReactNode;
+  }
+) {
   const elements: React.ReactNode[] = [];
   const blocks = content.split(/(?:^|\n)(?=## )/);
+  let majorSectionsSeen = 0;
+  let trustInserted = false;
+  let midInserted = false;
 
   blocks.forEach((block, blockIndex) => {
     const trimmedBlock = block.trim();
     if (!trimmedBlock) return;
 
     if (trimmedBlock.startsWith('## ')) {
+      majorSectionsSeen += 1;
       const title = trimmedBlock.replace(/^## /, '').split('\n')[0];
       elements.push(
         <h2
@@ -345,10 +358,28 @@ function renderContent(content: string) {
       if (rest) {
         elements.push(...parseContent(rest, blockIndex));
       }
+
+      if (majorSectionsSeen === 1 && insertions?.trustStrip && !trustInserted) {
+        elements.push(<div key="trust-strip">{insertions.trustStrip}</div>);
+        trustInserted = true;
+      }
+
+      if (majorSectionsSeen === 2 && insertions?.midCapture && !midInserted) {
+        elements.push(<div key="mid-capture">{insertions.midCapture}</div>);
+        midInserted = true;
+      }
     } else {
       elements.push(...parseContent(trimmedBlock, blockIndex));
     }
   });
+
+  if (!trustInserted && insertions?.trustStrip) {
+    elements.unshift(<div key="trust-strip-fallback">{insertions.trustStrip}</div>);
+  }
+
+  if (!midInserted && insertions?.midCapture) {
+    elements.push(<div key="mid-capture-fallback">{insertions.midCapture}</div>);
+  }
 
   return elements;
 }
@@ -644,6 +675,42 @@ function TLDNRBox({ excerpt }: { excerpt: string }) {
   );
 }
 
+function TrustSignalStrip({
+  article,
+  categoryLabel,
+}: {
+  article: any;
+  categoryLabel: string;
+}) {
+  const updated = article.lastUpdated || article.date;
+  const owner = article.author || 'Decryptica Editorial';
+
+  return (
+    <section
+      className="my-8 rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-4"
+      aria-label="Trust signals"
+    >
+      <ul className="grid grid-cols-2 gap-2">
+        <li className="min-h-11 rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-2 text-sm text-zinc-300">
+          <span className="text-zinc-500">Last updated:</span> {updated}
+        </li>
+        <li className="min-h-11 rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-2 text-sm text-zinc-300">
+          <span className="text-zinc-500">Evidence policy:</span>{' '}
+          <Link href="/privacy" className="text-emerald-300 underline underline-offset-4 hover:text-emerald-200">
+            Source and data standards
+          </Link>
+        </li>
+        <li className="min-h-11 rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-2 text-sm text-zinc-300">
+          <span className="text-zinc-500">Disclosure:</span> Informational content only, not financial or legal advice.
+        </li>
+        <li className="min-h-11 rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-2 text-sm text-zinc-300">
+          <span className="text-zinc-500">Editorial owner:</span> {owner} ({categoryLabel})
+        </li>
+      </ul>
+    </section>
+  );
+}
+
 // ─── SEO Copy Framework: Funnel-Stage CTA Blocks ───────────────────────────
 // EXPLORE (top of funnel): Awareness — "learn more" intent
 // COMPARE (mid funnel): Consideration — "evaluate options" intent
@@ -672,7 +739,7 @@ function CTAExplore({ articleSlug, category }: { articleSlug: string; category: 
   };
   const content = categoryContent[category] || categoryContent.ai;
   return (
-    <div className="mb-6 p-5 bg-zinc-900/60 border border-zinc-800 rounded-xl">
+    <div className="mb-6 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5 transition-all duration-200 md:hover:-translate-y-0.5 md:hover:border-indigo-400/40 md:focus-within:-translate-y-0.5 md:focus-within:border-indigo-400/40">
       <h4 className="font-display text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-2">
         Explore
       </h4>
@@ -683,7 +750,7 @@ function CTAExplore({ articleSlug, category }: { articleSlug: string; category: 
         className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
         eventType="cta_click"
         articleSlug={articleSlug}
-        metadata={{ location: 'cta_explore', cta: content.cta, funnel: 'explore' }}
+        metadata={{ location: 'article_conversion_strip', cta: 'explore_topic', category, funnel: 'explore' }}
       >
         {content.cta} →
       </TrackedLink>
@@ -714,7 +781,7 @@ function CTACompare({ articleSlug, category, title }: { articleSlug: string; cat
   };
   const content = categoryContent[category] || categoryContent.ai;
   return (
-    <div className="mb-6 p-5 bg-zinc-900/60 border border-zinc-800 rounded-xl">
+    <div className="mb-6 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5 transition-all duration-200 md:hover:-translate-y-0.5 md:hover:border-blue-400/40 md:focus-within:-translate-y-0.5 md:focus-within:border-blue-400/40">
       <h4 className="font-display text-sm font-semibold text-blue-400 uppercase tracking-wider mb-2">
         Compare
       </h4>
@@ -725,7 +792,7 @@ function CTACompare({ articleSlug, category, title }: { articleSlug: string; cat
         className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
         eventType="cta_click"
         articleSlug={articleSlug}
-        metadata={{ location: 'cta_compare', cta: content.cta, funnel: 'compare' }}
+        metadata={{ location: 'article_conversion_strip', cta: 'compare_tools', category, funnel: 'compare' }}
       >
         {content.cta} →
       </TrackedLink>
@@ -733,9 +800,9 @@ function CTACompare({ articleSlug, category, title }: { articleSlug: string; cat
   );
 }
 
-function CTAStart({ articleSlug }: { articleSlug: string }) {
+function CTAStart({ articleSlug, category }: { articleSlug: string; category: string }) {
   return (
-    <div className="p-5 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/30 rounded-xl">
+    <div className="rounded-xl border border-indigo-500/30 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 p-5 transition-all duration-200 md:hover:-translate-y-0.5 md:hover:border-purple-400/40 md:focus-within:-translate-y-0.5 md:focus-within:border-purple-400/40">
       <h4 className="font-display text-sm font-semibold text-purple-400 uppercase tracking-wider mb-2">
         Get Started
       </h4>
@@ -746,7 +813,7 @@ function CTAStart({ articleSlug }: { articleSlug: string }) {
         className="btn-primary"
         eventType="cta_click"
         articleSlug={articleSlug}
-        metadata={{ location: 'cta_start', cta: 'subscribe', funnel: 'start' }}
+        metadata={{ location: 'article_conversion_strip', cta: 'start_workflow', category, funnel: 'start' }}
       >
         Subscribe for Free
       </TrackedLink>
@@ -764,7 +831,7 @@ function ConversionStrip({ articleSlug, category, title }: { articleSlug: string
       <div className="grid md:grid-cols-3 gap-4">
         <CTAExplore articleSlug={articleSlug} category={category} />
         <CTACompare articleSlug={articleSlug} category={category} title={title} />
-        <CTAStart articleSlug={articleSlug} />
+        <CTAStart articleSlug={articleSlug} category={category} />
       </div>
     </section>
   );
@@ -914,7 +981,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Article Content */}
             <div id="article-content" className="prose prose-invert prose-zinc max-w-none article-reading-body">
-              {renderContent(article.content)}
+              <div className="max-w-[75ch]">
+                {renderContent(article.content, {
+                  trustStrip: (
+                    <TrustSignalStrip
+                      article={article}
+                      categoryLabel={categoryNames[article.category] || article.category}
+                    />
+                  ),
+                  midCapture: <MidArticleLeadCapture articleSlug={slug} category={article.category} />,
+                })}
+              </div>
             </div>
 
             {/* FAQ Section */}
@@ -978,23 +1055,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </section>
             )}
 
-            <div className="fixed bottom-4 left-4 right-4 z-30 lg:hidden">
-              <TrackedLink
-                href="#subscribe"
-                className="btn-primary w-full justify-center shadow-lg shadow-indigo-900/30"
-                eventType="cta_click"
-                articleSlug={slug}
-                metadata={{ location: 'article_mobile_sticky', cta: 'subscribe' }}
-              >
-                Get Weekly Briefs
-              </TrackedLink>
-            </div>
+            <div id="article-end-marker" />
           </article>
 
           {/* Sidebar */}
           <aside className="lg:col-span-1">
             <div className="sticky top-24 space-y-6">
-              <ArticleProgressNav articleSlug={slug} headings={headings} />
+              <ArticleProgressNav articleSlug={slug} category={article.category} headings={headings} />
 
               {/* Article Stats */}
               <div className="card-elevated p-5">
@@ -1064,6 +1131,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </aside>
         </div>
       </div>
+      <MobileProgressSheet articleSlug={slug} category={article.category} headings={headings} />
+      <MobileStickyCtaDock articleSlug={slug} category={article.category} endMarkerId="article-end-marker" />
     </>
   );
 }

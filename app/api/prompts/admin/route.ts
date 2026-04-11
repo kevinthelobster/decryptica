@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { getPendingSubmissions } from '@/app/api/prompts/db';
+import { getPendingSubmissions, getPrompts } from '@/app/api/prompts/db';
 import { cookies } from 'next/headers';
 
-const ADMIN_PASSWORD = process.env.PROMpts_ADMIN_PASSWORD || 'kevin123';
+const ADMIN_PASSWORD = process.env.PROMPTS_ADMIN_PASSWORD || 'kevin123';
 
 export async function GET() {
   try {
@@ -14,9 +14,10 @@ export async function GET() {
     }
 
     const submissions = getPendingSubmissions();
-    return NextResponse.json({ submissions });
+    const prompts = getPrompts();
+    return NextResponse.json({ submissions, prompts });
   } catch (error) {
     console.error('GET /api/prompts/admin error:', error);
-    return NextResponse.json({ error: 'Failed to fetch submissions' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch data' }, { status: 500 });
   }
 }

@@ -71,6 +71,20 @@ export async function POST(request: NextRequest) {
       await kv.expire(slugKey, TTL_90_DAYS);
     }
 
+    // Per-article conversion counters for cta_click and article_click events
+    if ((event.type === 'cta_click' || event.type === 'article_click') && event.articleSlug) {
+      const ctaKey = `kpi:cta:${event.articleSlug}:${date}`;
+      const clickKey = `kpi:click:${event.articleSlug}:${date}`;
+      if (event.type === 'cta_click') {
+        await kv.incr(ctaKey);
+        await kv.expire(ctaKey, TTL_90_DAYS);
+      }
+      if (event.type === 'article_click') {
+        await kv.incr(clickKey);
+        await kv.expire(clickKey, TTL_90_DAYS);
+      }
+    }
+
     return NextResponse.json({ success: true, eventId: key }, { status: 200 });
   } catch (err) {
     console.error('[Analytics API] POST error:', err);

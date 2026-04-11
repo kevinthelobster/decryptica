@@ -2,6 +2,8 @@
 
 A professional design step for Decryptica articles. This document ensures all published content meets our visual standards.
 
+Related execution spec: `SEO_ARTICLE_CTA_UX_SPEC.md` (article readability, trust, lead capture, conversion CTA modules, and KPI acceptance criteria).
+
 ## Content Formatting Rules
 
 ### 1. Code Blocks
