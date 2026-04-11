@@ -49,30 +49,13 @@ async function sendTelegramMessage(text: string) {
   try {
     const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
     const body = JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text });
-    const { default: NodeHttp } = await import('http');
-    const { default: Https } = await import('https');
-    const isHttps = url.startsWith('https://');
-    const http = isHttps ? Https : NodeHttp;
-    const client = url.startsWith('https://')
-      ? await import('node:https')
-      : await import('node:http');
 
-    const urlObj = new URL(url);
-    const opts = {
-      hostname: urlObj.hostname,
-      path: urlObj.pathname,
+    const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-    };
-
-    return new Promise((resolve) => {
-      const req = (isHttps ? Https : NodeHttp).request(urlObj, opts, (res: any) => {
-        resolve(res.statusCode === 200);
-      });
-      req.on('error', () => resolve(false));
-      req.write(body);
-      req.end();
+      body,
     });
+    return res.ok;
   } catch {
     return false;
   }
@@ -357,22 +340,25 @@ export function rejectSubmission(id: number) {
 
 export async function notifyNewSubmission(submission: Submission) {
   let text: string;
+  const approveUrl = `https://decryptica.com/prompts/admin?approve=${submission.id}`;
 
   if (submission.is_change_idea && submission.original_prompt_id) {
     const db = readDb();
     const original = db.prompts.find(p => p.id === submission.original_prompt_id);
     text = `💡 *New Change Idea*\n\n` +
       `Prompt: *${original?.title || 'Unknown'}*\n` +
+      `ID: \`${submission.id}\`\n` +
       `Submitted: ${new Date(submission.submitted_at * 1000).toLocaleString()}\n\n` +
       `*Proposed Change:*\n${(submission.proposed_change || '').substring(0, 300)}${(submission.proposed_change || '').length > 300 ? '...' : ''}\n\n` +
-      `Review: https://decryptica.com/prompts/admin`;
+      `Review: ${approveUrl}`;
   } else {
     text = `📬 *New Prompt Submission*\n\n` +
       `*${submission.title || 'Untitled'}*\n` +
       `Category: ${submission.category || 'Other'}\n` +
-      `Tools: ${(submission.tools || []).join(', ') || 'none'}\n\n` +
+      `Tools: ${(submission.tools || []).join(', ') || 'none'}\n` +
+      `ID: \`${submission.id}\`\n\n` +
       `${(submission.description || '').substring(0, 200)}${(submission.description || '').length > 200 ? '...' : ''}\n\n` +
-      `Review: https://decryptica.com/prompts/admin`;
+      `Review: ${approveUrl}`;
   }
 
   await sendTelegramMessage(text);
