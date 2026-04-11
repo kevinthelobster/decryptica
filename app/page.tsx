@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import SubscribeForm from "./components/SubscribeForm";
 import TrackedLink from "./components/TrackedLink";
+import IntentRouter from "./components/IntentRouter";
 import { articles } from "./data/articles";
 
 export const metadata: Metadata = {
@@ -81,12 +82,12 @@ export default function IndexPage() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 mb-10">
+          <div className="flex flex-wrap gap-4">
             <TrackedLink
               href="/articles"
               className="btn-primary"
               eventType="cta_click"
-              metadata={{ location: "home_hero", cta: "start_reading" }}
+              metadata={{ location: "home_hero", cta: "start_reading", category: "all" }}
             >
               Start Reading
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -94,14 +95,22 @@ export default function IndexPage() {
               </svg>
             </TrackedLink>
             <TrackedLink
-              href="#topics"
+              href="/tools/ai-price-calculator"
               className="btn-secondary"
               eventType="cta_click"
-              metadata={{ location: "home_hero", cta: "browse_topics" }}
+              metadata={{ location: "home_hero", cta: "calculate", category: "all" }}
             >
-              Browse Topics
+              Try AI Calculator
             </TrackedLink>
           </div>
+          <TrackedLink
+            href="/services/ai-automation-consulting"
+            className="mt-4 inline-flex text-sm font-medium text-indigo-300 underline decoration-indigo-400/60 underline-offset-4 hover:text-indigo-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+            eventType="cta_click"
+            metadata={{ location: "home_hero", cta: "implement", category: "all" }}
+          >
+            Book Automation Audit
+          </TrackedLink>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {[
@@ -185,6 +194,15 @@ export default function IndexPage() {
             </TrackedLink>
           ))}
         </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-6 pb-16">
+        <IntentRouter
+          location="home_intent_router"
+          category="all"
+          variant="default"
+          learnHref="/articles"
+        />
       </section>
 
       {/* Topics Grid */}

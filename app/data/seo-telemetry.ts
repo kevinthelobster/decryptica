@@ -245,6 +245,13 @@ export interface SeoDashboard {
     cwvTrend: number;
     indexationTrend: number;
   };
+  dailyTraffic: {
+    date: string;                 // YYYY-MM-DD
+    pageViews: number;
+    uniqueVisitors: number;       // deduplicated sessions for this day (via UV sets)
+    trafficSources?: Record<string, number>; // channel breakdown for this day
+  }[];
+  trafficSources30d?: Record<string, number>; // channel breakdown for last 30 days
   byTemplate: {
     template: PageTemplate;
     pageViews: number;

@@ -42,6 +42,9 @@ export default function Header() {
             <Link href="/prompts" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
               Prompts
             </Link>
+            <Link href="/seo/dashboard" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
+              Dashboard
+            </Link>
           </nav>
 
           {/* Mobile menu button */}
@@ -90,6 +93,9 @@ export default function Header() {
               </Link>
               <Link href="/prompts" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">
                 Prompts
+              </Link>
+              <Link href="/seo/dashboard" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">
+                Dashboard
               </Link>
               <div className="mt-2 pt-2 border-t border-zinc-800/50">
                 <Link href="/#subscribe" className="btn-secondary text-sm w-full text-center block">

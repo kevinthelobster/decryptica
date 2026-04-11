@@ -15,6 +15,19 @@ import {
   todayDate,
 } from '@/app/data/seo-telemetry';
 
+// ── Channel detection from referrer URL ───────────────────────────────────────
+
+type ChannelBucket = 'organic' | 'social' | 'referral' | 'direct' | 'unknown';
+
+function detectChannel(referrer: string): ChannelBucket {
+  if (!referrer) return 'direct';
+  const ref = referrer.toLowerCase();
+  if (/google|bing|yahoo|duckduckgo|baidu|yandex|naver|search/.test(ref)) return 'organic';
+  if (/facebook|twitter|x\.|instagram|linkedin|tiktok|youtube|reddit|pinterest|threads/.test(ref)) return 'social';
+  if (/^https?:\/\/(?!www\.decryptica\.com)/.test(ref)) return 'referral';
+  return 'unknown';
+}
+
 const TTL_90_DAYS = 60 * 60 * 24 * 90;
 const TTL_365_DAYS = 60 * 60 * 24 * 365;
 const ALLOWED_TYPES: SeoEventType[] = ['page_view', 'cwv_snapshot', 'ranking_update', 'indexation_check'];
@@ -45,12 +58,12 @@ export async function POST(request: NextRequest) {
         const url = event.url || '/';
         const slug = event.articleSlug || detectTemplateFromUrl(url);
 
-        // Daily page view counter
+        // Daily page view counter (by URL)
         const pvKey = SEO_KV.dailyPvKey(date, url);
         await kv.incr(pvKey);
         await kv.expire(pvKey, TTL_365_DAYS);
 
-        // Unique visitor (by session)
+        // Unique visitor (by session) — deduplicated set per URL per day
         if (event.sessionId) {
           const uvKey = SEO_KV.dailyUniqueKey(date, url);
           await kv.sadd(uvKey, event.sessionId);
@@ -64,11 +77,25 @@ export async function POST(request: NextRequest) {
           await kv.expire(organicKey, TTL_365_DAYS);
         }
 
-        // Category-level aggregation
+        // Category-level page view aggregation (used by dashboard)
         if (event.category) {
           const catPvKey = `seo:cat:pv:${date}:${event.category}`;
           await kv.incr(catPvKey);
           await kv.expire(catPvKey, TTL_365_DAYS);
+        }
+
+        // Referrer/source pre-aggregation for traffic source reporting
+        if (event.referrer) {
+          // Normalize referrer to channel bucket
+          const channel = detectChannel(event.referrer);
+          const srcPvKey = `seo:src:pv:${date}:${channel}`;
+          await kv.incr(srcPvKey);
+          await kv.expire(srcPvKey, TTL_365_DAYS);
+
+          // Per-URL breakdown by channel for detailed source analysis
+          const urlSrcKey = `seo:src:url:${date}:${channel}:${url}`;
+          await kv.incr(urlSrcKey);
+          await kv.expire(urlSrcKey, TTL_365_DAYS);
         }
         break;
       }

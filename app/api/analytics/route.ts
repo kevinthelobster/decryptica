@@ -4,7 +4,7 @@
  * 
  * Event shape:
  * {
- *   type: 'page_view' | 'signup' | 'activation' | 'paid_conversion' | 'mrr' | 'churn',
+ *   type: 'page_view' | 'signup' | 'activation' | 'paid_conversion' | 'mrr' | 'churn' | 'intent_router_impression' | 'intent_set' | 'intent_switch' | 'intent_banner_dismiss',
  *   timestamp: ISO8601,
  *   sessionId: string,
  *   anonymousId?: string,
@@ -28,8 +28,22 @@ const ALLOWED_TYPES = new Set([
   'ranking',
   'article_click',
   'cta_click',
+  'cta_view',
+  'form_start',
+  'form_submit',
+  'form_submit',
+  'intent_router_impression',
+  'intent_set',
+  'intent_switch',
+  'intent_banner_dismiss',
   'scroll_depth',
   'toc_jump',
+  'hub_nav_click',
+  'related_module_impression',
+  'related_module_click',
+  'hub_primary_cta_click',
+  'hub_secondary_cta_click',
+  'faq_expand',
 ]);
 
 export async function POST(request: NextRequest) {
@@ -69,20 +83,47 @@ export async function POST(request: NextRequest) {
       const slugKey = `kpi:impressions:${event.articleSlug}:${date}`;
       await kv.incr(slugKey);
       await kv.expire(slugKey, TTL_90_DAYS);
+
+      // Per-category aggregation for topic cluster segmentation
+      const category = event.metadata?.category as string | undefined;
+      if (category && ['ai', 'crypto', 'automation'].includes(category)) {
+        const catKey = `kpi:category:${category}:${date}`;
+        await kv.incr(catKey);
+        await kv.expire(catKey, TTL_90_DAYS);
+      }
     }
 
-    // Per-article conversion counters for cta_click and article_click events
-    if ((event.type === 'cta_click' || event.type === 'article_click') && event.articleSlug) {
+    // Per-article conversion counters for click events
+    if (
+      (
+        event.type === 'cta_click' ||
+        event.type === 'article_click' ||
+        event.type === 'related_module_click' ||
+        event.type === 'hub_primary_cta_click' ||
+        event.type === 'hub_secondary_cta_click'
+      ) &&
+      event.articleSlug
+    ) {
       const ctaKey = `kpi:cta:${event.articleSlug}:${date}`;
       const clickKey = `kpi:click:${event.articleSlug}:${date}`;
-      if (event.type === 'cta_click') {
+      if (event.type === 'cta_click' || event.type === 'hub_primary_cta_click' || event.type === 'hub_secondary_cta_click') {
         await kv.incr(ctaKey);
         await kv.expire(ctaKey, TTL_90_DAYS);
       }
-      if (event.type === 'article_click') {
+      if (event.type === 'article_click' || event.type === 'related_module_click') {
         await kv.incr(clickKey);
         await kv.expire(clickKey, TTL_90_DAYS);
       }
+    }
+
+    // CTA view and form start counters per article
+    if (
+      (event.type === 'cta_view' || event.type === 'form_start') &&
+      event.articleSlug
+    ) {
+      const viewKey = `kpi:${event.type}:${event.articleSlug}:${date}`;
+      await kv.incr(viewKey);
+      await kv.expire(viewKey, TTL_90_DAYS);
     }
 
     return NextResponse.json({ success: true, eventId: key }, { status: 200 });
@@ -117,8 +158,21 @@ export async function GET(request: NextRequest) {
       'churn',
       'article_click',
       'cta_click',
+      'cta_view',
+      'form_start',
+      'form_submit',
+      'intent_router_impression',
+      'intent_set',
+      'intent_switch',
+      'intent_banner_dismiss',
       'scroll_depth',
       'toc_jump',
+      'hub_nav_click',
+      'related_module_impression',
+      'related_module_click',
+      'hub_primary_cta_click',
+      'hub_secondary_cta_click',
+      'faq_expand',
     ];
     const counters: Record<string, number> = {};
 
