@@ -33,7 +33,7 @@
       "title": "Heartbeat Monitor",
       "category": "Monitoring & Health Checks",
       "description": "Set up an always-on automation that pings a configurable list of service URLs every 5 minutes and immediately alerts you via Telegram when any service goes down. Logs all results with timestamps. Handles timeouts, DNS failures, and SSL errors as failures.",
-      "prompt_text": "Set up an always-on automation that pings a configurable list of service URLs every 5 minutes and alerts you immediately when any service goes down.\n\nCONFIGURATION:\n- services.txt: one URL per line (e.g., https://api.yoursite.com/health)\n- log file: ~/logs/heartbeat.log\n\nPROCESS:\n1. Read all URLs from services.txt\n2. For each URL, run: curl -s -o /dev/null -w '%{http_code}' -L --max-time 10 [URL]\n3. Log each result with timestamp to heartbeat.log: '[TIME] | [URL] | [STATUS] | [RESPONSE_MS]ms'\n4. If status != 200, immediately send Telegram alert via message tool\n\nALERT FORMAT:\n\"🚨 Service Down: [URL] returned [STATUS] at [TIME]\nResponse time: [X]ms\"\n\nTOOLS: exec, cron, filesystem, message\n\nThe script must handle connection timeouts (status 000), DNS failures, and SSL errors as failures.",
+      "prompt_text": "Set up an always-on automation that pings a configurable list of service URLs every 5 minutes and alerts you immediately when any service goes down.\n\nCONFIGURATION:\n- services.txt: one URL per line (e.g., https://api.yoursite.com/health)\n- log file: ~/logs/heartbeat.log\n\nPROCESS:\n1. Read all URLs from services.txt\n2. For each URL, run: curl -s -o /dev/null -w '%{http_code}' -L --max-time 10 [URL]\n3. Log each result with timestamp to heartbeat.log: '[TIME] | [URL] | [STATUS] | [RESPONSE_MS]ms'\n4. If status != 200, immediately send Telegram alert via message tool\n\nALERT FORMAT:\n\"\ud83d\udea8 Service Down: [URL] returned [STATUS] at [TIME]\nResponse time: [X]ms\"\n\nTOOLS: exec, cron, filesystem, message\n\nThe script must handle connection timeouts (status 000), DNS failures, and SSL errors as failures.",
       "tools": [
         "exec",
         "cron",
@@ -48,7 +48,7 @@
         "Test manually: run script and verify log output",
         "Verify Telegram bot is configured in OpenClaw message tool"
       ],
-      "example_output": "14:30:01 | https://api.example.com | 200 | 45ms | OK\n14:30:01 | https://db.example.com | 200 | 23ms | OK\n14:30:02 | https://backup.example.com | 000 | 0ms | TIMEOUT\n[TG ALERT] 🚨 Service Down: https://backup.example.com returned 000 at 14:30:02",
+      "example_output": "14:30:01 | https://api.example.com | 200 | 45ms | OK\n14:30:01 | https://db.example.com | 200 | 23ms | OK\n14:30:02 | https://backup.example.com | 000 | 0ms | TIMEOUT\n[TG ALERT] \ud83d\udea8 Service Down: https://backup.example.com returned 000 at 14:30:02",
       "is_staff_pick": true,
       "vote_count": 4,
       "created_at": 1744156800,
@@ -75,7 +75,7 @@
         "Test with --dry-run first to verify correct channel and output format",
         "Verify Telegram bot can send to your chat ID"
       ],
-      "example_output": "📊 Channel Digest - Apr 8 2026\n\n🗣️ Top Topics:\n- Deploy pipeline: Team discussed moving to canary deployments. Decision deferred to next meeting.\n- API rate limits: Engineering flagged customer X hitting 10x quota.\n\n✅ Decisions Made:\n- Ship v2.4 by Friday\n- Switch to Postgres 16 for all new instances\n\n📋 Action Items:\n- Set up canary monitoring → @alice (by Thu)\n- Draft rate limit policy → @bob (by Wed)",
+      "example_output": "\ud83d\udcca Channel Digest - Apr 8 2026\n\n\ud83d\udde3\ufe0f Top Topics:\n- Deploy pipeline: Team discussed moving to canary deployments. Decision deferred to next meeting.\n- API rate limits: Engineering flagged customer X hitting 10x quota.\n\n\u2705 Decisions Made:\n- Ship v2.4 by Friday\n- Switch to Postgres 16 for all new instances\n\n\ud83d\udccb Action Items:\n- Set up canary monitoring \u2192 @alice (by Thu)\n- Draft rate limit policy \u2192 @bob (by Wed)",
       "is_staff_pick": true,
       "vote_count": 14,
       "created_at": 1744156800,
@@ -87,7 +87,7 @@
       "title": "Disk Space Alert System",
       "category": "Monitoring & Health Checks",
       "description": "Set up an always-on automation that checks disk usage on all mounted volumes every 10 minutes and alerts you via Telegram when any volume exceeds 85% capacity. Logs all readings. Critical alerts at 90%.",
-      "prompt_text": "Set up an always-on automation that checks disk usage on all mounted volumes every 10 minutes and alerts you via Telegram when any volume exceeds 85% capacity.\n\nPROCESS:\n1. Run: df -h (excluding tmpfs/snap/virtual filesystems)\n2. Parse output to extract: filesystem, total size, used space, usage percentage\n3. For each volume, check if usage % > 85\n4. Log all readings to ~/logs/disk_usage.log with timestamp\n5. If any volume > 85%, immediately send Telegram alert\n\nALERT FORMAT:\n\"💾 Disk Alert: [VOLUME] at [USAGE]%\nTotal: [SIZE] | Used: [USED] | Available: [AVAIL]\nTime: [TIMESTAMP]\"\n\nFor volumes > 90%: escalate with '🔴 CRITICAL' prefix.\n\nTOOLS: exec, cron, filesystem, message",
+      "prompt_text": "Set up an always-on automation that checks disk usage on all mounted volumes every 10 minutes and alerts you via Telegram when any volume exceeds 85% capacity.\n\nPROCESS:\n1. Run: df -h (excluding tmpfs/snap/virtual filesystems)\n2. Parse output to extract: filesystem, total size, used space, usage percentage\n3. For each volume, check if usage % > 85\n4. Log all readings to ~/logs/disk_usage.log with timestamp\n5. If any volume > 85%, immediately send Telegram alert\n\nALERT FORMAT:\n\"\ud83d\udcbe Disk Alert: [VOLUME] at [USAGE]%\nTotal: [SIZE] | Used: [USED] | Available: [AVAIL]\nTime: [TIMESTAMP]\"\n\nFor volumes > 90%: escalate with '\ud83d\udd34 CRITICAL' prefix.\n\nTOOLS: exec, cron, filesystem, message",
       "tools": [
         "exec",
         "cron",
@@ -102,7 +102,7 @@
         "Test manually: run script and check log file output",
         "Verify Telegram bot is working before enabling alert mode"
       ],
-      "example_output": "14:40:01 | /dev/disk1s1 | 67% | 912GB/1TB | OK\n14:40:01 | /dev/disk1s2 | 91% | 455GB/500GB | 🔴 CRITICAL\n[TG ALERT] 💾 Disk Alert: /dev/disk1s2 at 91%. Available: 45GB",
+      "example_output": "14:40:01 | /dev/disk1s1 | 67% | 912GB/1TB | OK\n14:40:01 | /dev/disk1s2 | 91% | 455GB/500GB | \ud83d\udd34 CRITICAL\n[TG ALERT] \ud83d\udcbe Disk Alert: /dev/disk1s2 at 91%. Available: 45GB",
       "is_staff_pick": false,
       "vote_count": 14,
       "created_at": 1744156800,
@@ -132,7 +132,7 @@
         "Test manually with --dry-run first to verify correct session paths",
         "Set up Telegram bot for alert delivery"
       ],
-      "example_output": "=== Session Health 14:45:01 ===\nActive sessions:\n  agent:main:session-abc123 (active 2m ago) ✓\n  agent:main:session-def456 (active 8m ago) ✓\nStale sessions:\n  agent:main:session-xyz789 (inactive 47m) → archived\n[TG DIGEST] 2 stale sessions archived. No unresponsive sessions.",
+      "example_output": "=== Session Health 14:45:01 ===\nActive sessions:\n  agent:main:session-abc123 (active 2m ago) \u2713\n  agent:main:session-def456 (active 8m ago) \u2713\nStale sessions:\n  agent:main:session-xyz789 (inactive 47m) \u2192 archived\n[TG DIGEST] 2 stale sessions archived. No unresponsive sessions.",
       "is_staff_pick": false,
       "vote_count": 9,
       "created_at": 1744156800,
@@ -160,7 +160,7 @@
         "Test manually: make a change, run script, verify commit appears in git log",
         "Verify Telegram bot is configured for commit notifications"
       ],
-      "example_output": "=== Git Watcher 14:50:01 ===\nChanges detected:\n  M src/index.js\n  M src/utils.js\n  A tests/new_test.js\nCommit: [AUTOMATED] Updates 2026-04-08_14:50: Changed files: src/index.js, src/utils.js, tests/new_test.js\nBranch: development\nPushed: origin/development\n[TG] ✅ Auto-commit: 3 files pushed to dev",
+      "example_output": "=== Git Watcher 14:50:01 ===\nChanges detected:\n  M src/index.js\n  M src/utils.js\n  A tests/new_test.js\nCommit: [AUTOMATED] Updates 2026-04-08_14:50: Changed files: src/index.js, src/utils.js, tests/new_test.js\nBranch: development\nPushed: origin/development\n[TG] \u2705 Auto-commit: 3 files pushed to dev",
       "is_staff_pick": false,
       "vote_count": 18,
       "created_at": 1744156800,
@@ -188,7 +188,7 @@
         "Add to crontab: \"0 2 * * *\" ~/scripts/nightly_backup.sh",
         "Verify Telegram notifications are working"
       ],
-      "example_output": "=== Nightly Backup 02:00:15 ===\nDirectories: workspace, memory, config, scripts\nBackup: ~/backups/backup_2026-04-08.tar.gz\nSize: 234MB\nFiles archived: 1,847\nChecksum: a3f8d2c9...\nRetention: 2 old backups purged\n[TG] ✅ Backup complete: backup_2026-04-08.tar.gz (234MB, 1,847 files)",
+      "example_output": "=== Nightly Backup 02:00:15 ===\nDirectories: workspace, memory, config, scripts\nBackup: ~/backups/backup_2026-04-08.tar.gz\nSize: 234MB\nFiles archived: 1,847\nChecksum: a3f8d2c9...\nRetention: 2 old backups purged\n[TG] \u2705 Backup complete: backup_2026-04-08.tar.gz (234MB, 1,847 files)",
       "is_staff_pick": false,
       "vote_count": 3,
       "created_at": 1744156800,
@@ -219,6 +219,835 @@
       "example_output": "=== Memory Access Stats - Apr 8 ===\nHOT (most accessed this week):\n  memory/project-a.md: 47 reads\n  memory/todos.md: 31 reads\n  memory/contacts.md: 22 reads\n\nCOLD (not accessed in 30 days):\n  memory/old-ideas-2025.md: 0 reads\n  memory/archived-notes.md: 0 reads\n\nRecommendation: Archive cold files. Promote hot files to long-term memory.",
       "is_staff_pick": false,
       "vote_count": 2,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 9,
+      "slug": "keyword-sentiment-tracker",
+      "title": "Keyword Sentiment Tracker",
+      "category": "Research & Feeds",
+      "description": "Monitors Reddit, Twitter/X, and web mentions of any keyword you specify, analyzes sentiment across sources, and sends a daily summary to Telegram with volume trends and top discussions.",
+      "prompt_text": "Set up an always-on automation that monitors mentions of a keyword across Reddit, Twitter/X, and the web \u2014 then sends you a daily sentiment digest on Telegram.\n\nCONFIGURATION:\nCreate a config file at ~/configs/sentiment_config.json:\n{\n  \"keyword\": \"YOUR_KEYWORD\",\n  \"subreddits\": [\"relevant1\", \"relevant2\"],\n  \"twitter_handles\": [\"handle1\", \"handle2\"],\n  \"telegram_chat_id\": \"YOUR_CHAT_ID\"\n}\n\nPROCESS:\n1. REDDIT SEARCH: Use web_search to query \"site:reddit.com KEYWORD\" and also \"KEYWORD reddit\" \u2014 retrieve top 5 results from the last 7 days\n2. TWITTER/X SEARCH: Use web_search to query \"KEYWORD site:x.com OR site:twitter.com since:2026-01-01\" \u2014 retrieve top 10 tweets/reposts\n3. GENERAL WEB: Use web_search to query \"KEYWORD\" (no site filter) \u2014 get top 5 articles from the last 7 days\n4. For each source, read the page/content using web_fetch to extract:\n   - Reddit: post title, score, number of comments, subreddit, flaired sentiment if visible\n   - Twitter: tweet text, likes, retweets, reply count\n   - Web: article headline, publication, key pull quotes\n\nSENTIMENT ANALYSIS (manual classification):\nClassify each mention as POSITIVE, NEGATIVE, or NEUTRAL based on:\n- POSITIVE: praise, excitement, recommendations, problem solved, ROI, growth\n- NEGATIVE: complaints, bugs, outages, failures, regrets, cancellations, scams\n- NEUTRAL: news articles, announcements, how-to guides, comparisons without opinion\n\nScore: POSITIVE = +1, NEGATIVE = -1, NEUTRAL = 0\nSentiment Score = sum(scores) / total_mentions (range -1 to +1)\n\nDAILY DIGEST FORMAT (send via message tool to Telegram):\n\ud83d\udcca *Keyword Sentiment Report \u2014 [DATE]*\n\n\ud83d\udd0d *Volume:* X mentions today (vs Y yesterday)\n\ud83d\ude0a/\ud83d\ude10/\ud83d\ude20 *Sentiment:* X% positive / X% neutral / X% negative\n\ud83d\udcc8 *Score:* X.XX (range -1 to +1)\n\n*Top Positive Mentions:*\n\u2022 [Source] \u2014 [1-2 sentence summary]\n\n*Top Negative Mentions:*\n\u2022 [Source] \u2014 [1-2 sentence summary]\n\n*Key Discussions:*\n\u2022 [Source] \u2014 [1-sentence takeaway]\n\nTOOLS: web_search, web_fetch, exec, cron, message",
+      "tools": [
+        "web_search",
+        "web_fetch",
+        "exec",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Create ~/configs/ directory and sentiment_config.json with your keyword, target subreddits, and Twitter handles",
+        "Create a script at ~/scripts/sentiment_tracker.sh that runs the full monitoring pipeline",
+        "Make the script executable: chmod +x ~/scripts/sentiment_tracker.sh",
+        "Add to crontab: \"0 9 * * *\" to run every morning at 9 AM (adjust as needed)",
+        "Test manually: run the script with a test keyword and verify the Telegram digest looks correct",
+        "Verify your Telegram bot can send to the configured chat ID"
+      ],
+      "trigger": "sentiment-tracker",
+      "example_output": "\ud83d\udcca *Keyword Sentiment Report \u2014 Apr 11 2026*\n\n\ud83d\udd0d *Volume:* 23 mentions today (vs 18 yesterday)\n\ud83d\ude0a/\ud83d\ude10/\ud83d\ude20 *Sentiment:* 52% positive / 30% neutral / 18% negative\n\ud83d\udcc8 *Score:* +0.34\n\n*Top Positive Mentions:*\n\u2022 r/cryptocurrency \u2014 \"SOL deflation model is working exactly as designed. Burn rate up 340% this quarter.\"\n\n*Top Negative Mentions:*\n\u2022 @skepticaldao \u2014 \"Another day another exploit. When will protocols learn? M gone.\"\n\n*Key Discussions:*\n\u2022 cointelegraph.com \u2014 DeFi lending protocols see 90-day high in active positions as rates stabilize",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775907603,
+      "updated_at": 1775907603
+    },
+    {
+      "id": 10,
+      "slug": "competitor-change-detector",
+      "title": "Competitor Change Detector",
+      "category": "Research & Feeds",
+      "description": "Watches a competitor website or blog and notifies you via Telegram when they publish new content, change pricing, or update key pages \u2014 keeping you ahead of market moves.",
+      "prompt_text": "Set up an always-on automation that watches a competitor website or blog and notifies you via Telegram when they publish new content or change pricing.\n\nCONFIGURATION:\nCreate ~/configs/competitor_config.json:\n{\n  \"competitors\": [\n    {\n      \"name\": \"CompetitorName\",\n      \"blog_url\": \"https://competitor.com/blog\",\n      \"pricing_url\": \"https://competitor.com/pricing\",\n      \"sitemap_url\": \"https://competitor.com/sitemap.xml\"\n    }\n  ],\n  \"check_interval_hours\": 6,\n  \"state_file\": \"~/.openclaw/competitor_state.json\"\n}\n\nSTATE FILE:\nTrack last known state to detect changes:\n{\n  \"competitor.com/blog\": {\n    \"last_urls\": [\"article-1\", \"article-2\"],\n    \"last_check\": 1744156800,\n    \"pricing_hash\": \"sha256_of_pricing_page\"\n  }\n}\n\nPROCESS:\n1. Read the competitor sitemap using web_fetch to get all blog post URLs\n2. Filter to posts published or updated in the last 7 days\n3. Compare against state_file last known URLs\n4. NEW CONTENT: For any new posts found:\n   a. Fetch the article with web_fetch\n   b. Extract: title, publish date, excerpt (first 200 chars), estimated read time\n   c. Classify content type: announcement, tutorial, comparison, pricing update, case study\n5. PRICING CHANGES: For pricing_url:\n   a. Fetch page and compute SHA-256 hash of the raw text\n   b. Compare to stored hash in state_file\n   c. If changed: fetch the full page and extract what changed (added/removed features, price changes)\n6. Update state_file with new URLs and hashes\n7. If changes found: send Telegram alert immediately\n\nALERT FORMAT (message tool to Telegram):\n\ud83d\udd0d *Competitor Alert: [CompetitorName]*\n\n\ud83d\udcdd *New Content ({count}):*\n\u2022 [Post Title](URL) \u2014 {type} \u2014 {excerpt}\n\n{If pricing changed:}\n\ud83d\udcb0 *Pricing Update:*\n{Before: bullet of old pricing} \u2192 {After: bullet of new pricing}\n\n\ud83d\udd50 *Checked:* [timestamp]\n\nTOOLS: web_fetch, exec, cron, message, filesystem",
+      "tools": [
+        "web_fetch",
+        "exec",
+        "cron",
+        "message",
+        "filesystem"
+      ],
+      "setup_steps": [
+        "Create ~/configs/competitor_config.json with your competitor URLs and check interval",
+        "Create the state file at ~/.openclaw/competitor_state.json (initially empty dict {})",
+        "Create script: ~/scripts/competitor_check.sh that runs the full pipeline",
+        "Make executable: chmod +x ~/scripts/competitor_check.sh",
+        "Add to crontab: \"0 */6 * * *\" to check every 6 hours",
+        "Test manually first: run with --verbose and check output",
+        "Verify Telegram bot is configured"
+      ],
+      "trigger": "competitor-watch",
+      "example_output": "\ud83d\udd0d *Competitor Alert: ProtocolX*\n\n\ud83d\udcdd *New Content (2):*\n\u2022 [How We Reduced Gas Fees by 40%](https://protocolx.com/blog/gas-optimization) \u2014 tutorial \u2014 Learn the exact infrastructure changes that cut our users gas costs significantly...\n\u2022 [New Enterprise Tier Announced](https://protocolx.com/blog/enterprise-tier) \u2014 announcement \u2014 Introducing ProtocolX Enterprise with dedicated support and SLA guarantees.\n\n\ud83d\udcb0 *Pricing Update:*\nBefore: Pro @ /mo | Team @ /mo\nAfter: Pro @ /mo | Team @ /mo (+33% increase)\n\n\ud83d\udd50 *Checked: Apr 11 2026 14:00 UTC*",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775907628,
+      "updated_at": 1775907628
+    },
+    {
+      "id": 11,
+      "slug": "arxiv-paper-alert",
+      "title": "ArXiv Paper Alert",
+      "category": "Research & Feeds",
+      "description": "Watches arXiv for new papers matching keywords you care about, sends abstracts to Telegram with link, authors, and relevance score so you never miss a relevant paper.",
+      "prompt_text": "Set up an always-on automation that watches arXiv for new papers matching keywords you care about, sends abstracts to Telegram with link, authors, and relevance score.\n\nCONFIGURATION:\nCreate ~/configs/arxiv_config.json:\n{\n  \"keywords\": [\"decentralized finance\", \"layer 2 scaling\", \"zero knowledge proofs\"],\n  \"categories\": [\"cs.CR\", \"cs.LO\", \"q-fin.TR\"],\n  \"max_results_per_keyword\": 3,\n  \"state_file\": \"~/.openclaw/arxiv_state.json\"\n}\n\nSTATE FILE:\nTrack papers already sent to avoid duplicates:\n{\n  \"sent_ids\": [\"2301.12345\", \"2301.12346\"],\n  \"last_check\": 1744156800\n}\n\nPROCESS:\n1. For each keyword in config, construct arXiv search URL:\n   https://export.arxiv.org/api/query?search_query=all:KEYWORD&start=0&max_results=10&sortBy=submittedDate&sortOrder=descending\n2. Fetch the RSS/XML feed using web_fetch\n3. Parse entries: for each paper, extract:\n   - ID (from arXiv ID in entry title/link)\n   - Title\n   - Authors (first 3 + \"et al.\" if more)\n   - Published date\n   - Summary/abstract (first 300 characters)\n   - arXiv URL\n4. Filter: only papers from the last 7 days\n5. For each new paper:\n   a. Check if ID is in state_file sent_ids \u2014 skip if already sent\n   b. Calculate relevance score (1-10): count keyword appearances in title + abstract\n   c. If relevance score >= 5, flag as HIGH priority\n6. Update state_file with new paper IDs\n7. Send Telegram message\n\nALERT FORMAT (message tool to Telegram):\n\ud83d\udcda *ArXiv Alert: [KEYWORD]*\n\n*{count} new papers (last 7 days)*\n\n\ud83d\udd2c *[Paper Title]*(URL)\nAuthors: [First Author et al.] | {relevance: \u2605\u2605\u2605\u2605\u2605}\n{first 280 chars of abstract}...\n\n\ud83d\udd50 *Submitted:* YYYY-MM-DD\n\nTOOLS: web_fetch, exec, cron, message, filesystem",
+      "tools": [
+        "web_fetch",
+        "exec",
+        "cron",
+        "message",
+        "filesystem"
+      ],
+      "setup_steps": [
+        "Create ~/configs/arxiv_config.json with your target keywords and arXiv categories",
+        "Initialize ~/.openclaw/arxiv_state.json with {\"sent_ids\": [], \"last_check\": 0}",
+        "Create script: ~/scripts/arxiv_check.sh that fetches and parses the arXiv RSS feed",
+        "Make executable: chmod +x ~/scripts/arxiv_check.sh",
+        "Add to crontab: \"0 8,20 * * *\" to check twice daily (8 AM and 8 PM)",
+        "Test: run script manually and verify it fetches and parses paper entries correctly",
+        "Verify Telegram bot is working"
+      ],
+      "trigger": "arxiv-alert",
+      "example_output": "\ud83d\udcda *ArXiv Alert: zero knowledge proofs*\n\n*3 new papers (last 7 days)*\n\n\ud83d\udd2c *[Zero-Knowledge Succinct Non-Interactive Arguments for L1 Consistency](https://arxiv.org/abs/2604.12345)*\nAuthors: Chen, Wang et al. | {relevance: \u2605\u2605\u2605\u2605\u2605}\nWe present a new construction of zk-SNARKs with logarithmic proof size and constant-time verification, achieving significant improvements over prior work...\n\n\ud83d\udd50 *Submitted: 2026-04-08*",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775907650,
+      "updated_at": 1775907650
+    },
+    {
+      "id": 12,
+      "slug": "daily-tech-digest",
+      "title": "Daily Tech Digest",
+      "category": "Research & Feeds",
+      "description": "Pulls top crypto/AI news from multiple sources every morning, summarizes into a clean 5-bullet brief with sources, and sends to Telegram \u2014 your daily competitive intelligence in 2 minutes.",
+      "prompt_text": "Set up an always-on automation that runs every morning, pulls the top crypto and AI news from multiple sources, summarizes into a 5-bullet brief, and sends it to Telegram.\n\nSOURCES TO CHECK:\n- Crypto: CoinDesk (coindesk.com), The Block (theblock.co), CryptoSlate (cryptoslate.com)\n- AI: The Verge AI (theverge.com/ai-artificial-intelligence), TechCrunch AI (techcrunch.com/category/artificial-intelligence), VentureBeat AI (venturebeat.com/category/ai)\n\nPROCESS:\n1. For each source:\n   a. Use web_search to find top article: \"site:coindesk.com 2026\" and \"site:theblock.co 2026\"\n   b. Use web_fetch to fetch the article text for top 1-2 articles per source\n   c. Extract: headline, 2-sentence summary, key quote, publication time\n2. ALSO search for breaking news:\n   a. web_search: \"crypto news today\" (top 3)\n   b. web_search: \"AI artificial intelligence news today\" (top 3)\n3. Combine all findings \u2014 deduplicate by headline similarity\n4. Select top 5 stories ranked by:\n   - Breaking/urgent (announcements, launches, hacks) = high priority\n   - Market-moving news (regulatory, major partnerships) = high priority\n   - Industry trends (new research, significant product updates) = medium priority\n5. Format the digest\n\nDIGEST FORMAT (send via message tool to Telegram):\n\ud83d\udcf0 *Daily Tech Digest \u2014 [DATE]*\n\n*Top [N] Stories:*\n\n1\ufe0f\u20e3 *[Headline]*(URL)\n   {2-sentence summary} \u2014 *Source*\n\n2\ufe0f\u20e3 *[Headline]*(URL)\n   {2-sentence summary} \u2014 *Source*\n\n... (up to 5)\n\n*Quick Takes:*\n\u2022 {One sentence hot take or context}\n\nTOOLS: web_search, web_fetch, cron, message",
+      "tools": [
+        "web_search",
+        "web_fetch",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Verify web_search returns fresh results for each source",
+        "Create script: ~/scripts/daily_digest.sh that automates the full pipeline",
+        "Make executable: chmod +x ~/scripts/daily_digest.sh",
+        "Add to crontab: \"0 9 * * *\" to run every morning at 9 AM",
+        "Test: run manually and verify digest format looks good",
+        "Verify Telegram bot can receive the digest with clickable links"
+      ],
+      "trigger": "daily-digest",
+      "example_output": "\ud83d\udcf0 *Daily Tech Digest \u2014 Apr 11 2026*\n\n*Top 5 Stories:*\n\n1\ufe0f\u20e3 *[Jupiter Launches New Perpetuals Protocol with 10x Leverage](https://coindesk.com/jupiter-perpetuals)*\n   Jupiter has unveiled a perpetuals trading protocol with up to 10x leverage, competing directly with dYdX and Hyperliquid. \u2014 *CoinDesk*\n\n2\ufe0f\u20e3 *[OpenAI Releases GPT-5 with Real-Time Reasoning](https://theverge.com/gpt5-release)*\n   OpenAI announces GPT-5 with real-time reasoning capabilities and native agentic workflows baked in. \u2014 *The Verge*\n\n3\ufe0f\u20e3 *[SEC Delays Decision on Ethereum ETF Options](https://theblock.co/sec-eth-options)*\n   The SEC has delayed its ruling on Ethereum ETF options by 45 days, citing need for further review. \u2014 *The Block*\n\n*Quick Takes:*\n\u2022 Solana DEX volume surpassed Coinbase spot trading for the 3rd consecutive week \u2014 real shift in market structure.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775907675,
+      "updated_at": 1775907675
+    },
+    {
+      "id": 13,
+      "slug": "eisenhower-todo-prioritizer",
+      "title": "Eisenhower Todo Prioritizer",
+      "category": "Other",
+      "description": "Takes your TASKS.md or any task list and reorders it using the urgent/important matrix \u2014 tells you what to do first, what to schedule, what to delegate, and what to cut.",
+      "prompt_text": "Take a task list (from TASKS.md or pasted text) and reorder it using the Eisenhower Matrix \u2014 urgent/important grid. Tell you exactly what to do first, what to schedule, what to delegate, and what to eliminate.\n\nEISENHOWER MATRIX DEFINITIONS:\n- QUADRANT 1 (Urgent + Important): Do immediately \u2014 crises, deadlines, emergencies\n- QUADRANT 2 (Not Urgent + Important): Schedule \u2014 planning, relationships, growth\n- QUADRANT 3 (Urgent + Not Important): Delegate \u2014 interruptions, others priorities\n- QUADRANT 4 (Not Urgent + Not Important): Eliminate \u2014 timewasters, trivial, escape\n\nINPUT:\nRead TASKS.md from ~/.openclaw/workspace/TASKS.md or use tasks provided by the user.\n\nPROCESS:\n1. Parse all tasks \u2014 each line is a task (bullet points, numbered lists, or plain text)\n2. For each task, classify by:\n   - Urgency: Does it have a deadline? Is it blocking others? Is it time-sensitive?\n   - Importance: Does it align with top goals? Does it have high impact if done?\n3. Assign each task to a quadrant\n4. Reorder the task list accordingly\n5. If a task is ambiguous, ask the user to clarify urgency or importance\n\nOUTPUT:\nDisplay the full Eisenhower Matrix with tasks grouped:\n\n\ud83d\udfe5 QUADRANT 1 \u2014 DO NOW (Urgent + Important)\n  1. [Task text] \u2014 deadline: [date if known]\n  2. [Task text] \u2014 why urgent: [1 sentence]\n\n\ud83d\udfe8 QUADRANT 2 \u2014 SCHEDULE (Important, Not Urgent)\n  1. [Task text] \u2014 suggested deadline: [3-5 days from now]\n  2. [Task text] \u2014 why important: [1 sentence]\n\n\ud83d\udfe9 QUADRANT 3 \u2014 DELEGATE (Urgent, Not Important)\n  1. [Task text] \u2014 can someone else handle this?\n\n\ud83d\udfe6 QUADRANT 4 \u2014 ELIMINATE (Neither)\n  1. [Task text] \u2014 reason: [why this can be dropped]\n\nAlso output a reprioritized task list (top to bottom):\n1. Do first: [Q1 tasks in order]\n2. Then: [Q2 tasks in order]\n3. Consider: [Q3 tasks]\n4. Drop: [Q4 tasks]\n\nTOOLS: read, exec",
+      "tools": [
+        "read",
+        "exec"
+      ],
+      "setup_steps": [
+        "Point to your TASKS.md: ~/.openclaw/workspace/TASKS.md",
+        "Or paste/send your raw task list as input",
+        "Model will parse, classify, and return the full Eisenhower Matrix",
+        "Review Q1 tasks \u2014 those are your immediate priorities",
+        "For Q2 tasks: set concrete deadlines to prevent slippage"
+      ],
+      "trigger": "eisenhower",
+      "example_output": "\ud83d\udfe5 QUADRANT 1 \u2014 DO NOW\n  1. Submit tax extension \u2014 deadline: Apr 15\n  2. Fix production bug in swap module \u2014 blocking 3 other devs\n\n\ud83d\udfe8 QUADRANT 2 \u2014 SCHEDULE\n  1. Write Q2 content calendar \u2014 blocks strategy meeting\n  2. Review competitor pricing \u2014 informs next roadmap decision\n\n\ud83d\udfe9 QUADRANT 3 \u2014 DELEGATE\n  1. Update investor deck slides \u2014 assistant can draft\n\n\ud83d\udfe6 QUADRANT 4 \u2014 ELIMINATE\n  1. Refactor legacy auth module \u2014 not blocking anything",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775907789,
+      "updated_at": 1775907789
+    },
+    {
+      "id": 14,
+      "slug": "random-act-of-kindness-scheduler",
+      "title": "Random Act of Kindness Scheduler",
+      "category": "Other",
+      "description": "Daily nudge with a random small kindness idea tailored to your location and timezone \u2014 takes 5 minutes or less, makes someone's day.",
+      "prompt_text": "Get a daily nudge with a random small kindness idea tailored to your location and timezone \u2014 takes 5 minutes or less and makes someone's day.\n\nPROCESS:\n1. Get current date/time and detect timezone from system or user input\n2. Assess the day context:\n   - Day of week (weekday = professional kindness; weekend = personal)\n   - Time of day (morning = prepare/plan; afternoon = immediate action)\n   - Local context (near a coffee shop? School pickup? Grocery store?)\n3. Pull a random kindness action from the appropriate category below\n4. Personalize it slightly based on context provided\n\nKINDNESS CATEGORIES:\n\nQUICK MORNING (before noon):\n- Pay for the coffee order behind you at the drive-through\n- Leave a positive review for a small local business you visited recently\n- Send a \"checking in\" text to someone who seemed stressed recently\n- Leave a sticky note with an encouraging message in a public space\n\nMIDDAY (noon - 5pm):\n- Hold the elevator for someone carrying heavy items\n- Leave a generous tip with a note: \"Your work matters\"\n- Send a specific compliment to a coworker (not generic \u2014 mention exact thing)\n- Email or call a family member you have not spoken to in a while\n\nEVENING (after 5pm):\n- Help a neighbor with their garbage bins\n- Leave a package of essentials (water + snack) for your mail carrier\n- Write a 3-sentence thank you note to someone who helped you this week\n- Offer to run a small errand for someone who is busy or unwell\n\nLOCATION TAILORING:\n- Near coffee shop: pay it forward\n- Near school: donate to teacher supply fund\n- Near gym: compliment someone on their dedication\n- Near park: pick up 5 pieces of litter\n\nOUTPUT:\n[Sun/Moon icon] [Day period] Kindness Nudge \u2014 [Date]\n\n[Location context if relevant]\n\n\u2728 Today's idea: [Action name]\nWhy it works \u2014 1 sentence\nTime needed: ~X minutes\n\nExact prompt: How to do this specifically \u2014 word for word if applicable\n\nTOOLS: exec, message, cron",
+      "tools": [
+        "exec",
+        "message",
+        "cron"
+      ],
+      "setup_steps": [
+        "Set your timezone in the script (defaults to system timezone)",
+        "Configure preferred categories (morning/afternoon/evening)",
+        "Set cron to send nudge daily at a preferred time (e.g., 9 AM)",
+        "Script: ~/scripts/kindness.sh \u2014 run daily",
+        "Add to crontab: \"0 9 * * *\" ~/scripts/kindness.sh",
+        "Get your daily nudge via Telegram"
+      ],
+      "trigger": "kindness",
+      "example_output": "\ud83c\udf24\ufe0f Morning Kindness Nudge \u2014 Apr 11 2026\n\n\u2728 Today's idea: Pay it Forward at Coffee Shop\nYou are near Milford \u2014 there is a local shop on Main St. Small gesture, huge mood lift for someone.\nTime needed: ~3 minutes\n\nExact prompt: When you order, say \"I am paying for the person behind me too.\"",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775907789,
+      "updated_at": 1775907789
+    },
+    {
+      "id": 15,
+      "slug": "quick-stats-dashboard",
+      "title": "Quick Stats Dashboard",
+      "category": "Other",
+      "description": "Renders a simple text dashboard showing bot P&L, article count, disk usage, cron status \u2014 one command to pull all your system stats at a glance.",
+      "prompt_text": "Run a single command and get a real-time text dashboard of all your system stats: bot P&L, article count, disk usage, cron job status, and any alerts. Everything in one view.\n\nDASHBOARD SECTIONS:\n\n=== SYSTEM OVERVIEW ===\n- Uptime and load average\n- Memory usage\n- Disk usage (root and workspace)\n\n=== CRYPTO BOT STATUS ===\n- Sniper bot: run status check or show \"not running\"\n- Bot wallet balance: check balances script output\n- Recent P&L: tail last line of pnl log\n- Active positions: count open positions\n\n=== DECRYPTICA CONTENT ===\n- Articles published: count articles in data/articles.json\n- Last article pushed: git log -1 in the decryptica repo\n- Vercel deployment status\n\n=== CRON HEALTH ===\n- Failed cron runs today: grep errors in log files\n- Cron jobs active: crontab -l | grep -v \"^#\" count\n- Last backup: tail -1 of backup log\n\n=== ALERTS ===\n- Unread error logs: grep ERROR/FATAL\n- Failed API calls: grep 429/500/503 in logs\n\nPROCESS:\n1. Run each check using exec with appropriate commands\n2. Aggregate all outputs into a formatted text table\n3. Color-code if terminal supports it:\n   - \ud83d\udfe2 Green: healthy / expected value\n   - \ud83d\udfe1 Yellow: borderline / watch item\n   - \ud83d\udd34 Red: problem / needs attention\n4. Display in monospace/fixed-width for readability\n5. End with one-line summary: \"System: [HEALTHY/WARNING/CRITICAL] \u2014 [top issue if any]\"\n\nTOOLS: exec, filesystem",
+      "tools": [
+        "exec",
+        "filesystem"
+      ],
+      "setup_steps": [
+        "Verify paths in the script match your actual directory structure",
+        "Update crypto bot paths (sniper.py, balances script) to match your setup",
+        "Update Vercel API credentials if you want deployment status",
+        "Create script: ~/scripts/quick_stats.sh",
+        "Make executable: chmod +x ~/scripts/quick_stats.sh",
+        "Run with: ~/scripts/quick_stats.sh \u2014 displays dashboard immediately"
+      ],
+      "trigger": "stats",
+      "example_output": "=== QUICK STATS DASHBOARD === Apr 11 2026 14:00 UTC\n\n\ud83d\udfe2 SYSTEM: Healthy\nUptime: 45 days | Load: 0.23 0.19 0.15\nMemory: 6.2G/16G | Disk: 342G/500G (68%)\n\n\ud83d\udfe1 CRYPTO: Watch\nSniper bot: RUNNING | Wallet: 0.8 SOL\nP&L today: +$12.40 | Positions: 3 open\n\u26a0\ufe0f One position underwater by $3.20\n\n\ud83d\udfe2 DECRYPTICA: Healthy\nArticles: 247 | Last push: 2h ago\nDeploy: production (live)\n\n\ud83d\udfe2 CRON: Healthy\nActive jobs: 8 | Failed today: 0\nLast backup: Apr 11 02:00 UTC\n\n=== System: HEALTHY \u2014 All nominal ===",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775907789,
+      "updated_at": 1775907789
+    },
+    {
+      "id": 16,
+      "slug": "memory-decay-detector",
+      "title": "Memory Decay Detector",
+      "category": "Memory Management",
+      "description": "Flags memory files untouched for 30+ days, suggests what is stale and ready to archive \u2014 keeps your knowledge base lean and relevant.",
+      "prompt_text": "Set up an always-on automation that scans your memory files, flags anything untouched for 30+ days, and suggests what is stale and ready to archive.\n\nCONFIGURATION:\n- memory_dir: ~/.openclaw/memory/\n- state_file: ~/.openclaw/memory/memory_decay_state.json\n- threshold_days: 30\n\nSTATE FILE FORMAT:\n{\n  \"files\": {\n    \"memory/YYYY-MM-DD.md\": {\n      \"last_modified\": 1744156800,\n      \"last_accessed\": 1744156800,\n      \"word_count\": 450,\n      \"access_count\": 3\n    }\n  },\n  \"archive_candidates\": []\n}\n\nPROCESS:\n1. List all files in ~/.openclaw/memory/ recursively (/*.md and /*/*.md)\n2. For each file, get: last modified timestamp (stat -c %Y), file size, word count (wc -w)\n3. Load state_file \u2014 if file is new, add entry. If file was previously seen, update.\n4. For each file, calculate days_since_access = (now - last_modified) / 86400\n5. Flag files where days_since_access > 30 as STALE\n6. Also flag files with word_count < 50 and access_count == 1 as LOW_VALUE\n7. Build archive_candidates list sorted by: (days_since_access DESC, access_count ASC)\n8. Save updated state_file\n9. Send Telegram digest\n\nDIGEST FORMAT:\n\ud83e\udde0 Memory Decay Report \u2014 [DATE]\n\n{count} files untouched for 30+ days:\n1. [filename] \u2014 {days} days stale | {access_count} accesses | {word_count} words\n   Suggestion: [ARCHIVE/KEEP/MERGE]\n\n{count} low-value files (short + rarely accessed):\n1. [filename] \u2014 {word_count} words, accessed {access_count}x\n   Suggestion: MERGE into a related file or DELETE\n\nTOOLS: exec, filesystem, cron, message",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Create ~/.openclaw/memory/ directory if it does not exist",
+        "Initialize ~/.openclaw/memory/memory_decay_state.json with {\"files\": {}, \"archive_candidates\": []}",
+        "Create script: ~/scripts/memory_decay.sh",
+        "Make executable: chmod +x ~/scripts/memory_decay.sh",
+        "Add to crontab: \"0 9 * * 1\" to run every Monday morning",
+        "Test: run manually and review the decay report",
+        "Verify Telegram notifications work"
+      ],
+      "trigger": "memory-decay",
+      "example_output": "\ud83e\udde0 Memory Decay Report \u2014 Apr 11 2026\n\n3 files untouched for 30+ days:\n1. memory/2025-11-project-x.md \u2014 47 days stale | 2 accesses | 120 words\n   Suggestion: ARCHIVE \u2014 project is inactive\n2. memory/2025-12-ideas.md \u2014 38 days stale | 1 access | 80 words\n   Suggestion: MERGE \u2014 small file, can combine with memory/2026-01-ideas.md\n3. memory/2026-01-old-process.md \u2014 32 days stale | 5 accesses | 340 words\n   Suggestion: KEEP \u2014 referenced often, update before archiving\n\n1 low-value file:\n1. memory/2025-10-note.md \u2014 22 words, accessed 1x\n   Suggestion: DELETE \u2014 single throwaway note",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775908099,
+      "updated_at": 1775908099
+    },
+    {
+      "id": 17,
+      "slug": "duplicate-detective",
+      "title": "Duplicate Detective",
+      "category": "Memory Management",
+      "description": "Scans your memory files for near-duplicate entries and proposes merges \u2014 keeps your knowledge base clean and avoids fragmented thinking.",
+      "prompt_text": "Set up an always-on automation that scans your memory files for near-duplicate entries and proposes merges.\n\nCONFIGURATION:\n- memory_dir: ~/.openclaw/memory/\n- similarity_threshold: 0.75 (75% similarity = candidate)\n- output_file: ~/logs/duplicates_report.txt\n\nPROCESS:\n1. List all *.md files in ~/.openclaw/memory/ recursively\n2. For each pair of files (or sections within files):\n   a. Read file content\n   b. Normalize: lowercase, remove punctuation, collapse whitespace\n   c. Calculate simple similarity: Jaccard index of word sets\n   d. Also check for: same header/title, same date prefix, shared key phrases\n3. Flag any pair with similarity > 0.75 as a DUPLICATE_CANDIDATE\n4. For each duplicate candidate:\n   - Identify the PRIMARY (older/more complete) vs DUPLICATE (newer/shorter)\n   - Extract: which paragraphs differ, which are identical\n   - Propose a MERGE recommendation\n5. Write report to output_file\n6. Send Telegram summary if duplicates found\n\nREPORT FORMAT:\n\ud83d\udd0d Duplicate Detective Report \u2014 [DATE]\n\nFound {count} duplicate pairs:\n\n[{count}]. [file-A.md] vs [file-B.md]\n    Similarity: {XX%} | Created: {date} vs {date}\n    Overlap: {description of shared content}\n    Recommendation: MERGE into [PRIMARY], delete [DUPLICATE]\n    Merge plan:\n      - Keep: [paragraph from A]\n      - Add from B: [paragraph from B not in A]\n      - Delete: [duplicate paragraphs]\n\nTOOLS: exec, filesystem, cron, message",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Verify memory directory and list current files",
+        "Create script: ~/scripts/duplicate_detective.sh",
+        "Make executable: chmod +x ~/scripts/duplicate_detective.sh",
+        "Add to crontab: \"0 10 * * 1\" to run every Monday at 10 AM",
+        "Test: run manually and review proposed merges",
+        "For each merge: manually review before deleting duplicates"
+      ],
+      "trigger": "duplicates",
+      "example_output": "\ud83d\udd0d Duplicate Detective Report \u2014 Apr 11 2026\n\nFound 2 duplicate pairs:\n\n[1]. memory/2026-03-tasks.md vs memory/TASKS.md\n    Similarity: 82% | Created: Mar 15 vs Mar 20\n    Overlap: Both contain the same project milestones section\n    Recommendation: MERGE into memory/2026-03-tasks.md (older, more complete), archive TASKS.md\n    Merge plan:\n      - Keep: Full project milestones from 2026-03-tasks.md\n      - Add from TASKS.md: [Daily standup notes section not in primary]\n      - Delete: Duplicate project overview paragraphs",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775908099,
+      "updated_at": 1775908099
+    },
+    {
+      "id": 18,
+      "slug": "memory-usage-leaderboard",
+      "title": "Memory Usage Leaderboard",
+      "category": "Memory Management",
+      "description": "Ranks which memory files get accessed the most, so you know what is actually useful versus sitting there untouched \u2014 guides what to promote to long-term memory.",
+      "prompt_text": "Set up an always-on automation that tracks how often each memory file is accessed and ranks them by usefulness \u2014 so you know what to promote to long-term memory and what to archive.\n\nCONFIGURATION:\n- memory_dir: ~/.openclaw/memory/\n- access_log: ~/.openclaw/memory/access_log.jsonl\n- leaderboard_file: ~/.openclaw/memory/usage_leaderboard.json\n- lookback_days: 30\n\nACCESS LOG FORMAT (one JSON object per line):\n{\"timestamp\": \"ISO8601\", \"file\": \"memory/path/file.md\", \"action\": \"read\", \"bytes_read\": 1024}\n\nPROCESS:\n1. Ensure access_log.jsonl exists in ~/.openclaw/memory/\n2. Filter access_log to last {lookback_days} days\n3. Group by file: for each unique file, count total accesses and sum bytes_read\n4. Calculate:\n   - access_count: number of times opened\n   - total_bytes: total bytes read\n   - last_accessed: most recent access timestamp\n   - access_rate: accesses per week\n5. Rank files by access_count DESC\n6. Identify:\n   - HOT: top 5 by access count\n   - COLD: bottom 5 by access count (excluding files created in last 7 days)\n   - GROWING: files with access_count increasing week-over-week\n   - DECLINING: files with access_count decreasing week-over-week\n7. Save leaderboard to leaderboard_file\n8. Send Telegram leaderboard digest\n\nDIGEST FORMAT:\n\ud83c\udfc6 Memory Leaderboard \u2014 Last 30 Days\n\n\ud83d\udcc8 HOTTEST (Most Accessed):\n  1. memory/todos.md \u2014 {count} accesses | avg {X}KB/read\n  2. memory/project-a.md \u2014 {count} accesses | avg {X}KB/read\n\n\u2744\ufe0f COLDEST (Least Accessed):\n  1. memory/old-notes.md \u2014 {count} accesses \u2014 consider archiving\n\n\ud83d\udcca TRENDS:\n  \ud83d\ude80 Growing: memory/quarterly-planning.md (+40% vs last period)\n  \ud83d\udcc9 Declining: memory/legacy-arch.md (-60% vs last period)\n\n\ud83d\udca1 RECOMMENDATIONS:\n- Promote HOT files to long-term memory\n- Archive or delete COLD files not referenced in 30+ days\n\nTOOLS: exec, filesystem, cron, message",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Ensure access_log.jsonl exists: touch ~/.openclaw/memory/access_log.jsonl",
+        "Create script: ~/scripts/memory_leaderboard.sh",
+        "Make executable: chmod +x ~/scripts/memory_leaderboard.sh",
+        "Add to crontab: \"0 8 * * *\" to run every morning at 8 AM",
+        "Instrument your memory reads to log to access_log.jsonl (wrap fs reads with logging)",
+        "Test: run manually and review the leaderboard"
+      ],
+      "trigger": "memory-leaderboard",
+      "example_output": "\ud83c\udfc6 Memory Leaderboard \u2014 Last 30 Days\n\n\ud83d\udcc8 HOTTEST (Most Accessed):\n  1. memory/todos.md \u2014 47 accesses | avg 2.3KB/read\n  2. memory/project-a.md \u2014 31 accesses | avg 8.4KB/read\n  3. memory/people.md \u2014 22 accesses | avg 1.1KB/read\n\n\u2744\ufe0f COLDEST (Least Accessed):\n  1. memory/old-2024-notes.md \u2014 0 accesses \u2014 consider archiving\n  2. memory/deprecated-process.md \u2014 1 access \u2014 likely stale\n\n\ud83d\udcca TRENDS:\n  \ud83d\ude80 Growing: memory/quarterly-planning.md (+40% vs last period)\n  \ud83d\udcc9 Declining: memory/legacy-arch.md (-60% vs last period)\n\n\ud83d\udca1 RECOMMENDATIONS:\n- Promote memory/project-a.md to long-term memory (consistently hot)\n- Archive memory/old-2024-notes.md (0 references in 30 days)",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775908099,
+      "updated_at": 1775908099
+    },
+    {
+      "id": 19,
+      "slug": "onboarding-memory-seeder",
+      "title": "Onboarding Memory Seeder",
+      "category": "Memory Management",
+      "description": "Creates a fresh memory scaffold for a new team member from your existing knowledge base \u2014 generates MEMORY.md, PERSONA.md, and key context files automatically.",
+      "prompt_text": "Take an existing knowledge base and automatically generate a complete onboarding memory scaffold for a new team member \u2014 generates all essential memory files from your existing knowledge.\n\nINPUT:\n- Existing memory files: ~/.openclaw/memory/*.md\n- Company/persona files: any existing SOUL.md, IDENTITY.md, USER.md, AGENTS.md\n- Task: Generate a new team member onboarding package\n\nPROCESS:\n1. Scan existing memory files and extract:\n   a. Project context: what projects exist, current status, key files\n   b. People context: who is who, roles, contact patterns\n   c. Process context: recurring workflows, tools used, conventions\n   d. Preferences: coding style, communication preferences, working hours\n2. Generate the following files for the new member:\n\na) ONBOARDING_{name}.md:\n   - Welcome and role overview\n   - Key projects and their current status\n   - Immediate priorities for week 1\n   - Key contacts and their roles\n   - Important quirks/preferences from existing memory\n\nb) CONTEXT_{name}.md:\n   - Company/project background\n   - Relevant history from long-term memory\n   - Active decisions and their rationale\n   - Known issues and ongoing concerns\n\nc) QUICKSTART_{name}.md:\n   - Top 5 things to do in the first week\n   - Key files to read immediately\n   - Whom to talk to first\n   - What to avoid (known gotchas)\n   - Tools setup and access needed\n\n3. Output each file to ~/.openclaw/memory/onboarding/\n4. Print a summary of what was created\n\nOUTPUT FORMAT:\n\ud83d\udccb Onboarding Memory Seeder \u2014 [DATE]\n\nGenerated for: [New Member Name]\nRole: [Their Role]\n\nFiles created:\n1. onboarding/ONBOARDING_{name}.md \u2014 {XX} words\n2. onboarding/CONTEXT_{name}.md \u2014 {XX} words\n3. onboarding/QUICKSTART_{name}.md \u2014 {XX} words\n\nKey extracted context:\n- {N} projects identified\n- {N} people identified\n- {N} active processes documented\n\nTOOLS: exec, filesystem, read",
+      "tools": [
+        "exec",
+        "filesystem",
+        "read"
+      ],
+      "setup_steps": [
+        "Ensure your existing memory files are populated in ~/.openclaw/memory/",
+        "Have existing SOUL.md, IDENTITY.md, USER.md, AGENTS.md ready",
+        "Run with: provide new team member name and role",
+        "Model will scan existing knowledge base and generate onboarding files",
+        "Review generated files before handing off to new team member",
+        "Store in: ~/.openclaw/memory/onboarding/"
+      ],
+      "trigger": "onboard",
+      "example_output": "\ud83d\udccb Onboarding Memory Seeder \u2014 Apr 11 2026\n\nGenerated for: Sarah (New Developer)\nRole: Full-stack Engineer\n\nFiles created:\n1. onboarding/ONBOARDING_Sarah.md \u2014 520 words\n2. onboarding/CONTEXT_Sarah.md \u2014 380 words\n3. onboarding/QUICKSTART_Sarah.md \u2014 290 words\n\nKey extracted context:\n- 4 projects identified (Decryptica, Renegade Reels, Sniper Bot, Kroger Auto-cart)\n- 3 people identified (Brian as primary stakeholder, Kevin as CEO, various contractors)\n- 7 active processes documented (article publishing, bot management, content pipeline)",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775908099,
+      "updated_at": 1775908099
+    },
+    {
+      "id": 20,
+      "slug": "cron-watchdog",
+      "title": "Cron Watchdog",
+      "category": "Monitoring & Health Checks",
+      "description": "Checks system cron logs every 15 minutes, alerts immediately if a scheduled job missed or errored out \u2014 keeps your automation reliable.",
+      "prompt_text": "Set up an always-on automation that checks system cron logs every 15 minutes and alerts immediately if a scheduled job missed or errored out.\n\nCONFIGURATION:\n- log_file: ~/logs/cron_watchdog.log\n- alert_threshold: 1 (alert on first error)\n- known_jobs: list of expected cron job identifiers\n\nPROCESS:\n1. Run: grep -i \"error\\|failed\\|missed\\|no crontab\" /var/log/syslog 2>/dev/null OR grep -r \"ERROR\\|FAILED\" ~/logs/*.log 2>/dev/null\n2. Also check: crontab -l to list active jobs, compare against known_jobs\n3. For each error found:\n   a. Extract: timestamp, job name, error message\n   b. Classify severity: WARNING (non-critical) vs ERROR (job failed) vs MISSED (job did not run)\n4. Log all findings to ~/logs/cron_watchdog.log with timestamp\n5. If any ERROR or MISSED found:\n   a. Send Telegram alert immediately\n   b. Include: job name, error message, timestamp, suggested fix\n\nALERT FORMAT:\n\ud83d\udc15 Cron Watchdog Alert \u2014 [TIMESTAMP]\n\n\ud83d\udea8 Job Failed: [job_name]\nCommand: [cron command]\nError: [error message]\nLast run: [timestamp]\n\n\ud83d\udca1 Fix: [suggested action]\n\n\u2705 OK jobs: [list of jobs that ran successfully]\n\nTOOLS: exec, cron, filesystem, message",
+      "tools": [
+        "exec",
+        "cron",
+        "filesystem",
+        "message"
+      ],
+      "setup_steps": [
+        "Create ~/logs/ directory if not exists",
+        "Verify cron is running: ps aux | grep cron",
+        "Create script: ~/scripts/cron_watchdog.sh",
+        "Make executable: chmod +x ~/scripts/cron_watchdog.sh",
+        "Add to crontab: \"*/15 * * * *\" ~/scripts/cron_watchdog.sh",
+        "Test: intentionally break a cron job, verify alert fires within 15 minutes"
+      ],
+      "trigger": "cron-watchdog",
+      "example_output": "\ud83d\udc15 Cron Watchdog Alert \u2014 Apr 11 2026 14:00 UTC\n\n\ud83d\udea8 Job Failed: nightly-backup\nCommand: ~/scripts/nightly_backup.sh\nError: disk quota exceeded: no space left on device\nLast run: Apr 11 02:00 UTC\n\n\ud83d\udca1 Fix: Delete backups older than 30 days: find ~/backups -mtime +30 -delete\n\n\u2705 OK jobs (last 15min): heartbeat-monitor, memory-consolidation, sentiment-tracker",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775908099,
+      "updated_at": 1775908099
+    },
+    {
+      "id": 21,
+      "slug": "ssl-expiry-tracker",
+      "title": "SSL Expiry Tracker",
+      "category": "Monitoring & Health Checks",
+      "description": "Monitors SSL certificate expiration dates across all your domains, pings you 30 days, 7 days, and 1 day before expiry \u2014 no more surprise certificate outages.",
+      "prompt_text": "Set up an always-on automation that monitors SSL certificate expiration dates across all your domains and alerts you 30 days, 7 days, and 1 day before expiry.\n\nCONFIGURATION:\nCreate ~/configs/ssl_domains.json:\n{\n  \"domains\": [\n    {\"name\": \"decryptica.com\", \"port\": 443},\n    {\"name\": \"api.decryptica.com\", \"port\": 443}\n  ],\n  \"alert_days\": [30, 7, 1],\n  \"state_file\": \"~/.openclaw/ssl_state.json\"\n}\n\nPROCESS:\n1. Load domains from config\n2. For each domain:\n   a. Run: openssl s_client -connect DOMAIN:PORT -servername DOMAIN 2>/dev/null | openssl x509 -noout -dates 2>/dev/null\n   b. Extract: notBefore (issue date), notAfter (expiry date)\n   c. Calculate: days_until_expiry = (notAfter - now) / 86400\n3. Load state_file\n4. For each domain:\n   - If days_until_expiry in [30, 7, 1]: and not yet alerted at this threshold \u2192 trigger alert\n   - Update state_file with latest check timestamp and expiry dates\n5. If days_until_expiry <= 0: CRITICAL \u2014 certificate has expired\n6. Send appropriate Telegram alert\n\nALERT FORMAT (30/7 day warning):\n\ud83d\udd12 SSL Expiry Warning \u2014 [DOMAIN]\n\n\u26a0\ufe0f Certificate for [DOMAIN] expires in [X] days\nExpires: [YYYY-MM-DD HH:MM UTC]\nIssued: [YYYY-MM-DD]\n\n\ud83d\udca1 Action: Renew certificate before [date]\n\nALERT FORMAT (1 day / CRITICAL):\n\ud83d\udd12\ud83d\udd12 CRITICAL: SSL Certificate EXPIRED \u2014 [DOMAIN]\n\nCertificate expired [X] days ago!\nRenew immediately to restore HTTPS.\n\nTOOLS: exec, filesystem, cron, message",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Create ~/configs/ssl_domains.json with your domains and ports",
+        "Test manually: openssl s_client -connect yourdomain.com:443 2>/dev/null | openssl x509 -noout -dates",
+        "Create script: ~/scripts/ssl_expiry.sh",
+        "Make executable: chmod +x ~/scripts/ssl_expiry.sh",
+        "Add to crontab: \"0 9 * * *\" to check every morning at 9 AM",
+        "Verify Telegram bot is configured"
+      ],
+      "trigger": "ssl-tracker",
+      "example_output": "\ud83d\udd12 SSL Expiry Warning \u2014 decryptica.com\n\n\u26a0\ufe0f Certificate for decryptica.com expires in 7 days\nExpires: 2026-04-18 23:59 UTC\nIssued: 2026-01-18\n\n\ud83d\udca1 Action: Renew certificate before Apr 18 to avoid outage",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775908099,
+      "updated_at": 1775908099
+    },
+    {
+      "id": 22,
+      "slug": "api-latency-monitor",
+      "title": "API Latency Monitor",
+      "category": "Monitoring & Health Checks",
+      "description": "Polls a list of API endpoints every 5 minutes, tracks latency over time, and alerts when performance degrades below your threshold.",
+      "prompt_text": "Set up an always-on automation that polls a list of API endpoints every 5 minutes, tracks latency over time, and alerts when performance degrades.\n\nCONFIGURATION:\nCreate ~/configs/api_endpoints.json:\n{\n  \"endpoints\": [\n    {\"name\": \"Decryptica API\", \"url\": \"https://decryptica.com/api/health\", \"timeout_ms\": 5000},\n    {\"name\": \"Helius RPC\", \"url\": \"https://mainnet.helius-rpc.com\", \"timeout_ms\": 3000}\n  ],\n  \"latency_threshold_ms\": 2000,\n  \"history_file\": \"~/.openclaw/api_latency.json\"\n}\n\nLATENCY HISTORY FORMAT:\n{\n  \"decryptica.com_api\": {\n    \"checks\": [\n      {\"timestamp\": 1744156800, \"latency_ms\": 145, \"status\": 200},\n      {\"timestamp\": 1744157100, \"latency_ms\": 1890, \"status\": 200},\n      {\"timestamp\": 1744157400, \"latency_ms\": 5000, \"status\": 503}\n    ],\n    \"p95_latency_1h\": 480,\n    \"alert_sent_today\": false\n  }\n}\n\nPROCESS:\n1. Load endpoints from config and history from history_file\n2. For each endpoint:\n   a. Run: curl -o /dev/null -s -w \"latency_ms:%{time_total} http_code:%{http_code}\" [URL]\n   b. Record: timestamp, latency_ms, http_status\n   c. Append to checks[] array in history (keep last 1000 entries)\n3. Calculate:\n   - p50, p95, p99 latency from last 1 hour\n   - Error rate: % of non-200 responses in last hour\n   - Trend: p95_latency_1h vs p95_latency_previous_hour\n4. Check thresholds:\n   - If any latency > threshold_ms AND alert_sent_today == false \u2192 ALERT\n   - If error rate > 5% \u2192 ALERT\n   - If p95 degraded > 50% vs previous hour \u2192 DEGRADATION ALERT\n5. Send Telegram alert\n6. Update state and reset alert_sent_today at midnight\n\nALERT FORMAT:\n\ud83d\udcc9 API Latency Alert \u2014 [ENDPOINT_NAME]\n\n\ud83d\udd34 Current latency: [X]ms (threshold: [Y]ms)\n\ud83d\udcca p95 (1h): [X]ms | p99 (1h): [X]ms\n\u26a0\ufe0f Error rate: [X]% (5xx count: [N])\n\ud83d\udcc9 Trend: p95 +[X]% vs last hour\n\n\ud83d\udca1 Check: [endpoint] may be overloaded or experiencing issues.\n\nTOOLS: exec, filesystem, cron, message",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Create ~/configs/api_endpoints.json with your endpoints, names, and timeout thresholds",
+        "Test manually: curl each endpoint and verify you get latency and status codes",
+        "Create script: ~/scripts/api_latency.sh",
+        "Make executable: chmod +x ~/scripts/api_latency.sh",
+        "Add to crontab: \"*/5 * * * *\" ~/scripts/api_latency.sh",
+        "Test degradation alert: artificially slow an endpoint and verify alert fires within 10 minutes"
+      ],
+      "trigger": "api-latency",
+      "example_output": "\ud83d\udcc9 API Latency Alert \u2014 Helius RPC\n\n\ud83d\udd34 Current latency: 4890ms (threshold: 3000ms)\n\ud83d\udcca p95 (1h): 3200ms | p99 (1h): 5100ms\n\u26a0\ufe0f Error rate: 8.3% (5xx count: 14)\n\ud83d\udcc9 Trend: p95 +67% vs last hour\n\n\ud83d\udca1 Check: Helius RPC may be overloaded or experiencing upstream issues.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775908099,
+      "updated_at": 1775908099
+    },
+    {
+      "id": 23,
+      "slug": "bot-wallet-health-check",
+      "title": "Bot Wallet Health Check",
+      "category": "Monitoring & Health Checks",
+      "description": "Monitors your sniper/scaler bot wallets for balance changes, large transactions, failed swaps, and suspicious activity \u2014 alerts same-channel when something looks off.",
+      "prompt_text": "Set up an always-on automation that monitors your sniper and scaler bot wallets for balance changes, large transactions, failed swaps, and suspicious activity \u2014 alerts on the same channel when something looks wrong.\n\nCONFIGURATION:\nCreate ~/configs/wallet_config.json:\n{\n  \"wallets\": [\n    {\"name\": \"Sniper Bot\", \"address\": \"5NPSXWar19xrmHTsELnRjnbH13T9NVGMPiQ4nUe621vu\", \"chain\": \"solana\"},\n    {\"name\": \"Polygon Wallet\", \"address\": \"0x28aD2F2B72eC57c05Bd03a33080390235D57C92c\", \"chain\": \"polygon\"}\n  ],\n  \"alert_threshold_usd\": 100,\n  \"state_file\": \"~/.openclaw/wallet_state.json\"\n}\n\nWALLET STATE:\n{\n  \"5NPSXWar19xrmHTsELnRjnbH13T9NVGMPiQ4nUe621vu\": {\n    \"last_balance\": 0.8,\n    \"last_check\": 1744156800,\n    \"last_txs\": [\"tx1hash\", \"tx2hash\"],\n    \"alert_sent\": false\n  }\n}\n\nPROCESS:\n1. For each wallet:\n   a. Fetch current balance using appropriate RPC/API:\n      - Solana: curl -X POST -H 'Content-Type: application/json' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"getBalance\",\"params\":[\"ADDRESS\"]}' https://api.mainnet-beta.solana.com\n      - Polygon: curl -X POST -H 'Content-Type: application/json' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_getBalance\",\"params\":[\"ADDRESS\",\"latest\"]}' https://polygon-rpc.com\n   b. Fetch recent transactions (last 10): use blockchain explorer API or RPC\n   c. Compare to last_check state:\n      - Balance change > alert_threshold_usd in value \u2192 LARGE CHANGE ALERT\n      - New tx not in last_txs \u2192 NEW TRANSACTION (check if expected)\n      - Failed tx (status: failed) \u2192 FAILED TX ALERT\n      - Balance decreased significantly with no tx \u2192 SUSPICIOUS\n2. Update state_file with new balances and tx hashes\n3. Send Telegram alert for any anomalies\n\nALERT FORMAT:\n\ud83d\udcb0 Bot Wallet Alert \u2014 [WALLET_NAME]\n\n\ud83d\udd34 LARGE BALANCE CHANGE\nBefore: [X] SOL | After: [Y] SOL\nChange: [+-Z] SOL ([$VALUE])\n\n\u26a0\ufe0f NEW TRANSACTION:\nType: [swap/send/receive] | Amount: [X]\nTX: [explorer link]\n\n\ud83d\udd34 FAILED TX:\nTX: [hash]\nError: [reason if available]\n\nTOOLS: exec, filesystem, cron, message",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Create ~/configs/wallet_config.json with your wallet addresses and chains",
+        "Get RPC endpoints for each chain (public or private RPCs)",
+        "Create script: ~/scripts/wallet_health.sh",
+        "Make executable: chmod +x ~/scripts/wallet_health.sh",
+        "Add to crontab: \"*/15 * * * *\" ~/scripts/wallet_health.sh",
+        "Test manually: run script and verify it reads correct balances",
+        "Verify Telegram bot sends to the correct channel"
+      ],
+      "trigger": "wallet-health",
+      "example_output": "\ud83d\udcb0 Bot Wallet Alert \u2014 Sniper Bot\n\n\ud83d\udd34 LARGE BALANCE CHANGE\nBefore: 0.8 SOL | After: 0.32 SOL\nChange: -0.48 SOL ($87.20)\n\n\u26a0\ufe0f NEW TRANSACTION:\nType: JUP swap | Amount: 0.48 SOL \u2192 [token]\nTX: https://solscan.io/tx/xxxxx\n\n\u26a0\ufe0f NOTE: This matches a recent sniper transaction. OK if expected.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1775908099,
+      "updated_at": 1775908099
+    },
+    {
+      "id": 24,
+      "slug": "memory-decay-detector",
+      "title": "Memory Decay Detector",
+      "category": "Memory Management",
+      "description": "Flags memory files untouched for 30+ days, suggests what is stale and ready to archive.",
+      "prompt_text": "Set up an always-on automation that scans your memory files, flags anything untouched for 30+ days, and suggests what is stale and ready to archive.\n\nCONFIG: memory_dir: ~/.openclaw/memory/, threshold_days: 30, state_file: ~/.openclaw/memory/memory_decay_state.json\n\nPROCESS: 1. List all .md files in memory dir 2. For each file get last modified timestamp 3. Flag files where days_since_access > 30 as STALE 4. Also flag files with word_count < 50 and access_count == 1 as LOW_VALUE 5. Build archive_candidates list sorted by staleness 6. Save to state_file 7. Send Telegram digest\n\nTOOLS: exec, filesystem, cron, message",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Create memory directories and state file",
+        "Create ~/scripts/memory_decay.sh",
+        "chmod +x and add to crontab weekly",
+        "Test manually and verify Telegram"
+      ],
+      "trigger": "memory-decay",
+      "example_output": "Memory Decay Report: 3 files untouched for 30+ days. Archive candidates: memory/old-notes.md (47 days stale), memory/deprecated-process.md (32 days stale). Low-value: memory/2025-10-note.md (22 words, 1 access).",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 25,
+      "slug": "duplicate-detective",
+      "title": "Duplicate Detective",
+      "category": "Memory Management",
+      "description": "Scans memory files for near-duplicate entries and proposes merges \u2014 keeps knowledge base clean.",
+      "prompt_text": "Scan your memory files for near-duplicate entries and propose merges.\n\nCONFIG: memory_dir: ~/.openclaw/memory/, similarity_threshold: 0.75\n\nPROCESS: 1. List all .md files 2. For each pair: normalize text, calculate Jaccard similarity 3. Flag pairs with similarity > 0.75 4. Identify primary (older/more complete) vs duplicate 5. Propose merge plan 6. Write report and send Telegram if duplicates found\n\nTOOLS: exec, filesystem, cron, message",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Create ~/scripts/duplicate_detective.sh",
+        "chmod +x and add to crontab weekly",
+        "Test manually, review proposed merges before deleting"
+      ],
+      "trigger": "duplicates",
+      "example_output": "Duplicate Detective Report: Found 2 duplicate pairs. [1] memory/2026-03-tasks.md vs memory/TASKS.md (82% similar). Recommendation: MERGE into memory/2026-03-tasks.md, archive TASKS.md.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 26,
+      "slug": "memory-usage-leaderboard",
+      "title": "Memory Usage Leaderboard",
+      "category": "Memory Management",
+      "description": "Ranks which memory files get accessed the most \u2014 guides what to promote to long-term memory.",
+      "prompt_text": "Track how often each memory file is accessed and rank them by usefulness.\n\nCONFIG: memory_dir: ~/.openclaw/memory/, access_log: ~/.openclaw/memory/access_log.jsonl, lookback_days: 30\n\nPROCESS: 1. Filter access_log to last 30 days 2. Group by file, count accesses and bytes_read 3. Rank by access_count DESC 4. Identify HOT (top 5) and COLD (bottom 5) 5. Identify GROWING vs DECLINING trends 6. Save leaderboard and send Telegram digest\n\nTOOLS: exec, filesystem, cron, message",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Ensure access_log.jsonl exists",
+        "Create ~/scripts/memory_leaderboard.sh",
+        "Add to crontab daily",
+        "Instrument memory reads to log to access_log"
+      ],
+      "trigger": "memory-leaderboard",
+      "example_output": "Memory Leaderboard (30 days): HOTTEST: memory/todos.md (47 accesses), memory/project-a.md (31 accesses). COLDEST: memory/old-2024-notes.md (0 accesses). TRENDS: memory/quarterly-planning.md +40% vs last period.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 27,
+      "slug": "onboarding-memory-seeder",
+      "title": "Onboarding Memory Seeder",
+      "category": "Memory Management",
+      "description": "Creates a fresh memory scaffold for a new team member from your existing knowledge base.",
+      "prompt_text": "Take an existing knowledge base and automatically generate a complete onboarding memory scaffold for a new team member.\n\nINPUT: Existing memory files in ~/.openclaw/memory/ and persona files (SOUL.md, IDENTITY.md, etc.)\n\nPROCESS: 1. Scan existing memory files and extract: project context, people context, process context, preferences 2. Generate ONBOARDING_name.md: welcome, key projects, immediate priorities, key contacts 3. Generate CONTEXT_name.md: company background, relevant history, active decisions 4. Generate QUICKSTART_name.md: top 5 things to do first week, key files to read, whom to talk to first, gotchas 5. Save to ~/.openclaw/memory/onboarding/\n\nTOOLS: exec, filesystem, read",
+      "tools": [
+        "exec",
+        "filesystem",
+        "read"
+      ],
+      "setup_steps": [
+        "Ensure memory files are populated",
+        "Run with new member name and role",
+        "Review generated files before handing off"
+      ],
+      "trigger": "onboard",
+      "example_output": "Onboarding Memory Seeder: Generated for Sarah (Full-stack Engineer). Files: ONBOARDING_Sarah.md (520 words), CONTEXT_Sarah.md (380 words), QUICKSTART_Sarah.md (290 words). Extracted: 4 projects, 3 people, 7 active processes.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 28,
+      "slug": "cron-watchdog",
+      "title": "Cron Watchdog",
+      "category": "Monitoring & Health Checks",
+      "description": "Checks system cron logs every 15 minutes, alerts immediately if a scheduled job missed or errored out.",
+      "prompt_text": "Check system cron logs every 15 minutes and alert immediately if a scheduled job missed or errored out.\n\nCONFIG: log_file: ~/logs/cron_watchdog.log\n\nPROCESS: 1. Run: grep -i \"error|failed|missed\" on system logs or ~/logs/*.log 2. Compare active crontab against known jobs 3. For each error: extract timestamp, job name, error message 4. Classify severity: WARNING vs ERROR vs MISSED 5. Log to ~/logs/cron_watchdog.log 6. If ERROR or MISSED: send Telegram alert immediately\n\nALERT FORMAT:\nCron Watchdog Alert: Job Failed: [job_name]. Command: [cron command]. Error: [message]. Last run: [timestamp]. Fix: [suggested action]",
+      "tools": [
+        "exec",
+        "cron",
+        "filesystem",
+        "message"
+      ],
+      "setup_steps": [
+        "Create ~/logs/ directory",
+        "Create ~/scripts/cron_watchdog.sh",
+        "chmod +x",
+        "Add to crontab: */15 * * * *",
+        "Test by intentionally breaking a cron job"
+      ],
+      "trigger": "cron-watchdog",
+      "example_output": "Cron Watchdog Alert: Job Failed: nightly-backup. Exit code: 1. Error: disk quota exceeded. Fix: Delete backups older than 30 days. OK jobs: heartbeat-monitor, memory-consolidation.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 29,
+      "slug": "ssl-expiry-tracker",
+      "title": "SSL Expiry Tracker",
+      "category": "Monitoring & Health Checks",
+      "description": "Monitors SSL certificate expiration dates across domains, pings you 30 days, 7 days, and 1 day before expiry.",
+      "prompt_text": "Monitor SSL certificate expiration dates across all your domains and alert at 30 days, 7 days, and 1 day before expiry.\n\nCONFIG: ~/configs/ssl_domains.json with domains array and alert_days: [30, 7, 1]\n\nPROCESS: 1. For each domain: run openssl s_client to get certificate dates 2. Calculate days_until_expiry 3. If days in alert_days threshold and not yet alerted: trigger alert 4. If days <= 0: CRITICAL \u2014 certificate expired 5. Send Telegram alert\n\nALERT FORMAT:\nSSL Expiry Warning: [DOMAIN] expires in [X] days. Expires: [YYYY-MM-DD]. Action: Renew certificate. (1 day alert: CRITICAL: EXPIRED \u2014 renew immediately)",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Create ~/configs/ssl_domains.json with your domains",
+        "Test: openssl s_client -connect yourdomain.com:443",
+        "Create ~/scripts/ssl_expiry.sh",
+        "Add to crontab daily"
+      ],
+      "trigger": "ssl-tracker",
+      "example_output": "SSL Expiry Warning: decryptica.com expires in 7 days (2026-04-18). Action: Renew certificate before Apr 18 to avoid outage.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 30,
+      "slug": "api-latency-monitor",
+      "title": "API Latency Monitor",
+      "category": "Monitoring & Health Checks",
+      "description": "Polls API endpoints every 5 minutes, tracks latency over time, and alerts on degradation.",
+      "prompt_text": "Poll a list of API endpoints every 5 minutes, track latency over time, and alert when performance degrades.\n\nCONFIG: ~/configs/api_endpoints.json with endpoints array, latency_threshold_ms, history_file\n\nPROCESS: 1. For each endpoint: curl with timing to get latency_ms and http_code 2. Append to history (keep last 1000 entries) 3. Calculate p50, p95, p99 latency from last 1 hour 4. Check thresholds: if latency > threshold OR error_rate > 5% OR p95 degraded > 50%: send alert 5. Send Telegram alert with details\n\nALERT FORMAT:\nAPI Latency Alert: [ENDPOINT_NAME]. Current: [X]ms (threshold: [Y]ms). p95(1h): [X]ms. Error rate: [X]%. Trend: p95 +[X]% vs last hour.",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Create ~/configs/api_endpoints.json with endpoints and thresholds",
+        "Test curl commands manually",
+        "Create ~/scripts/api_latency.sh",
+        "Add to crontab: */5 * * * *"
+      ],
+      "trigger": "api-latency",
+      "example_output": "API Latency Alert: Helius RPC. Current: 4890ms (threshold: 3000ms). p95(1h): 3200ms. Error rate: 8.3%. Trend: p95 +67% vs last hour. Check: Helius RPC may be overloaded.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 31,
+      "slug": "bot-wallet-health-check",
+      "title": "Bot Wallet Health Check",
+      "category": "Monitoring & Health Checks",
+      "description": "Monitors bot wallets for balance changes, large transactions, failed swaps, and suspicious activity.",
+      "prompt_text": "Monitor sniper and scaler bot wallets for balance changes, large transactions, failed swaps, and suspicious activity.\n\nCONFIG: ~/configs/wallet_config.json with wallets array (name, address, chain)\n\nPROCESS: 1. For each wallet: fetch current balance via RPC (Solana: getBalance, Polygon: eth_getBalance) 2. Fetch recent transactions 3. Compare to last state: balance change > threshold_usd: LARGE CHANGE, failed tx: FAILED TX, new tx not in last_txs: NEW TX 4. Update state_file 5. Send Telegram alert for any anomalies\n\nALERT FORMAT:\nBot Wallet Alert: [WALLET_NAME]. LARGE BALANCE CHANGE: Before [X] SOL, After [Y] SOL. Change: [+/-Z] SOL. NEW TRANSACTION: type, amount, TX link. FAILED TX: hash, error.",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Create ~/configs/wallet_config.json with wallet addresses and chains",
+        "Get RPC endpoints",
+        "Create ~/scripts/wallet_health.sh",
+        "Add to crontab: */15 * * * *"
+      ],
+      "trigger": "wallet-health",
+      "example_output": "Bot Wallet Alert: Sniper Bot. LARGE BALANCE CHANGE: Before: 0.8 SOL, After: 0.32 SOL. Change: -0.48 SOL ($87.20). NEW TRANSACTION: JUP swap, 0.48 SOL -> [token], TX: solscan.io/xxxx.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 32,
+      "slug": "dependency-sentinel",
+      "title": "Dependency Sentinel",
+      "category": "Coding & Automation",
+      "description": "Watches a repo for outdated packages, opens a PR with updates automatically.",
+      "prompt_text": "Watch a repository for outdated packages (npm/pip) and open a PR with updates automatically.\n\nCONFIG: ~/configs/dependency_sentinel.json with repos array (path, type: npm|pip, branch)\n\nPROCESS: 1. For each repo: run npm outdated or pip list --outdated 2. Parse outdated packages 3. Run npm update or pip install --upgrade 4. Commit to feat/update-dependencies branch 5. Open PR with table of updates and test command 6. Send Telegram summary\n\nALERT FORMAT:\nDependency Sentinel: Updated [N] packages. pkg-a: 1.0.0 -> 1.1.0. PR: [link].",
+      "tools": [
+        "exec",
+        "filesystem",
+        "gh",
+        "message",
+        "cron"
+      ],
+      "setup_steps": [
+        "Create ~/configs/dependency_sentinel.json",
+        "Ensure gh auth",
+        "Create ~/scripts/dependency_sentinel.sh",
+        "Add to crontab: 0 10 * * 1 (Mondays)"
+      ],
+      "trigger": "dependency-sentinel",
+      "example_output": "Dependency Sentinel: Updated 4 packages: next 14.0.0 -> 14.2.0, react 18.2.0 -> 18.3.0. PR: github.com/kevinthelobster/decryptica/pull/247 \u2014 Open.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 33,
+      "slug": "readme-auto-generator",
+      "title": "README Auto-Generator",
+      "category": "Coding & Automation",
+      "description": "Scans a project, reads code, spits out a clean README with setup instructions, features, and architecture.",
+      "prompt_text": "Scan a project, read the code, generate a clean README.\n\nINPUT: project_path: /path/to/project\n\nPROCESS: 1. Scan structure: find files, detect type (npm/Python/Go), read entry points 2. Detect features from function names, routes, API endpoints 3. Generate: project name + description, features list, architecture, setup instructions, tech stack, API reference 4. Output to [project_path]/README_GENERATED.md\n\nTOOLS: exec, filesystem, read",
+      "tools": [
+        "exec",
+        "filesystem",
+        "read"
+      ],
+      "setup_steps": [
+        "Provide project path",
+        "Review generated README_GENERATED.md",
+        "Replace README.md if satisfied"
+      ],
+      "trigger": "readme-gen",
+      "example_output": "README Auto-Generator: Project ~/decryptica (Next.js). Generated: overview, 14 features, architecture, setup instructions, tech stack. Output: ~/decryptica/README_GENERATED.md.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 34,
+      "slug": "scheduled-script-runner",
+      "title": "Scheduled Script Runner",
+      "category": "Coding & Automation",
+      "description": "Runs any custom script on a cron schedule, logs output, and alerts if it fails.",
+      "prompt_text": "Run any custom script on a cron schedule, log all output, alert via Telegram if the script fails.\n\nCONFIG: ~/configs/script_runner.json with jobs array (name, script, schedule, timeout_minutes)\n\nPROCESS: 1. Read jobs from config 2. For each job: create log file, run with timeout, capture exit code 3. If exit != 0 or timeout: send Telegram alert with error summary 4. Alert if job missed (not run for 2x schedule interval)\n\nALERT FORMAT:\nScript Failed: [JOB_NAME]. Exit code: [X] (timeout: YES/NO). Last 20 lines of log: [excerpt]. Fix: [suggested action].",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Create ~/configs/script_runner.json",
+        "Make scripts executable",
+        "Create ~/scripts/script_runner_wrapper.sh",
+        "Add to crontab: * * * * * (every minute, checks schedule)"
+      ],
+      "trigger": "script-runner",
+      "example_output": "Script Failed: daily-article-generator. Exit code: 124 (timeout: YES \u2014 10min). Last lines: MiniMax API responding slowly... TIMEOUT. Fix: Check MiniMax API status.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 35,
+      "slug": "codebase-qa-bot",
+      "title": "Codebase Q&A Bot",
+      "category": "Coding & Automation",
+      "description": "Ask anything about a codebase, it reads the files and answers \u2014 grounded in actual code, no hallucinating.",
+      "prompt_text": "Answer questions about a codebase by reading the actual files.\n\nINPUT: project_path, question\n\nPROCESS: 1. Use find and grep to locate relevant files 2. Read files with read tool 3. Answer with: file paths, line numbers, direct quotes from code 4. If not found in code: say explicitly \"I could not find this in the codebase\" 5. Include relevant code snippets (max 20 lines)\n\nRULES: Never make up file paths, function names, or line numbers. If unsure, say so.\n\nOUTPUT FORMAT:\n## Answer\n[Direct answer]\n## Evidence\nFile: [path]:[line]\n[code snippet]\n## Confidence\n[High/Medium/Low]",
+      "tools": [
+        "exec",
+        "filesystem",
+        "read"
+      ],
+      "setup_steps": [
+        "Provide project path and question",
+        "Model searches actual codebase files",
+        "Answers are always grounded in real code"
+      ],
+      "trigger": "code-qa",
+      "example_output": "## Answer: The authentication flow uses JWT tokens in httpOnly cookies, verified in middleware.ts on every API route.\n## Evidence: File: app/middleware.ts:12-28.\n## Confidence: High \u2014 found direct evidence in middleware.ts.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 36,
+      "slug": "email-digest-bridge",
+      "title": "Email Digest Bridge",
+      "category": "Communication & Automation",
+      "description": "Forwards unread emails to Telegram as a daily digest \u2014 sender, subject, one-line preview.",
+      "prompt_text": "Pull unread emails, format as Telegram digest with sender, subject, and one-line preview.\n\nCONFIG: ~/configs/email_digest_config.json with email, max_emails, filter (Gmail search syntax), exclude_senders\n\nPROCESS: 1. Authenticate with Gmail (imaplib with app password or Gmail API) 2. Search: is:unread newer_than:1d 3. For each email: extract From, Subject, Date, Snippet (150 chars) 4. Skip exclude_senders 5. Sort by sender importance then date 6. Send Telegram digest\n\nDIGEST FORMAT:\nEmail Digest (N unread): Sender: Subject. Preview: snippet. Time: relative. [Repeat]",
+      "tools": [
+        "exec",
+        "filesystem",
+        "cron",
+        "message"
+      ],
+      "setup_steps": [
+        "Set up Gmail App Password",
+        "Create ~/configs/email_digest_config.json",
+        "Create ~/scripts/email_digest.sh with imaplib",
+        "Add to crontab: 0 8,18 * * *"
+      ],
+      "trigger": "email-digest",
+      "example_output": "Email Digest (7 unread): GitHub: PR #247 merged. Preview: Dependencies updated, please review... 2h ago. Vercel: Deploy successful. 5h ago. Brian: Re: Article ideas. Yesterday.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 37,
+      "slug": "meeting-prep-agent",
+      "title": "Meeting Prep Agent",
+      "category": "Communication & Automation",
+      "description": "Before any meeting, pulls relevant files, emails, and context so you walk in prepared.",
+      "prompt_text": "Before any meeting, pull relevant files, emails, and context so you walk in prepared.\n\nINPUT: meeting_title and meeting_time\n\nPROCESS: 1. Parse meeting title for key topics 2. Pull relevant context: read memory files on the topic, search for related decisions or commitments 3. Generate prep brief: Meeting overview, Relevant background (from memory/project files), Things to Remember (past commitments, ongoing concerns), Suggested Agenda with time allocations\n\nOUTPUT FORMAT:\nMeeting Prep \u2014 [TITLE]. When: [date/time]. Attendees: [names]. Background: [context]. Things to Remember: [bullet]. Suggested Agenda: 1. Topic \u2014 X min.",
+      "tools": [
+        "read",
+        "filesystem",
+        "exec"
+      ],
+      "setup_steps": [
+        "Provide meeting title and time",
+        "Model searches relevant memory files",
+        "Review brief before the meeting"
+      ],
+      "trigger": "meeting-prep",
+      "example_output": "Meeting Prep \u2014 Q2 Strategy Review. When: Apr 15, 2PM. Attendees: Brian, Sarah, David. Background: Q1 had 47 articles vs 50 goal, $1,340 vs $2K revenue. Things to Remember: Brian flagged ad revenue underperforming. Agenda: Q1 retro (15min), Q2 revenue target (20min), backlink strategy (15min).",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 38,
+      "slug": "cross-post-engine",
+      "title": "Cross-Post Engine",
+      "category": "Communication & Automation",
+      "description": "Take one message, post it to Discord, Slack, and Telegram with platform-appropriate formatting.",
+      "prompt_text": "Take one message and cross-post to multiple channels with platform-appropriate formatting.\n\nINPUT: message_content, channels array, format_type (announcement|update|question|alert)\n\nCONFIG: ~/configs/crosspost_channels.json with Discord webhook, Slack bot token, Telegram chat ID\n\nPROCESS: 1. Adapt format per platform: Discord: use **bold** not #, > for quotes, split at 2000 chars; Slack: use *bold*, keep bullets, split at 3000; Telegram: use *bold*, plain text bullets, split at 4096 2. Send to each channel 3. Log success/failure\n\nSUMMARY FORMAT:\nCross-Post Summary: Discord: \u2705 Posted to #general. Slack: \u2705 Posted. Telegram: \u2705 Sent.",
+      "tools": [
+        "exec",
+        "message",
+        "filesystem"
+      ],
+      "setup_steps": [
+        "Set up Discord webhook and Slack bot",
+        "Configure ~/configs/crosspost_channels.json",
+        "Create ~/scripts/crosspost.sh",
+        "Test with a message to all channels"
+      ],
+      "trigger": "crosspost",
+      "example_output": "Cross-Post Summary: \u2705 Discord: Posted to #announcements (847 chars). \u2705 Slack: Posted to #general (847 chars). \u2705 Telegram: Sent to 8324073314 (847 chars). Note: Telegram formatting simplified.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1744156800,
+      "updated_at": 1744156800
+    },
+    {
+      "id": 39,
+      "slug": "weekly-voice-summary",
+      "title": "Weekly Voice Summary",
+      "category": "Communication & Automation",
+      "description": "Uses TTS to read your week summary aloud and sends as a voice message to Telegram.",
+      "prompt_text": "Synthesize your week \u2014 articles published, bot performance, meetings, decisions \u2014 and send as a TTS voice message to Telegram.\n\nINPUT: week_start date\n\nPROCESS: 1. Gather: git log for the week (decryptica), P&L logs (sniper bot), memory files for decisions/meetings, TASKS.md for completions 2. Synthesize into weekly narrative: \"This week: [biggest]. On Decryptica: [N] articles. Bot P&L: [summary]. Key decision: [from memory]. Looking ahead: [priorities]. Pending: [action items]\" 3. Convert to TTS audio 4. Send as voice message via message tool with asVoice: true\n\nOUTPUT FORMAT:\nWeekly Voice Summary: Generated (X chars, Y seconds audio). Telegram: Sent as voice message. Summary preview: [text].",
+      "tools": [
+        "exec",
+        "filesystem",
+        "read",
+        "tts",
+        "message"
+      ],
+      "setup_steps": [
+        "Point to decryptica repo and logs",
+        "Model synthesizes from git log, P&L logs, memory",
+        "TTS voice message sent to Telegram",
+        "Best run: Sunday 6 PM (cron: 0 18 * * 0)"
+      ],
+      "trigger": "voice-summary",
+      "example_output": "Weekly Voice Summary: This week: 14 articles published including Solana DeFi deep dive. Three deploys to production. Sniper bot: +$23 P&L, one position opened and closed. Decision: shifting to topical cluster strategy next week. Pending: Kroger auto-cart testing, Q2 calendar for Sarah.",
+      "is_staff_pick": false,
+      "vote_count": 0,
       "created_at": 1744156800,
       "updated_at": 1744156800
     }
