@@ -29,6 +29,11 @@ export default function PromptDetailPage({ params }: Props) {
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(true);
   const [slug, setSlug] = useState<string>('');
+  const [showChangeModal, setShowChangeModal] = useState(false);
+  const [changeText, setChangeText] = useState('');
+  const [changeReason, setChangeReason] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [submitMsg, setSubmitMsg] = useState('');
 
   useEffect(() => {
     params.then(p => setSlug(p.slug));
@@ -57,6 +62,36 @@ export default function PromptDetailPage({ params }: Props) {
     navigator.clipboard.writeText(prompt.prompt_text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleSubmitChange = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!prompt) return;
+    setSubmitting(true);
+    setSubmitMsg('');
+    try {
+      const res = await fetch('/api/prompts/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          is_change_idea: true,
+          original_prompt_id: prompt.id,
+          title: prompt.title,
+          proposed_change: changeText,
+          description: changeReason,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      setSubmitMsg('Change idea submitted! Kevin will review it.');
+      setChangeText('');
+      setChangeReason('');
+      setTimeout(() => { setShowChangeModal(false); setSubmitMsg(''); }, 2500);
+    } catch (err: any) {
+      setSubmitMsg('Error: ' + err.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (loading) {
@@ -223,19 +258,112 @@ export default function PromptDetailPage({ params }: Props) {
           </div>
 
           {/* Submit CTA */}
-          <div className="bg-gradient-to-br from-indigo-600/20 to-purple-600/20 border border-indigo-500/30 rounded-2xl p-6 text-center">
-            <p className="text-zinc-300 text-sm mb-4">
-              Have a better version or your own automation to share?
+          <div className="bg-gradient-to-br from-indigo-600/20 to-purple-600/20 border border-indigo-500/30 rounded-2xl p-6 space-y-3">
+            <p className="text-zinc-300 text-sm">
+              Have a better version of this prompt?
             </p>
+            <button
+              onClick={() => setShowChangeModal(true)}
+              className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-amber-600 hover:bg-amber-500 text-white font-semibold rounded-xl transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+              Suggest a Change
+            </button>
+            <div className="relative flex items-center py-2">
+              <div className="flex-grow border-t border-zinc-700"></div>
+              <span className="flex-shrink-0 mx-4 text-zinc-600 text-xs">or</span>
+              <div className="flex-grow border-t border-zinc-700"></div>
+            </div>
             <Link
               href="/prompts/submit"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-colors"
+              className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-colors"
             >
-              Submit Your Prompt
+              Submit New Prompt
             </Link>
           </div>
         </div>
       </div>
+
+      {/* ── Suggest Change Modal ── */}
+      {showChangeModal && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-zinc-900 border border-zinc-700 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-zinc-800 sticky top-0 bg-zinc-900 rounded-t-2xl">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="font-display font-bold text-xl text-white">Suggest a Change</h2>
+                  <p className="text-zinc-500 text-sm mt-1">{prompt.title}</p>
+                </div>
+                <button
+                  onClick={() => setShowChangeModal(false)}
+                  className="text-zinc-500 hover:text-white text-2xl leading-none"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+
+            <form onSubmit={handleSubmitChange} className="p-6 space-y-5">
+              <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 text-amber-300 text-sm">
+                💡 Paste your improved version of the <strong>prompt_text</strong> field below. Kevin will review it as a change idea.
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-zinc-400 mb-2">
+                  Your Improved Version <span className="text-red-400">*</span>
+                </label>
+                <textarea
+                  value={changeText}
+                  onChange={e => setChangeText(e.target.value)}
+                  placeholder="Paste the full prompt_text exactly as it should be after your change..."
+                  rows={10}
+                  className="w-full bg-zinc-950 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500 resize-none font-mono text-sm"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-zinc-400 mb-2">
+                  Why this change? <span className="text-red-400">*</span>
+                </label>
+                <textarea
+                  value={changeReason}
+                  onChange={e => setChangeReason(e.target.value)}
+                  placeholder="Briefly explain why this improves the prompt..."
+                  rows={3}
+                  className="w-full bg-zinc-950 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500 resize-none"
+                  required
+                />
+              </div>
+
+              {submitMsg && (
+                <div className={`text-sm ${submitMsg.startsWith('Error') ? 'text-red-400' : 'text-green-400'}`}>
+                  {submitMsg}
+                </div>
+              )}
+
+              <div className="flex gap-3">
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="px-6 py-2.5 bg-amber-600 hover:bg-amber-500 disabled:bg-zinc-700 text-white font-semibold rounded-xl transition-colors"
+                >
+                  {submitting ? 'Submitting...' : 'Submit Change Idea'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowChangeModal(false)}
+                  className="px-6 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-medium rounded-xl transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
