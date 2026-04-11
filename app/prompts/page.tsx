@@ -99,8 +99,9 @@ export default function PromptsPage() {
           </button>
         </div>
 
-        <div className="flex gap-2 text-sm text-zinc-400 overflow-x-auto px-6 -mx-6 md:overflow-visible md:px-0 md:mx-0 md:flex-nowrap flex-nowrap">
-          <span className="shrink-0">Category:</span>
+        {/* Category Filter */}
+        <div className="hidden md:flex flex-wrap gap-2 text-sm text-zinc-400">
+          <span className="shrink-0 py-1.5">Category:</span>
           <button
             onClick={() => setCategory('')}
             className={`px-3 py-1.5 rounded-lg transition-colors shrink-0 ${!category ? 'bg-indigo-600 text-white' : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300'}`}
@@ -116,6 +117,19 @@ export default function PromptsPage() {
               {cat}
             </button>
           ))}
+        </div>
+        {/* Mobile: dropdown */}
+        <div className="md:hidden">
+          <select
+            value={category}
+            onChange={e => setCategory(e.target.value)}
+            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500 appearance-none cursor-pointer"
+          >
+            <option value="">All Categories</option>
+            {categories.map(cat => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
         </div>
       </div>
 
