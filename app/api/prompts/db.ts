@@ -41,6 +41,7 @@ type Submission = {
 const DB_PATH = path.join(process.cwd(), 'data/prompts/prompts.json');
 const SUBMISSIONS_PATH = '/tmp/decryptica_submissions.json';
 const VOTES_PATH = '/tmp/decryptica_votes.json';
+const PROMPT_EDITS_PATH = '/tmp/decryptica_prompt_edits.json';
 
 // Telegram bot config
 const TELEGRAM_BOT_TOKEN = '8332002226:AAG5PEkMAjgjVtYzQYJ0kEM1XROPN2MxXU8';
@@ -84,6 +85,8 @@ function readDb(): { prompts: Prompt[]; submissions: Submission[]; votes: Record
   const data = JSON.parse(raw);
   let submissions: Submission[] = [];
   let votes: Record<number, string[]> = {};
+  let promptEdits: Record<number, Partial<Prompt>> = {};
+
   try {
     const tmpRaw = fs.readFileSync(SUBMISSIONS_PATH, 'utf8');
     submissions = JSON.parse(tmpRaw);
@@ -94,24 +97,38 @@ function readDb(): { prompts: Prompt[]; submissions: Submission[]; votes: Record
     const votesRaw = fs.readFileSync(VOTES_PATH, 'utf8');
     votes = JSON.parse(votesRaw);
   } catch {
-    // No votes in /tmp yet — use stale embedded votes as fallback
     votes = data.votes || {};
   }
-  return {
-    prompts: (data.prompts || []).map((p: Prompt) => ({
+  try {
+    const editsRaw = fs.readFileSync(PROMPT_EDITS_PATH, 'utf8');
+    promptEdits = JSON.parse(editsRaw);
+  } catch {
+    // No edits in /tmp yet
+  }
+
+  const mergedPrompts = (data.prompts || []).map((p: Prompt) => {
+    const edits = promptEdits[p.id] || {};
+    return {
       ...p,
-      is_staff_pick: Boolean(p.is_staff_pick),
-    })),
+      is_staff_pick: Boolean(edits.is_staff_pick ?? p.is_staff_pick),
+      ...edits,
+    };
+  });
+
+  return {
+    prompts: mergedPrompts,
     submissions,
     votes,
   };
 }
 
 function writeDb(data: any) {
-  // Write votes to /tmp (writable on Vercel) — this is the live source of truth for vote counts
+  // Votes and prompt edits go to /tmp (writable on Vercel)
   fs.writeFileSync(VOTES_PATH, JSON.stringify(data.votes || {}, null, 2));
-  // Submissions also go to /tmp
   fs.writeFileSync(SUBMISSIONS_PATH, JSON.stringify(data.submissions || [], null, 2));
+  if (data.promptEdits) {
+    fs.writeFileSync(PROMPT_EDITS_PATH, JSON.stringify(data.promptEdits, null, 2));
+  }
 }
 
 export function getPrompts(sort: string = 'recent', category: string = '', voterIp: string = '') {
@@ -205,31 +222,62 @@ export function getCategories() {
 
 // ─── Edit existing prompts ─────────────────────────────────────────────────
 
+// Load prompt edits from /tmp (read-only-safe persistent store)
+function loadPromptEdits(): Record<number, Partial<Prompt>> {
+  try {
+    return JSON.parse(fs.readFileSync(PROMPT_EDITS_PATH, 'utf8'));
+  } catch {
+    return {};
+  }
+}
+
+function savePromptEdits(edits: Record<number, Partial<Prompt>>) {
+  fs.writeFileSync(PROMPT_EDITS_PATH, JSON.stringify(edits, null, 2));
+}
+
 export function updatePrompt(id: number, updates: Partial<Prompt>) {
   const db = readDb();
   const prompt = db.prompts.find(p => p.id === id);
   if (!prompt) return null;
 
+  const edits = loadPromptEdits();
+  if (!edits[id]) edits[id] = {};
+
   const allowed = ['title', 'category', 'description', 'prompt_text', 'tools', 'setup_steps', 'trigger', 'alert', 'is_staff_pick'];
   for (const key of allowed) {
     if (key in updates) {
-      (prompt as any)[key] = (updates as any)[key];
+      (edits[id] as any)[key] = (updates as any)[key];
     }
   }
-  prompt.updated_at = Math.floor(Date.now() / 1000);
+  (edits[id] as any).updated_at = Math.floor(Date.now() / 1000);
 
-  writeDb(db);
-  return prompt;
+  savePromptEdits(edits);
+
+  // Return the updated prompt merged with base
+  return {
+    ...prompt,
+    ...edits[id],
+    is_staff_pick: Boolean(edits[id].is_staff_pick ?? prompt.is_staff_pick),
+  };
 }
 
 export function toggleStaffPick(id: number) {
   const db = readDb();
   const prompt = db.prompts.find(p => p.id === id);
   if (!prompt) return null;
-  prompt.is_staff_pick = !prompt.is_staff_pick;
-  prompt.updated_at = Math.floor(Date.now() / 1000);
-  writeDb(db);
-  return prompt;
+
+  const edits = loadPromptEdits();
+  if (!edits[id]) edits[id] = {};
+  // Toggle: if base is already true, set to false; otherwise set to true
+  const currentBase = edits[id].is_staff_pick ?? prompt.is_staff_pick;
+  edits[id].is_staff_pick = !currentBase;
+
+  savePromptEdits(edits);
+
+  return {
+    ...prompt,
+    is_staff_pick: edits[id].is_staff_pick,
+  };
 }
 
 // ─── Submissions ────────────────────────────────────────────────────────────
