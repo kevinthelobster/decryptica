@@ -40,6 +40,7 @@ type Submission = {
 
 const DB_PATH = path.join(process.cwd(), 'data/prompts/prompts.json');
 const SUBMISSIONS_PATH = '/tmp/decryptica_submissions.json';
+const VOTES_PATH = '/tmp/decryptica_votes.json';
 
 // Telegram bot config
 const TELEGRAM_BOT_TOKEN = '8332002226:AAG5PEkMAjgjVtYzQYJ0kEM1XROPN2MxXU8';
@@ -82,11 +83,19 @@ function readDb(): { prompts: Prompt[]; submissions: Submission[]; votes: Record
   const raw = fs.readFileSync(DB_PATH, 'utf8');
   const data = JSON.parse(raw);
   let submissions: Submission[] = [];
+  let votes: Record<number, string[]> = {};
   try {
     const tmpRaw = fs.readFileSync(SUBMISSIONS_PATH, 'utf8');
     submissions = JSON.parse(tmpRaw);
   } catch {
     // No submissions in /tmp yet
+  }
+  try {
+    const votesRaw = fs.readFileSync(VOTES_PATH, 'utf8');
+    votes = JSON.parse(votesRaw);
+  } catch {
+    // No votes in /tmp yet — use stale embedded votes as fallback
+    votes = data.votes || {};
   }
   return {
     prompts: (data.prompts || []).map((p: Prompt) => ({
@@ -94,22 +103,28 @@ function readDb(): { prompts: Prompt[]; submissions: Submission[]; votes: Record
       is_staff_pick: Boolean(p.is_staff_pick),
     })),
     submissions,
-    votes: data.votes || {},
+    votes,
   };
 }
 
 function writeDb(data: any) {
-  try {
-    fs.writeFileSync(DB_PATH, JSON.stringify({ prompts: data.prompts, votes: data.votes }, null, 2));
-  } catch {
-    // Fails on Vercel read-only deploy — ok, prompts are deployed not user-generated
-  }
+  // Write votes to /tmp (writable on Vercel) — this is the live source of truth for vote counts
+  fs.writeFileSync(VOTES_PATH, JSON.stringify(data.votes || {}, null, 2));
+  // Submissions also go to /tmp
   fs.writeFileSync(SUBMISSIONS_PATH, JSON.stringify(data.submissions || [], null, 2));
 }
 
 export function getPrompts(sort: string = 'recent', category: string = '', voterIp: string = '') {
   const db = readDb();
   let prompts = [...db.prompts];
+  const votes = db.votes || {};
+
+  // Compute live vote counts from the votes object (not from prompts.json which is stale)
+  prompts = prompts.map(p => ({
+    ...p,
+    vote_count: votes[p.id]?.length || 0,
+    has_voted: votes[p.id]?.includes(voterIp) || false,
+  }));
 
   if (category) {
     prompts = prompts.filter(p => p.category === category);
@@ -123,12 +138,7 @@ export function getPrompts(sort: string = 'recent', category: string = '', voter
     prompts.sort((a, b) => b.created_at - a.created_at);
   }
 
-  const votes = db.votes || {};
-
-  return prompts.map(p => ({
-    ...p,
-    has_voted: votes[p.id]?.includes(voterIp) || false,
-  }));
+  return prompts;
 }
 
 export function getPromptBySlug(slug: string, voterIp: string = '') {
@@ -138,13 +148,20 @@ export function getPromptBySlug(slug: string, voterIp: string = '') {
   const votes = db.votes || {};
   return {
     ...prompt,
+    vote_count: votes[prompt.id]?.length || 0,
     has_voted: votes[prompt.id]?.includes(voterIp) || false,
   };
 }
 
 export function getPromptById(id: number) {
   const db = readDb();
-  return db.prompts.find(p => p.id === id) || null;
+  const prompt = db.prompts.find(p => p.id === id) || null;
+  if (!prompt) return null;
+  const votes = db.votes || {};
+  return {
+    ...prompt,
+    vote_count: votes[prompt.id]?.length || 0,
+  };
 }
 
 export function toggleVote(promptId: number, voterIp: string) {
