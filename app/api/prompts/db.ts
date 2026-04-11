@@ -10,8 +10,6 @@ type Prompt = {
   prompt_text: string;
   tools: string[];
   setup_steps: string[];
-  trigger: string;
-  alert: string;
   example_output: string;
   is_staff_pick: boolean;
   vote_count: number;
@@ -243,7 +241,7 @@ export function updatePrompt(id: number, updates: Partial<Prompt>) {
   const edits = loadPromptEdits();
   if (!edits[id]) edits[id] = {};
 
-  const allowed = ['title', 'category', 'description', 'prompt_text', 'tools', 'setup_steps', 'trigger', 'alert', 'is_staff_pick'];
+  const allowed = ['title', 'category', 'description', 'prompt_text', 'tools', 'setup_steps', 'is_staff_pick'];
   for (const key of allowed) {
     if (key in updates) {
       (edits[id] as any)[key] = (updates as any)[key];
@@ -334,8 +332,6 @@ export function approveSubmission(id: number) {
     prompt_text: sub.prompt_text || '',
     tools: sub.tools || [],
     setup_steps: sub.setup_steps || [],
-    trigger: sub.trigger || '',
-    alert: sub.alert || '',
     example_output: '',
     is_staff_pick: false,
     vote_count: 0,

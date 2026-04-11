@@ -31,8 +31,7 @@ export default function SubmitPageClient() {
     prompt_text: '',
     tools: [] as string[],
     setup_steps: '',
-    trigger: '',
-    alert: '',
+
   });
   const [changeIdea, setChangeIdea] = useState({
     original_prompt_id: '',
@@ -293,29 +292,7 @@ export default function SubmitPageClient() {
             />
           </div>
 
-          {/* Trigger */}
-          <div>
-            <label className="block text-sm font-medium text-zinc-300 mb-2">Trigger</label>
-            <input
-              type="text"
-              value={form.trigger}
-              onChange={e => setForm(f => ({ ...f, trigger: e.target.value }))}
-              placeholder="e.g., Every night at 2:00 AM (0 2 * * *)"
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 font-mono text-sm"
-            />
-          </div>
 
-          {/* Alert */}
-          <div>
-            <label className="block text-sm font-medium text-zinc-300 mb-2">Alert Method</label>
-            <input
-              type="text"
-              value={form.alert}
-              onChange={e => setForm(f => ({ ...f, alert: e.target.value }))}
-              placeholder="e.g., Telegram message on completion or failure"
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-            />
-          </div>
 
           <button
             type="submit"

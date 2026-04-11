@@ -5,7 +5,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const {
-      title, category, description, prompt_text, tools, setup_steps, trigger, alert,
+      title, category, description, prompt_text, tools, setup_steps,
       is_change_idea, original_prompt_id, proposed_change
     } = body;
 
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     }
 
     const submission = addSubmission({
-      title, category, description, prompt_text, tools, setup_steps, trigger, alert,
+      title, category, description, prompt_text, tools, setup_steps,
       submitter_ip: ip,
       is_change_idea: is_change_idea || false,
       original_prompt_id: original_prompt_id || null,

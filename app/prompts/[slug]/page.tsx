@@ -229,18 +229,6 @@ export default function PromptDetailPage({ params }: Props) {
           {/* Quick Info */}
           <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 space-y-5">
             <div>
-              <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Trigger</h3>
-              <p className="text-white font-mono text-sm">{prompt.trigger}</p>
-            </div>
-
-            {prompt.alert && (
-              <div>
-                <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Alert</h3>
-                <p className="text-zinc-300 text-sm">{prompt.alert}</p>
-              </div>
-            )}
-
-            <div>
               <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Tools Used</h3>
               <div className="flex flex-wrap gap-2">
                 {prompt.tools.map(tool => (

@@ -12,8 +12,6 @@ type Prompt = {
   prompt_text: string;
   tools: string[];
   setup_steps: string[];
-  trigger: string;
-  alert: string;
   is_staff_pick: boolean;
   vote_count: number;
   created_at: number;
@@ -495,8 +493,6 @@ function EditModal({ prompt, form, setForm, saveLoading, saveMsg, onSave, onClos
     { key: 'title', label: 'Title' },
     { key: 'description', label: 'Description', multiline: true },
     { key: 'prompt_text', label: 'Prompt Text', multiline: true },
-    { key: 'trigger', label: 'Trigger (e.g. "Every night at 3 AM")' },
-    { key: 'alert', label: 'Alert Message' },
   ];
 
   return (
@@ -560,26 +556,6 @@ function EditModal({ prompt, form, setForm, saveLoading, saveMsg, onSave, onClos
               onChange={e => setForm({ ...form, setup_steps: e.target.value.split('\n').filter(Boolean) })}
               rows={4}
               className="w-full bg-zinc-950 border border-zinc-700 rounded-xl px-4 py-2.5 text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500 font-mono text-sm resize-y"
-            />
-          </div>
-
-          {/* Trigger */}
-          <div>
-            <label className="block text-sm font-medium text-zinc-400 mb-1">Trigger</label>
-            <input
-              value={form.trigger || ''}
-              onChange={e => setForm({ ...form, trigger: e.target.value })}
-              className="w-full bg-zinc-950 border border-zinc-700 rounded-xl px-4 py-2.5 text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
-            />
-          </div>
-
-          {/* Alert */}
-          <div>
-            <label className="block text-sm font-medium text-zinc-400 mb-1">Alert</label>
-            <input
-              value={form.alert || ''}
-              onChange={e => setForm({ ...form, alert: e.target.value })}
-              className="w-full bg-zinc-950 border border-zinc-700 rounded-xl px-4 py-2.5 text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
             />
           </div>
 
