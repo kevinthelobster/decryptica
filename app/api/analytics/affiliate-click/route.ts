@@ -14,6 +14,9 @@
  *   category?: string,          // "ai" | "crypto" | "automation"
  *   intent?: string,            // "learn" | "calculate" | "implement"
  *   position?: number,          // position in a list/grid
+ *   utmSource?: string,
+ *   utmMedium?: string,
+ *   utmCampaign?: string,
  *   metadata?: Record<string, string | number | boolean>
  * }
  */
@@ -34,7 +37,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const event = {
+    const event: Record<string, unknown> = {
       type: 'affiliate_click',
       timestamp: body.timestamp || new Date().toISOString(),
       sessionId: body.sessionId,
@@ -48,6 +51,10 @@ export async function POST(request: NextRequest) {
       intent: body.intent || null,
       position: body.position || null,
       metadata: body.metadata || {},
+      // UTM attribution fields
+      utmSource: body.utmSource || null,
+      utmMedium: body.utmMedium || null,
+      utmCampaign: body.utmCampaign || null,
       receivedAt: new Date().toISOString(),
     };
 
