@@ -36,6 +36,21 @@ export default function AboutPage() {
           <p className="text-zinc-300 leading-relaxed">
             Decryptica is built by the team at <strong className="text-white">Renegade Reels</strong>—a company dedicated to building tools and content that help people understand emerging technology.
           </p>
+          
+          <h2 className="font-display text-xl font-semibold text-white mt-8 mb-4">Business Identity</h2>
+          <div className="p-6 bg-zinc-800/30 rounded-xl space-y-2 text-zinc-300">
+            <p><strong className="text-white">Legal Entity Name:</strong> Renegade Reels LLC</p>
+            <p><strong className="text-white">State of Registration:</strong> Ohio, United States</p>
+            <p><strong className="text-white">Business Contact:</strong> <a href="mailto:brian@renegadereels.com" className="text-indigo-400 hover:text-indigo-300">brian@renegadereels.com</a></p>
+            <p><strong className="text-white">Website:</strong> decryptica.com</p>
+          </div>
+          
+          <h2 className="font-display text-xl font-semibold text-white mt-8 mb-4">Legal</h2>
+          <ul className="space-y-2 text-zinc-300">
+            <li><a href="/terms" className="text-indigo-400 hover:text-indigo-300">Terms of Service</a></li>
+            <li><a href="/affiliate-disclosure" className="text-indigo-400 hover:text-indigo-300">Affiliate Disclosure</a></li>
+            <li><a href="/privacy" className="text-indigo-400 hover:text-indigo-300">Privacy Policy</a></li>
+          </ul>
         </div>
       </div>
     </div>

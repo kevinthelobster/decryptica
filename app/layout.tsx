@@ -94,6 +94,8 @@ export default function RootLayout({
                   <li><a href="/about" className="text-zinc-400 hover:text-indigo-400 text-sm transition-colors">About</a></li>
                   <li><a href="/contact" className="text-zinc-400 hover:text-indigo-400 text-sm transition-colors">Contact</a></li>
                   <li><a href="/privacy" className="text-zinc-400 hover:text-indigo-400 text-sm transition-colors">Privacy</a></li>
+                  <li><a href="/terms" className="text-zinc-400 hover:text-indigo-400 text-sm transition-colors">Terms</a></li>
+                  <li><a href="/affiliate-disclosure" className="text-zinc-400 hover:text-indigo-400 text-sm transition-colors">Affiliate Disclosure</a></li>
                 </ul>
               </div>
             </div>

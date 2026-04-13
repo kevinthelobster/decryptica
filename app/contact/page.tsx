@@ -29,6 +29,14 @@ export default function ContactPage() {
               brian@renegadereels.com
             </a>
           </div>
+          
+          <div className="p-6 bg-zinc-800/30 rounded-xl">
+            <h2 className="font-display font-semibold text-white mb-2">Business Identity</h2>
+            <p className="text-zinc-300">
+              <strong className="text-white">Legal Entity:</strong> Renegade Reels LLC<br/>
+              State of Registration: Ohio, United States
+            </p>
+          </div>
         </div>
       </div>
     </div>
