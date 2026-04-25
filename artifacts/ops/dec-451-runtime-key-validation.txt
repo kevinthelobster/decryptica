@@ -1,0 +1,4 @@
+timestamp=2026-04-13T11:53:09Z
+GSC_API_KEY=present len=39 prefix=AIzaSy***
+KV_REST_API_URL=present len=36 prefix=https:***
+KV_REST_API_TOKEN=present len=71 prefix=gQAAAA***
