@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 
 const DEFAULT_SUBPILLAR: Record<string, string> = {
-  ai: 'tooling',
+  ai: 'use-cases',
   crypto: 'trading',
   automation: 'workflows',
 };

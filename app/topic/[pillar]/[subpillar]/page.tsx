@@ -158,6 +158,148 @@ export default async function SubpillarPage({ params }: SubpillarPageProps) {
         )}
       </section>
 
+      {(pillarSlug === 'ai' && ['llms', 'agents', 'local', 'use-cases', 'tooling'].includes(subpillar)) || (pillarSlug === 'automation' && subpillar === 'infrastructure') ? (
+        <section className="mt-10">
+          <div className="card-elevated p-6 md:p-7">
+            <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Buyer Intent Directory</p>
+            <h2 className="mt-2 font-display text-2xl font-semibold text-white">
+              {pillarSlug === 'ai' && subpillar === 'llms'
+                ? 'High-intent LLM buying and deployment paths'
+                : pillarSlug === 'ai' && subpillar === 'agents'
+                  ? 'AI agent implementation paths for active buyers'
+                  : pillarSlug === 'ai' && subpillar === 'local'
+                    ? 'Local AI deployment paths for privacy and cost-conscious teams'
+                    : pillarSlug === 'ai' && subpillar === 'use-cases'
+                      ? 'Operational AI rollout paths that convert'
+                      : 'Automation reliability paths for technical buyers'}
+            </h2>
+            <p className="mt-3 text-zinc-400">
+              {pillarSlug === 'ai' && subpillar === 'llms'
+                ? 'Use these pages to move from model curiosity into concrete stack, cost, and implementation decisions.'
+                : pillarSlug === 'ai' && subpillar === 'agents'
+                  ? 'These pages help teams move from agent curiosity into practical implementation, budget validation, and consulting conversations.'
+                  : pillarSlug === 'ai' && subpillar === 'local'
+                    ? 'Use these paths to evaluate local and edge AI tradeoffs, validate economics, and decide whether you need implementation help.'
+                    : pillarSlug === 'ai' && subpillar === 'use-cases'
+                      ? 'These guides help operations teams go from “should we automate this?” to scoped rollout and consulting conversations.'
+                      : 'These pages are the shortest path from architecture research into reliability decisions and implementation help.'}
+            </p>
+
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {pillarSlug === 'ai' && subpillar === 'llms' ? (
+                <>
+                  <TrackedLink href="/blog/local-llm-setup-guide" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'local-llm-setup-guide', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Local deployment</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Running LLMs Locally</h3>
+                    <p className="mt-2 text-sm text-zinc-400">For teams comparing privacy, cost control, and on-prem style deployment tradeoffs.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/blog/cursor-vs-windsurf-ai-coding" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'cursor-vs-windsurf-ai-coding', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Tool selection</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Cursor vs Windsurf</h3>
+                    <p className="mt-2 text-sm text-zinc-400">A practical comparison for teams deciding where AI coding fits in the stack.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/tools/ai-price-calculator" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_secondary_cta_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, cta: 'ai_price_calculator', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Budget validation</p>
+                    <h3 className="mt-1 font-display text-lg text-white">AI ROI Calculator</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Validate whether local, hosted, or hybrid AI economics make sense before you commit.</p>
+                  </TrackedLink>
+                </>
+              ) : pillarSlug === 'ai' && subpillar === 'agents' ? (
+                <>
+                  <TrackedLink href="/blog/ai-agents-explained" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'ai-agents-explained', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Foundations</p>
+                    <h3 className="mt-1 font-display text-lg text-white">AI Agents Explained</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Anchor buyers with a practical guide to what agents are, how they work, and where they fit.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/tools/ai-price-calculator" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_secondary_cta_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, cta: 'ai_price_calculator', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Budget validation</p>
+                    <h3 className="mt-1 font-display text-lg text-white">AI ROI Calculator</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Pressure-test agent automation economics before committing engineering time or vendor spend.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/services/ai-automation-consulting" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_secondary_cta_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, cta: 'ai_automation_consulting', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Implementation help</p>
+                    <h3 className="mt-1 font-display text-lg text-white">AI Automation Consulting</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Bring in help when agent orchestration, guardrails, or rollout planning need to move faster.</p>
+                  </TrackedLink>
+                </>
+              ) : pillarSlug === 'ai' && subpillar === 'local' ? (
+                <>
+                  <TrackedLink href="/blog/local-llm-setup-guide" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'local-llm-setup-guide', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Local deployment</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Running LLMs Locally</h3>
+                    <p className="mt-2 text-sm text-zinc-400">A practical buyer-facing guide for teams evaluating privacy, cost control, and self-hosted AI workflows.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/tools/ai-price-calculator" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_secondary_cta_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, cta: 'ai_price_calculator', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Cost modeling</p>
+                    <h3 className="mt-1 font-display text-lg text-white">AI ROI Calculator</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Compare local, hosted, and hybrid cost structures before choosing an edge AI path.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/services/ai-automation-consulting" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_secondary_cta_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, cta: 'ai_automation_consulting', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Implementation help</p>
+                    <h3 className="mt-1 font-display text-lg text-white">AI Automation Consulting</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Get help scoping local or edge AI deployment when privacy, infra, or rollout complexity is slowing decisions.</p>
+                  </TrackedLink>
+                </>
+              ) : pillarSlug === 'ai' && subpillar === 'use-cases' ? (
+                <>
+                  <TrackedLink href="/blog/best-ai-tools-for-small-business-automation" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'best-ai-tools-for-small-business-automation', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Buyer guide</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Best AI Tools for Small Business Automation</h3>
+                    <p className="mt-2 text-sm text-zinc-400">A high-intent shortlist for owners comparing cost, setup friction, and real-world fit.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/blog/ai-workflow-examples-for-operations-teams" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'ai-workflow-examples-for-operations-teams', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Use-case playbook</p>
+                    <h3 className="mt-1 font-display text-lg text-white">AI Workflow Examples for Operations Teams</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Examples that turn abstract AI interest into concrete workflow rollout ideas.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/services/ai-automation-consulting" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_secondary_cta_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, cta: 'ai_automation_consulting', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Implementation help</p>
+                    <h3 className="mt-1 font-display text-lg text-white">AI Automation Consulting</h3>
+                    <p className="mt-2 text-sm text-zinc-400">When the team needs architecture, rollout planning, or a faster path to production.</p>
+                  </TrackedLink>
+                </>
+              ) : pillarSlug === 'ai' && subpillar === 'tooling' ? (
+                <>
+                  <TrackedLink href="/blog/best-ai-tools-for-small-business-automation" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'best-ai-tools-for-small-business-automation', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Tool selection</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Best AI Tools for Small Business Automation</h3>
+                    <p className="mt-2 text-sm text-zinc-400">A practical buyer guide to the AI and workflow tools small teams actually adopt.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/blog/ai-observability-tools-compared" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'ai-observability-tools-compared', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Monitoring</p>
+                    <h3 className="mt-1 font-display text-lg text-white">AI Observability Tools Compared</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Use this to evaluate when your stack needs tracing, evaluation, and governance layers.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/tools/ai-price-calculator" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_secondary_cta_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, cta: 'ai_price_calculator', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Budget validation</p>
+                    <h3 className="mt-1 font-display text-lg text-white">AI ROI Calculator</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Pressure-test tooling and usage costs before you add more AI vendors.</p>
+                  </TrackedLink>
+                </>
+              ) : (
+                <>
+                  <TrackedLink href="/blog/queue-vs-webhook-for-workflow-reliability" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'queue-vs-webhook-for-workflow-reliability', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Architecture choice</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Queue vs Webhook Reliability</h3>
+                    <p className="mt-2 text-sm text-zinc-400">A direct path for buyers evaluating automation reliability under real load and failure conditions.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/topic/automation/workflows" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSubpillar: 'workflows', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Workflow design</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Automation Workflows Hub</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Bridge reliability questions back into process design, routing logic, and rollout patterns.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/services/ai-automation-consulting" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_secondary_cta_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, cta: 'ai_automation_consulting', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Implementation help</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Automation Consulting</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Bring in help when reliability, queueing, or infra tradeoffs are slowing the team down.</p>
+                  </TrackedLink>
+                </>
+              )}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section className="mt-10 grid gap-4 md:grid-cols-3">
         {adjacentSubpillars.map((item) => (
           <TrackedLink

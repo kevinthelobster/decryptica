@@ -20,6 +20,16 @@ const AI_SUBPILLARS: SubpillarDefinition[] = [
     description: 'Autonomous workflows, orchestration, and human-in-the-loop control loops.',
   },
   {
+    slug: 'local',
+    name: 'Local AI',
+    description: 'Local and edge AI deployment, privacy tradeoffs, and self-hosted model operations.',
+  },
+  {
+    slug: 'use-cases',
+    name: 'Use Cases',
+    description: 'Applied AI workflows for support, operations, marketing, and internal team execution.',
+  },
+  {
     slug: 'tooling',
     name: 'Tooling',
     description: 'AI stack selection, integration, and deployment operations.',
@@ -71,7 +81,9 @@ export const SUBPILLARS_BY_PILLAR: Record<PillarSlug, SubpillarDefinition[]> = {
 const SUBPILLAR_KEYWORDS: Record<PillarSlug, Record<string, RegExp[]>> = {
   ai: {
     llms: [/llm/i, /gpt/i, /claude/i, /prompt/i, /rag/i, /chatbot/i, /writing/i],
-    agents: [/agent/i, /autonom/i, /copilot/i, /assistant/i, /workflow/i, /orchestrat/i],
+    agents: [/agent/i, /autonom/i, /copilot/i, /assistant/i, /orchestrat/i],
+    local: [/local/i, /edge ai/i, /edge-ai/i, /self-host/i, /ollama/i, /on-device/i, /on-prem/i, /private ai/i, /llama 3 locally/i],
+    'use-cases': [/workflow/i, /use-case/i, /operations/i, /support/i, /customer-support/i, /marketing/i, /sales/i],
     tooling: [/tool/i, /stack/i, /sdk/i, /framework/i, /platform/i, /integration/i],
   },
   crypto: {
@@ -87,7 +99,7 @@ const SUBPILLAR_KEYWORDS: Record<PillarSlug, Record<string, RegExp[]>> = {
 };
 
 const DEFAULT_SUBPILLAR: Record<PillarSlug, string> = {
-  ai: 'tooling',
+  ai: 'use-cases',
   crypto: 'trading',
   automation: 'workflows',
 };
@@ -104,8 +116,13 @@ export function getSubpillarPath(pillar: PillarSlug, subpillar: string): string 
   return `/topic/${pillar}/${subpillar}`;
 }
 
-export function inferSubpillarFromArticle(article: Pick<Article, 'category' | 'slug' | 'title' | 'tags'>): string {
+export function inferSubpillarFromArticle(article: Pick<Article, 'category' | 'slug' | 'title' | 'tags' | 'targetSubpillar'>): string {
   const pillar = article.category as PillarSlug;
+
+  if (article.targetSubpillar && getSubpillarBySlug(pillar, article.targetSubpillar)) {
+    return article.targetSubpillar;
+  }
+
   const rules = SUBPILLAR_KEYWORDS[pillar];
   const haystack = `${article.slug} ${article.title} ${(article.tags || []).join(' ')}`;
 
