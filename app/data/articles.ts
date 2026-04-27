@@ -71,90 +71,242 @@ export const articles: Article[] = [
     id: '1777289415800-5663',
     slug: 'the-death-of-amms-has-been-greatly-exaggerated',
     title: "The Death of AMMs Has Been Greatly Exaggerated",
-    excerpt: "Death of AMMs Has Been Greatly Exaggerated...",
-    content: `The Death of AMMs Has Been Greatly Exaggerated
+    excerpt: "AMMs are under pressure, but they are not obsolete. They still solve liquidity, listing, and long-tail market problems that order books and intent layers have not replaced.",
+    content: `# The Death of AMMs Has Been Greatly Exaggerated
 
 **TL;DR**
 
-- This analysis examines the key factors driving crypto analysis in 2026
-- We cut through marketing claims to focus on what the data actually shows
-- Practical recommendations based on real-world testing and research
-- The implications for your strategy depend on your specific use case and goals
+- Automated market makers are no longer the only game in town, but they are still core infrastructure for on-chain trading.
+- Central limit order books, RFQ systems, and intent-based routers have taken share in high-volume pairs, especially where professional market makers can dominate.
+- That does not mean AMMs are dead. It means their role is getting more specialized and, in many cases, more valuable.
+- AMMs still win on permissionless listing, long-tail asset support, passive liquidity coordination, and composability with the rest of DeFi.
+- The real story is not AMMs versus order books. It is a market structure stack where AMMs, solvers, aggregators, and order flow auctions all coexist.
+- The protocols that survive will be the ones that treat AMMs as programmable liquidity infrastructure, not as a one-size-fits-all trading venue.
 
-## Introduction
+## The Easy Narrative, and Why It Breaks Down
 
-The crypto analysis landscape has evolved significantly, and making sense of it requires cutting through the noise to focus on fundamentals. Whether you are evaluating a new tool, considering a shift in strategy, or simply trying to understand the current state of the market, this analysis provides a data-driven perspective.
+Every cycle produces a clean obituary for a piece of crypto infrastructure. This year, AMMs are the target. The argument sounds persuasive at first: order books are more capital efficient, aggregators route flow away from pools, intents abstract away venues entirely, and sophisticated solvers now compete to fill user orders off-pool before an AMM ever sees them.
 
-In the following sections, we examine the evidence, explore the nuances, and provide actionable recommendations based on what the research actually shows — not what the marketing materials claim.
+That argument is directionally true in one narrow slice of the market. It is also wildly incomplete.
 
+AMMs did not become dominant because they were the perfect execution venue for every trade. They became dominant because they solved a broader coordination problem. They allowed liquidity to exist on-chain without a centralized operator, without a matching engine gatekeeper, and without needing a constant stream of active makers and takers to keep a market alive. That core function still matters. In some parts of crypto, it matters more than ever.
 
-## The Current Market Landscape
+If you only evaluate AMMs by asking whether they beat professional market makers on execution for large, liquid pairs, you will conclude they are losing. If you ask whether crypto can replace them as a generalized liquidity primitive, the answer is still no.
 
-This section dives deep into the core dynamics at play. Understanding these fundamentals is essential for anyone making decisions in this space. The conventional wisdom often misses important nuances that become clear only when you examine the underlying data and real-world evidence.
+## Why AMMs Took Over in the First Place
 
-Recent developments have created both opportunities and challenges. For some users, the barriers to entry have never been lower. For others, the complexity of modern solutions demands more sophisticated approaches. The key is understanding where you fall on this spectrum and adapting your strategy accordingly.
+The original success of AMMs had very little to do with elegance in theory and everything to do with usefulness in practice. Before Uniswap-style designs took hold, on-chain trading faced a brutal chicken-and-egg problem. New assets needed liquidity. Liquidity providers needed confidence that someone would trade. Traders needed confidence that a market existed. Traditional order books solved this through active market makers and centralized coordination. On-chain systems did not have that luxury.
 
+AMMs turned that coordination problem into software. Deposit two assets into a pool, define a pricing function, and a market exists immediately. It may not be the tightest market. It may not be the cheapest for size. But it is alive, permissionless, and accessible from the first block.
 
-## What the Data Actually Shows
+That matters for reasons that have nothing to do with nostalgia:
 
-This area reveals important patterns that are easy to miss at first glance. Multiple data sources converge on similar conclusions, suggesting a robust trend rather than noise.
+### AMMs bootstrap markets without human permission
 
-Our research involved analyzing dozens of data points, comparing expert opinions, and where possible, hands-on testing. The goal was to separate signal from noise and provide you with actionable insights rather than surface-level observations.
+A long-tail token, an LST variant, a governance asset, or a newly launched memecoin can get a functional market quickly with no centralized listing committee. This is still one of crypto’s most powerful distribution mechanisms.
 
-Key findings suggest that on-chain metrics and market structure provide more reliable signals than sentiment. This has important implications for how you evaluate options in this space.
-## Key Technical Indicators
+### AMMs support passive capital better than most alternatives
 
-This area reveals important patterns that are easy to miss at first glance. The technical picture is nuanced, with different indicators telling different stories depending on timeframe and context.
+Not every liquidity provider is Jane Street. Many participants want programmable, semi-passive exposure with transparent rules. AMMs let them choose a curve, a range, and a fee tier rather than running a full market-making operation.
 
-Our research involved analyzing dozens of data points, comparing expert opinions, and where possible, hands-on testing. The goal was to separate signal from noise and provide you with actionable insights rather than surface-level observations.
+### AMMs are composable by default
 
-Key findings suggest that on-chain metrics and market structure provide more reliable signals than sentiment. This has important implications for how you evaluate options in this space.
-## Risk Factors to Consider
+A lending protocol, vault strategy, perp venue, or rebasing token system can plug into AMM liquidity directly. That composability is not a side feature. It is the reason AMMs became the financial plumbing of DeFi.
 
-This area reveals important patterns that are easy to miss at first glance. Risk assessment requires understanding both the obvious threats and the less visible ones that could emerge.
+These strengths did not disappear because order flow got more sophisticated.
 
-Our research involved analyzing dozens of data points, comparing expert opinions, and where possible, hands-on testing. The goal was to separate signal from noise and provide you with actionable insights rather than surface-level observations.
+## Where the Critics Are Right
 
-Key findings suggest that on-chain metrics and market structure provide more reliable signals than sentiment. This has important implications for how you evaluate options in this space.
+It would be a mistake to defend AMMs by pretending nothing changed. Plenty changed.
 
+For blue-chip pairs and flow that attracts professionals, classic pool-based execution is under real pressure. Uniswap v2 style full-range liquidity was extremely simple, but it was also capital inefficient. A huge amount of value sat idle outside the price zone where trades actually happened. Concentrated liquidity improved that dramatically, but it also made LP management harder and more active.
 
-## Strategic Implications
+At the same time, other execution models improved:
 
-Based on the analysis above, here are the key recommendations:
+### Order books are better for price discovery in deep markets
 
-1. **Start with clear objectives** — Understanding what you are trying to achieve makes evaluation significantly easier
-2. **Focus on total cost, not just sticker price** — Implementation, maintenance, and learning curve all add to true cost
-3. **Test with real workloads** — Demo environments rarely reveal limitations that emerge under actual use
-4. **Plan for evolution** — The landscape changes fast; build flexibility into your approach
-5. **Consider the ecosystem** — Integration with existing tools and workflows can be the difference between success and failure
+On highly liquid pairs, especially where arbitrage is fierce and maker sophistication is high, order books can produce tighter spreads and more expressive liquidity placement.
 
-These recommendations are based on patterns observed across multiple use cases and should be adapted to your specific situation.
+### RFQ and solver-based systems reduce visible slippage
 
+If a user submits intent-based flow and a solver can internalize, hedge, or source liquidity across venues, that user may get a better fill than simply hitting one AMM pool directly.
 
-## FAQ: Common Questions
+### MEV made naive AMM flow more expensive
 
-**Q: Is this still relevant in 2026?**
-A: The space evolves rapidly, but the fundamental principles discussed here remain applicable. We update our analysis as the landscape changes.
+AMMs are transparent. That transparency is useful, but it also exposes pending trades to sandwich attacks, backrunning, and adverse selection if execution is not protected.
 
-**Q: How did you research this?**
-A: We combine official documentation, expert opinions, user reviews, and where possible, hands-on testing. We do not accept payment for placement.
+### LPs learned that fees are not the whole story
 
-**Q: What is the best approach for beginners?**
-A: Start simple, validate your assumptions with small tests, and scale up only after confirming the approach works for your use case.
+For a long time, AMM discussions centered on fee APRs as if those were pure yield. Then the market got more honest. Impermanent loss, range management, volatility clustering, inventory risk, and toxic flow all reminded LPs that they were running a real risk business.
+
+These are real weaknesses. The obituary goes wrong when it treats them as fatal rather than contextual.
+
+## AMMs Still Dominate the Places That Matter Most
+
+The strongest case for AMMs today is not that they win every trading venue comparison. It is that they remain the default infrastructure for categories that keep expanding.
+
+## Long-Tail Assets Still Need Pool-Based Liquidity
+
+Most on-chain assets will never have deep two-sided professional order books. They do not have the volume, the fee opportunity, or the market-making economics to justify it. But they still need tradability.
+
+This is where AMMs remain unmatched.
+
+If you are launching a niche governance token, a tokenized vault receipt, a new restaking derivative, or a community asset with intermittent demand, an AMM gives you a functioning market without needing an always-on maker network. That market may be thin. It may require incentives. It may need careful pool seeding. But it exists.
+
+That alone is enough to keep AMMs structurally relevant. Crypto keeps creating more assets than traditional market structure can comfortably support. AMMs are the elasticity layer that absorbs that expansion.
+
+## AMMs Are the Settlement Layer Behind “Better” UX
+
+A lot of the “AMMs are dead” narrative quietly depends on routing layers that still use AMMs underneath.
+
+Aggregators, wallets, solvers, and intent protocols often present a cleaner experience than a direct swap against one pool. But when the solver goes shopping for liquidity, where does it go? Frequently to AMMs, either directly or as one component in a blended path.
+
+In other words, better front-end execution often sits on top of AMM back-end liquidity.
+
+This matters because it changes how we should think about market share. AMMs do not need to own the user relationship to remain essential. They can lose the interface battle and still win the infrastructure battle.
+
+That is exactly what happened in other technology layers before. Databases do not need to be beautiful consumer products to remain indispensable. AMMs are increasingly similar. Less visible, maybe. Less important, no.
+
+## Concentrated Liquidity Was an Evolution, Not a Last Stand
+
+A lazy reading of concentrated liquidity says AMMs had to imitate order books because they were failing. A better reading is that AMMs adapted their capital formation model to real market demands.
+
+Uniswap v3 and similar designs made one thing obvious: LP capital should not be spread evenly across price zones where no one trades. By letting LPs define ranges, these protocols moved closer to how real makers think about inventory placement.
+
+Yes, that increased complexity. Yes, it pushed many LPs toward active management or vault wrappers. But it also showed that AMMs are not static. They can evolve toward greater efficiency without losing their core permissionless logic.
+
+That distinction matters. If a system can absorb ideas from order books while keeping the open, programmable structure that made it valuable, it is not dying. It is maturing.
+
+## The Real Economic Role of LPs
+
+One reason AMM debates get sloppy is that people talk about LPs as if they are just yield farmers clipping fees. They are not. LPs are underwriting execution risk.
+
+When someone trades against a pool, the LP is taking the other side in a rules-based way. That means LP returns are a function of:
+
+- fee income,
+- volatility,
+- flow toxicity,
+- arbitrage frequency,
+- inventory drift,
+- incentive design,
+- and range management discipline.
+
+That sounds complicated because it is. AMMs turned market making into a tokenized, semi-programmable strategy available to a broader class of participants. The strategy is not always easy, and it is definitely not free money, but the market still needs someone to warehouse that risk.
+
+Order books warehouse it through active makers. AMMs warehouse it through pooled capital and rules. Both are valid. The existence of one does not erase the need for the other.
+
+## Why AMMs Fit DeFi Better Than Order Books in Many Cases
+
+Order books work extremely well in environments with high update frequency, reliable low-latency infrastructure, and professional maker participation. That is not every DeFi context.
+
+DeFi is different in several ways:
+
+### Blockspace is expensive and discrete
+
+Unlike a centralized exchange matching engine, on-chain markets operate through blocks, gas markets, and transaction ordering risk. AMMs compress complexity because they do not require a constant stream of order cancels and quote updates just to function.
+
+### Composability matters more than pure execution quality
+
+A vault strategy, liquidation engine, or collateral management system often needs guaranteed programmable access to liquidity, not just the theoretically best venue for a trader in isolation.
+
+### User flow is fragmented across chains and apps
+
+AMMs are easier to instantiate across many environments, especially where native market-making depth is weak. That makes them more portable as a design pattern.
+
+### Tail assets need continuity more than perfection
+
+For many assets, “always available liquidity with wider spreads” is more valuable than “excellent liquidity that only exists when a professional maker decides it is worth their time.”
+
+This is why AMMs keep reappearing even in ecosystems that experiment with alternatives. They match the operating constraints of on-chain systems better than critics admit.
+
+## MEV Hurt AMMs, but It Also Proved They Matter
+
+MEV is often used as evidence that AMMs are broken. The reality is messier.
+
+Yes, public AMM flow has been exploited heavily. Sandwiching especially made unsophisticated order flow more expensive than it looked on the interface. But the intensity of MEV around AMMs also proved how central they are. Arbitrageurs only swarm where liquidity is meaningful and price updates matter.
+
+More importantly, the response to MEV has not been “remove AMMs.” It has been “build better execution around them.” Private relays, intent protocols, Dutch auctions, batch auctions, and protected routing all emerged in part to make interacting with AMM liquidity safer.
+
+That is the pattern of infrastructure that is being upgraded, not abandoned.
+
+## Where AMMs Are Actually Weak
+
+To be fair, there are environments where AMMs are a worse fit.
+
+They struggle when:
+
+### Flow is highly informed and directional
+
+If traders consistently know more than passive LPs, LPs get picked off. Fee revenue may not compensate for inventory losses.
+
+### Assets require tight spreads at large size
+
+Institutional-sized execution in major pairs often favors order books, RFQ systems, or hybrid routing that minimizes visible pool impact.
+
+### LP management becomes too operationally heavy
+
+Concentrated liquidity is powerful, but unmanaged positions can perform poorly. If LP success requires near-professional tooling, the accessible-passive-liquidity story weakens.
+
+### Incentives hide poor organic economics
+
+Some AMM markets look healthy only because token emissions are subsidizing a market structure that would not stand on its own. When incentives vanish, so does the apparent depth.
+
+These are not trivial issues. But they are limits, not terminal diagnoses.
+
+## The Future Is Hybrid Market Structure
+
+The best way to understand the next phase is to stop asking which single model wins.
+
+Crypto is moving toward layered execution.
+
+A user expresses intent through a wallet or app. A solver or aggregator looks across venues. Some flow gets internalized. Some hits RFQ makers. Some gets matched through order books. Some ultimately settles against AMM pools. In many cases, multiple sources are combined in one route.
+
+In that world, AMMs are not obsolete. They are one of the base liquidity modules.
+
+That is a healthier role than the old maximalist version where every trade had to happen directly against a simple x*y=k pool. Infrastructure becomes stronger when it is specialized.
+
+The winners will likely look like this:
+
+- AMMs optimized for specific asset types or volatility profiles,
+- vault-managed liquidity that abstracts complexity for LPs,
+- protected order flow systems that reduce MEV leakage,
+- and aggregators that treat AMMs as one programmable liquidity leg among several.
+
+That is not a funeral. That is market structure growing up.
+
+## What This Means for Builders and Investors
+
+For builders, the lesson is simple. Do not build as if AMMs alone solve execution. But also do not build as if you can ignore them. If your product touches tokens, collateral, vault receipts, synthetic assets, or long-tail liquidity, AMMs will probably be part of your stack whether users see them or not.
+
+For investors, the lesson is more nuanced. The old “buy the DEX token because volume exists” framework is not enough. You need to understand where a protocol sits in the execution chain, whether its liquidity is organic, how it handles adverse flow, and whether it owns meaningful infrastructure rather than just a temporary UI habit.
+
+For LPs, the opportunity is still real, but only if approached honestly. This is not passive yield in the naive sense. It is packaged market-making exposure. If you understand the risks, tooling, and incentive structure, that can still be attractive. If you do not, fee APR screenshots can be dangerously misleading.
+
+## FAQ
+
+### Are AMMs still useful if aggregators route around them?
+
+Yes. Aggregators often improve execution by routing across multiple venues, but AMMs are frequently one of those venues. Even when users do not trade directly against a pool, AMM liquidity can still be part of the final route.
+
+### Did concentrated liquidity save AMMs or make them too complex?
+
+A bit of both. Concentrated liquidity made AMMs far more capital efficient, which was necessary. It also made LPing more operationally demanding. That complexity is real, but it is being abstracted through vaults, managers, and strategy layers.
+
+### What is the biggest misconception about AMMs right now?
+
+The biggest misconception is that losing direct flow in top-tier pairs means losing relevance everywhere. AMMs are not just a swap interface. They are programmable liquidity infrastructure, and that remains extremely valuable across DeFi.
 
 ## The Bottom Line
 
-The crypto analysis space offers both genuine opportunities and significant risks. Making informed decisions requires understanding both the potential benefits and the real limitations. The analysis presented here is designed to help you navigate this complexity with greater confidence.
+AMMs are not dead. What died was the simpler story that AMMs would dominate every form of on-chain trading forever without adaptation.
 
-The most successful approach combines thorough evaluation with pragmatic implementation. Rather than chasing the latest trends, focus on solutions that address your specific needs and can scale with your requirements over time.
+The stronger version of the thesis survived. Crypto still needs permissionless, composable, always-available liquidity primitives. AMMs remain the clearest answer to that need, especially for long-tail assets, DeFi integrations, and any market where professional order-book depth is too expensive or too fragile to rely on.
 
-Use this analysis as a starting point for your own evaluation, not as a final verdict. The right choice depends on your unique circumstances, constraints, and goals. We will continue to monitor developments and provide updates as the landscape evolves.
-
----
+The protocols worth paying attention to now are not the ones pretending nothing changed. They are the ones treating AMMs as foundational infrastructure inside a broader execution stack. That is where the next durable value in on-chain market structure is likely to be created.
 
 *This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`.trim(),
     category: 'crypto',
-    readTime: '5 min',
+    readTime: '12 min',
     date: '2026-04-27',
     author: 'Decryptica',
   },

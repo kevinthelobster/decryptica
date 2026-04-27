@@ -18,7 +18,7 @@ const { execSync } = require('child_process');
 
 // === CONFIGURATION ===
 const CONFIG = {
-  model: process.env.AI_MODEL || 'minimax/MiniMax-M2.5',
+  model: process.env.AI_MODEL || 'openai-codex/gpt-5.4',
   workspace: process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica',
   articlesFile: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/app/data/articles.ts',
   postedTracker: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/data/posted_titles.json',
@@ -471,104 +471,75 @@ async function generateArticle(research) {
 }
 
 /**
- * Generate article content using Ollama (local Llama 3.1)
+ * Generate article content with Codex CLI
  * Returns 1,500+ word SEO-optimized article
  */
 function generateContent(title, primary_keyword, category) {
   const today = getTodayDate();
-  
-  // Category-specific content guidance
+
   const categoryGuidance = {
-    crypto: `You are writing for Decryptica, a crypto and DeFi blog. Focus on on-chain data, protocol analysis, market dynamics, and actionable insights. Be specific about projects, tokens, and numbers.`,
+    crypto: `You are writing for Decryptica, a crypto and DeFi blog. Focus on market structure, AMMs, DEX design, liquidity behavior, MEV, on-chain incentives, and actionable insights. Be specific about protocols, tradeoffs, and concrete mechanisms.`,
     ai: `You are writing for Decryptica, an AI tools blog. Focus on practical use cases, comparisons, pricing, and real-world performance. Be specific about features, limitations, and ideal use cases.`,
     automation: `You are writing for Decryptica, an automation blog. Focus on workflow patterns, tool comparisons, scalability considerations, and implementation tips. Be specific about tools, integrations, and trade-offs.`
   };
-  
+
   const guidance = categoryGuidance[category] || categoryGuidance.automation;
-  
-  // Prompt for Ollama - ensures 1500+ words with proper SEO structure
+
   const prompt = `${guidance}
 
-Write a complete, SEO-optimized article for Decryptica with the title: "${title}"
+Write a complete, SEO-optimized article for Decryptica with the exact title: "${title}"
 
-Requirements:
-- Minimum 1,500 words (aim for 1,800-2,200 for best SEO)
-- Use markdown format with H2 and H3 headings
-- Include a TL;DR box after the title (bold "**TL;DR**" format)
-- Include 5-7 sections with substantial paragraphs (not bullet lists) in each
-- End with a FAQ section with 3 questions relevant to the topic
-- End with "## The Bottom Line" section with 2-3 paragraphs of actionable takeaways
-- Add this disclaimer at the end: "*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*"
-- Write in a confident, authoritative voice
-- Include specific examples, data points, or case studies where relevant
+Hard requirements:
+- Minimum 1,800 words
+- Strong opening hook, then a bold **TL;DR** section near the top
+- Use markdown with H2 and H3 headings
+- Be specific, not generic
+- No filler, no placeholder phrasing, no meta commentary about being an AI
+- Include concrete examples, protocol references, and mechanism-level explanation where relevant
+- End with a FAQ section with 3 useful questions and answers
+- End with a section exactly titled "## The Bottom Line"
+- End with this disclaimer exactly: "*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*"
+- Keep the tone sharp, confident, and readable
+- Optimize naturally for the primary keyword without stuffing
 
-Article title: ${title}
-Primary keyword: ${primary_keyword}
-Category: ${category}
-Date: ${today}
+Topic metadata:
+- Title: ${title}
+- Primary keyword: ${primary_keyword}
+- Category: ${category}
+- Date: ${today}
 
-Write the full article now:`;
-  
+Special instruction for this title:
+If the title is about AMMs, explain why AMMs remain structurally important despite orderbook growth and intent-based routing. Cover liquidity fragmentation, long-tail assets, passive market making, LP economics, concentrated liquidity, MEV/arbitrage, and where AMMs are actually weak.
+
+Return only the final article in markdown.`;
+
   try {
-    // MiniMax API configuration
-    const MINIMAX_API_KEY = 'sk-cp-1LjjpQmWA_AWOgdX47rYfhuTUikJR-C5__dHGCpa9Ecx2VHekgaoOp7GTPDbuw6cl-cxr4A4ayRSxEb1BJTFGUCs4igO4f_U8misGQPltH789bPcEEt7h6w';
-    const MINIMAX_URL = 'https://api.minimax.io/anthropic/v1/messages';
-    
-    // Build request body for MiniMax
-    const requestBody = {
-      model: 'MiniMax-M2.5',
-      max_tokens: 8192,
-      messages: [
-        {
-          role: 'user',
-          content: prompt
-        }
-      ]
-    };
-    
-    // Write request body to temp file to avoid shell escaping issues
-    const tmpFile = '/tmp/minimax_request_' + Date.now() + '.json';
-    fs.writeFileSync(tmpFile, JSON.stringify(requestBody));
-    
-    // Call MiniMax API
-    const result = execSync(
-      `curl -s -X POST ${MINIMAX_URL} ` +
-      `-H "Content-Type: application/json" ` +
-      `-H "Authorization: Bearer ${MINIMAX_API_KEY}" ` +
-      `-H "anthropic-version: 2023-06-01" ` +
-      `-d @${tmpFile} && rm -f ${tmpFile}`,
-      { encoding: 'utf-8', maxBuffer: 50 * 1024 * 1024 }
-    );
-    
-    const response = JSON.parse(result);
-    
-    // Extract content from MiniMax response
-    // MiniMax returns content blocks - find the text block (not thinking)
-    let text = '';
-    if (response.content && Array.isArray(response.content)) {
-      for (const block of response.content) {
-        if (block.type === 'text') {
-          text = block.text.trim();
-          break;
-        }
+    const tmpPromptFile = `/tmp/decryptica_codex_prompt_${Date.now()}.txt`;
+    const tmpOutFile = `/tmp/decryptica_codex_output_${Date.now()}.md`;
+    fs.writeFileSync(tmpPromptFile, prompt, 'utf-8');
+
+    execSync(
+      `codex exec --model ${CONFIG.model} --output-last-message ${tmpOutFile} "$(cat ${tmpPromptFile})"`,
+      {
+        encoding: 'utf-8',
+        maxBuffer: 50 * 1024 * 1024,
+        stdio: 'pipe',
+        shell: '/bin/zsh'
       }
-    }
-    
-    if (text && text.length > 500) {
-      log(`Content generated: ${text.split(/\s+/).length} words`);
+    );
+
+    const text = fs.readFileSync(tmpOutFile, 'utf-8').trim();
+    try { fs.unlinkSync(tmpPromptFile); } catch {}
+    try { fs.unlinkSync(tmpOutFile); } catch {}
+
+    if (text && text.split(/\s+/).length >= 1200) {
+      log(`Content generated with Codex: ${text.split(/\s+/).length} words`);
       return text;
     }
-    
-    // Check for error in response
-    if (response.type === 'error') {
-      throw new Error(`MiniMax API error: ${response.error?.message || 'Unknown error'}`);
-    }
-    
-    log('MiniMax returned too little content, using fallback');
-    throw new Error('Content too short');
+
+    throw new Error('Codex returned too little content');
   } catch (error) {
-    log(`MiniMax error: ${error.message}, using fallback content`);
-    // Fallback to a more substantial template if MiniMax fails
+    log(`Codex generation error: ${error.message}, using fallback content`);
     return generateFallbackContent(title, primary_keyword, category);
   }
 }
