@@ -18,7 +18,7 @@ const { execSync } = require('child_process');
 
 // === CONFIGURATION ===
 const CONFIG = {
-  model: process.env.AI_MODEL || 'openai-codex/gpt-5.4',
+  model: process.env.AI_MODEL || 'gpt-5.4',
   workspace: process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica',
   articlesFile: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/app/data/articles.ts',
   postedTracker: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/data/posted_titles.json',
@@ -454,7 +454,7 @@ async function generateArticle(research) {
     id: generateId(),
     slug,
     title,
-    excerpt: generateExcerpt(title),
+    excerpt: generateExcerpt(title, content),
     content,
     category,
     readTime: estimateReadTime(content),
@@ -518,6 +518,7 @@ Return only the final article in markdown.`;
     const tmpOutFile = `/tmp/decryptica_codex_output_${Date.now()}.md`;
     fs.writeFileSync(tmpPromptFile, prompt, 'utf-8');
 
+    log(`Using Codex model: ${CONFIG.model}`);
     execSync(
       `codex exec --model ${CONFIG.model} --output-last-message ${tmpOutFile} "$(cat ${tmpPromptFile})"`,
       {
@@ -539,13 +540,16 @@ Return only the final article in markdown.`;
 
     throw new Error('Codex returned too little content');
   } catch (error) {
-    log(`Codex generation error: ${error.message}, using fallback content`);
+    const stderr = error && error.stderr ? String(error.stderr).trim() : '';
+    const stdout = error && error.stdout ? String(error.stdout).trim() : '';
+    const detail = stderr || stdout || error.message;
+    log(`Codex generation error with model ${CONFIG.model}: ${detail}, using fallback content`);
     return generateFallbackContent(title, primary_keyword, category);
   }
 }
 
 /**
- * Fallback content generator (used only if Ollama fails)
+ * Fallback content generator (used only if Codex fails)
  * Still better than the original 200-word template
  */
 function generateFallbackContent(title, primary_keyword, category) {
@@ -655,10 +659,42 @@ Use this analysis as a starting point for your own evaluation, not as a final ve
 *This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`;
 }
 
-function generateExcerpt(title) {
-  // Create excerpt from title
-  const clean = title.replace(/^[A-Z][^A-Z]*/, '').trim();
-  return clean.substring(0, 140).trim() + '...';
+function stripMarkdown(text) {
+  return text
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/^>\s?/gm, '')
+    .replace(/[*_~]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function generateExcerpt(title, content) {
+  const plain = stripMarkdown(content || '');
+  const lines = plain
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  const candidates = lines.filter((line) => {
+    const lower = line.toLowerCase();
+    if (lower === title.toLowerCase()) return false;
+    if (lower === 'tl;dr') return false;
+    if (lower.startsWith('q:')) return false;
+    if (lower.startsWith('a:')) return false;
+    if (line.length < 80) return false;
+    return true;
+  });
+
+  const source = candidates[0] || plain || title;
+  const excerpt = source.length > 155
+    ? source.slice(0, 152).replace(/\s+\S*$/, '').trim() + '...'
+    : source;
+
+  return excerpt;
 }
 
 // === FILE OPERATIONS ===

@@ -154,6 +154,41 @@ function estimateWordCount(content: string): number {
     .filter((w) => w.length > 0).length;
 }
 
+function estimateReadTimeFromWordCount(wordCount: number): string {
+  const wordsPerMinute = 225;
+  const minutes = Math.max(1, Math.ceil(wordCount / wordsPerMinute));
+  return `${minutes} min read`;
+}
+
+function buildSummaryFromContent(content: string, fallback: string): string {
+  const plain = content
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/^>\s?/gm, '')
+    .replace(/[*_~]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const sentences = plain
+    .split(/(?<=[.!?])\s+/)
+    .map((sentence) => sentence.trim())
+    .filter(Boolean);
+
+  const candidate = sentences.find((sentence) => {
+    const lower = sentence.toLowerCase();
+    if (lower === fallback.toLowerCase()) return false;
+    if (sentence.length < 80) return false;
+    return true;
+  });
+
+  if (!candidate) return fallback;
+  if (candidate.length <= 180) return candidate;
+  return candidate.slice(0, 177).replace(/\s+\S*$/, '').trim() + '...';
+}
+
 function extractHeadings(content: string): { id: string; label: string }[] {
   const headingMatches = content.match(/^##\s+.+$/gm) || [];
   return headingMatches.map((line) => {
@@ -169,29 +204,38 @@ function extractHeadings(content: string): { id: string; label: string }[] {
 // ─── Smart Related Articles (topical cluster linking) ───────────────────────
 
 function getRelatedArticles(article: any, allArticles: any[]): any[] {
-  // Strategy: same category first, then cross-link to other categories for topical authority
-  const sameCategory = allArticles.filter(
-    (a) => a.category === article.category && a.slug !== article.slug
-  );
+  const articleSubpillar = inferSubpillarFromArticle(article);
+  const articleTags = new Set((article.tags || []).map((tag: string) => tag.toLowerCase()));
 
-  const otherCategory = allArticles.filter(
-    (a) => a.category !== article.category && a.slug !== article.slug
-  );
+  return allArticles
+    .filter((candidate) => candidate.slug !== article.slug)
+    .map((candidate) => {
+      const candidateSubpillar = inferSubpillarFromArticle(candidate);
+      const candidateTags = (candidate.tags || []).map((tag: string) => tag.toLowerCase());
+      const sharedTags = candidateTags.filter((tag: string) => articleTags.has(tag)).length;
 
-  // Interleave: 2 from same category + 1 from another category = topical cluster
-  const related: any[] = [];
-  let sameIdx = 0;
-  let otherIdx = 0;
+      let score = 0;
 
-  for (let i = 0; i < 3; i++) {
-    if (i % 3 === 2 && otherIdx < otherCategory.length) {
-      related.push(otherCategory[otherIdx++]);
-    } else if (sameIdx < sameCategory.length) {
-      related.push(sameCategory[sameIdx++]);
-    }
-  }
+      if (candidate.category === article.category) score += 6;
+      if (candidateSubpillar === articleSubpillar) score += 5;
+      score += sharedTags * 2;
 
-  return related;
+      if (article.supportingInternalLinks?.includes(`/blog/${candidate.slug}`)) score += 4;
+      if (candidate.supportingInternalLinks?.includes(`/blog/${article.slug}`)) score += 3;
+
+      const title = `${candidate.title} ${candidate.excerpt}`.toLowerCase();
+      const sourceTitle = `${article.title} ${article.excerpt}`.toLowerCase();
+      const sourceKeywords = sourceTitle
+        .split(/[^a-z0-9]+/i)
+        .filter((token) => token.length >= 5);
+      const keywordOverlap = sourceKeywords.filter((token) => title.includes(token)).length;
+      score += Math.min(keywordOverlap, 3);
+
+      return { candidate, score };
+    })
+    .sort((a, b) => b.score - a.score || a.candidate.title.localeCompare(b.candidate.title))
+    .slice(0, 3)
+    .map(({ candidate }) => candidate);
 }
 
 function getIntentBadgeFromTitle(title: string): 'Learn' | 'Calculate' | 'Implement' {
@@ -300,7 +344,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const canonicalUrl = `https://decryptica.com/blog/${slug}`;
   const ogImage = `https://decryptica.com/og/${slug}.jpg`;
   const wordCount = estimateWordCount(article.content);
-  const { metaTitle, metaDesc } = getMetaVariants(article);
+  const computedExcerpt = buildSummaryFromContent(article.content, article.excerpt);
+  const enrichedArticle = { ...article, excerpt: computedExcerpt };
+  const { metaTitle, metaDesc } = getMetaVariants(enrichedArticle);
 
   return {
     title: metaTitle,
@@ -330,7 +376,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     },
     openGraph: {
       title: article.title,
-      description: article.excerpt,
+      description: computedExcerpt,
       url: canonicalUrl,
       siteName: 'Decryptica',
       locale: 'en_US',
@@ -351,7 +397,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     twitter: {
       card: 'summary_large_image',
       title: article.title,
-      description: article.excerpt,
+      description: computedExcerpt,
       images: [ogImage],
       site: '@decryptica',
       creator: '@decryptica',
@@ -877,6 +923,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const canonicalUrl = `https://decryptica.com/blog/${slug}`;
   const wordCount = estimateWordCount(article.content);
+  const readTime = estimateReadTimeFromWordCount(wordCount);
   const relatedArticles = getRelatedArticles(article, articles);
   const relatedModuleItems = toRelatedModuleItems(relatedArticles);
   const headings = extractHeadings(article.content);
@@ -986,7 +1033,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </span>
                 )}
                 <span className="text-zinc-600">•</span>
-                <span className="text-sm text-zinc-500">{article.readTime}</span>
+                <span className="text-sm text-zinc-500">{readTime}</span>
                 <span className="text-zinc-600">•</span>
                 <span className="text-sm text-zinc-500">{wordCount.toLocaleString()} words</span>
               </div>
@@ -1120,7 +1167,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </div>
                   <div className="flex justify-between">
                     <dt className="text-zinc-500">Read time</dt>
-                    <dd className="text-zinc-300">{article.readTime}</dd>
+                    <dd className="text-zinc-300">{readTime}</dd>
                   </div>
                   {article.lastUpdated && (
                     <div className="flex justify-between">
