@@ -68,6 +68,328 @@ export const topics: Topic[] = [
 
 export const articles: Article[] = [
   {
+    id: '1781263975585-8548',
+    slug: 'nfts-aren-t-dead-they-re-just-finding-their-real-use-case',
+    title: "NFTs Aren't Dead—They're Just Finding Their Real Use Case",
+    excerpt: "NFTs Aren't Dead—They're Just Finding Their Real Use Case The loudest mistake in crypto was treating NFTs like a sector when they were really a...",
+    content: `# NFTs Aren't Dead—They're Just Finding Their Real Use Case
+
+The loudest mistake in crypto was treating NFTs like a sector when they were really a primitive.
+
+That confusion mattered. It pushed the market toward floor-price obsession, celebrity mints, and liquidity games that looked more like low-float memecoin trading than durable ownership infrastructure. When the speculation cracked, the lazy conclusion was that NFTs died with it.
+
+Wrong.
+
+The collectible mania broke. The NFT primitive did not. In fact, the most durable NFT use cases are becoming clearer precisely because the froth is gone. The surviving versions are not selling “community” with vague roadmaps. They are encoding unique rights, unique state, and unique claims that cannot be represented cleanly by fungible tokens.
+
+That is where serious crypto analysis needs to begin. Not with whether PFP volume is back, but with whether a market actually needs non-fungibility.
+
+**TL;DR**
+
+- NFTs failed as a mass speculative narrative, not as a technical standard.
+- Their real use case is representing assets or positions that are genuinely unique: LP positions, tickets, identities, loans, licenses, and redeemable claims on specific items.
+- Market structure explains the difference. Fungible tokens work with deep AMM liquidity and tight arbitrage loops. NFTs do not, because liquidity fragments across items, traits, collections, venues, and collateral standards.
+- One of the clearest proofs that NFTs already found product-market fit is DeFi itself: Uniswap v3-style concentrated liquidity positions are NFTs because each one has unique state.
+- NFT AMMs like Sudoswap work only in narrow conditions, mainly when a collection can be treated as a floor asset. That is useful, but it is not the same as solving full price discovery.
+- The best NFT designs make the token boring and the utility obvious.
+
+## The Real Mistake Was Treating NFTs Like Fungible Altcoins
+
+The 2021-2022 NFT boom taught the market the wrong lesson. Most traders learned to read collections the same way they read liquid tokens: narrative strength, social velocity, exchange support, influencer distribution, and short-term price momentum.
+
+But NFTs are structurally different.
+
+An ERC-20 token can concentrate liquidity around a single pair. Arbitrage aligns prices across venues. AMMs can warehouse passive liquidity. Perps can extend price discovery. Solvers and intent-based routers can squeeze better execution out of fragmented order flow because the asset itself is standardized.
+
+NFTs do not get those advantages for free.
+
+Each token is its own object. Even within one collection, rarity, provenance, trait combinations, and market perception create micro-markets. That means each listed NFT is effectively its own little orderbook entry, and the depth behind the displayed “floor” can evaporate after a few fills. The result is thinner liquidity, wider spreads, and much higher inventory risk for anyone trying to make markets seriously.
+
+That is why so much early NFT price action looked unstable. The market was trying to force fungible-style trading behavior onto non-fungible objects.
+
+### Liquidity Fragmentation Is Not a Temporary Bug
+
+Liquidity fragmentation is the core NFT problem, and it is also the reason NFTs remain useful where uniqueness matters.
+
+If you own ETH, buyers do not care which ETH you sell. If you own a CryptoPunk, a one-of-one art piece, a tokenized event ticket, or a specific concentrated liquidity position, the buyer cares exactly which one it is.
+
+That creates three structural consequences:
+
+### Sparse books and stale quotes
+
+Each NFT listing is discrete. Market makers cannot just quote one inventory line the way they do on a token pair. They need collection-level, trait-level, and sometimes token-level views.
+
+### Weak arbitrage bands
+
+In fungible markets, price gaps invite clean arbitrage. With NFTs, a “cheap” listing might simply be a worse item. Arbitrage becomes conditional and slower.
+
+### Harder collateralization
+
+Lending protocols struggle when collateral cannot be marked precisely. A collection floor is a blunt instrument. A rare asset can be worth far more than floor, while a weak item may become effectively illiquid in stress.
+
+This is not a reason NFTs fail. It is the reason they should only be used where uniqueness is essential.
+
+### Incentive Design Turned Volume Into Theater
+
+The other major failure was incentive design.
+
+Marketplace wars showed how easy it was to buy NFT volume with token emissions. When rewards exceeded fees plus slippage, wash trading became rational behavior. That volume looked bullish on dashboards and empty in substance.
+
+Royalties exposed a second issue. Many creators built business models around perpetual secondary fees, but royalties were weakly enforced and easy for marketplaces to undercut. Once venue competition intensified, fee compression hit creators first. The market learned a brutal but useful lesson: if the economic engine depends on soft social norms instead of hard protocol mechanics, it is fragile.
+
+Good crypto analysis should treat that period as a stress test, not a death certificate. The market stripped away weak assumptions and revealed what NFTs are actually good for.
+
+## The Best Crypto Analysis Starts With One Question: What Unique Right Does the NFT Represent?
+
+This is the clean filter.
+
+If the token does not represent a unique right, a unique state, or a unique claim, it probably should not be an NFT.
+
+If it does, the NFT starts to make sense immediately.
+
+That is why the strongest NFT use cases now sit in infrastructure, finance, identity, and access control rather than pure speculation. The token is valuable because the underlying object is non-fungible in a real economic sense.
+
+## DeFi Already Uses NFTs Where Non-Fungibility Is Real
+
+The funniest part of the “NFTs are dead” narrative is that DeFi has already embedded them into core market structure.
+
+### Uniswap v3 Proved the Point
+
+Uniswap v2 LP tokens were fungible because every LP in a pool owned the same pro rata claim. One pool, one inventory model, one ERC-20 receipt.
+
+Uniswap v3 changed that completely.
+
+Once concentrated liquidity arrived, every LP position became unique. A position is defined by a token pair, a fee tier, a lower tick, an upper tick, liquidity size, and fee accrual state. Two LPs in the same pool can have radically different payoff profiles depending on where they place range liquidity.
+
+That is why Uniswap v3 positions are minted as ERC-721s through the \`NonfungiblePositionManager\`. The position is not a brand collectible. It is a financial object with bespoke state.
+
+This is one of the strongest real-world NFT case studies in crypto.
+
+The design logic is elegant:
+
+- If liquidity is uniform, use a fungible LP share.
+- If liquidity is custom and range-specific, use an NFT.
+- If custom positions later become standardized through active management, wrap them back into fungible vault shares.
+
+That last point matters. Protocols like Arrakis and Gamma effectively “refungibilize” concentrated liquidity by standardizing strategy and issuing ERC-20 vault shares on top. That tells you exactly when NFTs are appropriate: when uniqueness is irreducible.
+
+### Why This Matters for AMM Market Structure
+
+Even as orderbooks, RFQ systems, and intent-based routing get stronger, AMMs remain structurally important.
+
+They still matter for long-tail assets, permissionless listing, passive liquidity, and always-on settlement. Orderbooks work best when there is sufficient quoting depth, market-making sophistication, and high enough turnover to justify tight spreads. Many crypto assets never reach that threshold.
+
+AMMs solve that by letting passive liquidity sit on-chain, even if it is less capital-efficient in some cases.
+
+Concentrated liquidity made AMMs far more competitive, but it also made LP exposure more complex. Once LPs choose custom ranges, the position becomes path-dependent and unique. NFTs are the right settlement wrapper for that kind of state.
+
+So no, NFTs are not some sidecar experiment to DeFi. In at least one of crypto’s most important market structures, they are already part of the machinery.
+
+## NFT Lending Works Because Collateral Is Bespoke
+
+Lending is another area where NFTs make sense, precisely because they are hard to standardize.
+
+Protocols like NFTfi built around peer-to-peer lending because a CryptoPunk, rare art piece, or tokenized collectible does not fit cleanly into a generic overcollateralized money market. You cannot just drop it into an Aave-style pool and pretend every unit is interchangeable.
+
+The lender needs to underwrite specific risk:
+
+- How liquid is the collection?
+- Is the asset near floor or far above it?
+- How fast can it be liquidated in stress?
+- Is the borrower paying for time, for optionality, or both?
+
+That is why so much NFT credit developed through bilateral or auction-style terms rather than pure pooled lending.
+
+Blur’s Blend pushed this logic in another direction by using rolling loans and refinancing auctions instead of hard oracle-triggered liquidations. The mechanism matters: if you cannot trust a clean continuous oracle on unique collateral, you need a different liquidation architecture. Repricing through lender competition is one answer.
+
+This is where NFT finance becomes much more interesting than “JPEG lending.” It is really about building credit rails for collateral with incomplete price transparency.
+
+That is a real market problem.
+
+### Where NFT Lending Is Strong
+
+NFT lending works best when:
+
+- the asset has a visible bid base,
+- the collection has repeat transaction history,
+- there is enough social and economic stickiness for borrowers to repay,
+- and loan terms can be customized rather than forced into a single pooled risk model.
+
+### Where NFT Lending Is Weak
+
+It breaks down when:
+
+- valuation depends on one or two thin sales,
+- the asset is too idiosyncratic for lenders to price,
+- or liquidation pathways vanish during volatility.
+
+Again, that is not a verdict against NFTs. It is just market structure. Bespoke collateral needs bespoke credit design.
+
+## NFT AMMs Are Useful, but Only in Narrow Bands
+
+If you want a clean case study in where NFTs are useful and where they are weak, look at NFT AMMs.
+
+Sudoswap showed that AMM design can be adapted to NFTs using customizable bonding curves. LPs can create single-sided or dual-sided pools, set a starting price, and choose linear, exponential, or constant-product style pricing. That is a real innovation because it gives floor assets instant liquidity without needing one buyer and one seller to meet manually.
+
+But the limitations are just as important as the innovation.
+
+### Why NFT AMMs Work
+
+They work when a collection can be treated as semi-fungible around the floor. If the market mostly cares about “any item from this collection,” then bonding curves can provide fast execution and simple price updates.
+
+This is especially useful for:
+
+- floor-oriented collections,
+- liquidity exits,
+- trait-agnostic trading,
+- and routing across multiple pools for best execution.
+
+### Why NFT AMMs Are Structurally Weak
+
+They get hit by adverse selection almost immediately.
+
+If a pool buys “any NFT in the collection” at one price, rational sellers dump weaker items into the pool. Rational buyers pull better-than-average items out when the pool underprices them. The LP becomes the passive counterparty to informed order flow.
+
+That is not the same as normal impermanent loss in fungible AMMs. It is closer to being picked off by traders who know more about item quality than the pool does.
+
+Trait-specific pools and property checking can reduce this, but the deeper point remains: AMMs compress uniqueness into simplified pricing bands. That is useful for floor liquidity, not for full NFT valuation.
+
+So the right takeaway is not “NFT AMMs failed.” It is “NFT AMMs solve one slice of the problem: commoditized floor liquidity.”
+
+That is still valuable. It is just not the whole market.
+
+## MEV in NFTs Looks Different Because the Assets Are Different
+
+MEV does not disappear in NFT markets. It changes shape.
+
+In fungible token markets, classic MEV revolves around AMM reordering, sandwiching, liquidation races, and cross-venue arbitrage. The logic depends on standardized assets and predictable price relationships.
+
+NFT markets are more irregular.
+
+### Listing sniping
+
+If a seller misprices a rare item near floor, bots or fast traders can capture it before the broader market reacts.
+
+### Pool extraction
+
+In floor AMMs, informed traders can exploit trait-agnostic bids or asks.
+
+### Lending refinance races
+
+When loans roll, refinance, or near default, speed matters. Market participants can race to supply capital or seize discounted collateral opportunities.
+
+### Marketplace routing and fee games
+
+Aggregators matter because fees, royalties, incentives, and listing sources can differ by venue. That routing complexity creates edge for sophisticated traders.
+
+In other words, NFT MEV is less about clean mathematical arbitrage and more about information asymmetry, latency, and structure-aware execution.
+
+That is another reason the next durable NFT businesses will look more like infrastructure, underwriting, and rights management than like mass-market speculative casinos.
+
+## The Consumer Use Cases Are Finally Getting Better
+
+The strongest consumer NFT products are the ones where the user does not need a lecture on why the token exists.
+
+They just need the token to do something specific.
+
+### Tickets, Access, and Token-Gated Experiences
+
+Ticketing is an obvious NFT use case because tickets are inherently non-fungible. A ticket is tied to a date, venue, seat, access tier, and often resale conditions. That is not an ERC-20 problem.
+
+Platforms like tokenproof show the more mature version of the model. The value is not just “your ticket lives on-chain.” The value is that users can prove ownership safely, unlock token-gated events and commerce, and keep a persistent credential after the event.
+
+The mechanism is what matters:
+
+- ownership can gate entry,
+- transfer rules can constrain scalping,
+- post-event metadata can evolve into a collectible or loyalty badge,
+- and brands can keep the relationship alive after the scan.
+
+That is materially better than a QR code that dies at the door.
+
+### Identity, Names, and Portable Status
+
+ENS names are another clean example. A name is a unique namespace claim. It should not be fungible.
+
+The same logic applies to profile ownership, guild access, membership tiers, and reputation layers. In many of these systems, the NFT is not the product. It is the account key or permission wrapper.
+
+That is a more durable role than speculative flipping because the token is bound to utility, not just secondary market expectations.
+
+### Physical Collectibles and Redeemable Claims
+
+NFTs also make sense for serialized or condition-specific real-world items.
+
+Think graded cards, luxury goods, authenticated memorabilia, or vaulted collectibles. If the underlying object has unique serials, unique grading, or unique custody history, non-fungible representation is natural.
+
+What matters is not the mint. It is the redemption and custody stack.
+
+This is where many RWA experiments will either succeed or fail. If the off-chain legal right is vague, the NFT is just a screenshot with extra steps. If the custody, audit trail, and redemption pathway are clear, the NFT becomes a tradable claim on a specific item.
+
+That is useful.
+
+## Where NFTs Are Still Weak
+
+The cleanest crypto analysis is not just about where a primitive works. It is also about where it should not be forced.
+
+### Deep, continuous price discovery
+
+If an asset needs tight spreads, large clips, and constant quoting, fungible structures are far superior.
+
+### Generic loyalty points
+
+If the consumer benefit is just “earn points,” an ERC-20 or even a centralized database may be better than thousands of unique tokens.
+
+### Purely narrative collectibles with no cash flow or utility
+
+These can still rally, just like any reflexive crypto asset can rally. But that is a trading setup, not a durable use case.
+
+### Off-chain rights with weak legal enforceability
+
+If the NFT says you own something but the issuer, custodian, or jurisdiction can nullify that claim easily, the value proposition is much weaker than it looks on-chain.
+
+The right conclusion is not maximalist. NFTs are not the answer to every ownership problem. They are the answer to specific ownership problems where uniqueness matters enough to justify the tradeoffs.
+
+## Actionable Takeaways for Builders, Traders, and Investors
+
+For builders, the rule is simple: only use NFTs when the underlying object is genuinely non-fungible. If you need customized state, position-specific rights, seat-level access, serial-level provenance, or bespoke collateral, NFTs are a strong fit. If you do not, use a simpler primitive.
+
+For traders, stop treating all NFT markets like altcoin charts. Ask what the actual liquidity venue is. Is price discovery happening in manual listings, in an AMM floor pool, through a lending market, or through negotiated OTC flow? Those are different markets with different failure modes.
+
+For investors, look for NFT businesses where the token is downstream of the product. The best setups are not “we have an NFT, now let’s invent utility.” They are “we have a rights or state problem, and an NFT is the cleanest wrapper.”
+
+That distinction matters more now than it did at the top.
+
+## FAQ
+
+### Are NFTs still investable, or are they just infrastructure now?
+
+Both, but the quality bar is much higher. The strongest NFT-linked investments now usually sit in infrastructure, financial primitives, consumer brands with real distribution, or access systems with measurable demand. Pure collectible speculation can still work tactically, but it is far less durable than a token tied to actual utility, fees, or rights.
+
+### Why do DeFi protocols use NFTs instead of just issuing another token?
+
+Because some positions are genuinely unique. A Uniswap v3 LP position has custom parameters like range and fee tier, so it cannot be represented accurately by a standard fungible share. The NFT is not cosmetic. It is the accounting wrapper for bespoke state.
+
+### Can NFT AMMs replace traditional marketplaces?
+
+Not fully. NFT AMMs are good at providing instant floor liquidity for semi-fungible collections, but they struggle with rarity, adverse selection, and nuanced price discovery. Traditional listings, auctions, aggregators, and negotiated execution still matter when the item’s uniqueness drives most of its value.
+
+## The Bottom Line
+
+NFTs are not dead. The market just stopped confusing a token standard with an asset class.
+
+The hype cycle tried to turn NFTs into liquid, infinitely financialized momentum chips. Market structure pushed back. Liquidity fragmented, royalties compressed, wash trading exposed weak incentives, and pricing for unique assets refused to behave like pricing for fungible tokens.
+
+What survived is the part that was always real: NFTs are excellent wrappers for unique state and unique rights. That includes concentrated liquidity positions in AMMs, bespoke collateral in on-chain credit, tickets and access control, names and identity, and redeemable claims on specific real-world assets.
+
+That is the real use case. And it is a much stronger one than the mania ever was.
+
+*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`.trim(),
+    category: 'crypto',
+    readTime: '16 min',
+    date: '2026-06-12',
+    author: 'Decryptica',
+  },
+  {
     id: '1781177554522-8117',
     slug: 'the-on-chain-metrics-that-actually-predict-price',
     title: "The On-Chain Metrics That Actually Predict Price",
