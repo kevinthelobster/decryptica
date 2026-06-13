@@ -68,6 +68,211 @@ export const topics: Topic[] = [
 
 export const articles: Article[] = [
   {
+    id: '1781350791847-3318',
+    slug: 'solana-s-defi-renaissance-the-numbers-don-t-lie',
+    title: "Solana's DeFi Renaissance: The Numbers Don't Lie",
+    excerpt: "Solana's DeFi Renaissance: The Numbers Don't Lie Stop calling Solana DeFi a side effect of memecoin speculation. A chain carrying $4.697 billion in...",
+    content: `# Solana's DeFi Renaissance: The Numbers Don't Lie
+
+Stop calling Solana DeFi a side effect of memecoin speculation. A chain carrying [$4.697 billion in DeFi TVL](https://defillama.com/chain/Solana), [$15.054 billion in stablecoins](https://defillama.com/chain/Solana), roughly [$45.841 billion in 30-day DEX volume](https://defillama.com/dexs/chain/solana), and [$2.61 million in 24-hour app revenue](https://defillama.com/chain/Solana) is not running on hype alone. It is running on market structure.
+
+For serious **crypto analysis**, that distinction matters. Solana is no longer just a fast chain with noisy retail flow. It is becoming a full-stack on-chain market: spot, leverage, liquidity routing, MEV auctions, liquid staking collateral, and yield-bearing stablecoin capital all interacting in one low-friction execution environment.
+
+**TL;DR**
+
+- Solana’s DeFi recovery is visible in hard data, not vibes: TVL is near $4.7 billion, stablecoins are above $15 billion, and 30-day DEX volume is around $45.8 billion.
+- The strongest signal is not chain fees. It is app-layer economic density: Solana shows about $5.78 million in daily app fees versus just $352,225 in daily chain fees, which means value capture is happening where users actually trade, borrow, and stake.
+- Jupiter, Kamino, Jito, Raydium, Meteora, and Orca now form a real market stack rather than isolated apps.
+- AMMs remain structurally essential even as orderbooks and intent-based routing grow. They still solve liquidity fragmentation, long-tail asset listing, passive market making, and routing fallback better than any alternative.
+- Orderbooks and RFQ systems are better on majors and block-sized flow. AMMs are better at breadth, bootstrapping, and permissionless liquidity warehousing.
+- The real Solana edge is not “cheap fees.” It is fast feedback between traders, routers, LPs, liquidators, and MEV searchers.
+
+*Data points cited here use June 13, 2026 snapshots from [DeFiLlama’s Solana chain dashboard](https://defillama.com/chain/Solana), [Solana DEX dashboard](https://defillama.com/dexs/chain/solana), and official docs from [Jupiter](https://developers.jup.ag/docs/swap), [Meteora](https://docs.meteora.ag/overview/products/dlmm/what-is-dlmm), and [Jito](https://www.jito.network/docs/jitosol/jitosol-liquid-staking/maximum-extractible-value/).*
+
+## The Renaissance Is Showing Up in Hard Numbers
+
+The first thing to understand is that Solana’s DeFi rebound is broad.
+
+As of June 13, 2026, DeFiLlama shows Solana with $4.697 billion in TVL, $15.054 billion in stablecoin market cap, and $1.672 billion in 24-hour DEX volume on the chain dashboard. On the DEX chain view, Solana posts roughly $45.841 billion in 30-day DEX volume and a DEX-versus-CEX dominance reading of 7.02%. Intraday dashboards move, but the conclusion does not: this is a large, liquid on-chain market.
+
+More important, the revenue mix is healthy in the way high-throughput chains are supposed to be healthy. Solana’s chain fees are low, but its applications are monetizing heavily. The same DeFiLlama snapshot shows $352,225 in 24-hour chain fees, $45,840 in chain revenue, $5.78 million in app fees, and $2.61 million in app revenue. That is exactly what you want from a performant execution layer. The base chain should be cheap enough for activity to flourish, while the applications that actually provide market structure capture the economics.
+
+The second thing to understand is that the capital stack is no longer concentrated in one niche.
+
+[Jupiter](https://defillama.com/protocol/jupiter) sits at about $1.483 billion in TVL and roughly $17.473 billion in 30-day DEX aggregator volume. [Kamino](https://defillama.com/protocol/kamino) is at $1.21 billion in TVL with $942.78 million in active loans. [Jito](https://defillama.com/protocol/jito) holds $664.63 million in TVL. On the AMM side, [Raydium](https://defillama.com/protocol/raydium) is at $808.94 million TVL, [Meteora](https://defillama.com/protocol/meteora) at $276.37 million, and [Orca](https://defillama.com/protocol/orca) at $249.45 million. [Drift](https://defillama.com/protocol/drift) still carries $193.62 million in TVL.
+
+That is not one app pulling the whole ecosystem up. That is multiple layers reinforcing each other.
+
+## Why This Cycle Feels Different
+
+Earlier Solana cycles often looked like bursts of attention without enough balance-sheet depth underneath. This time the base money is there. Stablecoins above $15 billion matter more than people admit because stablecoins are the raw material of serious DeFi. They fund lending books, perp margin, LP inventories, treasury operations, and arbitrage balances. A chain with shallow stablecoin liquidity can look busy and still be structurally weak. Solana does not have that problem right now.
+
+Kamino’s near-$943 million in active loans is another tell. TVL can be decorative. Active loans are harder to fake. They show capital is being borrowed, posted, looped, hedged, and put to work. That is how an ecosystem graduates from speculative trading venue to capital market.
+
+Then there is Jito. Solana DeFi is not just using capital productively; it is monetizing execution quality. Jito’s docs explain the model clearly: MEV opportunities on Solana arise from transaction ordering, cross-venue arbitrage, and liquidations, and Jito’s auction system routes that value through bids, bundles, validators, and stakers rather than pure spam warfare. Jito’s own docs argue that this reduces congestion while distributing part of MEV to JitoSOL holders. In plain English, Solana is turning market microstructure into yield-bearing collateral.
+
+That matters because it creates compounding loops. JitoSOL earns staking plus MEV rewards, becomes collateral in DeFi, routes into lending or LP strategies, and interacts with aggregators like Jupiter that optimize execution across venues. The stack is getting denser.
+
+## AMMs Are Still the Spine of Solana DeFi
+
+The most important mistake in current market commentary is assuming AMMs are on their way out because orderbooks, RFQ systems, and intent-based routing are growing.
+
+They are growing. They are also not enough.
+
+### Liquidity Fragmentation Still Needs Warehouse Liquidity
+
+Jupiter’s own developer docs show how Solana execution has evolved. Its Swap API now offers a Meta-Aggregator path where multiple routing engines compete, including Metis, JupiterZ, Dflow, and OKX, and the docs say RFQ liquidity through JupiterZ can beat on-chain routing by 5 to 20 basis points on major pairs. That is real progress.
+
+But routing is not liquidity. Routing is a decision layer over liquidity.
+
+When a router needs to split a trade across venues, backstop a long-tail asset, or route around temporary imbalance, it still leans on pool inventory somewhere. AMMs are that inventory warehouse. They are the places where fragmented order flow can always find a quote, even if that quote is not the globally optimal institutional quote.
+
+This is exactly why AMMs survive every new routing narrative. A smart router makes AMMs more important, not less important. It turns them into upstream liquidity sources.
+
+On Solana, the scale is obvious. Raydium, Orca, and Meteora alone account for about $15.9 billion in combined 30-day spot volume with only about $1.33 billion in combined TVL. That is heavy capital turnover. These pools are not idle decorative TVL. They are being hit constantly.
+
+### Long-Tail Assets Still Launch Best in AMMs
+
+Intent systems and RFQ desks are strongest where assets are already liquid and market makers are willing to warehouse inventory. That is not how new pairs bootstrap.
+
+Meteora’s DLMM documentation explains why its design has become so relevant to Solana’s launch economy. DLMM organizes liquidity into discrete price bins, allows zero-slippage swaps inside a bin, supports single-sided provision, and raises fees dynamically during volatility. Meteora explicitly frames this as useful for token launches and active LP strategies.
+
+That is not a cosmetic feature set. It is a direct answer to the hardest problem in on-chain listing: how do you make a new, volatile asset tradable without requiring a centralized listing committee or a full-time market maker from day one?
+
+AMMs solve that better than orderbooks. A token can launch into a pool immediately. Liquidity providers can express directional views by choosing ranges or single-sided shapes. Dynamic fees can partially offset toxic launch flow. Arbitrageurs then drag the pool back toward external fair value as information updates.
+
+Orderbooks are better once an asset has matured. AMMs are better for birth.
+
+### Passive Market Making Is Still a Necessary Source of Depth
+
+Most capital in crypto is not run by professional market makers. It is run by users, funds, DAOs, treasuries, and semi-passive strategists who want yield without building an HFT stack.
+
+AMMs are the only scalable way to convert that capital into always-on liquidity.
+
+That is why passive and semi-passive systems still matter. Orca’s concentrated liquidity architecture, Raydium’s pool depth, Meteora’s DLMM, and even strategy wrappers connected to Kamino all make it possible for non-specialists to participate in liquidity provision. The LP may not manage every micro-move, but the design still gets their capital onto the field.
+
+In market structure terms, AMMs widen the supplier base of liquidity. Orderbooks narrow it to specialists.
+
+That distinction is not ideological. It is practical. If DeFi wants deep 24/7 markets across hundreds of assets, it cannot rely only on firms willing to run quoting engines. It needs passive capital transformed into executable liquidity.
+
+### Concentrated Liquidity Changed LP Economics
+
+The “AMMs are inefficient” critique is stale if it ignores concentrated liquidity.
+
+Modern Solana AMMs are not the old 50/50 x*y=k pools that spray capital across irrelevant prices. Orca, Raydium, and Meteora all push liquidity closer to the active trading range. The result is far higher fee density per dollar of TVL.
+
+The turnover numbers make the point. Orca’s $6.906 billion in 30-day DEX volume against $249.45 million TVL implies roughly 27.7x monthly turnover. Meteora’s $4.649 billion against $276.37 million is roughly 16.8x. Raydium’s $4.328 billion against $808.94 million is about 5.3x. These are not signs of a dead capital format. They are signs of capital being used aggressively.
+
+That said, concentrated liquidity is not free alpha. It shifts the LP job from “deposit and forget” to “choose ranges, monitor drift, and avoid getting run over.” Capital efficiency improves, but management burden rises. The market has not abolished LP risk. It has repriced it.
+
+## Where AMMs Are Actually Weak
+
+A serious **crypto analysis** should be honest about where AMMs lose.
+
+First, AMMs are structurally vulnerable to toxic flow. Arbitrageurs extract mispricing. Informed traders cross the spread when LPs are stale. Large directional moves turn impermanent loss from a theoretical annoyance into a real transfer of value from passive LPs to active traders.
+
+Second, concentrated liquidity introduces range risk. When price leaves the active band, fee generation collapses and the LP is left holding the wrong asset mix at the wrong time. Capital efficiency inside the range can mean capital idleness outside it.
+
+Third, AMMs are weak on the most liquid, institutionally traded pairs when RFQ or orderbook systems are available. If a professional market maker can quote tighter off-chain and settle efficiently, that will usually beat pool-based execution for size.
+
+Fourth, AMMs can hide bad economics behind headline fees. High volume does not automatically mean token-holder value. Raydium, Orca, Meteora, and Kamino all show very different splits between gross fees, protocol revenue, and holder revenue on DeFiLlama. Traders often overvalue “busy” protocols while ignoring where the money actually goes.
+
+So no, AMMs are not perfect. They are essential infrastructure with known weaknesses.
+
+## Orderbooks and Intent Routing Are Growing, but They Have Not Replaced AMMs
+
+Solana absolutely has credible orderbook and intent-driven infrastructure. That should be acknowledged directly.
+
+Jupiter’s Meta-Aggregator is arguably the most important execution surface on the chain because it abstracts venue selection away from the user. If the best fill comes from RFQ, it should use RFQ. If it comes from an AMM split route, it should use that. The user should not care.
+
+Orderbooks also still matter for certain market types. They are excellent for explicit price-time priority, maker control, and large liquid pairs where quote competition is intense.
+
+But the current spot numbers do not support the argument that orderbooks have taken over Solana DeFi. [Phoenix](https://defillama.com/protocol/phoenix) shows about $1.07 million in TVL and only $1.37 million in 30-day spot DEX volume on its June 13 snapshot. [OpenBook](https://defillama.com/protocol/openbook) shows about $1.06 million in TVL and no reported 30-day spot volume on that snapshot. Meanwhile Raydium, Orca, and Meteora are each printing billions in monthly spot volume.
+
+That is the actual picture: orderbooks are relevant, but AMMs still dominate permissionless spot liquidity.
+
+The deeper point is that these models are not mortal enemies. On Solana, they are converging into a stack.
+
+- Orderbooks and RFQ systems are best for tight execution on mature pairs.
+- Aggregators are best for route selection and abstraction.
+- AMMs are best for broad inventory, long-tail access, passive liquidity, and bootstrapping.
+- MEV searchers and arbitrageurs are the glue that keeps fragmented venues in line.
+
+The market is becoming modular.
+
+## MEV Is Not a Side Story. It Is the Plumbing
+
+If you still think MEV is a footnote, you are missing the core mechanism that keeps Solana DeFi coherent.
+
+Jito’s MEV docs explain the basic loop: a large swap on one venue creates a price gap versus another venue, or a collateral position approaches liquidation, and searchers compete to capture that opportunity. Historically, low fees encouraged spammy retries. Jito’s answer is an auction and bundle system. Its technical docs describe bundles as sequential, atomic, all-or-nothing transaction groups that can be used for arbitrage, liquidations, and batched DeFi operations.
+
+That changes market structure in two ways.
+
+First, it improves efficiency. Arbitrage closes pool dislocations faster, which means AMM users eventually get better pricing around equilibrium.
+
+Second, it concentrates power around execution pipelines. Whoever controls order flow, bundle access, or validator relationships can shape who gets paid and who gets excluded. That is the tradeoff.
+
+So the right take is not “MEV bad” or “MEV solved.” The right take is that Solana is one of the first chains where MEV, routing, and user-facing DeFi are clearly fused into one operating system. That is bullish for throughput and monetization, but it also means private order flow and validator concentration deserve constant scrutiny.
+
+## The Protocols That Matter Most Right Now
+
+If you want a working map of Solana DeFi rather than a narrative fog, start with these names.
+
+- [Jupiter](https://defillama.com/protocol/jupiter): the execution front end. With about $17.473 billion in 30-day aggregator volume, it is increasingly the venue-of-venues.
+- [Kamino](https://defillama.com/protocol/kamino): the balance-sheet core. Its $1.21 billion TVL and $942.78 million in active loans show real capital utilization, not just deposits.
+- [Raydium](https://defillama.com/protocol/raydium): the heavyweight AMM. Around $808.94 million TVL and $4.328 billion in 30-day DEX volume keep it central to spot liquidity.
+- [Orca](https://defillama.com/protocol/orca): concentrated-liquidity specialist. It punches above its TVL with roughly $6.906 billion in 30-day volume.
+- [Meteora](https://defillama.com/protocol/meteora): the launch and dynamic-liquidity lab. Its DLMM design is directly aligned with volatile token discovery and fee adaptation.
+- [Jito](https://defillama.com/protocol/jito): the MEV and liquid-staking flywheel. It turns execution-layer value into collateral-grade yield.
+- [Drift](https://defillama.com/protocol/drift): still an important derivatives and margin venue, even if individual feed snapshots can understate short-term activity.
+
+That list is the market structure. Everything else is commentary around it.
+
+## What Traders, LPs, and Builders Should Watch Next
+
+The cleanest actionable lens is not token price. It is capital behavior.
+
+Watch stablecoin growth first. If the stablecoin base keeps expanding from the current $15.054 billion level, Solana DeFi can keep scaling spot, leverage, and settlement depth without relying entirely on SOL reflexivity.
+
+Watch turnover, not just TVL. A pool or protocol with moderate TVL and massive recurring volume is often more important than a giant passive vault.
+
+Watch fee routing. Jupiter’s rise means the execution layer may keep centralizing even if liquidity sources stay decentralized. That is good for users until it becomes too dependent on a few gateways.
+
+Watch holder capture versus protocol capture. Raydium reports meaningful holder revenue; Orca and Meteora show different splits; Kamino shows revenue without holder revenue in the current snapshot. These are not the same businesses just because they all live on Solana.
+
+Watch MEV policy. Jito’s auction-based approach is more constructive than blind spam, but every improvement in efficiency comes with a governance question about openness, access, and concentration.
+
+That is the level where good **crypto analysis** lives: not in slogans, but in who owns flow, who warehouses risk, who captures fees, and who gets diluted by better infrastructure.
+
+## FAQ
+
+### Is Solana DeFi still too dependent on speculative trading to be durable?
+
+Speculative flow is still a major volume driver, but the infrastructure underneath it is far more durable than before. Stablecoins above $15 billion, Kamino’s active loan book, Jito’s liquid-staking and MEV layer, and Jupiter’s routing dominance all point to a more complete financial system, not just casino traffic.
+
+### Why do AMMs still matter if Jupiter, RFQ, and orderbooks are improving?
+
+Because routers need inventory sources, and long-tail assets still need permissionless listing venues. RFQ and orderbooks win on mature, liquid pairs. AMMs win on breadth, bootstrapping, passive liquidity, and always-on fallback execution. On Solana, both can grow at the same time.
+
+### What is the single most important metric to watch over the next quarter?
+
+Stablecoin market cap on Solana. It is the best high-level signal for whether the ecosystem is gaining usable balance-sheet depth. If stablecoins rise while DEX turnover and active loans stay strong, the renaissance is real. If volume stays high but stablecoin depth stalls, the market is becoming more fragile than it looks.
+
+## The Bottom Line
+
+Solana’s DeFi renaissance is not a meme and it is not a temporary side effect of fast blocks. It is the result of a market stack that now works end to end: stablecoin liquidity, lending demand, AMM depth, routing abstraction, liquid staking collateral, and MEV-aware execution.
+
+The most important takeaway is this: AMMs did not get displaced by orderbooks or intent-based routing. They got repositioned. They are still the base inventory layer for fragmented, permissionless on-chain markets, especially on a chain where long-tail assets, retail flow, and rapid launch cycles matter. Orderbooks and RFQ systems will keep winning share on the cleanest pairs. Aggregators will keep owning the user relationship. But AMMs remain the structural spine.
+
+That is why the numbers matter. They show Solana is no longer proving it can attract attention. It is proving it can hold capital, route liquidity, price risk, and recycle execution into yield.
+
+*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`.trim(),
+    category: 'crypto',
+    readTime: '15 min',
+    date: '2026-06-13',
+    author: 'Decryptica',
+  },
+  {
     id: '1781263975585-8548',
     slug: 'nfts-aren-t-dead-they-re-just-finding-their-real-use-case',
     title: "NFTs Aren't Dead—They're Just Finding Their Real Use Case",
