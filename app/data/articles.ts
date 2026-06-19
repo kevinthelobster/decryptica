@@ -68,6 +68,509 @@ export const topics: Topic[] = [
 
 export const articles: Article[] = [
   {
+    id: '1781868695531-1213',
+    slug: 'why-developer-portals-are-getting-worse',
+    title: "Why Developer Portals Are Getting Worse",
+    excerpt: "Why Developer Portals Are Getting Worse The promise was clean: give engineers one place to discover services, request infrastructure, read docs,...",
+    content: `# Why Developer Portals Are Getting Worse
+
+The promise was clean: give engineers one place to discover services, request infrastructure, read docs, trigger workflows, and stay inside guardrails without opening six tabs and filing three tickets.
+
+Instead, many developer portals now feel like badly synchronized dashboards layered on top of broken internal processes. They are slower than \`kubectl\`, less trustworthy than the repo README, and more bureaucratic than the tickets they were supposed to replace.
+
+That decline is not accidental. Developer portals are getting worse because too many teams are turning them into visual wrappers around organizational chaos rather than reliable systems of action. They centralize UI, not truth. They automate forms, not workflows. They add plugins faster than they fix ownership, metadata, auth, and service lifecycle discipline.
+
+If you work in automation, platform engineering, DevOps, or internal developer tooling, this matters. A weak portal does not just annoy engineers. It quietly increases lead time, raises support load, breaks governance, and pushes teams back toward tribal knowledge.
+
+**TL;DR**
+
+- Developer portals are getting worse because they are absorbing more responsibilities without becoming better systems of record.
+- Most portals fail at the mechanism level: stale catalogs, weak integrations, broken ownership graphs, slow search, and shallow workflow automation.
+- A portal only works when it is fed by event-driven automation from Git, CI/CD, cloud, identity, observability, and incident systems.
+- Backstage-style flexibility is powerful but expensive to govern; commercial portals reduce setup time but can constrain workflow design and extensibility.
+- The winning pattern is not “build a prettier portal.” It is “build a thinner portal on top of stronger automation.”
+- If engineers do not trust the data or cannot complete high-value actions in a few clicks, the portal becomes another internal website nobody wants to use.
+
+## The Real Problem: Portals Expanded Faster Than Their Operating Model
+
+A decade ago, internal developer portals mostly meant service catalogs and documentation. Today they are expected to handle:
+
+- service discovery
+- environment provisioning
+- cloud cost context
+- scorecards and policy checks
+- on-call ownership
+- incident links
+- deployment visibility
+- API contracts
+- golden path templates
+- secrets and access workflows
+- compliance evidence
+- change management integration
+
+That is a massive surface area. The problem is not ambition. The problem is that most organizations did not build the automation backbone required to support that ambition.
+
+A portal can render a page for \`payments-api\`. That part is easy. The hard part is keeping the following fields continuously correct without manual cleanup:
+
+- current owner
+- Slack channel
+- PagerDuty service
+- GitHub repo
+- production dashboards
+- deployment frequency
+- error budget status
+- API spec version
+- data classification
+- runbook links
+- dependency graph
+- Kubernetes namespace
+- cloud accounts touched
+- last successful security scan
+
+If those fields drift, the portal stops being an interface and becomes a liability.
+
+## Why Developer Portals Decay So Fast
+
+### They Centralize Navigation, Not State
+
+Many portals are basically federated link farms with a search bar. They aggregate references to GitHub, Datadog, PagerDuty, Sentry, Argo CD, LaunchDarkly, Jira, and Confluence, but they do not own durable truth about the service lifecycle.
+
+That creates a subtle failure mode. The portal looks complete because every card has an icon and a link. But the value of a developer portal is not that it can point to other systems. The value is that it can answer operational questions with enough accuracy that engineers can act confidently.
+
+For example:
+
+- “Who owns this service right now?”
+- “Which APIs break if I change this event schema?”
+- “Has this component passed the required scorecard for production?”
+- “What deployment automation can I trigger without opening a ticket?”
+- “Which OIDC scopes does this service use to call downstream systems?”
+
+A portal that cannot answer those reliably is just a nicer intranet.
+
+### Metadata Entry Is Still Treated Like Documentation
+
+This is one of the biggest reasons portals get worse over time.
+
+Teams still expect developers to maintain YAML descriptors, ownership fields, tags, tier classifications, and dependency links by hand. Even when this starts clean, entropy wins. Reorgs happen. Teams rename services. Slack channels die. PagerDuty schedules move. Repos split. APIs version. Nobody updates all of it.
+
+Backstage’s \`catalog-info.yaml\` model is a good example of both the strength and the weakness of modern portals. The file gives a portable way to define entities, annotations, ownership, lifecycle, and links. That is useful. But if the portal depends on humans to keep those annotations accurate, it will degrade.
+
+The correct model is automation-first:
+
+- repo existence should come from GitHub or GitLab APIs
+- ownership should be reconciled with identity systems like Okta or Entra ID
+- on-call mappings should sync from PagerDuty
+- deployment state should sync from Argo CD, Spinnaker, or GitHub Actions
+- service health should ingest from Datadog, Prometheus, or New Relic
+- API contracts should import from OpenAPI, AsyncAPI, or GraphQL introspection
+- infrastructure relationships should derive from Terraform state, Crossplane, or cloud inventory APIs
+
+Manual metadata should be the exception, not the default.
+
+### The Workflow Layer Is Usually Fake Automation
+
+This is where the keyword matters: automation is often promised, but not actually delivered.
+
+A surprising number of portals offer “self-service” flows that still end in a Jira ticket, Slack approval, or manual platform team step. The UI makes the process look modern, but the mechanism underneath is unchanged.
+
+That is not self-service. It is ticket submission with better CSS.
+
+Real automation in a portal means an engineer can request or trigger a workflow and the system completes it through machine-to-machine integrations. Examples:
+
+- create a new service repo from a golden template
+- provision cloud resources through Terraform Cloud, Atlantis, or Crossplane
+- register DNS and certificates
+- bootstrap CI/CD pipelines
+- create PagerDuty service and Slack channel
+- apply RBAC via OIDC group claims
+- publish API docs from OpenAPI
+- write ownership metadata into the catalog
+- register dashboards and alerts
+- attach policy checks and scorecards
+
+If your portal action ends with “someone from platform will review and follow up,” your portal is not scaling. Your platform team is still the runtime.
+
+## The Plugin Trap
+
+### Extensibility Became a Governance Problem
+
+Backstage popularized the plugin-centric approach to internal developer portals. That was the right architectural move for extensibility. It also created a new kind of sprawl.
+
+Once every function becomes a plugin, you get:
+
+- inconsistent UI conventions
+- duplicated domain models
+- uneven auth behavior
+- variable data freshness
+- broken upgrade paths
+- plugin abandonment
+- custom maintenance burden
+
+This is especially visible when organizations wire in GitHub, Kubernetes, Argo CD, TechDocs, PagerDuty, CircleCI, Sentry, SonarQube, and cost tooling through separate plugin teams. Each integration solves a local problem, but the user experience becomes fragmented because the portal is not acting like one coherent product.
+
+Commercial platforms like Port, Cortex, OpsLevel, and Atlassian Compass try to reduce that burden by offering more opinionated integration surfaces. That helps with time-to-value. But the trade-off is real:
+
+### Backstage vs Commercial Portals
+
+#### Backstage
+Best for:
+- large engineering orgs
+- strong platform teams
+- custom workflows
+- deep internal integration requirements
+
+Trade-offs:
+- high implementation and governance cost
+- plugin maintenance overhead
+- harder upgrade discipline
+- requires real product ownership
+
+#### Port
+Best for:
+- teams that want flexible internal developer portal workflows without owning everything
+- faster rollout of catalog plus action patterns
+- stronger out-of-the-box automation framing
+
+Trade-offs:
+- workflow model can push teams into the platform’s abstractions
+- some advanced custom graph or UI needs may become awkward
+- pricing and vendor dependency matter at scale
+
+#### Cortex / OpsLevel / Compass
+Best for:
+- scorecards, ownership, catalog maturity
+- organizations standardizing service governance quickly
+- faster executive reporting and operational visibility
+
+Trade-offs:
+- often stronger at visibility than deep action orchestration
+- custom developer experience flows may need extra tooling
+- may not replace your broader platform automation stack
+
+The mistake is assuming tool choice is the main issue. It is not. A badly governed Backstage instance and a badly integrated commercial portal fail for the same reason: weak automation pipelines and poor ownership of system data.
+
+## Search Is Bad Because the Underlying Graph Is Bad
+
+A lot of teams complain that their portal search is weak. They blame the search UI, ranking model, or documentation indexing. Those things matter, but the deeper problem is usually entity quality.
+
+Search breaks when:
+
+- one service has five names across systems
+- API names do not match repo names
+- ownership is inconsistent
+- docs are split across Confluence, Markdown, and generated sites
+- runtime identifiers do not map to catalog identifiers
+- dependencies are missing or directional only
+
+If a service is called \`billing-api\` in GitHub, \`billing-service\` in Kubernetes, \`billing-prod\` in Datadog, and \`team-billing\` in PagerDuty, your portal search is not a search problem. It is an identity resolution problem.
+
+Mechanism matters here. High-quality portals build a canonical internal graph keyed by stable entity identifiers, then ingest external references as aliases. They reconcile changes through event-driven sync, not nightly CSV imports.
+
+Useful inputs include:
+
+- Git webhooks for repo lifecycle events
+- CI events for build and deployment status
+- Kubernetes API watches for workload and namespace state
+- cloud tagging policies for account and resource grouping
+- incident events from PagerDuty
+- SCIM provisioning and group membership from Okta
+- OpenTelemetry service names for runtime correlation
+- OpenAPI \`info.title\` plus repository annotations for API mapping
+
+Without that graph discipline, portal search keeps getting worse no matter how polished the frontend looks.
+
+## Documentation Got Embedded Into Portals, Then Lost Its Audience
+
+Developer portals often try to merge documentation, runbooks, service metadata, API references, onboarding guides, and policy content into one experience. That sounds efficient. It often backfires.
+
+The reason is simple: these content types are produced, updated, and consumed differently.
+
+- API references should be generated from contracts like OpenAPI or GraphQL schemas.
+- Runbooks should be short, operational, and linked to live dashboards.
+- Architecture docs need versioning and review history.
+- Platform policies need enforcement hooks, not just prose.
+- Onboarding guides need workflow context and access automation.
+
+When a portal flattens all of this into one content pattern, documentation quality drops. Engineers start avoiding the portal because they cannot tell what is generated truth, what is stale narrative, and what is internal marketing.
+
+A better pattern is layered documentation:
+
+### Generated Truth
+Use machine-generated content where possible.
+
+Examples:
+- OpenAPI to Swagger UI or Redoc
+- AsyncAPI for event-driven interfaces
+- GraphQL schema docs via introspection
+- Terraform docs generated from modules
+- Kubernetes manifests summarized into environment topology
+- scorecards computed from policy engines
+
+### Human Guidance
+Use authored docs only where interpretation matters.
+
+Examples:
+- migration guides
+- incident response steps
+- service-specific gotchas
+- approval edge cases
+- rollback decision trees
+
+### Actionable Context
+Tie docs directly to automation.
+
+Examples:
+- “request database access” launches a scoped workflow
+- “rotate secret” triggers a controlled runbook action
+- “promote service tier” opens a policy-backed change workflow
+
+That separation keeps the portal useful instead of bloated.
+
+## Why The Best Engineers Bypass The Portal
+
+This is the clearest signal that a portal is failing: your most effective engineers stop using it.
+
+They go straight to:
+
+- \`gh\` CLI
+- \`kubectl\`
+- \`terraform\`
+- \`argocd\`
+- Datadog dashboards
+- raw Grafana
+- direct cloud consoles
+- repo-local docs
+- internal scripts
+
+Why? Because these interfaces are closer to truth and faster to act on.
+
+A portal only wins if it does at least one of these better than the raw tools:
+
+- reduces context switching
+- unifies fragmented state
+- standardizes safe automation
+- makes discovery dramatically faster
+- enforces policy without blocking flow
+
+If it does not, engineers will route around it. That is rational behavior.
+
+This is also why portal teams should stop measuring success by monthly active users alone. Forced traffic is not product-market fit. Better measures are:
+
+- time to locate service owner
+- time to provision a standard environment
+- time to generate a compliant new service
+- percentage of changes executed through automated paths
+- catalog freshness SLA
+- reduction in support tickets to platform teams
+- policy compliance rate without manual review
+
+Those metrics expose whether the portal is reducing work or merely observing it.
+
+## The Scalability Problem Nobody Wants To Admit
+
+Portals do not usually fail at 20 services. They fail at 400 services, 150 teams, 12 platform integrations, and 4 compliance regimes.
+
+That scale exposes three hard problems.
+
+### 1. Entity Explosion
+
+Every portal starts with “service” as the central object. Then reality arrives:
+
+- APIs
+- jobs
+- consumers
+- streams
+- data products
+- ML pipelines
+- edge workers
+- Terraform modules
+- shared libraries
+- environments
+- domains
+- capabilities
+- teams
+- vendors
+
+If your model cannot represent those entities and their relationships, the portal becomes misleading.
+
+### 2. Workflow Combinatorics
+
+“Create service” sounds like one workflow until you factor in:
+
+- language runtime
+- deployment target
+- cloud account
+- compliance tier
+- network exposure
+- secret backend
+- data storage
+- incident policy
+- observability package
+- access model
+
+Now you have dozens of paths. Portals get worse when teams hardcode those as separate forms instead of designing reusable automation primitives.
+
+A better pattern is composable workflow orchestration. For example:
+
+- scaffold repo
+- assign ownership
+- provision infra
+- attach observability
+- register catalog entity
+- enforce policy gates
+
+Each step should be independently testable and callable via API, queue, or event bus. The portal becomes one consumer of that automation, not the only place it exists.
+
+Tools that fit this model include:
+- GitHub Actions for repo bootstrap
+- Temporal or Dagster for stateful orchestration
+- Crossplane for infrastructure provisioning
+- Terraform Cloud or Atlantis for IaC execution
+- OPA or Conftest for policy checks
+- Backstage Scaffolder or Port Actions as front-door triggers
+- Kafka, NATS, or SQS for event propagation where needed
+
+### 3. Policy Drift
+
+At scale, portals get dragged into governance. Suddenly they need to know:
+
+- which services require SOC 2 evidence
+- which APIs handle PCI or HIPAA data
+- which teams need break-glass access flows
+- which deployments need dual approval
+- which runtimes are allowed in production
+
+If those policies only live as UI rules in the portal, you lose. Policy must exist in enforceable systems outside the portal, ideally near the execution layer.
+
+Examples:
+- admission controls in Kubernetes
+- Terraform policy sets
+- CI checks on scorecards
+- IAM conditions tied to identity claims
+- branch protection and required status checks
+- artifact signing and provenance verification with Sigstore
+
+The portal should surface policy state, explain failures, and launch remediation. It should not be the only place where policy exists.
+
+## What A Good Developer Portal Actually Looks Like
+
+The fix is not more pages. It is better automation architecture.
+
+### Pattern 1: Thin Portal, Thick Platform
+
+The portal should be a user interface over platform APIs, event streams, and policy engines. It should not contain irreplaceable business logic.
+
+That gives you:
+- CLI parity
+- easier testing
+- better resiliency
+- lower lock-in
+- clearer integration boundaries
+
+If the portal goes down, the workflows should still be operable through API or CLI.
+
+### Pattern 2: Source-Driven Catalog Sync
+
+Treat catalog freshness like an SRE problem.
+
+Good practice:
+- event-driven sync instead of periodic scraping where possible
+- ownership reconciled from identity sources
+- deployment and health from runtime systems
+- API inventory from contract sources
+- resource lineage from IaC or cloud inventory
+- freshness timestamps displayed on entity pages
+
+If an entity has stale data, say so clearly. False confidence is worse than visible incompleteness.
+
+### Pattern 3: Workflow Automation With Real Side Effects
+
+Good self-service actions produce durable changes automatically.
+
+Examples:
+- bootstrap a service with repo, CI, OIDC trust, dashboards, alerts, and catalog entry
+- request ephemeral environment creation with TTL and budget tags
+- rotate credentials through a vault-backed workflow
+- onboard a new API by validating OpenAPI, generating docs, and registering gateway policy
+
+If an action still requires human fulfillment, label it honestly.
+
+### Pattern 4: Opinionated Golden Paths, Escape Hatches Preserved
+
+Golden paths are good when they reduce operational variance. They are bad when they become rigid and teams fork around them.
+
+The best portals provide:
+- curated templates for common service types
+- default observability and policy bundles
+- standard deployment patterns
+- documented exceptions with review flows
+- API/CLI escape hatches for advanced teams
+
+That balance matters. Over-standardization creates shadow automation.
+
+## Implementation Tips For Teams Fixing A Bad Portal
+
+### Start With Three High-Value Journeys
+
+Do not try to repair everything at once. Pick workflows where automation creates immediate leverage.
+
+Good candidates:
+- create new service
+- find owner and operational context
+- request production-safe access
+- publish and discover APIs
+- create ephemeral test environments
+
+If a portal cannot do these well, it has no business adding AI summaries or prettier dashboards.
+
+### Normalize Identity Early
+
+Map humans, teams, repos, services, and runtime objects into one graph. Use stable IDs. Handle aliases. Reconcile with SCIM, Git teams, and incident tooling. This is foundational.
+
+### Make Freshness Visible
+
+Add \`last_synced_at\`, source attribution, and confidence indicators. Engineers trust systems that reveal uncertainty.
+
+### Design For Automation Reuse
+
+Every action launched from the portal should also be callable via API or CLI. That keeps power users from bypassing the platform entirely and makes your automation composable across chatops, CI, and bots.
+
+### Audit Human-in-the-Loop Steps
+
+Keep humans only where judgment or approval is genuinely required:
+- privileged production access
+- high-risk policy exceptions
+- sensitive data boundary changes
+
+Everything else should be machine-enforced and machine-executed.
+
+## FAQ
+
+### Why do developer portals feel worse now than they did a few years ago?
+
+Because expectations expanded faster than implementation quality. Portals used to be mostly catalogs and docs. Now they are expected to power self-service automation, governance, ownership, API discovery, and runtime visibility. Many teams added integrations and UI layers without building the event-driven automation and data reconciliation needed to keep the system trustworthy.
+
+### Should companies build on Backstage or buy a commercial developer portal?
+
+It depends on whether your competitive need is customization or speed. Backstage is strong when you need deep internal integration, custom workflows, and have a serious platform product team to maintain it. Commercial tools like Port, Cortex, OpsLevel, or Compass usually reduce setup time and improve baseline governance, but they may constrain workflow design or extensibility. The bigger issue is not buy versus build. It is whether your automation and data model are strong enough to support either choice.
+
+### What is the fastest way to improve a failing portal?
+
+Stop treating the portal as the product and start treating the underlying automation as the product. Fix three journeys first: service creation, ownership lookup, and one high-value self-service action such as environment provisioning or access requests. Then improve catalog freshness through source-driven sync from Git, identity, observability, and incident systems. Once engineers trust the data and can complete real tasks, usage follows.
+
+## The Bottom Line
+
+Developer portals are getting worse because too many organizations are using them to mask process debt instead of eliminating it. A portal cannot compensate for broken ownership, manual fulfillment, stale metadata, weak policy enforcement, or disconnected tooling. It only makes those failures more visible.
+
+The teams getting this right are not building bigger portals. They are building better automation: contract-driven API discovery, event-synced service catalogs, reusable workflow orchestration, enforceable policy outside the UI, and thin interfaces that sit on top of real platform capabilities. That is the difference between a portal engineers tolerate and one they actually rely on.
+
+*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`.trim(),
+    category: 'automation',
+    readTime: '17 min',
+    date: '2026-06-19',
+    author: 'Decryptica',
+  },
+  {
     id: '1781782349993-5995',
     slug: 'event-driven-architecture-when-it-actually-helps',
     title: "Event-Driven Architecture: When It Actually Helps",
