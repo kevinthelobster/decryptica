@@ -6,7 +6,6 @@ import AnalyticsTracker from '../../components/AnalyticsTracker';
 import ArticleProgressNav from '../../components/ArticleProgressNav';
 import MidArticleLeadCapture from '../../components/MidArticleLeadCapture';
 import MobileProgressSheet from '../../components/MobileProgressSheet';
-import MobileStickyCtaDock from '../../components/MobileStickyCtaDock';
 import TrackedLink from '../../components/TrackedLink';
 import IntentContextBanner from '../../components/IntentContextBanner';
 import IntentAwareConversionStrip from '../../components/IntentAwareConversionStrip';
@@ -1067,20 +1066,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <ArticleMilestoneStrip articleSlug={slug} category={article.category} />
             <FreshnessEvidenceStrip article={article} methodAnchorId="methodology" />
 
-            {/* Subscribe Banner */}
-            <div
-              id="subscribe"
-              className="mb-8 p-6 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/30 rounded-2xl"
-            >
-              <h3 className="font-display font-semibold text-lg text-white mb-2">
-                Stay ahead of the curve
-              </h3>
-              <p className="text-zinc-400 text-sm mb-4">
-                Get weekly technical intelligence delivered to your inbox. No fluff, just signal.
-              </p>
-              <SubscribeForm />
-            </div>
-
             <section id="key-questions" className="scroll-mt-28">
               <TLDNRBox excerpt={article.excerpt} />
               <ArticleSerpPromiseModules
@@ -1127,21 +1112,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <section id="next-step" className="scroll-mt-28">
               <IntentAwareConversionStrip articleSlug={slug} category={article.category} />
             </section>
-
-            {relatedModuleItems.length > 0 && (
-              <section className="mt-12 pt-8 border-t border-zinc-800">
-                <HubRelatedModule
-                  heading="Related Guides"
-                  description="Keep reading with matched intent and adjacent comparisons."
-                  items={relatedModuleItems}
-                  surface="article"
-                  location="article_related_module"
-                  moduleVariant="post_content"
-                  slug={slug}
-                  category={article.category}
-                />
-              </section>
-            )}
 
             <div id="article-end-marker" />
           </article>
@@ -1220,7 +1190,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </div>
       <MobileProgressSheet articleSlug={slug} category={article.category} headings={headings} />
-      <MobileStickyCtaDock articleSlug={slug} category={article.category} endMarkerId="article-end-marker" />
     </>
   );
 }

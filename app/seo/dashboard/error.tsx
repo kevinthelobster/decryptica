@@ -1,5 +1,7 @@
 'use client';
 
+import Link from "next/link";
+
 export default function SeoDashboardError({
   error,
   reset,
@@ -29,9 +31,9 @@ export default function SeoDashboardError({
           <button className="btn-primary" onClick={reset}>
             Retry Dashboard Load
           </button>
-          <a href="/" className="btn-secondary">
+          <Link href="/" className="btn-secondary">
             Return Home
-          </a>
+          </Link>
         </div>
       </div>
     </div>

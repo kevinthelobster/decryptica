@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   description: 'Terms of service for Decryptica.',
 };
 
+import Link from "next/link";
+
 export default function TermsPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
@@ -34,7 +36,7 @@ export default function TermsPage() {
           
           <h2 className="font-display text-xl font-semibold text-white mt-8 mb-3">4. Affiliate Disclosure</h2>
           <p className="text-zinc-300 leading-relaxed">
-            Decryptica may participate in affiliate marketing programs. This means we may receive commissions when you click certain links on our site and make a purchase or sign up for a service. We are transparent about these relationships. For full details, see our <a href="/affiliate-disclosure" className="text-indigo-400 hover:text-indigo-300">Affiliate Disclosure</a> page.
+            Decryptica may participate in affiliate marketing programs. This means we may receive commissions when you click certain links on our site and make a purchase or sign up for a service. We are transparent about these relationships. For full details, see our <Link href="/affiliate-disclosure" className="text-indigo-400 hover:text-indigo-300">Affiliate Disclosure</Link> page.
           </p>
           
           <h2 className="font-display text-xl font-semibold text-white mt-8 mb-3">5. Intellectual Property</h2>
@@ -59,7 +61,7 @@ export default function TermsPage() {
           
           <h2 className="font-display text-xl font-semibold text-white mt-8 mb-3">9. Privacy</h2>
           <p className="text-zinc-300 leading-relaxed">
-            Your privacy is important to us. Please review our <a href="/privacy" className="text-indigo-400 hover:text-indigo-300">Privacy Policy</a> to understand how we collect, use, and safeguard your information.
+            Your privacy is important to us. Please review our <Link href="/privacy" className="text-indigo-400 hover:text-indigo-300">Privacy Policy</Link> to understand how we collect, use, and safeguard your information.
           </p>
           
           <h2 className="font-display text-xl font-semibold text-white mt-8 mb-3">10. Changes to These Terms</h2>

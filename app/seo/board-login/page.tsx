@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -65,7 +66,7 @@ export default function BoardLoginPage() {
           </button>
         </form>
         <p className="text-zinc-500 text-xs mt-4 text-center">
-          <a href="/" className="hover:text-zinc-300">Return to Decryptica</a>
+          <Link href="/" className="hover:text-zinc-300">Return to Decryptica</Link>
         </p>
       </div>
     </div>

@@ -1,49 +1,504 @@
 {
-  "totalArticles": 48,
-  "publishedThisWeek": 31,
-  "totalWordCount": 5383,
-  "avgWordCount": 1076,
+  "totalArticles": 118,
+  "publishedThisWeek": 2,
+  "totalWordCount": 14623,
+  "avgWordCount": 1827,
   "thinContent": 0,
-  "needsRefresh": 0,
+  "needsRefresh": 4,
   "stale": 0,
   "topArticles": [
     {
-      "slug": "ai-coding-assistants-2026",
-      "title": "10 Best AI Coding Assistants in 2026",
+      "slug": "best-ai-tools-for-small-business-automation",
+      "title": "Best AI Tools for Small Business Automation in 2026",
       "category": "ai",
-      "wordCount": 1110,
-      "date": "2026-04-06"
+      "wordCount": 2466,
+      "date": "2026-04-25"
     },
     {
-      "slug": "ai-writing-tools-2026",
-      "title": "10 Best AI Writing Tools in 2026",
+      "slug": "ai-workflow-examples-for-operations-teams",
+      "title": "AI Workflow Examples for Operations Teams That Actually Save Time",
       "category": "ai",
-      "wordCount": 1094,
-      "date": "2026-04-06"
+      "wordCount": 2360,
+      "date": "2026-04-25"
     },
     {
       "slug": "hardware-wallets-2026",
       "title": "10 Best Hardware Wallets in 2026",
       "category": "crypto",
-      "wordCount": 1076,
+      "wordCount": 2320,
       "date": "2026-04-06"
     },
     {
-      "slug": "crypto-wallets-2026",
-      "title": "10 Best Crypto Wallets in 2026",
-      "category": "crypto",
-      "wordCount": 1059,
-      "date": "2026-04-06"
+      "slug": "ai-customer-support-automation",
+      "title": "AI Customer Support Automation: Where It Works, Where It Breaks, and How to Roll It Out",
+      "category": "ai",
+      "wordCount": 2240,
+      "date": "2026-04-22"
     },
     {
-      "slug": "productivity-apps-2026",
-      "title": "10 Best Productivity Apps in 2026",
-      "category": "automation",
-      "wordCount": 1044,
-      "date": "2026-04-06"
+      "slug": "ai-observability-tools-compared",
+      "title": "AI Observability Tools Compared in 2026",
+      "category": "ai",
+      "wordCount": 2040,
+      "date": "2026-04-24"
     }
   ],
   "_articles": [
+    {
+      "slug": "obsidian-vs-notion-the-real-tradeoff",
+      "title": "Obsidian vs Notion: The Real Tradeoff",
+      "category": "automation",
+      "date": "2026-06-15",
+      "wordCount": null
+    },
+    {
+      "slug": "defi-s-real-problem-isn-t-regulatory-it-s-ux",
+      "title": "DeFi's Real Problem Isn't Regulatory\u2014It's UX",
+      "category": "crypto",
+      "date": "2026-06-14",
+      "wordCount": null
+    },
+    {
+      "slug": "solana-s-defi-renaissance-the-numbers-don-t-lie",
+      "title": "Solana's DeFi Renaissance: The Numbers Don't Lie",
+      "category": "crypto",
+      "date": "2026-06-13",
+      "wordCount": null
+    },
+    {
+      "slug": "nfts-aren-t-dead-they-re-just-finding-their-real-use-case",
+      "title": "NFTs Aren't Dead\u2014They're Just Finding Their Real Use Case",
+      "category": "crypto",
+      "date": "2026-06-12",
+      "wordCount": null
+    },
+    {
+      "slug": "the-on-chain-metrics-that-actually-predict-price",
+      "title": "The On-Chain Metrics That Actually Predict Price",
+      "category": "crypto",
+      "date": "2026-06-11",
+      "wordCount": null
+    },
+    {
+      "slug": "the-true-cost-of-compliance-for-crypto-projects",
+      "title": "The True Cost of Compliance for Crypto Projects",
+      "category": "crypto",
+      "date": "2026-06-10",
+      "wordCount": null
+    },
+    {
+      "slug": "why-bitcoin-s-price-action-contradicts-the-narrative",
+      "title": "Why Bitcoin's Price Action Contradicts the Narrative",
+      "category": "crypto",
+      "date": "2026-06-09",
+      "wordCount": null
+    },
+    {
+      "slug": "why-liquidity-fragmentation-is-killing-defi",
+      "title": "Why Liquidity Fragmentation Is Killing DeFi",
+      "category": "crypto",
+      "date": "2026-06-08",
+      "wordCount": null
+    },
+    {
+      "slug": "ethereum-s-next-upgrade-could-change-everything",
+      "title": "Ethereum's Next Upgrade Could Change Everything",
+      "category": "crypto",
+      "date": "2026-06-07",
+      "wordCount": null
+    },
+    {
+      "slug": "the-solana-developer-exodus-that-s-going-unnoticed",
+      "title": "The Solana Developer Exodus That's Going Unnoticed",
+      "category": "crypto",
+      "date": "2026-06-06",
+      "wordCount": null
+    },
+    {
+      "slug": "lending-protocol-wars-why-aave-still-dominates",
+      "title": "Lending Protocol Wars: Why Aave Still Dominates",
+      "category": "crypto",
+      "date": "2026-06-05",
+      "wordCount": null
+    },
+    {
+      "slug": "the-hidden-costs-of-no-code-solutions",
+      "title": "The Hidden Costs of No-Code Solutions",
+      "category": "automation",
+      "date": "2026-06-04",
+      "wordCount": null
+    },
+    {
+      "slug": "building-internal-tools-what-actually-scales",
+      "title": "Building Internal Tools: What Actually Scales",
+      "category": "automation",
+      "date": "2026-06-03",
+      "wordCount": null
+    },
+    {
+      "slug": "the-state-of-api-documentation-in-2026",
+      "title": "The State of API Documentation in 2026",
+      "category": "automation",
+      "date": "2026-06-02",
+      "wordCount": null
+    },
+    {
+      "slug": "the-productivity-system-that-actually-works",
+      "title": "The Productivity System That Actually Works",
+      "category": "automation",
+      "date": "2026-06-01",
+      "wordCount": null
+    },
+    {
+      "slug": "process-mining-finding-automation-opportunities",
+      "title": "Process Mining: Finding Automation Opportunities",
+      "category": "automation",
+      "date": "2026-05-31",
+      "wordCount": null
+    },
+    {
+      "slug": "the-human-in-the-loop-problem-for-automation",
+      "title": "The Human-in-the-Loop Problem for Automation",
+      "category": "automation",
+      "date": "2026-05-30",
+      "wordCount": null
+    },
+    {
+      "slug": "why-bubble-io-is-both-winning-and-losing",
+      "title": "Why Bubble.io Is Both Winning and Losing",
+      "category": "automation",
+      "date": "2026-05-29",
+      "wordCount": null
+    },
+    {
+      "slug": "why-most-automation-projects-fail-at-scale",
+      "title": "Why Most Automation Projects Fail at Scale",
+      "category": "automation",
+      "date": "2026-05-28",
+      "wordCount": null
+    },
+    {
+      "slug": "the-no-code-ceiling-when-tools-hit-their-limit",
+      "title": "The No-Code Ceiling: When Tools Hit Their Limit",
+      "category": "automation",
+      "date": "2026-05-27",
+      "wordCount": null
+    },
+    {
+      "slug": "the-roi-of-business-automation-real-numbers",
+      "title": "The ROI of Business Automation: Real Numbers",
+      "category": "automation",
+      "date": "2026-05-26",
+      "wordCount": null
+    },
+    {
+      "slug": "the-pomodoro-problem-why-timers-don-t-work",
+      "title": "The Pomodoro Problem: Why Timers Don't Work",
+      "category": "automation",
+      "date": "2026-05-25",
+      "wordCount": null
+    },
+    {
+      "slug": "when-to-abandon-no-code-for-real-code",
+      "title": "When to Abandon No-Code for Real Code",
+      "category": "automation",
+      "date": "2026-05-24",
+      "wordCount": null
+    },
+    {
+      "slug": "the-api-tools-actually-worth-your-time",
+      "title": "The API Tools Actually Worth Your Time",
+      "category": "automation",
+      "date": "2026-05-23",
+      "wordCount": null
+    },
+    {
+      "slug": "why-your-integration-architecture-matters",
+      "title": "Why Your Integration Architecture Matters",
+      "category": "automation",
+      "date": "2026-05-22",
+      "wordCount": null
+    },
+    {
+      "slug": "the-webhook-reliability-problem-nobody-fixes",
+      "title": "The Webhook Reliability Problem Nobody Fixes",
+      "category": "automation",
+      "date": "2026-05-21",
+      "wordCount": null
+    },
+    {
+      "slug": "zapier-vs-make-which-automation-tool-wins",
+      "title": "Zapier vs Make: Which Automation Tool Wins?",
+      "category": "automation",
+      "date": "2026-05-20",
+      "wordCount": null
+    },
+    {
+      "slug": "why-developer-portals-are-getting-worse",
+      "title": "Why Developer Portals Are Getting Worse",
+      "category": "automation",
+      "date": "2026-05-19",
+      "wordCount": null
+    },
+    {
+      "slug": "event-driven-architecture-when-it-actually-helps",
+      "title": "Event-Driven Architecture: When It Actually Helps",
+      "category": "automation",
+      "date": "2026-05-18",
+      "wordCount": null
+    },
+    {
+      "slug": "task-management-in-2026-what-s-actually-working",
+      "title": "Task Management in 2026: What's Actually Working",
+      "category": "automation",
+      "date": "2026-05-17",
+      "wordCount": null
+    },
+    {
+      "slug": "why-most-automation-projects-fail-at-scale",
+      "title": "Why Most Automation Projects Fail at Scale",
+      "category": "automation",
+      "date": "2026-05-17",
+      "wordCount": null
+    },
+    {
+      "slug": "why-your-second-brain-system-is-failing-you",
+      "title": "Why Your Second Brain System Is Failing You",
+      "category": "automation",
+      "date": "2026-05-16",
+      "wordCount": null
+    },
+    {
+      "slug": "the-pomodoro-problem-why-timers-don-t-work",
+      "title": "The Pomodoro Problem: Why Timers Don't Work",
+      "category": "automation",
+      "date": "2026-05-16",
+      "wordCount": null
+    },
+    {
+      "slug": "obsidian-vs-notion-the-real-tradeoff",
+      "title": "Obsidian vs Notion: The Real Tradeoff",
+      "category": "automation",
+      "date": "2026-05-15",
+      "wordCount": null
+    },
+    {
+      "slug": "internal-communication-tools-for-small-business-a-practical-",
+      "title": "Internal Communication Tools For Small Business: A Practical 2026 Guide",
+      "category": "automation",
+      "date": "2026-05-07",
+      "wordCount": null
+    },
+    {
+      "slug": "internal-communication-tools-for-small-business-a-practical-",
+      "title": "Internal Communication Tools For Small Business: A Practical 2026 Guide",
+      "category": "automation",
+      "date": "2026-05-07",
+      "wordCount": null
+    },
+    {
+      "slug": "best-accounting-automation-software-for-small-businesses-wha",
+      "title": "Best Accounting Automation Software For Small Businesses: What Actually Matters in 2026",
+      "category": "automation",
+      "date": "2026-05-06",
+      "wordCount": null
+    },
+    {
+      "slug": "best-accounting-automation-software-for-small-businesses-wha",
+      "title": "Best Accounting Automation Software For Small Businesses: What Actually Matters in 2026",
+      "category": "automation",
+      "date": "2026-05-06",
+      "wordCount": null
+    },
+    {
+      "slug": "the-hidden-pattern-in-bitcoin-etf-flows",
+      "title": "The Hidden Pattern in Bitcoin ETF Flows",
+      "category": "crypto",
+      "date": "2026-05-05",
+      "wordCount": null
+    },
+    {
+      "slug": "nfts-aren-t-dead-they-re-just-finding-their-real-use-case",
+      "title": "NFTs Aren't Dead\u2014They're Just Finding Their Real Use Case",
+      "category": "crypto",
+      "date": "2026-05-04",
+      "wordCount": null
+    },
+    {
+      "slug": "what-on-chain-data-says-about-bitcoin-s-next-move",
+      "title": "What On-Chain Data Says About Bitcoin's Next Move",
+      "category": "crypto",
+      "date": "2026-05-03",
+      "wordCount": null
+    },
+    {
+      "slug": "why-your-crypto-ta-is-probably-wrong",
+      "title": "Why Your Crypto TA Is Probably Wrong",
+      "category": "crypto",
+      "date": "2026-05-02",
+      "wordCount": null
+    },
+    {
+      "slug": "the-true-cost-of-compliance-for-crypto-projects",
+      "title": "The True Cost of Compliance for Crypto Projects",
+      "category": "crypto",
+      "date": "2026-05-01",
+      "wordCount": null
+    },
+    {
+      "slug": "why-bitcoin-s-price-action-contradicts-the-narrative",
+      "title": "Why Bitcoin's Price Action Contradicts the Narrative",
+      "category": "crypto",
+      "date": "2026-04-30",
+      "wordCount": null
+    },
+    {
+      "slug": "what-the-sec-s-latest-move-actually-means-for-crypto",
+      "title": "What the SEC's Latest Move Actually Means for Crypto",
+      "category": "crypto",
+      "date": "2026-04-29",
+      "wordCount": null
+    },
+    {
+      "slug": "the-on-chain-metrics-that-actually-predict-price",
+      "title": "The On-Chain Metrics That Actually Predict Price",
+      "category": "crypto",
+      "date": "2026-04-28",
+      "wordCount": null
+    },
+    {
+      "slug": "the-death-of-amms-has-been-greatly-exaggerated",
+      "title": "The Death of AMMs Has Been Greatly Exaggerated",
+      "category": "crypto",
+      "date": "2026-04-27",
+      "wordCount": null
+    },
+    {
+      "slug": "crypto-market-correlation-when-everything-moves-together",
+      "title": "Crypto Market Correlation: When Everything Moves Together",
+      "category": "crypto",
+      "date": "2026-04-26",
+      "wordCount": null
+    },
+    {
+      "slug": "best-local-llm-for-your-hardware-2026",
+      "title": "Best Local LLM for Your Hardware in 2026",
+      "category": "ai",
+      "date": "2026-04-25",
+      "wordCount": null
+    },
+    {
+      "slug": "activepieces-vs-zapier-vs-make-best-automation-tool-2026",
+      "title": "Activepieces vs Zapier vs Make: Which Is the Best Automation Tool in 2026?",
+      "category": "automation",
+      "date": "2026-04-25",
+      "wordCount": null
+    },
+    {
+      "slug": "why-regulatory-clarity-is-worse-than-uncertainty",
+      "title": "Why Regulatory Clarity Is Worse Than Uncertainty",
+      "category": "crypto",
+      "date": "2026-04-25",
+      "wordCount": null
+    },
+    {
+      "slug": "ledger-vs-trezor-vs-keystone-best-hardware-wallet-2026",
+      "title": "Ledger vs Trezor vs Keystone: Which Is the Best Hardware Wallet in 2026?",
+      "category": "crypto",
+      "date": "2026-04-25",
+      "wordCount": null
+    },
+    {
+      "slug": "why-liquidity-fragmentation-is-killing-defi",
+      "title": "Why Liquidity Fragmentation Is Killing DeFi",
+      "category": "crypto",
+      "date": "2026-04-24",
+      "wordCount": null
+    },
+    {
+      "slug": "why-solana-s-transaction-costs-are-a-feature-not-a-bug",
+      "title": "Why Solana's Transaction Costs Are a Feature, Not a Bug",
+      "category": "crypto",
+      "date": "2026-04-23",
+      "wordCount": null
+    },
+    {
+      "slug": "what-the-sec-s-latest-move-actually-means-for-crypto",
+      "title": "What the SEC's Latest Move Actually Means for Crypto",
+      "category": "crypto",
+      "date": "2026-04-22",
+      "wordCount": null
+    },
+    {
+      "slug": "nfts-aren-t-dead-they-re-just-finding-their-real-use-case",
+      "title": "NFTs Aren't Dead\u2014They're Just Finding Their Real Use Case",
+      "category": "crypto",
+      "date": "2026-04-21",
+      "wordCount": null
+    },
+    {
+      "slug": "solana-s-defi-renaissance-the-numbers-don-t-lie",
+      "title": "Solana's DeFi Renaissance: The Numbers Don't Lie",
+      "category": "crypto",
+      "date": "2026-04-20",
+      "wordCount": null
+    },
+    {
+      "slug": "the-true-cost-of-compliance-for-crypto-projects",
+      "title": "The True Cost of Compliance for Crypto Projects",
+      "category": "crypto",
+      "date": "2026-04-19",
+      "wordCount": null
+    },
+    {
+      "slug": "what-on-chain-data-says-about-bitcoin-s-next-move",
+      "title": "What On-Chain Data Says About Bitcoin's Next Move",
+      "category": "crypto",
+      "date": "2026-04-18",
+      "wordCount": null
+    },
+    {
+      "slug": "the-solana-developer-exodus-that-s-going-unnoticed",
+      "title": "The Solana Developer Exodus That's Going Unnoticed",
+      "category": "crypto",
+      "date": "2026-04-17",
+      "wordCount": null
+    },
+    {
+      "slug": "the-hidden-pattern-in-bitcoin-etf-flows",
+      "title": "The Hidden Pattern in Bitcoin ETF Flows",
+      "category": "crypto",
+      "date": "2026-04-16",
+      "wordCount": null
+    },
+    {
+      "slug": "solana-vs-ethereum-what-the-tvl-gap-really-means",
+      "title": "Solana vs Ethereum: What the TVL Gap Really Means",
+      "category": "crypto",
+      "date": "2026-04-15",
+      "wordCount": null
+    },
+    {
+      "slug": "why-solana-could-be-the-biggest-winner-in-2026",
+      "title": "Why Solana Could Be the Biggest Winner in 2026",
+      "category": "crypto",
+      "date": "2026-04-14",
+      "wordCount": null
+    },
+    {
+      "slug": "what-it-actually-takes-to-build-in-web3-now",
+      "title": "What It Actually Takes to Build in Web3 Now",
+      "category": "crypto",
+      "date": "2026-04-13",
+      "wordCount": null
+    },
+    {
+      "slug": "why-most-defi-users-will-never-leave-ethereum",
+      "title": "Why Most DeFi Users Will Never Leave Ethereum",
+      "category": "crypto",
+      "date": "2026-04-12",
+      "wordCount": null
+    },
     {
       "slug": "defi-s-real-problem-isn-t-regulatory-it-s-ux",
       "title": "DeFi's Real Problem Isn't Regulatory\u2014It's UX",
@@ -178,6 +633,13 @@
       "wordCount": null
     },
     {
+      "slug": "queue-vs-webhook-for-workflow-reliability",
+      "title": "Queue vs Webhook for Workflow Reliability",
+      "category": "automation",
+      "date": "2026-04-24",
+      "wordCount": null
+    },
+    {
       "slug": "the-productivity-system-that-actually-works",
       "title": "The Productivity System That Actually Works",
       "category": "automation",
@@ -231,6 +693,13 @@
       "title": "How to Buy Solana in 2026: Complete Beginner Guide",
       "category": "crypto",
       "date": "2026-03-30",
+      "wordCount": null
+    },
+    {
+      "slug": "hot-wallet-vs-cold-wallet-which-should-you-actually-use",
+      "title": "Hot Wallet vs Cold Wallet: Which Should You Actually Use?",
+      "category": "crypto",
+      "date": "2026-04-24",
       "wordCount": null
     },
     {
@@ -346,18 +815,18 @@
       "wordCount": null
     },
     {
-      "slug": "ai-coding-assistants-2026",
-      "title": "10 Best AI Coding Assistants in 2026",
+      "slug": "ai-customer-support-automation",
+      "title": "AI Customer Support Automation: Where It Works, Where It Breaks, and How to Roll It Out",
       "category": "ai",
-      "date": "2026-04-06",
-      "wordCount": 1110
+      "date": "2026-04-22",
+      "wordCount": 2240
     },
     {
       "slug": "hardware-wallets-2026",
       "title": "10 Best Hardware Wallets in 2026",
       "category": "crypto",
       "date": "2026-04-06",
-      "wordCount": 1076
+      "wordCount": 2320
     },
     {
       "slug": "crypto-wallets-2026",
@@ -379,6 +848,27 @@
       "category": "ai",
       "date": "2026-04-06",
       "wordCount": 1094
+    },
+    {
+      "slug": "ai-observability-tools-compared",
+      "title": "AI Observability Tools Compared in 2026",
+      "category": "ai",
+      "date": "2026-04-24",
+      "wordCount": 2040
+    },
+    {
+      "slug": "best-ai-tools-for-small-business-automation",
+      "title": "Best AI Tools for Small Business Automation in 2026",
+      "category": "ai",
+      "date": "2026-04-25",
+      "wordCount": 2466
+    },
+    {
+      "slug": "ai-workflow-examples-for-operations-teams",
+      "title": "AI Workflow Examples for Operations Teams That Actually Save Time",
+      "category": "ai",
+      "date": "2026-04-25",
+      "wordCount": 2360
     }
   ]
 }

@@ -102,6 +102,9 @@ export default function IntentAwareConversionStrip({ articleSlug, category }: In
     return prioritized ? [prioritized, ...remaining] : baseCards;
   }, [category, context.intent]);
 
+  const primaryCard = cards[0];
+  const secondaryCards = cards.slice(1);
+
   return (
     <section ref={sectionRef} className="mt-10 rounded-2xl border border-indigo-500/30 bg-gradient-to-r from-indigo-500/5 via-blue-500/5 to-emerald-500/5 p-6 md:p-8">
       <div className="mb-4 flex items-center justify-between gap-3">
@@ -113,26 +116,37 @@ export default function IntentAwareConversionStrip({ articleSlug, category }: In
         )}
       </div>
 
-      <div className="grid gap-4 md:grid-cols-3">
-        {cards.map((card) => (
-          <article key={card.id} className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
-            <p className={`inline-flex rounded-full border px-2 py-1 text-[11px] font-semibold uppercase tracking-wide ${card.accentClassName}`}>
-              {card.eyebrow}
-            </p>
-            <h4 className="mt-3 font-display text-base font-semibold text-white">{card.heading}</h4>
-            <p className="mt-2 text-sm text-zinc-400">{card.body}</p>
+      <article className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
+        <p className={`inline-flex rounded-full border px-2 py-1 text-[11px] font-semibold uppercase tracking-wide ${primaryCard.accentClassName}`}>
+          {primaryCard.eyebrow}
+        </p>
+        <h4 className="mt-3 font-display text-xl font-semibold text-white">{primaryCard.heading}</h4>
+        <p className="mt-2 max-w-2xl text-sm text-zinc-400">{primaryCard.body}</p>
+        <TrackedLink
+          href={primaryCard.href}
+          className="mt-5 inline-flex items-center gap-2 rounded-lg bg-indigo-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-400"
+          eventType="cta_click"
+          articleSlug={articleSlug}
+          metadata={{ location: 'article_conversion_strip', cta: primaryCard.id, category }}
+        >
+          {primaryCard.ctaLabel}
+        </TrackedLink>
+
+        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-zinc-800 pt-4 text-sm">
+          {secondaryCards.map((card) => (
             <TrackedLink
+              key={card.id}
               href={card.href}
-              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-indigo-300 underline decoration-indigo-400/60 underline-offset-4 hover:text-indigo-200"
+              className="text-zinc-400 underline decoration-zinc-700 underline-offset-4 hover:text-white"
               eventType="cta_click"
               articleSlug={articleSlug}
               metadata={{ location: 'article_conversion_strip', cta: card.id, category }}
             >
               {card.ctaLabel}
             </TrackedLink>
-          </article>
-        ))}
-      </div>
+          ))}
+        </div>
+      </article>
     </section>
   );
 }

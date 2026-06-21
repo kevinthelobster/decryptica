@@ -7,12 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seo:checkpoint": "node scripts/seo_daily_checkpoint.js",
-    "seo:checkpoint:date": "node scripts/seo_daily_checkpoint.js",
+    "article:daily": "zsh scripts/run_daily_article.sh",
+    "kwr:build": "node scripts/kwr_build_candidates.js",
+    "kwr:pull": "zsh scripts/run_kwr_pull.sh",
+    "seo:checkpoint": "zsh scripts/run_seo_checkpoint.sh",
+    "seo:checkpoint:date": "zsh scripts/run_seo_checkpoint.sh",
     "kpi:sprint-dashboard": "tsx scripts/export_sprint_dashboard.ts"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
+    "@vercel/analytics": "^1.5.0",
     "@vercel/kv": "^3.0.0",
     "better-sqlite3": "^12.8.0",
     "next": "^15.1.0",

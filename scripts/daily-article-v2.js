@@ -22,6 +22,7 @@ const CONFIG = {
   workspace: process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica',
   articlesFile: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/app/data/articles.ts',
   postedTracker: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/data/posted_titles.json',
+  keywordCandidatesFile: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/data/kwr/keyword_candidates.json',
   chatId: process.env.TELEGRAM_CHAT_ID || '8324073314',
   telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || ''
 };
@@ -60,6 +61,14 @@ function generateSlug(title) {
     .substring(0, 60);
 }
 
+function normalizePhrase(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function generateId() {
   const randomNum = Math.floor(Math.random() * 10000);
   return `${Date.now()}-${randomNum}`;
@@ -67,6 +76,17 @@ function generateId() {
 
 function getTodayDate() {
   return new Date().toISOString().split('T')[0];
+}
+
+function hasArticleForDate(date) {
+  try {
+    const content = fs.readFileSync(CONFIG.articlesFile, 'utf-8');
+    const pattern = new RegExp(`date:\\s*['"]${date}['"]`);
+    return pattern.test(content);
+  } catch (e) {
+    log(`Date check error: ${e.message}`);
+    return false;
+  }
 }
 
 function estimateReadTime(content) {
@@ -301,6 +321,179 @@ const TITLE_POOLS = {
   ]
 };
 
+function titleCaseWords(input) {
+  return input
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
+function createTitleFromKeyword(keyword, category) {
+  const normalized = keyword.trim().replace(/\s+/g, ' ');
+  const lower = normalized.toLowerCase();
+
+  if (lower.startsWith('best ')) {
+    return `${titleCaseWords(normalized)}: What Actually Matters in 2026`;
+  }
+  if (lower.startsWith('how ')) {
+    return `${titleCaseWords(normalized)}: What Actually Works in 2026`;
+  }
+  if (lower.startsWith('what ')) {
+    return `${titleCaseWords(normalized)}: A Practical 2026 Guide`;
+  }
+  if (lower.startsWith('why ')) {
+    return `${titleCaseWords(normalized)}: The Real Answer in 2026`;
+  }
+  if (lower.includes(' vs ')) {
+    return `${titleCaseWords(normalized)}: Which One Makes More Sense in 2026?`;
+  }
+
+  const suffix = category === 'crypto'
+    ? 'What the Market Gets Wrong in 2026'
+    : category === 'ai'
+      ? 'What Actually Matters in 2026'
+      : 'A Practical 2026 Guide';
+
+  return `${titleCaseWords(normalized)}: ${suffix}`;
+}
+
+function loadKeywordCandidates() {
+  try {
+    if (fs.existsSync(CONFIG.keywordCandidatesFile)) {
+      const data = JSON.parse(fs.readFileSync(CONFIG.keywordCandidatesFile, 'utf-8'));
+      if (Array.isArray(data)) {
+        return { generatedAt: null, candidates: data };
+      }
+      return {
+        generatedAt: data.generatedAt || null,
+        sourceFiles: data.sourceFiles || [],
+        candidates: Array.isArray(data.candidates) ? data.candidates : []
+      };
+    }
+  } catch (e) {
+    log(`Keyword candidate load error: ${e.message}`);
+  }
+
+  return { generatedAt: null, sourceFiles: [], candidates: [] };
+}
+
+function saveKeywordCandidates(payload) {
+  try {
+    const dataDir = path.dirname(CONFIG.keywordCandidatesFile);
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+    fs.writeFileSync(CONFIG.keywordCandidatesFile, JSON.stringify(payload, null, 2));
+  } catch (e) {
+    log(`Keyword candidate save error: ${e.message}`);
+  }
+}
+
+function loadExistingArticleFingerprints() {
+  try {
+    const content = fs.readFileSync(CONFIG.articlesFile, 'utf-8');
+    const titleMatches = [...content.matchAll(/title:\s*"((?:\\"|[^"])*)"/g)];
+    return titleMatches.map((match) => {
+      const title = match[1].replace(/\\"/g, '"');
+      const normalizedTitle = normalizePhrase(title);
+      const slug = generateSlug(title);
+      const keywordLike = normalizedTitle
+        .split(' ')
+        .filter((word) => word.length > 2)
+        .slice(0, 8)
+        .join(' ');
+      return { title, normalizedTitle, slug, keywordLike };
+    });
+  } catch (e) {
+    log(`Article fingerprint load error: ${e.message}`);
+    return [];
+  }
+}
+
+function countSharedWords(left, right) {
+  const leftWords = new Set(normalizePhrase(left).split(' ').filter((word) => word.length > 2));
+  const rightWords = new Set(normalizePhrase(right).split(' ').filter((word) => word.length > 2));
+  let shared = 0;
+
+  for (const word of leftWords) {
+    if (rightWords.has(word)) shared += 1;
+  }
+
+  return shared;
+}
+
+function overlapsExistingContent(candidate, existingArticles) {
+  const candidateTitle = candidate.suggestedTitle || createTitleFromKeyword(candidate.keyword, candidate.category);
+  const candidateSlug = generateSlug(candidateTitle);
+  const normalizedKeyword = normalizePhrase(candidate.keyword);
+  const normalizedTitle = normalizePhrase(candidateTitle);
+
+  return existingArticles.some((article) => {
+    if (article.slug === candidateSlug) return true;
+    if (article.normalizedTitle === normalizedTitle) return true;
+    if (article.keywordLike && article.keywordLike === normalizedKeyword) return true;
+    return countSharedWords(article.normalizedTitle, normalizedTitle) >= 4;
+  });
+}
+
+function pickKeywordCandidate(targetCategory, tracker) {
+  const payload = loadKeywordCandidates();
+  if (!payload.candidates.length) return null;
+  const existingArticles = loadExistingArticleFingerprints();
+
+  const isAvailable = (candidate) => {
+    if (!candidate || !candidate.keyword) return false;
+    if (candidate.usedAt) return false;
+    if (candidate.status && candidate.status !== 'ready') return false;
+    const title = candidate.suggestedTitle || createTitleFromKeyword(candidate.keyword, candidate.category || targetCategory);
+    if (isRecentlyPosted(tracker, title)) return false;
+    if (overlapsExistingContent(candidate, existingArticles)) return false;
+    return true;
+  };
+
+  const sortCandidates = (candidates) => [...candidates].sort((a, b) => {
+    const scoreA = typeof a.opportunityScore === 'number' ? a.opportunityScore : 0;
+    const scoreB = typeof b.opportunityScore === 'number' ? b.opportunityScore : 0;
+    if (scoreB !== scoreA) return scoreB - scoreA;
+    const volA = typeof a.volume === 'number' ? a.volume : Number.MAX_SAFE_INTEGER;
+    const volB = typeof b.volume === 'number' ? b.volume : Number.MAX_SAFE_INTEGER;
+    return volA - volB;
+  });
+
+  const categoryMatches = payload.candidates.filter((candidate) => (candidate.category || targetCategory) === targetCategory && isAvailable(candidate));
+  const fallbackMatches = payload.candidates.filter((candidate) => isAvailable(candidate));
+  const selected = sortCandidates(categoryMatches)[0] || sortCandidates(fallbackMatches)[0];
+
+  if (!selected) return null;
+
+  return {
+    id: selected.id,
+    category: selected.category || targetCategory,
+    keyword: selected.keyword,
+    title: selected.suggestedTitle || createTitleFromKeyword(selected.keyword, selected.category || targetCategory),
+    opportunityScore: selected.opportunityScore,
+    source: selected.source || 'keyword-pipeline'
+  };
+}
+
+function markKeywordCandidateUsed(candidateId, articleMeta) {
+  if (!candidateId) return;
+
+  const payload = loadKeywordCandidates();
+  const candidate = payload.candidates.find((entry) => entry.id === candidateId);
+  if (!candidate) return;
+
+  candidate.usedAt = new Date().toISOString();
+  candidate.usedBy = {
+    slug: articleMeta.slug,
+    title: articleMeta.title,
+    date: articleMeta.date
+  };
+
+  saveKeywordCandidates(payload);
+}
+
 // === RESEARCH PHASE ===
 
 async function researchTopic() {
@@ -320,6 +513,23 @@ async function researchTopic() {
   
   // Research keywords for this category
   const keywordData = await researchKeywords(category);
+
+  const keywordCandidate = pickKeywordCandidate(category, tracker);
+  if (keywordCandidate) {
+    log(`Using keyword candidate: "${keywordCandidate.keyword}" (${keywordCandidate.category}, score ${keywordCandidate.opportunityScore ?? 'n/a'})`);
+    return {
+      category: keywordCandidate.category,
+      title: keywordCandidate.title,
+      primary_keyword: keywordCandidate.keyword,
+      keywordCandidateId: keywordCandidate.id,
+      keywordData: {
+        ...keywordData,
+        candidateSource: keywordCandidate.source,
+        opportunityScore: keywordCandidate.opportunityScore
+      },
+      tracker
+    };
+  }
   
   // Get available titles (not recently posted)
   const availableTitles = TITLE_POOLS[category].filter(
@@ -340,6 +550,7 @@ async function researchTopic() {
           title: backupTitles[Math.floor(Math.random() * backupTitles.length)],
           primary_keyword: cat === 'crypto' ? 'crypto analysis' : 
                           cat === 'ai' ? 'ai tools' : 'automation',
+          keywordCandidateId: null,
           keywordData,
           tracker
         };
@@ -348,7 +559,7 @@ async function researchTopic() {
     // Last resort: pick random from any category (force rotate)
     const allTitles = TITLE_POOLS[category];
     const randomTitle = allTitles[Math.floor(Math.random() * allTitles.length)];
-    return { category, title: randomTitle, primary_keyword: category, keywordData, tracker };
+    return { category, title: randomTitle, primary_keyword: category, keywordCandidateId: null, keywordData, tracker };
   }
   
   // Pick a random available title
@@ -366,6 +577,7 @@ async function researchTopic() {
     category,
     title: selectedTitle,
     primary_keyword,
+    keywordCandidateId: null,
     keywordData,
     tracker
   };
@@ -832,6 +1044,11 @@ async function main() {
   log(`Date: ${getTodayDate()}`);
   
   try {
+    if (process.env.ALLOW_TODAY_DUPLICATE !== '1' && hasArticleForDate(getTodayDate())) {
+      log(`Article for ${getTodayDate()} already exists, skipping generation`);
+      return;
+    }
+
     // Step 1: Research with keyword analysis
     const research = await researchTopic();
     
@@ -840,6 +1057,14 @@ async function main() {
     
     // Step 3: Add to file
     const slug = addArticleToFile(article);
+
+    if (research.keywordCandidateId) {
+      markKeywordCandidateUsed(research.keywordCandidateId, {
+        slug,
+        title: article.title,
+        date: article.date
+      });
+    }
     
     // Step 4: Commit and push
     const pushed = await pushToGitHub(slug);

@@ -158,7 +158,7 @@ export default async function SubpillarPage({ params }: SubpillarPageProps) {
         )}
       </section>
 
-      {(pillarSlug === 'ai' && ['llms', 'agents', 'local', 'use-cases', 'tooling'].includes(subpillar)) || (pillarSlug === 'automation' && subpillar === 'infrastructure') ? (
+      {(pillarSlug === 'ai' && ['llms', 'agents', 'local', 'use-cases', 'tooling'].includes(subpillar)) || (pillarSlug === 'automation' && ['workflows', 'infrastructure'].includes(subpillar)) || (pillarSlug === 'crypto' && ['wallets', 'defi'].includes(subpillar)) ? (
         <section className="mt-10">
           <div className="card-elevated p-6 md:p-7">
             <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Buyer Intent Directory</p>
@@ -171,7 +171,11 @@ export default async function SubpillarPage({ params }: SubpillarPageProps) {
                     ? 'Local AI deployment paths for privacy and cost-conscious teams'
                     : pillarSlug === 'ai' && subpillar === 'use-cases'
                       ? 'Operational AI rollout paths that convert'
-                      : 'Automation reliability paths for technical buyers'}
+                      : pillarSlug === 'crypto' && subpillar === 'wallets'
+                        ? 'High-intent wallet and custody paths for self-custody buyers'
+                        : pillarSlug === 'crypto' && subpillar === 'defi'
+                          ? 'High-intent DeFi research paths for active on-chain participants'
+                          : 'Automation reliability paths for technical buyers'}
             </h2>
             <p className="mt-3 text-zinc-400">
               {pillarSlug === 'ai' && subpillar === 'llms'
@@ -182,7 +186,11 @@ export default async function SubpillarPage({ params }: SubpillarPageProps) {
                     ? 'Use these paths to evaluate local and edge AI tradeoffs, validate economics, and decide whether you need implementation help.'
                     : pillarSlug === 'ai' && subpillar === 'use-cases'
                       ? 'These guides help operations teams go from “should we automate this?” to scoped rollout and consulting conversations.'
-                      : 'These pages are the shortest path from architecture research into reliability decisions and implementation help.'}
+                      : pillarSlug === 'crypto' && subpillar === 'wallets'
+                        ? 'Use these pages to compare custody options, tighten operational security, and move from wallet research into safer self-custody decisions.'
+                        : pillarSlug === 'crypto' && subpillar === 'defi'
+                          ? 'These pages help readers move from DeFi curiosity into protocol selection, chain tradeoff analysis, and risk-aware participation.'
+                          : 'These pages are the shortest path from architecture research into reliability decisions and implementation help.'}
             </p>
 
             <div className="mt-6 grid gap-4 md:grid-cols-3">
@@ -274,6 +282,60 @@ export default async function SubpillarPage({ params }: SubpillarPageProps) {
                     <p className="text-xs text-indigo-300 uppercase tracking-wider">Budget validation</p>
                     <h3 className="mt-1 font-display text-lg text-white">AI ROI Calculator</h3>
                     <p className="mt-2 text-sm text-zinc-400">Pressure-test tooling and usage costs before you add more AI vendors.</p>
+                  </TrackedLink>
+                </>
+              ) : pillarSlug === 'crypto' && subpillar === 'wallets' ? (
+                <>
+                  <TrackedLink href="/blog/ledger-vs-trezor-vs-keystone-best-hardware-wallet-2026" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'ledger-vs-trezor-vs-keystone-best-hardware-wallet-2026', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Hardware comparison</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Ledger vs Trezor vs Keystone</h3>
+                    <p className="mt-2 text-sm text-zinc-400">A direct path for buyers comparing the leading hardware wallets by security model, convenience, and fit.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/blog/crypto-wallets-2026" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'crypto-wallets-2026', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Wallet shortlist</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Best Crypto Wallets in 2026</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Start with a broad wallet shortlist, then narrow into the custody model that matches your balances and habits.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/tools/crypto-wallet-security-checklist" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_secondary_cta_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, cta: 'crypto_wallet_security_checklist', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Security checklist</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Crypto Wallet Security Checklist</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Tighten backup, seed phrase, purchase-source, and transaction verification habits before moving larger balances.</p>
+                  </TrackedLink>
+                </>
+              ) : pillarSlug === 'crypto' && subpillar === 'defi' ? (
+                <>
+                  <TrackedLink href="/blog/why-most-defi-users-will-never-leave-ethereum" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'why-most-defi-users-will-never-leave-ethereum', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Chain selection</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Why Most DeFi Users Will Never Leave Ethereum</h3>
+                    <p className="mt-2 text-sm text-zinc-400">A practical read on why liquidity depth, execution quality, and network effects still matter more than raw fee narratives.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/blog/why-liquidity-fragmentation-is-killing-defi" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'why-liquidity-fragmentation-is-killing-defi', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Market structure</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Why Liquidity Fragmentation Is Killing DeFi</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Use this to understand the execution and interoperability risks that shape real DeFi returns across chains.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/topic/crypto/wallets" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSubpillar: 'wallets', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Custody foundation</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Crypto Wallets Hub</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Bridge DeFi participation back into wallet setup, self-custody, and security habits before chasing yield.</p>
+                  </TrackedLink>
+                </>
+              ) : pillarSlug === 'automation' && subpillar === 'workflows' ? (
+                <>
+                  <TrackedLink href="/blog/the-human-in-the-loop-problem-for-automation" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'the-human-in-the-loop-problem-for-automation', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Human handoffs</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Human-in-the-Loop Automation</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Use this to scope where approvals, exception handling, and operator review need to stay in the loop.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/blog/why-most-automation-projects-fail-at-scale" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_nav_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, targetSlug: 'why-most-automation-projects-fail-at-scale', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Scale risk</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Why Automation Projects Fail at Scale</h3>
+                    <p className="mt-2 text-sm text-zinc-400">A buyer-facing guide to the workflow design and operating mistakes that break automation after launch.</p>
+                  </TrackedLink>
+                  <TrackedLink href="/services/ai-automation-consulting" className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 hover:border-indigo-400/50" eventType="hub_secondary_cta_click" metadata={{ location: 'subpillar_intent_directory', pillar: pillarSlug, subpillar, cta: 'ai_automation_consulting', category: pillarSlug }}>
+                    <p className="text-xs text-indigo-300 uppercase tracking-wider">Implementation help</p>
+                    <h3 className="mt-1 font-display text-lg text-white">Workflow Automation Consulting</h3>
+                    <p className="mt-2 text-sm text-zinc-400">Bring in help when process mapping, handoff logic, or rollout sequencing needs to move faster.</p>
                   </TrackedLink>
                 </>
               ) : (

@@ -22,8 +22,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/prompts`,
       lastModified: now,
-      changeFrequency: 'daily',
-      priority: 0.9,
+      changeFrequency: 'weekly',
+      priority: 0.75,
     },
     {
       url: `${baseUrl}/topic/crypto/trading`,

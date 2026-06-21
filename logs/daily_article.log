@@ -1,0 +1,1520 @@
+[2026-05-06T11:30:00.289Z] === Daily Article Generator v2 Started ===
+[2026-05-06T11:30:00.290Z] Date: 2026-05-06
+[2026-05-06T11:30:00.295Z] Starting research phase...
+[2026-05-06T11:30:00.299Z] Researching keywords for: automation...
+[2026-05-06T11:30:00.312Z] Using keyword candidate: "best accounting automation software for small businesses" (automation, score 116)
+[2026-05-06T11:30:00.312Z] Generating article content...
+[2026-05-06T11:30:00.313Z] Using Codex model: gpt-5.4
+[2026-05-06T11:33:33.210Z] Content generated with Codex: 2870 words
+[2026-05-06T11:33:33.212Z] Article generated: "Best Accounting Automation Software For Small Businesses: What Actually Matters in 2026"
+[2026-05-06T11:33:33.214Z] Adding article to articles.ts...
+[2026-05-06T11:33:33.220Z] Article added to file
+[2026-05-06T11:33:33.222Z] Committing and pushing to GitHub...
+[2026-05-06T11:33:34.617Z] Pushed to GitHub successfully
+[2026-05-06T11:33:34.618Z] Sending Telegram notification...
+[2026-05-06T11:33:34.618Z] Telegram bot token not configured, skipping notification
+[2026-05-06T11:33:34.618Z] Waiting for Vercel deployment...
+[2026-05-06T11:33:34.724Z] Waiting for deployment... (1/12)
+[2026-05-06T11:33:50.020Z] Waiting for deployment... (2/12)
+[2026-05-06T11:34:05.255Z] Waiting for deployment... (3/12)
+[2026-05-06T11:34:20.566Z] Waiting for deployment... (4/12)
+[2026-05-06T11:34:35.898Z] Waiting for deployment... (5/12)
+[2026-05-06T11:34:51.262Z] Waiting for deployment... (6/12)
+[2026-05-06T11:35:06.531Z] Waiting for deployment... (7/12)
+[2026-05-06T11:35:21.834Z] Waiting for deployment... (8/12)
+[2026-05-06T11:35:37.126Z] Waiting for deployment... (9/12)
+[2026-05-06T11:35:52.376Z] Waiting for deployment... (10/12)
+[2026-05-06T11:36:07.657Z] Waiting for deployment... (11/12)
+[2026-05-06T11:36:22.908Z] Waiting for deployment... (12/12)
+[2026-05-06T11:36:38.034Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-06T11:36:38.035Z] === Complete ===
+[2026-05-06T11:36:38.035Z] Title: Best Accounting Automation Software For Small Businesses: What Actually Matters in 2026
+[2026-05-06T11:36:38.035Z] Slug: best-accounting-automation-software-for-small-businesses-wha
+[2026-05-06T11:36:38.035Z] Category: automation
+[2026-05-06T11:36:38.035Z] Keyword: best accounting automation software for small businesses
+[2026-05-07T11:30:00.624Z] === Daily Article Generator v2 Started ===
+[2026-05-07T11:30:00.627Z] Date: 2026-05-07
+[2026-05-07T11:30:00.632Z] Starting research phase...
+[2026-05-07T11:30:00.636Z] Researching keywords for: automation...
+[2026-05-07T11:30:00.643Z] Using keyword candidate: "internal communication tools for small business" (automation, score 104)
+[2026-05-07T11:30:00.643Z] Generating article content...
+[2026-05-07T11:30:00.644Z] Using Codex model: gpt-5.4
+[2026-05-07T11:33:04.122Z] Content generated with Codex: 2804 words
+[2026-05-07T11:33:04.124Z] Article generated: "Internal Communication Tools For Small Business: A Practical 2026 Guide"
+[2026-05-07T11:33:04.125Z] Adding article to articles.ts...
+[2026-05-07T11:33:04.130Z] Article added to file
+[2026-05-07T11:33:04.132Z] Committing and pushing to GitHub...
+[2026-05-07T11:33:05.529Z] Pushed to GitHub successfully
+[2026-05-07T11:33:05.529Z] Sending Telegram notification...
+[2026-05-07T11:33:05.530Z] Telegram bot token not configured, skipping notification
+[2026-05-07T11:33:05.530Z] Waiting for Vercel deployment...
+[2026-05-07T11:33:05.707Z] Waiting for deployment... (1/12)
+[2026-05-07T11:33:20.985Z] Waiting for deployment... (2/12)
+[2026-05-07T11:33:36.244Z] Waiting for deployment... (3/12)
+[2026-05-07T11:33:51.563Z] Waiting for deployment... (4/12)
+[2026-05-07T11:34:06.787Z] Waiting for deployment... (5/12)
+[2026-05-07T11:34:21.994Z] Waiting for deployment... (6/12)
+[2026-05-07T11:34:37.413Z] Waiting for deployment... (7/12)
+[2026-05-07T11:34:52.669Z] Waiting for deployment... (8/12)
+[2026-05-07T11:35:07.934Z] Waiting for deployment... (9/12)
+[2026-05-07T11:35:23.332Z] Waiting for deployment... (10/12)
+[2026-05-07T11:35:38.506Z] Waiting for deployment... (11/12)
+[2026-05-07T11:35:53.805Z] Waiting for deployment... (12/12)
+[2026-05-07T11:36:08.967Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-07T11:36:08.967Z] === Complete ===
+[2026-05-07T11:36:08.967Z] Title: Internal Communication Tools For Small Business: A Practical 2026 Guide
+[2026-05-07T11:36:08.967Z] Slug: internal-communication-tools-for-small-business-a-practical-
+[2026-05-07T11:36:08.967Z] Category: automation
+[2026-05-07T11:36:08.967Z] Keyword: internal communication tools for small business
+[2026-05-15T11:30:00.564Z] === Daily Article Generator v2 Started ===
+[2026-05-15T11:30:00.567Z] Date: 2026-05-15
+[2026-05-15T11:30:00.572Z] Starting research phase...
+[2026-05-15T11:30:00.577Z] Researching keywords for: automation...
+[2026-05-15T11:30:00.583Z] Research complete: "Obsidian vs Notion: The Real Tradeoff" (automation)
+[2026-05-15T11:30:00.583Z] Primary keyword: obsidian second brain
+[2026-05-15T11:30:00.583Z] Generating article content...
+[2026-05-15T11:30:00.584Z] Using Codex model: gpt-5.4
+[2026-05-15T11:33:28.001Z] Content generated with Codex: 2461 words
+[2026-05-15T11:33:28.004Z] Article generated: "Obsidian vs Notion: The Real Tradeoff"
+[2026-05-15T11:33:28.005Z] Adding article to articles.ts...
+[2026-05-15T11:33:28.011Z] Article added to file
+[2026-05-15T11:33:28.011Z] Committing and pushing to GitHub...
+[2026-05-15T11:33:29.587Z] Pushed to GitHub successfully
+[2026-05-15T11:33:29.588Z] Sending Telegram notification...
+[2026-05-15T11:33:29.588Z] Telegram bot token not configured, skipping notification
+[2026-05-15T11:33:29.588Z] Waiting for Vercel deployment...
+[2026-05-15T11:33:29.751Z] Waiting for deployment... (1/12)
+[2026-05-15T11:33:44.914Z] Waiting for deployment... (2/12)
+[2026-05-15T11:34:00.131Z] Waiting for deployment... (3/12)
+[2026-05-15T11:34:15.326Z] Waiting for deployment... (4/12)
+[2026-05-15T11:34:30.507Z] Waiting for deployment... (5/12)
+[2026-05-15T11:34:45.683Z] Waiting for deployment... (6/12)
+[2026-05-15T11:35:00.891Z] Waiting for deployment... (7/12)
+[2026-05-15T11:35:16.163Z] Waiting for deployment... (8/12)
+[2026-05-15T11:35:31.372Z] Waiting for deployment... (9/12)
+[2026-05-15T11:35:46.615Z] Waiting for deployment... (10/12)
+[2026-05-15T11:36:01.781Z] Waiting for deployment... (11/12)
+[2026-05-15T11:36:16.897Z] Waiting for deployment... (12/12)
+[2026-05-15T11:36:31.984Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-15T11:36:31.984Z] === Complete ===
+[2026-05-15T11:36:31.984Z] Title: Obsidian vs Notion: The Real Tradeoff
+[2026-05-15T11:36:31.984Z] Slug: obsidian-vs-notion-the-real-tradeoff
+[2026-05-15T11:36:31.984Z] Category: automation
+[2026-05-15T11:36:31.984Z] Keyword: obsidian second brain
+[2026-05-16T11:30:00.429Z] === Daily Article Generator v2 Started ===
+[2026-05-16T11:30:00.431Z] Date: 2026-05-16
+[2026-05-16T11:30:00.436Z] Starting research phase...
+[2026-05-16T11:30:00.440Z] Researching keywords for: automation...
+[2026-05-16T11:30:00.446Z] Research complete: "Why Your Second Brain System Is Failing You" (automation)
+[2026-05-16T11:30:00.446Z] Primary keyword: automation
+[2026-05-16T11:30:00.446Z] Generating article content...
+[2026-05-16T11:30:00.447Z] Using Codex model: gpt-5.4
+[2026-05-16T11:31:27.739Z] Content generated with Codex: 3119 words
+[2026-05-16T11:31:27.747Z] Article generated: "Why Your Second Brain System Is Failing You"
+[2026-05-16T11:31:27.760Z] Adding article to articles.ts...
+[2026-05-16T11:31:27.770Z] Article added to file
+[2026-05-16T11:31:27.770Z] Committing and pushing to GitHub...
+[2026-05-16T11:31:29.116Z] Pushed to GitHub successfully
+[2026-05-16T11:31:29.116Z] Sending Telegram notification...
+[2026-05-16T11:31:29.116Z] Telegram bot token not configured, skipping notification
+[2026-05-16T11:31:29.116Z] Waiting for Vercel deployment...
+[2026-05-16T11:31:29.228Z] Waiting for deployment... (1/12)
+[2026-05-16T11:31:44.392Z] Waiting for deployment... (2/12)
+[2026-05-16T11:31:59.673Z] Waiting for deployment... (3/12)
+[2026-05-16T11:32:14.884Z] Waiting for deployment... (4/12)
+[2026-05-16T11:32:30.109Z] Waiting for deployment... (5/12)
+[2026-05-16T11:32:45.364Z] Waiting for deployment... (6/12)
+[2026-05-16T11:33:00.663Z] Waiting for deployment... (7/12)
+[2026-05-16T11:33:15.973Z] Waiting for deployment... (8/12)
+[2026-05-16T11:33:31.201Z] Waiting for deployment... (9/12)
+[2026-05-16T11:33:46.412Z] Waiting for deployment... (10/12)
+[2026-05-16T11:34:01.574Z] Waiting for deployment... (11/12)
+[2026-05-16T11:34:16.856Z] Waiting for deployment... (12/12)
+[2026-05-16T11:34:31.942Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-16T11:34:31.943Z] === Complete ===
+[2026-05-16T11:34:31.943Z] Title: Why Your Second Brain System Is Failing You
+[2026-05-16T11:34:31.943Z] Slug: why-your-second-brain-system-is-failing-you
+[2026-05-16T11:34:31.943Z] Category: automation
+[2026-05-16T11:34:31.943Z] Keyword: automation
+[2026-05-17T11:30:00.992Z] === Daily Article Generator v2 Started ===
+[2026-05-17T11:30:00.994Z] Date: 2026-05-17
+[2026-05-17T11:30:01.000Z] Starting research phase...
+[2026-05-17T11:30:01.005Z] Researching keywords for: automation...
+[2026-05-17T11:30:01.011Z] Research complete: "Task Management in 2026: What's Actually Working" (automation)
+[2026-05-17T11:30:01.011Z] Primary keyword: automation
+[2026-05-17T11:30:01.012Z] Generating article content...
+[2026-05-17T11:30:01.012Z] Using Codex model: gpt-5.4
+[2026-05-17T11:34:04.622Z] Content generated with Codex: 3318 words
+[2026-05-17T11:34:04.625Z] Article generated: "Task Management in 2026: What's Actually Working"
+[2026-05-17T11:34:04.626Z] Adding article to articles.ts...
+[2026-05-17T11:34:04.635Z] Article added to file
+[2026-05-17T11:34:04.635Z] Committing and pushing to GitHub...
+[2026-05-17T11:34:06.195Z] Pushed to GitHub successfully
+[2026-05-17T11:34:06.195Z] Sending Telegram notification...
+[2026-05-17T11:34:06.195Z] Telegram bot token not configured, skipping notification
+[2026-05-17T11:34:06.195Z] Waiting for Vercel deployment...
+[2026-05-17T11:34:06.315Z] Waiting for deployment... (1/12)
+[2026-05-17T11:34:21.653Z] Waiting for deployment... (2/12)
+[2026-05-17T11:34:36.886Z] Waiting for deployment... (3/12)
+[2026-05-17T11:34:52.193Z] Waiting for deployment... (4/12)
+[2026-05-17T11:35:07.434Z] Waiting for deployment... (5/12)
+[2026-05-17T11:35:22.613Z] Waiting for deployment... (6/12)
+[2026-05-17T11:35:37.766Z] Waiting for deployment... (7/12)
+[2026-05-17T11:35:53.059Z] Waiting for deployment... (8/12)
+[2026-05-17T11:36:08.337Z] Waiting for deployment... (9/12)
+[2026-05-17T11:36:23.759Z] Waiting for deployment... (10/12)
+[2026-05-17T11:36:39.086Z] Waiting for deployment... (11/12)
+[2026-05-17T11:36:54.317Z] Waiting for deployment... (12/12)
+[2026-05-17T11:37:09.468Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-17T11:37:09.468Z] === Complete ===
+[2026-05-17T11:37:09.468Z] Title: Task Management in 2026: What's Actually Working
+[2026-05-17T11:37:09.468Z] Slug: task-management-in-2026-what-s-actually-working
+[2026-05-17T11:37:09.468Z] Category: automation
+[2026-05-17T11:37:09.468Z] Keyword: automation
+[2026-05-18T11:30:00.318Z] === Daily Article Generator v2 Started ===
+[2026-05-18T11:30:00.320Z] Date: 2026-05-18
+[2026-05-18T11:30:00.325Z] Starting research phase...
+[2026-05-18T11:30:00.329Z] Researching keywords for: automation...
+[2026-05-18T11:30:00.337Z] Research complete: "Event-Driven Architecture: When It Actually Helps" (automation)
+[2026-05-18T11:30:00.337Z] Primary keyword: automation
+[2026-05-18T11:30:00.337Z] Generating article content...
+[2026-05-18T11:30:00.338Z] Using Codex model: gpt-5.4
+[2026-05-18T11:30:03.575Z] Codex generation error with model gpt-5.4: Reading additional input from stdin...
+OpenAI Codex v0.131.0-alpha.9
+--------
+workdir: /Users/kevinsimac/.openclaw/workspace/decryptica
+model: gpt-5.4
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, /Users/kevinsimac/.codex/memories]
+reasoning effort: high
+reasoning summaries: none
+session id: 019e3ad9-9e98-7740-9c4e-813836bd2770
+--------
+user
+You are writing for Decryptica, an automation blog. Focus on workflow patterns, tool comparisons, scalability considerations, and implementation tips. Be specific about tools, integrations, and trade-offs.
+
+Write a complete, SEO-optimized article for Decryptica with the exact title: "Event-Driven Architecture: When It Actually Helps"
+
+Hard requirements:
+- Minimum 1,800 words
+- Strong opening hook, then a bold **TL;DR** section near the top
+- Use markdown with H2 and H3 headings
+- Be specific, not generic
+- No filler, no placeholder phrasing, no meta commentary about being an AI
+- Include concrete examples, protocol references, and mechanism-level explanation where relevant
+- End with a FAQ section with 3 useful questions and answers
+- End with a section exactly titled "## The Bottom Line"
+- End with this disclaimer exactly: "*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*"
+- Keep the tone sharp, confident, and readable
+- Optimize naturally for the primary keyword without stuffing
+
+Topic metadata:
+- Title: Event-Driven Architecture: When It Actually Helps
+- Primary keyword: automation
+- Category: automation
+- Date: 2026-05-18
+
+Special instruction for this title:
+If the title is about AMMs, explain why AMMs remain structurally important despite orderbook growth and intent-based routing. Cover liquidity fragmentation, long-tail assets, passive market making, LP economics, concentrated liquidity, MEV/arbitrage, and where AMMs are actually weak.
+
+Return only the final article in markdown.
+2026-05-18T11:30:01.419077Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer error=\"invalid_token\", error_description=\"No authorization provided\", resource_metadata=\"https://mcp.vercel.com/.well-known/oauth-protected-resource\"" })
+ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at May 23rd, 2026 5:11 PM.
+ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at May 23rd, 2026 5:11 PM., using fallback content
+[2026-05-18T11:30:03.577Z] Article generated: "Event-Driven Architecture: When It Actually Helps"
+[2026-05-18T11:30:03.578Z] Adding article to articles.ts...
+[2026-05-18T11:30:03.583Z] Article added to file
+[2026-05-18T11:30:03.583Z] Committing and pushing to GitHub...
+[2026-05-18T11:30:05.385Z] Pushed to GitHub successfully
+[2026-05-18T11:30:05.385Z] Sending Telegram notification...
+[2026-05-18T11:30:05.385Z] Telegram bot token not configured, skipping notification
+[2026-05-18T11:30:05.386Z] Waiting for Vercel deployment...
+[2026-05-18T11:30:05.569Z] Waiting for deployment... (1/12)
+[2026-05-18T11:30:20.845Z] Waiting for deployment... (2/12)
+[2026-05-18T11:30:36.123Z] Waiting for deployment... (3/12)
+[2026-05-18T11:30:51.322Z] Waiting for deployment... (4/12)
+[2026-05-18T11:31:06.591Z] Waiting for deployment... (5/12)
+[2026-05-18T11:31:21.810Z] Waiting for deployment... (6/12)
+[2026-05-18T11:31:37.203Z] Waiting for deployment... (7/12)
+[2026-05-18T11:31:52.433Z] Waiting for deployment... (8/12)
+[2026-05-18T11:32:07.748Z] Waiting for deployment... (9/12)
+[2026-05-18T11:32:23.002Z] Waiting for deployment... (10/12)
+[2026-05-18T11:32:38.274Z] Waiting for deployment... (11/12)
+[2026-05-18T11:32:53.581Z] Waiting for deployment... (12/12)
+[2026-05-18T11:33:08.684Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-18T11:33:08.685Z] === Complete ===
+[2026-05-18T11:33:08.685Z] Title: Event-Driven Architecture: When It Actually Helps
+[2026-05-18T11:33:08.685Z] Slug: event-driven-architecture-when-it-actually-helps
+[2026-05-18T11:33:08.685Z] Category: automation
+[2026-05-18T11:33:08.685Z] Keyword: automation
+[2026-05-19T11:30:00.993Z] === Daily Article Generator v2 Started ===
+[2026-05-19T11:30:00.996Z] Date: 2026-05-19
+[2026-05-19T11:30:01.002Z] Starting research phase...
+[2026-05-19T11:30:01.007Z] Researching keywords for: automation...
+[2026-05-19T11:30:01.016Z] Research complete: "Why Developer Portals Are Getting Worse" (automation)
+[2026-05-19T11:30:01.016Z] Primary keyword: automation
+[2026-05-19T11:30:01.016Z] Generating article content...
+[2026-05-19T11:30:01.017Z] Using Codex model: gpt-5.4
+[2026-05-19T11:30:06.733Z] Codex generation error with model gpt-5.4: Reading additional input from stdin...
+OpenAI Codex v0.131.0-alpha.9
+--------
+workdir: /Users/kevinsimac/.openclaw/workspace/decryptica
+model: gpt-5.4
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, /Users/kevinsimac/.codex/memories]
+reasoning effort: high
+reasoning summaries: none
+session id: 019e4000-0756-72b0-b80f-8232d50bf19f
+--------
+user
+You are writing for Decryptica, an automation blog. Focus on workflow patterns, tool comparisons, scalability considerations, and implementation tips. Be specific about tools, integrations, and trade-offs.
+
+Write a complete, SEO-optimized article for Decryptica with the exact title: "Why Developer Portals Are Getting Worse"
+
+Hard requirements:
+- Minimum 1,800 words
+- Strong opening hook, then a bold **TL;DR** section near the top
+- Use markdown with H2 and H3 headings
+- Be specific, not generic
+- No filler, no placeholder phrasing, no meta commentary about being an AI
+- Include concrete examples, protocol references, and mechanism-level explanation where relevant
+- End with a FAQ section with 3 useful questions and answers
+- End with a section exactly titled "## The Bottom Line"
+- End with this disclaimer exactly: "*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*"
+- Keep the tone sharp, confident, and readable
+- Optimize naturally for the primary keyword without stuffing
+
+Topic metadata:
+- Title: Why Developer Portals Are Getting Worse
+- Primary keyword: automation
+- Category: automation
+- Date: 2026-05-19
+
+Special instruction for this title:
+If the title is about AMMs, explain why AMMs remain structurally important despite orderbook growth and intent-based routing. Cover liquidity fragmentation, long-tail assets, passive market making, LP economics, concentrated liquidity, MEV/arbitrage, and where AMMs are actually weak.
+
+Return only the final article in markdown.
+2026-05-19T11:30:04.689850Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer error=\"invalid_token\", error_description=\"No authorization provided\", resource_metadata=\"https://mcp.vercel.com/.well-known/oauth-protected-resource\"" })
+ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at May 23rd, 2026 5:11 PM.
+ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at May 23rd, 2026 5:11 PM., using fallback content
+[2026-05-19T11:30:06.735Z] Article generated: "Why Developer Portals Are Getting Worse"
+[2026-05-19T11:30:06.735Z] Adding article to articles.ts...
+[2026-05-19T11:30:06.740Z] Article added to file
+[2026-05-19T11:30:06.740Z] Committing and pushing to GitHub...
+[2026-05-19T11:30:08.380Z] Pushed to GitHub successfully
+[2026-05-19T11:30:08.380Z] Sending Telegram notification...
+[2026-05-19T11:30:08.380Z] Telegram bot token not configured, skipping notification
+[2026-05-19T11:30:08.380Z] Waiting for Vercel deployment...
+[2026-05-19T11:30:08.533Z] Waiting for deployment... (1/12)
+[2026-05-19T11:30:23.687Z] Waiting for deployment... (2/12)
+[2026-05-19T11:30:38.933Z] Waiting for deployment... (3/12)
+[2026-05-19T11:30:54.196Z] Waiting for deployment... (4/12)
+[2026-05-19T11:31:09.391Z] Waiting for deployment... (5/12)
+[2026-05-19T11:31:24.619Z] Waiting for deployment... (6/12)
+[2026-05-19T11:31:40.022Z] Waiting for deployment... (7/12)
+[2026-05-19T11:31:55.357Z] Waiting for deployment... (8/12)
+[2026-05-19T11:32:10.602Z] Waiting for deployment... (9/12)
+[2026-05-19T11:32:25.806Z] Waiting for deployment... (10/12)
+[2026-05-19T11:32:41.059Z] Waiting for deployment... (11/12)
+[2026-05-19T11:32:56.351Z] Waiting for deployment... (12/12)
+[2026-05-19T11:33:11.461Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-19T11:33:11.461Z] === Complete ===
+[2026-05-19T11:33:11.461Z] Title: Why Developer Portals Are Getting Worse
+[2026-05-19T11:33:11.461Z] Slug: why-developer-portals-are-getting-worse
+[2026-05-19T11:33:11.461Z] Category: automation
+[2026-05-19T11:33:11.461Z] Keyword: automation
+[2026-05-20T11:30:00.950Z] === Daily Article Generator v2 Started ===
+[2026-05-20T11:30:00.953Z] Date: 2026-05-20
+[2026-05-20T11:30:00.957Z] Starting research phase...
+[2026-05-20T11:30:00.962Z] Researching keywords for: automation...
+[2026-05-20T11:30:00.970Z] Research complete: "Zapier vs Make: Which Automation Tool Wins?" (automation)
+[2026-05-20T11:30:00.970Z] Primary keyword: zapier automation
+[2026-05-20T11:30:00.971Z] Generating article content...
+[2026-05-20T11:30:00.972Z] Using Codex model: gpt-5.4
+[2026-05-20T11:31:32.448Z] Content generated with Codex: 3101 words
+[2026-05-20T11:31:32.451Z] Article generated: "Zapier vs Make: Which Automation Tool Wins?"
+[2026-05-20T11:31:32.452Z] Adding article to articles.ts...
+[2026-05-20T11:31:32.458Z] Article added to file
+[2026-05-20T11:31:32.458Z] Committing and pushing to GitHub...
+[2026-05-20T11:31:34.090Z] Pushed to GitHub successfully
+[2026-05-20T11:31:34.090Z] Sending Telegram notification...
+[2026-05-20T11:31:34.090Z] Telegram bot token not configured, skipping notification
+[2026-05-20T11:31:34.090Z] Waiting for Vercel deployment...
+[2026-05-20T11:31:34.250Z] Waiting for deployment... (1/12)
+[2026-05-20T11:31:49.541Z] Waiting for deployment... (2/12)
+[2026-05-20T11:32:04.697Z] Waiting for deployment... (3/12)
+[2026-05-20T11:32:19.965Z] Waiting for deployment... (4/12)
+[2026-05-20T11:32:35.203Z] Waiting for deployment... (5/12)
+[2026-05-20T11:32:50.379Z] Waiting for deployment... (6/12)
+[2026-05-20T11:33:05.574Z] Waiting for deployment... (7/12)
+[2026-05-20T11:33:20.856Z] Waiting for deployment... (8/12)
+[2026-05-20T11:33:36.093Z] Waiting for deployment... (9/12)
+[2026-05-20T11:33:51.377Z] Waiting for deployment... (10/12)
+[2026-05-20T11:34:06.696Z] Waiting for deployment... (11/12)
+[2026-05-20T11:34:21.927Z] Waiting for deployment... (12/12)
+[2026-05-20T11:34:37.042Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-20T11:34:37.042Z] === Complete ===
+[2026-05-20T11:34:37.042Z] Title: Zapier vs Make: Which Automation Tool Wins?
+[2026-05-20T11:34:37.042Z] Slug: zapier-vs-make-which-automation-tool-wins
+[2026-05-20T11:34:37.042Z] Category: automation
+[2026-05-20T11:34:37.042Z] Keyword: zapier automation
+[2026-05-21T11:30:00.727Z] === Daily Article Generator v2 Started ===
+[2026-05-21T11:30:00.731Z] Date: 2026-05-21
+[2026-05-21T11:30:00.735Z] Starting research phase...
+[2026-05-21T11:30:00.739Z] Researching keywords for: automation...
+[2026-05-21T11:30:00.748Z] Research complete: "The Webhook Reliability Problem Nobody Fixes" (automation)
+[2026-05-21T11:30:00.748Z] Primary keyword: automation
+[2026-05-21T11:30:00.748Z] Generating article content...
+[2026-05-21T11:30:00.749Z] Using Codex model: gpt-5.4
+[2026-05-21T11:31:31.629Z] Content generated with Codex: 3315 words
+[2026-05-21T11:31:31.632Z] Article generated: "The Webhook Reliability Problem Nobody Fixes"
+[2026-05-21T11:31:31.633Z] Adding article to articles.ts...
+[2026-05-21T11:31:31.639Z] Article added to file
+[2026-05-21T11:31:31.639Z] Committing and pushing to GitHub...
+[2026-05-21T11:31:33.219Z] Pushed to GitHub successfully
+[2026-05-21T11:31:33.219Z] Sending Telegram notification...
+[2026-05-21T11:31:33.219Z] Telegram bot token not configured, skipping notification
+[2026-05-21T11:31:33.219Z] Waiting for Vercel deployment...
+[2026-05-21T11:31:33.564Z] Waiting for deployment... (1/12)
+[2026-05-21T11:31:48.816Z] Waiting for deployment... (2/12)
+[2026-05-21T11:32:03.970Z] Waiting for deployment... (3/12)
+[2026-05-21T11:32:19.262Z] Waiting for deployment... (4/12)
+[2026-05-21T11:32:34.490Z] Waiting for deployment... (5/12)
+[2026-05-21T11:32:49.689Z] Waiting for deployment... (6/12)
+[2026-05-21T11:33:05.050Z] Waiting for deployment... (7/12)
+[2026-05-21T11:33:20.357Z] Waiting for deployment... (8/12)
+[2026-05-21T11:33:35.689Z] Waiting for deployment... (9/12)
+[2026-05-21T11:33:50.959Z] Waiting for deployment... (10/12)
+[2026-05-21T11:34:06.256Z] Waiting for deployment... (11/12)
+[2026-05-21T11:34:21.551Z] Waiting for deployment... (12/12)
+[2026-05-21T11:34:36.566Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-21T11:34:36.566Z] === Complete ===
+[2026-05-21T11:34:36.566Z] Title: The Webhook Reliability Problem Nobody Fixes
+[2026-05-21T11:34:36.566Z] Slug: the-webhook-reliability-problem-nobody-fixes
+[2026-05-21T11:34:36.566Z] Category: automation
+[2026-05-21T11:34:36.566Z] Keyword: automation
+[2026-05-22T11:30:00.495Z] === Daily Article Generator v2 Started ===
+[2026-05-22T11:30:00.499Z] Date: 2026-05-22
+[2026-05-22T11:30:00.503Z] Starting research phase...
+[2026-05-22T11:30:00.507Z] Researching keywords for: automation...
+[2026-05-22T11:30:00.516Z] Research complete: "Why Your Integration Architecture Matters" (automation)
+[2026-05-22T11:30:00.516Z] Primary keyword: automation
+[2026-05-22T11:30:00.516Z] Generating article content...
+[2026-05-22T11:30:00.517Z] Using Codex model: gpt-5.4
+[2026-05-22T11:31:28.099Z] Content generated with Codex: 3250 words
+[2026-05-22T11:31:28.101Z] Article generated: "Why Your Integration Architecture Matters"
+[2026-05-22T11:31:28.102Z] Adding article to articles.ts...
+[2026-05-22T11:31:28.108Z] Article added to file
+[2026-05-22T11:31:28.109Z] Committing and pushing to GitHub...
+[2026-05-22T11:31:29.702Z] Pushed to GitHub successfully
+[2026-05-22T11:31:29.702Z] Sending Telegram notification...
+[2026-05-22T11:31:29.702Z] Telegram bot token not configured, skipping notification
+[2026-05-22T11:31:29.702Z] Waiting for Vercel deployment...
+[2026-05-22T11:31:29.874Z] Waiting for deployment... (1/12)
+[2026-05-22T11:31:45.147Z] Waiting for deployment... (2/12)
+[2026-05-22T11:32:00.412Z] Waiting for deployment... (3/12)
+[2026-05-22T11:32:15.621Z] Waiting for deployment... (4/12)
+[2026-05-22T11:32:30.907Z] Waiting for deployment... (5/12)
+[2026-05-22T11:32:46.158Z] Waiting for deployment... (6/12)
+[2026-05-22T11:33:01.351Z] Waiting for deployment... (7/12)
+[2026-05-22T11:33:16.636Z] Waiting for deployment... (8/12)
+[2026-05-22T11:33:31.979Z] Waiting for deployment... (9/12)
+[2026-05-22T11:33:47.317Z] Waiting for deployment... (10/12)
+[2026-05-22T11:34:02.593Z] Waiting for deployment... (11/12)
+[2026-05-22T11:34:17.934Z] Waiting for deployment... (12/12)
+[2026-05-22T11:34:33.097Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-22T11:34:33.097Z] === Complete ===
+[2026-05-22T11:34:33.097Z] Title: Why Your Integration Architecture Matters
+[2026-05-22T11:34:33.097Z] Slug: why-your-integration-architecture-matters
+[2026-05-22T11:34:33.097Z] Category: automation
+[2026-05-22T11:34:33.097Z] Keyword: automation
+[2026-05-23T11:30:00.420Z] === Daily Article Generator v2 Started ===
+[2026-05-23T11:30:00.424Z] Date: 2026-05-23
+[2026-05-23T11:30:00.428Z] Starting research phase...
+[2026-05-23T11:30:00.432Z] Researching keywords for: automation...
+[2026-05-23T11:30:00.442Z] Research complete: "The API Tools Actually Worth Your Time" (automation)
+[2026-05-23T11:30:00.442Z] Primary keyword: api tools
+[2026-05-23T11:30:00.442Z] Generating article content...
+[2026-05-23T11:30:00.444Z] Using Codex model: gpt-5.4
+[2026-05-23T11:33:12.293Z] Content generated with Codex: 2637 words
+[2026-05-23T11:33:12.296Z] Article generated: "The API Tools Actually Worth Your Time"
+[2026-05-23T11:33:12.297Z] Adding article to articles.ts...
+[2026-05-23T11:33:12.305Z] Article added to file
+[2026-05-23T11:33:12.305Z] Committing and pushing to GitHub...
+[2026-05-23T11:33:13.657Z] Pushed to GitHub successfully
+[2026-05-23T11:33:13.657Z] Sending Telegram notification...
+[2026-05-23T11:33:13.658Z] Telegram bot token not configured, skipping notification
+[2026-05-23T11:33:13.658Z] Waiting for Vercel deployment...
+[2026-05-23T11:33:13.872Z] Waiting for deployment... (1/12)
+[2026-05-23T11:33:29.137Z] Waiting for deployment... (2/12)
+[2026-05-23T11:33:44.418Z] Waiting for deployment... (3/12)
+[2026-05-23T11:33:59.670Z] Waiting for deployment... (4/12)
+[2026-05-23T11:34:14.930Z] Waiting for deployment... (5/12)
+[2026-05-23T11:34:30.130Z] Waiting for deployment... (6/12)
+[2026-05-23T11:34:45.487Z] Waiting for deployment... (7/12)
+[2026-05-23T11:35:00.708Z] Waiting for deployment... (8/12)
+[2026-05-23T11:35:16.015Z] Waiting for deployment... (9/12)
+[2026-05-23T11:35:31.289Z] Waiting for deployment... (10/12)
+[2026-05-23T11:35:46.675Z] Waiting for deployment... (11/12)
+[2026-05-23T11:36:01.846Z] Waiting for deployment... (12/12)
+[2026-05-23T11:36:16.995Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-23T11:36:16.995Z] === Complete ===
+[2026-05-23T11:36:16.995Z] Title: The API Tools Actually Worth Your Time
+[2026-05-23T11:36:16.995Z] Slug: the-api-tools-actually-worth-your-time
+[2026-05-23T11:36:16.995Z] Category: automation
+[2026-05-23T11:36:16.995Z] Keyword: api tools
+[2026-05-24T11:30:00.964Z] === Daily Article Generator v2 Started ===
+[2026-05-24T11:30:00.968Z] Date: 2026-05-24
+[2026-05-24T11:30:00.976Z] Starting research phase...
+[2026-05-24T11:30:00.981Z] Researching keywords for: automation...
+[2026-05-24T11:30:00.992Z] Research complete: "When to Abandon No-Code for Real Code" (automation)
+[2026-05-24T11:30:00.993Z] Primary keyword: no-code tools
+[2026-05-24T11:30:00.993Z] Generating article content...
+[2026-05-24T11:30:00.994Z] Using Codex model: gpt-5.4
+[2026-05-24T11:32:58.526Z] Content generated with Codex: 3084 words
+[2026-05-24T11:32:58.530Z] Article generated: "When to Abandon No-Code for Real Code"
+[2026-05-24T11:32:58.531Z] Adding article to articles.ts...
+[2026-05-24T11:32:58.541Z] Article added to file
+[2026-05-24T11:32:58.542Z] Committing and pushing to GitHub...
+[2026-05-24T11:32:59.994Z] Pushed to GitHub successfully
+[2026-05-24T11:32:59.995Z] Sending Telegram notification...
+[2026-05-24T11:32:59.995Z] Telegram bot token not configured, skipping notification
+[2026-05-24T11:32:59.995Z] Waiting for Vercel deployment...
+[2026-05-24T11:33:00.160Z] Waiting for deployment... (1/12)
+[2026-05-24T11:33:15.462Z] Waiting for deployment... (2/12)
+[2026-05-24T11:33:30.725Z] Waiting for deployment... (3/12)
+[2026-05-24T11:33:46.004Z] Waiting for deployment... (4/12)
+[2026-05-24T11:34:01.282Z] Waiting for deployment... (5/12)
+[2026-05-24T11:34:16.563Z] Waiting for deployment... (6/12)
+[2026-05-24T11:34:31.858Z] Waiting for deployment... (7/12)
+[2026-05-24T11:34:47.131Z] Waiting for deployment... (8/12)
+[2026-05-24T11:35:02.450Z] Waiting for deployment... (9/12)
+[2026-05-24T11:35:17.783Z] Waiting for deployment... (10/12)
+[2026-05-24T11:35:32.989Z] Waiting for deployment... (11/12)
+[2026-05-24T11:35:48.260Z] Waiting for deployment... (12/12)
+[2026-05-24T11:36:03.415Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-24T11:36:03.415Z] === Complete ===
+[2026-05-24T11:36:03.415Z] Title: When to Abandon No-Code for Real Code
+[2026-05-24T11:36:03.415Z] Slug: when-to-abandon-no-code-for-real-code
+[2026-05-24T11:36:03.415Z] Category: automation
+[2026-05-24T11:36:03.416Z] Keyword: no-code tools
+[2026-05-25T11:30:00.662Z] === Daily Article Generator v2 Started ===
+[2026-05-25T11:30:00.666Z] Date: 2026-05-25
+[2026-05-25T11:30:00.671Z] Starting research phase...
+[2026-05-25T11:30:00.675Z] Researching keywords for: automation...
+[2026-05-25T11:30:00.685Z] Research complete: "The Pomodoro Problem: Why Timers Don't Work" (automation)
+[2026-05-25T11:30:00.685Z] Primary keyword: automation
+[2026-05-25T11:30:00.685Z] Generating article content...
+[2026-05-25T11:30:00.686Z] Using Codex model: gpt-5.4
+[2026-05-25T11:30:04.024Z] Codex generation error with model gpt-5.4: Reading additional input from stdin...
+OpenAI Codex v0.133.0-alpha.1
+--------
+workdir: /Users/kevinsimac/.openclaw/workspace/decryptica
+model: gpt-5.4
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: high
+reasoning summaries: none
+session id: 019e5ee6-239e-7c32-abaa-398151e8a466
+--------
+user
+You are writing for Decryptica, an automation blog. Focus on workflow patterns, tool comparisons, scalability considerations, and implementation tips. Be specific about tools, integrations, and trade-offs.
+
+Write a complete, SEO-optimized article for Decryptica with the exact title: "The Pomodoro Problem: Why Timers Don't Work"
+
+Hard requirements:
+- Minimum 1,800 words
+- Strong opening hook, then a bold **TL;DR** section near the top
+- Use markdown with H2 and H3 headings
+- Be specific, not generic
+- No filler, no placeholder phrasing, no meta commentary about being an AI
+- Include concrete examples, protocol references, and mechanism-level explanation where relevant
+- End with a FAQ section with 3 useful questions and answers
+- End with a section exactly titled "## The Bottom Line"
+- End with this disclaimer exactly: "*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*"
+- Keep the tone sharp, confident, and readable
+- Optimize naturally for the primary keyword without stuffing
+
+Topic metadata:
+- Title: The Pomodoro Problem: Why Timers Don't Work
+- Primary keyword: automation
+- Category: automation
+- Date: 2026-05-25
+
+Special instruction for this title:
+If the title is about AMMs, explain why AMMs remain structurally important despite orderbook growth and intent-based routing. Cover liquidity fragmentation, long-tail assets, passive market making, LP economics, concentrated liquidity, MEV/arbitrage, and where AMMs are actually weak.
+
+Return only the final article in markdown.
+2026-05-25T11:30:02.095875Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer error=\"invalid_token\", error_description=\"No authorization provided\", resource_metadata=\"https://mcp.vercel.com/.well-known/oauth-protected-resource\"" })
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Failed
+hook: SessionStart Failed
+hook: SessionStart Failed
+ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at May 30th, 2026 4:15 PM.
+ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at May 30th, 2026 4:15 PM., using fallback content
+[2026-05-25T11:30:04.026Z] Article generated: "The Pomodoro Problem: Why Timers Don't Work"
+[2026-05-25T11:30:04.026Z] Adding article to articles.ts...
+[2026-05-25T11:30:04.033Z] Article added to file
+[2026-05-25T11:30:04.033Z] Committing and pushing to GitHub...
+[2026-05-25T11:30:05.576Z] Pushed to GitHub successfully
+[2026-05-25T11:30:05.576Z] Sending Telegram notification...
+[2026-05-25T11:30:05.576Z] Telegram bot token not configured, skipping notification
+[2026-05-25T11:30:05.576Z] Waiting for Vercel deployment...
+[2026-05-25T11:30:05.807Z] Waiting for deployment... (1/12)
+[2026-05-25T11:30:21.153Z] Waiting for deployment... (2/12)
+[2026-05-25T11:30:36.499Z] Waiting for deployment... (3/12)
+[2026-05-25T11:30:51.860Z] Waiting for deployment... (4/12)
+[2026-05-25T11:31:07.207Z] Waiting for deployment... (5/12)
+[2026-05-25T11:31:22.560Z] Waiting for deployment... (6/12)
+[2026-05-25T11:31:37.914Z] Waiting for deployment... (7/12)
+[2026-05-25T11:31:53.268Z] Waiting for deployment... (8/12)
+[2026-05-25T11:32:08.668Z] Waiting for deployment... (9/12)
+[2026-05-25T11:32:24.151Z] Waiting for deployment... (10/12)
+[2026-05-25T11:32:39.552Z] Waiting for deployment... (11/12)
+[2026-05-25T11:32:54.913Z] Waiting for deployment... (12/12)
+[2026-05-25T11:33:10.074Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-25T11:33:10.074Z] === Complete ===
+[2026-05-25T11:33:10.074Z] Title: The Pomodoro Problem: Why Timers Don't Work
+[2026-05-25T11:33:10.074Z] Slug: the-pomodoro-problem-why-timers-don-t-work
+[2026-05-25T11:33:10.074Z] Category: automation
+[2026-05-25T11:33:10.074Z] Keyword: automation
+[2026-05-26T11:30:01.104Z] === Daily Article Generator v2 Started ===
+[2026-05-26T11:30:01.106Z] Date: 2026-05-26
+[2026-05-26T11:30:01.112Z] Starting research phase...
+[2026-05-26T11:30:01.119Z] Researching keywords for: automation...
+[2026-05-26T11:30:01.130Z] Research complete: "The ROI of Business Automation: Real Numbers" (automation)
+[2026-05-26T11:30:01.131Z] Primary keyword: automation
+[2026-05-26T11:30:01.131Z] Generating article content...
+[2026-05-26T11:30:01.132Z] Using Codex model: gpt-5.4
+[2026-05-26T11:31:49.287Z] Content generated with Codex: 3331 words
+[2026-05-26T11:31:49.290Z] Article generated: "The ROI of Business Automation: Real Numbers"
+[2026-05-26T11:31:49.291Z] Adding article to articles.ts...
+[2026-05-26T11:31:49.300Z] Article added to file
+[2026-05-26T11:31:49.300Z] Committing and pushing to GitHub...
+[2026-05-26T11:31:50.785Z] Pushed to GitHub successfully
+[2026-05-26T11:31:50.785Z] Sending Telegram notification...
+[2026-05-26T11:31:50.785Z] Telegram bot token not configured, skipping notification
+[2026-05-26T11:31:50.785Z] Waiting for Vercel deployment...
+[2026-05-26T11:31:50.930Z] Waiting for deployment... (1/12)
+[2026-05-26T11:32:06.163Z] Waiting for deployment... (2/12)
+[2026-05-26T11:32:21.407Z] Waiting for deployment... (3/12)
+[2026-05-26T11:32:36.710Z] Waiting for deployment... (4/12)
+[2026-05-26T11:32:51.872Z] Waiting for deployment... (5/12)
+[2026-05-26T11:33:07.182Z] Waiting for deployment... (6/12)
+[2026-05-26T11:33:22.449Z] Waiting for deployment... (7/12)
+[2026-05-26T11:33:37.807Z] Waiting for deployment... (8/12)
+[2026-05-26T11:33:53.030Z] Waiting for deployment... (9/12)
+[2026-05-26T11:34:08.193Z] Waiting for deployment... (10/12)
+[2026-05-26T11:34:23.462Z] Waiting for deployment... (11/12)
+[2026-05-26T11:34:38.712Z] Waiting for deployment... (12/12)
+[2026-05-26T11:34:53.831Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-26T11:34:53.831Z] === Complete ===
+[2026-05-26T11:34:53.831Z] Title: The ROI of Business Automation: Real Numbers
+[2026-05-26T11:34:53.831Z] Slug: the-roi-of-business-automation-real-numbers
+[2026-05-26T11:34:53.831Z] Category: automation
+[2026-05-26T11:34:53.831Z] Keyword: automation
+[2026-05-27T11:30:00.327Z] === Daily Article Generator v2 Started ===
+[2026-05-27T11:30:00.329Z] Date: 2026-05-27
+[2026-05-27T11:30:00.336Z] Starting research phase...
+[2026-05-27T11:30:00.341Z] Researching keywords for: automation...
+[2026-05-27T11:30:00.351Z] Research complete: "The No-Code Ceiling: When Tools Hit Their Limit" (automation)
+[2026-05-27T11:30:00.352Z] Primary keyword: no-code tools
+[2026-05-27T11:30:00.352Z] Generating article content...
+[2026-05-27T11:30:00.352Z] Using Codex model: gpt-5.4
+[2026-05-27T11:32:13.042Z] Content generated with Codex: 3175 words
+[2026-05-27T11:32:13.044Z] Article generated: "The No-Code Ceiling: When Tools Hit Their Limit"
+[2026-05-27T11:32:13.045Z] Adding article to articles.ts...
+[2026-05-27T11:32:13.051Z] Article added to file
+[2026-05-27T11:32:13.051Z] Committing and pushing to GitHub...
+[2026-05-27T11:32:14.908Z] Pushed to GitHub successfully
+[2026-05-27T11:32:14.908Z] Sending Telegram notification...
+[2026-05-27T11:32:14.908Z] Telegram bot token not configured, skipping notification
+[2026-05-27T11:32:14.908Z] Waiting for Vercel deployment...
+[2026-05-27T11:32:15.062Z] Waiting for deployment... (1/12)
+[2026-05-27T11:32:30.277Z] Waiting for deployment... (2/12)
+[2026-05-27T11:32:45.456Z] Waiting for deployment... (3/12)
+[2026-05-27T11:33:00.764Z] Waiting for deployment... (4/12)
+[2026-05-27T11:33:16.080Z] Waiting for deployment... (5/12)
+[2026-05-27T11:33:31.344Z] Waiting for deployment... (6/12)
+[2026-05-27T11:33:46.679Z] Waiting for deployment... (7/12)
+[2026-05-27T11:34:01.905Z] Waiting for deployment... (8/12)
+[2026-05-27T11:34:17.124Z] Waiting for deployment... (9/12)
+[2026-05-27T11:34:32.361Z] Waiting for deployment... (10/12)
+[2026-05-27T11:34:47.584Z] Waiting for deployment... (11/12)
+[2026-05-27T11:35:02.811Z] Waiting for deployment... (12/12)
+[2026-05-27T11:35:17.938Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-27T11:35:17.939Z] === Complete ===
+[2026-05-27T11:35:17.939Z] Title: The No-Code Ceiling: When Tools Hit Their Limit
+[2026-05-27T11:35:17.939Z] Slug: the-no-code-ceiling-when-tools-hit-their-limit
+[2026-05-27T11:35:17.939Z] Category: automation
+[2026-05-27T11:35:17.939Z] Keyword: no-code tools
+[2026-05-28T11:30:00.805Z] === Daily Article Generator v2 Started ===
+[2026-05-28T11:30:00.808Z] Date: 2026-05-28
+[2026-05-28T11:30:00.815Z] Starting research phase...
+[2026-05-28T11:30:00.820Z] Researching keywords for: automation...
+[2026-05-28T11:30:00.832Z] Research complete: "Why Most Automation Projects Fail at Scale" (automation)
+[2026-05-28T11:30:00.832Z] Primary keyword: automation
+[2026-05-28T11:30:00.832Z] Generating article content...
+[2026-05-28T11:30:00.833Z] Using Codex model: gpt-5.4
+[2026-05-28T11:31:32.086Z] Content generated with Codex: 3328 words
+[2026-05-28T11:31:32.088Z] Article generated: "Why Most Automation Projects Fail at Scale"
+[2026-05-28T11:31:32.089Z] Adding article to articles.ts...
+[2026-05-28T11:31:32.095Z] Article added to file
+[2026-05-28T11:31:32.095Z] Committing and pushing to GitHub...
+[2026-05-28T11:31:34.100Z] Pushed to GitHub successfully
+[2026-05-28T11:31:34.100Z] Sending Telegram notification...
+[2026-05-28T11:31:34.100Z] Telegram bot token not configured, skipping notification
+[2026-05-28T11:31:34.100Z] Waiting for Vercel deployment...
+[2026-05-28T11:31:34.257Z] Waiting for deployment... (1/12)
+[2026-05-28T11:31:49.524Z] Waiting for deployment... (2/12)
+[2026-05-28T11:32:04.772Z] Waiting for deployment... (3/12)
+[2026-05-28T11:32:20.092Z] Waiting for deployment... (4/12)
+[2026-05-28T11:32:35.329Z] Waiting for deployment... (5/12)
+[2026-05-28T11:32:50.532Z] Waiting for deployment... (6/12)
+[2026-05-28T11:33:05.745Z] Waiting for deployment... (7/12)
+[2026-05-28T11:33:20.972Z] Waiting for deployment... (8/12)
+[2026-05-28T11:33:36.163Z] Waiting for deployment... (9/12)
+[2026-05-28T11:33:51.296Z] Waiting for deployment... (10/12)
+[2026-05-28T11:34:06.562Z] Waiting for deployment... (11/12)
+[2026-05-28T11:34:21.737Z] Waiting for deployment... (12/12)
+[2026-05-28T11:34:36.833Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-28T11:34:36.833Z] === Complete ===
+[2026-05-28T11:34:36.833Z] Title: Why Most Automation Projects Fail at Scale
+[2026-05-28T11:34:36.833Z] Slug: why-most-automation-projects-fail-at-scale
+[2026-05-28T11:34:36.833Z] Category: automation
+[2026-05-28T11:34:36.833Z] Keyword: automation
+[2026-05-29T11:30:00.946Z] === Daily Article Generator v2 Started ===
+[2026-05-29T11:30:00.950Z] Date: 2026-05-29
+[2026-05-29T11:30:00.957Z] Starting research phase...
+[2026-05-29T11:30:00.963Z] Researching keywords for: automation...
+[2026-05-29T11:30:00.975Z] Research complete: "Why Bubble.io Is Both Winning and Losing" (automation)
+[2026-05-29T11:30:00.975Z] Primary keyword: bubble.io
+[2026-05-29T11:30:00.975Z] Generating article content...
+[2026-05-29T11:30:00.976Z] Using Codex model: gpt-5.4
+[2026-05-29T11:32:58.571Z] Content generated with Codex: 2914 words
+[2026-05-29T11:32:58.574Z] Article generated: "Why Bubble.io Is Both Winning and Losing"
+[2026-05-29T11:32:58.576Z] Adding article to articles.ts...
+[2026-05-29T11:32:58.585Z] Article added to file
+[2026-05-29T11:32:58.585Z] Committing and pushing to GitHub...
+[2026-05-29T11:33:00.116Z] Pushed to GitHub successfully
+[2026-05-29T11:33:00.116Z] Sending Telegram notification...
+[2026-05-29T11:33:00.117Z] Telegram bot token not configured, skipping notification
+[2026-05-29T11:33:00.117Z] Waiting for Vercel deployment...
+[2026-05-29T11:33:00.268Z] Waiting for deployment... (1/12)
+[2026-05-29T11:33:15.540Z] Waiting for deployment... (2/12)
+[2026-05-29T11:33:30.748Z] Waiting for deployment... (3/12)
+[2026-05-29T11:33:45.963Z] Waiting for deployment... (4/12)
+[2026-05-29T11:34:01.092Z] Waiting for deployment... (5/12)
+[2026-05-29T11:34:16.370Z] Waiting for deployment... (6/12)
+[2026-05-29T11:34:31.675Z] Waiting for deployment... (7/12)
+[2026-05-29T11:34:47.046Z] Waiting for deployment... (8/12)
+[2026-05-29T11:35:02.392Z] Waiting for deployment... (9/12)
+[2026-05-29T11:35:17.629Z] Waiting for deployment... (10/12)
+[2026-05-29T11:35:32.940Z] Waiting for deployment... (11/12)
+[2026-05-29T11:35:48.064Z] Waiting for deployment... (12/12)
+[2026-05-29T11:36:03.185Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-29T11:36:03.186Z] === Complete ===
+[2026-05-29T11:36:03.186Z] Title: Why Bubble.io Is Both Winning and Losing
+[2026-05-29T11:36:03.186Z] Slug: why-bubble-io-is-both-winning-and-losing
+[2026-05-29T11:36:03.186Z] Category: automation
+[2026-05-29T11:36:03.186Z] Keyword: bubble.io
+[2026-05-30T11:30:00.996Z] === Daily Article Generator v2 Started ===
+[2026-05-30T11:30:00.999Z] Date: 2026-05-30
+[2026-05-30T11:30:01.005Z] Starting research phase...
+[2026-05-30T11:30:01.010Z] Researching keywords for: automation...
+[2026-05-30T11:30:01.020Z] Research complete: "The Human-in-the-Loop Problem for Automation" (automation)
+[2026-05-30T11:30:01.020Z] Primary keyword: automation
+[2026-05-30T11:30:01.020Z] Generating article content...
+[2026-05-30T11:30:01.021Z] Using Codex model: gpt-5.4
+[2026-05-30T11:31:26.592Z] Content generated with Codex: 3099 words
+[2026-05-30T11:31:26.594Z] Article generated: "The Human-in-the-Loop Problem for Automation"
+[2026-05-30T11:31:26.596Z] Adding article to articles.ts...
+[2026-05-30T11:31:26.605Z] Article added to file
+[2026-05-30T11:31:26.605Z] Committing and pushing to GitHub...
+[2026-05-30T11:31:28.082Z] Pushed to GitHub successfully
+[2026-05-30T11:31:28.082Z] Sending Telegram notification...
+[2026-05-30T11:31:28.082Z] Telegram bot token not configured, skipping notification
+[2026-05-30T11:31:28.082Z] Waiting for Vercel deployment...
+[2026-05-30T11:31:28.224Z] Waiting for deployment... (1/12)
+[2026-05-30T11:31:43.431Z] Waiting for deployment... (2/12)
+[2026-05-30T11:31:58.715Z] Waiting for deployment... (3/12)
+[2026-05-30T11:32:13.954Z] Waiting for deployment... (4/12)
+[2026-05-30T11:32:29.259Z] Waiting for deployment... (5/12)
+[2026-05-30T11:32:44.491Z] Waiting for deployment... (6/12)
+[2026-05-30T11:32:59.663Z] Waiting for deployment... (7/12)
+[2026-05-30T11:33:14.977Z] Waiting for deployment... (8/12)
+[2026-05-30T11:33:30.154Z] Waiting for deployment... (9/12)
+[2026-05-30T11:33:45.401Z] Waiting for deployment... (10/12)
+[2026-05-30T11:34:00.603Z] Waiting for deployment... (11/12)
+[2026-05-30T11:34:15.874Z] Waiting for deployment... (12/12)
+[2026-05-30T11:34:30.930Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-30T11:34:30.930Z] === Complete ===
+[2026-05-30T11:34:30.930Z] Title: The Human-in-the-Loop Problem for Automation
+[2026-05-30T11:34:30.930Z] Slug: the-human-in-the-loop-problem-for-automation
+[2026-05-30T11:34:30.930Z] Category: automation
+[2026-05-30T11:34:30.930Z] Keyword: automation
+[2026-05-31T11:30:01.146Z] === Daily Article Generator v2 Started ===
+[2026-05-31T11:30:01.150Z] Date: 2026-05-31
+[2026-05-31T11:30:01.157Z] Starting research phase...
+[2026-05-31T11:30:01.163Z] Researching keywords for: automation...
+[2026-05-31T11:30:01.176Z] Research complete: "Process Mining: Finding Automation Opportunities" (automation)
+[2026-05-31T11:30:01.176Z] Primary keyword: automation
+[2026-05-31T11:30:01.176Z] Generating article content...
+[2026-05-31T11:30:01.177Z] Using Codex model: gpt-5.4
+[2026-05-31T11:34:38.091Z] Content generated with Codex: 2867 words
+[2026-05-31T11:34:38.095Z] Article generated: "Process Mining: Finding Automation Opportunities"
+[2026-05-31T11:34:38.095Z] Adding article to articles.ts...
+[2026-05-31T11:34:38.105Z] Article added to file
+[2026-05-31T11:34:38.106Z] Committing and pushing to GitHub...
+[2026-05-31T11:34:39.455Z] Pushed to GitHub successfully
+[2026-05-31T11:34:39.455Z] Sending Telegram notification...
+[2026-05-31T11:34:39.455Z] Telegram bot token not configured, skipping notification
+[2026-05-31T11:34:39.456Z] Waiting for Vercel deployment...
+[2026-05-31T11:34:39.607Z] Waiting for deployment... (1/12)
+[2026-05-31T11:34:54.778Z] Waiting for deployment... (2/12)
+[2026-05-31T11:35:10.041Z] Waiting for deployment... (3/12)
+[2026-05-31T11:35:25.210Z] Waiting for deployment... (4/12)
+[2026-05-31T11:35:40.524Z] Waiting for deployment... (5/12)
+[2026-05-31T11:35:55.829Z] Waiting for deployment... (6/12)
+[2026-05-31T11:36:11.081Z] Waiting for deployment... (7/12)
+[2026-05-31T11:36:26.250Z] Waiting for deployment... (8/12)
+[2026-05-31T11:36:41.568Z] Waiting for deployment... (9/12)
+[2026-05-31T11:36:56.883Z] Waiting for deployment... (10/12)
+[2026-05-31T11:37:12.062Z] Waiting for deployment... (11/12)
+[2026-05-31T11:37:27.309Z] Waiting for deployment... (12/12)
+[2026-05-31T11:37:42.446Z] Deployment check timed out, but article was pushed to GitHub
+[2026-05-31T11:37:42.446Z] === Complete ===
+[2026-05-31T11:37:42.446Z] Title: Process Mining: Finding Automation Opportunities
+[2026-05-31T11:37:42.446Z] Slug: process-mining-finding-automation-opportunities
+[2026-05-31T11:37:42.446Z] Category: automation
+[2026-05-31T11:37:42.446Z] Keyword: automation
+[2026-06-01T11:30:00.848Z] === Daily Article Generator v2 Started ===
+[2026-06-01T11:30:00.851Z] Date: 2026-06-01
+[2026-06-01T11:30:00.859Z] Starting research phase...
+[2026-06-01T11:30:00.865Z] Researching keywords for: automation...
+[2026-06-01T11:30:00.879Z] Research complete: "The Productivity System That Actually Works" (automation)
+[2026-06-01T11:30:00.879Z] Primary keyword: automation
+[2026-06-01T11:30:00.879Z] Generating article content...
+[2026-06-01T11:30:00.880Z] Using Codex model: gpt-5.4
+[2026-06-01T11:31:51.373Z] Content generated with Codex: 3061 words
+[2026-06-01T11:31:51.375Z] Article generated: "The Productivity System That Actually Works"
+[2026-06-01T11:31:51.375Z] Adding article to articles.ts...
+[2026-06-01T11:31:51.385Z] Article added to file
+[2026-06-01T11:31:51.385Z] Committing and pushing to GitHub...
+[2026-06-01T11:31:53.030Z] Pushed to GitHub successfully
+[2026-06-01T11:31:53.031Z] Sending Telegram notification...
+[2026-06-01T11:31:53.031Z] Telegram bot token not configured, skipping notification
+[2026-06-01T11:31:53.031Z] Waiting for Vercel deployment...
+[2026-06-01T11:31:53.226Z] Waiting for deployment... (1/12)
+[2026-06-01T11:32:08.450Z] Waiting for deployment... (2/12)
+[2026-06-01T11:32:23.661Z] Waiting for deployment... (3/12)
+[2026-06-01T11:32:38.810Z] Waiting for deployment... (4/12)
+[2026-06-01T11:32:54.134Z] Waiting for deployment... (5/12)
+[2026-06-01T11:33:09.412Z] Waiting for deployment... (6/12)
+[2026-06-01T11:33:24.697Z] Waiting for deployment... (7/12)
+[2026-06-01T11:33:39.925Z] Waiting for deployment... (8/12)
+[2026-06-01T11:33:55.185Z] Waiting for deployment... (9/12)
+[2026-06-01T11:34:10.445Z] Waiting for deployment... (10/12)
+[2026-06-01T11:34:25.676Z] Waiting for deployment... (11/12)
+[2026-06-01T11:34:40.934Z] Waiting for deployment... (12/12)
+[2026-06-01T11:34:56.085Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-01T11:34:56.085Z] === Complete ===
+[2026-06-01T11:34:56.085Z] Title: The Productivity System That Actually Works
+[2026-06-01T11:34:56.085Z] Slug: the-productivity-system-that-actually-works
+[2026-06-01T11:34:56.085Z] Category: automation
+[2026-06-01T11:34:56.085Z] Keyword: automation
+[2026-06-02T11:30:00.712Z] === Daily Article Generator v2 Started ===
+[2026-06-02T11:30:00.717Z] Date: 2026-06-02
+[2026-06-02T11:30:00.724Z] Starting research phase...
+[2026-06-02T11:30:00.730Z] Researching keywords for: automation...
+[2026-06-02T11:30:00.743Z] Research complete: "The State of API Documentation in 2026" (automation)
+[2026-06-02T11:30:00.744Z] Primary keyword: api tools
+[2026-06-02T11:30:00.744Z] Generating article content...
+[2026-06-02T11:30:00.745Z] Using Codex model: gpt-5.4
+[2026-06-02T11:33:19.538Z] Content generated with Codex: 3023 words
+[2026-06-02T11:33:19.540Z] Article generated: "The State of API Documentation in 2026"
+[2026-06-02T11:33:19.541Z] Adding article to articles.ts...
+[2026-06-02T11:33:19.551Z] Article added to file
+[2026-06-02T11:33:19.551Z] Committing and pushing to GitHub...
+[2026-06-02T11:33:21.178Z] Pushed to GitHub successfully
+[2026-06-02T11:33:21.179Z] Sending Telegram notification...
+[2026-06-02T11:33:21.179Z] Telegram bot token not configured, skipping notification
+[2026-06-02T11:33:21.179Z] Waiting for Vercel deployment...
+[2026-06-02T11:33:21.322Z] Waiting for deployment... (1/12)
+[2026-06-02T11:33:36.684Z] Waiting for deployment... (2/12)
+[2026-06-02T11:33:51.958Z] Waiting for deployment... (3/12)
+[2026-06-02T11:34:07.225Z] Waiting for deployment... (4/12)
+[2026-06-02T11:34:22.461Z] Waiting for deployment... (5/12)
+[2026-06-02T11:34:37.584Z] Waiting for deployment... (6/12)
+[2026-06-02T11:34:52.800Z] Waiting for deployment... (7/12)
+[2026-06-02T11:35:08.079Z] Waiting for deployment... (8/12)
+[2026-06-02T11:35:23.357Z] Waiting for deployment... (9/12)
+[2026-06-02T11:35:38.562Z] Waiting for deployment... (10/12)
+[2026-06-02T11:35:53.686Z] Waiting for deployment... (11/12)
+[2026-06-02T11:36:08.947Z] Waiting for deployment... (12/12)
+[2026-06-02T11:36:24.075Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-02T11:36:24.075Z] === Complete ===
+[2026-06-02T11:36:24.075Z] Title: The State of API Documentation in 2026
+[2026-06-02T11:36:24.075Z] Slug: the-state-of-api-documentation-in-2026
+[2026-06-02T11:36:24.075Z] Category: automation
+[2026-06-02T11:36:24.075Z] Keyword: api tools
+[2026-06-03T11:30:00.869Z] === Daily Article Generator v2 Started ===
+[2026-06-03T11:30:00.872Z] Date: 2026-06-03
+[2026-06-03T11:30:00.879Z] Starting research phase...
+[2026-06-03T11:30:00.885Z] Researching keywords for: automation...
+[2026-06-03T11:30:00.899Z] Research complete: "Building Internal Tools: What Actually Scales" (automation)
+[2026-06-03T11:30:00.899Z] Primary keyword: automation
+[2026-06-03T11:30:00.899Z] Generating article content...
+[2026-06-03T11:30:00.900Z] Using Codex model: gpt-5.4
+[2026-06-03T11:31:37.979Z] Content generated with Codex: 3331 words
+[2026-06-03T11:31:37.981Z] Article generated: "Building Internal Tools: What Actually Scales"
+[2026-06-03T11:31:37.982Z] Adding article to articles.ts...
+[2026-06-03T11:31:37.989Z] Article added to file
+[2026-06-03T11:31:37.989Z] Committing and pushing to GitHub...
+[2026-06-03T11:31:39.437Z] Pushed to GitHub successfully
+[2026-06-03T11:31:39.437Z] Sending Telegram notification...
+[2026-06-03T11:31:39.437Z] Telegram bot token not configured, skipping notification
+[2026-06-03T11:31:39.437Z] Waiting for Vercel deployment...
+[2026-06-03T11:31:39.578Z] Waiting for deployment... (1/12)
+[2026-06-03T11:31:54.836Z] Waiting for deployment... (2/12)
+[2026-06-03T11:32:10.044Z] Waiting for deployment... (3/12)
+[2026-06-03T11:32:25.320Z] Waiting for deployment... (4/12)
+[2026-06-03T11:32:40.544Z] Waiting for deployment... (5/12)
+[2026-06-03T11:32:55.797Z] Waiting for deployment... (6/12)
+[2026-06-03T11:33:11.057Z] Waiting for deployment... (7/12)
+[2026-06-03T11:33:26.357Z] Waiting for deployment... (8/12)
+[2026-06-03T11:33:41.650Z] Waiting for deployment... (9/12)
+[2026-06-03T11:33:56.908Z] Waiting for deployment... (10/12)
+[2026-06-03T11:34:12.126Z] Waiting for deployment... (11/12)
+[2026-06-03T11:34:27.280Z] Waiting for deployment... (12/12)
+[2026-06-03T11:34:42.394Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-03T11:34:42.394Z] === Complete ===
+[2026-06-03T11:34:42.394Z] Title: Building Internal Tools: What Actually Scales
+[2026-06-03T11:34:42.395Z] Slug: building-internal-tools-what-actually-scales
+[2026-06-03T11:34:42.395Z] Category: automation
+[2026-06-03T11:34:42.395Z] Keyword: automation
+[2026-06-04T11:30:00.258Z] === Daily Article Generator v2 Started ===
+[2026-06-04T11:30:00.263Z] Date: 2026-06-04
+[2026-06-04T11:30:00.271Z] Starting research phase...
+[2026-06-04T11:30:00.278Z] Researching keywords for: automation...
+[2026-06-04T11:30:00.293Z] Research complete: "The Hidden Costs of No-Code Solutions" (automation)
+[2026-06-04T11:30:00.294Z] Primary keyword: no-code tools
+[2026-06-04T11:30:00.294Z] Generating article content...
+[2026-06-04T11:30:00.296Z] Using Codex model: gpt-5.4
+[2026-06-04T11:32:45.757Z] Content generated with Codex: 3209 words
+[2026-06-04T11:32:45.759Z] Article generated: "The Hidden Costs of No-Code Solutions"
+[2026-06-04T11:32:45.760Z] Adding article to articles.ts...
+[2026-06-04T11:32:45.771Z] Article added to file
+[2026-06-04T11:32:45.771Z] Committing and pushing to GitHub...
+[2026-06-04T11:32:47.505Z] Pushed to GitHub successfully
+[2026-06-04T11:32:47.505Z] Sending Telegram notification...
+[2026-06-04T11:32:47.505Z] Telegram bot token not configured, skipping notification
+[2026-06-04T11:32:47.505Z] Waiting for Vercel deployment...
+[2026-06-04T11:32:47.652Z] Waiting for deployment... (1/12)
+[2026-06-04T11:33:02.823Z] Waiting for deployment... (2/12)
+[2026-06-04T11:33:18.081Z] Waiting for deployment... (3/12)
+[2026-06-04T11:33:33.220Z] Waiting for deployment... (4/12)
+[2026-06-04T11:33:48.426Z] Waiting for deployment... (5/12)
+[2026-06-04T11:34:03.658Z] Waiting for deployment... (6/12)
+[2026-06-04T11:34:18.989Z] Waiting for deployment... (7/12)
+[2026-06-04T11:34:34.221Z] Waiting for deployment... (8/12)
+[2026-06-04T11:34:49.543Z] Waiting for deployment... (9/12)
+[2026-06-04T11:35:04.732Z] Waiting for deployment... (10/12)
+[2026-06-04T11:35:19.989Z] Waiting for deployment... (11/12)
+[2026-06-04T11:35:35.250Z] Waiting for deployment... (12/12)
+[2026-06-04T11:35:50.412Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-04T11:35:50.412Z] === Complete ===
+[2026-06-04T11:35:50.412Z] Title: The Hidden Costs of No-Code Solutions
+[2026-06-04T11:35:50.413Z] Slug: the-hidden-costs-of-no-code-solutions
+[2026-06-04T11:35:50.413Z] Category: automation
+[2026-06-04T11:35:50.413Z] Keyword: no-code tools
+[2026-06-05T11:30:00.280Z] === Daily Article Generator v2 Started ===
+[2026-06-05T11:30:00.284Z] Date: 2026-06-05
+[2026-06-05T11:30:00.292Z] Starting research phase...
+[2026-06-05T11:30:00.303Z] Researching keywords for: automation...
+[2026-06-05T11:30:00.317Z] All titles recently posted, using backup pool
+[2026-06-05T11:30:00.318Z] Generating article content...
+[2026-06-05T11:30:00.320Z] Using Codex model: gpt-5.4
+[2026-06-05T11:33:36.387Z] Content generated with Codex: 3072 words
+[2026-06-05T11:33:36.390Z] Article generated: "Lending Protocol Wars: Why Aave Still Dominates"
+[2026-06-05T11:33:36.392Z] Adding article to articles.ts...
+[2026-06-05T11:33:36.404Z] Article added to file
+[2026-06-05T11:33:36.405Z] Committing and pushing to GitHub...
+[2026-06-05T11:33:37.901Z] Pushed to GitHub successfully
+[2026-06-05T11:33:37.902Z] Sending Telegram notification...
+[2026-06-05T11:33:37.902Z] Telegram bot token not configured, skipping notification
+[2026-06-05T11:33:37.902Z] Waiting for Vercel deployment...
+[2026-06-05T11:33:38.053Z] Waiting for deployment... (1/12)
+[2026-06-05T11:33:53.322Z] Waiting for deployment... (2/12)
+[2026-06-05T11:34:08.545Z] Waiting for deployment... (3/12)
+[2026-06-05T11:34:23.872Z] Waiting for deployment... (4/12)
+[2026-06-05T11:34:39.094Z] Waiting for deployment... (5/12)
+[2026-06-05T11:34:54.426Z] Waiting for deployment... (6/12)
+[2026-06-05T11:35:09.684Z] Waiting for deployment... (7/12)
+[2026-06-05T11:35:24.843Z] Waiting for deployment... (8/12)
+[2026-06-05T11:35:40.047Z] Waiting for deployment... (9/12)
+[2026-06-05T11:35:55.309Z] Waiting for deployment... (10/12)
+[2026-06-05T11:36:10.423Z] Waiting for deployment... (11/12)
+[2026-06-05T11:36:25.555Z] Waiting for deployment... (12/12)
+[2026-06-05T11:36:40.713Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-05T11:36:40.713Z] === Complete ===
+[2026-06-05T11:36:40.713Z] Title: Lending Protocol Wars: Why Aave Still Dominates
+[2026-06-05T11:36:40.713Z] Slug: lending-protocol-wars-why-aave-still-dominates
+[2026-06-05T11:36:40.713Z] Category: crypto
+[2026-06-05T11:36:40.713Z] Keyword: crypto analysis
+[2026-06-06T11:30:01.241Z] === Daily Article Generator v2 Started ===
+[2026-06-06T11:30:01.245Z] Date: 2026-06-06
+[2026-06-06T11:30:01.252Z] Starting research phase...
+[2026-06-06T11:30:01.259Z] Researching keywords for: automation...
+[2026-06-06T11:30:01.272Z] All titles recently posted, using backup pool
+[2026-06-06T11:30:01.273Z] Generating article content...
+[2026-06-06T11:30:01.274Z] Using Codex model: gpt-5.4
+[2026-06-06T11:32:56.786Z] Content generated with Codex: 2919 words
+[2026-06-06T11:32:56.790Z] Article generated: "The Solana Developer Exodus That's Going Unnoticed"
+[2026-06-06T11:32:56.792Z] Adding article to articles.ts...
+[2026-06-06T11:32:56.801Z] Article added to file
+[2026-06-06T11:32:56.802Z] Committing and pushing to GitHub...
+[2026-06-06T11:32:58.205Z] Pushed to GitHub successfully
+[2026-06-06T11:32:58.205Z] Sending Telegram notification...
+[2026-06-06T11:32:58.205Z] Telegram bot token not configured, skipping notification
+[2026-06-06T11:32:58.205Z] Waiting for Vercel deployment...
+[2026-06-06T11:32:58.353Z] Waiting for deployment... (1/12)
+[2026-06-06T11:33:13.538Z] Waiting for deployment... (2/12)
+[2026-06-06T11:33:28.668Z] Waiting for deployment... (3/12)
+[2026-06-06T11:33:43.834Z] Waiting for deployment... (4/12)
+[2026-06-06T11:33:59.124Z] Waiting for deployment... (5/12)
+[2026-06-06T11:34:14.369Z] Waiting for deployment... (6/12)
+[2026-06-06T11:34:29.731Z] Waiting for deployment... (7/12)
+[2026-06-06T11:34:45.000Z] Waiting for deployment... (8/12)
+[2026-06-06T11:35:00.252Z] Waiting for deployment... (9/12)
+[2026-06-06T11:35:15.535Z] Waiting for deployment... (10/12)
+[2026-06-06T11:35:30.795Z] Waiting for deployment... (11/12)
+[2026-06-06T11:35:46.097Z] Waiting for deployment... (12/12)
+[2026-06-06T11:36:01.261Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-06T11:36:01.261Z] === Complete ===
+[2026-06-06T11:36:01.261Z] Title: The Solana Developer Exodus That's Going Unnoticed
+[2026-06-06T11:36:01.261Z] Slug: the-solana-developer-exodus-that-s-going-unnoticed
+[2026-06-06T11:36:01.261Z] Category: crypto
+[2026-06-06T11:36:01.261Z] Keyword: crypto analysis
+[2026-06-07T11:30:00.426Z] === Daily Article Generator v2 Started ===
+[2026-06-07T11:30:00.430Z] Date: 2026-06-07
+[2026-06-07T11:30:00.438Z] Starting research phase...
+[2026-06-07T11:30:00.444Z] Researching keywords for: automation...
+[2026-06-07T11:30:00.458Z] All titles recently posted, using backup pool
+[2026-06-07T11:30:00.459Z] Generating article content...
+[2026-06-07T11:30:00.461Z] Using Codex model: gpt-5.4
+[2026-06-07T11:32:23.794Z] Content generated with Codex: 2975 words
+[2026-06-07T11:32:23.796Z] Article generated: "Ethereum's Next Upgrade Could Change Everything"
+[2026-06-07T11:32:23.797Z] Adding article to articles.ts...
+[2026-06-07T11:32:23.807Z] Article added to file
+[2026-06-07T11:32:23.807Z] Committing and pushing to GitHub...
+[2026-06-07T11:32:25.221Z] Pushed to GitHub successfully
+[2026-06-07T11:32:25.222Z] Sending Telegram notification...
+[2026-06-07T11:32:25.222Z] Telegram bot token not configured, skipping notification
+[2026-06-07T11:32:25.222Z] Waiting for Vercel deployment...
+[2026-06-07T11:32:25.366Z] Waiting for deployment... (1/12)
+[2026-06-07T11:32:40.505Z] Waiting for deployment... (2/12)
+[2026-06-07T11:32:55.705Z] Waiting for deployment... (3/12)
+[2026-06-07T11:33:10.918Z] Waiting for deployment... (4/12)
+[2026-06-07T11:33:26.122Z] Waiting for deployment... (5/12)
+[2026-06-07T11:33:41.389Z] Waiting for deployment... (6/12)
+[2026-06-07T11:33:56.656Z] Waiting for deployment... (7/12)
+[2026-06-07T11:34:11.912Z] Waiting for deployment... (8/12)
+[2026-06-07T11:34:27.209Z] Waiting for deployment... (9/12)
+[2026-06-07T11:34:42.527Z] Waiting for deployment... (10/12)
+[2026-06-07T11:34:57.705Z] Waiting for deployment... (11/12)
+[2026-06-07T11:35:12.881Z] Waiting for deployment... (12/12)
+[2026-06-07T11:35:27.912Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-07T11:35:27.912Z] === Complete ===
+[2026-06-07T11:35:27.912Z] Title: Ethereum's Next Upgrade Could Change Everything
+[2026-06-07T11:35:27.912Z] Slug: ethereum-s-next-upgrade-could-change-everything
+[2026-06-07T11:35:27.912Z] Category: crypto
+[2026-06-07T11:35:27.912Z] Keyword: crypto analysis
+[2026-06-08T11:30:00.992Z] === Daily Article Generator v2 Started ===
+[2026-06-08T11:30:00.995Z] Date: 2026-06-08
+[2026-06-08T11:30:01.003Z] Starting research phase...
+[2026-06-08T11:30:01.009Z] Researching keywords for: automation...
+[2026-06-08T11:30:01.022Z] All titles recently posted, using backup pool
+[2026-06-08T11:30:01.023Z] Generating article content...
+[2026-06-08T11:30:01.025Z] Using Codex model: gpt-5.4
+[2026-06-08T11:32:17.810Z] Content generated with Codex: 3195 words
+[2026-06-08T11:32:17.812Z] Article generated: "Why Liquidity Fragmentation Is Killing DeFi"
+[2026-06-08T11:32:17.814Z] Adding article to articles.ts...
+[2026-06-08T11:32:17.825Z] Article added to file
+[2026-06-08T11:32:17.825Z] Committing and pushing to GitHub...
+[2026-06-08T11:32:19.353Z] Pushed to GitHub successfully
+[2026-06-08T11:32:19.354Z] Sending Telegram notification...
+[2026-06-08T11:32:19.354Z] Telegram bot token not configured, skipping notification
+[2026-06-08T11:32:19.354Z] Waiting for Vercel deployment...
+[2026-06-08T11:32:19.495Z] Waiting for deployment... (1/12)
+[2026-06-08T11:32:34.661Z] Waiting for deployment... (2/12)
+[2026-06-08T11:32:49.946Z] Waiting for deployment... (3/12)
+[2026-06-08T11:33:05.203Z] Waiting for deployment... (4/12)
+[2026-06-08T11:33:20.383Z] Waiting for deployment... (5/12)
+[2026-06-08T11:33:35.699Z] Waiting for deployment... (6/12)
+[2026-06-08T11:33:50.953Z] Waiting for deployment... (7/12)
+[2026-06-08T11:34:06.281Z] Waiting for deployment... (8/12)
+[2026-06-08T11:34:21.560Z] Waiting for deployment... (9/12)
+[2026-06-08T11:34:36.840Z] Waiting for deployment... (10/12)
+[2026-06-08T11:34:52.051Z] Waiting for deployment... (11/12)
+[2026-06-08T11:35:07.266Z] Waiting for deployment... (12/12)
+[2026-06-08T11:35:22.427Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-08T11:35:22.427Z] === Complete ===
+[2026-06-08T11:35:22.427Z] Title: Why Liquidity Fragmentation Is Killing DeFi
+[2026-06-08T11:35:22.428Z] Slug: why-liquidity-fragmentation-is-killing-defi
+[2026-06-08T11:35:22.428Z] Category: crypto
+[2026-06-08T11:35:22.428Z] Keyword: crypto analysis
+[2026-06-09T11:30:00.257Z] === Daily Article Generator v2 Started ===
+[2026-06-09T11:30:00.259Z] Date: 2026-06-09
+[2026-06-09T11:30:00.266Z] Starting research phase...
+[2026-06-09T11:30:00.271Z] Researching keywords for: automation...
+[2026-06-09T11:30:00.282Z] All titles recently posted, using backup pool
+[2026-06-09T11:30:00.283Z] Generating article content...
+[2026-06-09T11:30:00.284Z] Using Codex model: gpt-5.4
+[2026-06-09T11:33:13.592Z] Content generated with Codex: 2755 words
+[2026-06-09T11:33:13.595Z] Article generated: "Why Bitcoin's Price Action Contradicts the Narrative"
+[2026-06-09T11:33:13.597Z] Adding article to articles.ts...
+[2026-06-09T11:33:13.606Z] Article added to file
+[2026-06-09T11:33:13.607Z] Committing and pushing to GitHub...
+[2026-06-09T11:33:15.099Z] Pushed to GitHub successfully
+[2026-06-09T11:33:15.100Z] Sending Telegram notification...
+[2026-06-09T11:33:15.100Z] Telegram bot token not configured, skipping notification
+[2026-06-09T11:33:15.100Z] Waiting for Vercel deployment...
+[2026-06-09T11:33:15.242Z] Waiting for deployment... (1/12)
+[2026-06-09T11:33:30.453Z] Waiting for deployment... (2/12)
+[2026-06-09T11:33:45.748Z] Waiting for deployment... (3/12)
+[2026-06-09T11:34:00.907Z] Waiting for deployment... (4/12)
+[2026-06-09T11:34:16.148Z] Waiting for deployment... (5/12)
+[2026-06-09T11:34:31.402Z] Waiting for deployment... (6/12)
+[2026-06-09T11:34:46.811Z] Waiting for deployment... (7/12)
+[2026-06-09T11:35:02.160Z] Waiting for deployment... (8/12)
+[2026-06-09T11:35:17.309Z] Waiting for deployment... (9/12)
+[2026-06-09T11:35:32.605Z] Waiting for deployment... (10/12)
+[2026-06-09T11:35:47.825Z] Waiting for deployment... (11/12)
+[2026-06-09T11:36:03.125Z] Waiting for deployment... (12/12)
+[2026-06-09T11:36:18.188Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-09T11:36:18.188Z] === Complete ===
+[2026-06-09T11:36:18.188Z] Title: Why Bitcoin's Price Action Contradicts the Narrative
+[2026-06-09T11:36:18.188Z] Slug: why-bitcoin-s-price-action-contradicts-the-narrative
+[2026-06-09T11:36:18.189Z] Category: crypto
+[2026-06-09T11:36:18.189Z] Keyword: crypto analysis
+[2026-06-10T11:30:00.607Z] === Daily Article Generator v2 Started ===
+[2026-06-10T11:30:00.609Z] Date: 2026-06-10
+[2026-06-10T11:30:00.615Z] Starting research phase...
+[2026-06-10T11:30:00.620Z] Researching keywords for: automation...
+[2026-06-10T11:30:00.632Z] All titles recently posted, using backup pool
+[2026-06-10T11:30:00.633Z] Generating article content...
+[2026-06-10T11:30:00.634Z] Using Codex model: gpt-5.4
+[2026-06-10T11:31:31.954Z] Content generated with Codex: 3061 words
+[2026-06-10T11:31:31.955Z] Article generated: "The True Cost of Compliance for Crypto Projects"
+[2026-06-10T11:31:31.957Z] Adding article to articles.ts...
+[2026-06-10T11:31:31.964Z] Article added to file
+[2026-06-10T11:31:31.965Z] Committing and pushing to GitHub...
+[2026-06-10T11:31:33.508Z] Pushed to GitHub successfully
+[2026-06-10T11:31:33.508Z] Sending Telegram notification...
+[2026-06-10T11:31:33.508Z] Telegram bot token not configured, skipping notification
+[2026-06-10T11:31:33.508Z] Waiting for Vercel deployment...
+[2026-06-10T11:31:33.753Z] Waiting for deployment... (1/12)
+[2026-06-10T11:31:48.939Z] Waiting for deployment... (2/12)
+[2026-06-10T11:32:04.172Z] Waiting for deployment... (3/12)
+[2026-06-10T11:32:19.297Z] Waiting for deployment... (4/12)
+[2026-06-10T11:32:34.535Z] Waiting for deployment... (5/12)
+[2026-06-10T11:32:49.718Z] Waiting for deployment... (6/12)
+[2026-06-10T11:33:04.901Z] Waiting for deployment... (7/12)
+[2026-06-10T11:33:20.196Z] Waiting for deployment... (8/12)
+[2026-06-10T11:33:35.421Z] Waiting for deployment... (9/12)
+[2026-06-10T11:33:50.605Z] Waiting for deployment... (10/12)
+[2026-06-10T11:34:05.749Z] Waiting for deployment... (11/12)
+[2026-06-10T11:34:20.879Z] Waiting for deployment... (12/12)
+[2026-06-10T11:34:36.035Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-10T11:34:36.036Z] === Complete ===
+[2026-06-10T11:34:36.036Z] Title: The True Cost of Compliance for Crypto Projects
+[2026-06-10T11:34:36.036Z] Slug: the-true-cost-of-compliance-for-crypto-projects
+[2026-06-10T11:34:36.036Z] Category: crypto
+[2026-06-10T11:34:36.036Z] Keyword: crypto analysis
+[2026-06-11T11:30:01.249Z] === Daily Article Generator v2 Started ===
+[2026-06-11T11:30:01.252Z] Date: 2026-06-11
+[2026-06-11T11:30:01.259Z] Starting research phase...
+[2026-06-11T11:30:01.266Z] Researching keywords for: automation...
+[2026-06-11T11:30:01.282Z] All titles recently posted, using backup pool
+[2026-06-11T11:30:01.283Z] Generating article content...
+[2026-06-11T11:30:01.285Z] Using Codex model: gpt-5.4
+[2026-06-11T11:32:34.522Z] Content generated with Codex: 3409 words
+[2026-06-11T11:32:34.524Z] Article generated: "The On-Chain Metrics That Actually Predict Price"
+[2026-06-11T11:32:34.525Z] Adding article to articles.ts...
+[2026-06-11T11:32:34.534Z] Article added to file
+[2026-06-11T11:32:34.534Z] Committing and pushing to GitHub...
+[2026-06-11T11:32:38.232Z] Pushed to GitHub successfully
+[2026-06-11T11:32:38.233Z] Sending Telegram notification...
+[2026-06-11T11:32:38.233Z] Telegram bot token not configured, skipping notification
+[2026-06-11T11:32:38.233Z] Waiting for Vercel deployment...
+[2026-06-11T11:32:38.386Z] Waiting for deployment... (1/12)
+[2026-06-11T11:32:53.592Z] Waiting for deployment... (2/12)
+[2026-06-11T11:33:08.802Z] Waiting for deployment... (3/12)
+[2026-06-11T11:33:23.977Z] Waiting for deployment... (4/12)
+[2026-06-11T11:33:39.215Z] Waiting for deployment... (5/12)
+[2026-06-11T11:33:54.333Z] Waiting for deployment... (6/12)
+[2026-06-11T11:34:09.458Z] Waiting for deployment... (7/12)
+[2026-06-11T11:34:24.598Z] Waiting for deployment... (8/12)
+[2026-06-11T11:34:39.809Z] Waiting for deployment... (9/12)
+[2026-06-11T11:34:55.123Z] Waiting for deployment... (10/12)
+[2026-06-11T11:35:10.369Z] Waiting for deployment... (11/12)
+[2026-06-11T11:35:25.678Z] Waiting for deployment... (12/12)
+[2026-06-11T11:35:40.818Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-11T11:35:40.819Z] === Complete ===
+[2026-06-11T11:35:40.819Z] Title: The On-Chain Metrics That Actually Predict Price
+[2026-06-11T11:35:40.819Z] Slug: the-on-chain-metrics-that-actually-predict-price
+[2026-06-11T11:35:40.819Z] Category: crypto
+[2026-06-11T11:35:40.819Z] Keyword: crypto analysis
+[2026-06-12T11:30:00.953Z] === Daily Article Generator v2 Started ===
+[2026-06-12T11:30:00.955Z] Date: 2026-06-12
+[2026-06-12T11:30:00.962Z] Starting research phase...
+[2026-06-12T11:30:00.967Z] Researching keywords for: automation...
+[2026-06-12T11:30:00.979Z] All titles recently posted, using backup pool
+[2026-06-12T11:30:00.980Z] Generating article content...
+[2026-06-12T11:30:00.981Z] Using Codex model: gpt-5.4
+[2026-06-12T11:32:55.584Z] Content generated with Codex: 3075 words
+[2026-06-12T11:32:55.586Z] Article generated: "NFTs Aren't Dead—They're Just Finding Their Real Use Case"
+[2026-06-12T11:32:55.588Z] Adding article to articles.ts...
+[2026-06-12T11:32:55.600Z] Article added to file
+[2026-06-12T11:32:55.600Z] Committing and pushing to GitHub...
+[2026-06-12T11:32:57.265Z] Pushed to GitHub successfully
+[2026-06-12T11:32:57.265Z] Sending Telegram notification...
+[2026-06-12T11:32:57.265Z] Telegram bot token not configured, skipping notification
+[2026-06-12T11:32:57.265Z] Waiting for Vercel deployment...
+[2026-06-12T11:32:57.425Z] Waiting for deployment... (1/12)
+[2026-06-12T11:33:12.675Z] Waiting for deployment... (2/12)
+[2026-06-12T11:33:27.835Z] Waiting for deployment... (3/12)
+[2026-06-12T11:33:43.046Z] Waiting for deployment... (4/12)
+[2026-06-12T11:33:58.168Z] Waiting for deployment... (5/12)
+[2026-06-12T11:34:13.369Z] Waiting for deployment... (6/12)
+[2026-06-12T11:34:28.557Z] Waiting for deployment... (7/12)
+[2026-06-12T11:34:43.819Z] Waiting for deployment... (8/12)
+[2026-06-12T11:34:59.074Z] Waiting for deployment... (9/12)
+[2026-06-12T11:35:14.293Z] Waiting for deployment... (10/12)
+[2026-06-12T11:35:29.473Z] Waiting for deployment... (11/12)
+[2026-06-12T11:35:44.721Z] Waiting for deployment... (12/12)
+[2026-06-12T11:35:59.789Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-12T11:35:59.789Z] === Complete ===
+[2026-06-12T11:35:59.789Z] Title: NFTs Aren't Dead—They're Just Finding Their Real Use Case
+[2026-06-12T11:35:59.789Z] Slug: nfts-aren-t-dead-they-re-just-finding-their-real-use-case
+[2026-06-12T11:35:59.789Z] Category: crypto
+[2026-06-12T11:35:59.789Z] Keyword: crypto analysis
+[2026-06-13T11:30:00.465Z] === Daily Article Generator v2 Started ===
+[2026-06-13T11:30:00.468Z] Date: 2026-06-13
+[2026-06-13T11:30:00.477Z] Starting research phase...
+[2026-06-13T11:30:00.483Z] Researching keywords for: automation...
+[2026-06-13T11:30:00.499Z] All titles recently posted, using backup pool
+[2026-06-13T11:30:00.500Z] Generating article content...
+[2026-06-13T11:30:00.501Z] Using Codex model: gpt-5.4
+[2026-06-13T11:39:51.845Z] Content generated with Codex: 2946 words
+[2026-06-13T11:39:51.848Z] Article generated: "Solana's DeFi Renaissance: The Numbers Don't Lie"
+[2026-06-13T11:39:51.849Z] Adding article to articles.ts...
+[2026-06-13T11:39:51.859Z] Article added to file
+[2026-06-13T11:39:51.859Z] Committing and pushing to GitHub...
+[2026-06-13T11:39:53.459Z] Pushed to GitHub successfully
+[2026-06-13T11:39:53.460Z] Sending Telegram notification...
+[2026-06-13T11:39:53.984Z] Telegram notification sent
+[2026-06-13T11:39:53.984Z] Waiting for Vercel deployment...
+[2026-06-13T11:39:54.124Z] Waiting for deployment... (1/12)
+[2026-06-13T11:40:09.394Z] Waiting for deployment... (2/12)
+[2026-06-13T11:40:24.648Z] Waiting for deployment... (3/12)
+[2026-06-13T11:40:39.873Z] Waiting for deployment... (4/12)
+[2026-06-13T11:40:55.006Z] Waiting for deployment... (5/12)
+[2026-06-13T11:41:10.188Z] Waiting for deployment... (6/12)
+[2026-06-13T11:41:25.441Z] Waiting for deployment... (7/12)
+[2026-06-13T11:41:40.773Z] Waiting for deployment... (8/12)
+[2026-06-13T11:41:56.043Z] Waiting for deployment... (9/12)
+[2026-06-13T11:42:11.333Z] Waiting for deployment... (10/12)
+[2026-06-13T11:42:26.699Z] Waiting for deployment... (11/12)
+[2026-06-13T11:42:42.004Z] Waiting for deployment... (12/12)
+[2026-06-13T11:42:57.164Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-13T11:42:57.164Z] === Complete ===
+[2026-06-13T11:42:57.164Z] Title: Solana's DeFi Renaissance: The Numbers Don't Lie
+[2026-06-13T11:42:57.164Z] Slug: solana-s-defi-renaissance-the-numbers-don-t-lie
+[2026-06-13T11:42:57.164Z] Category: crypto
+[2026-06-13T11:42:57.164Z] Keyword: crypto analysis
+[2026-06-14T11:30:00.722Z] === Daily Article Generator v2 Started ===
+[2026-06-14T11:30:00.725Z] Date: 2026-06-14
+[2026-06-14T11:30:00.735Z] Starting research phase...
+[2026-06-14T11:30:00.742Z] Researching keywords for: automation...
+[2026-06-14T11:30:00.758Z] All titles recently posted, using backup pool
+[2026-06-14T11:30:00.759Z] Generating article content...
+[2026-06-14T11:30:00.760Z] Using Codex model: gpt-5.4
+[2026-06-14T11:31:25.664Z] Content generated with Codex: 3151 words
+[2026-06-14T11:31:25.666Z] Article generated: "DeFi's Real Problem Isn't Regulatory—It's UX"
+[2026-06-14T11:31:25.667Z] Adding article to articles.ts...
+[2026-06-14T11:31:25.675Z] Article added to file
+[2026-06-14T11:31:25.676Z] Committing and pushing to GitHub...
+[2026-06-14T11:31:27.252Z] Pushed to GitHub successfully
+[2026-06-14T11:31:27.253Z] Sending Telegram notification...
+[2026-06-14T11:31:27.888Z] Telegram notification sent
+[2026-06-14T11:31:27.888Z] Waiting for Vercel deployment...
+[2026-06-14T11:31:28.033Z] Waiting for deployment... (1/12)
+[2026-06-14T11:31:43.273Z] Waiting for deployment... (2/12)
+[2026-06-14T11:31:58.414Z] Waiting for deployment... (3/12)
+[2026-06-14T11:32:13.563Z] Waiting for deployment... (4/12)
+[2026-06-14T11:32:28.832Z] Waiting for deployment... (5/12)
+[2026-06-14T11:32:43.975Z] Waiting for deployment... (6/12)
+[2026-06-14T11:32:59.097Z] Waiting for deployment... (7/12)
+[2026-06-14T11:33:14.233Z] Waiting for deployment... (8/12)
+[2026-06-14T11:33:29.404Z] Waiting for deployment... (9/12)
+[2026-06-14T11:33:44.658Z] Waiting for deployment... (10/12)
+[2026-06-14T11:33:59.974Z] Waiting for deployment... (11/12)
+[2026-06-14T11:34:15.282Z] Waiting for deployment... (12/12)
+[2026-06-14T11:34:30.332Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-14T11:34:30.332Z] === Complete ===
+[2026-06-14T11:34:30.332Z] Title: DeFi's Real Problem Isn't Regulatory—It's UX
+[2026-06-14T11:34:30.332Z] Slug: defi-s-real-problem-isn-t-regulatory-it-s-ux
+[2026-06-14T11:34:30.332Z] Category: crypto
+[2026-06-14T11:34:30.332Z] Keyword: crypto analysis
+[2026-06-15T11:30:00.195Z] === Daily Article Generator v2 Started ===
+[2026-06-15T11:30:00.198Z] Date: 2026-06-15
+[2026-06-15T11:30:00.206Z] Starting research phase...
+[2026-06-15T11:30:00.213Z] Researching keywords for: automation...
+[2026-06-15T11:30:00.229Z] Research complete: "Obsidian vs Notion: The Real Tradeoff" (automation)
+[2026-06-15T11:30:00.229Z] Primary keyword: obsidian second brain
+[2026-06-15T11:30:00.229Z] Generating article content...
+[2026-06-15T11:30:00.231Z] Using Codex model: gpt-5.4
+[2026-06-15T11:34:03.894Z] Content generated with Codex: 2671 words
+[2026-06-15T11:34:03.899Z] Article generated: "Obsidian vs Notion: The Real Tradeoff"
+[2026-06-15T11:34:03.900Z] Adding article to articles.ts...
+[2026-06-15T11:34:03.911Z] Article added to file
+[2026-06-15T11:34:03.911Z] Committing and pushing to GitHub...
+[2026-06-15T11:34:05.597Z] Pushed to GitHub successfully
+[2026-06-15T11:34:05.598Z] Sending Telegram notification...
+[2026-06-15T11:34:06.233Z] Telegram notification sent
+[2026-06-15T11:34:06.234Z] Waiting for Vercel deployment...
+[2026-06-15T11:34:06.379Z] Waiting for deployment... (1/12)
+[2026-06-15T11:34:21.648Z] Waiting for deployment... (2/12)
+[2026-06-15T11:34:36.811Z] Waiting for deployment... (3/12)
+[2026-06-15T11:34:52.082Z] Waiting for deployment... (4/12)
+[2026-06-15T11:35:07.300Z] Waiting for deployment... (5/12)
+[2026-06-15T11:35:22.554Z] Waiting for deployment... (6/12)
+[2026-06-15T11:35:37.862Z] Waiting for deployment... (7/12)
+[2026-06-15T11:35:53.089Z] Waiting for deployment... (8/12)
+[2026-06-15T11:36:08.378Z] Waiting for deployment... (9/12)
+[2026-06-15T11:36:23.722Z] Waiting for deployment... (10/12)
+[2026-06-15T11:36:38.992Z] Waiting for deployment... (11/12)
+[2026-06-15T11:36:54.291Z] Waiting for deployment... (12/12)
+[2026-06-15T11:37:09.451Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-15T11:37:09.451Z] === Complete ===
+[2026-06-15T11:37:09.451Z] Title: Obsidian vs Notion: The Real Tradeoff
+[2026-06-15T11:37:09.452Z] Slug: obsidian-vs-notion-the-real-tradeoff
+[2026-06-15T11:37:09.452Z] Category: automation
+[2026-06-15T11:37:09.452Z] Keyword: obsidian second brain
+[2026-06-16T11:30:00.672Z] === Daily Article Generator v2 Started ===
+[2026-06-16T11:30:00.674Z] Date: 2026-06-16
+[2026-06-16T11:30:00.682Z] Starting research phase...
+[2026-06-16T11:30:00.689Z] Researching keywords for: automation...
+[2026-06-16T11:30:00.704Z] Research complete: "Why Your Second Brain System Is Failing You" (automation)
+[2026-06-16T11:30:00.705Z] Primary keyword: automation
+[2026-06-16T11:30:00.705Z] Generating article content...
+[2026-06-16T11:30:00.706Z] Using Codex model: gpt-5.4
+[2026-06-16T11:31:30.059Z] Content generated with Codex: 3124 words
+[2026-06-16T11:31:30.061Z] Article generated: "Why Your Second Brain System Is Failing You"
+[2026-06-16T11:31:30.062Z] Adding article to articles.ts...
+[2026-06-16T11:31:30.069Z] Article added to file
+[2026-06-16T11:31:30.070Z] Committing and pushing to GitHub...
+[2026-06-16T11:31:31.715Z] Pushed to GitHub successfully
+[2026-06-16T11:31:31.715Z] Sending Telegram notification...
+[2026-06-16T11:31:32.354Z] Telegram notification sent
+[2026-06-16T11:31:32.355Z] Waiting for Vercel deployment...
+[2026-06-16T11:31:32.499Z] Waiting for deployment... (1/12)
+[2026-06-16T11:31:47.690Z] Waiting for deployment... (2/12)
+[2026-06-16T11:32:02.901Z] Waiting for deployment... (3/12)
+[2026-06-16T11:32:18.110Z] Waiting for deployment... (4/12)
+[2026-06-16T11:32:33.421Z] Waiting for deployment... (5/12)
+[2026-06-16T11:32:48.762Z] Waiting for deployment... (6/12)
+[2026-06-16T11:33:03.956Z] Waiting for deployment... (7/12)
+[2026-06-16T11:33:19.182Z] Waiting for deployment... (8/12)
+[2026-06-16T11:33:34.491Z] Waiting for deployment... (9/12)
+[2026-06-16T11:33:49.814Z] Waiting for deployment... (10/12)
+[2026-06-16T11:34:05.000Z] Waiting for deployment... (11/12)
+[2026-06-16T11:34:20.224Z] Waiting for deployment... (12/12)
+[2026-06-16T11:34:35.299Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-16T11:34:35.300Z] === Complete ===
+[2026-06-16T11:34:35.300Z] Title: Why Your Second Brain System Is Failing You
+[2026-06-16T11:34:35.300Z] Slug: why-your-second-brain-system-is-failing-you
+[2026-06-16T11:34:35.300Z] Category: automation
+[2026-06-16T11:34:35.300Z] Keyword: automation
+[2026-06-17T11:30:00.877Z] === Daily Article Generator v2 Started ===
+[2026-06-17T11:30:00.880Z] Date: 2026-06-17
+[2026-06-17T11:30:00.888Z] Starting research phase...
+[2026-06-17T11:30:00.895Z] Researching keywords for: automation...
+[2026-06-17T11:30:00.911Z] Research complete: "Task Management in 2026: What's Actually Working" (automation)
+[2026-06-17T11:30:00.911Z] Primary keyword: automation
+[2026-06-17T11:30:00.911Z] Generating article content...
+[2026-06-17T11:30:00.912Z] Using Codex model: gpt-5.4
+[2026-06-17T11:33:12.845Z] Content generated with Codex: 3039 words
+[2026-06-17T11:33:12.847Z] Article generated: "Task Management in 2026: What's Actually Working"
+[2026-06-17T11:33:12.848Z] Adding article to articles.ts...
+[2026-06-17T11:33:12.856Z] Article added to file
+[2026-06-17T11:33:12.856Z] Committing and pushing to GitHub...
+[2026-06-17T11:33:14.428Z] Pushed to GitHub successfully
+[2026-06-17T11:33:14.429Z] Sending Telegram notification...
+[2026-06-17T11:33:15.052Z] Telegram notification sent
+[2026-06-17T11:33:15.052Z] Waiting for Vercel deployment...
+[2026-06-17T11:33:15.205Z] Waiting for deployment... (1/12)
+[2026-06-17T11:33:30.429Z] Waiting for deployment... (2/12)
+[2026-06-17T11:33:45.699Z] Waiting for deployment... (3/12)
+[2026-06-17T11:34:00.946Z] Waiting for deployment... (4/12)
+[2026-06-17T11:34:16.089Z] Waiting for deployment... (5/12)
+[2026-06-17T11:34:31.326Z] Waiting for deployment... (6/12)
+[2026-06-17T11:34:46.724Z] Waiting for deployment... (7/12)
+[2026-06-17T11:35:01.990Z] Waiting for deployment... (8/12)
+[2026-06-17T11:35:17.166Z] Waiting for deployment... (9/12)
+[2026-06-17T11:35:32.336Z] Waiting for deployment... (10/12)
+[2026-06-17T11:35:47.498Z] Waiting for deployment... (11/12)
+[2026-06-17T11:36:02.741Z] Waiting for deployment... (12/12)
+[2026-06-17T11:36:17.891Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-17T11:36:17.892Z] === Complete ===
+[2026-06-17T11:36:17.892Z] Title: Task Management in 2026: What's Actually Working
+[2026-06-17T11:36:17.892Z] Slug: task-management-in-2026-what-s-actually-working
+[2026-06-17T11:36:17.892Z] Category: automation
+[2026-06-17T11:36:17.892Z] Keyword: automation
+[2026-06-18T11:30:01.137Z] === Daily Article Generator v2 Started ===
+[2026-06-18T11:30:01.140Z] Date: 2026-06-18
+[2026-06-18T11:30:01.149Z] Starting research phase...
+[2026-06-18T11:30:01.156Z] Researching keywords for: automation...
+[2026-06-18T11:30:01.172Z] Research complete: "Event-Driven Architecture: When It Actually Helps" (automation)
+[2026-06-18T11:30:01.172Z] Primary keyword: automation
+[2026-06-18T11:30:01.173Z] Generating article content...
+[2026-06-18T11:30:01.174Z] Using Codex model: gpt-5.4
+[2026-06-18T11:32:29.993Z] Content generated with Codex: 3245 words
+[2026-06-18T11:32:29.995Z] Article generated: "Event-Driven Architecture: When It Actually Helps"
+[2026-06-18T11:32:29.995Z] Adding article to articles.ts...
+[2026-06-18T11:32:30.004Z] Article added to file
+[2026-06-18T11:32:30.005Z] Committing and pushing to GitHub...
+[2026-06-18T11:32:31.522Z] Pushed to GitHub successfully
+[2026-06-18T11:32:31.522Z] Sending Telegram notification...
+[2026-06-18T11:32:32.175Z] Telegram notification sent
+[2026-06-18T11:32:32.175Z] Waiting for Vercel deployment...
+[2026-06-18T11:32:32.401Z] Waiting for deployment... (1/12)
+[2026-06-18T11:32:47.639Z] Waiting for deployment... (2/12)
+[2026-06-18T11:33:02.847Z] Waiting for deployment... (3/12)
+[2026-06-18T11:33:18.180Z] Waiting for deployment... (4/12)
+[2026-06-18T11:33:33.447Z] Waiting for deployment... (5/12)
+[2026-06-18T11:33:48.759Z] Waiting for deployment... (6/12)
+[2026-06-18T11:34:03.925Z] Waiting for deployment... (7/12)
+[2026-06-18T11:34:19.234Z] Waiting for deployment... (8/12)
+[2026-06-18T11:34:34.400Z] Waiting for deployment... (9/12)
+[2026-06-18T11:34:49.662Z] Waiting for deployment... (10/12)
+[2026-06-18T11:35:04.893Z] Waiting for deployment... (11/12)
+[2026-06-18T11:35:20.073Z] Waiting for deployment... (12/12)
+[2026-06-18T11:35:35.228Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-18T11:35:35.228Z] === Complete ===
+[2026-06-18T11:35:35.228Z] Title: Event-Driven Architecture: When It Actually Helps
+[2026-06-18T11:35:35.228Z] Slug: event-driven-architecture-when-it-actually-helps
+[2026-06-18T11:35:35.228Z] Category: automation
+[2026-06-18T11:35:35.228Z] Keyword: automation
+[2026-06-19T11:30:00.821Z] === Daily Article Generator v2 Started ===
+[2026-06-19T11:30:00.824Z] Date: 2026-06-19
+[2026-06-19T11:30:00.833Z] Starting research phase...
+[2026-06-19T11:30:00.840Z] Researching keywords for: automation...
+[2026-06-19T11:30:00.857Z] Research complete: "Why Developer Portals Are Getting Worse" (automation)
+[2026-06-19T11:30:00.857Z] Primary keyword: automation
+[2026-06-19T11:30:00.857Z] Generating article content...
+[2026-06-19T11:30:00.858Z] Using Codex model: gpt-5.4
+[2026-06-19T11:31:35.530Z] Content generated with Codex: 3337 words
+[2026-06-19T11:31:35.532Z] Article generated: "Why Developer Portals Are Getting Worse"
+[2026-06-19T11:31:35.533Z] Adding article to articles.ts...
+[2026-06-19T11:31:35.543Z] Article added to file
+[2026-06-19T11:31:35.543Z] Committing and pushing to GitHub...
+[2026-06-19T11:31:37.047Z] Pushed to GitHub successfully
+[2026-06-19T11:31:37.047Z] Sending Telegram notification...
+[2026-06-19T11:31:37.664Z] Telegram notification sent
+[2026-06-19T11:31:37.665Z] Waiting for Vercel deployment...
+[2026-06-19T11:31:37.802Z] Waiting for deployment... (1/12)
+[2026-06-19T11:31:53.035Z] Waiting for deployment... (2/12)
+[2026-06-19T11:32:08.293Z] Waiting for deployment... (3/12)
+[2026-06-19T11:32:23.417Z] Waiting for deployment... (4/12)
+[2026-06-19T11:32:38.627Z] Waiting for deployment... (5/12)
+[2026-06-19T11:32:53.870Z] Waiting for deployment... (6/12)
+[2026-06-19T11:33:09.185Z] Waiting for deployment... (7/12)
+[2026-06-19T11:33:24.414Z] Waiting for deployment... (8/12)
+[2026-06-19T11:33:39.683Z] Waiting for deployment... (9/12)
+[2026-06-19T11:33:54.984Z] Waiting for deployment... (10/12)
+[2026-06-19T11:34:10.284Z] Waiting for deployment... (11/12)
+[2026-06-19T11:34:25.548Z] Waiting for deployment... (12/12)
+[2026-06-19T11:34:40.588Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-19T11:34:40.588Z] === Complete ===
+[2026-06-19T11:34:40.588Z] Title: Why Developer Portals Are Getting Worse
+[2026-06-19T11:34:40.588Z] Slug: why-developer-portals-are-getting-worse
+[2026-06-19T11:34:40.589Z] Category: automation
+[2026-06-19T11:34:40.589Z] Keyword: automation
+[2026-06-20T11:30:00.571Z] === Daily Article Generator v2 Started ===
+[2026-06-20T11:30:00.574Z] Date: 2026-06-20
+[2026-06-20T11:30:00.582Z] Starting research phase...
+[2026-06-20T11:30:00.589Z] Researching keywords for: automation...
+[2026-06-20T11:30:00.606Z] Research complete: "Zapier vs Make: Which Automation Tool Wins?" (automation)
+[2026-06-20T11:30:00.607Z] Primary keyword: zapier automation
+[2026-06-20T11:30:00.607Z] Generating article content...
+[2026-06-20T11:30:00.608Z] Using Codex model: gpt-5.4
+[2026-06-20T11:32:37.390Z] Content generated with Codex: 2954 words
+[2026-06-20T11:32:37.392Z] Article generated: "Zapier vs Make: Which Automation Tool Wins?"
+[2026-06-20T11:32:37.393Z] Adding article to articles.ts...
+[2026-06-20T11:32:37.403Z] Article added to file
+[2026-06-20T11:32:37.404Z] Committing and pushing to GitHub...
+[2026-06-20T11:32:38.848Z] Pushed to GitHub successfully
+[2026-06-20T11:32:38.848Z] Sending Telegram notification...
+[2026-06-20T11:32:39.508Z] Telegram notification sent
+[2026-06-20T11:32:39.508Z] Waiting for Vercel deployment...
+[2026-06-20T11:32:39.655Z] Waiting for deployment... (1/12)
+[2026-06-20T11:32:54.914Z] Waiting for deployment... (2/12)
+[2026-06-20T11:33:10.161Z] Waiting for deployment... (3/12)
+[2026-06-20T11:33:25.429Z] Waiting for deployment... (4/12)
+[2026-06-20T11:33:40.676Z] Waiting for deployment... (5/12)
+[2026-06-20T11:33:55.794Z] Waiting for deployment... (6/12)
+[2026-06-20T11:34:11.160Z] Waiting for deployment... (7/12)
+[2026-06-20T11:34:26.328Z] Waiting for deployment... (8/12)
+[2026-06-20T11:34:41.546Z] Waiting for deployment... (9/12)
+[2026-06-20T11:34:56.878Z] Waiting for deployment... (10/12)
+[2026-06-20T11:35:12.166Z] Waiting for deployment... (11/12)
+[2026-06-20T11:35:27.363Z] Waiting for deployment... (12/12)
+[2026-06-20T11:35:42.527Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-20T11:35:42.527Z] === Complete ===
+[2026-06-20T11:35:42.527Z] Title: Zapier vs Make: Which Automation Tool Wins?
+[2026-06-20T11:35:42.527Z] Slug: zapier-vs-make-which-automation-tool-wins
+[2026-06-20T11:35:42.527Z] Category: automation
+[2026-06-20T11:35:42.527Z] Keyword: zapier automation
+[2026-06-21T11:30:01.208Z] === Daily Article Generator v2 Started ===
+[2026-06-21T11:30:01.211Z] Date: 2026-06-21
+[2026-06-21T11:30:01.219Z] Starting research phase...
+[2026-06-21T11:30:01.227Z] Researching keywords for: automation...
+[2026-06-21T11:30:01.244Z] Research complete: "The Webhook Reliability Problem Nobody Fixes" (automation)
+[2026-06-21T11:30:01.244Z] Primary keyword: automation
+[2026-06-21T11:30:01.244Z] Generating article content...
+[2026-06-21T11:30:01.245Z] Using Codex model: gpt-5.4
+[2026-06-21T11:31:32.133Z] Content generated with Codex: 3403 words
+[2026-06-21T11:31:32.136Z] Article generated: "The Webhook Reliability Problem Nobody Fixes"
+[2026-06-21T11:31:32.136Z] Adding article to articles.ts...
+[2026-06-21T11:31:32.145Z] Article added to file
+[2026-06-21T11:31:32.145Z] Committing and pushing to GitHub...
+[2026-06-21T11:31:33.642Z] Pushed to GitHub successfully
+[2026-06-21T11:31:33.642Z] Sending Telegram notification...
+[2026-06-21T11:31:34.286Z] Telegram notification sent
+[2026-06-21T11:31:34.287Z] Waiting for Vercel deployment...
+[2026-06-21T11:31:34.438Z] Waiting for deployment... (1/12)
+[2026-06-21T11:31:49.743Z] Waiting for deployment... (2/12)
+[2026-06-21T11:32:04.908Z] Waiting for deployment... (3/12)
+[2026-06-21T11:32:20.206Z] Waiting for deployment... (4/12)
+[2026-06-21T11:32:35.425Z] Waiting for deployment... (5/12)
+[2026-06-21T11:32:50.555Z] Waiting for deployment... (6/12)
+[2026-06-21T11:33:05.709Z] Waiting for deployment... (7/12)
+[2026-06-21T11:33:20.935Z] Waiting for deployment... (8/12)
+[2026-06-21T11:33:36.111Z] Waiting for deployment... (9/12)
+[2026-06-21T11:33:51.303Z] Waiting for deployment... (10/12)
+[2026-06-21T11:34:06.561Z] Waiting for deployment... (11/12)
+[2026-06-21T11:34:21.804Z] Waiting for deployment... (12/12)
+[2026-06-21T11:34:36.960Z] Deployment check timed out, but article was pushed to GitHub
+[2026-06-21T11:34:36.961Z] === Complete ===
+[2026-06-21T11:34:36.961Z] Title: The Webhook Reliability Problem Nobody Fixes
+[2026-06-21T11:34:36.961Z] Slug: the-webhook-reliability-problem-nobody-fixes
+[2026-06-21T11:34:36.961Z] Category: automation
+[2026-06-21T11:34:36.961Z] Keyword: automation

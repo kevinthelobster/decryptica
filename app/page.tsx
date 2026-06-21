@@ -4,30 +4,7 @@ import SubscribeForm from "./components/SubscribeForm";
 import TrackedLink from "./components/TrackedLink";
 import IntentRouter from "./components/IntentRouter";
 import { articles } from "./data/articles";
-
-const aiPathways = [
-  {
-    eyebrow: "Use cases",
-    title: "Operational AI workflows",
-    description: "Start with rollout examples that lead naturally into tooling selection, ROI checks, and implementation help.",
-    href: "/topic/ai/use-cases",
-    cta: "Explore use cases",
-  },
-  {
-    eyebrow: "Models and prompts",
-    title: "LLMs and deployment paths",
-    description: "Compare model strategy, local deployment tradeoffs, and evaluation patterns before you commit budget.",
-    href: "/topic/ai/llms",
-    cta: "Browse LLM guides",
-  },
-  {
-    eyebrow: "Reliability",
-    title: "Automation infrastructure",
-    description: "See queueing, orchestration, and failure-handling patterns that keep production workflows from breaking.",
-    href: "/topic/automation/infrastructure",
-    cta: "See infra patterns",
-  },
-];
+import { absoluteUrl, getBreadcrumbSchema, jsonLdScript } from "./lib/schema";
 
 export const metadata: Metadata = {
   title: "Decryptica | Technical Intelligence",
@@ -76,8 +53,38 @@ const topics = [
 ];
 
 export default function IndexPage() {
+  const websitePageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Decryptica | Technical Intelligence',
+    description: 'Expert insights on Crypto, AI, and Automation. Stay ahead of the curve with technical intelligence.',
+    url: absoluteUrl('/'),
+    isPartOf: { '@id': `${absoluteUrl()}/#website` },
+    about: ['Crypto', 'Artificial Intelligence', 'Automation'],
+  };
+
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Featured articles',
+    itemListElement: featuredArticles.map((article, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: absoluteUrl(`/blog/${article.slug}`),
+      name: article.title,
+    })),
+  };
+
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: 'Home', path: '/' },
+  ]);
+
   return (
-    <div className="min-h-screen">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(websitePageSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(itemListSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(breadcrumbSchema)} />
+      <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-[34rem]">
         {/* Background Gradient */}
@@ -127,14 +134,6 @@ export default function IndexPage() {
               Try AI Calculator
             </TrackedLink>
           </div>
-          <TrackedLink
-            href="/services/ai-automation-consulting"
-            className="mt-4 inline-flex text-sm font-medium text-indigo-300 underline decoration-indigo-400/60 underline-offset-4 hover:text-indigo-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
-            eventType="cta_click"
-            metadata={{ location: "home_hero", cta: "implement", category: "all" }}
-          >
-            Book Automation Audit
-          </TrackedLink>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {[
@@ -227,115 +226,6 @@ export default function IndexPage() {
           variant="default"
           learnHref="/articles"
         />
-      </section>
-
-      <section className="max-w-7xl mx-auto px-6 pb-8">
-        <div className="flex items-center justify-between gap-4 mb-6">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">AI Navigation</p>
-            <h2 className="section-heading mt-2">Start in the right AI lane</h2>
-            <p className="mt-2 max-w-2xl text-sm text-zinc-400">
-              The AI hub now opens on applied use cases first, so buyers land on rollout examples before model rabbit holes.
-            </p>
-          </div>
-          <TrackedLink
-            href="/topic/ai"
-            className="text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
-            eventType="hub_nav_click"
-            metadata={{ location: "home_ai_pathways", cta: "view_ai_hub", category: "ai" }}
-          >
-            View AI hub
-          </TrackedLink>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {aiPathways.map((pathway) => (
-            <TrackedLink
-              key={pathway.href}
-              href={pathway.href}
-              className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 hover:border-indigo-400/50 transition-colors"
-              eventType="hub_nav_click"
-              metadata={{ location: "home_ai_pathways", targetHref: pathway.href, category: pathway.href.includes('/automation/') ? 'automation' : 'ai' }}
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">{pathway.eyebrow}</p>
-              <h3 className="mt-2 font-display text-xl font-semibold text-white">{pathway.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-400">{pathway.description}</p>
-              <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-indigo-300 underline decoration-indigo-400/60 underline-offset-4">
-                {pathway.cta}
-              </span>
-            </TrackedLink>
-          ))}
-        </div>
-      </section>
-
-      <section className="max-w-7xl mx-auto px-6 pb-16">
-        <div className="rounded-3xl border border-indigo-500/20 bg-gradient-to-br from-indigo-950/60 via-zinc-950 to-zinc-950 p-8 md:p-10">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Buyer Intent Path</p>
-              <h2 className="mt-2 font-display text-3xl font-semibold text-white">From AI curiosity to a scoped implementation plan</h2>
-              <p className="mt-3 text-zinc-400">
-                If you are evaluating AI for a real business, the fastest path is usually use cases first, budget second, then implementation help once the economics make sense.
-              </p>
-            </div>
-            <TrackedLink
-              href="/services/ai-automation-consulting"
-              className="btn-primary"
-              eventType="cta_click"
-              metadata={{ location: "home_ai_buyer_path", cta: "implementation_help", category: "ai" }}
-            >
-              Get implementation help
-            </TrackedLink>
-          </div>
-
-          <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-4">
-            <TrackedLink
-              href="/blog/best-ai-tools-for-small-business-automation"
-              className="rounded-2xl border border-zinc-800 bg-zinc-900/70 p-5 hover:border-indigo-400/50 transition-colors"
-              eventType="article_click"
-              articleSlug="best-ai-tools-for-small-business-automation"
-              metadata={{ location: "home_ai_buyer_path", category: "ai" }}
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Step 1</p>
-              <h3 className="mt-2 font-display text-xl font-semibold text-white">Compare the best AI tools for small business automation</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-400">Start with the shortlist built for owners weighing setup friction, cost, and practical fit.</p>
-            </TrackedLink>
-
-            <TrackedLink
-              href="/blog/ai-workflow-examples-for-operations-teams"
-              className="rounded-2xl border border-zinc-800 bg-zinc-900/70 p-5 hover:border-indigo-400/50 transition-colors"
-              eventType="article_click"
-              articleSlug="ai-workflow-examples-for-operations-teams"
-              metadata={{ location: "home_ai_buyer_path", category: "ai" }}
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Step 2</p>
-              <h3 className="mt-2 font-display text-xl font-semibold text-white">See workflow examples that actually save time</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-400">Move from tool shopping into concrete ops workflows with review gates, ownership, and practical rollout scope.</p>
-            </TrackedLink>
-
-            <TrackedLink
-              href="/tools/ai-price-calculator"
-              className="rounded-2xl border border-zinc-800 bg-zinc-900/70 p-5 hover:border-indigo-400/50 transition-colors"
-              eventType="cta_click"
-              metadata={{ location: "home_ai_buyer_path", cta: "ai_price_calculator", category: "ai" }}
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Step 3</p>
-              <h3 className="mt-2 font-display text-xl font-semibold text-white">Validate model and budget assumptions</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-400">Use the calculator to pressure-test ROI before you commit to a tooling or deployment path.</p>
-            </TrackedLink>
-
-            <TrackedLink
-              href="/services/ai-automation-consulting"
-              className="rounded-2xl border border-zinc-800 bg-zinc-900/70 p-5 hover:border-indigo-400/50 transition-colors"
-              eventType="cta_click"
-              metadata={{ location: "home_ai_buyer_path", cta: "ai_automation_consulting", category: "ai" }}
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Step 4</p>
-              <h3 className="mt-2 font-display text-xl font-semibold text-white">Move into rollout planning</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-400">When the economics hold, turn the research into architecture, implementation, and delivery help.</p>
-            </TrackedLink>
-          </div>
-        </div>
       </section>
 
       {/* Topics Grid */}
@@ -454,6 +344,53 @@ export default function IndexPage() {
         </div>
       </section>
 
+      <section className="max-w-7xl mx-auto px-6 pb-16">
+        <div className="rounded-3xl border border-zinc-800 bg-zinc-950/70 p-8 md:p-10">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-300">Bookmarkable Asset</p>
+              <h2 className="mt-2 font-display text-3xl font-semibold text-white">OpenClaw Prompt Library</h2>
+              <p className="mt-3 text-zinc-400">
+                Save proven automations, browse community workflows, and keep a reusable library of prompts you can copy into your own setup.
+              </p>
+            </div>
+            <TrackedLink
+              href="/prompts"
+              className="btn-secondary"
+              eventType="cta_click"
+              metadata={{ location: "home_prompt_library", cta: "open_library", category: "all" }}
+            >
+              Explore the Library
+            </TrackedLink>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {[
+              {
+                title: "Heartbeat monitors",
+                copy: "Prompts that keep checking the right things without nagging you every five minutes.",
+              },
+              {
+                title: "Daily digests",
+                copy: "Reusable setups for summaries, reminders, and operator-style morning briefs.",
+              },
+              {
+                title: "Community workflows",
+                copy: "A growing catalog of prompts worth bookmarking instead of rebuilding from scratch.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5"
+              >
+                <h3 className="font-display text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-400">{item.copy}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Newsletter Section */}
       <section id="subscribe" className="max-w-7xl mx-auto px-6 py-16">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-10 md:p-16">
@@ -475,6 +412,7 @@ export default function IndexPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

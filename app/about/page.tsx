@@ -5,9 +5,30 @@ export const metadata: Metadata = {
   description: 'About Decryptica - Technical intelligence for the curious mind.',
 };
 
+import Link from "next/link";
+import { absoluteUrl, getBreadcrumbSchema, jsonLdScript } from '../lib/schema';
+
 export default function AboutPage() {
+  const aboutPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About Decryptica',
+    description: 'About Decryptica - Technical intelligence for the curious mind.',
+    url: absoluteUrl('/about'),
+    isPartOf: { '@id': `${absoluteUrl()}/#website` },
+    about: { '@id': `${absoluteUrl()}/#organization` },
+  };
+
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+  ]);
+
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(aboutPageSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(breadcrumbSchema)} />
+      <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="card-elevated p-8 md:p-12">
         <h1 className="section-heading mb-6">About Decryptica</h1>
         
@@ -47,12 +68,13 @@ export default function AboutPage() {
           
           <h2 className="font-display text-xl font-semibold text-white mt-8 mb-4">Legal</h2>
           <ul className="space-y-2 text-zinc-300">
-            <li><a href="/terms" className="text-indigo-400 hover:text-indigo-300">Terms of Service</a></li>
-            <li><a href="/affiliate-disclosure" className="text-indigo-400 hover:text-indigo-300">Affiliate Disclosure</a></li>
-            <li><a href="/privacy" className="text-indigo-400 hover:text-indigo-300">Privacy Policy</a></li>
+            <li><Link href="/terms" className="text-indigo-400 hover:text-indigo-300">Terms of Service</Link></li>
+            <li><Link href="/affiliate-disclosure" className="text-indigo-400 hover:text-indigo-300">Affiliate Disclosure</Link></li>
+            <li><Link href="/privacy" className="text-indigo-400 hover:text-indigo-300">Privacy Policy</Link></li>
           </ul>
         </div>
       </div>
     </div>
+    </>
   );
 }
