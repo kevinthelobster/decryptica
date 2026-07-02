@@ -709,21 +709,64 @@ function renderInline(text: string): React.ReactNode {
     // Markdown links: [text](url)
     const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     if (linkMatch) {
+      const [, label, href] = linkMatch;
+      const normalizedInternalHref = getInternalHref(href);
+
+      if (normalizedInternalHref) {
+        return (
+          <TrackedLink
+            key={i}
+            href={normalizedInternalHref}
+            eventType="article_click"
+            metadata={{
+              location: 'article_body_inline_link',
+              cta: 'inline_link',
+            }}
+            className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 hover:no-underline transition-colors"
+          >
+            {label}
+          </TrackedLink>
+        );
+      }
+
       return (
         <a
           key={i}
-          href={linkMatch[2]}
+          href={href}
           target="_blank"
           rel="noopener noreferrer"
           className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 hover:no-underline transition-colors"
         >
-          {linkMatch[1]}
+          {label}
         </a>
       );
     }
 
     return part;
   });
+}
+
+function getInternalHref(href: string): string | null {
+  if (!href) return null;
+
+  if (href.startsWith('/')) {
+    return href;
+  }
+
+  if (href.startsWith('#')) {
+    return href;
+  }
+
+  try {
+    const url = new URL(href);
+    if (url.hostname === 'decryptica.com' || url.hostname === 'www.decryptica.com') {
+      return `${url.pathname}${url.search}${url.hash}`;
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
 }
 // ─── FAQ Section Renderer ───────────────────────────────────────────────────
 // ─── TL;DR Box ─────────────────────────────────────────────────────────────
@@ -1108,6 +1151,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* FAQ Section */}
             <TrackedFAQSection faqs={faqs} articleSlug={slug} />
+
+            <section className="mt-8">
+              <HubRelatedModule
+                heading="Keep Reading"
+                description="Pick the next guide while this topic is still fresh."
+                items={relatedModuleItems}
+                surface="article"
+                location="article_related_module_footer"
+                moduleVariant="footer"
+                slug={slug}
+                category={article.category}
+              />
+            </section>
 
             <section id="next-step" className="scroll-mt-28">
               <IntentAwareConversionStrip articleSlug={slug} category={article.category} />

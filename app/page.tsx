@@ -135,6 +135,28 @@ export default function IndexPage() {
             </TrackedLink>
           </div>
 
+          <div className="mt-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">
+              Start Here
+            </p>
+            <div className="mt-3 flex flex-wrap gap-3">
+              {featuredArticles.map((article) => (
+                <TrackedLink
+                  key={article.id}
+                  href={`/blog/${article.slug}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-200 transition-colors hover:border-indigo-400/40 hover:text-white"
+                  eventType="article_click"
+                  articleSlug={article.slug}
+                  metadata={{ location: "home_start_here", category: article.category }}
+                >
+                  <span className="text-zinc-500">{article.category}</span>
+                  <span className="text-zinc-700">&#xb7;</span>
+                  <span>{article.title}</span>
+                </TrackedLink>
+              ))}
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {[
               "Trusted by builders, operators, and technical teams",
