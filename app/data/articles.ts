@@ -68,6 +68,307 @@ export const topics: Topic[] = [
 
 export const articles: Article[] = [
   {
+    id: '1783337513646-1375',
+    slug: 'what-it-actually-takes-to-build-in-web3-now',
+    title: "What It Actually Takes to Build in Web3 Now",
+    excerpt: "What It Actually Takes to Build in Web3 Now Most Web3 products do not fail because the smart contracts are broken. They fail because the market...",
+    content: `# What It Actually Takes to Build in Web3 Now
+
+Most Web3 products do not fail because the smart contracts are broken. They fail because the market structure is wrong.
+
+A team launches a DEX with decent code, a token with a clean vesting schedule, and a points campaign that gets attention for three weeks. Then reality shows up. Liquidity is mercenary. MEV extracts edge from every naive execution path. Users route through aggregators instead of branded frontends. Token emissions buy volume that disappears the moment rewards normalize. Governance gets captured by whales or ignored by everyone else. Meanwhile, the protocols that compound are the ones that understand a harder truth: in crypto, product design is market design.
+
+That is what it actually takes to build in Web3 now. Not just shipping contracts. Not just “community.” Not just copying the last cycle’s playbook. Builders need to design for liquidity formation, execution quality, incentive durability, and distribution under adversarial conditions from day one.
+
+**TL;DR**
+
+- Building in Web3 now means designing a market, not just an app. Your token, liquidity venues, execution path, and incentives are one system.
+- AMMs still matter structurally, even as orderbooks and intent-based routing grow. They remain the default liquidity substrate for long-tail assets, passive market making, and composable on-chain trading.
+- The real design problem is liquidity fragmentation. Users do not care where liquidity sits; routers do. If your protocol cannot integrate into routing flows, it will struggle to matter.
+- MEV is not a side issue. It changes swap quality, LP profitability, liquidation behavior, and the economics of every on-chain venue.
+- Emissions can attract activity, but they rarely create durable demand on their own. Good incentives reward retention, depth, and useful flow, not wash volume.
+- Winning teams now pick a clear edge: better execution, better inventory management, better distribution, better incentive alignment, or access to a specific flow source.
+- Serious crypto analysis today starts with mechanisms: how prices form, how liquidity moves, who captures fees, and who is left holding toxic order flow.
+
+## Web3 Is No Longer a Greenfield
+
+The easy era is over. Users have seen every shallow growth loop already: vampire farming, inflated points, meaningless governance tokens, fake TVL, “community-owned” products that are really treasury-funded customer acquisition programs.
+
+What remains is harder, but more real.
+
+A builder now competes in an environment where:
+
+- Liquidity is fragmented across chains, L2s, appchains, and multiple execution models.
+- Aggregators and solvers own increasing amounts of order flow.
+- Sophisticated actors arbitrage every pricing gap quickly.
+- Infrastructure is better, which means being merely functional is not a moat.
+- Users expect low latency, decent UX, and reliable execution, even when the product is fully on-chain.
+
+That changes the job. A Web3 team is no longer just launching software. It is deciding where and how economic activity should happen, which participants should be rewarded, what risks are being subsidized, and how the system behaves when informed flow meets passive liquidity.
+
+## The First Real Question: What Market Are You Building?
+
+Before writing contracts, a team should answer one blunt question: what kind of market structure is this?
+
+### AMM, Orderbook, RFQ, or Intents?
+
+Each model has different strengths.
+
+#### AMMs
+Automated market makers are still the most resilient design for permissionless on-chain liquidity. They work especially well for assets that do not have enough natural two-sided professional market making to sustain a central limit order book.
+
+Uniswap v3 proved that concentrated liquidity can dramatically improve capital efficiency. LPs no longer need to spread inventory across infinite price ranges. They can target active bands. That made blue-chip pairs more efficient, but it also made LPing much less passive than the old “deposit and wait” model. In practice, concentrated liquidity turned LPing into inventory management.
+
+Uniswap v4 pushes that further with hooks, which let builders customize fee logic, order flow handling, and other pool behavior at the pool level. That is powerful, but it also means design complexity increases. Hooks can create real product differentiation, but they can also create hidden risk, fragmented pool behavior, and harder-to-audit surfaces.
+
+#### Orderbooks
+On-chain or hybrid orderbooks work best when there is dense, repeat flow and professional market makers willing to quote actively. Hyperliquid is the obvious example on perpetuals: it proved that traders will use an on-chain venue if performance, liquidity, and product quality are strong enough. But orderbooks depend heavily on active quoting behavior. They are not the universal answer for long-tail spot assets with sporadic demand.
+
+#### RFQ and Intents
+RFQ systems and intent-based routing, such as CoW Swap-style solver competition or UniswapX-style external fillers, can improve execution quality by outsourcing pathfinding and matching to sophisticated agents. This is good for users. It also changes where value accrues. The frontend or protocol that controls order flow can capture more leverage than the venue that simply hosts raw liquidity.
+
+That matters for builders. If your protocol is not upstream of routing decisions, you may become a commodity liquidity source.
+
+## Why AMMs Still Matter, Even Now
+
+AMMs are not obsolete because orderbooks improved or because intent layers became smarter. They remain structurally important for six reasons.
+
+### 1. They Are Still the Default Home for Long-Tail Assets
+
+Most tokens do not have enough natural market maker interest to support durable orderbook liquidity. A permissionless AMM pool is still the fastest way to bootstrap a market for a new asset, governance token, or ecosystem pair.
+
+This is not glamorous, but it is fundamental. Long-tail liquidity has to live somewhere, and AMMs remain the most practical answer.
+
+### 2. Passive Market Making Still Needs a Base Layer
+
+Not every LP is a high-frequency strategy desk. Treasuries, DAOs, ecosystem partners, and yield-seeking users still want a passive or semi-passive way to provide inventory and earn fees. Concentrated liquidity reduced waste, but it did not remove the need for passive capital formation.
+
+Balancer’s weighted pools, Curve’s stableswap design, and Uniswap’s concentrated liquidity are all variations on the same truth: crypto needs programmable liquidity surfaces, not just active quoting engines.
+
+### 3. AMMs Are Composable in a Way Orderbooks Often Are Not
+
+AMMs slot directly into lending protocols, vaults, structured products, arbitrage bots, collateral management systems, and routing engines. Composability is not a slogan here. It is a mechanism. If a protocol needs deterministic on-chain access to liquidity at the contract level, AMMs are often the simplest substrate.
+
+### 4. Arbitrage Keeps Them Honest
+
+AMMs do not discover price in isolation. They outsource part of price correction to arbitrageurs. That sounds like a weakness, but it is also a feature. Arbitrage links isolated pools to broader market prices. The downside is that LPs often pay for this correction through loss-versus-rebalancing, the more precise modern framing for what many still call impermanent loss.
+
+### 5. Concentrated Liquidity Is Efficient When Flow Is Predictable
+
+For high-volume pairs, concentrated liquidity remains extremely powerful. The ability to densify capital around active price zones gives AMMs a serious structural advantage for certain markets. This is why Uniswap v3-style design still dominates serious spot DEX liquidity.
+
+### 6. They Handle Permissionless Creation Better Than Alternatives
+
+If your thesis depends on open access, user-generated markets, or rapid asset listing, AMMs are still far easier to scale than curated orderbooks.
+
+### Where AMMs Are Actually Weak
+
+AMMs are not magic. They are weak when:
+
+- Flow is toxic and informed, causing LPs to get picked off.
+- Markets are fast-moving and narrow-range LP strategies cannot reposition quickly enough.
+- Assets are extremely correlated or extremely volatile in ways the curve design does not handle well.
+- Gas costs or blockspace conditions make arbitrage and rebalancing too expensive.
+- Execution quality matters more than passive availability, especially for larger traders.
+
+That is why stablecoin routing often favors Curve-style designs for low-slippage swaps, why large traders increasingly use intent-based execution, and why perps volume migrated aggressively to systems with tighter orderbook dynamics.
+
+## Liquidity Fragmentation Is the Real Battlefield
+
+Every serious Web3 builder now has to think about fragmentation first.
+
+Liquidity is split across Ethereum, Arbitrum, Base, Solana, BNB Chain, and a growing list of specialized environments. It is also split across AMMs, perps venues, intents networks, and aggregators. The user sees one swap button. Underneath, the market is fractured.
+
+That means two things.
+
+### Routing Matters More Than Branding
+
+Most users do not arrive at liquidity directly. They arrive through a wallet, an aggregator, a trading terminal, or an execution engine. If your venue is not competitive on routing-adjusted execution, it becomes invisible.
+
+This is why being integrated by aggregators is not a nice-to-have. It is market access.
+
+On Ethereum and its L2s, protocols that play well with routing ecosystems tend to capture more durable flow than those that insist users come directly. On Solana, Jupiter demonstrated this at scale: aggregation itself became one of the most defensible product layers because it sat between user intent and fragmented liquidity.
+
+### Bridges Do Not Solve Fragmentation by Themselves
+
+Bridging moves assets. It does not create natural liquidity density. A builder launching the same token and pool on five chains may create the appearance of footprint while actually diluting depth everywhere.
+
+This is one of the most common mistakes in crypto. Teams confuse multi-chain presence with real market quality. In practice, shallow liquidity across many venues often creates worse user outcomes than deep liquidity in one or two strategically chosen environments.
+
+## LP Economics Are Harder Than Most Teams Admit
+
+A lot of bad crypto analysis still treats LP fees as simple yield. That is lazy.
+
+LP returns come from a mix of:
+
+- Trading fees
+- Incentive emissions
+- Inventory rebalancing
+- Adverse selection costs
+- MEV leakage
+- Idle capital costs
+- Range management overhead in concentrated systems
+
+That mix matters. A pool with high nominal APR can still be unattractive if most of the flow is toxic or if emissions are masking weak organic usage.
+
+### Concentrated Liquidity Changed the Job of the LP
+
+Under Uniswap v2-style full-range liquidity, LPs were mostly passive. Under v3-style concentrated liquidity, they became range managers. That improved capital efficiency but also made outcomes far more path-dependent.
+
+Professional LPs can actively move ranges and manage exposure. Retail LPs often cannot. That creates a structural divide. A builder relying on retail LPs for core market quality needs to be honest about this mismatch.
+
+### Fee Tiers and Pool Design Are Strategic Choices
+
+Too many teams copy fee tiers without thinking. A volatile, thin asset may need higher fees to compensate LP risk. A stable pair may need low fees to remain competitive on routing. Dynamic fee systems can help, but only if they are tuned to actual flow conditions rather than governance theater.
+
+Maverick, Curve, and newer adaptive AMM designs all explore variants of this problem: how should liquidity shape itself around real demand, volatility, and inventory constraints?
+
+That is the right question. Static pool templates are often not enough anymore.
+
+## MEV Is Product Design Now
+
+MEV is not just something validators and searchers care about. It directly shapes user experience and protocol economics.
+
+### Swap Users Feel MEV as Worse Execution
+
+If a swap route is vulnerable to sandwiching, users pay. If slippage settings are naive, users pay. If routing is predictable and poorly protected, users pay.
+
+Intent-based systems and batch auction designs try to reduce this by changing how orders are exposed and matched. CoW Swap’s model is important because it reframes execution: instead of dumping raw user intent directly into a public race, it lets solvers compete to fill the order under constraints. That can reduce extractable value and improve price outcomes.
+
+### LPs Feel MEV as Adverse Selection
+
+When arbitrageurs rebalance pools after price moves, they are not donating efficiency. They are capturing it. This is part of the cost structure of passive liquidity.
+
+The right mental model is not “arbitrage is good” or “MEV is bad.” It is more precise: which actors capture value from latency, information asymmetry, or forced execution, and how much of that comes from your users or LPs?
+
+### Builders Need MEV-Aware Execution Paths
+
+A serious DEX or wallet product should consider:
+
+- Private order flow options where appropriate
+- Batch execution or solver competition
+- Better slippage defaults
+- Robust routing simulation
+- Backrun-aware liquidation and rebalancing design
+- Whether some value should be recaptured for users or protocol participants
+
+Ignoring MEV is now equivalent to ignoring gas costs in 2020. It is foundational.
+
+## Incentives Need to Reward Useful Behavior, Not Vanity Metrics
+
+The market is much better at spotting fake growth now.
+
+Points programs, token emissions, and liquidity mining can still work, but only if they are tied to behavior that strengthens the protocol after subsidies decline.
+
+### Bad Incentives Buy Volume That Leaves
+
+If rewards are paid purely on gross volume, wash trading follows. If rewards are paid on TVL alone, capital parks temporarily and exits. If governance power is tied directly to emissions, mercenary capture becomes likely.
+
+### Better Incentives Reward Stickier Contributions
+
+The most durable systems reward things like:
+
+- Time-weighted liquidity
+- In-range liquidity for concentrated pools
+- Retained order flow
+- Productive collateral usage
+- Governance participation with actual lockups
+- Referral or partner flow that persists beyond farming windows
+
+The ve-style design popularized by Curve and adapted by protocols like Velodrome and Aerodrome is one attempt to align longer-term behavior. Lockups create commitment, gauge voting directs emissions, and protocols compete for liquidity influence. It is powerful, but it also creates political economies around bribing, vote markets, and governance concentration.
+
+That is the tradeoff. Better alignment usually comes with more complexity and more surface area for strategic behavior.
+
+## Distribution Is Often the Deciding Edge
+
+Builders still underestimate this.
+
+The best mechanism in the market can lose if it does not control or attract flow. Flow can come from wallets, aggregators, stablecoin issuers, lending markets, perps ecosystems, consumer apps, or specific chain ecosystems.
+
+### The Strongest Products Usually Own a Flow Source
+
+Examples are everywhere:
+
+- A wallet can route users to its preferred execution paths.
+- A perp venue can internalize spot hedging demand.
+- A stablecoin protocol can anchor trading pairs around its own asset.
+- A lending market can drive liquidation and rebalancing flows.
+- A chain ecosystem can direct incentives toward native venues.
+
+This is why partnerships matter more than slogans. A DEX without distribution is often just a pool contract waiting to be bypassed.
+
+## What Builders Should Actually Do
+
+This is where practical crypto analysis matters. Teams need to make concrete choices.
+
+### 1. Pick One Liquidity Wedge
+
+Do not try to win everywhere at once. Choose one.
+
+You might build for:
+
+- Stablecoin swaps with low slippage and deep routing integration
+- Long-tail token launch liquidity with clear creator economics
+- Professional LP tooling for concentrated liquidity
+- MEV-minimized execution for large trades
+- Treasury-managed passive liquidity infrastructure
+- Perps-adjacent spot liquidity that supports hedging and collateral flows
+
+If the wedge is unclear, the market will decide for you, and usually not kindly.
+
+### 2. Design Incentives Backward From Post-Subsidy Behavior
+
+Ask what the market should look like after rewards drop by 70%. If the answer is “it probably disappears,” the incentives are not building a business. They are renting a dashboard metric.
+
+### 3. Treat Integrations as Core Product Work
+
+Aggregator support, wallet routing, analytics visibility, and developer composability are not secondary tasks. In many cases, they are the go-to-market.
+
+### 4. Model LP PnL Honestly
+
+Do not advertise fee APR without modeling rebalancing loss, volatility regimes, and concentration behavior. Sophisticated capital will check. Unsophisticated capital will leave when results diverge from marketing.
+
+### 5. Build With MEV Assumptions, Not MEV Hopes
+
+Assume public transactions will be observed, optimized against, and monetized by third parties. If your mechanism breaks under that assumption, it is not production-ready.
+
+## What Good Web3 Builders Understand in 2026
+
+They understand that the stack matured. Infrastructure is better, but competition is sharper. Orderbooks improved. Intent layers improved. Solvers improved. L2 distribution improved. None of that killed AMMs. It just forced everyone to be more precise about where AMMs fit.
+
+AMMs remain the backbone for permissionless liquidity, long-tail markets, passive inventory, and composable on-chain execution. Orderbooks dominate where active quoting and dense flow justify them. Intents and RFQ systems matter where execution quality and order protection matter most. The winning products are increasingly hybrids that know how to plug these pieces together instead of pretending one mechanism solves everything.
+
+That is the real shift.
+
+Building in Web3 now means understanding where liquidity comes from, where it leaks, who captures spread, how incentives distort behavior, and which participants will still be there after the token program ends. That is not branding. That is structure.
+
+## FAQ
+
+### What is the biggest mistake new Web3 teams make today?
+
+They mistake temporary incentives for durable demand. A token program can attract liquidity and volume, but if there is no structural reason for users, LPs, or integrators to stay, the activity collapses once rewards normalize.
+
+### Are AMMs still worth building around if orderbooks and intent systems keep growing?
+
+Yes, especially for long-tail assets, passive liquidity, and composable on-chain markets. AMMs are weak in highly toxic or latency-sensitive environments, but they remain the default liquidity substrate for permissionless trading. The right question is not AMM or not, but which flows belong on AMMs versus orderbooks or solver-based execution.
+
+### What should founders measure instead of raw TVL and volume?
+
+Measure routing-adjusted execution quality, retained liquidity after incentives, LP profitability by cohort, share of organic versus subsidized volume, and how much recurring flow comes from real integrations. Those metrics say more about product-market fit than vanity dashboards ever will.
+
+## The Bottom Line
+
+What it actually takes to build in Web3 now is the ability to design for adversarial markets instead of idealized users. That means choosing the right execution model, understanding why AMMs still matter, respecting how fragmented liquidity really is, pricing the cost of MEV honestly, and using incentives to shape durable behavior rather than to decorate a launch.
+
+The teams that win will not be the ones with the loudest token narrative. They will be the ones with the clearest market structure, the cleanest execution path, and the strongest grip on real flow. In crypto, that is the difference between a protocol and a temporary campaign.
+
+*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`.trim(),
+    category: 'crypto',
+    readTime: '16 min',
+    date: '2026-07-06',
+    author: 'Decryptica',
+  },
+  {
     id: '1783251381281-3262',
     slug: 'the-hidden-costs-of-no-code-solutions',
     title: "The Hidden Costs of No-Code Solutions",
