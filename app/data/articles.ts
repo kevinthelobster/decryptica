@@ -68,6 +68,331 @@ export const topics: Topic[] = [
 
 export const articles: Article[] = [
   {
+    id: '1783510382285-2744',
+    slug: 'ethereum-s-next-upgrade-could-change-everything',
+    title: "Ethereum's Next Upgrade Could Change Everything",
+    excerpt: "Ethereum's Next Upgrade Could Change Everything Ethereum does not usually reprice in a straight line after upgrades. The first move is technical, the...",
+    content: `# Ethereum's Next Upgrade Could Change Everything
+
+Ethereum does not usually reprice in a straight line after upgrades. The first move is technical, the second is infrastructural, and the third is market structure. That third move is where the money gets made.
+
+As of July 8, 2026, Ethereum’s last major hard fork, Fusaka, activated on mainnet on December 3, 2025, with additional blob-capacity increases following on December 9, 2025 and January 7, 2026. The market is now staring at the next upgrade cycle. The headline most people see is “more scale.” The part that matters is what that scale does to liquidity, routing, arbitrage, LP returns, and MEV extraction across Ethereum and its rollups.
+
+That is the real trade.
+
+**TL;DR**
+
+- Ethereum’s next upgrade cycle is not just about higher throughput. It is about changing the cost curve for on-chain execution and data availability.
+- Fusaka introduced PeerDAS, blob-parameter-only forks, a higher default gas limit target, and changes that make blob pricing and proposer visibility more operationally useful.
+- More blob capacity and lower rollup posting costs push activity toward L2s, which makes on-chain market making, arbitrage, and intent routing more competitive.
+- AMMs remain structurally critical even as orderbooks and solver-based systems grow, because they are still the default inventory layer for long-tail assets, passive liquidity, and permissionless price discovery.
+- Lower frictions do not eliminate MEV. They make more small opportunities viable, shift value toward better routing and cross-domain arbitrage, and compress margins for lazy LPs.
+- The likely winners are protocols with deep liquidity, strong routing, and defensible LP tooling. The likely losers are weak L2s, stagnant pools, and LPs treating concentrated liquidity like a bond.
+
+## Ethereum’s Next Phase Is About Market Plumbing, Not Marketing
+
+The easy way to think about Ethereum upgrades is to bucket them into user-facing slogans: cheaper fees, more throughput, better wallets. That framing is too shallow for serious crypto analysis.
+
+The next phase is about plumbing.
+
+Fusaka mattered because it did not just add one isolated feature. It advanced Ethereum’s rollup-centric design in four ways that directly affect DeFi market structure:
+
+### 1. PeerDAS turns blob scaling into a real throughput lever
+
+PeerDAS, introduced in EIP-7594, lets nodes verify data availability by sampling only part of blob data rather than downloading all of it. That sounds academic until you translate it into market consequences.
+
+Ethereum’s rollup roadmap depends on cheap, abundant data availability. If L2s can publish more data more cheaply, they can post batches more often, reduce latency, lower user fees, and support more transaction-heavy applications. That matters for DEXs because high-frequency rebalancing, arbitrage, liquidation, and intent fulfillment all depend on cheap posting costs.
+
+More DA capacity means more economically viable on-chain actions per basis point of edge.
+
+### 2. Blob-parameter-only forks make scaling more responsive
+
+EIP-7892 created a mechanism for blob-parameter-only hard forks. That is more important than it sounds. Ethereum no longer has to wait for giant, politically overloaded upgrade bundles to raise blob capacity.
+
+That changes expectations. Rollups can plan against a path of continued capacity expansion rather than a one-off event. Builders stop treating blob scarcity as a temporary shock and start treating cheaper DA as a credible trend.
+
+Once markets believe that trend, pricing changes early. Rollups compete harder on fees. Aggregators widen route search. Solvers attack smaller spreads. LPs face tighter fee capture windows.
+
+### 3. A higher default gas limit matters for L1 DeFi more than people admit
+
+Fusaka also moved Ethereum toward a 60 million default gas limit configuration. That does not magically make mainnet a cheap retail chain, but it does expand headroom for complex on-chain transactions.
+
+That matters for:
+
+- large pathfinding swaps
+- multi-hop liquidations
+- batched settlement
+- vault rebalances
+- intent fulfillment
+- complex hooks and callback-heavy AMM logic
+
+In practice, L1 remains premium blockspace. But when premium blockspace gets less constrained, high-value DeFi activity becomes easier to schedule and settle. That improves reliability for protocols whose edge depends on complex execution rather than raw low fees.
+
+### 4. Deterministic proposer lookahead nudges Ethereum toward better preconfirmations
+
+EIP-7917 gives the network a deterministic proposer lookahead. That is not just a consensus-layer cleanup. It matters for based preconfirmations and other low-latency execution designs.
+
+For DEX users, the prize is obvious: less uncertainty between quote and settlement.
+
+For searchers and builders, the implication is bigger: better knowledge of proposer schedules can tighten certain latency-sensitive strategies and reshape how orderflow gets priced. That does not kill MEV. It professionalizes another slice of it.
+
+## Why This Changes DEX Behavior Before It Changes ETH Narratives
+
+Most users experience upgrades through gas charts. Markets absorb them through behavior.
+
+The key behavioral shift is simple: when L2s get cheaper and more predictable, more transactions that were previously uneconomic become worth doing.
+
+That includes trades humans care about and trades humans never notice.
+
+### Smaller arbitrage trades become profitable again
+
+When transaction costs fall, the minimum profitable arbitrage threshold falls with them.
+
+That means more opportunities get cleared:
+
+- narrower price gaps between pools
+- faster stablecoin peg repairs
+- more frequent long-tail repricing
+- smaller inventory imbalances corrected earlier
+
+This has two direct consequences for AMMs.
+
+First, pricing gets tighter. Pools on Base, Arbitrum, OP Mainnet, Scroll, and other rollups will spend less time visibly mispriced if arbitrageurs can close gaps cheaply.
+
+Second, LPs do not automatically benefit from this. Better arbitrage keeps pools in line, but it also means toxic flow arrives faster and more consistently. The gap between fee income and loss-versus-rebalancing tightens.
+
+If you are LPing concentrated liquidity, cheaper arbitrage is not a gift. It is a sharper opponent.
+
+### Rollups can compete harder on market incentives
+
+Lower data availability costs let rollups lean more aggressively into user acquisition.
+
+That can show up as:
+
+- lower gas subsidies
+- more sequencer rebates
+- deeper liquidity mining
+- token-denominated maker incentives
+- trading campaigns targeted at specific pools or routes
+
+This is not theory. The moment infra costs fall, chain-level strategy gets more aggressive. Rollups stop asking whether they can afford to subsidize flow and start asking whether they can afford not to.
+
+That intensifies liquidity fragmentation across Ethereum’s execution environment. Users may see cheaper trades. Protocols see a harder distribution problem.
+
+### Long-tail assets benefit more than majors
+
+Blue-chip pairs already have multiple execution venues: centralized exchanges, perps, RFQ desks, orderbooks, intents, and deep AMMs.
+
+Long-tail tokens do not.
+
+That is where Ethereum’s next upgrade cycle has outsized impact. Cheaper rollup infrastructure makes it more viable to host thinner markets, smaller pools, and low-volume communities without every rebalance becoming absurdly expensive.
+
+This is exactly why AMMs remain structurally important.
+
+## AMMs Are Still the Core Liquidity Primitive
+
+Orderbooks are growing. Intent-based systems are improving. RFQ flow is getting smarter. None of that replaces AMMs at the system level.
+
+It changes who captures the easiest flow. It does not replace the warehouse.
+
+### Why AMMs keep winning on structure
+
+AMMs still do five jobs that orderbooks and intent routers cannot fully displace.
+
+#### 1. They warehouse inventory permissionlessly
+
+An AMM pool can exist before there is enough natural two-sided flow for an orderbook to function well. That matters for new governance tokens, restaking derivatives, yield-bearing wrappers, memecoins, synthetic assets, and every awkward pair the market invents next.
+
+#### 2. They support passive market making
+
+Not every liquidity provider wants to run a quoting engine. AMMs let capital post liquidity without always-on active quoting infrastructure. Concentrated liquidity made this less passive than the marketing suggested, but the structure still matters.
+
+#### 3. They anchor long-tail price discovery
+
+Even when routing starts with an intent or RFQ, the fallback settlement surface is often an AMM. Solvers need somewhere to land inventory, hedge residual exposure, or complete multi-asset paths. AMMs remain that base layer.
+
+#### 4. They integrate naturally with arbitrage
+
+AMMs do not require a perfect internal price formation process. They rely on arbitrage to pull pool prices back toward broader market prices. That is a feature, not a bug, when execution costs are low enough.
+
+#### 5. They are composable by default
+
+Lending protocols, vaults, perpetuals, stablecoin systems, and structured products all plug into AMMs more easily than into closed routing networks or venue-specific orderbooks.
+
+That composability becomes more valuable as Ethereum gets cheaper to coordinate across.
+
+### Intent-based routing still depends on AMMs
+
+CoW Swap, UniswapX, and 1inch Fusion-style routing can absolutely improve execution. But those systems are not anti-AMM. They are meta-layers over liquidity sources.
+
+Solvers route flow to wherever settlement is best at that moment:
+
+- RFQ makers when inventory is internalizable
+- CEX hedges when off-chain depth is superior
+- AMMs when permissionless inventory is cheapest or most available
+
+The better the routing layer becomes, the more valuable deep, reliable AMM liquidity becomes underneath it.
+
+A solver cannot optimize into a vacuum. It needs settlement rails.
+
+### Concentrated liquidity remains powerful and unforgiving
+
+Uniswap v3 changed LP economics by allowing capital to be deployed in ranges. That made capital efficiency dramatically better for pairs that stay in bounds. It also turned LPing into a directional, operational strategy.
+
+That remains true after Ethereum’s scaling upgrades.
+
+Lower costs help active managers rebalance more frequently. They also help arbitrageurs pick off stale ranges more efficiently. So the upgrade cycle improves the viability of active LP management while worsening the economics of lazy concentrated LPs.
+
+That favors:
+
+- professional vault managers
+- protocols with better auto-rebalancing logic
+- pools with real flow, not emissions-only volume
+- LP tooling that measures LVR, fee capture, and range efficiency honestly
+
+It punishes static positions pretending to be passive yield.
+
+### Where AMMs are actually weak
+
+AMMs are not the best answer for every market.
+
+They are structurally weaker when:
+
+- the asset pair has deep professional market makers and low spread requirements
+- the flow is toxic and directional
+- inventory risk is high relative to fee generation
+- the pool depends on emissions rather than organic flow
+- the user trade is large enough that RFQ or orderbook liquidity can outperform slippage curves
+
+Stablecoin swaps are a good example. Curve-style stableswap designs are excellent when inventories stay balanced and the peg regime holds. They become less attractive when one side is structurally exiting.
+
+Similarly, highly concentrated blue-chip pairs on fast L2s may increasingly lose large-ticket flow to RFQ and solver networks. That does not make AMMs obsolete. It means AMMs specialize into what they do best: always-on permissionless inventory and composable execution.
+
+## MEV Does Not Go Away. It Gets More Granular.
+
+Ethereum upgrades rarely remove extractable value. They usually reallocate it.
+
+The next upgrade cycle should do three things to MEV.
+
+### 1. Increase the number of small viable opportunities
+
+Cheaper execution and posting costs allow searchers to chase thinner edges:
+
+- cross-pool arbitrage
+- stablecoin peg nudges
+- funding-rate spillovers
+- long-tail asset repricing
+- liquidation backruns
+- bridge and wrapped-asset basis trades
+
+The result is a more continuously arbitraged market and a lower average profit per event.
+
+That is good for end users in headline terms. It is less good for underpriced LPs.
+
+### 2. Expand cross-domain MEV
+
+As more activity spreads across rollups, the best opportunities increasingly live between domains rather than inside one pool.
+
+Think about the obvious set:
+
+- ETH-stable pricing divergence between Base and Arbitrum
+- volatile LSD or LRT pair dislocations between Ethereum mainnet and an L2
+- wrapped-asset basis between native bridged and third-party bridged versions
+- sequencer timing differences affecting liquidation and hedging windows
+
+That pushes value toward firms and protocols that can coordinate inventory, bridging, and risk across chains efficiently. It also means “deep liquidity” stops being a single-chain metric.
+
+### 3. Improve execution certainty for latency-sensitive flows
+
+Deterministic proposer visibility and maturing preconfirmation design can reduce some forms of quote uncertainty. That matters for on-chain market makers and solvers pricing user flow.
+
+The closer Ethereum gets to reliable low-latency execution guarantees, the more competitive on-chain routing becomes against centralized internalization for certain trade sizes.
+
+That is a major structural point. Better execution certainty does not just improve UX. It changes which markets can realistically live onchain.
+
+## Which Protocols Are Best Positioned
+
+The protocols with the clearest upside are the ones already built for fragmented, multi-venue liquidity.
+
+### Uniswap and UniswapX
+
+Uniswap remains the benchmark for concentrated liquidity and permissionless routing surface area. If cheaper rollups increase trade frequency and long-tail experimentation, Uniswap benefits from raw surface area alone.
+
+UniswapX-style routing also gets stronger when more liquidity sources become cheap to touch. Better infra widens the solver design space.
+
+### Curve and Balancer
+
+Curve still matters where correlated assets, stable pairs, and yield-bearing wrappers dominate flow. Balancer remains structurally useful where custom pool logic and treasury-managed liquidity matter.
+
+If Ethereum’s next cycle makes rebalancing and arbitrage cheaper, specialized pool design becomes more viable, not less.
+
+### CoW Swap and solver-based routers
+
+CoW’s model improves as venue diversity increases. More L2 liquidity, more AMM depth, and more maker competition generally help batch auctions and solver-based execution.
+
+The upside here is not that AMMs disappear. It is that routers become smarter about when not to hit them directly.
+
+### Maverick, Ambient, and active-liquidity designs
+
+Protocols built around more dynamic liquidity behavior may gain relative ground if static concentrated positions become harder to justify. The more frequently markets rebalance, the more value shifts toward designs that adapt better to flow and volatility.
+
+## Actionable Takeaways for Traders, LPs, and Builders
+
+### For traders
+
+Expect smaller spreads and better routing on active L2 pairs. But do not assume this means less hidden cost. MEV will compress into tighter, more frequent extraction opportunities. Use aggregators and intent-based execution when trading size matters.
+
+### For LPs
+
+Stop evaluating pools on fee APR alone. The relevant question is whether fees outrun adverse selection, rebalancing costs, and inventory drift. After Ethereum’s scaling upgrades, capital efficiency improves, but so does the efficiency of the traders taking the other side.
+
+### For token issuers and DAO treasuries
+
+Do not spray liquidity everywhere because infra got cheaper. Fragmented liquidity still destroys execution quality. Pick one or two primary venues per chain, align incentives tightly, and monitor how much organic arbitrage actually connects them.
+
+### For rollups
+
+Cheaper blobspace is not enough. If you cannot convert infra gains into sticky orderflow, you become a subsidy sink. The real competition is not “who has low fees.” It is “who becomes a preferred settlement venue for routers, solvers, and LP capital.”
+
+### For DEX designers
+
+The next winning design likely does not choose between AMMs and intents. It combines them. The stack is increasingly clear:
+
+- intents for user abstraction
+- solvers for routing
+- AMMs for permissionless inventory
+- RFQ makers for size and low-slippage execution
+- cross-domain coordination for final edge
+
+Protocols that understand this composition will outperform protocols still marketing a single primitive as the whole answer.
+
+## FAQ
+
+### Will Ethereum’s next upgrade make AMMs less relevant?
+
+No. It will probably make them more strategically important. Orderbooks and intent routers can capture more high-quality flow, but AMMs remain the default liquidity warehouse for long-tail assets, composable DeFi positions, and fallback settlement. Better routing layers increase the value of reliable AMM depth underneath them.
+
+### Does cheaper blobspace reduce MEV?
+
+It reduces some user-visible inefficiency, but it does not remove MEV. It lowers the threshold for profitable arbitrage, increases the number of small extractable opportunities, and expands cross-rollup MEV. The extraction becomes more continuous and more infrastructure-driven.
+
+### Which users benefit most from Ethereum’s next upgrade cycle?
+
+Active DeFi users on L2s benefit first: traders, arbitrageurs, liquidators, solvers, and protocols that rebalance frequently. Long-tail markets also benefit because lower infrastructure costs make thinner pools more viable. Passive LPs benefit the least unless they use strong active management.
+
+## The Bottom Line
+
+Ethereum’s next upgrade cycle matters because it changes the economics of coordination, not just the optics of scale. More blob capacity, better pricing for data availability, higher execution headroom, and improved proposer visibility all push the network toward denser, faster, more competitive on-chain markets.
+
+That does not kill AMMs. It strips away lazy assumptions around them. The AMMs that survive this phase will be the ones paired with real routing, real flow, and LP economics that can survive against faster arbitrage and sharper solvers. The DEXs that win will not be the ones claiming a new primitive replaces everything old. They will be the ones that understand Ethereum is becoming a layered execution marketplace where every primitive has a role, and where the settlement layer still decides who gets paid.
+
+*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`.trim(),
+    category: 'crypto',
+    readTime: '14 min',
+    date: '2026-07-08',
+    author: 'Decryptica',
+  },
+  {
     id: '1783424012331-2095',
     slug: 'what-on-chain-data-says-about-bitcoin-s-next-move',
     title: "What On-Chain Data Says About Bitcoin's Next Move",
