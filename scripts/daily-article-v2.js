@@ -14,7 +14,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execSync, execFileSync } = require('child_process');
 
 // === CONFIGURATION ===
 const CONFIG = {
@@ -93,6 +93,10 @@ function estimateReadTime(content) {
   const words = content.split(/\s+/).length;
   const minutes = Math.max(1, Math.ceil(words / 200));
   return `${minutes} min`;
+}
+
+function countWords(content) {
+  return stripMarkdown(content || '').split(/\s+/).filter(Boolean).length;
 }
 
 // === DEDUPLICATION TRACKING ===
@@ -218,6 +222,105 @@ async function researchKeywords(category) {
   };
 }
 
+const RESEARCH_BRIEFS = {
+  crypto: {
+    desk: 'Crypto markets desk',
+    evidenceChecklist: [
+      'Separate price action from market structure: liquidity depth, venue concentration, ETF/fund flows, stablecoin supply, funding rates, and realized volatility.',
+      'Call out whether the claim depends on spot markets, derivatives, protocol revenue, TVL, active addresses, or developer activity.',
+      'Use protocol or venue examples where they clarify mechanism: Uniswap, Curve, Aave, Maker/Sky, Solana DEX routing, Ethereum L2s, Coinbase, Binance, CME, or public ETF flow trackers.',
+      'Avoid pretending one metric proves direction. Explain what would confirm or break the thesis.'
+    ],
+    trustSignals: [
+      'Add a short "What we checked" section naming the types of evidence used.',
+      'Include at least one risk table or decision matrix.',
+      'Explain the mechanism behind the headline before giving a take.'
+    ]
+  },
+  ai: {
+    desk: 'AI tools desk',
+    evidenceChecklist: [
+      'Separate vendor claims from practical adoption signals: pricing, rate limits, latency, integration burden, benchmark caveats, security review, and workflow fit.',
+      'Name concrete tools or model families only when they are relevant to the reader decision.',
+      'Compare use cases, not just feature lists. Say who should avoid the tool or pattern.',
+      'Avoid fake hands-on claims. Use "based on public docs, pricing pages, benchmark reports, and user reports" when that is the real evidence base.'
+    ],
+    trustSignals: [
+      'Add a "Where the marketing overreaches" section.',
+      'Include an evaluation checklist or comparison table.',
+      'Make implementation tradeoffs explicit.'
+    ]
+  },
+  automation: {
+    desk: 'Automation systems desk',
+    evidenceChecklist: [
+      'Separate workflow theory from operational reality: retries, ownership, observability, rate limits, human approvals, data quality, and maintenance load.',
+      'Name concrete tools where useful: Zapier, Make, n8n, Airtable, HubSpot, Salesforce, Slack, GitHub Actions, queues, webhooks, or cron.',
+      'Prefer practical system diagrams in prose, checklists, failure modes, and migration steps over broad productivity claims.',
+      'Avoid claiming a tool "scales" without describing what breaks first.'
+    ],
+    trustSignals: [
+      'Add a "Failure modes" section.',
+      'Include a build-vs-buy or workflow readiness table.',
+      'Give a concrete implementation path.'
+    ]
+  }
+};
+
+const FORBIDDEN_PHRASES = [
+  "in today's fast-paced world",
+  'delve',
+  'unlock',
+  'testament to',
+  'game-changer',
+  'revolutionizing',
+  'in summary',
+  'as an ai',
+  'i tested',
+  'we tested',
+  'in my experience'
+];
+
+function getResearchBrief(category, title, primaryKeyword) {
+  const brief = RESEARCH_BRIEFS[category] || RESEARCH_BRIEFS.automation;
+  return {
+    desk: brief.desk,
+    title,
+    primaryKeyword,
+    evidenceChecklist: brief.evidenceChecklist,
+    trustSignals: brief.trustSignals
+  };
+}
+
+function loadSiteInventory(category, limit = 8) {
+  try {
+    const content = fs.readFileSync(CONFIG.articlesFile, 'utf-8');
+    const articleBlocks = content.match(/\{[\s\S]*?slug:\s*['"][^'"]+['"][\s\S]*?\}/g) || [];
+    return articleBlocks
+      .map((block) => {
+        const title = block.match(/title:\s*"((?:\\"|[^"])*)"/);
+        const slug = block.match(/slug:\s*['"]([^'"]+)['"]/);
+        const articleCategory = block.match(/category:\s*['"]([^'"]+)['"]/);
+        if (!title || !slug || !articleCategory) return null;
+        return {
+          title: title[1].replace(/\\"/g, '"'),
+          slug: slug[1],
+          category: articleCategory[1]
+        };
+      })
+      .filter(Boolean)
+      .filter((article) => article.category === category)
+      .slice(0, limit);
+  } catch (e) {
+    log(`Site inventory load error: ${e.message}`);
+    return [];
+  }
+}
+
+function formatPromptList(items) {
+  return items.map((item) => `- ${item}`).join('\n');
+}
+
 // === TITLE POOLS (expanded for diversity) ===
 
 const TITLE_POOLS = {
@@ -329,33 +432,61 @@ function titleCaseWords(input) {
     .join(' ');
 }
 
+function fitTitleForSchema(title, maxLength = 70) {
+  title = title.trim().replace(/[.!?]+$/, '');
+  if (title.length <= maxLength) return title;
+
+  const replacements = [
+    [': What Actually Matters in 2026', ': What Matters in 2026'],
+    [': What Actually Works in 2026', ': What Works in 2026'],
+    [': What the Market Gets Wrong in 2026', ': What the Market Gets Wrong'],
+    [': Which One Makes More Sense in 2026?', ': Which Makes More Sense'],
+    [': A Practical 2026 Guide', ': Practical Guide'],
+    [': The Real Answer in 2026', ': The Real Answer']
+  ];
+
+  let fitted = title;
+  for (const [from, to] of replacements) {
+    fitted = fitted.replace(from, to);
+    if (fitted.length <= maxLength) return fitted;
+  }
+
+  const [head, tail] = fitted.split(': ');
+  if (tail && head.length <= maxLength) return head;
+
+  return fitted
+    .slice(0, maxLength)
+    .replace(/[:\s-]+[^:\s-]*$/, '')
+    .replace(/[:\s-]+$/, '')
+    .replace(/[.!?]+$/, '');
+}
+
 function createTitleFromKeyword(keyword, category) {
   const normalized = keyword.trim().replace(/\s+/g, ' ');
   const lower = normalized.toLowerCase();
+  let title;
 
   if (lower.startsWith('best ')) {
-    return `${titleCaseWords(normalized)}: What Actually Matters in 2026`;
-  }
-  if (lower.startsWith('how ')) {
-    return `${titleCaseWords(normalized)}: What Actually Works in 2026`;
-  }
-  if (lower.startsWith('what ')) {
-    return `${titleCaseWords(normalized)}: A Practical 2026 Guide`;
-  }
-  if (lower.startsWith('why ')) {
-    return `${titleCaseWords(normalized)}: The Real Answer in 2026`;
-  }
-  if (lower.includes(' vs ')) {
-    return `${titleCaseWords(normalized)}: Which One Makes More Sense in 2026?`;
+    title = `${titleCaseWords(normalized)}: What Actually Matters in 2026`;
+  } else if (lower.startsWith('how ')) {
+    title = `${titleCaseWords(normalized)}: What Actually Works in 2026`;
+  } else if (lower.startsWith('what ')) {
+    title = `${titleCaseWords(normalized)}: A Practical 2026 Guide`;
+  } else if (lower.startsWith('why ')) {
+    title = `${titleCaseWords(normalized)}: The Real Answer in 2026`;
+  } else if (lower.includes(' vs ')) {
+    title = `${titleCaseWords(normalized)}: Which One Makes More Sense in 2026?`;
+  } else {
+    const suffix = category === 'crypto'
+      ? 'What the Market Gets Wrong in 2026'
+      : category === 'ai'
+        ? 'What Actually Matters in 2026'
+        : 'A Practical 2026 Guide';
+
+    title = `${titleCaseWords(normalized)}: ${suffix}`;
   }
 
-  const suffix = category === 'crypto'
-    ? 'What the Market Gets Wrong in 2026'
-    : category === 'ai'
-      ? 'What Actually Matters in 2026'
-      : 'A Practical 2026 Guide';
-
-  return `${titleCaseWords(normalized)}: ${suffix}`;
+  return fitTitleForSchema(title);
 }
 
 function loadKeywordCandidates() {
@@ -437,6 +568,10 @@ function overlapsExistingContent(candidate, existingArticles) {
   });
 }
 
+function slugExists(slug, existingArticles = loadExistingArticleFingerprints()) {
+  return existingArticles.some((article) => article.slug === slug);
+}
+
 function pickKeywordCandidate(targetCategory, tracker) {
   const payload = loadKeywordCandidates();
   if (!payload.candidates.length) return null;
@@ -446,7 +581,7 @@ function pickKeywordCandidate(targetCategory, tracker) {
     if (!candidate || !candidate.keyword) return false;
     if (candidate.usedAt) return false;
     if (candidate.status && candidate.status !== 'ready') return false;
-    const title = candidate.suggestedTitle || createTitleFromKeyword(candidate.keyword, candidate.category || targetCategory);
+    const title = fitTitleForSchema(candidate.suggestedTitle || createTitleFromKeyword(candidate.keyword, candidate.category || targetCategory));
     if (isRecentlyPosted(tracker, title)) return false;
     if (overlapsExistingContent(candidate, existingArticles)) return false;
     return true;
@@ -471,7 +606,7 @@ function pickKeywordCandidate(targetCategory, tracker) {
     id: selected.id,
     category: selected.category || targetCategory,
     keyword: selected.keyword,
-    title: selected.suggestedTitle || createTitleFromKeyword(selected.keyword, selected.category || targetCategory),
+    title: fitTitleForSchema(selected.suggestedTitle || createTitleFromKeyword(selected.keyword, selected.category || targetCategory)),
     opportunityScore: selected.opportunityScore,
     source: selected.source || 'keyword-pipeline'
   };
@@ -532,8 +667,9 @@ async function researchTopic() {
   }
   
   // Get available titles (not recently posted)
+  const existingArticles = loadExistingArticleFingerprints();
   const availableTitles = TITLE_POOLS[category].filter(
-    title => !isRecentlyPosted(tracker, title)
+    title => !isRecentlyPosted(tracker, title) && !slugExists(generateSlug(title), existingArticles)
   );
   
   if (availableTitles.length === 0) {
@@ -542,12 +678,12 @@ async function researchTopic() {
     for (const cat of CATEGORIES) {
       if (cat === category) continue;
       const backupTitles = TITLE_POOLS[cat].filter(
-        title => !isRecentlyPosted(tracker, title)
+        title => !isRecentlyPosted(tracker, title) && !slugExists(generateSlug(title), existingArticles)
       );
       if (backupTitles.length > 0) {
         return {
           category: cat,
-          title: backupTitles[Math.floor(Math.random() * backupTitles.length)],
+          title: fitTitleForSchema(backupTitles[Math.floor(Math.random() * backupTitles.length)]),
           primary_keyword: cat === 'crypto' ? 'crypto analysis' : 
                           cat === 'ai' ? 'ai tools' : 'automation',
           keywordCandidateId: null,
@@ -559,13 +695,13 @@ async function researchTopic() {
     // Last resort: pick random from any category (force rotate)
     const allTitles = TITLE_POOLS[category];
     const randomTitle = allTitles[Math.floor(Math.random() * allTitles.length)];
-    return { category, title: randomTitle, primary_keyword: category, keywordCandidateId: null, keywordData, tracker };
+    return { category, title: fitTitleForSchema(randomTitle), primary_keyword: category, keywordCandidateId: null, keywordData, tracker };
   }
   
   // Pick a random available title
-  const selectedTitle = availableTitles[
+  const selectedTitle = fitTitleForSchema(availableTitles[
     Math.floor(Math.random() * availableTitles.length)
-  ];
+  ]);
   
   // Determine primary keyword from title
   const primary_keyword = extractKeyword(selectedTitle, category);
@@ -671,7 +807,10 @@ async function generateArticle(research) {
     category,
     readTime: estimateReadTime(content),
     date: getTodayDate(),
-    author: 'Decryptica'
+    author: 'Decryptica',
+    status: 'published',
+    primaryKeyword: primary_keyword,
+    wordCount: countWords(content)
   };
   
   log(`Article generated: "${title}"`);
@@ -690,74 +829,182 @@ function generateContent(title, primary_keyword, category) {
   const today = getTodayDate();
 
   const categoryGuidance = {
-    crypto: `You are writing for Decryptica, a crypto and DeFi blog. Focus on market structure, AMMs, DEX design, liquidity behavior, MEV, on-chain incentives, and actionable insights. Be specific about protocols, tradeoffs, and concrete mechanisms.`,
-    ai: `You are writing for Decryptica, an AI tools blog. Focus on practical use cases, comparisons, pricing, and real-world performance. Be specific about features, limitations, and ideal use cases.`,
-    automation: `You are writing for Decryptica, an automation blog. Focus on workflow patterns, tool comparisons, scalability considerations, and implementation tips. Be specific about tools, integrations, and trade-offs.`
+    crypto: `You are writing for Decryptica as a skeptical crypto markets editor. Focus on market structure, AMMs, DEX design, liquidity behavior, MEV, on-chain incentives, and decision-useful risk.`,
+    ai: `You are writing for Decryptica as a skeptical AI tools editor. Focus on practical use cases, comparisons, pricing, real-world constraints, security review, and adoption tradeoffs.`,
+    automation: `You are writing for Decryptica as a skeptical automation systems editor. Focus on workflow design, tool comparisons, reliability, observability, approvals, data quality, and maintenance burden.`
   };
 
   const guidance = categoryGuidance[category] || categoryGuidance.automation;
+  const researchBrief = getResearchBrief(category, title, primary_keyword);
+  const siteInventory = loadSiteInventory(category);
+  const internalLinkList = siteInventory.length
+    ? siteInventory.map((article) => `${article.title} (/blog/${article.slug})`)
+    : ['No same-category inventory available. Do not invent internal links.'];
 
-  const prompt = `${guidance}
+  const buildPrompt = (revisionFeedback = '') => `${guidance}
 
-Write a complete, SEO-optimized article for Decryptica with the exact title: "${title}"
+Write a complete reported analysis article for Decryptica with the exact title: "${title}"
+
+Editorial position:
+- Decryptica should read like a reputable niche publication, not a generic content farm.
+- The article must explain what the evidence suggests, what remains uncertain, and what a serious reader should do next.
+- Do not invent live numbers, private tests, unnamed insiders, or direct quotes. If a number is not supplied, describe the metric type and why it matters instead of fabricating a value.
+- Attribute the evidence base in plain language, for example "public documentation," "pricing pages," "on-chain dashboards," "protocol docs," "benchmark reports," or "user reports." Do not make up source names.
 
 Hard requirements:
-- Minimum 1,800 words
+- 1,800-2,500 words
 - Strong opening hook, then a bold **TL;DR** section near the top
 - Use markdown with H2 and H3 headings
-- Be specific, not generic
-- No filler, no placeholder phrasing, no meta commentary about being an AI
-- Include concrete examples, protocol references, and mechanism-level explanation where relevant
-- End with a FAQ section with 3 useful questions and answers
-- End with a section exactly titled "## The Bottom Line"
+- Include a section titled "## What We Checked" that describes the evidence categories without pretending original hands-on testing happened
+- Include at least one markdown table that helps a reader make a decision
+- Include concrete examples, tool/protocol references, failure modes, and mechanism-level explanation where relevant
+- Include one natural internal link from the inventory below if it genuinely fits
+- Include a FAQ section with 3 useful questions and answers
+- Include a section exactly titled "## The Bottom Line" after the FAQ
 - End with this disclaimer exactly: "*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*"
 - Keep the tone sharp, confident, and readable
 - Optimize naturally for the primary keyword without stuffing
+- Use short paragraphs. No paragraph should exceed 3 sentences.
+- Avoid these phrases entirely: ${FORBIDDEN_PHRASES.join(', ')}
+${revisionFeedback ? `\nRevision requirements from the previous failed draft:\n${revisionFeedback}\n` : ''}
 
 Topic metadata:
 - Title: ${title}
 - Primary keyword: ${primary_keyword}
 - Category: ${category}
 - Date: ${today}
+- Desk: ${researchBrief.desk}
+
+Evidence checklist:
+${formatPromptList(researchBrief.evidenceChecklist)}
+
+Trust signals to include:
+${formatPromptList(researchBrief.trustSignals)}
+
+Internal link inventory:
+${formatPromptList(internalLinkList)}
 
 Special instruction for this title:
 If the title is about AMMs, explain why AMMs remain structurally important despite orderbook growth and intent-based routing. Cover liquidity fragmentation, long-tail assets, passive market making, LP economics, concentrated liquidity, MEV/arbitrage, and where AMMs are actually weak.
 
 Return only the final article in markdown.`;
 
-  try {
-    const tmpPromptFile = `/tmp/decryptica_codex_prompt_${Date.now()}.txt`;
-    const tmpOutFile = `/tmp/decryptica_codex_output_${Date.now()}.md`;
-    fs.writeFileSync(tmpPromptFile, prompt, 'utf-8');
+  const runCodexArticlePrompt = (articlePrompt) => {
+    const tmpOutFile = `/tmp/decryptica_codex_output_${Date.now()}_${Math.random().toString(16).slice(2)}.md`;
 
-    log(`Using Codex model: ${CONFIG.model}`);
-    execSync(
-      `codex exec --model ${CONFIG.model} --output-last-message ${tmpOutFile} "$(cat ${tmpPromptFile})"`,
-      {
-        encoding: 'utf-8',
-        maxBuffer: 50 * 1024 * 1024,
-        stdio: 'pipe',
-        shell: '/bin/zsh'
-      }
-    );
+    execFileSync('codex', ['exec', '--model', CONFIG.model, '--output-last-message', tmpOutFile, articlePrompt], {
+      cwd: CONFIG.workspace,
+      encoding: 'utf-8',
+      maxBuffer: 50 * 1024 * 1024,
+      stdio: 'pipe'
+    });
 
     const text = fs.readFileSync(tmpOutFile, 'utf-8').trim();
-    try { fs.unlinkSync(tmpPromptFile); } catch {}
     try { fs.unlinkSync(tmpOutFile); } catch {}
+    return text;
+  };
 
-    if (text && text.split(/\s+/).length >= 1200) {
-      log(`Content generated with Codex: ${text.split(/\s+/).length} words`);
-      return text;
+  try {
+    const maxAttempts = Math.max(1, Number(process.env.CODEX_ARTICLE_ATTEMPTS || 3));
+    let lastQuality = null;
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+      const revisionFeedback = lastQuality
+        ? formatPromptList(lastQuality.errors.map((error) => `Fix this gate failure: ${error}`))
+        : '';
+
+      log(`Using Codex model: ${CONFIG.model} (attempt ${attempt}/${maxAttempts})`);
+      const text = runCodexArticlePrompt(buildPrompt(revisionFeedback));
+      const quality = validateGeneratedContent(text, { title, primaryKeyword: primary_keyword });
+
+      if (quality.ok) {
+        log(`Content generated with Codex: ${quality.wordCount} words`);
+        return text;
+      }
+
+      lastQuality = quality;
+      log(`Codex draft failed editorial gate on attempt ${attempt}: ${quality.errors.join('; ')}`);
     }
 
-    throw new Error('Codex returned too little content');
+    throw new Error(`Codex content failed editorial gate after ${maxAttempts} attempts: ${lastQuality.errors.join('; ')}`);
   } catch (error) {
     const stderr = error && error.stderr ? String(error.stderr).trim() : '';
     const stdout = error && error.stdout ? String(error.stdout).trim() : '';
     const detail = stderr || stdout || error.message;
-    log(`Codex generation error with model ${CONFIG.model}: ${detail}, using fallback content`);
-    return generateFallbackContent(title, primary_keyword, category);
+    log(`Codex generation error with model ${CONFIG.model}: ${detail}`);
+    if (process.env.ALLOW_FALLBACK_ARTICLE === '1') {
+      log('ALLOW_FALLBACK_ARTICLE=1 set, using fallback content');
+      const fallback = generateFallbackContent(title, primary_keyword, category);
+      const quality = validateGeneratedContent(fallback, { title, primaryKeyword: primary_keyword, allowFallback: true });
+      if (!quality.ok) {
+        throw new Error(`Fallback content failed editorial gate: ${quality.errors.join('; ')}`);
+      }
+      return fallback;
+    }
+    throw new Error('Article generation failed editorial gate; refusing to publish fallback content');
   }
+}
+
+function validateGeneratedContent(content, options = {}) {
+  const errors = [];
+  const plain = stripMarkdown(content || '');
+  const lower = plain.toLowerCase();
+  const wordCount = countWords(content);
+
+  if (!content || wordCount < 1500) {
+    errors.push(`word count ${wordCount} is below 1500`);
+  }
+  if (!/\*\*TL;DR\*\*/i.test(content)) {
+    errors.push('missing bold TL;DR section');
+  }
+  if (!/^## What We Checked\b/im.test(content) && !options.allowFallback) {
+    errors.push('missing What We Checked section');
+  }
+  if (!/^## FAQ\b/im.test(content) && !/^## FAQ:/im.test(content)) {
+    errors.push('missing FAQ section');
+  }
+  if (!/^## The Bottom Line\b/im.test(content)) {
+    errors.push('missing The Bottom Line section');
+  }
+  if (!content.trim().endsWith('*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*')) {
+    errors.push('missing exact final disclaimer');
+  }
+  if (!/\|[^\n]+\|[^\n]+\|\n\|[\s:-]+\|[\s:-]+\|/m.test(content) && !options.allowFallback) {
+    errors.push('missing decision table');
+  }
+
+  const forbiddenHits = FORBIDDEN_PHRASES.filter((phrase) => lower.includes(phrase));
+  if (forbiddenHits.length) {
+    errors.push(`forbidden phrase(s): ${forbiddenHits.join(', ')}`);
+  }
+
+  const templateSignals = [
+    'this section dives deep into the core dynamics at play',
+    'multiple data sources converge on similar conclusions',
+    'the landscape has evolved significantly',
+    'practical recommendations based on real-world testing'
+  ].filter((signal) => lower.includes(signal));
+  if (templateSignals.length && !options.allowFallback) {
+    errors.push('content contains fallback/template language');
+  }
+
+  const paragraphs = content
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter((paragraph) => paragraph && !paragraph.startsWith('|') && !paragraph.startsWith('- ') && !paragraph.startsWith('#'));
+  const longParagraphs = paragraphs.filter((paragraph) => {
+    const sentences = paragraph.split(/[.!?]+(?:\s|$)/).filter(Boolean);
+    return sentences.length > 4;
+  });
+  if (longParagraphs.length > 2) {
+    errors.push(`too many long paragraphs (${longParagraphs.length})`);
+  }
+
+  return {
+    ok: errors.length === 0,
+    errors,
+    wordCount
+  };
 }
 
 /**
@@ -885,23 +1132,27 @@ function stripMarkdown(text) {
 }
 
 function generateExcerpt(title, content) {
-  const plain = stripMarkdown(content || '');
-  const lines = plain
-    .split(/\n+/)
-    .map((line) => line.trim())
+  const blocks = String(content || '')
+    .split(/\n{2,}/)
+    .map((block) => stripMarkdown(block))
+    .map((block) => block.trim())
     .filter(Boolean);
 
-  const candidates = lines.filter((line) => {
+  const candidates = blocks.filter((line) => {
     const lower = line.toLowerCase();
     if (lower === title.toLowerCase()) return false;
+    if (lower.startsWith(title.toLowerCase())) return false;
     if (lower === 'tl;dr') return false;
+    if (lower.startsWith('tl;dr')) return false;
+    if (lower.startsWith('what we checked')) return false;
     if (lower.startsWith('q:')) return false;
     if (lower.startsWith('a:')) return false;
     if (line.length < 80) return false;
+    if (line.includes('|')) return false;
     return true;
   });
 
-  const source = candidates[0] || plain || title;
+  const source = candidates[0] || blocks.find((block) => block.toLowerCase() !== title.toLowerCase()) || title;
   const excerpt = source.length > 155
     ? source.slice(0, 152).replace(/\s+\S*$/, '').trim() + '...'
     : source;
@@ -942,6 +1193,9 @@ function addArticleToFile(article) {
     readTime: '${article.readTime}',
     date: '${article.date}',
     author: '${article.author}',
+    status: '${article.status}',
+    primaryKeyword: "${article.primaryKeyword.replace(/"/g, '\\"')}",
+    wordCount: ${article.wordCount},
   },`;
   
   const insertMarker = 'articles: Article[] = [';
@@ -1096,4 +1350,10 @@ if (require.main === module) {
   });
 }
 
-module.exports = { main, researchTopic, generateArticle };
+module.exports = {
+  main,
+  researchTopic,
+  generateArticle,
+  generateExcerpt,
+  validateGeneratedContent
+};
