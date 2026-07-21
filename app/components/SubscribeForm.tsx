@@ -50,7 +50,7 @@ export default function SubscribeForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
+    <form onSubmit={handleSubmit} className="flex max-w-md min-w-0 flex-col gap-3">
       <input
         type="email"
         value={email}
@@ -58,7 +58,7 @@ export default function SubscribeForm() {
         placeholder="your@email.com"
         required
         disabled={status === 'loading'}
-        className="flex-1 px-5 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-indigo-200 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all disabled:opacity-50"
+        className="min-w-0 flex-1 px-5 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-indigo-200 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all disabled:opacity-50"
         onFocus={() => {
           trackEvent({
             type: 'form_start',
@@ -69,7 +69,7 @@ export default function SubscribeForm() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="px-8 py-3 rounded-full bg-white text-indigo-600 font-semibold hover:bg-indigo-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3 font-semibold text-indigo-600 transition-colors hover:bg-indigo-50 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {status === 'loading' ? (
           <>

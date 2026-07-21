@@ -21,7 +21,7 @@ interface IntentCard {
   title: string;
   description: string;
   href: string;
-  className: string;
+  kicker: string;
 }
 
 export default function IntentRouter({
@@ -54,36 +54,36 @@ export default function IntentRouter({
   const cards: IntentCard[] = [
     {
       id: 'learn',
-      title: 'Learn',
-      description: 'Read the latest practical breakdowns without the hype.',
+      title: 'Read the reporting',
+      description: 'Start with the newest analysis and background pieces before making a tooling or market decision.',
       href: learnHref,
-      className: 'from-cyan-500/20 to-cyan-400/5 border-cyan-300/20',
+      kicker: 'Research',
     },
     {
       id: 'calculate',
-      title: 'Calculate',
-      description: 'Estimate model costs before you commit engineering time.',
+      title: 'Pressure-test the numbers',
+      description: 'Use the AI price calculator to compare model costs before committing engineering time.',
       href: '/tools/ai-price-calculator',
-      className: 'from-indigo-500/20 to-indigo-400/5 border-indigo-300/20',
+      kicker: 'Tool',
     },
     {
       id: 'implement',
-      title: 'Implement',
-      description: 'Get expert help shipping reliable AI automation systems.',
+      title: 'Plan the rollout',
+      description: 'Bring in implementation help when the question shifts from research to a working system.',
       href: '/services/ai-automation-consulting',
-      className: 'from-emerald-500/20 to-emerald-400/5 border-emerald-300/20',
+      kicker: 'Advisory',
     },
   ];
 
   return (
     <section
-      className={`rounded-2xl border border-zinc-800 bg-zinc-950/70 ${variant === 'compact' ? 'p-4 md:p-5' : 'p-5 md:p-7'}`}
+      className={`border border-stone-300 bg-white ${variant === 'compact' ? 'p-4 md:p-5' : 'p-5 md:p-6'}`}
       aria-label="Intent router"
     >
-      <div className="mb-4 md:mb-5">
-        <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Next Step</p>
-        <h2 className={`${variant === 'compact' ? 'text-xl' : 'text-2xl md:text-3xl'} mt-1 font-display font-semibold text-white`}>
-          Choose your path
+      <div className="mb-4 border-b-2 border-stone-900 pb-2 md:mb-5">
+        <p className="text-xs font-bold uppercase tracking-[0.14em] text-red-800">Next step</p>
+        <h2 className={`${variant === 'compact' ? 'text-xl' : 'text-2xl md:text-3xl'} mt-1 font-serif font-black text-stone-950`}>
+          Continue by intent
         </h2>
       </div>
 
@@ -91,17 +91,18 @@ export default function IntentRouter({
         {cards.map((card) => (
           <article
             key={card.id}
-            className={`rounded-xl border bg-gradient-to-b ${card.className} p-4 md:p-5`}
+            className="flex min-h-[12rem] flex-col border border-stone-300 bg-[#f7f3ec] p-4 md:p-5"
           >
-            <h3 className="font-display text-lg font-semibold text-white">{card.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-300">{card.description}</p>
+            <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800">{card.kicker}</p>
+            <h3 className="mt-2 font-serif text-xl font-black leading-tight text-stone-950">{card.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-stone-600">{card.description}</p>
             <TrackedLink
               href={card.href}
-              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-indigo-300 underline decoration-indigo-400/60 underline-offset-4 hover:text-indigo-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+              className="mt-auto inline-flex pt-4 text-sm font-bold uppercase tracking-[0.1em] text-red-800 underline decoration-red-800/40 underline-offset-4 hover:text-red-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-800 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               eventType="cta_click"
               metadata={{ location, cta: card.id, category }}
             >
-              {card.id === 'learn' ? 'Read now' : card.id === 'calculate' ? 'Open calculator' : 'Book audit'}
+              {card.id === 'learn' ? 'Open archive' : card.id === 'calculate' ? 'Run calculator' : 'View service'}
             </TrackedLink>
           </article>
         ))}
