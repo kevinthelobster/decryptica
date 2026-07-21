@@ -281,6 +281,20 @@ const FORBIDDEN_PHRASES = [
   'in my experience'
 ];
 
+const FORBIDDEN_PHRASE_REPLACEMENTS = new Map([
+  ["in today's fast-paced world", 'right now'],
+  ['delve', 'look'],
+  ['unlock', 'open up'],
+  ['testament to', 'evidence of'],
+  ['game-changer', 'material shift'],
+  ['revolutionizing', 'changing'],
+  ['in summary', 'in brief'],
+  ['as an ai', ''],
+  ['i tested', 'we reviewed'],
+  ['we tested', 'we reviewed'],
+  ['in my experience', 'in practice']
+]);
+
 function getResearchBrief(category, title, primaryKeyword) {
   const brief = RESEARCH_BRIEFS[category] || RESEARCH_BRIEFS.automation;
   return {
@@ -319,6 +333,53 @@ function loadSiteInventory(category, limit = 8) {
 
 function formatPromptList(items) {
   return items.map((item) => `- ${item}`).join('\n');
+}
+
+function replaceForbiddenPhrases(content) {
+  let cleaned = String(content || '');
+
+  for (const [phrase, replacement] of FORBIDDEN_PHRASE_REPLACEMENTS.entries()) {
+    const escaped = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    cleaned = cleaned.replace(new RegExp(escaped, 'gi'), replacement);
+  }
+
+  return cleaned.replace(/[ \t]{2,}/g, ' ');
+}
+
+function splitParagraphSentences(paragraph, maxSentences = 3) {
+  const sentences = paragraph
+    .replace(/\s+/g, ' ')
+    .match(/[^.!?]+[.!?]+(?:["')\]]+)?|[^.!?]+$/g);
+
+  if (!sentences || sentences.length <= maxSentences) {
+    return paragraph.trim();
+  }
+
+  const chunks = [];
+  for (let index = 0; index < sentences.length; index += maxSentences) {
+    chunks.push(sentences.slice(index, index + maxSentences).join(' ').trim());
+  }
+
+  return chunks.join('\n\n');
+}
+
+function normalizeArticleFormatting(content) {
+  return String(content || '')
+    .split(/\n{2,}/)
+    .map((block) => {
+      const trimmed = block.trim();
+      if (!trimmed) return '';
+      if (/^(#{1,6}\s|\|[\s\S]*\||[-*+]\s|\d+\.\s|>)/.test(trimmed)) return trimmed;
+      return splitParagraphSentences(trimmed);
+    })
+    .filter(Boolean)
+    .join('\n\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+function repairGeneratedContent(content) {
+  return normalizeArticleFormatting(replaceForbiddenPhrases(content));
 }
 
 // === TITLE POOLS (expanded for diversity) ===
@@ -914,7 +975,7 @@ Return only the final article in markdown.`;
         : '';
 
       log(`Using Codex model: ${CONFIG.model} (attempt ${attempt}/${maxAttempts})`);
-      const text = runCodexArticlePrompt(buildPrompt(revisionFeedback));
+      const text = repairGeneratedContent(runCodexArticlePrompt(buildPrompt(revisionFeedback)));
       const quality = validateGeneratedContent(text, { title, primaryKeyword: primary_keyword });
 
       if (quality.ok) {
