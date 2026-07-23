@@ -28,7 +28,7 @@ export default function SubscribeForm() {
 
       if (res.ok) {
         setStatus('success');
-        setMessage('Welcome aboard! 🎉');
+        setMessage(data.message || 'You are on the list.');
         setEmail('');
       } else {
         setStatus('error');
@@ -44,7 +44,7 @@ export default function SubscribeForm() {
     return (
       <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
         <p className="text-white font-medium text-lg">{message}</p>
-        <p className="text-indigo-200 text-sm mt-1">Check your inbox for a confirmation email.</p>
+        <p className="text-indigo-200 text-sm mt-1">We will send the next Decryptica dispatch your way.</p>
       </div>
     );
   }
