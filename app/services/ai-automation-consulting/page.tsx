@@ -161,18 +161,18 @@ export default function AIAutomationConsultingPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <div className="min-h-screen bg-zinc-950">
-        <section className="relative overflow-hidden border-b border-zinc-800/80">
+      <div className="min-h-screen bg-white">
+        <section className="relative overflow-hidden border-b border-stone-200/80">
           <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/50 via-zinc-950 to-zinc-950" />
-          <div className="absolute left-1/2 top-0 h-[480px] w-[860px] -translate-x-1/2 rounded-full bg-indigo-600/20 blur-[130px]" />
+          <div className="absolute left-1/2 top-0 h-[480px] w-[860px] -translate-x-1/2  bg-red-900/5 blur-[130px]" />
           <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-20">
-            <p className="inline-flex rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-300">
+            <p className="inline-flex  border border-red-900/20 bg-red-900/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-red-700">
               AI Automation ROI
             </p>
-            <h1 className="mt-6 max-w-4xl font-display text-4xl font-bold leading-tight text-white md:text-6xl">
+            <h1 className="mt-6 max-w-4xl font-display text-4xl font-bold leading-tight text-stone-950 md:text-6xl">
               See Your AI Automation ROI Before You Spend a Dollar
             </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-zinc-300">
+            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-stone-700">
               Estimate monthly savings, payback period, and annual ROI from your current workflows, then get a
               practical rollout plan.
             </p>
@@ -194,7 +194,7 @@ export default function AIAutomationConsultingPage() {
                 See 3 ROI Case Studies
               </TrackedLink>
             </div>
-            <p className="mt-6 max-w-3xl text-sm text-zinc-400">
+            <p className="mt-6 max-w-3xl text-sm text-stone-600">
               Trusted by operations and growth teams to reduce manual workload, rework, and process bottlenecks.
             </p>
           </div>
@@ -204,34 +204,34 @@ export default function AIAutomationConsultingPage() {
 
         <section className="mx-auto grid max-w-7xl gap-8 px-6 py-14 lg:grid-cols-3">
           <article className="card-elevated p-6">
-            <h2 className="font-display text-xl font-semibold text-white">The hidden cost of staying manual</h2>
-            <ul className="mt-4 space-y-2 text-sm text-zinc-300">
+            <h2 className="font-display text-xl font-semibold text-stone-950">The hidden cost of staying manual</h2>
+            <ul className="mt-4 space-y-2 text-sm text-stone-700">
               <li>Manual handoffs drain high-value team time every week.</li>
               <li>Human error and rework create avoidable operational risk.</li>
               <li>Slow workflows delay revenue and weaken customer experience.</li>
             </ul>
-            <p className="mt-4 text-sm text-zinc-400">
+            <p className="mt-4 text-sm text-stone-600">
               Use the ROI calculator below to estimate your recoverable time and cost.
             </p>
           </article>
           <article className="card-elevated p-6 lg:col-span-2">
-            <h2 className="font-display text-xl font-semibold text-white">A practical 3-step path to ROI</h2>
+            <h2 className="font-display text-xl font-semibold text-stone-950">A practical 3-step path to ROI</h2>
             <div className="mt-4 grid gap-4 md:grid-cols-3">
-              <div className="rounded-xl border border-zinc-700 bg-zinc-950/70 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Discover</p>
-                <p className="mt-2 text-sm text-zinc-300">
+              <div className=" border border-stone-300 bg-white/70 p-4">
+                <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Discover</p>
+                <p className="mt-2 text-sm text-stone-700">
                   Identify repetitive, high-friction workflows and baseline current cost.
                 </p>
               </div>
-              <div className="rounded-xl border border-zinc-700 bg-zinc-950/70 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Automate</p>
-                <p className="mt-2 text-sm text-zinc-300">
+              <div className=" border border-stone-300 bg-white/70 p-4">
+                <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Automate</p>
+                <p className="mt-2 text-sm text-stone-700">
                   Deploy the smallest set of automation changes that produces fast payback.
                 </p>
               </div>
-              <div className="rounded-xl border border-zinc-700 bg-zinc-950/70 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Measure</p>
-                <p className="mt-2 text-sm text-zinc-300">
+              <div className=" border border-stone-300 bg-white/70 p-4">
+                <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Measure</p>
+                <p className="mt-2 text-sm text-stone-700">
                   Track time saved, error reduction, and financial impact month over month.
                 </p>
               </div>
@@ -244,17 +244,17 @@ export default function AIAutomationConsultingPage() {
         </div>
 
         <section id="proof" className="mx-auto max-w-7xl px-6 py-10">
-          <h2 className="font-display text-3xl font-bold text-white">Real teams, measurable gains</h2>
-          <p className="mt-2 max-w-3xl text-zinc-300">
+          <h2 className="font-display text-3xl font-bold text-stone-950">Real teams, measurable gains</h2>
+          <p className="mt-2 max-w-3xl text-stone-700">
             Operators and founders choose this approach because it produces visible ROI without massive process
             disruption.
           </p>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {caseStudies.map((study) => (
               <article key={study.title} className="card-elevated p-5">
-                <h3 className="font-display text-lg font-semibold text-white">{study.title}</h3>
-                <p className="mt-3 text-sm text-zinc-400">Before: {study.before}</p>
-                <p className="mt-2 text-sm text-zinc-400">After: {study.after}</p>
+                <h3 className="font-display text-lg font-semibold text-stone-950">{study.title}</h3>
+                <p className="mt-3 text-sm text-stone-600">Before: {study.before}</p>
+                <p className="mt-2 text-sm text-stone-600">After: {study.after}</p>
                 <p className="mt-3 text-sm font-semibold text-emerald-300">{study.outcome}</p>
               </article>
             ))}
@@ -264,19 +264,19 @@ export default function AIAutomationConsultingPage() {
         <section className="mx-auto max-w-7xl px-6 py-10">
           <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
             <article className="card-elevated p-6">
-              <h2 className="font-display text-2xl font-bold text-white">Choose the right implementation depth</h2>
+              <h2 className="font-display text-2xl font-bold text-stone-950">Choose the right implementation depth</h2>
               <div className="mt-5 grid gap-4 md:grid-cols-3">
                 {packages.map((pkg) => (
-                  <div key={pkg.name} className="rounded-xl border border-zinc-700 bg-zinc-950/70 p-4">
-                    <h3 className="font-display text-lg font-semibold text-white">{pkg.name}</h3>
-                    <p className="mt-2 text-sm text-zinc-300">{pkg.summary}</p>
+                  <div key={pkg.name} className=" border border-stone-300 bg-white/70 p-4">
+                    <h3 className="font-display text-lg font-semibold text-stone-950">{pkg.name}</h3>
+                    <p className="mt-2 text-sm text-stone-700">{pkg.summary}</p>
                   </div>
                 ))}
               </div>
             </article>
             <article className="card-elevated p-6">
-              <h2 className="font-display text-2xl font-bold text-white">Is this a fit for your team?</h2>
-              <ul className="mt-4 space-y-2 text-sm text-zinc-300">
+              <h2 className="font-display text-2xl font-bold text-stone-950">Is this a fit for your team?</h2>
+              <ul className="mt-4 space-y-2 text-sm text-stone-700">
                 <li>Repeated manual workflows with clear process ownership.</li>
                 <li>Near-term efficiency or throughput goals tied to measurable outcomes.</li>
                 <li>Willingness to pilot one high-impact process before broad rollout.</li>
@@ -286,21 +286,21 @@ export default function AIAutomationConsultingPage() {
         </section>
 
         <section className="mx-auto max-w-7xl px-6 py-10">
-          <h2 className="font-display text-3xl font-bold text-white">FAQ</h2>
+          <h2 className="font-display text-3xl font-bold text-stone-950">FAQ</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             {faqs.map((faq) => (
               <article key={faq.question} className="card-elevated p-5">
-                <h3 className="font-display text-lg font-semibold text-white">{faq.question}</h3>
-                <p className="mt-2 text-sm text-zinc-300">{faq.answer}</p>
+                <h3 className="font-display text-lg font-semibold text-stone-950">{faq.question}</h3>
+                <p className="mt-2 text-sm text-stone-700">{faq.answer}</p>
               </article>
             ))}
           </div>
         </section>
 
         <section className="mx-auto max-w-7xl px-6 pb-20 pt-10">
-          <div className="rounded-3xl border border-indigo-500/20 bg-gradient-to-br from-zinc-900 to-indigo-950/40 p-7 md:p-10">
-            <h2 className="font-display text-3xl font-bold text-white">Ready to quantify your automation upside?</h2>
-            <p className="mt-2 max-w-3xl text-zinc-300">
+          <div className=" border border-red-900/20 bg-gradient-to-br from-zinc-900 to-indigo-950/40 p-7 md:p-10">
+            <h2 className="font-display text-3xl font-bold text-stone-950">Ready to quantify your automation upside?</h2>
+            <p className="mt-2 max-w-3xl text-stone-700">
               Share a few details and we will send a practical ROI-backed automation plan.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -321,9 +321,9 @@ export default function AIAutomationConsultingPage() {
                 Contact Us
               </TrackedLink>
             </div>
-            <div className="mt-7 rounded-2xl border border-zinc-700 bg-zinc-950/70 p-4">
-              <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Related resources</p>
-              <div className="mt-3 flex flex-wrap gap-4 text-sm text-indigo-300">
+            <div className="mt-7  border border-stone-300 bg-white/70 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Related resources</p>
+              <div className="mt-3 flex flex-wrap gap-4 text-sm text-red-700">
                 <TrackedLink
                   href="/blog/the-roi-of-business-automation-real-numbers"
                   eventType="cta_click"

@@ -174,41 +174,41 @@ export default function AIPriceCalculator() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white p-4 md:p-8">
+    <div className="min-h-screen bg-white text-stone-950 p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-white mb-2">AI Model Price Calculator</h1>
-          <p className="text-zinc-400">Compare LLM API costs across {PROVIDERS.length} models from OpenAI, Anthropic, Google, Meta, DeepSeek, and more.</p>
+          <h1 className="text-3xl font-bold text-stone-950 mb-2">AI Model Price Calculator</h1>
+          <p className="text-stone-600">Compare LLM API costs across {PROVIDERS.length} models from OpenAI, Anthropic, Google, Meta, DeepSeek, and more.</p>
         </div>
 
-        <div className="card-elevated p-5 mb-6 border border-zinc-800">
-          <h2 className="text-lg font-semibold text-white mb-3">What is this tool?</h2>
-          <p className="text-zinc-400 text-sm leading-relaxed mb-3">
+        <div className="card-elevated p-5 mb-6 border border-stone-200">
+          <h2 className="text-lg font-semibold text-stone-950 mb-3">What is this tool?</h2>
+          <p className="text-stone-600 text-sm leading-relaxed mb-3">
             When you use AI APIs like GPT-4o, Claude, or Gemini, you pay per token — roughly $0.001–$15 per 1,000 tokens depending on the model. A token is about 4 characters or 3/4 of a word. This calculator helps you estimate exactly how much your AI usage will cost before you write a single line of code.
           </p>
-          <p className="text-zinc-400 text-sm leading-relaxed mb-3">
+          <p className="text-stone-600 text-sm leading-relaxed mb-3">
             Whether you are building an app, running a business, or just exploring AI costs — enter your expected input and output tokens above, and instantly compare prices across {PROVIDERS.length} models from every major provider.
           </p>
           <div className="flex flex-wrap gap-2 mt-3">
-            <span className="text-xs px-2 py-1 rounded-md bg-zinc-800 text-zinc-400">&#x1F4B0; API pricing is per 1M tokens</span>
-            <span className="text-xs px-2 py-1 rounded-md bg-zinc-800 text-zinc-400">&#x1F4DD; 1M tokens &#x2248; 750K words</span>
-            <span className="text-xs px-2 py-1 rounded-md bg-zinc-800 text-zinc-400">&#x26A1; Input = your prompts &#xb7; Output = AI responses</span>
+            <span className="text-xs px-2 py-1 rounded-md bg-stone-100 text-stone-600">&#x1F4B0; API pricing is per 1M tokens</span>
+            <span className="text-xs px-2 py-1 rounded-md bg-stone-100 text-stone-600">&#x1F4DD; 1M tokens &#x2248; 750K words</span>
+            <span className="text-xs px-2 py-1 rounded-md bg-stone-100 text-stone-600">&#x26A1; Input = your prompts &#xb7; Output = AI responses</span>
           </div>
         </div>
 
         <div id="calculator-inputs" className="card-elevated p-6 mb-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
-              <label className="block text-sm font-medium text-zinc-400 mb-2">Input Tokens</label>
-              <input type="text" value={inputTokens} onChange={e => setInputTokens(e.target.value.replace(/[^0-9,]/g, ''))} className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
+              <label className="block text-sm font-medium text-stone-600 mb-2">Input Tokens</label>
+              <input type="text" value={inputTokens} onChange={e => setInputTokens(e.target.value.replace(/[^0-9,]/g, ''))} className="w-full bg-white border border-stone-300  px-4 py-3 text-stone-950 focus:outline-none focus:border-red-900 transition-colors" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-400 mb-2">Output Tokens</label>
-              <input type="text" value={outputTokens} onChange={e => setOutputTokens(e.target.value.replace(/[^0-9,]/g, ''))} className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors" />
+              <label className="block text-sm font-medium text-stone-600 mb-2">Output Tokens</label>
+              <input type="text" value={outputTokens} onChange={e => setOutputTokens(e.target.value.replace(/[^0-9,]/g, ''))} className="w-full bg-white border border-stone-300  px-4 py-3 text-stone-950 focus:outline-none focus:border-red-900 transition-colors" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-400 mb-2">Sort By</label>
-              <select value={sortKey} onChange={e => setSortKey(e.target.value as SortKey)} className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors">
+              <label className="block text-sm font-medium text-stone-600 mb-2">Sort By</label>
+              <select value={sortKey} onChange={e => setSortKey(e.target.value as SortKey)} className="w-full bg-white border border-stone-300  px-4 py-3 text-stone-950 focus:outline-none focus:border-red-900 transition-colors">
                 <option value="total">Total Cost</option>
                 <option value="input">Input Cost</option>
                 <option value="output">Output Cost</option>
@@ -217,8 +217,8 @@ export default function AIPriceCalculator() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-400 mb-2">Capability</label>
-              <select value={filterCapability} onChange={e => setFilterCapability(e.target.value as FilterCapability)} className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors">
+              <label className="block text-sm font-medium text-stone-600 mb-2">Capability</label>
+              <select value={filterCapability} onChange={e => setFilterCapability(e.target.value as FilterCapability)} className="w-full bg-white border border-stone-300  px-4 py-3 text-stone-950 focus:outline-none focus:border-red-900 transition-colors">
                 <option value="all">All Capabilities</option>
                 <option value="vision">Vision Support</option>
                 <option value="function">Function Calling</option>
@@ -229,16 +229,16 @@ export default function AIPriceCalculator() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
             <div>
-              <label className="block text-sm font-medium text-zinc-400 mb-2">Provider</label>
-              <select value={filterProvider} onChange={e => setFilterProvider(e.target.value as FilterProvider)} className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors">
+              <label className="block text-sm font-medium text-stone-600 mb-2">Provider</label>
+              <select value={filterProvider} onChange={e => setFilterProvider(e.target.value as FilterProvider)} className="w-full bg-white border border-stone-300  px-4 py-3 text-stone-950 focus:outline-none focus:border-red-900 transition-colors">
                 <option value="all">All Providers</option>
                 <option value="free">Free Models Only</option>
                 {uniqueProviders.map(p => (<option key={p} value={p}>{p}</option>))}
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-400 mb-2">Pricing</label>
-              <select value={filterOpenSource} onChange={e => setFilterOpenSource(e.target.value as FilterOpenSource)} className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors">
+              <label className="block text-sm font-medium text-stone-600 mb-2">Pricing</label>
+              <select value={filterOpenSource} onChange={e => setFilterOpenSource(e.target.value as FilterOpenSource)} className="w-full bg-white border border-stone-300  px-4 py-3 text-stone-950 focus:outline-none focus:border-red-900 transition-colors">
                 <option value="all">All Models</option>
                 <option value="openSource">Open Source Only</option>
                 <option value="closed">Commercial Only</option>
@@ -246,12 +246,12 @@ export default function AIPriceCalculator() {
             </div>
             <div className="flex items-center pt-6">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" checked={showFree} onChange={e => setShowFree(e.target.checked)} className="w-4 h-4 rounded bg-zinc-900 border-zinc-700 text-indigo-500 focus:ring-indigo-500" />
-                <span className="text-sm text-zinc-300">Show free models</span>
+                <input type="checkbox" checked={showFree} onChange={e => setShowFree(e.target.checked)} className="w-4 h-4 rounded bg-white border-stone-300 text-red-900 focus:ring-red-900" />
+                <span className="text-sm text-stone-700">Show free models</span>
               </label>
             </div>
             <div className="flex items-center gap-2 pt-6">
-              <span className="text-sm text-zinc-500">{results.length} models shown</span>
+              <span className="text-sm text-stone-500">{results.length} models shown</span>
             </div>
           </div>
         </div>
@@ -259,42 +259,42 @@ export default function AIPriceCalculator() {
         {totalTokens > 0 && pricedResults.length > 0 && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="card-elevated p-4">
-              <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Total Tokens</p>
-              <p className="text-2xl font-bold text-white">{(totalTokens / 1000).toFixed(0)}K</p>
+              <p className="text-xs text-stone-500 uppercase tracking-wider mb-1">Total Tokens</p>
+              <p className="text-2xl font-bold text-stone-950">{(totalTokens / 1000).toFixed(0)}K</p>
             </div>
             {cheapest && (
               <div className="card-elevated p-4">
-                <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Cheapest</p>
-                <p className="text-lg font-bold text-emerald-400 truncate">{cheapest.name}</p>
-                <p className="text-sm text-zinc-400">${cheapest.total!.toFixed(4)}</p>
+                <p className="text-xs text-stone-500 uppercase tracking-wider mb-1">Cheapest</p>
+                <p className="text-lg font-bold text-emerald-700 truncate">{cheapest.name}</p>
+                <p className="text-sm text-stone-600">${cheapest.total!.toFixed(4)}</p>
               </div>
             )}
             {priciest && (
               <div className="card-elevated p-4">
-                <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Most Expensive</p>
-                <p className="text-lg font-bold text-red-400 truncate">{priciest.name}</p>
-                <p className="text-sm text-zinc-400">${priciest.total!.toFixed(4)}</p>
+                <p className="text-xs text-stone-500 uppercase tracking-wider mb-1">Most Expensive</p>
+                <p className="text-lg font-bold text-red-800 truncate">{priciest.name}</p>
+                <p className="text-sm text-stone-600">${priciest.total!.toFixed(4)}</p>
               </div>
             )}
             {priciest && cheapest && savings > 0 && (
               <div className="card-elevated p-4 border border-emerald-500/20">
-                <p className="text-xs text-emerald-400 uppercase tracking-wider mb-1">Potential Savings</p>
-                <p className="text-2xl font-bold text-emerald-400">-{savingsPct}%</p>
-                <p className="text-sm text-zinc-400">vs most expensive</p>
+                <p className="text-xs text-emerald-700 uppercase tracking-wider mb-1">Potential Savings</p>
+                <p className="text-2xl font-bold text-emerald-700">-{savingsPct}%</p>
+                <p className="text-sm text-stone-600">vs most expensive</p>
               </div>
             )}
           </div>
         )}
 
         {totalTokens > 0 && pricedResults.length > 0 && (
-          <section id="save-recommendation" className="card-elevated mb-6 border border-indigo-500/30 bg-indigo-500/5 p-5">
-            <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Save recommendation</p>
-            <h2 className="mt-2 text-lg font-semibold text-white">Email my top 3 model picks</h2>
-            <p className="mt-1 text-sm text-zinc-300">
+          <section id="save-recommendation" className="card-elevated mb-6 border border-red-900/30 bg-red-900/5 p-5">
+            <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Save recommendation</p>
+            <h2 className="mt-2 text-lg font-semibold text-stone-950">Email my top 3 model picks</h2>
+            <p className="mt-1 text-sm text-stone-700">
               Keep your shortlist handy without committing to a full sales flow.
             </p>
             {topThree.length > 0 && (
-              <p className="mt-2 text-xs text-zinc-400">
+              <p className="mt-2 text-xs text-stone-600">
                 Current top picks: {topThree.map((item) => item.name).join(', ')}.
               </p>
             )}
@@ -306,7 +306,7 @@ export default function AIPriceCalculator() {
                 onChange={(event) => setQuickCaptureEmail(event.target.value)}
                 disabled={quickCaptureStatus === 'loading' || quickCaptureStatus === 'success'}
                 placeholder="you@company.com"
-                className="h-11 w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 text-sm text-white placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none sm:flex-1"
+                className="h-11 w-full  border border-stone-300 bg-white px-4 text-sm text-stone-950 placeholder:text-stone-500 focus:border-red-900 focus:outline-none sm:flex-1"
               />
               <button
                 type="submit"
@@ -325,7 +325,7 @@ export default function AIPriceCalculator() {
         )}
 
         <div id="calculator-results" className="card-elevated overflow-hidden">
-          <div className="hidden md:grid grid-cols-7 gap-4 px-6 py-3 bg-zinc-900/50 border-b border-zinc-800 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+          <div className="hidden md:grid grid-cols-7 gap-4 px-6 py-3 bg-white border-b border-stone-200 text-xs font-medium text-stone-500 uppercase tracking-wider">
             <div className="col-span-2">Provider</div>
             <div className="text-right">Input</div>
             <div className="text-right">Output</div>
@@ -334,35 +334,35 @@ export default function AIPriceCalculator() {
             <div className="text-right">Context</div>
           </div>
 
-          <div className="divide-y divide-zinc-800/50">
+          <div className="divide-y divide-stone-200">
             {results.map((p) => {
               const isWinner = cheapest?.id === p.id;
               const isFree = p.input === null;
               return (
-                <a key={p.id} href={p.link} target="_blank" rel="noopener noreferrer" className={`grid grid-cols-2 md:grid-cols-7 gap-2 md:gap-4 px-6 py-4 hover:bg-zinc-900/50 transition-colors group ${isWinner ? 'bg-emerald-950/20' : ''} ${isFree ? 'opacity-70' : ''}`}>
+                <a key={p.id} href={p.link} target="_blank" rel="noopener noreferrer" className={`grid grid-cols-2 md:grid-cols-7 gap-2 md:gap-4 px-6 py-4 hover:bg-neutral-50 transition-colors group ${isWinner ? 'bg-emerald-50' : ''} ${isFree ? 'opacity-70' : ''}`}>
                   <div className="md:col-span-2 flex items-center gap-3 min-w-0">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0" style={{ backgroundColor: p.color + '33', color: p.color }}>{p.provider[0]}</div>
+                    <div className="w-8 h-8  flex items-center justify-center text-xs font-bold flex-shrink-0" style={{ backgroundColor: p.color + '33', color: p.color }}>{p.provider[0]}</div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="font-medium text-white group-hover:text-indigo-400 transition-colors truncate">{p.name}</span>
-                        {isWinner && <span className="text-xs font-medium text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full flex-shrink-0">Best value</span>}
-                        {isFree && <span className="text-xs font-medium text-zinc-400 bg-zinc-700/50 px-2 py-0.5 rounded-full flex-shrink-0">Free</span>}
-                        {p.openSource && !isFree && <span className="text-xs font-medium text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded-full flex-shrink-0">Open Source</span>}
+                        <span className="font-medium text-stone-950 group-hover:text-red-800 transition-colors truncate">{p.name}</span>
+                        {isWinner && <span className="text-xs font-medium text-emerald-700 bg-emerald-400/10 px-2 py-0.5  flex-shrink-0">Best value</span>}
+                        {isFree && <span className="text-xs font-medium text-stone-600 bg-stone-200/50 px-2 py-0.5  flex-shrink-0">Free</span>}
+                        {p.openSource && !isFree && <span className="text-xs font-medium text-red-800 bg-blue-400/10 px-2 py-0.5  flex-shrink-0">Open Source</span>}
                       </div>
                       <div className="flex items-center gap-1 mt-0.5">
-                        <span className="text-xs text-zinc-500">{p.provider}</span>
-                        <span className="text-xs text-zinc-600">&#xb7;</span>
-                        <span className="text-xs text-zinc-600 capitalize">{p.supports.filter(s => ['vision','function','reasoning','coding'].includes(s)).join(', ')}</span>
+                        <span className="text-xs text-stone-500">{p.provider}</span>
+                        <span className="text-xs text-stone-500">&#xb7;</span>
+                        <span className="text-xs text-stone-500 capitalize">{p.supports.filter(s => ['vision','function','reasoning','coding'].includes(s)).join(', ')}</span>
                       </div>
                     </div>
                   </div>
-                  <div className="text-right"><span className="md:hidden text-xs text-zinc-500 mr-2">Input:</span><span className={`text-sm ${p.inputCost !== null ? 'text-zinc-300' : 'text-zinc-600'}`}>{p.inputCost !== null ? `$${p.inputCost.toFixed(4)}` : 'Free'}</span></div>
-                  <div className="text-right"><span className="md:hidden text-xs text-zinc-500 mr-2">Output:</span><span className={`text-sm ${p.outputCost !== null ? 'text-zinc-300' : 'text-zinc-600'}`}>{p.outputCost !== null ? `$${p.outputCost.toFixed(4)}` : 'Free'}</span></div>
-                  <div className="text-right"><span className="md:hidden text-xs text-zinc-500 mr-2">Total:</span><span className={`text-lg font-semibold ${isWinner ? 'text-emerald-400' : p.total !== null ? 'text-white' : 'text-zinc-600'}`}>{p.total !== null ? `$${p.total.toFixed(4)}` : 'Free'}</span></div>
-                  <div className="text-right"><span className="md:hidden text-xs text-zinc-500 mr-2">per 1M:</span><span className="text-sm text-zinc-400">{p.per1M !== null ? `$${p.per1M.toFixed(2)}` : '—'}</span></div>
+                  <div className="text-right"><span className="md:hidden text-xs text-stone-500 mr-2">Input:</span><span className={`text-sm ${p.inputCost !== null ? 'text-stone-700' : 'text-stone-500'}`}>{p.inputCost !== null ? `$${p.inputCost.toFixed(4)}` : 'Free'}</span></div>
+                  <div className="text-right"><span className="md:hidden text-xs text-stone-500 mr-2">Output:</span><span className={`text-sm ${p.outputCost !== null ? 'text-stone-700' : 'text-stone-500'}`}>{p.outputCost !== null ? `$${p.outputCost.toFixed(4)}` : 'Free'}</span></div>
+                  <div className="text-right"><span className="md:hidden text-xs text-stone-500 mr-2">Total:</span><span className={`text-lg font-semibold ${isWinner ? 'text-emerald-700' : p.total !== null ? 'text-stone-950' : 'text-stone-500'}`}>{p.total !== null ? `$${p.total.toFixed(4)}` : 'Free'}</span></div>
+                  <div className="text-right"><span className="md:hidden text-xs text-stone-500 mr-2">per 1M:</span><span className="text-sm text-stone-600">{p.per1M !== null ? `$${p.per1M.toFixed(2)}` : '—'}</span></div>
                   <div className="text-right flex items-center justify-end gap-1">
-                    <span className="text-sm text-zinc-400">{formatContext(p.contextWindow)}</span>
-                    <svg className="w-3 h-3 text-zinc-600 group-hover:text-indigo-400 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    <span className="text-sm text-stone-600">{formatContext(p.contextWindow)}</span>
+                    <svg className="w-3 h-3 text-stone-500 group-hover:text-red-800 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                   </div>
                 </a>
               );
@@ -370,7 +370,7 @@ export default function AIPriceCalculator() {
           </div>
         </div>
 
-        <p className="text-xs text-zinc-600 mt-4 text-center">Prices are indicative and may vary. Data as of April 2026. Always check provider pricing pages for latest rates.</p>
+        <p className="text-xs text-stone-500 mt-4 text-center">Prices are indicative and may vary. Data as of April 2026. Always check provider pricing pages for latest rates.</p>
       </div>
     </div>
   );

@@ -304,10 +304,10 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
   return (
     <>
       <section className="mx-auto mb-8 max-w-7xl px-4 md:px-8" aria-label="Conversion confidence layer">
-        <div className="rounded-2xl border border-indigo-500/30 bg-gradient-to-r from-indigo-500/12 via-zinc-900/70 to-emerald-500/12 p-5 md:p-6">
-          <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Conversion Confidence Layer</p>
-          <h2 className="mt-2 font-display text-2xl font-bold text-white md:text-3xl">{ctaConfig.title}</h2>
-          <p className="mt-2 max-w-3xl text-sm text-zinc-300 md:text-base">{ctaConfig.body}</p>
+        <div className="border border-stone-200 bg-white p-5 md:p-6">
+          <p className="text-xs font-semibold uppercase tracking-wider text-red-800">Conversion Confidence Layer</p>
+          <h2 className="mt-2 font-display text-2xl font-bold text-stone-950 md:text-3xl">{ctaConfig.title}</h2>
+          <p className="mt-2 max-w-3xl text-sm text-stone-600 md:text-base">{ctaConfig.body}</p>
 
           <div className="mt-5 flex flex-wrap gap-3">
             <button
@@ -327,24 +327,24 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
           </div>
 
           <div className="mt-5 grid gap-3 md:grid-cols-3">
-            <article className="rounded-xl border border-zinc-700/70 bg-zinc-950/60 p-3">
-              <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Updated</p>
-              <p className="mt-1 text-sm text-zinc-200">Pricing and ROI assumptions refreshed April 2026.</p>
+            <article className="border border-stone-200 bg-neutral-50 p-3">
+              <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Updated</p>
+              <p className="mt-1 text-sm text-stone-700">Pricing and ROI assumptions refreshed April 2026.</p>
             </article>
-            <article className="rounded-xl border border-zinc-700/70 bg-zinc-950/60 p-3">
-              <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Outcome Proof</p>
-              <p className="mt-1 text-sm text-zinc-200">Recent teams reported 24% to 42% measurable workflow lift.</p>
+            <article className="border border-stone-200 bg-neutral-50 p-3">
+              <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Outcome Proof</p>
+              <p className="mt-1 text-sm text-stone-700">Recent teams reported 24% to 42% measurable workflow lift.</p>
             </article>
-            <article className="rounded-xl border border-zinc-700/70 bg-zinc-950/60 p-3">
-              <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Risk Control</p>
-              <p className="mt-1 text-sm text-zinc-200">No lock-in required. Start with estimates before any commitment.</p>
+            <article className="border border-stone-200 bg-neutral-50 p-3">
+              <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Risk Control</p>
+              <p className="mt-1 text-sm text-stone-700">No lock-in required. Start with estimates before any commitment.</p>
             </article>
           </div>
 
           {showRescue && (
-            <div className="mt-5 rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-4 lg:hidden">
-              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-300">Before you leave</p>
-              <p className="mt-1 text-sm text-zinc-200">Keep your progress with one low-friction next step.</p>
+            <div className="mt-5 border border-emerald-200 bg-emerald-50 p-4 lg:hidden">
+              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700">Before you leave</p>
+              <p className="mt-1 text-sm text-stone-700">Keep your progress with one low-friction next step.</p>
               <button
                 type="button"
                 className="btn-secondary mt-3"
@@ -358,18 +358,18 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
       </section>
 
       {showStickyRail && (
-        <aside className="fixed bottom-6 right-6 z-30 hidden w-80 rounded-2xl border border-indigo-400/30 bg-zinc-950/95 p-4 shadow-xl shadow-indigo-900/30 backdrop-blur lg:block">
-          <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Next best action</p>
+        <aside className="fixed bottom-6 right-6 z-30 hidden w-80 border border-stone-200 bg-white p-4 shadow-xl shadow-stone-200/60 lg:block">
+          <p className="text-xs font-semibold uppercase tracking-wider text-red-800">Next best action</p>
           <div className="mt-3 space-y-2">
             {ctaConfig.stickySteps.map((step) => (
               <button
                 key={step.label}
                 type="button"
-                className="flex w-full items-center justify-between rounded-xl border border-zinc-700 bg-zinc-900/70 px-3 py-2 text-left text-sm text-zinc-200 transition hover:border-indigo-400/60"
+                className="flex w-full items-center justify-between border border-stone-200 bg-neutral-50 px-3 py-2 text-left text-sm text-stone-700 transition hover:border-red-900/60"
                 onClick={() => navigateWithTracking(step.href, step.cta, stickyLocation, step.step)}
               >
                 <span>{step.label}</span>
-                <span className="text-zinc-500">Go</span>
+                <span className="text-stone-500">Go</span>
               </button>
             ))}
           </div>
@@ -378,7 +378,7 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
 
       {showStickyRail && !mobileDockDismissed && (
         <div className="fixed inset-x-4 bottom-4 z-30 lg:hidden">
-          <div className="rounded-2xl border border-indigo-400/40 bg-zinc-950/95 p-3 shadow-xl shadow-indigo-900/30 backdrop-blur">
+          <div className="border border-stone-200 bg-white p-3 shadow-xl shadow-stone-200/60">
             <div className="flex items-center gap-2">
               <button
                 type="button"
@@ -400,7 +400,7 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
                   sessionStorage.setItem(mobileDockDismissKey, '1');
                   setMobileDockDismissed(true);
                 }}
-                className="inline-flex h-11 min-w-11 items-center justify-center rounded-xl border border-zinc-700 px-3 text-sm text-zinc-300 transition hover:border-zinc-500 hover:text-white"
+                className="inline-flex h-11 min-w-11 items-center justify-center border border-stone-300 px-3 text-sm text-stone-600 transition hover:border-stone-500 hover:text-stone-950"
                 aria-label="Dismiss destination action dock"
               >
                 Dismiss
@@ -411,9 +411,9 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
       )}
 
       {showRescue && (
-        <aside className="fixed bottom-6 left-6 z-30 hidden w-80 rounded-2xl border border-emerald-400/30 bg-zinc-950/95 p-4 shadow-xl shadow-emerald-900/25 backdrop-blur lg:block">
-          <p className="text-xs font-semibold uppercase tracking-wider text-emerald-300">Before you exit</p>
-          <p className="mt-2 text-sm text-zinc-200">Keep this session useful with one low-commitment follow-up.</p>
+        <aside className="fixed bottom-6 left-6 z-30 hidden w-80 border border-emerald-200 bg-white p-4 shadow-xl shadow-stone-200/60 lg:block">
+          <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700">Before you exit</p>
+          <p className="mt-2 text-sm text-stone-700">Keep this session useful with one low-commitment follow-up.</p>
           <button
             type="button"
             className="btn-secondary mt-3"

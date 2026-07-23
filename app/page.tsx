@@ -4,6 +4,7 @@ import SubscribeForm from "./components/SubscribeForm";
 import TrackedLink from "./components/TrackedLink";
 import IntentRouter from "./components/IntentRouter";
 import { articles } from "./data/articles";
+import { getArticleImage } from "./data/article-images";
 import { absoluteUrl, getBreadcrumbSchema, jsonLdScript } from "./lib/schema";
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ const featuredArticles = sortedArticles.slice(0, 7).map((article) => ({
   title: article.title,
   excerpt: article.excerpt,
   readTime: article.readTime,
+  image: getArticleImage(article),
   date: new Date(article.date).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
@@ -119,6 +121,16 @@ export default function IndexPage() {
                   <p className="mt-5 max-w-3xl break-words border-l-4 border-red-800 pl-4 text-base leading-7 text-stone-700 sm:text-lg sm:leading-8">
                     {leadArticle.excerpt}
                   </p>
+                  <div className="mt-7 overflow-hidden border border-stone-200 bg-white">
+                    <img
+                      src={leadArticle.image.src}
+                      alt={leadArticle.image.alt}
+                      className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
+                    <p className="border-t border-stone-200 px-3 py-2 text-xs text-stone-500">
+                      {leadArticle.image.credit}
+                    </p>
+                  </div>
                   <div className="mt-5 flex flex-wrap items-center gap-3 text-sm font-medium text-stone-600">
                     <span>{leadArticle.category}</span>
                     <span className="h-1 w-1 rounded-full bg-stone-400" />
@@ -188,6 +200,9 @@ export default function IndexPage() {
                     <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800">
                       {article.category}
                     </p>
+                    <div className="-mx-5 -mt-5 mb-4 overflow-hidden border-b border-stone-200">
+                      <img src={article.image.src} alt={article.image.alt} className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    </div>
                     <h3 className="break-words font-serif text-2xl font-black leading-tight text-stone-950 group-hover:text-red-900">
                       {article.title}
                     </h3>

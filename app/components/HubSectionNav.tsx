@@ -95,7 +95,7 @@ export default function HubSectionNav({
   return (
     <>
       <nav
-        className={`hidden md:block rounded-xl border border-zinc-800 bg-zinc-950/80 backdrop-blur px-4 py-3 transition-all duration-200 ${isPinned ? 'sticky top-20 z-30 shadow-lg shadow-zinc-950/40' : ''}`}
+        className={`hidden border border-stone-200 bg-white px-4 py-3 transition-all duration-200 md:block ${isPinned ? 'sticky top-20 z-30 shadow-lg shadow-stone-200/60' : ''}`}
         aria-label="Section navigation"
       >
         <ul className="flex flex-wrap items-center gap-2">
@@ -104,10 +104,10 @@ export default function HubSectionNav({
               <a
                 href={`#${section.id}`}
                 onClick={() => onNavClick(section.id)}
-                className={`inline-flex rounded-md px-3 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${
+                className={`inline-flex px-3 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                   activeId === section.id
-                    ? 'bg-indigo-500/20 text-indigo-200'
-                    : 'text-zinc-400 hover:text-white hover:bg-zinc-800/60'
+                    ? 'bg-red-900 text-white'
+                    : 'text-stone-600 hover:bg-neutral-50 hover:text-stone-950'
                 }`}
               >
                 {section.label}
@@ -121,7 +121,7 @@ export default function HubSectionNav({
         <button
           type="button"
           onClick={() => setSheetOpen((open) => !open)}
-          className="inline-flex items-center gap-2 rounded-full border border-indigo-400/40 bg-zinc-950/95 px-4 py-2 text-sm font-medium text-indigo-200 shadow-lg shadow-zinc-950/70"
+          className="inline-flex items-center gap-2 border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-stone-700 shadow-lg shadow-stone-200/60"
           aria-expanded={sheetOpen}
           aria-controls="hub-section-sheet"
         >
@@ -133,12 +133,12 @@ export default function HubSectionNav({
         <div className="md:hidden fixed inset-0 z-50 bg-black/60" onClick={() => setSheetOpen(false)}>
           <div
             id="hub-section-sheet"
-            className="absolute bottom-0 left-0 right-0 rounded-t-2xl border-t border-zinc-700 bg-zinc-950 p-5"
+            className="absolute bottom-0 left-0 right-0 border-t border-stone-300 bg-white p-5"
             role="dialog"
             aria-label="Jump to section"
             onClick={(event) => event.stopPropagation()}
           >
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">Jump to section</p>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-stone-500">Jump to section</p>
             <ul className="space-y-2">
               {sections.map((section) => (
                 <li key={section.id}>
@@ -148,10 +148,10 @@ export default function HubSectionNav({
                       onNavClick(section.id);
                       setSheetOpen(false);
                     }}
-                    className={`block rounded-lg px-3 py-2 text-sm ${
+                    className={`block px-3 py-2 text-sm ${
                       activeId === section.id
-                        ? 'bg-indigo-500/20 text-indigo-200'
-                        : 'bg-zinc-900 text-zinc-300'
+                        ? 'bg-red-900 text-white'
+                        : 'bg-neutral-50 text-stone-700'
                     }`}
                   >
                     {section.label}

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { getArticleBySlug, articles } from '../../data/articles';
+import { getArticleImage } from '../../data/article-images';
 import SubscribeForm from '../../components/SubscribeForm';
 import AnalyticsTracker from '../../components/AnalyticsTracker';
 import ArticleProgressNav from '../../components/ArticleProgressNav';
@@ -25,6 +26,7 @@ interface BlogPostPageProps {
 // ─── JSON-LD Schema Components ─────────────────────────────────────────────
 
 function ArticleSchema({ article, url }: { article: any; url: string }) {
+  const image = getArticleImage(article);
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -45,6 +47,7 @@ function ArticleSchema({ article, url }: { article: any; url: string }) {
         url: 'https://decryptica.com/logo.png',
       },
     },
+    image: image.src,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': url,
@@ -342,6 +345,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   const canonicalUrl = `https://decryptica.com/blog/${slug}`;
   const ogImage = `https://decryptica.com/og/${slug}.jpg`;
+  const articleImage = getArticleImage(article);
   const wordCount = estimateWordCount(article.content);
   const computedExcerpt = buildSummaryFromContent(article.content, article.excerpt);
   const enrichedArticle = { ...article, excerpt: computedExcerpt };
@@ -386,10 +390,10 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       section: article.category,
       images: [
         {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: article.title,
+          url: articleImage.src || ogImage,
+          width: 1600,
+          height: 900,
+          alt: articleImage.alt,
         },
       ],
     },
@@ -397,7 +401,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       card: 'summary_large_image',
       title: article.title,
       description: computedExcerpt,
-      images: [ogImage],
+      images: [articleImage.src || ogImage],
       site: '@decryptica',
       creator: '@decryptica',
     },
@@ -969,6 +973,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const relatedArticles = getRelatedArticles(article, articles);
   const relatedModuleItems = toRelatedModuleItems(relatedArticles);
   const headings = extractHeadings(article.content);
+  const articleImage = getArticleImage(article);
 
   // Auto-generate FAQs from the article content if none provided
   const faqs = article.faqs || generateAutoFAQs(article);
@@ -1091,6 +1096,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </>
                 )}
               </div>
+              <figure className="mt-8 border border-stone-200 bg-white">
+                <img
+                  src={articleImage.src}
+                  alt={articleImage.alt}
+                  className="aspect-[16/9] w-full object-cover"
+                />
+                <figcaption className="border-t border-stone-200 px-4 py-2 text-xs text-stone-500">
+                  <a
+                    href={articleImage.creditUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-4 hover:text-red-900"
+                  >
+                    {articleImage.credit}
+                  </a>
+                </figcaption>
+              </figure>
             </header>
 
             <IntentContextBanner pageType="article" category={article.category} articleSlug={slug} />

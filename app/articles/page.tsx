@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { articles, type Article } from '../data/articles';
+import { getArticleImage } from '../data/article-images';
 import SubscribeForm from '../components/SubscribeForm';
 import { getBreadcrumbSchema, getCollectionPageSchema, jsonLdScript, absoluteUrl } from '../lib/schema';
 
@@ -84,14 +85,19 @@ export default function ArticlesPage() {
         <section className="bg-white">
           <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
             <div className="divide-y divide-stone-200 border-y border-stone-200">
-              {sortedArticles.map((article) => (
+              {sortedArticles.map((article) => {
+                const image = getArticleImage(article);
+                return (
                 <Link
                   key={article.id}
                   href={`/blog/${article.slug}`}
-                  className="group grid gap-4 py-6 md:grid-cols-[9rem_minmax(0,1fr)_7rem]"
+                  className="group grid gap-4 py-6 md:grid-cols-[9rem_minmax(0,11rem)_minmax(0,1fr)_7rem]"
                 >
                   <div className="text-xs font-bold uppercase tracking-[0.14em] text-red-800">
                     {categoryNames[article.category]}
+                  </div>
+                  <div className="overflow-hidden border border-stone-200 bg-white">
+                    <img src={image.src} alt={image.alt} className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
                   <div>
                     <h2 className="font-serif text-2xl font-black leading-tight text-stone-950 group-hover:text-red-900 md:text-3xl">
@@ -106,7 +112,8 @@ export default function ArticlesPage() {
                     <p className="md:mt-2">{article.readTime}</p>
                   </div>
                 </Link>
-              ))}
+                );
+              })}
             </div>
 
             <aside className="space-y-6">

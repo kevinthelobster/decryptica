@@ -72,13 +72,13 @@ const faqData = {
 
 function ToolCTAExplore() {
   return (
-    <div className="p-5 bg-zinc-900/60 border border-zinc-800 rounded-xl">
-      <h3 className="font-display text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-2">Explore</h3>
-      <p className="text-white font-medium mb-1">New to AI model selection?</p>
-      <p className="text-zinc-400 text-sm mb-3">Read our expert comparisons before you pick a model.</p>
+    <div className="p-5 bg-white border border-stone-200 ">
+      <h3 className="font-display text-sm font-semibold text-red-800 uppercase tracking-wider mb-2">Explore</h3>
+      <p className="text-stone-950 font-medium mb-1">New to AI model selection?</p>
+      <p className="text-stone-600 text-sm mb-3">Read our expert comparisons before you pick a model.</p>
       <Link
         href="/topic/ai/tooling"
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-red-800 hover:text-red-700 transition-colors"
       >
         Browse AI Tool Comparisons →
       </Link>
@@ -88,21 +88,21 @@ function ToolCTAExplore() {
 
 function ToolCTACompare() {
   return (
-    <div className="p-5 bg-gradient-to-r from-indigo-500/10 to-blue-500/10 border border-indigo-500/30 rounded-xl">
-      <h3 className="font-display text-sm font-semibold text-blue-400 uppercase tracking-wider mb-2">Compare</h3>
-      <p className="text-white font-medium mb-1">Ready to pick a model?</p>
-      <p className="text-zinc-400 text-sm mb-3">Enter your token volumes above to see exactly how much each provider costs.</p>
-      <p className="text-xs text-zinc-500">75+ models across 11 providers — updated April 2026</p>
+    <div className="p-5 bg-white border border-stone-200 ">
+      <h3 className="font-display text-sm font-semibold text-red-800 uppercase tracking-wider mb-2">Compare</h3>
+      <p className="text-stone-950 font-medium mb-1">Ready to pick a model?</p>
+      <p className="text-stone-600 text-sm mb-3">Enter your token volumes above to see exactly how much each provider costs.</p>
+      <p className="text-xs text-stone-500">75+ models across 11 providers — updated April 2026</p>
     </div>
   );
 }
 
 function ToolCTAStart() {
   return (
-    <div className="p-5 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-xl">
-      <h3 className="font-display text-sm font-semibold text-purple-400 uppercase tracking-wider mb-2">Get Started</h3>
-      <p className="text-white font-medium mb-1">Want updates when models change price?</p>
-      <p className="text-zinc-400 text-sm mb-3">New models launch every month. Get notified when we update the calculator.</p>
+    <div className="p-5 bg-white border border-stone-200 ">
+      <h3 className="font-display text-sm font-semibold text-red-800 uppercase tracking-wider mb-2">Get Started</h3>
+      <p className="text-stone-950 font-medium mb-1">Want updates when models change price?</p>
+      <p className="text-stone-600 text-sm mb-3">New models launch every month. Get notified when we update the calculator.</p>
       <SubscribeForm />
     </div>
   );

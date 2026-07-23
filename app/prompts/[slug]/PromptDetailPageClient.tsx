@@ -98,9 +98,9 @@ export default function PromptDetailPageClient({ params }: Props) {
     return (
       <div className="max-w-5xl mx-auto px-6 py-12">
         <div className="animate-pulse space-y-6">
-          <div className="h-8 bg-zinc-800 rounded w-2/3" />
-          <div className="h-4 bg-zinc-800 rounded w-1/3" />
-          <div className="h-64 bg-zinc-800/50 rounded-2xl" />
+          <div className="h-8 bg-stone-100 rounded w-2/3" />
+          <div className="h-4 bg-stone-100 rounded w-1/3" />
+          <div className="h-64 bg-stone-100 " />
         </div>
       </div>
     );
@@ -111,35 +111,35 @@ export default function PromptDetailPageClient({ params }: Props) {
   return (
     <div className="max-w-5xl mx-auto px-6 py-12">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-zinc-500 mb-8">
-        <Link href="/prompts" className="hover:text-indigo-400 transition-colors">Prompts</Link>
+      <nav className="flex items-center gap-2 text-sm text-stone-500 mb-8">
+        <Link href="/prompts" className="hover:text-red-800 transition-colors">Prompts</Link>
         <span>/</span>
-        <span className="text-indigo-400">{prompt.category}</span>
+        <span className="text-red-800">{prompt.category}</span>
       </nav>
 
       {/* Header */}
       <div className="flex items-start justify-between mb-8">
         <div>
           <div className="flex items-center gap-3 mb-3">
-            <span className="text-sm font-medium text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full">
+            <span className="text-sm font-medium text-red-800 bg-red-800/10 px-3 py-1 ">
               {prompt.category}
             </span>
             {prompt.is_staff_pick ? (
-              <span className="text-sm font-medium text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full">
+              <span className="text-sm font-medium text-amber-700 bg-amber-500/10 px-3 py-1 ">
                 ⭐ Staff Pick
               </span>
             ) : null}
           </div>
-          <h1 className="font-display font-bold text-4xl text-white mb-4">{prompt.title}</h1>
-          <p className="text-zinc-400 text-lg max-w-3xl">{prompt.description}</p>
+          <h1 className="font-display font-bold text-4xl text-stone-950 mb-4">{prompt.title}</h1>
+          <p className="text-stone-600 text-lg max-w-3xl">{prompt.description}</p>
         </div>
 
         <button
           onClick={handleVote}
-          className={`flex flex-col items-center gap-1 px-5 py-3 rounded-xl transition-all ${
+          className={`flex flex-col items-center gap-1 px-5 py-3  transition-all ${
             prompt.has_voted
-              ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/30'
-              : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-400 border border-zinc-700'
+              ? 'bg-red-900/20 text-red-800 border border-red-900/30'
+              : 'bg-stone-100 hover:bg-stone-200 text-stone-600 border border-stone-300'
           }`}
         >
           <svg className="w-6 h-6" fill={prompt.has_voted ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
@@ -153,15 +153,15 @@ export default function PromptDetailPageClient({ params }: Props) {
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-8">
           {/* The Prompt */}
-          <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl overflow-hidden">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-800">
-              <h2 className="font-display font-semibold text-white">The Prompt</h2>
+          <section className="bg-white border border-stone-200  overflow-hidden">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200">
+              <h2 className="font-display font-semibold text-stone-950">The Prompt</h2>
               <button
                 onClick={copyPrompt}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`flex items-center gap-2 px-4 py-2  text-sm font-medium transition-all ${
                   copied
-                    ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                    : 'bg-indigo-600 hover:bg-indigo-500 text-white'
+                    ? 'bg-green-500/20 text-green-700 border border-green-500/30'
+                    : 'bg-red-900 hover:bg-red-800 text-white'
                 }`}
               >
                 {copied ? (
@@ -182,7 +182,7 @@ export default function PromptDetailPageClient({ params }: Props) {
               </button>
             </div>
             <div className="p-6">
-              <pre className="text-zinc-300 text-sm whitespace-pre-wrap font-mono leading-relaxed">
+              <pre className="text-stone-700 text-sm whitespace-pre-wrap font-mono leading-relaxed">
                 {prompt.prompt_text}
               </pre>
             </div>
@@ -190,18 +190,18 @@ export default function PromptDetailPageClient({ params }: Props) {
 
           {/* Setup Steps */}
           {prompt.setup_steps.length > 0 && (
-            <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl overflow-hidden">
-              <div className="px-6 py-4 border-b border-zinc-800">
-                <h2 className="font-display font-semibold text-white">Setup Steps</h2>
+            <section className="bg-white border border-stone-200  overflow-hidden">
+              <div className="px-6 py-4 border-b border-stone-200">
+                <h2 className="font-display font-semibold text-stone-950">Setup Steps</h2>
               </div>
               <div className="p-6">
                 <ol className="space-y-4">
                   {prompt.setup_steps.map((step, i) => (
                     <li key={i} className="flex gap-4">
-                      <span className="flex-shrink-0 w-7 h-7 rounded-full bg-indigo-500/20 text-indigo-400 font-semibold text-sm flex items-center justify-center">
+                      <span className="flex-shrink-0 w-7 h-7  bg-red-800/20 text-red-800 font-semibold text-sm flex items-center justify-center">
                         {i + 1}
                       </span>
-                      <span className="text-zinc-300 font-mono text-sm leading-relaxed pt-0.5">{step}</span>
+                      <span className="text-stone-700 font-mono text-sm leading-relaxed pt-0.5">{step}</span>
                     </li>
                   ))}
                 </ol>
@@ -211,12 +211,12 @@ export default function PromptDetailPageClient({ params }: Props) {
 
           {/* Example Output */}
           {prompt.example_output && (
-            <section className="bg-zinc-900/50 border border-zinc-800 rounded-2xl overflow-hidden">
-              <div className="px-6 py-4 border-b border-zinc-800">
-                <h2 className="font-display font-semibold text-white">Example Output</h2>
+            <section className="bg-white border border-stone-200  overflow-hidden">
+              <div className="px-6 py-4 border-b border-stone-200">
+                <h2 className="font-display font-semibold text-stone-950">Example Output</h2>
               </div>
-              <div className="p-6 bg-zinc-950/50">
-                <pre className="text-zinc-400 text-sm whitespace-pre-wrap font-mono leading-relaxed">
+              <div className="p-6 bg-white/50">
+                <pre className="text-stone-600 text-sm whitespace-pre-wrap font-mono leading-relaxed">
                   {prompt.example_output}
                 </pre>
               </div>
@@ -227,12 +227,12 @@ export default function PromptDetailPageClient({ params }: Props) {
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Quick Info */}
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 space-y-5">
+          <div className="bg-white border border-stone-200  p-6 space-y-5">
             <div>
-              <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Tools Used</h3>
+              <h3 className="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-2">Tools Used</h3>
               <div className="flex flex-wrap gap-2">
                 {prompt.tools.map(tool => (
-                  <span key={tool} className="text-xs text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-full">
+                  <span key={tool} className="text-xs text-red-800 bg-red-800/10 px-2.5 py-1 ">
                     {tool}
                   </span>
                 ))}
@@ -240,19 +240,19 @@ export default function PromptDetailPageClient({ params }: Props) {
             </div>
 
             <div>
-              <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Votes</h3>
-              <p className="text-white font-semibold">{prompt.vote_count} upvotes</p>
+              <h3 className="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-2">Votes</h3>
+              <p className="text-stone-950 font-semibold">{prompt.vote_count} upvotes</p>
             </div>
           </div>
 
           {/* Submit CTA */}
-          <div className="bg-gradient-to-br from-indigo-600/20 to-purple-600/20 border border-indigo-500/30 rounded-2xl p-6 space-y-3">
-            <p className="text-zinc-300 text-sm">
+          <div className="bg-gradient-to-br from-indigo-600/20 to-purple-600/20 border border-red-900/30  p-6 space-y-3">
+            <p className="text-stone-700 text-sm">
               Have a better version of this prompt?
             </p>
             <button
               onClick={() => setShowChangeModal(true)}
-              className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-amber-600 hover:bg-amber-500 text-white font-semibold rounded-xl transition-colors"
+              className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-amber-600 hover:bg-amber-500 text-white font-semibold  transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -260,13 +260,13 @@ export default function PromptDetailPageClient({ params }: Props) {
               Suggest a Change
             </button>
             <div className="relative flex items-center py-2">
-              <div className="flex-grow border-t border-zinc-700"></div>
-              <span className="flex-shrink-0 mx-4 text-zinc-600 text-xs">or</span>
-              <div className="flex-grow border-t border-zinc-700"></div>
+              <div className="flex-grow border-t border-stone-300"></div>
+              <span className="flex-shrink-0 mx-4 text-stone-500 text-xs">or</span>
+              <div className="flex-grow border-t border-stone-300"></div>
             </div>
             <Link
               href="/prompts/submit"
-              className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-colors"
+              className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-red-900 hover:bg-red-800 text-white font-semibold  transition-colors"
             >
               Submit New Prompt
             </Link>
@@ -277,16 +277,16 @@ export default function PromptDetailPageClient({ params }: Props) {
       {/* ── Suggest Change Modal ── */}
       {showChangeModal && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-zinc-900 border border-zinc-700 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-zinc-800 sticky top-0 bg-zinc-900 rounded-t-2xl">
+          <div className="bg-white border border-stone-300  w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-stone-200 sticky top-0 bg-white rounded-t-2xl">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="font-display font-bold text-xl text-white">Suggest a Change</h2>
-                  <p className="text-zinc-500 text-sm mt-1">{prompt.title}</p>
+                  <h2 className="font-display font-bold text-xl text-stone-950">Suggest a Change</h2>
+                  <p className="text-stone-500 text-sm mt-1">{prompt.title}</p>
                 </div>
                 <button
                   onClick={() => setShowChangeModal(false)}
-                  className="text-zinc-500 hover:text-white text-2xl leading-none"
+                  className="text-stone-500 hover:text-stone-950 text-2xl leading-none"
                 >
                   ×
                 </button>
@@ -294,40 +294,40 @@ export default function PromptDetailPageClient({ params }: Props) {
             </div>
 
             <form onSubmit={handleSubmitChange} className="p-6 space-y-5">
-              <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 text-amber-300 text-sm">
+              <div className="bg-amber-500/10 border border-amber-500/20  p-4 text-amber-300 text-sm">
                 💡 Paste your improved version of the <strong>prompt_text</strong> field below. Kevin will review it as a change idea.
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-zinc-400 mb-2">
-                  Your Improved Version <span className="text-red-400">*</span>
+                <label className="block text-sm font-medium text-stone-600 mb-2">
+                  Your Improved Version <span className="text-red-800">*</span>
                 </label>
                 <textarea
                   value={changeText}
                   onChange={e => setChangeText(e.target.value)}
                   placeholder="Paste the full prompt_text exactly as it should be after your change..."
                   rows={10}
-                  className="w-full bg-zinc-950 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500 resize-none font-mono text-sm"
+                  className="w-full bg-white border border-stone-300  px-4 py-3 text-stone-950 placeholder-zinc-600 focus:outline-none focus:border-red-900 resize-none font-mono text-sm"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-zinc-400 mb-2">
-                  Why this change? <span className="text-red-400">*</span>
+                <label className="block text-sm font-medium text-stone-600 mb-2">
+                  Why this change? <span className="text-red-800">*</span>
                 </label>
                 <textarea
                   value={changeReason}
                   onChange={e => setChangeReason(e.target.value)}
                   placeholder="Briefly explain why this improves the prompt..."
                   rows={3}
-                  className="w-full bg-zinc-950 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500 resize-none"
+                  className="w-full bg-white border border-stone-300  px-4 py-3 text-stone-950 placeholder-zinc-600 focus:outline-none focus:border-red-900 resize-none"
                   required
                 />
               </div>
 
               {submitMsg && (
-                <div className={`text-sm ${submitMsg.startsWith('Error') ? 'text-red-400' : 'text-green-400'}`}>
+                <div className={`text-sm ${submitMsg.startsWith('Error') ? 'text-red-800' : 'text-green-700'}`}>
                   {submitMsg}
                 </div>
               )}
@@ -336,14 +336,14 @@ export default function PromptDetailPageClient({ params }: Props) {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-6 py-2.5 bg-amber-600 hover:bg-amber-500 disabled:bg-zinc-700 text-white font-semibold rounded-xl transition-colors"
+                  className="px-6 py-2.5 bg-amber-600 hover:bg-amber-500 disabled:bg-stone-200 text-white font-semibold  transition-colors"
                 >
                   {submitting ? 'Submitting...' : 'Submit Change Idea'}
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowChangeModal(false)}
-                  className="px-6 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-medium rounded-xl transition-colors"
+                  className="px-6 py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium  transition-colors"
                 >
                   Cancel
                 </button>

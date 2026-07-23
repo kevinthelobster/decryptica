@@ -161,11 +161,11 @@ export default function RoiEstimator() {
   }
 
   return (
-    <section id="roi-calculator" className="rounded-3xl border border-zinc-800 bg-zinc-900/70 p-6 md:p-8">
+    <section id="roi-calculator" className=" border border-stone-200 bg-white p-6 md:p-8">
       <div className="mb-6">
-        <p className="text-xs font-semibold uppercase tracking-wider text-indigo-400">Automation ROI calculator</p>
-        <h2 className="mt-2 font-display text-2xl font-bold text-white md:text-3xl">Calculate your automation upside</h2>
-        <p className="mt-2 max-w-3xl text-zinc-300">
+        <p className="text-xs font-semibold uppercase tracking-wider text-red-800">Automation ROI calculator</p>
+        <h2 className="mt-2 font-display text-2xl font-bold text-stone-950 md:text-3xl">Calculate your automation upside</h2>
+        <p className="mt-2 max-w-3xl text-stone-700">
           Estimate monthly savings, payback period, and annual ROI from your current workflows.
         </p>
       </div>
@@ -173,45 +173,45 @@ export default function RoiEstimator() {
       <div className="grid gap-6 lg:grid-cols-[1.25fr_1fr]">
         <div className="space-y-4">
           <div className="grid gap-4 sm:grid-cols-2">
-            <label className="text-sm text-zinc-300">
+            <label className="text-sm text-stone-700">
               Team size
               <input
-                className="mt-1 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-3 py-2 text-white"
+                className="mt-1 w-full  border border-stone-300 bg-white px-3 py-2 text-stone-950"
                 value={form.teamSize}
                 onChange={(event) => setForm((prev) => ({ ...prev, teamSize: event.target.value }))}
                 inputMode="numeric"
               />
-              <span className="mt-1 block text-xs text-zinc-500">Number of people touching this workflow weekly.</span>
+              <span className="mt-1 block text-xs text-stone-500">Number of people touching this workflow weekly.</span>
             </label>
-            <label className="text-sm text-zinc-300">
+            <label className="text-sm text-stone-700">
               Hours/week
               <input
-                className="mt-1 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-3 py-2 text-white"
+                className="mt-1 w-full  border border-stone-300 bg-white px-3 py-2 text-stone-950"
                 value={form.hoursPerWeek}
                 onChange={(event) => setForm((prev) => ({ ...prev, hoursPerWeek: event.target.value }))}
                 inputMode="decimal"
               />
-              <span className="mt-1 block text-xs text-zinc-500">Average manual hours spent each week.</span>
+              <span className="mt-1 block text-xs text-stone-500">Average manual hours spent each week.</span>
             </label>
-            <label className="text-sm text-zinc-300">
+            <label className="text-sm text-stone-700">
               Loaded hourly cost ($)
               <input
-                className="mt-1 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-3 py-2 text-white"
+                className="mt-1 w-full  border border-stone-300 bg-white px-3 py-2 text-stone-950"
                 value={form.hourlyCost}
                 onChange={(event) => setForm((prev) => ({ ...prev, hourlyCost: event.target.value }))}
                 inputMode="decimal"
               />
-              <span className="mt-1 block text-xs text-zinc-500">Fully loaded cost per hour.</span>
+              <span className="mt-1 block text-xs text-stone-500">Fully loaded cost per hour.</span>
             </label>
-            <label className="text-sm text-zinc-300">
+            <label className="text-sm text-stone-700">
               Rework/error rate (%)
               <input
-                className="mt-1 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-3 py-2 text-white"
+                className="mt-1 w-full  border border-stone-300 bg-white px-3 py-2 text-stone-950"
                 value={form.errorRate}
                 onChange={(event) => setForm((prev) => ({ ...prev, errorRate: event.target.value }))}
                 inputMode="decimal"
               />
-              <span className="mt-1 block text-xs text-zinc-500">% of effort lost to corrections.</span>
+              <span className="mt-1 block text-xs text-stone-500">% of effort lost to corrections.</span>
             </label>
           </div>
 
@@ -233,24 +233,24 @@ export default function RoiEstimator() {
           </button>
         </div>
 
-        <div className="rounded-2xl border border-zinc-700 bg-zinc-950/80 p-5">
-          <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Result summary</p>
+        <div className=" border border-stone-300 bg-white/80 p-5">
+          <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Result summary</p>
           <div className="mt-4 space-y-4">
             <div>
-              <p className="text-sm text-zinc-400">Estimated monthly savings</p>
+              <p className="text-sm text-stone-600">Estimated monthly savings</p>
               <p className="text-2xl font-bold text-emerald-400">${Math.round(metrics.monthlySavings).toLocaleString()}</p>
             </div>
             <div>
-              <p className="text-sm text-zinc-400">Estimated payback period</p>
-              <p className="text-2xl font-bold text-white">
+              <p className="text-sm text-stone-600">Estimated payback period</p>
+              <p className="text-2xl font-bold text-stone-950">
                 {metrics.paybackMonths > 0 ? `${metrics.paybackMonths.toFixed(1)} months` : 'N/A'}
               </p>
             </div>
             <div>
-              <p className="text-sm text-zinc-400">Projected annual ROI</p>
-              <p className="text-2xl font-bold text-indigo-300">{Math.round(metrics.annualRoi)}%</p>
+              <p className="text-sm text-stone-600">Projected annual ROI</p>
+              <p className="text-2xl font-bold text-red-700">{Math.round(metrics.annualRoi)}%</p>
             </div>
-            <p className="text-xs text-zinc-500">
+            <p className="text-xs text-stone-500">
               Assumes phased rollout with discovery and iterative workflow hardening. Estimated implementation cost: $
               {metrics.implementationCost.toLocaleString()}.
             </p>
@@ -258,10 +258,10 @@ export default function RoiEstimator() {
         </div>
       </div>
 
-      <section id="quick-intake" className="mt-8 rounded-2xl border border-indigo-500/25 bg-indigo-500/5 p-5">
-        <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Quick intake</p>
-        <h3 className="mt-2 font-display text-xl font-semibold text-white">Save context before full request</h3>
-        <p className="mt-1 text-sm text-zinc-300">
+      <section id="quick-intake" className="mt-8  border border-red-900/25 bg-red-900/5 p-5">
+        <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Quick intake</p>
+        <h3 className="mt-2 font-display text-xl font-semibold text-stone-950">Save context before full request</h3>
+        <p className="mt-1 text-sm text-stone-700">
           Share three details now. You can complete the full contact flow after this step.
         </p>
 
@@ -269,21 +269,21 @@ export default function RoiEstimator() {
           <input
             required
             placeholder="Team size"
-            className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-white"
+            className=" border border-stone-300 bg-white px-3 py-2 text-stone-950"
             value={quickIntake.teamSize}
             onChange={(event) => setQuickIntake((prev) => ({ ...prev, teamSize: event.target.value }))}
           />
           <input
             required
             placeholder="Primary workflow"
-            className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-white"
+            className=" border border-stone-300 bg-white px-3 py-2 text-stone-950"
             value={quickIntake.primaryWorkflow}
             onChange={(event) => setQuickIntake((prev) => ({ ...prev, primaryWorkflow: event.target.value }))}
           />
           <input
             required
             placeholder="Target outcome"
-            className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-white"
+            className=" border border-stone-300 bg-white px-3 py-2 text-stone-950"
             value={quickIntake.targetOutcome}
             onChange={(event) => setQuickIntake((prev) => ({ ...prev, targetOutcome: event.target.value }))}
           />
@@ -300,9 +300,9 @@ export default function RoiEstimator() {
       </section>
 
       {submitted && (
-        <form className="mt-8 rounded-2xl border border-zinc-700 bg-zinc-950/80 p-5" onSubmit={handleLeadSubmit}>
-          <h3 className="font-display text-xl font-semibold text-white">Get My Automation Plan</h3>
-          <p className="mt-1 text-sm text-zinc-400">
+        <form className="mt-8  border border-stone-300 bg-white/80 p-5" onSubmit={handleLeadSubmit}>
+          <h3 className="font-display text-xl font-semibold text-stone-950">Get My Automation Plan</h3>
+          <p className="mt-1 text-sm text-stone-600">
             Share a few details and we will send a practical ROI-backed automation plan.
           </p>
 
@@ -310,7 +310,7 @@ export default function RoiEstimator() {
             <input
               required
               placeholder="Name"
-              className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-white"
+              className=" border border-stone-300 bg-white px-3 py-2 text-stone-950"
               value={form.name}
               onChange={(event) => setForm((prev) => ({ ...prev, name: event.target.value }))}
             />
@@ -318,21 +318,21 @@ export default function RoiEstimator() {
               required
               type="email"
               placeholder="Work email"
-              className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-white"
+              className=" border border-stone-300 bg-white px-3 py-2 text-stone-950"
               value={form.email}
               onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
             />
             <input
               required
               placeholder="Primary workflow"
-              className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-white"
+              className=" border border-stone-300 bg-white px-3 py-2 text-stone-950"
               value={form.workflow}
               onChange={(event) => setForm((prev) => ({ ...prev, workflow: event.target.value }))}
             />
             <input
               required
               placeholder="Current tool stack"
-              className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-white"
+              className=" border border-stone-300 bg-white px-3 py-2 text-stone-950"
               value={form.stack}
               onChange={(event) => setForm((prev) => ({ ...prev, stack: event.target.value }))}
             />
@@ -342,7 +342,7 @@ export default function RoiEstimator() {
             <button disabled={leadStatus === 'loading'} className="btn-primary" type="submit">
               {leadStatus === 'loading' ? 'Submitting...' : 'Request Automation Plan'}
             </button>
-            <p className="text-xs text-zinc-500">
+            <p className="text-xs text-stone-500">
               Response within 1 business day. No generic pitch deck, only workflow-specific recommendations.
             </p>
           </div>
