@@ -68,6 +68,212 @@ export const topics: Topic[] = [
 
 export const articles: Article[] = [
   {
+    id: '1784806392658-4263',
+    slug: 'the-copyright-problem-ai-art-still-can-t-solve',
+    title: "The Copyright Problem AI Art Still Can't Solve",
+    excerpt: "Every major image model can make something slick in seconds. That is no longer the hard part.",
+    content: `# The Copyright Problem AI Art Still Can't Solve
+
+Every major image model can make something slick in seconds. That is no longer the hard part.
+
+The hard part is proving what the model was allowed to learn from, what rights you actually have in the output, and who carries the risk when a rightsholder objects. On July 23, 2026, that problem is still unresolved across the AI tools market, and the gap between marketing language and legal certainty remains wide.
+
+**TL;DR**
+
+- The copyright issue in AI art is not one issue. It is three separate ones: whether training used protected works lawfully, whether outputs infringe specific works or characters, and whether the user has any copyrightable authorship in the final image.
+- The evidence base has hardened in one area. In the US, the [U.S. Copyright Office’s 2023 guidance](https://www.govinfo.gov/app/details/FR-2023-03-16/2023-05321) and its [January 29, 2025 report](https://copyright.gov/newsnet/2025/1060.html), plus the [March 18, 2025 D.C. Circuit ruling in *Thaler v. Perlmutter*](https://www.investing.com/news/world-news/us-appeals-court-rejects-copyrights-for-aigenerated-art-lacking-human-creator-3934826), all point the same way: prompt-only output is a weak basis for copyright.
+- What remains unsettled is the training question. The [U.S. Copyright Office’s May 9, 2025 pre-publication report on generative AI training](https://www.copyright.gov/ai/?_bhlid=dd7219fa885b79044d1af64793d7590881bcf01b) says fair use analysis is fact-specific and some training uses go too far. Ongoing lawsuits have not produced a clean industry-wide answer.
+- For buyers of ai tools, “commercial use,” “you own your output,” and even “indemnity” are not the same thing as copyright safety. They are contract terms with exclusions.
+- The practical move is boring but effective: use consumer image generators for ideation, use governed enterprise products for lower-risk production work, and keep humans visibly in the authorship chain if exclusivity matters.
+
+## Why this still is not solved
+
+AI image companies keep trying to compress the debate into a trust slogan. “Commercially safe,” “licensed,” and “creator-friendly” sound decisive.
+
+They are not decisive because copyright law asks different questions than product pages do.
+
+### 1. Training legality is still being fought
+
+The biggest unresolved issue is whether model training on copyrighted images is licensed, fair use, infringing, or some mixture depending on the facts.  The [U. S.
+
+Copyright Office AI page](https://www. copyright. gov/ai/?
+
+country=1049) now links a pre-publication Part 3 report released on May 9, 2025, and the Office did not bless blanket scraping.
+
+Its position is more careful than vendor marketing. The Office says copying can occur during dataset building and training, and fair use turns on specifics such as the works used, the purpose, and the market effect.
+
+That matters because most buyers do not buy models in the abstract. They buy legal exposure attached to workflows.
+
+### 2. Output risk is separate from training risk
+
+Even if a vendor eventually wins a training fight, output risk remains. A model that can generate something very close to Darth Vader, Elsa, or the Minions still creates a downstream problem for the user.
+
+That is why the June 11, 2025 lawsuit from [Disney and Universal against Midjourney](https://www. investing. com/news/stock-market-news/disney-universal-sue-image-creator-midjourney-for-copyright-infringement-4091419) matters.
+
+The case is not just about what went into training.  It is also about what came out.
+
+The same distinction shows up in stock-style products.  [Shutterstock’s license terms](https://www. shutterstock.
+
+com/license) spell out that indemnity is not automatic for outputs depicting trademarks, copyrights, public personalities, or famous characters.
+
+### 3. “You own it” does not mean “it is copyrighted”
+
+This is where many teams still get lost. A platform can assign whatever rights it has in output to you by contract, but that does not guarantee that the image qualifies for copyright protection under the law.
+
+OpenAI’s [Terms of Use](https://openai. com/es-US/policies/terms-of-use/) say users own output as between user and vendor, to the extent allowed by law.  Midjourney’s [Terms of Service](https://docs.
+
+midjourney. com/hc/en-us/articles/32083055291277-Terms-of-Service) say users own assets to the fullest extent possible under applicable law.
+
+Those are useful contract terms. They are not a shortcut around human authorship doctrine.
+
+## What We Checked
+
+This analysis is based on public documentation, pricing pages, product terms, government guidance, court filings, policy reports, and user reports about workflow fit and moderation behavior. It does not rely on private benchmarks, unpublished tests, or unnamed sources.
+
+The core evidence includes the [U. S.  Copyright Office registration guidance from March 16, 2023](https://www.
+
+govinfo. gov/app/details/FR-2023-03-16/2023-05321), the Office’s [January 29, 2025 report on copyrightability](https://copyright. gov/newsnet/2025/1060.
+
+html), the [March 18, 2025 *Thaler* appellate ruling](https://www. investing. com/news/world-news/us-appeals-court-rejects-copyrights-for-aigenerated-art-lacking-human-creator-3934826), the Copyright Office’s [May 9, 2025 pre-publication training report](https://www.
+
+copyright. gov/ai/? _bhlid=dd7219fa885b79044d1af64793d7590881bcf01b), the [UK government’s March 18, 2026 copyright-and-AI report](https://www.
+
+gov. uk/government/publications/report-and-impact-assessment-on-copyright-and-artificial-intelligence), and public litigation materials in the Andersen, Getty, and Midjourney disputes.
+
+On the product side, we checked the current public terms and pricing pages for [Adobe Firefly](https://www. adobe. com/products/firefly/plans.
+
+html? msockid=1c246063c6d0676f15e67607c71e66eb), [Adobe’s Firefly AI approach](https://www. adobe.
+
+com/ai/overview/firefly/gen-ai-approach. html? msockid=175039ebd6426fe51bfe2f0cd7d56ea2), [OpenAI service terms](https://openai.
+
+com/es-US/policies/service-terms/), [OpenAI enterprise privacy](https://openai. com/enterprise-privacy/), [Midjourney plans](https://docs. midjourney.
+
+com/hc/en-us/articles/27870484040333-Comparing-Midjourney-Plans), [Shutterstock license terms](https://www. shutterstock. com/license), and [Stability licensing](https://stability.
+
+ai/license).
+
+## How the main ai tools actually compare
+
+The cleanest way to read this market is not “best image model.” It is “best risk profile for the job.”
+
+| Tool or pattern | Best use case | Copyright posture | Security and workflow fit | Pricing signal |
+|---|---|---|---|---|
+| [Midjourney](https://docs.midjourney.com/hc/en-us/articles/27870484040333-Comparing-Midjourney-Plans) | Fast ideation, moodboards, editorial concepts | Contract says users own assets, but no special copyright certainty; current litigation raises output-risk questions | Weak for enterprise governance; public/remixable by default, Stealth only on Pro/Mega, and docs say no SSO or vendor security-process support | $10 to $120 per month, with Pro or Mega required for companies over $1M revenue |
+| [Adobe Firefly](https://www.adobe.com/products/firefly/plans.html?msockid=1c246063c6d0676f15e67607c71e66eb) | Marketing comps, internal brand creative, lower-risk production art | Stronger posture because Adobe says Firefly trains on public-domain and licensed content and offers IP indemnification for eligible enterprise outputs | Better governance fit; enterprise entitlements, admin controls, and defined eligible features matter | Public plans from about $10 to $200 per month; enterprise pricing and indemnity are negotiated |
+| [Shutterstock AI](https://www.shutterstock.com/license) | Stock-adjacent commercial imagery | Better than open consumer tools when content review is used; indemnity is conditional and not automatic for famous characters or marks | Good for teams already in stock workflows; slower if review is required | Enterprise-style pricing and licensing, not a cheap creator-subscription model |
+| [OpenAI image API and business products](https://openai.com/es-US/policies/service-terms/) | App workflows, automated asset generation, internal tooling | Output assignment and API indemnity exist, but exclusions matter and trademark claims are carved out | Stronger privacy posture for business than community-first tools; integration burden is higher | Usage-based API costs; business plans add admin and privacy controls |
+| [Self-hosted or open-weight Stability models](https://stability.ai/license) | Private pipelines, fine-tuning, sensitive internal assets | Maximum control, minimum vendor shield; provenance, moderation, and review burden shift to you | Strong data control, but you own the operational mess | Free for some users under Stability’s revenue threshold, then custom enterprise pricing plus infra costs |
+
+The most important divide is not image quality. It is whether the tool is built like a creator community, a governed enterprise platform, a stock licensing layer, or a model you operate yourself.
+
+That is why “best AI art generator” lists are usually shallow. They collapse four very different buying decisions into one leaderboard.
+
+## Where the marketing overreaches
+
+The loudest overreach is the claim that a model is “commercially safe” in a general sense. That phrase hides exclusions.
+
+Adobe’s public materials say Firefly is trained on public-domain and licensed content and that enterprise customers can get IP indemnification for eligible outputs. That is meaningful.
+
+It still does not mean every output is protected, every feature is covered, or every jurisdiction will read the same facts the same way. Adobe’s own product descriptions limit which features, surfaces, and release states qualify.
+
+The second overreach is “you own your output. ” You may have contractual ownership against the vendor, but the [Copyright Office’s guidance](https://www. govinfo.
+
+gov/app/details/FR-2023-03-16/2023-05321) and the [January 29, 2025 report](https://copyright. gov/newsnet/2025/1060. html) make clear that prompts alone usually do not supply enough human authorship.
+
+The third overreach is treating training transparency as optional. It is not optional if you are a publisher, advertiser, studio, or platform operator that may need to defend provenance later.
+
+If a vendor cannot clearly explain training sources, exclusions, and how it handles high-risk prompts, that is not a PR gap. It is a procurement problem.
+
+## The practical use-case split
+
+This is where serious adoption decisions get easier.
+
+### Good fits right now
+
+AI art tools are useful for internal concepting, campaign roughs, layout exploration, background ideation, thumbnail generation, pitch decks, storyboards, and other work where speed matters more than exclusivity.
+
+They also fit controlled production tasks when the vendor offers stronger provenance and indemnity, and the organization keeps human editing in the loop. Think ad variants, packaging mockups, blog illustrations, and placeholder brand art with review gates.
+
+### Bad fits right now
+
+These tools are poor fits for mascot creation, franchise-adjacent illustration, celebrity likeness work, logo-heavy scenes, licensed character work, or any hero image where uniqueness and defensibility matter more than speed.
+
+They are also a weak choice for confidential campaigns if the workflow runs through a public or semi-public product. Midjourney’s docs explicitly say content is public and remixable by default, and even Stealth has important caveats depending on where generation happens.
+
+### The hidden workflow constraint
+
+A lot of teams still price these products as if the monthly subscription is the cost. It is not.
+
+The real cost is prompt logging, rights review, asset screening, moderation, legal escalation, and human cleanup. The cheaper the tool looks on the pricing page, the more likely those costs were pushed onto you.
+
+## Security review is not separate from copyright review
+
+This is where many rollouts fail. The wrong product can be legally acceptable on paper and still unusable in practice.
+
+Midjourney is the clearest example. Its plan docs say Stealth mode requires Pro or Mega, and its group billing docs say it does not offer SSO, seat or admin management, or participation in supplier security processes.
+
+That is a serious blocker for agencies, newsrooms, and larger brands. If a tool cannot pass procurement, its image quality is irrelevant.
+
+OpenAI takes the opposite path for business users.  Its [enterprise privacy commitments](https://openai. com/enterprise-privacy/) say business data is not used to train models by default, and the [service terms](https://openai.
+
+com/es-US/policies/service-terms/) include IP indemnity for API customers with exclusions.
+
+That is stronger for governed internal workflows. It still requires the customer to handle inputs, approvals, and trademark or publicity review.
+
+Self-hosted Stability-style setups flip the tradeoff again. You get more data control and customization, but you also inherit moderation, storage, logging, model updates, and legal hygiene.
+
+## What a serious reader should do next
+
+If you are choosing among ai tools for image work, stop asking which one “wins.” Ask which one fails safely for your use case.
+
+Use this checklist:
+
+- Separate ideation from production. They should not default to the same tool.
+- Require a human-authored layer if you need a protectable final asset. Composition, editing, paintover, selection, and arrangement matter more than prompt poetry.
+- Ban prompts targeting famous characters, logos, or public figures unless there is an explicit licensed use case.
+- Demand written answers on training provenance, data retention, public visibility, admin controls, and indemnity exclusions.
+- Keep a paper trail. Save prompts, source files, edit history, approval notes, and export versions.
+
+That last point sounds tedious. It is also what turns a hand-wavy AI workflow into something a legal team can defend.
+
+## FAQ
+
+### Can I copyright an image made with AI tools?
+
+Sometimes, but not because the tool exists.  Based on the U. S.
+
+Copyright Office’s guidance and the January 29, 2025 report, the strongest cases are where a human made meaningful creative choices in selection, arrangement, editing, or transformation.  Prompt-only output is the weak case.
+
+### If a vendor offers indemnity, is the problem solved?
+
+No. Indemnity is helpful, but it is a contract with scope limits, exclusions, and process requirements. Shutterstock, Adobe, and OpenAI all attach conditions in different ways, and none of that converts a disputed legal landscape into certainty.
+
+### Is style mimicry the same as copyright infringement?
+
+Not usually in the simple way users think. Copyright generally protects specific expression, not style by itself, but style prompts can still create ethical, platform-policy, brand-safety, and business risk. They are also a poor foundation for exclusive commercial art because the outputs are hard to defend as uniquely yours.
+
+## The Bottom Line
+
+The copyright problem in AI art is not that the law has said “no” across the board. The problem is worse for operations: the law has said “it depends” at the exact points where buyers want certainty.
+
+What the evidence suggests is clear enough to act on.  Human authorship still matters.  Training provenance still matters.
+
+Output screening still matters.  Vendor promises help, but they do not erase the gap between a usable image and a defensible asset.
+
+That leaves a practical conclusion.  Use fast consumer generators for ideas.  Use governed enterprise or stock-linked systems for lower-risk production.
+
+Keep humans visibly in the creative chain when exclusivity matters.  And if a vendor cannot explain its rights posture in plain language, treat that as the answer.
+
+*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`.trim(),
+    category: 'ai',
+    readTime: '12 min',
+    date: '2026-07-23',
+    author: 'Decryptica',
+    status: 'published',
+    primaryKeyword: "ai tools",
+    wordCount: 2154,
+  },
+  {
     id: '1784719953569-1274',
     slug: 'why-gaming-nfts-will-outlive-the-art-fad',
     title: "Why Gaming NFTs Will Outlive the Art Fad",
