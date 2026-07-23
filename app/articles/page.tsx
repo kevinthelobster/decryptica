@@ -5,11 +5,17 @@ import SubscribeForm from '../components/SubscribeForm';
 import { getBreadcrumbSchema, getCollectionPageSchema, jsonLdScript, absoluteUrl } from '../lib/schema';
 
 export const metadata: Metadata = {
-  title: 'Articles | Decryptica',
-  description: 'Expert insights on Crypto, AI, and Automation. Browse all articles.',
+  title: 'Latest Reports | Decryptica',
+  description: 'Independent analysis on crypto markets, AI tools, and automation systems.',
   alternates: {
     canonical: '/articles',
   },
+};
+
+const categoryNames: Record<Article['category'], string> = {
+  crypto: 'Crypto',
+  ai: 'AI',
+  automation: 'Automation',
 };
 
 export default function ArticlesPage() {
@@ -18,13 +24,13 @@ export default function ArticlesPage() {
   );
 
   const categories: { name: string; href: string; slug: Article['category']; count: number }[] = [
-    { name: 'Crypto & DeFi', href: '/topic/crypto/defi', slug: 'crypto', count: articles.filter((a) => a.category === 'crypto').length },
-    { name: 'Artificial Intelligence', href: '/topic/ai/use-cases', slug: 'ai', count: articles.filter((a) => a.category === 'ai').length },
+    { name: 'Crypto Markets', href: '/topic/crypto/defi', slug: 'crypto', count: articles.filter((a) => a.category === 'crypto').length },
+    { name: 'AI Tools', href: '/topic/ai/use-cases', slug: 'ai', count: articles.filter((a) => a.category === 'ai').length },
     { name: 'Automation', href: '/topic/automation/workflows', slug: 'automation', count: articles.filter((a) => a.category === 'automation').length },
   ];
   const collectionSchema = getCollectionPageSchema({
-    name: 'All Articles',
-    description: 'Browse expert articles on crypto, AI tools, and automation workflows.',
+    name: 'Latest Reports',
+    description: 'Browse Decryptica reports on crypto, AI tools, and automation workflows.',
     path: '/articles',
   });
   const breadcrumbSchema = getBreadcrumbSchema([
@@ -49,68 +55,90 @@ export default function ArticlesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(collectionSchema)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(breadcrumbSchema)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(itemListSchema)} />
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="mb-12">
-          <h1 className="section-heading mb-4">All Articles</h1>
-          <p className="text-zinc-400 text-lg max-w-2xl">
-            Expert intelligence on crypto, AI, and automation. {articles.length} articles and counting.
-          </p>
-        </div>
 
-        <div className="flex gap-3 mb-10 overflow-x-auto px-6 -mx-6 md:overflow-visible md:px-0 md:mx-0 flex-nowrap">
-          {categories.map((cat) => (
-            <Link
-              key={cat.slug}
-              href={cat.href}
-              className="topic-tag shrink-0 hover:bg-indigo-500/20 hover:text-indigo-300 transition-colors"
-            >
-              {cat.name}
-              <span className="ml-2 opacity-50">({cat.count})</span>
-            </Link>
-          ))}
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {sortedArticles.map((article) => (
-            <Link
-              key={article.id}
-              href={`/blog/${article.slug}`}
-              className="article-card p-6 group flex flex-col"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-xs font-medium text-indigo-400 uppercase tracking-wider">
-                  {article.category}
-                </span>
-                <span className="text-zinc-600">•</span>
-                <span className="text-xs text-zinc-500">{article.readTime}</span>
+      <div className="bg-white text-stone-950">
+        <section className="border-b border-stone-200">
+          <div className="mx-auto max-w-7xl px-5 py-10">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-red-800">Archive</p>
+            <div className="mt-3 flex flex-col gap-5 border-y border-stone-900 py-6 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <h1 className="font-serif text-5xl font-black leading-none md:text-7xl">Latest Reports</h1>
+                <p className="mt-4 max-w-2xl text-lg leading-8 text-stone-700">
+                  Independent analysis on crypto markets, AI tooling, and automation systems. {articles.length} reports in the archive.
+                </p>
               </div>
-              <h2 className="font-display font-semibold text-lg text-white mb-3 group-hover:text-indigo-400 transition-colors leading-snug flex-grow">
-                {article.title}
-              </h2>
-              <p className="text-zinc-400 text-sm leading-relaxed mb-4 line-clamp-3">
-                {article.excerpt}
-              </p>
-              <div className="flex items-center justify-between mt-auto pt-4 border-t border-zinc-800/50">
-                <span className="text-xs text-zinc-500">{article.date}</span>
-                <span className="text-xs text-indigo-400 font-medium group-hover:underline">
-                  Read more →
-                </span>
+              <div className="grid grid-cols-3 gap-3 text-center lg:w-80">
+                {categories.map((cat) => (
+                  <Link key={cat.slug} href={cat.href} className="border border-stone-200 bg-white px-3 py-4 hover:border-red-800">
+                    <span className="block font-serif text-3xl font-black text-stone-950">{cat.count}</span>
+                    <span className="mt-1 block text-[0.65rem] font-bold uppercase tracking-[0.1em] text-stone-500">
+                      {cat.slug}
+                    </span>
+                  </Link>
+                ))}
               </div>
-            </Link>
-          ))}
-        </div>
-
-        <div className="card-elevated p-8 text-center">
-          <h2 className="font-display text-2xl font-bold text-white mb-3">
-            Never miss an update
-          </h2>
-          <p className="text-zinc-400 mb-6 max-w-lg mx-auto">
-            Get weekly technical intelligence delivered straight to your inbox. No spam, just signal.
-          </p>
-          <div className="max-w-md mx-auto">
-            <SubscribeForm />
+            </div>
           </div>
-        </div>
+        </section>
+
+        <section className="bg-white">
+          <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
+            <div className="divide-y divide-stone-200 border-y border-stone-200">
+              {sortedArticles.map((article) => (
+                <Link
+                  key={article.id}
+                  href={`/blog/${article.slug}`}
+                  className="group grid gap-4 py-6 md:grid-cols-[9rem_minmax(0,1fr)_7rem]"
+                >
+                  <div className="text-xs font-bold uppercase tracking-[0.14em] text-red-800">
+                    {categoryNames[article.category]}
+                  </div>
+                  <div>
+                    <h2 className="font-serif text-2xl font-black leading-tight text-stone-950 group-hover:text-red-900 md:text-3xl">
+                      {article.title}
+                    </h2>
+                    <p className="mt-3 max-w-3xl text-sm leading-6 text-stone-600 md:text-base">
+                      {article.excerpt}
+                    </p>
+                  </div>
+                  <div className="flex gap-3 text-sm text-stone-500 md:block md:text-right">
+                    <p>{article.date}</p>
+                    <p className="md:mt-2">{article.readTime}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <aside className="space-y-6">
+              <div className="border border-stone-200 bg-neutral-50 p-5">
+                <h2 className="font-serif text-2xl font-black text-stone-950">Sections</h2>
+                <div className="mt-4 grid gap-2">
+                  {categories.map((cat) => (
+                    <Link
+                      key={cat.slug}
+                      href={cat.href}
+                      className="flex items-center justify-between border-b border-stone-200 py-3 text-sm font-bold text-stone-800 hover:text-red-900"
+                    >
+                      <span>{cat.name}</span>
+                      <span>{cat.count}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="border border-stone-950 bg-stone-950 p-5 text-white">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-red-300">Dispatch</p>
+                <h2 className="mt-2 font-serif text-2xl font-black">Weekly signal</h2>
+                <p className="mt-3 text-sm leading-6 text-stone-300">
+                  A short brief on tools, protocols, and automation decisions worth knowing about.
+                </p>
+                <div className="mt-5">
+                  <SubscribeForm />
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
       </div>
     </>
   );

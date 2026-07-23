@@ -3,93 +3,84 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
+const navItems = [
+  { href: '/articles', label: 'Latest' },
+  { href: '/topic/crypto/trading', label: 'Crypto' },
+  { href: '/topic/ai/tooling', label: 'AI' },
+  { href: '/topic/automation/workflows', label: 'Automation' },
+  { href: '/tools/ai-price-calculator', label: 'Tools' },
+  { href: '/prompts', label: 'Prompts' },
+];
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-800/50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-            </div>
-            <span className="font-display font-bold text-xl text-white group-hover:text-indigo-400 transition-colors">
-              Decryptica
+    <header className="sticky top-0 z-50 border-b border-stone-200 bg-white/95 backdrop-blur">
+      <div className="mx-auto max-w-7xl px-5">
+        <div className="flex min-h-16 items-center justify-between gap-4">
+          <Link href="/" className="group flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center border-2 border-stone-950 bg-stone-950 font-serif text-xl font-black text-white">
+              D
+            </span>
+            <span className="leading-none">
+              <span className="block font-serif text-2xl font-black tracking-tight text-stone-950 group-hover:text-red-900">
+                Decryptica
+              </span>
+              <span className="hidden text-[0.65rem] font-bold uppercase tracking-[0.16em] text-stone-500 sm:block">
+                Digital economy desk
+              </span>
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            <Link href="/" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
-              Home
-            </Link>
-            <Link href="/topic/crypto/trading" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
-              Crypto
-            </Link>
-            <Link href="/topic/ai/tooling" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
-              AI
-            </Link>
-            <Link href="/topic/automation/workflows" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
-              Automation
-            </Link>
-            <Link href="/tools/ai-price-calculator" className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800/50">
-              Tools
-            </Link>
+          <nav className="hidden items-center gap-5 md:flex">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm font-bold text-stone-700 hover:text-red-900"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
-          {/* Mobile menu button */}
+          <Link
+            href="/#subscribe"
+            className="hidden border border-stone-950 px-4 py-2 text-sm font-bold text-stone-950 hover:bg-stone-950 hover:text-white md:inline-flex"
+          >
+            Subscribe
+          </Link>
+
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-zinc-400 hover:text-white transition-colors"
+            className="border border-stone-400 px-3 py-2 text-sm font-bold text-stone-900 md:hidden"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
+            {mobileMenuOpen ? 'Close' : 'Menu'}
           </button>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link href="/#subscribe" className="btn-secondary text-sm">
-              Subscribe
-            </Link>
-          </div>
         </div>
 
-        {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-zinc-800/50 py-4">
-            <nav className="flex flex-col gap-1">
-              <Link href="/" className="px-4 py-3 text-sm font-medium text-white bg-zinc-800/50 rounded-lg">
-                Home
-              </Link>
-              <Link href="/topic/crypto/trading" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">
-                Crypto
-              </Link>
-              <Link href="/topic/ai/tooling" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">
-                AI
-              </Link>
-              <Link href="/topic/automation/workflows" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">
-                Automation
-              </Link>
-              <Link href="/tools/ai-price-calculator" className="px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-lg transition-colors">
-                AI Calculator
-              </Link>
-              <div className="mt-2 pt-2 border-t border-zinc-800/50">
-                <Link href="/#subscribe" className="btn-secondary text-sm w-full text-center block">
-                  Subscribe
+          <div className="border-t border-stone-200 py-4 md:hidden">
+            <nav className="grid gap-2">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="border border-stone-200 bg-white px-4 py-3 text-sm font-bold text-stone-800"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
                 </Link>
-              </div>
+              ))}
+              <Link
+                href="/#subscribe"
+                className="bg-stone-950 px-4 py-3 text-center text-sm font-bold text-white"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Subscribe
+              </Link>
             </nav>
           </div>
         )}

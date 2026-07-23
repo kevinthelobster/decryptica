@@ -91,7 +91,7 @@ export default function IntentRouter({
         {cards.map((card) => (
           <article
             key={card.id}
-            className="flex min-h-[12rem] flex-col border border-stone-300 bg-[#f7f3ec] p-4 md:p-5"
+            className="flex min-h-[12rem] flex-col border border-stone-200 bg-neutral-50 p-4 md:p-5"
           >
             <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800">{card.kicker}</p>
             <h3 className="mt-2 font-serif text-xl font-black leading-tight text-stone-950">{card.title}</h3>
