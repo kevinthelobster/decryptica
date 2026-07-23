@@ -184,19 +184,16 @@ export function ArticleMilestoneStrip({
   }, [articleSlug, category, context.intent, context.intentDerivedFrom]);
 
   return (
-    <section
-      className="mb-6 rounded-xl border border-zinc-800 bg-zinc-950/70 p-3"
-      aria-label="Reading milestones"
-    >
+    <section className="mb-6 border border-stone-200 bg-white p-3" aria-label="Reading milestones">
       <ul className="flex flex-wrap gap-2">
         {milestones.map((milestone) => (
           <li key={milestone.id}>
             <a
               href={`#${milestone.id}`}
-              className={`inline-flex rounded-full border px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${
+              className={`inline-flex border px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-900 focus-visible:ring-offset-2 ${
                 activeId === milestone.id
-                  ? 'border-indigo-400/50 bg-indigo-500/20 text-indigo-100'
-                  : 'border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-zinc-500 hover:text-white'
+                  ? 'border-red-900 bg-red-50 text-red-900'
+                  : 'border-stone-300 bg-white text-stone-600 hover:border-stone-950 hover:text-stone-950'
               }`}
             >
               {milestone.label}
@@ -315,15 +312,15 @@ export function ArticleSerpPromiseModules({
 
   return (
     <section className="mb-8 space-y-4" aria-label="Search intent promise and next action">
-      <div ref={cardRef} className="rounded-2xl border border-indigo-500/30 bg-indigo-500/10 p-5 md:p-6">
-        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-indigo-300">Quick answer</p>
-        <p className="text-sm leading-relaxed text-zinc-200">{copy.quickAnswer}</p>
+      <div ref={cardRef} className="border border-stone-200 bg-neutral-50 p-5 md:p-6">
+        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-red-900">Quick answer</p>
+        <p className="text-sm leading-relaxed text-stone-700">{copy.quickAnswer}</p>
 
         <div className="mt-4">
-          <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-400">Best for</p>
+          <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-stone-500">Best for</p>
           <div className="flex flex-wrap gap-2">
             {chips.slice(0, 3).map((chip) => (
-              <span key={chip} className="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-xs text-zinc-200">
+              <span key={chip} className="border border-stone-300 bg-white px-2.5 py-1 text-xs text-stone-700">
                 {chip}
               </span>
             ))}
@@ -331,11 +328,11 @@ export function ArticleSerpPromiseModules({
         </div>
 
         <div className="mt-4">
-          <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-400">What you can do in 5 minutes</p>
+          <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-stone-500">What you can do in 5 minutes</p>
           <ul className="space-y-1.5">
             {copy.checklist.map((item) => (
-              <li key={item} className="flex items-start gap-2 text-sm text-zinc-300">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-300" />
+              <li key={item} className="flex items-start gap-2 text-sm text-stone-700">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-900" />
                 <span>{item}</span>
               </li>
             ))}
@@ -344,16 +341,16 @@ export function ArticleSerpPromiseModules({
       </div>
 
       <nav
-        className="grid gap-2 rounded-xl border border-zinc-800 bg-zinc-950/75 p-3 sm:grid-cols-3"
+        className="grid gap-2 border border-stone-200 bg-white p-3 sm:grid-cols-3"
         aria-label="Article action path"
       >
         <Link
           href={targets.keepReading}
           onClick={() => handleActionClick('keep_reading', targets.keepReading)}
-          className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${
+          className={`border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-900 focus-visible:ring-offset-2 ${
             intent === 'learn'
-              ? 'border-indigo-400/60 bg-indigo-500/20 text-indigo-100'
-              : 'border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-zinc-500 hover:text-white'
+              ? 'border-red-900 bg-red-50 text-red-900'
+              : 'border-stone-300 bg-white text-stone-700 hover:border-stone-950 hover:text-stone-950'
           }`}
         >
           Keep Reading
@@ -361,10 +358,10 @@ export function ArticleSerpPromiseModules({
         <Link
           href={targets.runTool}
           onClick={() => handleActionClick('run_tool', targets.runTool)}
-          className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${
+          className={`border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-900 focus-visible:ring-offset-2 ${
             intent === 'calculate'
-              ? 'border-blue-400/60 bg-blue-500/20 text-blue-100'
-              : 'border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-zinc-500 hover:text-white'
+              ? 'border-red-900 bg-red-50 text-red-900'
+              : 'border-stone-300 bg-white text-stone-700 hover:border-stone-950 hover:text-stone-950'
           }`}
         >
           Run the Tool
@@ -372,28 +369,28 @@ export function ArticleSerpPromiseModules({
         <Link
           href={targets.implement}
           onClick={() => handleActionClick('implement_this', targets.implement)}
-          className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${
+          className={`border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-900 focus-visible:ring-offset-2 ${
             intent === 'implement'
-              ? 'border-emerald-400/60 bg-emerald-500/20 text-emerald-100'
-              : 'border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-zinc-500 hover:text-white'
+              ? 'border-red-900 bg-red-50 text-red-900'
+              : 'border-stone-300 bg-white text-stone-700 hover:border-stone-950 hover:text-stone-950'
           }`}
         >
           Implement This
         </Link>
       </nav>
 
-      <div className="rounded-xl border border-zinc-800 bg-zinc-950/75 p-4">
-        <p className="mb-3 text-sm font-medium text-zinc-100">What are you trying to do next?</p>
+      <div className="border border-stone-200 bg-white p-4">
+        <p className="mb-3 text-sm font-medium text-stone-950">What are you trying to do next?</p>
         <div className="flex flex-wrap gap-2">
           {OUTCOME_OPTIONS.map((option) => (
             <button
               key={option.id}
               type="button"
               onClick={() => handleOutcomeSelect(option)}
-              className={`rounded-full border px-3 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${
+              className={`border px-3 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-900 focus-visible:ring-offset-2 ${
                 selectedOutcome === option.id
-                  ? 'border-indigo-400/70 bg-indigo-500/20 text-indigo-100'
-                  : 'border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-zinc-500 hover:text-white'
+                  ? 'border-red-900 bg-red-50 text-red-900'
+                  : 'border-stone-300 bg-white text-stone-700 hover:border-stone-950 hover:text-stone-950'
               }`}
             >
               {option.label}

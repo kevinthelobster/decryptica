@@ -435,7 +435,7 @@ function renderContent(
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, '-')
             .replace(/(^-|-$)/g, '')}
-          className="font-display text-xl font-semibold text-white mt-10 mb-4 pb-2 border-b border-zinc-800 scroll-mt-24"
+          className="mt-10 mb-4 scroll-mt-24 border-b border-stone-200 pb-2 font-display text-xl font-semibold text-stone-950"
         >
           {title}
         </h2>
@@ -493,7 +493,7 @@ function parseContent(text: string, keyPrefix: number): React.ReactNode[] {
       elements.push(
         <h3
           key={`h3-${keyPrefix}-${partIndex}`}
-          className="font-display text-lg font-semibold text-white mt-6 mb-3 text-indigo-300"
+          className="mt-6 mb-3 font-display text-lg font-semibold text-stone-950"
         >
           {title}
         </h3>
@@ -528,13 +528,13 @@ function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[
         elements.push(
           <div
             key={`code-${keyPrefix}-${paraIndex}`}
-            className="my-6 rounded-xl overflow-hidden border border-zinc-700 bg-zinc-900"
+            className="my-6 overflow-hidden border border-stone-300 bg-neutral-50"
           >
-            <div className="flex items-center justify-between px-4 py-2 bg-zinc-800/50 border-b border-zinc-700">
-              <span className="text-xs text-zinc-400 font-mono uppercase">{language}</span>
+            <div className="flex items-center justify-between border-b border-stone-300 bg-stone-100 px-4 py-2">
+              <span className="font-mono text-xs uppercase text-stone-500">{language}</span>
             </div>
             <pre className="p-4 overflow-x-auto">
-              <code className="text-sm font-mono text-zinc-300 whitespace-pre">{code}</code>
+              <code className="whitespace-pre font-mono text-sm text-stone-800">{code}</code>
             </pre>
           </div>
         );
@@ -555,13 +555,13 @@ function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[
 
         elements.push(
           <div key={`table-${keyPrefix}-${paraIndex}`} className="my-6 overflow-x-auto">
-            <table className="w-full text-sm border border-zinc-700 rounded-xl overflow-hidden">
-              <thead className="bg-zinc-800">
+            <table className="w-full overflow-hidden border border-stone-300 text-sm">
+              <thead className="bg-stone-100">
                 <tr>
                   {headers.map((header, i) => (
                     <th
                       key={i}
-                      className="px-4 py-3 text-left text-white font-semibold border-b border-zinc-700"
+                      className="border-b border-stone-300 px-4 py-3 text-left font-semibold text-stone-950"
                     >
                       {header}
                     </th>
@@ -577,10 +577,10 @@ function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[
                   return (
                     <tr
                       key={rowIndex}
-                      className="border-b border-zinc-700/50 hover:bg-zinc-800/30"
+                      className="border-b border-stone-200 hover:bg-neutral-50"
                     >
                       {cells.map((cell, cellIndex) => (
-                        <td key={cellIndex} className="px-4 py-3 text-zinc-300">
+                        <td key={cellIndex} className="px-4 py-3 text-stone-700">
                           {renderInline(cell)}
                         </td>
                       ))}
@@ -601,7 +601,7 @@ function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[
       elements.push(
         <blockquote
           key={`quote-${keyPrefix}-${paraIndex}`}
-          className="my-6 border-l-4 border-indigo-500 pl-5 py-2 italic text-zinc-400 bg-zinc-800/30 rounded-r-xl"
+          className="my-6 border-l-4 border-red-900 bg-neutral-50 py-2 pl-5 italic text-stone-600"
         >
           {quote}
         </blockquote>
@@ -612,7 +612,7 @@ function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[
     // Horizontal rule
     if (trimmed === '---') {
       elements.push(
-        <hr key={`hr-${keyPrefix}-${paraIndex}`} className="my-8 border-t border-zinc-700" />
+        <hr key={`hr-${keyPrefix}-${paraIndex}`} className="my-8 border-t border-stone-200" />
       );
       return;
     }
@@ -632,7 +632,7 @@ function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[
             {items.map((item, i) => {
               const text = item.replace(/^\d+\. /, '');
               return (
-                <li key={i} className="text-zinc-300 pl-2">
+                <li key={i} className="pl-2 text-stone-700">
                   {renderInline(text)}
                 </li>
               );
@@ -651,9 +651,9 @@ function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[
               return (
                 <li
                   key={i}
-                  className="text-zinc-300 pl-4 relative"
+                  className="relative pl-4 text-stone-700"
                 >
-                  <span className="absolute left-0 text-indigo-400">•</span>
+                  <span className="absolute left-0 text-red-900">•</span>
                   <span className="pl-3">{renderInline(text)}</span>
                 </li>
               );
@@ -669,7 +669,7 @@ function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[
       elements.push(
         <p
           key={`p-${keyPrefix}-${paraIndex}`}
-          className="text-zinc-300 leading-relaxed mb-4"
+          className="mb-4 leading-relaxed text-stone-700"
         >
           {renderInline(trimmed)}
         </p>
@@ -688,7 +688,7 @@ function renderInline(text: string): React.ReactNode {
     // Bold: **text**
     if (part.startsWith('**') && part.endsWith('**')) {
       return (
-        <strong key={i} className="text-white font-semibold">
+        <strong key={i} className="font-semibold text-stone-950">
           {part.slice(2, -2)}
         </strong>
       );
@@ -699,7 +699,7 @@ function renderInline(text: string): React.ReactNode {
       return (
         <code
           key={i}
-          className="mx-1 bg-zinc-800 px-2 py-1 rounded-lg text-pink-400 font-mono text-sm"
+          className="mx-1 bg-stone-100 px-2 py-1 font-mono text-sm text-red-900"
         >
           {part.slice(1, -1)}
         </code>
@@ -722,7 +722,7 @@ function renderInline(text: string): React.ReactNode {
               location: 'article_body_inline_link',
               cta: 'inline_link',
             }}
-            className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 hover:no-underline transition-colors"
+            className="text-red-900 underline underline-offset-2 transition-colors hover:text-stone-950 hover:no-underline"
           >
             {label}
           </TrackedLink>
@@ -735,7 +735,7 @@ function renderInline(text: string): React.ReactNode {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 hover:no-underline transition-colors"
+          className="text-red-900 underline underline-offset-2 transition-colors hover:text-stone-950 hover:no-underline"
         >
           {label}
         </a>
@@ -773,11 +773,11 @@ function getInternalHref(href: string): string | null {
 
 function TLDNRBox({ excerpt }: { excerpt: string }) {
   return (
-    <div className="mb-8 p-5 bg-indigo-500/10 border border-indigo-500/30 rounded-xl">
-      <h3 className="font-display font-semibold text-white mb-3 flex items-center gap-2">
-        <span>⚡</span> Quick Summary
+    <div className="mb-8 border border-stone-200 bg-neutral-50 p-5">
+      <h3 className="mb-3 flex items-center gap-2 font-display font-semibold text-stone-950">
+        Quick Summary
       </h3>
-      <p className="text-zinc-300 text-sm leading-relaxed">{excerpt}</p>
+      <p className="text-sm leading-relaxed text-stone-700">{excerpt}</p>
     </div>
   );
 }
@@ -795,20 +795,20 @@ function FreshnessEvidenceStrip({
 
   return (
     <section
-      className="mb-6 rounded-xl border border-zinc-800 bg-zinc-950/70 px-4 py-3"
+      className="mb-6 border border-stone-200 bg-white px-4 py-3"
       aria-label="Freshness and evidence"
     >
       <ul className="grid gap-2 sm:grid-cols-3">
-        <li className="rounded-lg border border-zinc-800 bg-zinc-900/70 px-3 py-2 text-xs text-zinc-300">
-          <span className="text-zinc-500">Last updated:</span> {updated}
+        <li className="border border-stone-200 bg-neutral-50 px-3 py-2 text-xs text-stone-700">
+          <span className="text-stone-500">Last updated:</span> {updated}
         </li>
-        <li className="rounded-lg border border-zinc-800 bg-zinc-900/70 px-3 py-2 text-xs text-zinc-300">
-          <span className="text-zinc-500">Sources reviewed:</span>{' '}
+        <li className="border border-stone-200 bg-neutral-50 px-3 py-2 text-xs text-stone-700">
+          <span className="text-stone-500">Sources reviewed:</span>{' '}
           {hasSourcesCount ? sourcesReviewed : 'Editorially reviewed'}
         </li>
-        <li className="rounded-lg border border-zinc-800 bg-zinc-900/70 px-3 py-2 text-xs text-zinc-300">
-          <span className="text-zinc-500">Method:</span>{' '}
-          <a href={`#${methodAnchorId}`} className="text-indigo-300 underline underline-offset-4 hover:text-indigo-200">
+        <li className="border border-stone-200 bg-neutral-50 px-3 py-2 text-xs text-stone-700">
+          <span className="text-stone-500">Method:</span>{' '}
+          <a href={`#${methodAnchorId}`} className="text-red-900 underline underline-offset-4 hover:text-stone-950">
             View methodology
           </a>
         </li>
@@ -845,15 +845,15 @@ function CTAExplore({ articleSlug, category }: { articleSlug: string; category: 
   };
   const content = categoryContent[category] || categoryContent.ai;
   return (
-    <div className="mb-6 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5 transition-all duration-200 md:hover:-translate-y-0.5 md:hover:border-indigo-400/40 md:focus-within:-translate-y-0.5 md:focus-within:border-indigo-400/40">
-      <h4 className="font-display text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-2">
+    <div className="mb-6 border border-stone-200 bg-white p-5 transition-colors duration-200 md:hover:border-red-900 md:focus-within:border-red-900">
+      <h4 className="mb-2 font-display text-sm font-semibold uppercase tracking-wider text-red-900">
         Explore
       </h4>
-      <p className="text-white font-medium mb-1">{content.heading}</p>
-      <p className="text-zinc-400 text-sm mb-3">{content.body}</p>
+      <p className="mb-1 font-medium text-stone-950">{content.heading}</p>
+      <p className="mb-3 text-sm text-stone-600">{content.body}</p>
       <TrackedLink
         href={content.href}
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm font-bold text-red-900 transition-colors hover:text-stone-950"
         eventType="cta_click"
         articleSlug={articleSlug}
         metadata={{ location: 'article_conversion_strip', cta: 'explore_topic', category, funnel: 'explore' }}
@@ -887,15 +887,15 @@ function CTACompare({ articleSlug, category, title }: { articleSlug: string; cat
   };
   const content = categoryContent[category] || categoryContent.ai;
   return (
-    <div className="mb-6 rounded-xl border border-zinc-800 bg-zinc-900/60 p-5 transition-all duration-200 md:hover:-translate-y-0.5 md:hover:border-blue-400/40 md:focus-within:-translate-y-0.5 md:focus-within:border-blue-400/40">
-      <h4 className="font-display text-sm font-semibold text-blue-400 uppercase tracking-wider mb-2">
+    <div className="mb-6 border border-stone-200 bg-white p-5 transition-colors duration-200 md:hover:border-red-900 md:focus-within:border-red-900">
+      <h4 className="mb-2 font-display text-sm font-semibold uppercase tracking-wider text-red-900">
         Compare
       </h4>
-      <p className="text-white font-medium mb-1">{content.heading}</p>
-      <p className="text-zinc-400 text-sm mb-3">{content.body}</p>
+      <p className="mb-1 font-medium text-stone-950">{content.heading}</p>
+      <p className="mb-3 text-sm text-stone-600">{content.body}</p>
       <TrackedLink
         href={content.href}
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm font-bold text-red-900 transition-colors hover:text-stone-950"
         eventType="cta_click"
         articleSlug={articleSlug}
         metadata={{ location: 'article_conversion_strip', cta: 'compare_tools', category, funnel: 'compare' }}
@@ -908,12 +908,12 @@ function CTACompare({ articleSlug, category, title }: { articleSlug: string; cat
 
 function CTAStart({ articleSlug, category }: { articleSlug: string; category: string }) {
   return (
-    <div className="rounded-xl border border-indigo-500/30 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 p-5 transition-all duration-200 md:hover:-translate-y-0.5 md:hover:border-purple-400/40 md:focus-within:-translate-y-0.5 md:focus-within:border-purple-400/40">
-      <h4 className="font-display text-sm font-semibold text-purple-400 uppercase tracking-wider mb-2">
+    <div className="border border-stone-950 bg-stone-950 p-5 text-white transition-colors duration-200 md:hover:border-red-800 md:focus-within:border-red-800">
+      <h4 className="mb-2 font-display text-sm font-semibold uppercase tracking-wider text-stone-300">
         Get Started
       </h4>
-      <p className="text-white font-medium mb-1">Ready to put this into practice?</p>
-      <p className="text-zinc-400 text-sm mb-3">Get the latest implementation guides and tool walkthroughs delivered to your inbox.</p>
+      <p className="mb-1 font-medium text-white">Ready to put this into practice?</p>
+      <p className="mb-3 text-sm text-stone-300">Get the latest implementation guides and tool walkthroughs delivered to your inbox.</p>
       <TrackedLink
         href="#subscribe"
         className="btn-primary"
@@ -931,7 +931,7 @@ function CTAStart({ articleSlug, category }: { articleSlug: string; category: st
 
 function ConversionStrip({ articleSlug, category, title }: { articleSlug: string; category: string; title: string }) {
   return (
-    <section className="mt-10 rounded-2xl border border-indigo-500/30 bg-gradient-to-r from-indigo-500/5 via-blue-500/5 to-purple-500/5 p-6 md:p-8">
+    <section className="mt-10 border border-stone-200 bg-neutral-50 p-6 md:p-8">
       {/* Meta variant data for CTR testing — hidden from users, visible to crawlers */}
       <meta name="decryptica:meta:variant" content="explore|compare|start" />
       <div className="grid md:grid-cols-3 gap-4">
@@ -953,7 +953,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     return (
       <div className="max-w-6xl mx-auto px-6 py-24">
         <h1 className="section-heading mb-4">Article Not Found</h1>
-        <p className="text-zinc-400 mb-6">
+        <p className="mb-6 text-stone-600">
           The article &quot;{slug}&quot; doesn&apos;t exist yet.
         </p>
         <Link href="/articles" className="btn-primary">
@@ -1004,25 +1004,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <AnalyticsTracker articleSlug={slug} category={article.category} />
       <RouteDepthTracker depth={3} pillar={article.category} subpillar={subpillarSlug} />
 
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="mx-auto max-w-6xl px-6 py-12">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-zinc-500 mb-8" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-white transition-colors">
+        <nav className="mb-8 flex items-center gap-2 text-sm text-stone-500" aria-label="Breadcrumb">
+          <Link href="/" className="transition-colors hover:text-red-900">
             Home
           </Link>
           <span>/</span>
           <Link
             href={`/topic/${article.category}`}
-            className="hover:text-white transition-colors"
+            className="transition-colors hover:text-red-900"
           >
             {categoryNames[article.category] || article.category}
           </Link>
           <span>/</span>
-          <Link href={subpillarPath} className="hover:text-white transition-colors">
+          <Link href={subpillarPath} className="transition-colors hover:text-red-900">
             {subpillarName}
           </Link>
           <span>/</span>
-          <span className="text-zinc-400 truncate max-w-[200px]">
+          <span className="max-w-[200px] truncate text-stone-700">
             {article.title.length > 40
               ? article.title.slice(0, 40) + '...'
               : article.title}
@@ -1037,13 +1037,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="flex items-center gap-3 mb-4">
                 <Link
                   href={`/topic/${article.category}`}
-                  className="topic-tag hover:bg-indigo-500/20 transition-colors"
+                  className="topic-tag transition-colors hover:border-red-900 hover:bg-neutral-50"
                 >
                   {categoryNames[article.category] || article.category}
                 </Link>
                 <Link
                   href={subpillarPath}
-                  className="topic-tag hover:bg-indigo-500/20 transition-colors"
+                  className="topic-tag transition-colors hover:border-red-900 hover:bg-neutral-50"
                 >
                   {subpillarName}
                 </Link>
@@ -1074,19 +1074,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     {article.status === 'in_review' ? 'In Review' : article.status.charAt(0).toUpperCase() + article.status.slice(1)}
                   </span>
                 )}
-                <span className="text-zinc-600">•</span>
-                <span className="text-sm text-zinc-500">{readTime}</span>
-                <span className="text-zinc-600">•</span>
-                <span className="text-sm text-zinc-500">{wordCount.toLocaleString()} words</span>
+                <span className="text-stone-300">•</span>
+                <span className="text-sm text-stone-500">{readTime}</span>
+                <span className="text-stone-300">•</span>
+                <span className="text-sm text-stone-500">{wordCount.toLocaleString()} words</span>
               </div>
-              <h1 className="font-display text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+              <h1 className="mb-4 font-display text-3xl font-bold leading-tight text-stone-950 md:text-4xl">
                 {article.title}
               </h1>
-              <div className="flex items-center gap-4 text-sm text-zinc-500">
+              <div className="flex items-center gap-4 text-sm text-stone-500">
                 <span>{article.date}</span>
                 {article.author && (
                   <>
-                    <span className="text-zinc-600">•</span>
+                    <span className="text-stone-300">•</span>
                     <span>{article.author}</span>
                   </>
                 )}
@@ -1121,7 +1121,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Article Content */}
             <section id="tools-comparisons" className="scroll-mt-28">
-              <div id="article-content" className="prose prose-invert prose-zinc max-w-none article-reading-body">
+              <div id="article-content" className="prose prose-stone max-w-none article-reading-body">
                 <div className="max-w-[75ch]">
                   {renderContent(article.content, {
                     relatedMid: (
@@ -1142,9 +1142,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             </section>
 
-            <section id="methodology" className="mt-8 scroll-mt-28 rounded-xl border border-zinc-800 bg-zinc-950/65 p-4">
-              <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-zinc-400">Method & Sources</h3>
-              <p className="mt-2 text-sm text-zinc-300">
+            <section id="methodology" className="mt-8 scroll-mt-28 border border-stone-200 bg-neutral-50 p-4">
+              <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-stone-500">Method & Sources</h3>
+              <p className="mt-2 text-sm text-stone-700">
                 Articles are reviewed by Decryptica editorial and updated when source conditions change. Treat this content as informational research, then validate assumptions with current primary data before execution.
               </p>
             </section>
@@ -1179,26 +1179,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
               {/* Article Stats */}
               <div className="card-elevated p-5">
-                <h3 className="font-display font-semibold text-sm text-zinc-500 mb-4 uppercase tracking-wider">
+                <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-stone-500">
                   Article Info
                 </h3>
                 <dl className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <dt className="text-zinc-500">Published</dt>
-                    <dd className="text-zinc-300">{article.date}</dd>
+                    <dt className="text-stone-500">Published</dt>
+                    <dd className="text-stone-700">{article.date}</dd>
                   </div>
                   <div className="flex justify-between">
-                    <dt className="text-zinc-500">Words</dt>
-                    <dd className="text-zinc-300">{wordCount.toLocaleString()}</dd>
+                    <dt className="text-stone-500">Words</dt>
+                    <dd className="text-stone-700">{wordCount.toLocaleString()}</dd>
                   </div>
                   <div className="flex justify-between">
-                    <dt className="text-zinc-500">Read time</dt>
-                    <dd className="text-zinc-300">{readTime}</dd>
+                    <dt className="text-stone-500">Read time</dt>
+                    <dd className="text-stone-700">{readTime}</dd>
                   </div>
                   {article.lastUpdated && (
                     <div className="flex justify-between">
-                      <dt className="text-zinc-500">Updated</dt>
-                      <dd className="text-zinc-300">{article.lastUpdated}</dd>
+                      <dt className="text-stone-500">Updated</dt>
+                      <dd className="text-stone-700">{article.lastUpdated}</dd>
                     </div>
                   )}
                 </dl>
@@ -1206,33 +1206,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
               {/* Topic Links */}
               <div className="card-elevated p-5">
-                <h3 className="font-display font-semibold text-sm text-zinc-500 mb-4 uppercase tracking-wider">
+                <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-stone-500">
                   Topics
                 </h3>
                 <div className="space-y-2">
                   <Link
                     href="/topic/crypto/trading"
-                    className="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors text-sm group"
+                    className="group flex items-center gap-3 text-sm text-stone-600 transition-colors hover:text-red-900"
                   >
-                    <span>₿</span>
                     <span>Crypto & DeFi</span>
-                    <span className="ml-auto text-zinc-600 group-hover:text-indigo-400">→</span>
+                    <span className="ml-auto text-stone-400 group-hover:text-red-900">→</span>
                   </Link>
                   <Link
                     href="/topic/ai/tooling"
-                    className="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors text-sm group"
+                    className="group flex items-center gap-3 text-sm text-stone-600 transition-colors hover:text-red-900"
                   >
-                    <span>🤖</span>
                     <span>Artificial Intelligence</span>
-                    <span className="ml-auto text-zinc-600 group-hover:text-indigo-400">→</span>
+                    <span className="ml-auto text-stone-400 group-hover:text-red-900">→</span>
                   </Link>
                   <Link
                     href="/topic/automation/workflows"
-                    className="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors text-sm group"
+                    className="group flex items-center gap-3 text-sm text-stone-600 transition-colors hover:text-red-900"
                   >
-                    <span>⚡</span>
                     <span>Automation</span>
-                    <span className="ml-auto text-zinc-600 group-hover:text-indigo-400">→</span>
+                    <span className="ml-auto text-stone-400 group-hover:text-red-900">→</span>
                   </Link>
                 </div>
               </div>

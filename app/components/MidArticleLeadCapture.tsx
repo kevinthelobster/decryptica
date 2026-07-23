@@ -118,12 +118,12 @@ export default function MidArticleLeadCapture({ articleSlug, category }: MidArti
 
   return (
     <section
-      className="my-10 rounded-2xl border border-cyan-400/25 bg-cyan-500/5 p-5 md:p-6"
+      className="my-10 border border-stone-200 bg-neutral-50 p-5 md:p-6"
       aria-label="Mid-article signup"
     >
-      <p className="text-xs font-semibold uppercase tracking-wider text-cyan-300">Mid-Article Brief</p>
-      <h3 className="mt-2 font-display text-xl font-semibold text-white">{variantCopy.heading}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-zinc-300">{variantCopy.body}</p>
+      <p className="text-xs font-semibold uppercase tracking-wider text-red-900">Mid-Article Brief</p>
+      <h3 className="mt-2 font-display text-xl font-semibold text-stone-950">{variantCopy.heading}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-stone-700">{variantCopy.body}</p>
 
       <div className="mt-4 min-h-24">
         <form onSubmit={onSubmit} className="flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -146,21 +146,21 @@ export default function MidArticleLeadCapture({ articleSlug, category }: MidArti
                 },
               }).catch(() => undefined);
             }}
-            className="h-11 w-full rounded-lg border border-cyan-200/20 bg-zinc-950/70 px-4 text-sm text-white placeholder:text-zinc-500 focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/30 sm:flex-1"
+            className="h-11 w-full border border-stone-300 bg-white px-4 text-sm text-stone-950 placeholder:text-stone-400 focus:border-red-900 focus:outline-none focus:ring-2 focus:ring-red-900/20 sm:flex-1"
           />
           <button
             type="submit"
             disabled={state === 'loading' || state === 'success'}
-            className="inline-flex h-11 items-center justify-center rounded-lg bg-cyan-300 px-5 text-sm font-semibold text-zinc-950 transition hover:bg-cyan-200 disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex h-11 items-center justify-center bg-red-900 px-5 text-sm font-semibold text-white transition hover:bg-stone-950 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {state === 'loading' ? 'Joining...' : state === 'success' ? 'Joined' : 'Get Weekly Brief'}
           </button>
         </form>
 
-        <p className="mt-2 text-xs text-zinc-400">No spam. Unsubscribe anytime.</p>
+        <p className="mt-2 text-xs text-stone-500">No spam. Unsubscribe anytime.</p>
 
         {message && (
-          <p className={`mt-3 text-sm ${state === 'error' ? 'text-red-300' : 'text-emerald-300'}`}>
+          <p className={`mt-3 text-sm ${state === 'error' ? 'text-red-800' : 'text-emerald-700'}`}>
             {message}
           </p>
         )}
@@ -168,7 +168,7 @@ export default function MidArticleLeadCapture({ articleSlug, category }: MidArti
 
       <Link
         href={variantCopy.secondaryHref}
-        className="mt-3 inline-flex text-sm text-cyan-300 underline decoration-cyan-400/60 underline-offset-4 hover:text-cyan-200"
+        className="mt-3 inline-flex text-sm font-medium text-red-900 underline decoration-stone-300 underline-offset-4 hover:text-stone-950"
       >
         {variantCopy.secondaryLabel}
       </Link>

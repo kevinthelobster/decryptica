@@ -99,19 +99,19 @@ export default function IntentContextBanner({ pageType, category, articleSlug }:
       : '#subscribe';
 
   return (
-    <section className="mb-8 rounded-xl border border-indigo-400/30 bg-indigo-500/10 p-4" aria-label="Intent context">
+    <section className="mb-8 border border-stone-200 bg-neutral-50 p-4" aria-label="Intent context">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">Intent Continuity</p>
-          <p className="mt-1 text-sm text-zinc-200">
-            You&apos;re in <span className="font-semibold text-white">{INTENT_LABELS[context.intent]}</span> mode. Keep momentum or switch your goal.
+          <p className="text-xs font-semibold uppercase tracking-wider text-red-900">Intent Continuity</p>
+          <p className="mt-1 text-sm text-stone-700">
+            You&apos;re in <span className="font-semibold text-stone-950">{INTENT_LABELS[context.intent]}</span> mode. Keep momentum or switch your goal.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
           <TrackedLink
             href={primaryHref}
-            className="inline-flex h-9 items-center rounded-lg border border-indigo-300/40 bg-indigo-400/15 px-3 text-sm font-medium text-indigo-100 hover:bg-indigo-400/25"
+            className="inline-flex h-9 items-center border border-stone-950 bg-stone-950 px-3 text-sm font-bold text-white hover:bg-red-900"
             eventType="cta_click"
             articleSlug={articleSlug}
             metadata={{ location: `${pageType}_intent_banner`, cta: currentIntent, category }}
@@ -122,7 +122,7 @@ export default function IntentContextBanner({ pageType, category, articleSlug }:
           <button
             type="button"
             onClick={onDismiss}
-            className="inline-flex h-9 items-center rounded-lg border border-zinc-700 px-3 text-sm text-zinc-300 hover:border-zinc-500 hover:text-white"
+            className="inline-flex h-9 items-center border border-stone-300 px-3 text-sm text-stone-600 hover:border-stone-950 hover:text-stone-950"
           >
             Dismiss
           </button>
@@ -135,10 +135,10 @@ export default function IntentContextBanner({ pageType, category, articleSlug }:
             key={intentOption}
             type="button"
             onClick={() => onSwitchIntent(intentOption)}
-            className={`inline-flex h-8 items-center rounded-md border px-3 text-xs font-medium transition ${
+            className={`inline-flex h-8 items-center border px-3 text-xs font-medium transition ${
               intentOption === context.intent
-                ? 'border-indigo-300 bg-indigo-300/20 text-indigo-100'
-                : 'border-zinc-700 text-zinc-300 hover:border-zinc-500 hover:text-white'
+                ? 'border-red-900 bg-red-50 text-red-900'
+                : 'border-stone-300 text-stone-600 hover:border-stone-950 hover:text-stone-950'
             }`}
           >
             {INTENT_LABELS[intentOption]}

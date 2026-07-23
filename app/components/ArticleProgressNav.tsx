@@ -68,21 +68,21 @@ export default function ArticleProgressNav({ articleSlug, category, headings }: 
 
   return (
     <div className="card-elevated p-5">
-      <h3 className="font-display font-semibold text-sm text-zinc-500 mb-3 uppercase tracking-wider">
+      <h3 className="mb-3 font-display text-sm font-semibold uppercase tracking-wider text-stone-500">
         Reading Progress
       </h3>
-      <div className="h-2 w-full rounded-full bg-zinc-800 mb-2 overflow-hidden">
+      <div className="mb-2 h-2 w-full overflow-hidden bg-stone-200">
         <div
-          className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 transition-all duration-300"
+          className="h-full bg-red-900 transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
-      <p className="text-xs text-zinc-400 mb-4">{progress}% complete</p>
+      <p className="mb-4 text-xs text-stone-500">{progress}% complete</p>
 
-      <h4 className="font-display font-semibold text-xs text-zinc-500 mb-2 uppercase tracking-wider">
+      <h4 className="mb-2 font-display text-xs font-semibold uppercase tracking-wider text-stone-500">
         Jump to Section
       </h4>
-      <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
+      <div className="max-h-64 space-y-2 overflow-y-auto pr-1">
         {headings.map((item) => (
           <TrackedLink
             key={item.id}
@@ -95,7 +95,7 @@ export default function ArticleProgressNav({ articleSlug, category, headings }: 
               section: item.id,
             }}
             className={`block text-sm transition-colors ${
-              activeHeading === item.id ? 'text-indigo-300' : 'text-zinc-400 hover:text-zinc-200'
+              activeHeading === item.id ? 'font-semibold text-red-900' : 'text-stone-600 hover:text-stone-950'
             }`}
           >
             {item.label}

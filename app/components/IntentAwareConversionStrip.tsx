@@ -29,7 +29,7 @@ function buildCards(category: string): CtaCard[] {
       body: 'Actionable lessons from real deployments, delivered in plain language.',
       ctaLabel: 'Get Insights',
       href: '#subscribe',
-      accentClassName: 'border-cyan-400/30 text-cyan-300',
+      accentClassName: 'border-stone-300 text-red-900',
     },
     {
       id: 'calculate',
@@ -38,7 +38,7 @@ function buildCards(category: string): CtaCard[] {
       body: 'Model impact and tradeoffs with clear assumptions in minutes.',
       ctaLabel: 'Calculate ROI',
       href: '/tools/ai-price-calculator',
-      accentClassName: 'border-blue-400/30 text-blue-300',
+      accentClassName: 'border-stone-300 text-red-900',
     },
     {
       id: 'implement',
@@ -47,7 +47,7 @@ function buildCards(category: string): CtaCard[] {
       body: 'Get scoped implementation guidance for fast, low-risk execution.',
       ctaLabel: 'Start Implementation',
       href: '/services/ai-automation-consulting',
-      accentClassName: 'border-emerald-400/30 text-emerald-300',
+      accentClassName: 'border-stone-300 text-red-900',
     },
   ];
 }
@@ -106,25 +106,25 @@ export default function IntentAwareConversionStrip({ articleSlug, category }: In
   const secondaryCards = cards.slice(1);
 
   return (
-    <section ref={sectionRef} className="mt-10 rounded-2xl border border-indigo-500/30 bg-gradient-to-r from-indigo-500/5 via-blue-500/5 to-emerald-500/5 p-6 md:p-8">
+    <section ref={sectionRef} className="mt-10 border border-stone-200 bg-neutral-50 p-6 md:p-8">
       <div className="mb-4 flex items-center justify-between gap-3">
-        <h3 className="font-display text-lg font-semibold text-white">Best next action for this article</h3>
+        <h3 className="font-display text-lg font-semibold text-stone-950">Best next action for this article</h3>
         {context.intent && (
-          <p className="text-xs text-zinc-400">
-            Prioritized for <span className="font-semibold text-zinc-200">{context.intent}</span> intent
+          <p className="text-xs text-stone-500">
+            Prioritized for <span className="font-semibold text-stone-800">{context.intent}</span> intent
           </p>
         )}
       </div>
 
-      <article className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
-        <p className={`inline-flex rounded-full border px-2 py-1 text-[11px] font-semibold uppercase tracking-wide ${primaryCard.accentClassName}`}>
+      <article className="border border-stone-200 bg-white p-5">
+        <p className={`inline-flex border px-2 py-1 text-[11px] font-semibold uppercase tracking-wide ${primaryCard.accentClassName}`}>
           {primaryCard.eyebrow}
         </p>
-        <h4 className="mt-3 font-display text-xl font-semibold text-white">{primaryCard.heading}</h4>
-        <p className="mt-2 max-w-2xl text-sm text-zinc-400">{primaryCard.body}</p>
+        <h4 className="mt-3 font-display text-xl font-semibold text-stone-950">{primaryCard.heading}</h4>
+        <p className="mt-2 max-w-2xl text-sm text-stone-600">{primaryCard.body}</p>
         <TrackedLink
           href={primaryCard.href}
-          className="mt-5 inline-flex items-center gap-2 rounded-lg bg-indigo-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-400"
+          className="mt-5 inline-flex items-center gap-2 bg-red-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-stone-950"
           eventType="cta_click"
           articleSlug={articleSlug}
           metadata={{ location: 'article_conversion_strip', cta: primaryCard.id, category }}
@@ -132,12 +132,12 @@ export default function IntentAwareConversionStrip({ articleSlug, category }: In
           {primaryCard.ctaLabel}
         </TrackedLink>
 
-        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-zinc-800 pt-4 text-sm">
+        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-stone-200 pt-4 text-sm">
           {secondaryCards.map((card) => (
             <TrackedLink
               key={card.id}
               href={card.href}
-              className="text-zinc-400 underline decoration-zinc-700 underline-offset-4 hover:text-white"
+              className="text-stone-600 underline decoration-stone-300 underline-offset-4 hover:text-red-900"
               eventType="cta_click"
               articleSlug={articleSlug}
               metadata={{ location: 'article_conversion_strip', cta: card.id, category }}
