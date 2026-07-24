@@ -68,6 +68,226 @@ export const topics: Topic[] = [
 
 export const articles: Article[] = [
   {
+    id: '1784892840005-2640',
+    slug: 'ai-agents-in-2026-what-s-working-and-what-s-not',
+    title: "AI Agents in 2026: What's Working and What's Not",
+    excerpt: "The useful question is whether they hold up once pricing, rate limits, latency, permissions, and security review enter the room. On that standard, the...",
+    content: `# AI Agents in 2026: What's Working and What's Not
+
+The useful question in 2026 is no longer whether AI agents exist. They do.
+
+The useful question is whether they hold up once pricing, rate limits, latency, permissions, and security review enter the room. On that standard, the field is no longer hype-free, but it is finally legible.
+
+Based on public documentation, pricing pages, benchmark reports, protocol docs, and user reports, the pattern is clear. AI agents work best when they operate inside narrow loops with good feedback, clean permissions, and an obvious human fallback.
+
+**TL;DR**
+
+- The strongest current category is coding agents. They work because code offers fast verification through tests, compilers, linters, and diffs.
+- Workflow agents can be useful, but only when they are deciding among a small set of approved actions rather than improvising across your entire software stack.
+- Customer support and CRM agents are viable in bounded environments with authenticated users, narrow intents, and strict permission models.
+- Browser-first and computer-use agents are still too fragile to be the default integration layer for most serious operations.
+- Multi-agent setups are often sold as sophistication when they are really just extra latency, extra spend, and extra debugging surface.
+- Serious buyers should evaluate agents like operations software, not like demos: identity, auditability, rate limits, unit economics, failure handling, and rollback matter more than leaderboard screenshots.
+
+## What We Checked
+
+This analysis is based on public sources rather than private testing.
+
+That includes benchmark reports such as [SWE-bench](https://www. swebench. com/), [Terminal-Bench](https://www.
+
+tbench. ai/benchmarks), and [GAIA](https://huggingface. co/gaia-benchmark); pricing and usage docs from [OpenAI](https://developers.
+
+openai. com/api/docs/models/compare), [Anthropic](https://docs. anthropic.
+
+com/en/docs/about-claude/pricing? 4810b549_page=3&73cdfb14_page=2&939688b5_page=1&e768fcd2_page=2), [Zapier](https://zapier. com/pricing), [n8n](https://n8n.
+
+io/pricing/), [Microsoft Copilot Studio](https://www. microsoft. com/en-us/microsoft-365-copilot/pricing/copilot-studio), and [Salesforce Agentforce](https://www.
+
+salesforce. com/agentforce/pricing/? bc=OTH); governance docs from Microsoft, Salesforce, n8n, OpenAI, and Anthropic; and adoption signals such as LangChain’s 2026 public [State of Agent Engineering](https://www.
+
+langchain. com/state-of-agent-engineering) survey.
+
+That evidence base has limits. Vendor benchmarks favor the vendor, self-reported surveys skew toward early adopters, and user reports often overrepresent edge cases. Still, taken together, they are good enough to separate the useful patterns from the expensive theater.
+
+## What’s Actually Working
+
+### Coding agents are the clearest win
+
+If you want one answer to “which AI agents are actually earning their keep,” it is coding agents.
+
+That does not mean every code agent is reliable.  It means the environment is unusually favorable.  Repositories are mostly text, tools are already scriptable, and the feedback loop is brutally honest.
+
+A bad patch fails tests, breaks the build, or looks wrong in a diff.
+
+That is why tools like OpenAI’s agent stack and Codex-related products, Anthropic’s [Claude Code](https://www. anthropic. com/product/claude-code?
+
+r=0), and Cursor’s [agent plans](https://cursor. com/en-US/pricing) have real traction.  LangChain’s 2026 survey says coding agents dominate daily agent usage, which matches what benchmark culture has been signaling for months.
+
+Even here, buyers should stay skeptical.  Public agent benchmarks are improving, but they are not stable enough to treat as purchasing truth.  Terminal-Bench itself released a [2.
+
+1 revision](https://www. tbench. ai/news/terminal-bench-2-1) after fixing tasks, and several model-agent scores moved materially.
+
+The mechanism matters. Coding agents work because they can plan, act, and verify in the same environment. That loop is much stronger than what you get in sales ops, recruiting, or finance, where the “correct” answer often depends on ambiguous business rules and messy human exceptions.
+
+The tradeoff is cost and control.  OpenAI’s higher-end API models can get expensive fast, especially once long context, tool calls, or premium processing enter the picture, while Anthropic’s long-context pricing on Sonnet 4 increases once input passes the threshold described on its [pricing page](https://docs. anthropic.
+
+com/en/docs/about-claude/pricing? 4810b549_page=3&73cdfb14_page=2&939688b5_page=1&e768fcd2_page=2).  Cursor also makes the economics explicit: agent-heavy users consume included usage quickly and move into usage-based spend.
+
+Who should avoid this category?  Teams with weak test coverage, fragile deployment practices, or regulated code paths that still lack clean review gates.  The agent is not the main risk there.
+
+Your software process is.
+
+### Workflow agents work when they sit inside deterministic automation
+
+The second category that is genuinely working is not “autonomous digital workers.” It is agentic layers on top of ordinary automation.
+
+That is where tools like [Zapier Agents](https://zapier. com/pricing) and [n8n](https://n8n. io/pricing/) make sense.
+
+The agent is useful when it classifies, routes, drafts, or selects among approved actions.  It is much less useful when it is allowed to wander across fifty apps looking for a clever answer.
+
+This is also where pricing models start to matter more than demos. Zapier charges in tasks and agent activities, and its own docs explain that AI steps with more capable model tiers and tool calls multiply usage quickly. Its help docs also cap activities per run on lower plans, which is a quiet admission that unconstrained loops are both unpredictable and expensive.
+
+n8n’s case is different. It emphasizes workflow executions rather than charging per step, and it offers self-hosting and stronger infrastructure control. That usually means more setup burden, but also better cost predictability and fewer surprises for teams that already have technical operators.
+
+This category works for lead triage, support ticket routing, CRM note drafting, exception handling, and document intake. It works less well for “handle all back-office tasks” fantasies.
+
+The reason is simple. A deterministic workflow with one agentic decision point is debuggable. A fully agentic workflow with open-ended tool choice is not.
+
+### Customer service and CRM agents can work in bounded environments
+
+The big enterprise players are not wrong that support and CRM are real agent markets. They are wrong when they imply the hard part is already solved.
+
+[Salesforce Agentforce](https://www. salesforce. com/agentforce/pricing/?
+
+bc=OTH) has a pricing model that at least makes the meter visible: action-based Flex Credits or per-conversation pricing.  [Microsoft Copilot Studio](https://learn. microsoft.
+
+com/en-us/microsoft-copilot-studio/requirements-messages-management) also makes clear that answers, actions, grounding, and reasoning consume different amounts of Copilot Credits.
+
+That matters because the hidden cost in customer-facing agents is not just token spend. It is orchestration spend. A cheap single answer can become an expensive chain when the agent retrieves context, grounds on enterprise data, executes a flow, and hands off across tools.
+
+Still, this category can be worth deploying. The strongest use cases are account lookup, order status, authenticated FAQ, internal help desk flows, and narrow service actions with a well-defined approval path.
+
+The failure mode is almost always permissions.  Microsoft’s governance docs explicitly warn about [maker-provided credentials](https://learn. microsoft.
+
+com/en-us/microsoft-copilot-studio/configure-no-maker-authentication), where an agent can end up acting with the builder’s access rather than the user’s.  Microsoft also warns that connector permissions can accidentally expose content too broadly if ACLs are configured carelessly.
+
+Salesforce is equally blunt in its [shared responsibility guidance](https://help. salesforce. com/s/articleView?
+
+id=005315874&language=en_US&type=1).  The platform can provide trust controls and monitoring, but customers still own least privilege, field permissions, and the agent’s action boundaries.
+
+That is the real pattern of 2026. Enterprise agents work where authorization is explicit. They break where authorization is assumed.
+
+## A Quick Decision Table
+
+| Use case | What works now | Hidden constraint | Best fit | Avoid if |
+| --- | --- | --- | --- | --- |
+| Coding agents | Multi-file edits, tests, refactors, bug fixing | Spend rises with context, retries, and background runs | Teams with CI, review gates, and decent tests | Your repo is brittle and unverifiable |
+| Workflow agents | Triage, routing, drafting, exception handling | Tool calls and loops can wreck unit economics | Ops teams with a few approved actions | You want full autonomy across many apps |
+| Support and CRM agents | Authenticated self-service, internal help desk, simple case actions | Permissions and connector governance dominate risk | Enterprises with clear ACLs and audit needs | Your data model and role model are messy |
+| Browser or computer-use agents | Last-mile UI automation for awkward legacy systems | Slow, brittle, and hard to secure at scale | Low-volume back-office tasks with supervision | You need high-volume or regulated execution |
+| Multi-agent systems | Specialist subflows with distinct tools or authority | More latency, more tokens, more failure points | Complex workflows with real separation of roles | You just want “smarter” behavior |
+
+## What’s Still Not Working
+
+### Browser-first agents remain fragile
+
+The headline demos are real. The operational reliability is still not.
+
+OpenAI’s computer-use stack and Anthropic’s computer-use capability show why the category is exciting. They also show why it is not ready to be the default way your business software talks to other business software.
+
+Anthropic’s own [computer use launch](https://www. anthropic. com/news/3-5-models-and-computer-use?
+
+s=08) and research notes describe the capability as experimental and error-prone.  That honesty is useful.  Browser agents fail because interfaces change, screenshots are partial, timing is messy, and small UI shifts cascade into wrong actions.
+
+This is not a reason to ignore them.  It is a reason to place them correctly.  They are good for filling gaps where no API exists, especially in low-volume internal tasks.
+
+They are bad as the core integration path for finance ops, high-volume service flows, or compliance-heavy work.
+
+### Multi-agent orchestration is oversold
+
+Much of the market still treats multi-agent systems as a sign of maturity. Most of the time, it is just a sign that nobody wanted to simplify the workflow.
+
+OpenAI’s own [practical guide to building agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/) argues for starting simple and only adding complexity when needed. That is the right instinct.
+
+A planner, researcher, critic, tool-runner, and reviewer can be useful if they have distinct tools, distinct authority, or distinct evaluation criteria. If they are all just variations of “another LLM call,” you have built a cost amplifier.
+
+### The “digital employee” pitch is still mostly marketing
+
+This is the part serious readers should distrust hardest.
+
+The claim sounds clean: give the agent access to email, docs, CRM, chat, browser, and internal knowledge, then let it operate like a coworker. The actual system inherits every problem in enterprise software at once: identity, data sprawl, rate limits, partial context, brittle tooling, and nonstop exception handling.
+
+This is also where content and creative workflows get slippery.  An “agent” that drafts landing page copy, generates campaign art, and republishes it across channels is not just a productivity tool.  It is a rights, provenance, and editorial risk surface.
+
+That issue is adjacent to one Decryptica has already covered in [The Copyright Problem AI Art Still Can't Solve](/blog/the-copyright-problem-ai-art-still-can-t-solve).
+
+## Where the Marketing Overreaches
+
+“Works with your tools” often means the connector exists, not that auth, schemas, retries, and permissions are production-ready.
+
+“Autonomous” often means “runs until it hits a quota, approval gate, or failure mode.”
+
+“Reasoning” often means more latency and more spend, not necessarily better business outcomes.
+
+“Enterprise-ready” often means the vendor has an admin console. It does not mean your legal, security, and platform teams will approve the deployment.
+
+“Uses your data securely” needs inspection.  OpenAI’s [Business pricing page](https://openai. com/business/pricing/?
+
+LanguageId=1) says business data is not used for training by default, and Anthropic says commercial inputs and outputs are not used for training by default while its [computer-use privacy note](https://privacy. anthropic. com/en/articles/10030352-what-personal-data-will-be-processed-by-computer-use) explains screenshot processing and retention.
+
+Those are better signals than vague trust-language, but they still do not answer where your data goes inside your own stack.
+
+## Security Review: The Questions That Decide Adoption
+
+If you are evaluating AI tools seriously, this is the checklist that matters more than the demo.
+
+- Which identity does the agent use when it takes action?
+- Does it respect source-system permissions, or can it over-share through builder credentials or broad connector settings?
+- Where are secrets stored, and can you rotate them without breaking the workflow?
+- What gets logged: prompts, screenshots, tool calls, outputs, approvals, and failures?
+- What is retained, for how long, and who can access it?
+- Can you force human approval before side effects like sending, purchasing, editing, or deleting?
+- What is the fallback path when the agent stalls, loops, or exceeds quota?
+- Can you estimate unit economics before rollout, not after the invoice lands?
+
+n8n gets attention here because its [enterprise positioning](https://n8n. io/enterprise/) leans on self-hosting, secret-store integration, and auditability.  Microsoft gets attention because its docs are unusually explicit about connector governance and oversharing risk.
+
+Salesforce gets attention because it frames agent security as shared responsibility rather than pretending the model solved it.
+
+That is the right direction. Security review should start with the action surface, not the model brand.
+
+## FAQ
+
+### Are AI agents ready for small businesses, or only enterprises?
+
+They are ready for small businesses if the workflow is narrow and the owner can tolerate supervision. Lead triage, inbox classification, proposal drafting, and simple support flows are viable. What small teams should avoid is buying a platform that assumes they also have a security architect, prompt engineer, and platform ops team.
+
+### Should you buy an agent platform or build with APIs?
+
+Buy a platform if your need is common, the connectors already exist, and governance is acceptable. Build with APIs if the workflow is proprietary, the economics matter at high volume, or you need tighter control over prompts, tools, evaluation, and audit logs.
+
+### Do benchmarks still matter?
+
+Yes, but only as one input. Benchmarks help identify ceilings and trends, especially for coding and tool use. They do not tell you how the agent will behave with your permissions, your documents, your latency budget, and your exception cases.
+
+## The Bottom Line
+
+The evidence in 2026 points to a narrower conclusion than the market wants.
+
+AI agents are working where the environment is structured, the verification loop is fast, and the permissions are tight. That means coding, scoped workflow automation, and bounded service actions. They are not reliably working as general digital employees roaming across your software stack with broad autonomy.
+
+A serious reader should not ask which agent looks smartest in a demo. Ask which one can survive procurement, security review, quota limits, unit-economics scrutiny, and a bad Tuesday in production. That question cuts through most of the category very quickly.
+
+*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`.trim(),
+    category: 'ai',
+    readTime: '12 min',
+    date: '2026-07-24',
+    author: 'Decryptica',
+    status: 'published',
+    primaryKeyword: "ai tools",
+    wordCount: 2278,
+  },
+  {
     id: '1784806392658-4263',
     slug: 'the-copyright-problem-ai-art-still-can-t-solve',
     title: "The Copyright Problem AI Art Still Can't Solve",
