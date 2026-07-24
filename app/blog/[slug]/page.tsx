@@ -766,7 +766,7 @@ function renderPlainTextWithLinks(text: string, keyPrefix: number): React.ReactN
     const start = match.index;
 
     if (start > lastIndex) {
-      nodes.push(text.slice(lastIndex, start));
+      nodes.push(<span key={`text-${keyPrefix}-${lastIndex}`}>{text.slice(lastIndex, start)}</span>);
     }
 
     const normalizedInternalHref = getInternalHref(href);
@@ -802,7 +802,7 @@ function renderPlainTextWithLinks(text: string, keyPrefix: number): React.ReactN
     }
 
     if (trailingPunctuation) {
-      nodes.push(trailingPunctuation);
+      nodes.push(<span key={`punct-${keyPrefix}-${start}`}>{trailingPunctuation}</span>);
     }
 
     lastIndex = match.index + rawUrl.length;
@@ -810,10 +810,10 @@ function renderPlainTextWithLinks(text: string, keyPrefix: number): React.ReactN
 
   if (!nodes.length) return text;
   if (lastIndex < text.length) {
-    nodes.push(text.slice(lastIndex));
+    nodes.push(<span key={`text-${keyPrefix}-${lastIndex}`}>{text.slice(lastIndex)}</span>);
   }
 
-  return <>{nodes}</>;
+  return <span key={`plain-${keyPrefix}`}>{nodes}</span>;
 }
 
 function normalizeHref(href: string): string {
