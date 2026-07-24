@@ -685,7 +685,8 @@ function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[
 }
 
 function renderInline(text: string): React.ReactNode {
-  // Split on bold, code blocks, and markdown links
+  // Split on bold, inline code, and markdown links first. Bare URLs are linked in
+  // the plain text fragments so older generated articles still render correctly.
   const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g);
 
   return parts.map((part, i) => {
@@ -714,7 +715,8 @@ function renderInline(text: string): React.ReactNode {
     const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     if (linkMatch) {
       const [, label, href] = linkMatch;
-      const normalizedInternalHref = getInternalHref(href);
+      const cleanHref = normalizeHref(href);
+      const normalizedInternalHref = getInternalHref(cleanHref);
 
       if (normalizedInternalHref) {
         return (
@@ -736,7 +738,7 @@ function renderInline(text: string): React.ReactNode {
       return (
         <a
           key={i}
-          href={href}
+          href={cleanHref}
           target="_blank"
           rel="noopener noreferrer"
           className="text-red-900 underline underline-offset-2 transition-colors hover:text-stone-950 hover:no-underline"
@@ -746,8 +748,81 @@ function renderInline(text: string): React.ReactNode {
       );
     }
 
-    return part;
+    return renderPlainTextWithLinks(part, i);
   });
+}
+
+function renderPlainTextWithLinks(text: string, keyPrefix: number): React.ReactNode {
+  const urlPattern = /(https?:\/\/[^\s<>()\]]+|www\.[^\s<>()\]]+)/gi;
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = urlPattern.exec(text)) !== null) {
+    const rawUrl = match[0];
+    const trailingPunctuation = rawUrl.match(/[.,;:!?]+$/)?.[0] || '';
+    const cleanUrl = trailingPunctuation ? rawUrl.slice(0, -trailingPunctuation.length) : rawUrl;
+    const href = normalizeHref(cleanUrl.startsWith('www.') ? `https://${cleanUrl}` : cleanUrl);
+    const start = match.index;
+
+    if (start > lastIndex) {
+      nodes.push(text.slice(lastIndex, start));
+    }
+
+    const normalizedInternalHref = getInternalHref(href);
+    const className = "text-red-900 underline underline-offset-2 transition-colors hover:text-stone-950 hover:no-underline";
+
+    if (normalizedInternalHref) {
+      nodes.push(
+        <TrackedLink
+          key={`url-${keyPrefix}-${start}`}
+          href={normalizedInternalHref}
+          eventType="article_click"
+          metadata={{
+            location: 'article_body_bare_url',
+            cta: 'bare_url',
+          }}
+          className={className}
+        >
+          {cleanUrl}
+        </TrackedLink>
+      );
+    } else {
+      nodes.push(
+        <a
+          key={`url-${keyPrefix}-${start}`}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={className}
+        >
+          {cleanUrl}
+        </a>
+      );
+    }
+
+    if (trailingPunctuation) {
+      nodes.push(trailingPunctuation);
+    }
+
+    lastIndex = match.index + rawUrl.length;
+  }
+
+  if (!nodes.length) return text;
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex));
+  }
+
+  return <>{nodes}</>;
+}
+
+function normalizeHref(href: string): string {
+  const trimmed = href.trim();
+  if (/^(https?:\/\/|www\.)/i.test(trimmed)) {
+    return trimmed.replace(/\s+/g, '');
+  }
+
+  return trimmed;
 }
 
 function getInternalHref(href: string): string | null {
@@ -1009,9 +1084,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <AnalyticsTracker articleSlug={slug} category={article.category} />
       <RouteDepthTracker depth={3} pillar={article.category} subpillar={subpillarSlug} />
 
-      <div className="mx-auto max-w-6xl px-6 py-12">
+      <div className="mx-auto max-w-6xl overflow-x-hidden px-4 py-10 sm:px-6 sm:py-12">
         {/* Breadcrumb */}
-        <nav className="mb-8 flex items-center gap-2 text-sm text-stone-500" aria-label="Breadcrumb">
+        <nav className="mb-8 flex min-w-0 flex-wrap items-center gap-2 text-sm text-stone-500" aria-label="Breadcrumb">
           <Link href="/" className="transition-colors hover:text-red-900">
             Home
           </Link>
@@ -1034,9 +1109,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </span>
         </nav>
 
-        <div className="grid lg:grid-cols-4 gap-8">
+        <div className="grid min-w-0 gap-8 lg:grid-cols-4">
           {/* Main Content */}
-          <article className="lg:col-span-3">
+          <article className="min-w-0 lg:col-span-3">
             {/* Header */}
             <header id="overview" className="mb-8 scroll-mt-28">
               <div className="flex items-center gap-3 mb-4">
@@ -1144,7 +1219,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Article Content */}
             <section id="tools-comparisons" className="scroll-mt-28">
               <div id="article-content" className="prose prose-stone max-w-none article-reading-body">
-                <div className="max-w-[75ch]">
+                <div className="max-w-[75ch] min-w-0">
                   {renderContent(article.content, {
                     relatedMid: (
                       <HubRelatedModule

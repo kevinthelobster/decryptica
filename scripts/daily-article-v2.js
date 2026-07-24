@@ -378,8 +378,51 @@ function normalizeArticleFormatting(content) {
     .trim();
 }
 
+function normalizeBareUrlsToMarkdown(content) {
+  return String(content || '')
+    .split(/(```[\s\S]*?```)/g)
+    .map((segment) => {
+      if (segment.startsWith('```')) return segment;
+
+      return segment.replace(/https?:\/\/[^\s<>()\]]+|www\.[^\s<>()\]]+/gi, (rawUrl, offset, source) => {
+        const previousChar = source[offset - 1] || '';
+        if (previousChar === '(' || previousChar === '"' || previousChar === "'") {
+          return rawUrl;
+        }
+
+        const trailingPunctuation = rawUrl.match(/[.,;:!?]+$/)?.[0] || '';
+        const cleanUrl = trailingPunctuation ? rawUrl.slice(0, -trailingPunctuation.length) : rawUrl;
+        const href = cleanUrl.startsWith('www.') ? `https://${cleanUrl}` : cleanUrl;
+        let label = cleanUrl;
+
+        try {
+          const url = new URL(href);
+          label = url.hostname.replace(/^www\./, '');
+        } catch {}
+
+        return `[${label}](${href})${trailingPunctuation}`;
+      });
+    })
+    .join('');
+}
+
+function normalizeMarkdownLinkUrls(content) {
+  return String(content || '')
+    .split(/(```[\s\S]*?```)/g)
+    .map((segment) => {
+      if (segment.startsWith('```')) return segment;
+
+      return segment.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+|www\.[^)]+)\)/gi, (_match, label, href) => {
+        const cleanHref = String(href).trim().replace(/\s+/g, '');
+        const normalizedHref = cleanHref.startsWith('www.') ? `https://${cleanHref}` : cleanHref;
+        return `[${label}](${normalizedHref})`;
+      });
+    })
+    .join('');
+}
+
 function repairGeneratedContent(content) {
-  return normalizeArticleFormatting(replaceForbiddenPhrases(content));
+  return normalizeBareUrlsToMarkdown(normalizeMarkdownLinkUrls(normalizeArticleFormatting(replaceForbiddenPhrases(content))));
 }
 
 // === TITLE POOLS (expanded for diversity) ===
@@ -920,6 +963,7 @@ Hard requirements:
 - Include at least one markdown table that helps a reader make a decision
 - Include concrete examples, tool/protocol references, failure modes, and mechanism-level explanation where relevant
 - Include one natural internal link from the inventory below if it genuinely fits
+- Format every URL as a clickable markdown hyperlink. Do not leave bare URLs as plain text.
 - Include a FAQ section with 3 useful questions and answers
 - Include a section exactly titled "## The Bottom Line" after the FAQ
 - End with this disclaimer exactly: "*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*"
@@ -1034,6 +1078,16 @@ function validateGeneratedContent(content, options = {}) {
     errors.push('missing decision table');
   }
 
+  const bareUrls = findBareUrls(content);
+  if (bareUrls.length) {
+    errors.push(`bare URL(s) not formatted as markdown links: ${bareUrls.slice(0, 3).join(', ')}`);
+  }
+
+  const malformedUrls = findMalformedMarkdownUrls(content);
+  if (malformedUrls.length) {
+    errors.push(`markdown URL(s) contain whitespace: ${malformedUrls.slice(0, 3).join(', ')}`);
+  }
+
   const forbiddenHits = FORBIDDEN_PHRASES.filter((phrase) => lower.includes(phrase));
   if (forbiddenHits.length) {
     errors.push(`forbidden phrase(s): ${forbiddenHits.join(', ')}`);
@@ -1066,6 +1120,40 @@ function validateGeneratedContent(content, options = {}) {
     errors,
     wordCount
   };
+}
+
+function findBareUrls(content) {
+  const hits = [];
+  const segments = String(content || '').split(/(```[\s\S]*?```)/g);
+
+  for (const segment of segments) {
+    if (segment.startsWith('```')) continue;
+
+    const matches = segment.matchAll(/https?:\/\/[^\s<>()\]]+|www\.[^\s<>()\]]+/gi);
+    for (const match of matches) {
+      const previousChar = segment[(match.index || 0) - 1] || '';
+      if (previousChar === '(' || previousChar === '"' || previousChar === "'") continue;
+      hits.push(match[0].replace(/[.,;:!?]+$/, ''));
+    }
+  }
+
+  return hits;
+}
+
+function findMalformedMarkdownUrls(content) {
+  const hits = [];
+  const segments = String(content || '').split(/(```[\s\S]*?```)/g);
+
+  for (const segment of segments) {
+    if (segment.startsWith('```')) continue;
+
+    const matches = segment.matchAll(/\[[^\]]+\]\((https?:\/\/[^)]+|www\.[^)]+)\)/gi);
+    for (const match of matches) {
+      if (/\s/.test(match[1])) hits.push(match[1].trim());
+    }
+  }
+
+  return hits;
 }
 
 /**

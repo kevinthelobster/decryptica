@@ -10,12 +10,35 @@
 
   html {
     scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   body {
     font-family: var(--font-sans);
     background: #ffffff;
     color: #1c1917;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  img,
+  video,
+  iframe,
+  svg {
+    max-width: 100%;
+  }
+
+  pre,
+  code,
+  table {
+    max-width: 100%;
   }
 
   ::selection {
@@ -161,6 +184,7 @@
     line-height: 1.8;
     font-size: 1.05rem;
     color: #292524;
+    overflow-wrap: anywhere;
   }
 
   .article-reading-body h2 {
@@ -175,6 +199,15 @@
 
   .article-reading-body p {
     margin-bottom: 1.1rem;
+  }
+
+  .article-reading-body a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .article-reading-body code {
+    white-space: break-spaces;
   }
 
   .article-reading-body h2,
