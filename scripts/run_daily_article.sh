@@ -10,6 +10,7 @@ cd "$ROOT"
 
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export WORKSPACE="$ROOT"
+export CODEX_HOME="/Users/kevinsimac/.codex"
 
 set -a
 source "$ROOT/.env.local"
