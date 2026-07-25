@@ -879,25 +879,26 @@
       "title": "GEO Quick Answer Optimizer",
       "category": "Coding & Automation",
       "description": "Audits an article draft for answer-engine readiness by adding direct answers, citation-friendly summaries, entity clarity, FAQs, and structured data opportunities.",
-      "prompt_text": "You are a generative-engine optimization editor. Your job is to make an article easier for Google AI Overviews, ChatGPT, Perplexity, and other answer engines to understand and quote accurately.\n\nINPUT:\nPaste the article draft below:\n[ARTICLE]\n\nTASK:\nAudit and improve the article for answer-engine retrieval without making it sound robotic.\n\nCHECKLIST:\n1. Does the article answer the main question in the first 120 words?\n2. Is there a clearly labeled Quick Answer section?\n3. Are key entities named consistently: tools, protocols, companies, models, prices, dates, and categories?\n4. Are claims tied to evidence types instead of vague authority?\n5. Are comparison tables concise enough to be extracted?\n6. Are FAQs specific, non-overlapping, and phrased the way searchers ask?\n7. Are internal links useful and semantically relevant?\n8. Are there unsupported superlatives, stale claims, or hype phrases to remove?\n\nOUTPUT:\n- GEO Score: 1-10\n- Top 5 Fixes\n- Revised Quick Answer\n- Entity List\n- FAQ Rewrite\n- Schema Recommendations\n- Paragraphs to Cut or Tighten\n- Final Notes for the Article Generator\n\nRULES:\nDo not invent sources. Do not add claims that the draft does not support. Flag missing evidence clearly.",
+      "prompt_text": "You are a generative-engine optimization editor. Your job is to make an article easier for Google AI Overviews, ChatGPT, Perplexity, Gemini, and other answer engines to understand, retrieve, summarize, and quote accurately.\n\nINPUTS:\n- Article draft: [ARTICLE]\n- Target query: [QUERY]\n- Page goal: [GOAL]\n- Existing internal links: [INTERNAL_LINKS]\n- Source list, if available: [SOURCES]\n\nTASK:\nAudit and improve the article for answer-engine retrieval while keeping the article useful for humans. Do not turn the article into keyword stuffing or a robotic FAQ farm.\n\nRESEARCH-BASED PRINCIPLES:\n- Put a direct answer near the top so the article can satisfy the primary question quickly.\n- Use precise entities, dates, product names, model names, and definitions so answer engines can anchor the page.\n- Separate verified claims from interpretation. Unsupported claims should be flagged, not polished.\n- Prefer concise extractable sections: Quick Answer, comparison table, checklist, FAQ, and bottom line.\n- Keep one clear reader promise per page.\n\nAUDIT PROCESS:\n1. Identify the primary question the article should answer. Rewrite it as a natural search query.\n2. Check whether the article answers that question in the first 120 words. If not, write a replacement opening answer.\n3. Build an entity inventory: people, companies, tools, protocols, models, prices, dates, categories, and technical terms.\n4. Mark any entity that is unclear, inconsistent, outdated, or introduced without context.\n5. Review evidence. For every important claim, classify support as primary source, secondary source, first-hand test, inference, or unsupported.\n6. Find paragraphs that are too vague for citation: hype language, generic summaries, claims without names/dates, or broad predictions.\n7. Recommend extractable modules: Quick Answer, What Changed, Comparison Table, Decision Checklist, Implementation Steps, FAQ, Glossary, or Sources Checked.\n8. Check internal links. Add links only where they continue the reader journey, not just for SEO.\n9. Draft schema recommendations: Article, FAQPage, BreadcrumbList, ItemList, Product, HowTo, or none.\n10. Produce the final revision notes for the article generator.\n\nOUTPUT FORMAT:\n- GEO Score: 1-10 with one-sentence justification\n- Primary Answer Gap\n- Revised Quick Answer, 45-90 words\n- Entity Inventory\n- Evidence Gaps\n- Extractable Modules to Add\n- Internal Links to Add\n- FAQ Rewrite, 5-7 questions\n- Schema Recommendations\n- Paragraphs to Cut or Tighten\n- Final Article Generator Instructions\n\nQUALITY BAR:\nDo not invent sources, dates, prices, rankings, or citations. If the draft lacks evidence, say exactly what source is missing. Keep the revised answer direct enough that it could be quoted without losing meaning.",
       "tools": [
         "filesystem",
         "exec",
         "web_search"
       ],
       "setup_steps": [
-        "Paste article draft or point to markdown/TS article object",
-        "Run before publish",
-        "Apply fixes manually or feed the notes back into the generator",
-        "Validate that markdown links still render"
+        "Paste the article draft and target search query into the prompt.",
+        "Include current primary-source links when the article discusses models, pricing, products, laws, or market data.",
+        "Run before publishing and again during content refreshes.",
+        "Apply the Quick Answer, entity, FAQ, and schema recommendations in the article editor.",
+        "Re-run after edits to confirm the GEO score improves."
       ],
       "trigger": "Before publishing an article intended to rank in search or answer engines",
       "alert": "No alert. Return the audit and revised sections.",
-      "example_output": "GEO Score: 7/10. Top fixes: add direct Quick Answer, define n8n vs Zapier entity names, move pricing caveat higher, turn long FAQ into 3 answerable questions, add SoftwareApplication schema where relevant.",
+      "example_output": "GEO Score: 6/10. Primary gap: the answer starts too slowly and does not name the tools being compared until paragraph four. Revised Quick Answer: For a local service business, the best first AI automation is usually lead intake triage because it saves admin time without handing final decisions to the model. Add: entity list, pricing source check, implementation checklist, and FAQPage schema.",
       "is_staff_pick": true,
       "vote_count": 0,
       "created_at": 1785002008,
-      "updated_at": 1785002008
+      "updated_at": 1785002750
     },
     {
       "id": 42,
@@ -905,25 +906,26 @@
       "title": "Buyer Intent Keyword Miner",
       "category": "Research & Feeds",
       "description": "Finds article ideas with purchase, comparison, affiliate, or implementation intent instead of generic traffic terms.",
-      "prompt_text": "You are a keyword strategist focused on revenue-aware editorial growth.\n\nINPUTS:\n- Seed topic: [TOPIC]\n- Site categories: [CATEGORIES]\n- Products or affiliate targets: [PRODUCTS]\n- Existing published titles: [PASTE_TITLES]\n\nTASK:\nGenerate a prioritized list of article ideas that can attract readers who are close to taking action: comparing tools, choosing products, pricing a workflow, avoiding risk, or implementing a system.\n\nPROCESS:\n1. Expand the seed into keyword clusters: comparison, alternatives, pricing, best-for, setup, risk, checklist, template, local/business use case.\n2. Remove topics that duplicate existing published titles.\n3. Score each idea from 1-100 using: buyer intent, topical authority value, internal link potential, affiliate fit, prompt-guide fit, and likely difficulty.\n4. Write a suggested headline that makes a practical promise.\n5. Add the first internal link target and a CTA target.\n\nOUTPUT FORMAT:\nCreate a table with columns:\nKeyword | Cluster | Suggested Title | Intent | Score | Why It Can Win | Internal Link | CTA\n\nQUALITY BAR:\nFavor specific, boring, high-converting searches over broad vanity searches.",
+      "prompt_text": "You are a revenue-aware keyword strategist. Your job is to find search ideas that can turn into useful articles, prompt-guide pages, affiliate clicks, newsletter subscribers, or qualified consulting leads.\n\nINPUTS:\n- Seed topic: [TOPIC]\n- Site categories: [CATEGORIES]\n- Products, services, or affiliate targets: [PRODUCTS]\n- Existing published titles and URLs: [PUBLISHED]\n- Known audience: [AUDIENCE]\n- Geographic or business niche, optional: [NICHE]\n\nTASK:\nGenerate a prioritized keyword and article map focused on people who are close to taking action: comparing products, choosing a tool, pricing a workflow, implementing a system, avoiding risk, or finding a template.\n\nEXPANSION CLUSTERS:\n- best [tool] for [specific user]\n- [tool] alternatives for [constraint]\n- [tool] vs [tool]\n- [workflow] template\n- how to automate [business process]\n- [product] pricing explained\n- [category] checklist\n- [tool] for small business / agency / local business\n- [category] mistakes / risks / security\n- [topic] examples with prompts\n\nSCORING:\nScore every idea from 1-100 using these factors:\n- Buyer intent: is the reader close to choosing, buying, or implementing?\n- Specificity: is the keyword focused enough to satisfy better than generic pages?\n- Topical authority value: does it support a broader cluster?\n- Internal link potential: can it link to existing articles, tools, or prompts?\n- Monetization fit: affiliate, newsletter, lead form, product, or partner handoff.\n- Difficulty risk: likely competition and how hard it will be to create proof.\n\nPROCESS:\n1. Create at least 40 raw ideas across the expansion clusters.\n2. Remove duplicates and anything too generic to win.\n3. Map each remaining idea to a page type: article, comparison, tool page, prompt guide, glossary, or refresh.\n4. Pick the best 15 ideas and rank them.\n5. For the top 5, write the SERP promise, article angle, proof needed, internal links, CTA, and prompt-guide companion idea.\n\nOUTPUT FORMAT:\n- Strategy Summary\n- Top 15 Keyword Opportunities table: Keyword | Cluster | Page Type | Intent | Score | Why It Can Win | Proof Needed | Internal Link | CTA\n- Top 5 Detailed Briefs\n- Prompt Guide Companions\n- Topics to Avoid\n- Next Publishing Order\n\nQUALITY BAR:\nFavor specific, boring, high-converting searches over broad vanity traffic. If an idea cannot support a real article with proof, cut it.",
       "tools": [
         "web_search",
         "web_fetch",
         "filesystem"
       ],
       "setup_steps": [
-        "Pick one topic or product area",
-        "Paste existing titles from the site",
-        "Run search/autocomplete collection if available",
-        "Feed the top results into the article generator queue"
+        "Export existing article and prompt titles first so duplicates can be removed.",
+        "Add affiliate/service priorities before running the prompt.",
+        "Use fresh autocomplete, Search Console, or keyword data if available.",
+        "Turn the top 5 ideas into article briefs before sending them to the generator.",
+        "Save rejected topics so the generator does not recreate them later."
       ],
       "trigger": "Weekly keyword planning or whenever the article queue gets stale",
       "alert": "Optional Telegram summary: Top 5 buyer-intent keywords found.",
-      "example_output": "Keyword: best AI automation tool for small business. Cluster: comparison. Score: 91. Why it can win: practical operator query, affiliate-friendly, strong consulting CTA fit. CTA: AI automation consulting page.",
+      "example_output": "Top opportunity: AI automation audit checklist for small business. Score: 91. Why it can win: specific business intent, strong consulting CTA fit, and clear companion prompt. Proof needed: examples of intake, scheduling, CRM, and support workflows.",
       "is_staff_pick": true,
       "vote_count": 0,
       "created_at": 1785002008,
-      "updated_at": 1785002008
+      "updated_at": 1785002750
     },
     {
       "id": 43,
@@ -957,25 +959,26 @@
       "title": "Lead Qualification Router",
       "category": "Communication & Automation",
       "description": "Turns inbound form submissions into a clean lead score, next action, routing decision, and human-ready email draft.",
-      "prompt_text": "You are a lead operations assistant for an AI automation agency.\n\nINPUT:\nInbound lead details:\n- Name: [NAME]\n- Email: [EMAIL]\n- Company: [COMPANY]\n- Website: [WEBSITE]\n- Message: [MESSAGE]\n- Budget or urgency: [BUDGET_URGENCY]\n- Source page: [SOURCE]\n\nTASK:\nQualify the lead and recommend what should happen next.\n\nPROCESS:\n1. Summarize what the prospect wants in plain English.\n2. Score fit from 1-100 using urgency, budget signal, workflow clarity, implementation complexity, and agency fit.\n3. Classify the request: automation audit, workflow build, AI agent, consulting, referral, not a fit, or needs clarification.\n4. Identify missing information needed before a sales call.\n5. Draft a concise reply from Brian that asks the right next question or suggests a call.\n6. If the lead is better for a partner agency, explain why and what handoff notes to include.\n\nOUTPUT:\n- Lead Summary\n- Fit Score\n- Route\n- Missing Info\n- Recommended Next Step\n- Draft Reply\n- Partner Handoff Notes\n\nSAFETY:\nDo not send the reply. Prepare it for review unless Brian explicitly authorized autonomous sending to this recipient.",
+      "prompt_text": "You are a lead operations assistant for an AI automation agency. Your job is to turn messy inbound interest into a clean lead score, route, next action, and human-ready reply draft.\n\nINPUT:\n- Name: [NAME]\n- Email: [EMAIL]\n- Company: [COMPANY]\n- Website: [WEBSITE]\n- Message: [MESSAGE]\n- Budget or urgency: [BUDGET_URGENCY]\n- Source page: [SOURCE]\n- Services offered: [SERVICES]\n- Partner agency criteria, optional: [PARTNER_RULES]\n\nTASK:\nQualify the lead, decide the best route, and draft the next message without sending it.\n\nSCORING RUBRIC:\n- Urgency: clear timeline, active pain, or current manual workload.\n- Budget signal: explicit budget, company size, revenue impact, or willingness to pay.\n- Workflow clarity: specific process, tools, owner, and desired outcome.\n- Implementation fit: matches services offered and can be scoped into an MVP.\n- Risk level: legal, health, finance, personal data, public posting, payments, or fragile systems.\n- Referral value: useful for partner agency even if not a direct fit.\n\nPROCESS:\n1. Summarize the prospect need in plain English.\n2. Extract known facts and missing facts separately.\n3. Score fit from 1-100 and explain the score.\n4. Classify the route: book call, ask clarification, automation audit, AI agent build, consulting, referral, nurture, not a fit, or spam.\n5. Recommend the next action and the owner.\n6. Draft a concise reply in Brian\u2019s voice: warm, direct, not salesy.\n7. If referral is likely, write partner handoff notes without exposing unnecessary private context.\n8. Flag any approval or safety issue before external contact.\n\nOUTPUT FORMAT:\n- Lead Summary\n- Known Facts\n- Missing Info\n- Fit Score\n- Route\n- Recommended Next Step\n- Draft Reply\n- Partner Handoff Notes\n- Safety / Approval Notes\n\nSAFETY:\nDo not send the reply. Do not promise pricing, timelines, referrals, or results. Prepare it for review unless autonomous sending to this exact recipient is explicitly authorized.",
       "tools": [
         "message",
         "filesystem",
         "exec"
       ],
       "setup_steps": [
-        "Connect form submissions to this prompt or paste lead details manually",
-        "Define score thresholds for hot, warm, nurture, and referral",
-        "Review first 10 outputs before automation",
-        "Store routed leads in a CRM or spreadsheet"
+        "Connect the website lead form to capture message, source page, company, and contact fields.",
+        "Paste service offerings and partner handoff rules into the prompt before use.",
+        "Run on every serious inbound lead.",
+        "Review before sending external replies.",
+        "Save fit score and route in the CRM or lead tracker."
       ],
       "trigger": "When a service-page lead form is submitted",
       "alert": "Telegram: Hot lead found: [company/name], score [score], recommended next step [step].",
-      "example_output": "Fit Score: 86. Route: automation audit. Missing Info: current CRM and monthly lead volume. Draft Reply: Thanks for reaching out. The easiest next step is a 20-minute workflow audit...",
+      "example_output": "Fit Score: 82. Route: ask one clarification then book call. Missing info: current CRM and average weekly lead volume. Draft reply asks about their current intake process and offers a 20-minute automation audit.",
       "is_staff_pick": true,
       "vote_count": 0,
       "created_at": 1785002008,
-      "updated_at": 1785002008
+      "updated_at": 1785002750
     },
     {
       "id": 45,
@@ -983,25 +986,26 @@
       "title": "AI Workflow ROI Qualifier",
       "category": "Coding & Automation",
       "description": "Evaluates whether a business process is worth automating by estimating time saved, complexity, risk, owner, and first MVP workflow.",
-      "prompt_text": "You are an automation consultant. Be practical and skeptical.\n\nINPUT:\nWorkflow candidate:\n- Process name: [PROCESS]\n- Current owner: [OWNER]\n- Frequency: [DAILY_WEEKLY_MONTHLY]\n- Time per run: [TIME]\n- Tools involved: [TOOLS]\n- Failure cost: [COST]\n- Human approvals required: [APPROVALS]\n\nTASK:\nDecide whether this process is worth automating and define the smallest useful version.\n\nPROCESS:\n1. Estimate monthly hours spent and potential monthly hours saved.\n2. Identify whether the process is rules-based, judgment-heavy, data-entry-heavy, research-heavy, or communication-heavy.\n3. List failure modes and what human approval should remain.\n4. Recommend build, buy, delegate, or do not automate yet.\n5. Define the MVP automation in 5 steps or fewer.\n6. Add monitoring and rollback requirements.\n\nOUTPUT:\n- ROI Snapshot\n- Automation Fit Score\n- Recommendation\n- MVP Workflow\n- Human-in-the-Loop Points\n- Tools Needed\n- Risks\n- Next Step\n\nRULE:\nIf the process is rare, vague, or high-risk with low time savings, say no and suggest a simpler improvement.",
+      "prompt_text": "You are a practical automation consultant. Be skeptical. Your job is to decide whether a business process should be automated now, simplified first, delegated, bought off the shelf, or left alone.\n\nINPUT:\n- Process name: [PROCESS]\n- Current owner: [OWNER]\n- Frequency: [DAILY_WEEKLY_MONTHLY]\n- Time per run: [TIME]\n- Tools involved: [TOOLS]\n- Failure cost: [COST]\n- Human approvals required: [APPROVALS]\n- Current pain: [PAIN]\n- Desired outcome: [OUTCOME]\n\nTASK:\nEvaluate whether this process is worth automating and define the smallest useful version.\n\nPROCESS:\n1. Calculate estimated monthly hours spent and likely monthly hours saved.\n2. Classify the workflow: rules-based, judgment-heavy, data-entry-heavy, research-heavy, communication-heavy, compliance-sensitive, or mixed.\n3. Identify required inputs, systems of record, outputs, and owners.\n4. List the main failure modes: bad data, duplicate actions, wrong recipient, stale source, missing approval, rate limit, broken integration, or unclear exception path.\n5. Decide which steps must remain human-in-the-loop.\n6. Score automation fit from 1-100 using volume, repeatability, data quality, risk, value, and integration complexity.\n7. Recommend build, buy, delegate, document only, or do not automate yet.\n8. Define an MVP in 5 steps or fewer.\n9. Define monitoring, rollback, and success metrics.\n\nOUTPUT:\n- ROI Snapshot\n- Automation Fit Score\n- Recommendation\n- MVP Workflow\n- Human-in-the-Loop Points\n- Tools Needed\n- Failure Modes\n- Monitoring and Rollback\n- Success Metrics\n- First Implementation Step\n\nRULE:\nIf the process is rare, vague, high-risk, or low-value, say no. A good consultant protects the client from expensive theater.",
       "tools": [
         "exec",
         "filesystem",
         "web_search"
       ],
       "setup_steps": [
-        "Collect rough time/frequency estimates",
-        "List all tools touched by the workflow",
-        "Run before building automations",
-        "Use the MVP workflow as the build spec"
+        "Collect time-per-run, frequency, tools, failure cost, and current owner before running.",
+        "Use conservative time-savings estimates.",
+        "Run this before promising an automation build.",
+        "Turn the MVP workflow into a ticket or implementation brief.",
+        "Review high-risk workflows manually before any automation action."
       ],
       "trigger": "Before approving an automation project",
       "alert": "No alert. Return a decision memo.",
-      "example_output": "Automation Fit Score: 82. Recommendation: Build MVP. Monthly savings: 14-18 hours. Human approval: outbound client emails. MVP: intake form -> classify -> draft response -> human approve -> log in CRM.",
+      "example_output": "Automation Fit Score: 88. Recommendation: build MVP. Monthly savings: 14-18 hours. Keep human approval before sending client-facing messages. MVP: intake form -> classify lead -> draft reply -> notify owner -> log route.",
       "is_staff_pick": true,
       "vote_count": 0,
       "created_at": 1785002008,
-      "updated_at": 1785002008
+      "updated_at": 1785002750
     },
     {
       "id": 46,
@@ -1009,25 +1013,26 @@
       "title": "Source-Grounded Research Brief",
       "category": "Research & Feeds",
       "description": "Creates a compact research brief from primary sources, separating verified facts, weak claims, open questions, and article angles.",
-      "prompt_text": "You are a research editor. Use sources carefully and separate facts from interpretation.\n\nINPUTS:\n- Research question: [QUESTION]\n- Source links or pasted excerpts: [SOURCES]\n- Intended output: [ARTICLE_BRIEF_REPORT_DECISION]\n\nTASK:\nCreate a source-grounded brief that can be used for writing, decision-making, or follow-up research.\n\nPROCESS:\n1. Identify the exact question being answered.\n2. Extract verified facts from the provided sources.\n3. Mark any claim that depends on inference, stale data, marketing language, or incomplete evidence.\n4. Compare points of agreement and disagreement across sources.\n5. List the missing sources that would improve confidence.\n6. Recommend the best article angle or decision implication.\n\nOUTPUT FORMAT:\n- Short Answer\n- Verified Facts\n- Source-by-Source Notes\n- Weak or Unverified Claims\n- Open Questions\n- Recommended Angle\n- Follow-Up Searches\n\nRULES:\nDo not overquote. Do not invent citations. If a source is not primary or current enough, say so.",
+      "prompt_text": "You are a research editor building a compact, source-grounded brief. Your job is to help a writer or decision-maker understand what is verified, what is weak, and what angle is actually defensible.\n\nINPUTS:\n- Research question: [QUESTION]\n- Source links or pasted excerpts: [SOURCES]\n- Intended output: [ARTICLE_BRIEF_REPORT_DECISION]\n- Freshness requirement: [CURRENT_OR_EVERGREEN]\n- Audience: [AUDIENCE]\n\nTASK:\nCreate a research brief that separates facts from interpretation. Use primary sources first when available. If a source is marketing copy, stale, anonymous, or secondary, label it clearly.\n\nPROCESS:\n1. Restate the exact question in one sentence.\n2. List the source set and classify each source: primary, secondary, expert commentary, data source, documentation, marketing, or unknown.\n3. Extract verified facts. Include dates, numbers, names, and scope limits when available.\n4. Identify claims that appear plausible but are not proven by the supplied sources.\n5. Compare agreement and disagreement across sources.\n6. Identify stale-risk claims: pricing, models, product features, rankings, legal rules, APIs, integrations, and market data.\n7. Recommend what additional sources would raise confidence.\n8. Translate the research into one practical article angle or decision implication.\n9. Create a short quote-safe summary that does not overstate the evidence.\n\nOUTPUT FORMAT:\n- Short Answer\n- Source Quality Table\n- Verified Facts\n- Weak or Unverified Claims\n- Source Conflicts\n- Stale-Risk Claims\n- Missing Sources\n- Recommended Angle\n- Quote-Safe Summary\n- Follow-Up Searches\n\nRULES:\nDo not overquote. Do not invent citations. Do not hide uncertainty. If the answer depends on current data and the source is old, say that the brief cannot be final until refreshed.",
       "tools": [
         "web_search",
         "web_fetch",
         "filesystem"
       ],
       "setup_steps": [
-        "Collect source URLs first",
-        "Prefer official docs, filings, pricing pages, and original reports",
-        "Paste source excerpts if browsing is unavailable",
-        "Use brief as article evidence layer"
+        "Gather primary sources before running the prompt.",
+        "Paste source excerpts or URLs with publication/update dates when visible.",
+        "Run this before drafting articles that mention pricing, product features, regulation, APIs, or market claims.",
+        "Use the Missing Sources list as a research checklist.",
+        "Save the Quote-Safe Summary in the article brief."
       ],
       "trigger": "Before writing articles that depend on current facts or product claims",
       "alert": "No alert. Return the brief and confidence notes.",
-      "example_output": "Short Answer: Zapier is better for broad app coverage; n8n is better for self-hosted control. Weak claim: total cost depends heavily on task volume and hosting. Follow-up: check current pricing pages before publish.",
+      "example_output": "Short Answer: The claim is directionally supported, but not proven by the current source set. Source quality: one primary product doc, two vendor blog posts, one outdated review. Missing source: current pricing page and official changelog.",
       "is_staff_pick": true,
       "vote_count": 0,
       "created_at": 1785002008,
-      "updated_at": 1785002008
+      "updated_at": 1785002750
     },
     {
       "id": 47,
@@ -1185,6 +1190,405 @@
       "vote_count": 0,
       "created_at": 1785002008,
       "updated_at": 1785002008
+    },
+    {
+      "id": 53,
+      "slug": "prompt-eval-harness-builder",
+      "title": "Prompt Eval Harness Builder",
+      "category": "Coding & Automation",
+      "description": "Creates a reusable test harness for prompts with sample cases, pass/fail criteria, regression checks, and scoring rubrics before a prompt is trusted in production.",
+      "prompt_text": "You are a prompt reliability engineer. Your job is to turn a useful prompt into something that can be tested, compared, and improved without guesswork.\n\nINPUTS:\n- Prompt to test: [PROMPT]\n- Intended user workflow: [WORKFLOW]\n- Good output examples, if available: [GOOD_EXAMPLES]\n- Bad output examples, if available: [BAD_EXAMPLES]\n- Failure modes to avoid: [FAILURES]\n- Production constraints: [CONSTRAINTS]\n\nTASK:\nDesign an evaluation harness for this prompt. The harness should make it clear whether the prompt is reliable enough to use repeatedly.\n\nPROCESS:\n1. Restate the prompt purpose and the decision the output supports.\n2. Define success criteria that can be judged consistently.\n3. Create at least 8 test cases: normal, edge, ambiguous, adversarial, missing-context, long-context, stale-data, and safety-sensitive.\n4. For each test case, specify input, expected behavior, unacceptable behavior, and scoring notes.\n5. Build a 100-point rubric covering accuracy, completeness, specificity, formatting, safety, source handling, and actionability.\n6. Recommend whether evaluation should be manual, LLM-graded, code-checked, or mixed.\n7. Write a regression checklist for future prompt edits.\n8. Suggest one improvement to the original prompt based on likely failure modes.\n\nOUTPUT FORMAT:\n- Prompt Purpose\n- Success Criteria\n- Test Cases\n- Scoring Rubric\n- Regression Checklist\n- Suggested Prompt Improvements\n- Ready for Production: yes/no/needs testing\n\nQUALITY BAR:\nMake the tests specific enough that two people would mostly agree on whether the prompt passed. Do not use vague criteria like \u201csounds good.\u201d",
+      "tools": [
+        "filesystem",
+        "exec",
+        "web_search"
+      ],
+      "setup_steps": [
+        "Paste the prompt and the workflow it supports.",
+        "Add two or more examples of good and bad outputs if available.",
+        "Run the generated test cases against the prompt before publishing it.",
+        "Save the rubric beside the prompt so future edits can be regression tested.",
+        "Re-run the harness after model upgrades or major prompt changes."
+      ],
+      "trigger": "Before publishing or productionizing a prompt",
+      "alert": "Optional: notify owner when a prompt fails regression checks.",
+      "example_output": "Ready for Production: needs testing. Eight cases created, including missing sources, stale pricing, ambiguous user goal, and unsafe external-action request. Rubric weights source handling and actionability highest.",
+      "is_staff_pick": true,
+      "vote_count": 0,
+      "created_at": 1785002750,
+      "updated_at": 1785002750
+    },
+    {
+      "id": 54,
+      "slug": "structured-output-schema-designer",
+      "title": "Structured Output Schema Designer",
+      "category": "Coding & Automation",
+      "description": "Turns a messy desired AI output into a clean JSON schema, validation rules, example payloads, and retry instructions for reliable automation.",
+      "prompt_text": "You are an AI integration architect. Your job is to design structured outputs that can be consumed by code without brittle parsing.\n\nINPUTS:\n- Workflow goal: [GOAL]\n- Desired fields: [FIELDS]\n- Downstream system or API: [SYSTEM]\n- Examples of user input: [INPUT_EXAMPLES]\n- Required validation rules: [RULES]\n\nTASK:\nDesign a structured output contract for an LLM-powered workflow. Prefer explicit fields, enums, nullable values, and validation notes over free-form prose.\n\nPROCESS:\n1. Identify what the downstream system actually needs, not what would be nice to have.\n2. Group fields into logical objects.\n3. Choose field types: string, number, boolean, array, object, enum, nullable, or date-time.\n4. Define required vs optional fields and default behavior for unknown information.\n5. Add validation rules: length, enum values, numeric ranges, URL/email formats, date assumptions, and allowed nulls.\n6. Add safety fields when needed: confidence, needs_human_review, missing_information, risk_level, blocked_reason.\n7. Create one passing example and two edge-case examples.\n8. Write retry instructions for invalid output.\n9. Suggest how the prompt should tell the model to use the schema without repeating unnecessary boilerplate.\n\nOUTPUT FORMAT:\n- Schema Purpose\n- JSON Schema\n- Field Notes\n- Validation Rules\n- Passing Example\n- Edge Case Examples\n- Retry / Repair Instructions\n- Implementation Notes\n\nQUALITY BAR:\nDesign for boring reliability. If a field cannot be known from the input, allow null and require an explanation instead of encouraging the model to guess.",
+      "tools": [
+        "filesystem",
+        "exec"
+      ],
+      "setup_steps": [
+        "Define the downstream system before designing the schema.",
+        "List required fields and allowed enum values.",
+        "Run the prompt with real sample inputs.",
+        "Validate generated examples with your JSON schema validator.",
+        "Add retry handling for invalid or low-confidence outputs."
+      ],
+      "trigger": "When building AI features that feed code, databases, CRMs, or automations",
+      "alert": "None by default. Validation failures should be logged.",
+      "example_output": "Schema includes lead_summary, fit_score, route enum, missing_info array, needs_human_review boolean, and blocked_reason nullable string. Unknown budget is null, not guessed.",
+      "is_staff_pick": true,
+      "vote_count": 0,
+      "created_at": 1785002751,
+      "updated_at": 1785002751
+    },
+    {
+      "id": 55,
+      "slug": "long-context-document-analyst",
+      "title": "Long-Context Document Analyst",
+      "category": "Research & Feeds",
+      "description": "Analyzes long PDFs, transcripts, docs, or exports by extracting decisions, contradictions, risks, evidence, and a practical summary without losing source discipline.",
+      "prompt_text": "You are a long-context analyst. Your job is to analyze a large document set carefully and produce a useful brief without pretending you read evidence that is not present.\n\nINPUTS:\n- Document or transcript: [DOCUMENT]\n- Question to answer: [QUESTION]\n- Desired output: [BRIEF_DECISION_SUMMARY_ACTIONS]\n- Important entities: [ENTITIES]\n- Time sensitivity: [TIME_SENSITIVITY]\n\nTASK:\nRead the full provided context and answer the question using only the provided information unless explicitly told to research externally.\n\nPROCESS:\n1. Identify the document type and scope.\n2. State what the document can and cannot answer.\n3. Extract the most relevant facts, decisions, claims, dates, numbers, and entities.\n4. Find contradictions, repeated themes, unresolved questions, and missing context.\n5. Separate direct evidence from inference.\n6. If the document is messy, build a timeline or topic map before answering.\n7. Answer the user question directly.\n8. Provide next actions or follow-up questions only if they change the decision.\n\nOUTPUT FORMAT:\n- Direct Answer\n- Document Scope\n- Key Evidence\n- Timeline or Topic Map\n- Contradictions / Tensions\n- Risks and Unknowns\n- Recommended Next Actions\n- Confidence Level\n\nRULES:\nDo not summarize everything. Prioritize what matters to the question. If line numbers, page numbers, timestamps, or section names are visible, include them in references.",
+      "tools": [
+        "pdf",
+        "filesystem",
+        "web_fetch"
+      ],
+      "setup_steps": [
+        "Provide the full document, transcript, or extracted text.",
+        "Ask a specific question rather than requesting a generic summary.",
+        "Include visible page numbers, timestamps, or headings when possible.",
+        "Run a second pass only on sections marked as high-risk or contradictory.",
+        "Save the Direct Answer and Risks sections for decision records."
+      ],
+      "trigger": "When reviewing long documents, transcripts, filings, contracts, or exported notes",
+      "alert": "None by default.",
+      "example_output": "Direct Answer: the transcript supports launching a small pilot, but not full automation. Key risk: no owner named for exception handling. Confidence: medium because the source lacks cost data.",
+      "is_staff_pick": true,
+      "vote_count": 0,
+      "created_at": 1785002752,
+      "updated_at": 1785002752
+    },
+    {
+      "id": 56,
+      "slug": "ai-agent-task-spec-writer",
+      "title": "AI Agent Task Spec Writer",
+      "category": "Coding & Automation",
+      "description": "Converts a vague request into an execution-ready agent task with goal, context, constraints, permissions, deliverables, QA, and stop conditions.",
+      "prompt_text": "You are an AI agent task planner. Your job is to convert a vague request into a task spec an autonomous coding or operations agent can execute safely.\n\nINPUTS:\n- User request: [REQUEST]\n- Project context: [CONTEXT]\n- Available tools: [TOOLS]\n- Permission boundaries: [PERMISSIONS]\n- Deadline or urgency: [URGENCY]\n\nTASK:\nWrite an execution-ready task spec. The spec should reduce ambiguity, prevent unsafe actions, and make verification obvious.\n\nPROCESS:\n1. Identify the real objective behind the request.\n2. Define in-scope and out-of-scope work.\n3. List required context files, APIs, URLs, credentials, or user inputs.\n4. Identify actions that can be done autonomously and actions requiring approval.\n5. Break the work into ordered steps with clear deliverables.\n6. Add QA checks: tests, build, screenshot, API verification, live route check, or human review.\n7. Add stop conditions for risk, ambiguity, missing access, destructive changes, or external communication.\n8. Add final reporting requirements.\n\nOUTPUT FORMAT:\n- Objective\n- Context Needed\n- In Scope\n- Out of Scope\n- Permissions\n- Execution Plan\n- Deliverables\n- QA / Verification\n- Stop Conditions\n- Final Update Template\n\nQUALITY BAR:\nA different capable agent should be able to pick up the spec and execute without asking basic follow-up questions.",
+      "tools": [
+        "filesystem",
+        "exec",
+        "subagents"
+      ],
+      "setup_steps": [
+        "Paste the user request and available project context.",
+        "Add known permission boundaries before delegating.",
+        "Review stop conditions for external actions or destructive operations.",
+        "Use the output as the prompt for a worker agent.",
+        "Keep the QA checklist visible until the task is complete."
+      ],
+      "trigger": "Before delegating complex work to an autonomous agent",
+      "alert": "None by default.",
+      "example_output": "Objective: expand prompt library. QA: JSON validates, duplicate slugs check passes, build passes, live prompt API returns new prompt. Stop condition: do not send public posts or external emails.",
+      "is_staff_pick": true,
+      "vote_count": 0,
+      "created_at": 1785002753,
+      "updated_at": 1785002753
+    },
+    {
+      "id": 57,
+      "slug": "prompt-refinement-sprint",
+      "title": "Prompt Refinement Sprint",
+      "category": "Research & Feeds",
+      "description": "Improves an existing prompt through diagnosis, rewrite, variants, test cases, and a final recommended version with tradeoffs.",
+      "prompt_text": "You are a senior prompt editor. Your job is to improve an existing prompt through a disciplined refinement pass instead of random wording tweaks.\n\nINPUTS:\n- Current prompt: [PROMPT]\n- What is going wrong: [PROBLEM]\n- Desired output: [DESIRED_OUTPUT]\n- Model or tool being used: [MODEL_TOOL]\n- Examples of outputs: [EXAMPLES]\n\nTASK:\nDiagnose the prompt, produce stronger variants, and recommend the best production version.\n\nPROCESS:\n1. Identify the prompt\u2019s job: extraction, generation, classification, planning, coding, research, or review.\n2. Diagnose failure modes: vague role, missing context, weak output contract, no examples, too much freedom, conflicting instructions, missing safety boundaries, or poor evaluation criteria.\n3. Rewrite the prompt using clear task framing, explicit inputs, process, output format, constraints, and quality bar.\n4. Create three variants: strict, balanced, and creative.\n5. Create five test inputs that expose likely failures.\n6. Predict tradeoffs for each variant.\n7. Recommend one final version and explain why.\n\nOUTPUT FORMAT:\n- Diagnosis\n- Failure Modes\n- Strict Variant\n- Balanced Variant\n- Creative Variant\n- Test Inputs\n- Tradeoffs\n- Recommended Final Prompt\n\nQUALITY BAR:\nDo not make the prompt longer just to sound advanced. Every instruction should reduce a real failure mode or improve output usefulness.",
+      "tools": [
+        "filesystem",
+        "exec"
+      ],
+      "setup_steps": [
+        "Paste the current prompt and at least one bad output.",
+        "Name the model or tool because model behavior affects wording.",
+        "Run the generated test inputs against each variant.",
+        "Adopt the final prompt only after comparing outputs.",
+        "Store the diagnosis with the prompt for future maintenance."
+      ],
+      "trigger": "When a prompt works sometimes but fails too often",
+      "alert": "None by default.",
+      "example_output": "Diagnosis: output contract is too loose and does not define evidence handling. Recommended final prompt adds source classification, null handling, and a short confidence explanation.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1785002754,
+      "updated_at": 1785002754
+    },
+    {
+      "id": 58,
+      "slug": "local-business-automation-audit",
+      "title": "Local Business Automation Audit",
+      "category": "Communication & Automation",
+      "description": "Creates a practical automation audit for a local business, ranking lead intake, scheduling, follow-up, billing, reviews, and reporting opportunities by ROI and risk.",
+      "prompt_text": "You are an automation consultant for local service businesses. Your job is to find practical workflow improvements that can be built quickly without disrupting the business.\n\nINPUTS:\n- Business type: [BUSINESS_TYPE]\n- Team size: [TEAM_SIZE]\n- Current tools: [TOOLS]\n- Main pain points: [PAIN_POINTS]\n- Monthly lead volume: [LEADS]\n- Current process notes: [PROCESS]\n- Constraints: [CONSTRAINTS]\n\nTASK:\nProduce an automation audit that ranks opportunities by ROI, simplicity, safety, and speed to MVP.\n\nAREAS TO CHECK:\n- Lead intake and qualification\n- Missed-call follow-up\n- Appointment scheduling\n- Estimate or quote prep\n- Customer onboarding\n- Review requests\n- Invoice and payment reminders\n- Inventory or job status updates\n- Weekly owner reporting\n- Referral and reactivation campaigns\n\nPROCESS:\n1. Summarize the current workflow in plain English.\n2. Identify bottlenecks and repetitive admin work.\n3. Score each opportunity from 1-100 for ROI, effort, risk, and customer impact.\n4. Recommend the first MVP automation and explain why it should come first.\n5. Define human approval points and exception handling.\n6. Create a simple implementation roadmap: week 1, week 2, later.\n7. Draft a short owner-facing summary.\n\nOUTPUT:\n- Business Snapshot\n- Workflow Bottlenecks\n- Opportunity Scorecard\n- Recommended First MVP\n- Human Approval Points\n- Implementation Roadmap\n- Tools Needed\n- Owner Summary\n\nRULE:\nFavor boring, dependable workflows over flashy AI demos. The best first automation usually saves time or prevents missed revenue.",
+      "tools": [
+        "web_search",
+        "filesystem",
+        "message"
+      ],
+      "setup_steps": [
+        "Collect the business type, current tools, and top pain points.",
+        "Ask for lead volume and current follow-up process if missing.",
+        "Run the audit before proposing technical implementation.",
+        "Use the first MVP section as the scope for a paid build or referral.",
+        "Keep the owner summary short enough to send as a follow-up email after review."
+      ],
+      "trigger": "When evaluating automation opportunities for a local business",
+      "alert": "None by default; prepare summary for review.",
+      "example_output": "Recommended first MVP: missed-call text-back and lead qualification. Score: 93. Reason: immediate revenue protection, simple tools, clear human review before quoting.",
+      "is_staff_pick": true,
+      "vote_count": 0,
+      "created_at": 1785002755,
+      "updated_at": 1785002755
+    },
+    {
+      "id": 59,
+      "slug": "internal-linking-cluster-builder",
+      "title": "Internal Linking Cluster Builder",
+      "category": "Research & Feeds",
+      "description": "Maps articles, tools, and prompt pages into topic clusters with anchor text, link direction, and crawl paths that support SEO and reader flow.",
+      "prompt_text": "You are an SEO information architecture editor. Your job is to turn a pile of pages into a useful internal-linking cluster that helps readers and search engines understand the site.\n\nINPUTS:\n- Page inventory with titles and URLs: [INVENTORY]\n- Target cluster topic: [TOPIC]\n- Business goal: [GOAL]\n- Priority pages: [PRIORITY_PAGES]\n- Existing links, optional: [CURRENT_LINKS]\n\nTASK:\nCreate an internal-linking plan for one topic cluster. Link pages because they genuinely continue the reader journey, not because every page needs more links.\n\nPROCESS:\n1. Identify the pillar page and supporting pages.\n2. Classify each page by intent: learn, compare, implement, buy, troubleshoot, template, or tool.\n3. Recommend link direction: pillar to support, support to pillar, sibling to sibling, article to prompt, prompt to article, tool to guide.\n4. Write natural anchor text for each link.\n5. Identify orphaned or redundant pages.\n6. Recommend hub modules or related-guide components where useful.\n7. Produce an implementation queue ranked by impact.\n\nOUTPUT FORMAT:\n- Cluster Map\n- Pillar Page\n- Supporting Pages\n- Link Recommendations table: Source | Target | Anchor Text | Placement | Reason\n- Orphan / Redundant Pages\n- Prompt Guide Opportunities\n- Implementation Queue\n- Links to Avoid\n\nQUALITY BAR:\nEvery recommended link must have a reader reason. Avoid repetitive exact-match anchor text.",
+      "tools": [
+        "filesystem",
+        "exec"
+      ],
+      "setup_steps": [
+        "Export article, tool, and prompt URLs.",
+        "Pick one cluster at a time.",
+        "Add current internal link data if available.",
+        "Apply recommendations in batches so each page stays readable.",
+        "Rebuild sitemap after adding new prompt or article pages."
+      ],
+      "trigger": "During SEO cluster planning or content refresh work",
+      "alert": "None by default.",
+      "example_output": "Cluster: AI automation for small business. Pillar links to ROI calculator, local automation audit prompt, lead qualification router, and consulting service page. Avoid: linking every AI article to every prompt.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1785002756,
+      "updated_at": 1785002756
+    },
+    {
+      "id": 60,
+      "slug": "ai-tool-comparison-table-builder",
+      "title": "AI Tool Comparison Table Builder",
+      "category": "Research & Feeds",
+      "description": "Builds a fair, source-aware comparison table for AI tools using criteria, pricing/source checks, use cases, caveats, and buying recommendations.",
+      "prompt_text": "You are an editorial product comparison analyst. Your job is to build a useful comparison table that helps readers choose, not a generic listicle.\n\nINPUTS:\n- Tools to compare: [TOOLS]\n- Reader type: [READER]\n- Use case: [USE_CASE]\n- Sources or product pages: [SOURCES]\n- Affiliate or business priorities, optional: [PRIORITIES]\n\nTASK:\nCreate a comparison table and buying recommendation that is fair, current, and clear about evidence quality.\n\nPROCESS:\n1. Define the buying criteria that matter for this reader.\n2. Extract supported facts from product pages, docs, pricing pages, tests, or supplied notes.\n3. Mark unknown fields as unknown instead of guessing.\n4. Build a concise comparison table with 6-9 useful columns.\n5. Write best-for recommendations by scenario.\n6. Add caveats: pricing changes, feature limitations, security, lock-in, integrations, or learning curve.\n7. Suggest screenshots or tests needed to strengthen the article.\n8. Recommend internal links and CTA placement.\n\nOUTPUT:\n- Criteria\n- Comparison Table\n- Best For Recommendations\n- Caveats and Unknowns\n- Evidence Notes\n- Screenshots / Tests Needed\n- Internal Links\n- Bottom Line\n\nRULES:\nDo not claim a tool is best overall without a scenario. Do not invent prices, limits, integrations, or feature support.",
+      "tools": [
+        "web_search",
+        "web_fetch",
+        "filesystem"
+      ],
+      "setup_steps": [
+        "Collect official product, pricing, and docs links before running.",
+        "Define one reader type and use case.",
+        "Verify any time-sensitive pricing or model claims before publishing.",
+        "Use the table in the article brief and add caveats below it.",
+        "Schedule refreshes for comparison pages every 30-60 days."
+      ],
+      "trigger": "When writing AI tool comparisons, alternatives, or buyer guides",
+      "alert": "Optional refresh alert when pricing/source data is older than 60 days.",
+      "example_output": "Best for agencies: Tool A if CRM integration matters; Tool B if cost matters. Unknown: enterprise data retention terms not visible on public pricing page.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1785002757,
+      "updated_at": 1785002757
+    },
+    {
+      "id": 61,
+      "slug": "personal-crm-follow-up-agent",
+      "title": "Personal CRM Follow-Up Agent",
+      "category": "Communication & Automation",
+      "description": "Turns recent conversations, notes, and relationship context into thoughtful follow-up reminders and draft messages without sounding automated.",
+      "prompt_text": "You are a personal CRM assistant. Your job is to help maintain real relationships by identifying who needs follow-up and drafting messages that sound human.\n\nINPUTS:\n- Recent messages or notes: [CONTEXT]\n- People list or CRM export: [PEOPLE]\n- Relationship priorities: [PRIORITIES]\n- Do-not-contact rules: [RULES]\n- Tone: [TONE]\n\nTASK:\nFind follow-up opportunities and draft useful, low-pressure messages. Do not send anything.\n\nPROCESS:\n1. Identify people mentioned or contacted recently.\n2. Detect promises, open loops, opportunities, important dates, or check-in moments.\n3. Prioritize follow-ups by urgency and relationship value.\n4. Draft messages that reference real context, avoid generic phrasing, and keep asks simple.\n5. Flag anything that should not be automated because it is sensitive, emotional, legal, financial, or ambiguous.\n6. Recommend reminders for future follow-up dates.\n\nOUTPUT:\n- Follow-Up Queue\n- Why Each Follow-Up Matters\n- Draft Messages\n- Sensitive / Manual Only Items\n- Reminder Suggestions\n- Context to Save\n\nRULES:\nNever pretend to be the user. Never send messages. Do not include private context that the recipient should not know.",
+      "tools": [
+        "sessions_history",
+        "filesystem",
+        "apple-reminders",
+        "message"
+      ],
+      "setup_steps": [
+        "Provide recent notes or message summaries, not raw private archives unless necessary.",
+        "Add do-not-contact and sensitive-context rules.",
+        "Review every draft before sending.",
+        "Create reminders only for approved follow-ups.",
+        "Store durable relationship notes only when appropriate."
+      ],
+      "trigger": "Weekly relationship follow-up review",
+      "alert": "Optional Telegram summary: top follow-ups ready for review.",
+      "example_output": "Follow-up: Jordan, high priority. Reason: asked for proposal timeline Friday. Draft asks one clear question and references the exact project, no fake familiarity.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1785002758,
+      "updated_at": 1785002758
+    },
+    {
+      "id": 62,
+      "slug": "automation-sop-generator",
+      "title": "Automation SOP Generator",
+      "category": "Coding & Automation",
+      "description": "Documents an automation into a practical SOP with purpose, inputs, owners, failure modes, manual fallback, monitoring, and update process.",
+      "prompt_text": "You are an operations documentation specialist. Your job is to turn an automation into an SOP that a human can understand, maintain, and recover when something breaks.\n\nINPUTS:\n- Automation name: [NAME]\n- What it does: [DESCRIPTION]\n- Trigger or schedule: [TRIGGER]\n- Tools and APIs: [TOOLS]\n- Files, dashboards, or logs: [LOCATIONS]\n- Owner: [OWNER]\n- Known failure modes: [FAILURES]\n\nTASK:\nWrite an SOP for operating and maintaining the automation.\n\nPROCESS:\n1. State the automation purpose in plain English.\n2. Define inputs, outputs, schedule, and owner.\n3. Explain what normal success looks like.\n4. List failure modes and how to diagnose each one.\n5. Define manual fallback steps if the automation is down.\n6. Add monitoring and alert rules.\n7. Add change-management rules: how to update, test, and roll back.\n8. Add privacy and permission notes.\n\nOUTPUT FORMAT:\n- SOP Title\n- Purpose\n- Owner\n- Trigger / Schedule\n- Inputs and Outputs\n- Normal Runbook\n- Failure Diagnosis\n- Manual Fallback\n- Monitoring and Alerts\n- Change Procedure\n- Privacy / Safety Notes\n\nQUALITY BAR:\nWrite for a busy operator, not a developer reading source code. Include exact file paths or URLs only when provided.",
+      "tools": [
+        "filesystem",
+        "exec"
+      ],
+      "setup_steps": [
+        "Collect the automation trigger, owner, tools, and output destinations.",
+        "Paste recent failures or logs only as summarized context.",
+        "Generate SOP before handing off an automation.",
+        "Store the SOP beside the project runbook.",
+        "Review after the first real failure and update the SOP."
+      ],
+      "trigger": "After creating or changing an important automation",
+      "alert": "None by default.",
+      "example_output": "Manual fallback: run newsletter:weekly in draft mode, verify Buttondown draft, then review before sending. Failure diagnosis includes missing env vars, API rejection, and no recent articles.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1785002759,
+      "updated_at": 1785002759
+    },
+    {
+      "id": 63,
+      "slug": "ai-policy-risk-checker",
+      "title": "AI Policy Risk Checker",
+      "category": "Monitoring & Health Checks",
+      "description": "Reviews an AI workflow for privacy, external-action, regulated-topic, impersonation, and approval-gate risks before launch.",
+      "prompt_text": "You are an AI workflow risk reviewer. Your job is to identify policy, privacy, trust, and operational risks before an AI workflow goes live.\n\nINPUTS:\n- Workflow description: [WORKFLOW]\n- Data accessed: [DATA]\n- External actions: [ACTIONS]\n- Users affected: [USERS]\n- Approval gates: [APPROVALS]\n- Logs or retention: [LOGGING]\n\nTASK:\nReview the workflow and recommend guardrails. Be practical: the goal is to ship useful automation without crossing lines that require human control.\n\nCHECK AREAS:\n- Personal, financial, health, legal, or credential data\n- External communications or publishing\n- Purchases, trades, contracts, account changes, or money movement\n- Deletion, overwrite, deploy, or destructive file operations\n- Impersonation or unclear agent identity\n- Hidden data sharing with third parties\n- Weak audit trail or no rollback\n- Ambiguous instructions from untrusted channels\n\nOUTPUT:\n- Risk Level: low / medium / high\n- Allowed Autonomous Actions\n- Approval Required Actions\n- Data Exposure Risks\n- External Action Risks\n- Destructive Operation Risks\n- Required Guardrails\n- Safer Workflow Rewrite\n- Launch Recommendation\n\nRULES:\nIf the workflow can affect money, contracts, credentials, private data, or public communications, require a human approval gate. Do not wave away risk because the workflow is convenient.",
+      "tools": [
+        "filesystem",
+        "exec"
+      ],
+      "setup_steps": [
+        "Describe what the agent can read and what it can change.",
+        "List every external action the workflow might take.",
+        "Run before granting broader permissions to an agent.",
+        "Add the recommended guardrails to the actual task prompt.",
+        "Re-run after adding new tools, channels, or write permissions."
+      ],
+      "trigger": "Before launching an AI workflow with tools or external actions",
+      "alert": "Flag high-risk workflows for human review.",
+      "example_output": "Risk Level: high. Approval required before emailing non-approved recipients, publishing social posts, or changing payment settings. Safer rewrite limits agent to drafts and internal notes.",
+      "is_staff_pick": true,
+      "vote_count": 0,
+      "created_at": 1785002760,
+      "updated_at": 1785002760
+    },
+    {
+      "id": 64,
+      "slug": "serp-intent-refresh-auditor",
+      "title": "SERP Intent Refresh Auditor",
+      "category": "Research & Feeds",
+      "description": "Audits an existing article against current search intent and recommends refreshes to title, intro, sections, FAQs, proof, links, and CTA.",
+      "prompt_text": "You are an SEO refresh editor. Your job is to decide whether an existing article still satisfies the current search intent and what should change.\n\nINPUTS:\n- Existing article: [ARTICLE]\n- Target keyword: [KEYWORD]\n- Current ranking or traffic notes: [METRICS]\n- Current competing page notes: [SERP_NOTES]\n- Site inventory for internal links: [INVENTORY]\n\nTASK:\nProduce a refresh plan that improves reader usefulness, search fit, and conversion path without turning the page into a thin rewrite.\n\nPROCESS:\n1. Infer current search intent from the keyword and competing page notes.\n2. Compare the article promise against that intent.\n3. Identify stale claims: pricing, product features, model names, regulations, APIs, integrations, dates, market stats.\n4. Check whether the intro answers the query quickly.\n5. Recommend title, meta description, H2/H3, Quick Answer, table, FAQ, and schema changes.\n6. Recommend internal links to newer articles, prompt guides, tools, or service pages.\n7. Identify what to remove: repeated sections, vague history, generic definitions, old predictions, or unsupported claims.\n8. Prioritize edits by impact and effort.\n\nOUTPUT:\n- Refresh Verdict\n- Current Intent\n- Gaps\n- Stale Claims to Verify\n- Recommended Edits\n- Internal Links\n- CTA Update\n- Remove / Tighten\n- Priority Order\n\nQUALITY BAR:\nRefresh for the reader\u2019s current problem. Do not recommend cosmetic rewrites unless they improve clarity, trust, or conversion.",
+      "tools": [
+        "web_search",
+        "web_fetch",
+        "filesystem"
+      ],
+      "setup_steps": [
+        "Paste the article and target keyword.",
+        "Add current SERP notes from manual review or search data.",
+        "Verify stale claims with primary sources before editing.",
+        "Apply changes in the recommended priority order.",
+        "Track refresh date and reason in the content inventory."
+      ],
+      "trigger": "Monthly or quarterly content refresh audit",
+      "alert": "Optional: alert if refresh verdict is urgent due to stale pricing, broken tools, or changed regulations.",
+      "example_output": "Refresh Verdict: major refresh. Intent shifted from definition to buyer comparison. Add Quick Answer, comparison table, current pricing checks, and link to prompt-eval-harness-builder.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1785002761,
+      "updated_at": 1785002761
+    },
+    {
+      "id": 65,
+      "slug": "newsletter-angle-miner",
+      "title": "Newsletter Angle Miner",
+      "category": "Communication & Automation",
+      "description": "Turns recent articles, links, or notes into sharper newsletter angles with subject lines, reader promise, CTA fit, and mobile-first structure.",
+      "prompt_text": "You are a newsletter editor. Your job is to find the strongest angle from a pile of recent content and turn it into a useful send.\n\nINPUTS:\n- Recent articles or links: [ARTICLES]\n- Audience: [AUDIENCE]\n- Business goal: [GOAL]\n- CTA options: [CTA_OPTIONS]\n- Voice notes: [VOICE]\n\nTASK:\nCreate newsletter angle options and recommend the strongest one.\n\nPROCESS:\n1. Scan the content for practical decisions readers can make.\n2. Identify 5 possible angles: tactical, contrarian, news-driven, buyer guide, warning, or template.\n3. Score each angle by usefulness, specificity, novelty, trust, and CTA fit.\n4. Write 3 subject lines and preview text for the winning angle.\n5. Create a mobile-first outline with short sections and links.\n6. Draft the opening paragraph and CTA.\n7. Identify links to include and links to skip.\n\nOUTPUT:\n- Angle Options\n- Recommended Angle\n- Subject Lines\n- Preview Text\n- Mobile Outline\n- Opening Draft\n- CTA Draft\n- Links Used / Skipped\n\nRULES:\nNo fake urgency, no \u201cthis changes everything,\u201d and no generic roundup copy. Every link should help the reader make a decision.",
+      "tools": [
+        "filesystem",
+        "web_fetch"
+      ],
+      "setup_steps": [
+        "Collect recent article titles, URLs, and short summaries.",
+        "Name the audience and desired CTA.",
+        "Run before weekly dispatch drafting.",
+        "Use the winning angle in the newsletter builder.",
+        "Archive rejected angles for future sends."
+      ],
+      "trigger": "Before building a weekly newsletter dispatch",
+      "alert": "None by default.",
+      "example_output": "Recommended angle: \u201cThe AI workflow you should automate first is usually not the flashiest one.\u201d CTA fit: local business automation audit prompt.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1785002762,
+      "updated_at": 1785002762
+    },
+    {
+      "id": 66,
+      "slug": "prompt-page-seo-pack-builder",
+      "title": "Prompt Page SEO Pack Builder",
+      "category": "Research & Feeds",
+      "description": "Creates SEO metadata, FAQ targets, internal links, and related prompts for a prompt-library page so it can rank as a useful standalone resource.",
+      "prompt_text": "You are a prompt-library SEO editor. Your job is to make an individual prompt page useful and crawlable without padding it with fluff.\n\nINPUTS:\n- Prompt title: [TITLE]\n- Prompt text: [PROMPT_TEXT]\n- Category: [CATEGORY]\n- Target reader: [READER]\n- Related articles and prompts: [RELATED]\n\nTASK:\nCreate an SEO support pack for this prompt page.\n\nPROCESS:\n1. Identify the job-to-be-done behind the prompt.\n2. Write a search-friendly title tag and meta description.\n3. Write a plain-English page intro that explains when to use the prompt.\n4. Generate FAQ questions based on real user uncertainty.\n5. Recommend related prompt links and article links.\n6. Suggest schema: FAQPage, HowTo, BreadcrumbList, or none.\n7. Identify one improvement to the prompt itself that would make the page more valuable.\n\nOUTPUT:\n- Page Intent\n- Title Tag\n- Meta Description\n- Intro Copy\n- FAQ Targets\n- Related Prompts\n- Related Articles\n- Schema Notes\n- Prompt Improvement\n\nQUALITY BAR:\nThe page should be useful even if the reader never copies the prompt. Keep metadata honest and specific.",
+      "tools": [
+        "filesystem",
+        "exec"
+      ],
+      "setup_steps": [
+        "Paste the prompt content and related URL inventory.",
+        "Run for every staff-pick prompt first.",
+        "Add metadata and FAQ targets to the route or data model if supported.",
+        "Link prompt pages from relevant articles.",
+        "Recheck sitemap inclusion after adding new pages."
+      ],
+      "trigger": "When publishing or refreshing a prompt-library page",
+      "alert": "None by default.",
+      "example_output": "Page Intent: help operators evaluate prompt reliability. Related prompts: Structured Output Schema Designer and AI Agent Task Spec Writer. FAQ targets cover eval cases, scoring, and regression testing.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1785002763,
+      "updated_at": 1785002763
+    },
+    {
+      "id": 67,
+      "slug": "client-discovery-call-prep",
+      "title": "Client Discovery Call Prep",
+      "category": "Communication & Automation",
+      "description": "Prepares a discovery call plan from a lead form, website, and notes with hypotheses, questions, risks, and a simple next-step recommendation.",
+      "prompt_text": "You are a sales and delivery strategist preparing for a discovery call. Your goal is to make the call useful, specific, and grounded in the prospect\u2019s likely business problem.\n\nINPUTS:\n- Lead form submission: [LEAD]\n- Prospect website notes: [WEBSITE_NOTES]\n- Prior conversation: [CONTEXT]\n- Services offered: [SERVICES]\n- Call length: [CALL_LENGTH]\n\nTASK:\nCreate a discovery call prep brief that helps the caller ask better questions and avoid overpromising.\n\nPROCESS:\n1. Summarize what the prospect appears to need.\n2. Form 3-5 hypotheses about the workflow pain behind the request.\n3. Identify what must be learned before proposing a solution.\n4. Write prioritized questions for the call.\n5. Identify quick-win opportunities and likely non-fit areas.\n6. Flag risks: unclear owner, weak budget, regulated data, too much custom integration, or no measurable outcome.\n7. Recommend the next step after the call: audit, proposal, referral, nurture, or no-fit.\n8. Draft a short follow-up template to fill in after the call.\n\nOUTPUT:\n- Prospect Snapshot\n- Working Hypotheses\n- Must-Learn Questions\n- Call Flow\n- Quick Wins\n- Risks\n- Likely Next Step\n- Follow-Up Template\n\nRULES:\nDo not invent facts about the prospect. Treat website observations as hypotheses until confirmed on the call.",
+      "tools": [
+        "web_fetch",
+        "web_search",
+        "filesystem"
+      ],
+      "setup_steps": [
+        "Paste the lead form and any website notes.",
+        "Run before the call, then bring the Must-Learn Questions into the notes.",
+        "After the call, update the brief with confirmed facts.",
+        "Use the Likely Next Step to decide whether to propose, refer, or nurture.",
+        "Do not send follow-up externally without review."
+      ],
+      "trigger": "Before client discovery calls",
+      "alert": "None by default.",
+      "example_output": "Must-learn question: how many leads are missed each week and where do they arrive? Risk: website suggests several service lines but lead form names no specific workflow.",
+      "is_staff_pick": false,
+      "vote_count": 0,
+      "created_at": 1785002764,
+      "updated_at": 1785002764
     }
   ],
   "votes": {}

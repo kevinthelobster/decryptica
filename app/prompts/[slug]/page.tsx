@@ -1,23 +1,18 @@
 import type { Metadata } from 'next';
 import PromptDetailPageClient from './PromptDetailPageClient';
+import promptsDb from '../../../data/prompts/prompts.json';
 
 type Props = { params: Promise<{ slug: string }> };
 
-function formatPromptTitle(slug: string) {
-  return slug
-    .split('-')
-    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(' ');
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const title = formatPromptTitle(slug);
-  const description = `View the ${title} OpenClaw prompt on Decryptica, including setup steps, tools used, and example output.`;
+  const prompt = promptsDb.prompts.find(item => item.slug === slug);
+  const title = prompt?.title || 'OpenClaw Prompt';
+  const description = prompt?.description || `View the ${title} OpenClaw prompt on Decryptica, including setup steps, tools used, and example output.`;
   const url = `https://decryptica.com/prompts/${slug}`;
 
   return {
-    title,
+    title: `${title} | Decryptica Prompt Library`,
     description,
     openGraph: {
       title: `${title} | Decryptica`,
@@ -31,6 +26,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
     },
   };
+}
+
+export function generateStaticParams() {
+  return promptsDb.prompts.map(prompt => ({ slug: prompt.slug }));
 }
 
 export default function PromptDetailPage(props: Props) {

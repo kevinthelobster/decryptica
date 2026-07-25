@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { articles } from './data/articles';
 import { SUBPILLARS_BY_PILLAR } from './data/topic-routing';
+import promptsDb from '../data/prompts/prompts.json';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://decryptica.com';
@@ -92,5 +93,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...staticPages, ...subpillarPages, ...articlePages];
+  const promptPages: MetadataRoute.Sitemap = promptsDb.prompts.map((prompt) => ({
+    url: `${baseUrl}/prompts/${prompt.slug}`,
+    lastModified: new Date((prompt.updated_at || prompt.created_at) * 1000),
+    changeFrequency: 'monthly' as const,
+    priority: prompt.is_staff_pick ? 0.85 : 0.75,
+  }));
+
+  return [...staticPages, ...subpillarPages, ...articlePages, ...promptPages];
 }
