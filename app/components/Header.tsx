@@ -9,7 +9,7 @@ const navItems = [
   { href: '/topic/crypto/trading', label: 'Crypto' },
   { href: '/topic/ai/tooling', label: 'AI' },
   { href: '/topic/automation/workflows', label: 'Automation' },
-  { href: '/tools/ai-price-calculator', label: 'Tools' },
+  { href: '/tools', label: 'Tools' },
   { href: '/prompts', label: 'Prompts' },
 ];
 
