@@ -5,6 +5,7 @@ import { getArticleImage } from '../../data/article-images';
 import SubscribeForm from '../../components/SubscribeForm';
 import AnalyticsTracker from '../../components/AnalyticsTracker';
 import ArticleProgressNav from '../../components/ArticleProgressNav';
+import ArticleSaveControls from '../../components/ArticleSaveControls';
 import MidArticleLeadCapture from '../../components/MidArticleLeadCapture';
 import MobileProgressSheet from '../../components/MobileProgressSheet';
 import TrackedLink from '../../components/TrackedLink';
@@ -945,6 +946,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const subpillarConfig = getSubpillarBySlug(article.category as PillarSlug, subpillarSlug);
   const subpillarName = subpillarConfig?.name || subpillarSlug;
   const subpillarPath = getSubpillarPath(article.category as PillarSlug, subpillarSlug);
+  const readingListArticle = {
+    slug,
+    title: article.title,
+    excerpt: article.excerpt,
+    category: categoryNames[article.category] || article.category,
+    href: `/blog/${slug}`,
+    date: article.date,
+    readTime,
+  };
 
   return (
     <>
@@ -1047,6 +1057,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </>
                 )}
               </div>
+              <ArticleSaveControls article={readingListArticle} />
               <figure className="mt-8 border border-stone-200 bg-white">
                 <img
                   src={articleImage.src}
@@ -1137,6 +1148,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Sidebar */}
           <aside className="lg:col-span-1">
             <div className="sticky top-24 space-y-6">
+              <ArticleSaveControls article={readingListArticle} variant="sidebar" />
               <ArticleProgressNav articleSlug={slug} category={article.category} headings={headings} />
 
               {/* Article Stats */}

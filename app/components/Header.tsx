@@ -6,6 +6,7 @@ import Link from 'next/link';
 const navItems = [
   { href: '/articles', label: 'Latest' },
   { href: '/search', label: 'Search' },
+  { href: '/saved', label: 'Saved' },
   { href: '/topic/crypto/trading', label: 'Crypto' },
   { href: '/topic/ai/tooling', label: 'AI' },
   { href: '/topic/automation/workflows', label: 'Automation' },
