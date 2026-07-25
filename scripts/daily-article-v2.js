@@ -23,6 +23,7 @@ const CONFIG = {
   articlesFile: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/app/data/articles.ts',
   postedTracker: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/data/posted_titles.json',
   keywordCandidatesFile: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/data/kwr/keyword_candidates.json',
+  promptsFile: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/data/prompts/prompts.json',
   chatId: process.env.TELEGRAM_CHAT_ID || '8324073314',
   telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || ''
 };
@@ -267,6 +268,66 @@ const RESEARCH_BRIEFS = {
   }
 };
 
+const GEO_SEARCH_PLAYBOOK = {
+  crypto: {
+    searchIntent: 'decision support for crypto readers who want practical market/tool judgment before committing time or money',
+    answerTargets: [
+      'Give the reader a direct answer in the first 120 words.',
+      'Define the conditions where the answer changes.',
+      'Name the evidence types a serious reader should check next.'
+    ],
+    sourcePriority: [
+      'official protocol or venue documentation',
+      'public market/on-chain dashboards',
+      'filings, fund-flow reports, and reputable data aggregators',
+      'transparent methodology pages'
+    ],
+    conversionPath: 'Point readers toward related Decryptica crypto guides when they need deeper market context.'
+  },
+  ai: {
+    searchIntent: 'tool evaluation for builders and operators comparing AI products, workflows, costs, and implementation risk',
+    answerTargets: [
+      'Start with who should use it, who should avoid it, and the most important tradeoff.',
+      'Translate vendor features into business or workflow consequences.',
+      'Give a practical evaluation checklist that can be reused.'
+    ],
+    sourcePriority: [
+      'official pricing and model documentation',
+      'security or data-control documentation',
+      'benchmark reports with clear caveats',
+      'public changelogs and integration docs'
+    ],
+    conversionPath: 'Link naturally to one prompt guide when the article describes a repeatable workflow a reader can copy.'
+  },
+  automation: {
+    searchIntent: 'implementation planning for small businesses and operators deciding what automation to build, buy, or delegate',
+    answerTargets: [
+      'Answer the practical business question before explaining the architecture.',
+      'Identify the first workflow to automate and the failure point to watch.',
+      'Give a rollout path with ownership, approvals, and monitoring.'
+    ],
+    sourcePriority: [
+      'official tool documentation',
+      'pricing and plan-limit pages',
+      'API docs, webhook docs, and status pages',
+      'case studies with concrete workflow detail'
+    ],
+    conversionPath: 'When relevant, point readers toward the AI automation consulting page or a prompt guide they can run immediately.'
+  }
+};
+
+const CLUSTER_PRIORITY = {
+  crypto: ['crypto-tax', 'wallets', 'portfolio-analytics', 'defi', 'bitcoin', 'ethereum', 'solana', 'web3', 'crypto-general'],
+  ai: ['ai-automation', 'ai-agents', 'prompting', 'ai-coding', 'llm-stack', 'chat-assistants', 'ai-image', 'ai-general'],
+  automation: ['business-automation', 'workflow-ops', 'integration-tools', 'api-ops', 'internal-tools', 'no-code', 'automation-general']
+};
+
+const PROMPT_GUIDE_MATCHERS = {
+  crypto: /\b(crypto|wallet|portfolio|token|on-chain|trading|research|feed|price|alert)\b/i,
+  ai: /\b(ai|agent|prompt|llm|model|research|code|content|summar|meeting)\b/i,
+  automation: /\b(automation|workflow|cron|monitor|digest|alert|backup|crm|sales|lead|inbox|report)\b/i
+};
+
 const FORBIDDEN_PHRASES = [
   "in today's fast-paced world",
   'delve',
@@ -297,10 +358,15 @@ const FORBIDDEN_PHRASE_REPLACEMENTS = new Map([
 
 function getResearchBrief(category, title, primaryKeyword) {
   const brief = RESEARCH_BRIEFS[category] || RESEARCH_BRIEFS.automation;
+  const playbook = GEO_SEARCH_PLAYBOOK[category] || GEO_SEARCH_PLAYBOOK.automation;
   return {
     desk: brief.desk,
     title,
     primaryKeyword,
+    searchIntent: playbook.searchIntent,
+    answerTargets: playbook.answerTargets,
+    sourcePriority: playbook.sourcePriority,
+    conversionPath: playbook.conversionPath,
     evidenceChecklist: brief.evidenceChecklist,
     trustSignals: brief.trustSignals
   };
@@ -327,6 +393,35 @@ function loadSiteInventory(category, limit = 8) {
       .slice(0, limit);
   } catch (e) {
     log(`Site inventory load error: ${e.message}`);
+    return [];
+  }
+}
+
+function loadPromptInventory(category, limit = 4) {
+  try {
+    if (!fs.existsSync(CONFIG.promptsFile)) return [];
+    const data = JSON.parse(fs.readFileSync(CONFIG.promptsFile, 'utf-8'));
+    const prompts = Array.isArray(data.prompts) ? data.prompts : [];
+    const matcher = PROMPT_GUIDE_MATCHERS[category] || PROMPT_GUIDE_MATCHERS.automation;
+
+    return prompts
+      .filter((prompt) => {
+        const haystack = `${prompt.title || ''} ${prompt.category || ''} ${prompt.description || ''} ${(prompt.tools || []).join(' ')}`;
+        return matcher.test(haystack);
+      })
+      .sort((a, b) => {
+        const staffDelta = Number(Boolean(b.is_staff_pick)) - Number(Boolean(a.is_staff_pick));
+        if (staffDelta) return staffDelta;
+        return Number(b.vote_count || 0) - Number(a.vote_count || 0);
+      })
+      .slice(0, limit)
+      .map((prompt) => ({
+        title: prompt.title,
+        slug: prompt.slug,
+        category: prompt.category
+      }));
+  } catch (e) {
+    log(`Prompt inventory load error: ${e.message}`);
     return [];
   }
 }
@@ -631,6 +726,13 @@ function loadExistingArticleFingerprints() {
     const titleMatches = [...content.matchAll(/title:\s*"((?:\\"|[^"])*)"/g)];
     return titleMatches.map((match) => {
       const title = match[1].replace(/\\"/g, '"');
+      const blockStart = Math.max(0, match.index - 800);
+      const blockEnd = Math.min(content.length, match.index + 1600);
+      const block = content.slice(blockStart, blockEnd);
+      const categoryMatch = block.match(/category:\s*['"]([^'"]+)['"]/);
+      const keywordMatch = block.match(/primaryKeyword:\s*"((?:\\"|[^"])*)"/);
+      const category = categoryMatch ? categoryMatch[1] : null;
+      const primaryKeyword = keywordMatch ? keywordMatch[1].replace(/\\"/g, '"') : '';
       const normalizedTitle = normalizePhrase(title);
       const slug = generateSlug(title);
       const keywordLike = normalizedTitle
@@ -638,7 +740,8 @@ function loadExistingArticleFingerprints() {
         .filter((word) => word.length > 2)
         .slice(0, 8)
         .join(' ');
-      return { title, normalizedTitle, slug, keywordLike };
+      const topicCluster = inferArticleCluster(title, primaryKeyword, category);
+      return { title, normalizedTitle, slug, keywordLike, category, primaryKeyword, topicCluster };
     });
   } catch (e) {
     log(`Article fingerprint load error: ${e.message}`);
@@ -672,6 +775,64 @@ function overlapsExistingContent(candidate, existingArticles) {
   });
 }
 
+function inferArticleCluster(title, primaryKeyword, category) {
+  const lower = normalizePhrase(`${title || ''} ${primaryKeyword || ''}`);
+  const match = (pattern) => pattern.test(lower);
+
+  if (category === 'crypto') {
+    if (match(/\bbitcoin\b|\bbtc\b|\betf\b/)) return 'bitcoin';
+    if (match(/\bethereum\b|\beth\b/)) return 'ethereum';
+    if (match(/\bsolana\b|\bsol\b/)) return 'solana';
+    if (match(/\bdefi\b|\bdex\b|\bamm\b|\bliquidity\b/)) return 'defi';
+    if (match(/\btax\b/)) return 'crypto-tax';
+    if (match(/\bwallet\b|\bledger\b|\btrezor\b/)) return 'wallets';
+    if (match(/\bportfolio\b|\btracker\b|\bon chain\b|\banalytics\b/)) return 'portfolio-analytics';
+    return 'crypto-general';
+  }
+
+  if (category === 'ai') {
+    if (match(/\bagents?\b/)) return 'ai-agents';
+    if (match(/\bcoding\b|\bcode\b|\bcursor\b|\bcopilot\b|\bwindsurf\b/)) return 'ai-coding';
+    if (match(/\bllm\b|\bmodel\b|\bapi\b|\brag\b/)) return 'llm-stack';
+    if (match(/\bchatgpt\b|\bclaude\b|\bassistant\b/)) return 'chat-assistants';
+    if (match(/\bimage\b|\bart\b|\bmidjourney\b|\bstable diffusion\b/)) return 'ai-image';
+    if (match(/\bprompt\b/)) return 'prompting';
+    if (match(/\bautomation\b|\bworkflow\b/)) return 'ai-automation';
+    return 'ai-general';
+  }
+
+  if (match(/\bworkflow\b|\bprocess\b|\borchestration\b/)) return 'workflow-ops';
+  if (match(/\bzapier\b|\bmake\b|\bn8n\b|\bintegration\b/)) return 'integration-tools';
+  if (match(/\bapi\b|\bmonitoring\b|\bwebhook\b/)) return 'api-ops';
+  if (match(/\binternal tools?\b|\bback office\b/)) return 'internal-tools';
+  if (match(/\bno code\b|\bno-code\b|\bbubble\b/)) return 'no-code';
+  if (match(/\bbusiness\b|\bteam\b|\bproductivity\b|\bsales\b|\bmarketing\b/)) return 'business-automation';
+  return 'automation-general';
+}
+
+function getClusterCoverage(category, existingArticles) {
+  const coverage = new Map();
+  existingArticles
+    .filter((article) => article.category === category)
+    .forEach((article) => {
+      const cluster = article.topicCluster || `${category}-general`;
+      coverage.set(cluster, (coverage.get(cluster) || 0) + 1);
+    });
+  return coverage;
+}
+
+function clusterGapBoost(candidate, targetCategory, existingArticles) {
+  const category = candidate.category || targetCategory;
+  const cluster = candidate.topicCluster || inferArticleCluster(candidate.suggestedTitle || candidate.keyword, candidate.keyword, category);
+  const priority = CLUSTER_PRIORITY[category] || [];
+  const coverage = getClusterCoverage(category, existingArticles);
+  const currentCount = coverage.get(cluster) || 0;
+  const priorityIndex = priority.indexOf(cluster);
+  const priorityBoost = priorityIndex >= 0 ? Math.max(0, 18 - priorityIndex * 2) : 2;
+  const gapBoost = currentCount === 0 ? 28 : currentCount === 1 ? 14 : currentCount === 2 ? 5 : 0;
+  return { cluster, boost: priorityBoost + gapBoost, currentCount };
+}
+
 function slugExists(slug, existingArticles = loadExistingArticleFingerprints()) {
   return existingArticles.some((article) => article.slug === slug);
 }
@@ -694,7 +855,9 @@ function pickKeywordCandidate(targetCategory, tracker) {
   const sortCandidates = (candidates) => [...candidates].sort((a, b) => {
     const scoreA = typeof a.opportunityScore === 'number' ? a.opportunityScore : 0;
     const scoreB = typeof b.opportunityScore === 'number' ? b.opportunityScore : 0;
-    if (scoreB !== scoreA) return scoreB - scoreA;
+    const gapA = clusterGapBoost(a, targetCategory, existingArticles).boost;
+    const gapB = clusterGapBoost(b, targetCategory, existingArticles).boost;
+    if ((scoreB + gapB) !== (scoreA + gapA)) return (scoreB + gapB) - (scoreA + gapA);
     const volA = typeof a.volume === 'number' ? a.volume : Number.MAX_SAFE_INTEGER;
     const volB = typeof b.volume === 'number' ? b.volume : Number.MAX_SAFE_INTEGER;
     return volA - volB;
@@ -711,6 +874,7 @@ function pickKeywordCandidate(targetCategory, tracker) {
     category: selected.category || targetCategory,
     keyword: selected.keyword,
     title: fitTitleForSchema(selected.suggestedTitle || createTitleFromKeyword(selected.keyword, selected.category || targetCategory)),
+    topicCluster: clusterGapBoost(selected, targetCategory, existingArticles).cluster,
     opportunityScore: selected.opportunityScore,
     source: selected.source || 'keyword-pipeline'
   };
@@ -760,6 +924,7 @@ async function researchTopic() {
       category: keywordCandidate.category,
       title: keywordCandidate.title,
       primary_keyword: keywordCandidate.keyword,
+      topicCluster: keywordCandidate.topicCluster,
       keywordCandidateId: keywordCandidate.id,
       keywordData: {
         ...keywordData,
@@ -785,11 +950,13 @@ async function researchTopic() {
         title => !isRecentlyPosted(tracker, title) && !slugExists(generateSlug(title), existingArticles)
       );
       if (backupTitles.length > 0) {
+        const backupTitle = backupTitles[Math.floor(Math.random() * backupTitles.length)];
         return {
           category: cat,
-          title: fitTitleForSchema(backupTitles[Math.floor(Math.random() * backupTitles.length)]),
+          title: fitTitleForSchema(backupTitle),
           primary_keyword: cat === 'crypto' ? 'crypto analysis' : 
                           cat === 'ai' ? 'ai tools' : 'automation',
+          topicCluster: inferArticleCluster(backupTitle, cat, cat),
           keywordCandidateId: null,
           keywordData,
           tracker
@@ -799,7 +966,7 @@ async function researchTopic() {
     // Last resort: pick random from any category (force rotate)
     const allTitles = TITLE_POOLS[category];
     const randomTitle = allTitles[Math.floor(Math.random() * allTitles.length)];
-    return { category, title: fitTitleForSchema(randomTitle), primary_keyword: category, keywordCandidateId: null, keywordData, tracker };
+    return { category, title: fitTitleForSchema(randomTitle), primary_keyword: category, topicCluster: inferArticleCluster(randomTitle, category, category), keywordCandidateId: null, keywordData, tracker };
   }
   
   // Pick a random available title
@@ -817,6 +984,7 @@ async function researchTopic() {
     category,
     title: selectedTitle,
     primary_keyword,
+    topicCluster: inferArticleCluster(selectedTitle, primary_keyword, category),
     keywordCandidateId: null,
     keywordData,
     tracker
@@ -895,7 +1063,7 @@ function getLastArticle() {
 async function generateArticle(research) {
   log('Generating article content...');
   
-  const { category, title, primary_keyword, tracker } = research;
+  const { category, title, primary_keyword, topicCluster, tracker } = research;
   
   const slug = generateSlug(title);
   
@@ -914,6 +1082,7 @@ async function generateArticle(research) {
     author: 'Decryptica',
     status: 'published',
     primaryKeyword: primary_keyword,
+    tags: [topicCluster, primary_keyword].filter(Boolean),
     wordCount: countWords(content)
   };
   
@@ -941,9 +1110,13 @@ function generateContent(title, primary_keyword, category) {
   const guidance = categoryGuidance[category] || categoryGuidance.automation;
   const researchBrief = getResearchBrief(category, title, primary_keyword);
   const siteInventory = loadSiteInventory(category);
+  const promptInventory = loadPromptInventory(category);
   const internalLinkList = siteInventory.length
     ? siteInventory.map((article) => `${article.title} (/blog/${article.slug})`)
     : ['No same-category inventory available. Do not invent internal links.'];
+  const promptGuideList = promptInventory.length
+    ? promptInventory.map((prompt) => `${prompt.title} (/prompts/${prompt.slug})`)
+    : ['No relevant prompt guide available. Do not invent prompt guide links.'];
 
   const buildPrompt = (revisionFeedback = '') => `${guidance}
 
@@ -957,12 +1130,14 @@ Editorial position:
 
 Hard requirements:
 - 1,800-2,500 words
-- Strong opening hook, then a bold **TL;DR** section near the top
+- Strong opening hook, then a "## Quick Answer" section and a bold **TL;DR** section near the top
 - Use markdown with H2 and H3 headings
+- Include a section titled "## Quick Answer" with a direct, citation-ready answer in 2-3 short paragraphs
 - Include a section titled "## What We Checked" that describes the evidence categories without pretending original hands-on testing happened
 - Include at least one markdown table that helps a reader make a decision
 - Include concrete examples, tool/protocol references, failure modes, and mechanism-level explanation where relevant
 - Include one natural internal link from the inventory below if it genuinely fits
+- Include one natural prompt-guide link from the prompt inventory below if it genuinely helps the reader act on the article
 - Format every URL as a clickable markdown hyperlink. Do not leave bare URLs as plain text.
 - Include a FAQ section with 3 useful questions and answers
 - Include a section exactly titled "## The Bottom Line" after the FAQ
@@ -979,6 +1154,14 @@ Topic metadata:
 - Category: ${category}
 - Date: ${today}
 - Desk: ${researchBrief.desk}
+- Search/GEO intent: ${researchBrief.searchIntent}
+- Conversion path: ${researchBrief.conversionPath}
+
+Quick Answer targets:
+${formatPromptList(researchBrief.answerTargets)}
+
+Preferred source/evidence types:
+${formatPromptList(researchBrief.sourcePriority)}
 
 Evidence checklist:
 ${formatPromptList(researchBrief.evidenceChecklist)}
@@ -988,6 +1171,9 @@ ${formatPromptList(researchBrief.trustSignals)}
 
 Internal link inventory:
 ${formatPromptList(internalLinkList)}
+
+Prompt guide inventory:
+${formatPromptList(promptGuideList)}
 
 Special instruction for this title:
 If the title is about AMMs, explain why AMMs remain structurally important despite orderbook growth and intent-based routing. Cover liquidity fragmentation, long-tail assets, passive market making, LP economics, concentrated liquidity, MEV/arbitrage, and where AMMs are actually weak.
@@ -1061,6 +1247,9 @@ function validateGeneratedContent(content, options = {}) {
   }
   if (!/\*\*TL;DR\*\*/i.test(content)) {
     errors.push('missing bold TL;DR section');
+  }
+  if (!/^## Quick Answer\b/im.test(content) && !options.allowFallback) {
+    errors.push('missing Quick Answer section');
   }
   if (!/^## What We Checked\b/im.test(content) && !options.allowFallback) {
     errors.push('missing What We Checked section');
@@ -1344,6 +1533,7 @@ function addArticleToFile(article) {
     author: '${article.author}',
     status: '${article.status}',
     primaryKeyword: "${article.primaryKeyword.replace(/"/g, '\\"')}",
+    tags: ${JSON.stringify(article.tags || [])},
     wordCount: ${article.wordCount},
   },`;
   

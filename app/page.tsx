@@ -17,7 +17,7 @@ const sortedArticles = [...articles].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 );
 
-const featuredArticles = sortedArticles.slice(0, 7).map((article) => ({
+const featuredArticles = sortedArticles.slice(0, 10).map((article) => ({
   id: article.id,
   category:
     article.category === "crypto"
@@ -39,7 +39,8 @@ const featuredArticles = sortedArticles.slice(0, 7).map((article) => ({
 
 const leadArticle = featuredArticles[0];
 const secondaryArticles = featuredArticles.slice(1, 4);
-const briefingArticles = featuredArticles.slice(4, 7);
+const latestArticles = featuredArticles.slice(4, 7);
+const briefingArticles = featuredArticles.slice(7, 10);
 
 const topics = [
   {
@@ -188,7 +189,7 @@ export default function IndexPage() {
               </div>
 
               <div className="grid gap-5 md:grid-cols-3">
-                {secondaryArticles.map((article) => (
+                {latestArticles.map((article) => (
                   <TrackedLink
                     key={article.id}
                     href={`/blog/${article.slug}`}
