@@ -342,8 +342,8 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
           </div>
 
           {showRescue && (
-            <div className="mt-5 border border-emerald-200 bg-emerald-50 p-4 lg:hidden">
-              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700">Before you leave</p>
+            <div className="mt-5 border border-red-900/20 bg-red-50 p-4 lg:hidden">
+              <p className="text-xs font-semibold uppercase tracking-wider text-red-800">Before you leave</p>
               <p className="mt-1 text-sm text-stone-700">Keep your progress with one low-friction next step.</p>
               <button
                 type="button"
@@ -411,8 +411,8 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
       )}
 
       {showRescue && (
-        <aside className="fixed bottom-6 left-6 z-30 hidden w-80 border border-emerald-200 bg-white p-4 shadow-xl shadow-stone-200/60 lg:block">
-          <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700">Before you exit</p>
+        <aside className="fixed bottom-6 left-6 z-30 hidden w-80 border border-red-900/20 bg-white p-4 shadow-xl shadow-stone-200/60 lg:block">
+          <p className="text-xs font-semibold uppercase tracking-wider text-red-800">Before you exit</p>
           <p className="mt-2 text-sm text-stone-700">Keep this session useful with one low-commitment follow-up.</p>
           <button
             type="button"

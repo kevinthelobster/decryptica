@@ -4,23 +4,23 @@ import RoiEstimator from './RoiEstimator';
 import DestinationConfidenceLayer from '@/app/components/DestinationConfidenceLayer';
 
 export const metadata: Metadata = {
-  title: 'AI Automation ROI Calculator + Workflow Strategy',
+  title: 'AI Automation Consulting | ROI, Workflow Design, and Implementation',
   description:
-    'Estimate workflow automation savings, payback period, and annual ROI. Get a practical AI automation plan tailored to your team.',
+    'Practical AI automation consulting for teams that need measurable ROI, reliable workflows, and implementation support without buying another disconnected tool.',
   keywords: [
+    'ai automation consulting',
     'ai automation roi',
     'automation roi calculator',
-    'workflow automation roi',
+    'workflow automation consulting',
     'business process automation',
-    'automation consulting',
   ],
   alternates: {
     canonical: 'https://decryptica.com/services/ai-automation-consulting',
   },
   openGraph: {
-    title: 'AI Automation ROI Calculator + Workflow Strategy',
+    title: 'AI Automation Consulting | ROI, Workflow Design, and Implementation',
     description:
-      'Estimate workflow automation savings, payback period, and annual ROI. Get a practical AI automation plan tailored to your team.',
+      'Estimate automation ROI, identify the right workflows, and turn AI experiments into reliable operational systems.',
     type: 'website',
     url: 'https://decryptica.com/services/ai-automation-consulting',
   },
@@ -35,7 +35,7 @@ const faqSchema = {
       name: 'How quickly can we see ROI?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Most teams see measurable time savings within the first month after launch.',
+        text: 'Most teams can see measurable time savings within the first month after a focused pilot launches.',
       },
     },
     {
@@ -43,7 +43,7 @@ const faqSchema = {
       name: 'Do we need to replace our existing tools?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No. The plan prioritizes integration with your current stack first.',
+        text: 'No. The consulting process starts with your current stack and only recommends new tools when the existing system cannot support the workflow safely.',
       },
     },
     {
@@ -51,7 +51,7 @@ const faqSchema = {
       name: 'What if our workflows are messy right now?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'That is common. Discovery is designed to map and simplify before automation.',
+        text: 'Messy workflows are normal. The first step is mapping ownership, handoffs, exceptions, and failure points before anything gets automated.',
       },
     },
     {
@@ -59,7 +59,7 @@ const faqSchema = {
       name: 'Is this secure for sensitive operational data?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Implementations follow least-privilege access and environment-specific controls.',
+        text: 'Implementations are planned around least-privilege access, environment-specific secrets, human approval points, and audit-friendly workflow design.',
       },
     },
   ],
@@ -68,15 +68,15 @@ const faqSchema = {
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'AI Automation ROI Consulting',
-  serviceType: 'Business process automation consulting',
+  name: 'AI Automation Consulting',
+  serviceType: 'Workflow automation consulting and implementation planning',
   provider: {
     '@type': 'Organization',
     name: 'Decryptica',
     url: 'https://decryptica.com',
   },
   description:
-    'Workflow automation assessment and implementation planning focused on measurable ROI, payback period, and operational risk reduction.',
+    'AI automation assessment, ROI modeling, workflow design, and implementation planning for teams that need practical operating leverage.',
   areaServed: 'Global',
 };
 
@@ -93,64 +93,94 @@ const breadcrumbSchema = {
     {
       '@type': 'ListItem',
       position: 2,
-      name: 'Services',
+      name: 'AI Automation Consulting',
       item: 'https://decryptica.com/services/ai-automation-consulting',
     },
   ],
 };
+
+const heroImage = {
+  src: 'https://images.unsplash.com/photo-1573164574572-cb89e39749b4?auto=format&fit=crop&w=1600&q=80',
+  alt: 'A team working together around laptops in a modern office',
+  credit: 'Photo by Christina @ wocintechchat.com on Unsplash',
+};
+
+const signals = [
+  'Manual handoffs decide too much of the customer experience.',
+  'AI tools are being tested, but nobody owns the operating system around them.',
+  'Cost, security, and workflow failure handling are unclear before rollout.',
+];
+
+const phases = [
+  {
+    label: 'Map',
+    title: 'Find the workflow worth automating first',
+    text: 'Document the current path, owner decisions, exceptions, tool handoffs, and the real cost of keeping the process manual.',
+  },
+  {
+    label: 'Model',
+    title: 'Quantify savings before build work starts',
+    text: 'Estimate time recovery, rework reduction, payback period, and the minimum implementation scope needed to prove ROI.',
+  },
+  {
+    label: 'Build',
+    title: 'Ship a small system that can be operated',
+    text: 'Turn the workflow into a durable automation with approvals, logging, fallback paths, and a clear handoff for the team.',
+  },
+];
 
 const caseStudies = [
   {
     title: 'Ops handoff stabilization',
     before: 'Fragmented handoffs and long queue times across shared inbox workflows.',
     after: 'Automated routing and SLA-aware triage with weekly error reporting.',
-    outcome: '42% cycle-time reduction and 31% fewer rework incidents in 6 weeks.',
+    outcome: '42% cycle-time reduction in 6 weeks',
   },
   {
     title: 'Revenue ops lead response',
     before: 'Manual qualification delayed high-intent lead response and follow-up.',
     after: 'Automated qualification and owner assignment with CRM sync guardrails.',
-    outcome: '2.1x faster response times and 24% increase in qualified meetings.',
+    outcome: '2.1x faster response times',
   },
   {
     title: 'Finance reconciliation',
-    before: 'Spreadsheet-heavy reconciliation with frequent end-of-month exceptions.',
+    before: 'Spreadsheet-heavy reconciliation with frequent month-end exceptions.',
     after: 'Structured ingestion, validation checks, and exception queues.',
-    outcome: '29 hours/month returned to finance team and 18% fewer correction loops.',
+    outcome: '29 hours/month returned',
   },
 ];
 
 const packages = [
   {
-    name: 'Starter',
-    summary: 'Focused automation for 1-2 workflows with fast validation.',
+    name: 'Pilot',
+    summary: 'One high-friction workflow, ROI model, implementation plan, and lightweight launch support.',
   },
   {
-    name: 'Growth',
-    summary: 'Multi-workflow rollout with analytics and iteration loop.',
+    name: 'Operating System',
+    summary: 'Multi-workflow design, tool selection, approval paths, reporting, and process owner handoff.',
   },
   {
-    name: 'Scale',
-    summary: 'Cross-team orchestration, governance, and continuous optimization.',
+    name: 'Scale Support',
+    summary: 'Cross-team workflow governance, measurement cadence, failure reviews, and backlog prioritization.',
   },
 ];
 
 const faqs = [
   {
     question: 'Who owns automation after launch?',
-    answer: 'You keep ownership. We provide documentation, guardrails, and handoff support.',
+    answer: 'Your team does. The work includes documentation, operating notes, and clear process ownership so the system does not depend on a vendor staying in the loop forever.',
   },
   {
-    question: 'How much internal time will this require?',
-    answer: 'Typically a small weekly commitment from one process owner and one stakeholder.',
+    question: 'How much internal time does this require?',
+    answer: 'Usually one process owner and one stakeholder for a short weekly review. The heavier lift is clarifying decisions, exceptions, and approval rules.',
   },
   {
     question: 'Can we start with one process?',
-    answer: 'Yes. Starting with one high-impact process is usually the fastest path to proof.',
+    answer: 'Yes. That is the preferred path. A focused pilot gives you proof, cost clarity, and fewer surprises than a broad automation program.',
   },
   {
     question: 'What happens if ROI is lower than expected?',
-    answer: 'We re-prioritize based on observed data and adjust the workflow roadmap.',
+    answer: 'The roadmap changes. The goal is not to force automation everywhere; it is to identify the workflows where automation produces measurable leverage.',
   },
 ];
 
@@ -161,191 +191,183 @@ export default function AIAutomationConsultingPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <div className="min-h-screen bg-white">
-        <section className="relative overflow-hidden border-b border-stone-200/80">
-          <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/50 via-zinc-950 to-zinc-950" />
-          <div className="absolute left-1/2 top-0 h-[480px] w-[860px] -translate-x-1/2  bg-red-900/5 blur-[130px]" />
-          <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-20">
-            <p className="inline-flex  border border-red-900/20 bg-red-900/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-red-700">
-              AI Automation ROI
-            </p>
-            <h1 className="mt-6 max-w-4xl font-display text-4xl font-bold leading-tight text-stone-950 md:text-6xl">
-              See Your AI Automation ROI Before You Spend a Dollar
-            </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-stone-700">
-              Estimate monthly savings, payback period, and annual ROI from your current workflows, then get a
-              practical rollout plan.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <TrackedLink
-                href="#roi-calculator"
-                className="btn-primary"
-                eventType="cta_click"
-                metadata={{ location: 'automation_roi_hero', cta: 'book_automation_audit' }}
-              >
-                Book Automation Audit
-              </TrackedLink>
-              <TrackedLink
-                href="#proof"
-                className="btn-secondary"
-                eventType="cta_click"
-                metadata={{ location: 'automation_roi_hero', cta: 'see_roi_case_studies' }}
-              >
-                See 3 ROI Case Studies
-              </TrackedLink>
+      <div className="min-h-screen overflow-x-hidden bg-white text-stone-950">
+        <section className="border-b border-stone-200 bg-white">
+          <div className="mx-auto max-w-7xl px-5 py-5">
+            <div className="flex min-w-0 flex-col gap-2 border-y border-stone-900 py-3 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-stone-700 sm:flex-row sm:items-center sm:justify-between">
+              <span>AI automation consulting</span>
+              <span>ROI / workflow design / implementation</span>
+              <span>Built for operators</span>
             </div>
-            <p className="mt-6 max-w-3xl text-sm text-stone-600">
-              Trusted by operations and growth teams to reduce manual workload, rework, and process bottlenecks.
-            </p>
+
+            <div className="grid min-w-0 gap-8 py-8 lg:grid-cols-[minmax(0,1.12fr)_minmax(19rem,0.88fr)] lg:items-end">
+              <div className="min-w-0">
+                <p className="mb-3 text-xs font-black uppercase tracking-[0.16em] text-red-800">
+                  Implementation support
+                </p>
+                <h1 className="max-w-5xl break-words font-serif text-4xl font-black leading-[0.98] text-stone-950 sm:text-5xl md:text-7xl">
+                  Turn messy workflows into measurable AI automation.
+                </h1>
+                <p className="mt-5 max-w-3xl break-words border-l-4 border-red-800 pl-4 text-base leading-7 text-stone-700 sm:text-lg sm:leading-8">
+                  Decryptica helps teams pick the right automation opportunities, model the return, and ship systems
+                  that can survive real operations.
+                </p>
+                <div className="mt-7 flex flex-wrap items-center gap-3">
+                  <TrackedLink
+                    href="#roi-calculator"
+                    className="btn-primary"
+                    eventType="cta_click"
+                    metadata={{ location: 'automation_consulting_hero', cta: 'estimate_roi' }}
+                  >
+                    Estimate ROI
+                  </TrackedLink>
+                  <TrackedLink
+                    href="#process"
+                    className="btn-secondary"
+                    eventType="cta_click"
+                    metadata={{ location: 'automation_consulting_hero', cta: 'view_process' }}
+                  >
+                    View Process
+                  </TrackedLink>
+                </div>
+              </div>
+
+              <aside className="min-w-0 border-t border-stone-200 pt-5 lg:border-l lg:border-t-0 lg:pl-6 lg:pt-0">
+                <div className="overflow-hidden border border-stone-200 bg-white">
+                  <img src={heroImage.src} alt={heroImage.alt} className="aspect-[4/3] w-full object-cover" />
+                  <p className="border-t border-stone-200 px-3 py-2 text-xs text-stone-500">{heroImage.credit}</p>
+                </div>
+                <div className="mt-5 divide-y divide-stone-200 border-y border-stone-200">
+                  {signals.map((signal) => (
+                    <p key={signal} className="py-3 text-sm font-medium leading-6 text-stone-700">
+                      {signal}
+                    </p>
+                  ))}
+                </div>
+              </aside>
+            </div>
           </div>
         </section>
 
         <DestinationConfidenceLayer pageType="consulting" />
 
-        <section className="mx-auto grid max-w-7xl gap-8 px-6 py-14 lg:grid-cols-3">
-          <article className="card-elevated p-6">
-            <h2 className="font-display text-xl font-semibold text-stone-950">The hidden cost of staying manual</h2>
-            <ul className="mt-4 space-y-2 text-sm text-stone-700">
-              <li>Manual handoffs drain high-value team time every week.</li>
-              <li>Human error and rework create avoidable operational risk.</li>
-              <li>Slow workflows delay revenue and weaken customer experience.</li>
-            </ul>
-            <p className="mt-4 text-sm text-stone-600">
-              Use the ROI calculator below to estimate your recoverable time and cost.
-            </p>
-          </article>
-          <article className="card-elevated p-6 lg:col-span-2">
-            <h2 className="font-display text-xl font-semibold text-stone-950">A practical 3-step path to ROI</h2>
-            <div className="mt-4 grid gap-4 md:grid-cols-3">
-              <div className=" border border-stone-300 bg-white/70 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Discover</p>
-                <p className="mt-2 text-sm text-stone-700">
-                  Identify repetitive, high-friction workflows and baseline current cost.
-                </p>
-              </div>
-              <div className=" border border-stone-300 bg-white/70 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Automate</p>
-                <p className="mt-2 text-sm text-stone-700">
-                  Deploy the smallest set of automation changes that produces fast payback.
-                </p>
-              </div>
-              <div className=" border border-stone-300 bg-white/70 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Measure</p>
-                <p className="mt-2 text-sm text-stone-700">
-                  Track time saved, error reduction, and financial impact month over month.
-                </p>
-              </div>
+        <section id="process" className="border-b border-stone-200 bg-stone-50">
+          <div className="mx-auto max-w-7xl px-5 py-12">
+            <div className="max-w-3xl">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-red-800">How the work runs</p>
+              <h2 className="mt-2 font-serif text-3xl font-black leading-tight text-stone-950 md:text-5xl">
+                Start with the process, then choose the AI.
+              </h2>
+              <p className="mt-3 text-base leading-7 text-stone-700">
+                The expensive mistake is buying tools before the workflow is clear. This engagement starts with the
+                operating reality: who decides, where work stalls, what can fail, and what return would justify the build.
+              </p>
             </div>
-          </article>
+
+            <div className="mt-8 grid gap-5 md:grid-cols-3">
+              {phases.map((phase) => (
+                <article key={phase.label} className="border border-stone-300 bg-white p-5">
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-red-800">{phase.label}</p>
+                  <h3 className="mt-3 font-serif text-2xl font-black leading-tight text-stone-950">{phase.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-stone-700">{phase.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
         </section>
 
-        <div className="mx-auto max-w-7xl px-6 pb-12">
+        <section className="mx-auto grid max-w-7xl gap-8 px-5 py-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+          <div className="min-w-0">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-red-800">Right-fit engagement</p>
+            <h2 className="mt-2 font-serif text-3xl font-black leading-tight text-stone-950 md:text-5xl">
+              Practical consulting, not a generic AI pitch.
+            </h2>
+            <p className="mt-3 text-base leading-7 text-stone-700">
+              The output is a prioritized automation plan with ROI math, implementation scope, ownership notes, and
+              failure handling. If the numbers do not justify automation, that should be obvious before build time.
+            </p>
+          </div>
+          <div className="grid gap-4">
+            {packages.map((pkg) => (
+              <article key={pkg.name} className="border border-stone-300 bg-white p-5">
+                <h3 className="font-serif text-2xl font-black text-stone-950">{pkg.name}</h3>
+                <p className="mt-2 text-sm leading-6 text-stone-700">{pkg.summary}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <div className="mx-auto max-w-7xl px-5 pb-12">
           <RoiEstimator />
         </div>
 
-        <section id="proof" className="mx-auto max-w-7xl px-6 py-10">
-          <h2 className="font-display text-3xl font-bold text-stone-950">Real teams, measurable gains</h2>
-          <p className="mt-2 max-w-3xl text-stone-700">
-            Operators and founders choose this approach because it produces visible ROI without massive process
-            disruption.
-          </p>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {caseStudies.map((study) => (
-              <article key={study.title} className="card-elevated p-5">
-                <h3 className="font-display text-lg font-semibold text-stone-950">{study.title}</h3>
-                <p className="mt-3 text-sm text-stone-600">Before: {study.before}</p>
-                <p className="mt-2 text-sm text-stone-600">After: {study.after}</p>
-                <p className="mt-3 text-sm font-semibold text-emerald-300">{study.outcome}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-7xl px-6 py-10">
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
-            <article className="card-elevated p-6">
-              <h2 className="font-display text-2xl font-bold text-stone-950">Choose the right implementation depth</h2>
-              <div className="mt-5 grid gap-4 md:grid-cols-3">
-                {packages.map((pkg) => (
-                  <div key={pkg.name} className=" border border-stone-300 bg-white/70 p-4">
-                    <h3 className="font-display text-lg font-semibold text-stone-950">{pkg.name}</h3>
-                    <p className="mt-2 text-sm text-stone-700">{pkg.summary}</p>
-                  </div>
-                ))}
+        <section id="proof" className="border-y border-stone-200 bg-stone-50">
+          <div className="mx-auto max-w-7xl px-5 py-12">
+            <div className="mb-6 flex min-w-0 flex-col gap-3 border-b-2 border-stone-900 pb-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-red-800">Proof points</p>
+                <h2 className="mt-2 font-serif text-3xl font-black text-stone-950">Real teams, measurable gains</h2>
               </div>
-            </article>
-            <article className="card-elevated p-6">
-              <h2 className="font-display text-2xl font-bold text-stone-950">Is this a fit for your team?</h2>
-              <ul className="mt-4 space-y-2 text-sm text-stone-700">
-                <li>Repeated manual workflows with clear process ownership.</li>
-                <li>Near-term efficiency or throughput goals tied to measurable outcomes.</li>
-                <li>Willingness to pilot one high-impact process before broad rollout.</li>
-              </ul>
-            </article>
+              <p className="max-w-2xl text-sm leading-6 text-stone-700">
+                These examples show the type of operational result this work targets: faster handoffs, fewer errors,
+                clearer ownership, and a smaller manual workload.
+              </p>
+            </div>
+            <div className="grid gap-5 md:grid-cols-3">
+              {caseStudies.map((study) => (
+                <article key={study.title} className="border border-stone-300 bg-white p-5">
+                  <h3 className="font-serif text-2xl font-black leading-tight text-stone-950">{study.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-stone-600">Before: {study.before}</p>
+                  <p className="mt-2 text-sm leading-6 text-stone-600">After: {study.after}</p>
+                  <p className="mt-4 border-t border-stone-200 pt-3 text-sm font-black uppercase tracking-[0.08em] text-red-800">
+                    {study.outcome}
+                  </p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 py-10">
-          <h2 className="font-display text-3xl font-bold text-stone-950">FAQ</h2>
+        <section className="mx-auto max-w-7xl px-5 py-12">
+          <h2 className="border-b-2 border-stone-900 pb-2 font-serif text-3xl font-black text-stone-950">FAQ</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             {faqs.map((faq) => (
-              <article key={faq.question} className="card-elevated p-5">
-                <h3 className="font-display text-lg font-semibold text-stone-950">{faq.question}</h3>
-                <p className="mt-2 text-sm text-stone-700">{faq.answer}</p>
+              <article key={faq.question} className="border border-stone-300 bg-white p-5">
+                <h3 className="font-serif text-xl font-black text-stone-950">{faq.question}</h3>
+                <p className="mt-2 text-sm leading-6 text-stone-700">{faq.answer}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 pb-20 pt-10">
-          <div className=" border border-red-900/20 bg-gradient-to-br from-zinc-900 to-indigo-950/40 p-7 md:p-10">
-            <h2 className="font-display text-3xl font-bold text-stone-950">Ready to quantify your automation upside?</h2>
-            <p className="mt-2 max-w-3xl text-stone-700">
-              Share a few details and we will send a practical ROI-backed automation plan.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+        <section className="border-t border-stone-200 bg-stone-950 text-white">
+          <div className="mx-auto grid max-w-7xl gap-6 px-5 py-12 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-red-300">Next step</p>
+              <h2 className="mt-2 max-w-3xl font-serif text-3xl font-black leading-tight md:text-5xl">
+                Quantify the upside before the build.
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-stone-300">
+                Use the calculator, then send the workflow details needed for a practical automation plan.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 md:justify-end">
               <TrackedLink
                 href="#roi-calculator"
-                className="btn-primary"
+                className="border border-white bg-white px-5 py-3 text-sm font-bold text-stone-950 hover:bg-stone-200"
                 eventType="cta_click"
-                metadata={{ location: 'automation_roi_footer', cta: 'request_automation_plan' }}
+                metadata={{ location: 'automation_consulting_footer', cta: 'estimate_roi' }}
               >
-                Get My Automation Plan
+                Estimate ROI
               </TrackedLink>
               <TrackedLink
                 href="/contact"
-                className="btn-secondary"
+                className="border border-stone-500 px-5 py-3 text-sm font-bold text-white hover:border-white"
                 eventType="cta_click"
-                metadata={{ location: 'automation_roi_footer', cta: 'contact_fallback' }}
+                metadata={{ location: 'automation_consulting_footer', cta: 'contact_fallback' }}
               >
-                Contact Us
+                Contact
               </TrackedLink>
-            </div>
-            <div className="mt-7  border border-stone-300 bg-white/70 p-4">
-              <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Related resources</p>
-              <div className="mt-3 flex flex-wrap gap-4 text-sm text-red-700">
-                <TrackedLink
-                  href="/blog/the-roi-of-business-automation-real-numbers"
-                  eventType="cta_click"
-                  metadata={{ location: 'automation_roi_internal_links', cta: 'roi_article' }}
-                >
-                  ROI methodology
-                </TrackedLink>
-                <TrackedLink
-                  href="/blog/the-human-in-the-loop-problem-for-automation"
-                  eventType="cta_click"
-                  metadata={{ location: 'automation_roi_internal_links', cta: 'workflow_risk_article' }}
-                >
-                  Workflow risk guide
-                </TrackedLink>
-                <TrackedLink
-                  href="/blog/n8n-workflow-automation"
-                  eventType="cta_click"
-                  metadata={{ location: 'automation_roi_internal_links', cta: 'implementation_patterns_article' }}
-                >
-                  Automation implementation patterns
-                </TrackedLink>
-              </div>
             </div>
           </div>
         </section>

@@ -62,7 +62,21 @@ const ALLOWED_TYPES = new Set([
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    let body: {
+      type?: string;
+      timestamp?: string;
+      sessionId?: string;
+      anonymousId?: string;
+      userId?: string;
+      articleSlug?: string;
+      metadata?: Record<string, string | number | boolean>;
+    };
+
+    try {
+      body = await request.json();
+    } catch {
+      return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+    }
 
     if (!body.type || !body.sessionId) {
       return NextResponse.json({ error: 'Missing required fields: type, sessionId' }, { status: 400 });

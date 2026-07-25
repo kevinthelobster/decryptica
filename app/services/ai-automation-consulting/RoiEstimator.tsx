@@ -161,7 +161,7 @@ export default function RoiEstimator() {
   }
 
   return (
-    <section id="roi-calculator" className=" border border-stone-200 bg-white p-6 md:p-8">
+    <section id="roi-calculator" className="border border-stone-300 bg-white p-5 md:p-8">
       <div className="mb-6">
         <p className="text-xs font-semibold uppercase tracking-wider text-red-800">Automation ROI calculator</p>
         <h2 className="mt-2 font-display text-2xl font-bold text-stone-950 md:text-3xl">Calculate your automation upside</h2>
@@ -233,12 +233,12 @@ export default function RoiEstimator() {
           </button>
         </div>
 
-        <div className=" border border-stone-300 bg-white/80 p-5">
+        <div className="border border-stone-300 bg-stone-50 p-5">
           <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Result summary</p>
           <div className="mt-4 space-y-4">
             <div>
               <p className="text-sm text-stone-600">Estimated monthly savings</p>
-              <p className="text-2xl font-bold text-emerald-400">${Math.round(metrics.monthlySavings).toLocaleString()}</p>
+              <p className="text-2xl font-bold text-red-800">${Math.round(metrics.monthlySavings).toLocaleString()}</p>
             </div>
             <div>
               <p className="text-sm text-stone-600">Estimated payback period</p>
@@ -258,7 +258,7 @@ export default function RoiEstimator() {
         </div>
       </div>
 
-      <section id="quick-intake" className="mt-8  border border-red-900/25 bg-red-900/5 p-5">
+      <section id="quick-intake" className="mt-8 border border-red-900/25 bg-red-50 p-5">
         <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Quick intake</p>
         <h3 className="mt-2 font-display text-xl font-semibold text-stone-950">Save context before full request</h3>
         <p className="mt-1 text-sm text-stone-700">
@@ -293,14 +293,14 @@ export default function RoiEstimator() {
         </form>
 
         {quickIntakeMessage && (
-          <p className={`mt-3 text-sm ${quickIntakeStatus === 'error' ? 'text-red-300' : 'text-emerald-300'}`}>
+          <p className={`mt-3 text-sm ${quickIntakeStatus === 'error' ? 'text-red-800' : 'text-stone-700'}`}>
             {quickIntakeMessage}
           </p>
         )}
       </section>
 
       {submitted && (
-        <form className="mt-8  border border-stone-300 bg-white/80 p-5" onSubmit={handleLeadSubmit}>
+        <form className="mt-8 border border-stone-300 bg-stone-50 p-5" onSubmit={handleLeadSubmit}>
           <h3 className="font-display text-xl font-semibold text-stone-950">Get My Automation Plan</h3>
           <p className="mt-1 text-sm text-stone-600">
             Share a few details and we will send a practical ROI-backed automation plan.
@@ -348,7 +348,7 @@ export default function RoiEstimator() {
           </div>
 
           {leadMessage && (
-            <p className={`mt-3 text-sm ${leadStatus === 'error' ? 'text-red-300' : 'text-emerald-300'}`}>
+            <p className={`mt-3 text-sm ${leadStatus === 'error' ? 'text-red-800' : 'text-stone-700'}`}>
               {leadMessage}
             </p>
           )}
