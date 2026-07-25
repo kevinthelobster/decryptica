@@ -98,6 +98,16 @@ function rowPath(row) {
   return row.requestPath || row.route || row.path || row.name || row.key || '';
 }
 
+function normalizePath(value) {
+  if (!value || typeof value !== 'string') return '';
+  try {
+    const url = value.startsWith('http') ? new URL(value) : null;
+    return url ? url.pathname : value.split('?')[0];
+  } catch {
+    return value.split('?')[0];
+  }
+}
+
 function readState() {
   try {
     return JSON.parse(fs.readFileSync(STATE_FILE, 'utf8'));
@@ -171,10 +181,11 @@ async function main() {
   const previousStart = new Date(now.getTime() - options.hours * 2 * 60 * 60 * 1000);
   const common = { projectId, teamId };
 
-  const [currentRaw, previousRaw, topRaw, watchedRaw] = await Promise.all([
+  const [currentRaw, previousRaw, topRaw, previousTopRaw, watchedRaw] = await Promise.all([
     query(token, 'visits/count', { ...common, since: iso(currentStart), until: iso(now) }),
     query(token, 'visits/count', { ...common, since: iso(previousStart), until: iso(currentStart) }),
     query(token, 'visits/aggregate', { ...common, since: iso(currentStart), until: iso(now), by: 'requestPath', limit: 10 }),
+    query(token, 'visits/aggregate', { ...common, since: iso(previousStart), until: iso(currentStart), by: 'requestPath', limit: 25 }),
     Promise.all(WATCHED_PATHS.map(async (requestPath) => ({
       requestPath,
       count: numberFromResponse(await query(token, 'visits/count', {
@@ -190,10 +201,15 @@ async function main() {
   const previousViews = numberFromResponse(previousRaw);
   const change = pctChange(currentViews, previousViews);
   const topPages = rowsFromResponse(topRaw)
-    .map((row) => ({ path: rowPath(row), views: rowMetric(row) }))
+    .map((row) => ({ path: normalizePath(rowPath(row)), views: rowMetric(row) }))
     .filter((row) => row.path)
     .sort((a, b) => b.views - a.views)
     .slice(0, 5);
+  const previousPageViews = new Map(
+    rowsFromResponse(previousTopRaw)
+      .map((row) => [normalizePath(rowPath(row)), rowMetric(row)])
+      .filter(([requestPath]) => requestPath)
+  );
 
   const state = readState();
   const alerts = [];
@@ -228,12 +244,28 @@ async function main() {
     }
   }
 
+  for (const page of topPages) {
+    if (!page.path.startsWith('/blog/')) continue;
+
+    const previous = previousPageViews.get(page.path) || state.articlePages?.[page.path]?.views || 0;
+    const articleChange = pctChange(page.views, previous);
+    if (page.views >= options.minViews && articleChange >= options.spikePct) {
+      const alertKey = `article-upgrade:${page.path}`;
+      const signature = `${page.views}:${previous}:${Math.round(articleChange)}`;
+      if (shouldSendAlert(state, alertKey, signature, now, 24)) {
+        alerts.push(`ARTICLE_UPGRADE: ${page.path} is getting unusual traffic: ${page.views} views in the last ${options.hours}h, up ${Math.round(articleChange)}% vs usual. Upgrade it like the Solana RPC page: verify freshness, expand the answer, improve recommendations/CTAs, add internal links, avoid thin or placeholder content, build, push to main, and verify live.`);
+        alertState[alertKey] = { signature, sentAt: iso(now) };
+      }
+    }
+  }
+
   writeState({
     checkedAt: iso(now),
     hours: options.hours,
     totalViews: currentViews,
     previousViews,
     topPages,
+    articlePages: Object.fromEntries(topPages.filter((page) => page.path.startsWith('/blog/')).map((page) => [page.path, { views: page.views }])),
     watched: Object.fromEntries(watchedRaw.map((page) => [page.requestPath, { count: page.count }])),
     alerts: alertState,
   });
