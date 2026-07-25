@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import SeoCwvTracker from "./components/SeoCwvTracker";
 import VercelAnalytics from "./components/VercelAnalytics";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getOrganizationSchema, getWebsiteSchema, jsonLdScript } from "./lib/schema";
 
 const inter = Inter({ 
@@ -63,6 +64,7 @@ export default function RootLayout({
         {/* SEO CWV & Telemetry Collector */}
         <SeoCwvTracker />
         <VercelAnalytics />
+        <SpeedInsights />
 
         <footer className="border-t border-stone-200 bg-white">
           <div className="mx-auto max-w-7xl px-5 py-12">
