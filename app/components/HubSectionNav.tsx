@@ -90,7 +90,10 @@ export default function HubSectionNav({
     return null;
   }
 
-  const mobileOffsetClass = surface === 'article' ? 'bottom-24' : 'bottom-5';
+  const mobilePositionClass = surface === 'article'
+    ? 'bottom-5 right-4'
+    : 'bottom-5 left-1/2 -translate-x-1/2';
+  const mobileButtonLabel = surface === 'article' ? 'Jump' : 'Jump to section';
 
   return (
     <>
@@ -117,15 +120,15 @@ export default function HubSectionNav({
         </ul>
       </nav>
 
-      <div className={`md:hidden fixed ${mobileOffsetClass} left-1/2 z-40 -translate-x-1/2`}>
+      <div className={`md:hidden fixed ${mobilePositionClass} z-40`}>
         <button
           type="button"
           onClick={() => setSheetOpen((open) => !open)}
-          className="inline-flex items-center gap-2 border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-stone-700 shadow-lg shadow-stone-200/60"
+          className="inline-flex h-11 items-center gap-2 border border-stone-300 bg-white px-4 text-sm font-medium text-stone-700 shadow-lg shadow-stone-200/60"
           aria-expanded={sheetOpen}
           aria-controls="hub-section-sheet"
         >
-          Jump to section
+          {mobileButtonLabel}
         </button>
       </div>
 

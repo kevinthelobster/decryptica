@@ -49,26 +49,26 @@ export default function MobileProgressSheet({ articleSlug, category, headings }:
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="fixed bottom-24 left-4 z-20 inline-flex h-10 items-center gap-2 rounded-full border border-zinc-700 bg-zinc-950/95 px-4 text-xs font-semibold uppercase tracking-wider text-zinc-300 shadow-lg shadow-black/30 backdrop-blur lg:hidden"
+        className="fixed bottom-5 left-4 z-40 inline-flex h-11 items-center gap-2 border border-stone-300 bg-white px-3 text-xs font-semibold uppercase tracking-wider text-stone-700 shadow-lg shadow-stone-200/70 backdrop-blur lg:hidden"
       >
         Sections
-        <span className="rounded-full bg-zinc-800 px-2 py-1 text-[10px] text-cyan-300">{progress}%</span>
+        <span className="bg-red-900 px-2 py-1 text-[10px] text-white">{progress}%</span>
       </button>
 
       {open && (
         <div className="fixed inset-0 z-40 bg-black/60 lg:hidden" onClick={() => setOpen(false)}>
           <div
-            className="absolute inset-x-0 bottom-0 max-h-[68vh] overflow-y-auto rounded-t-3xl border border-zinc-800 bg-zinc-950 p-5"
+            className="absolute inset-x-0 bottom-0 max-h-[68vh] overflow-y-auto border-t border-stone-300 bg-white p-5"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-zinc-700" />
-            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Jump to section</p>
+            <div className="mx-auto mb-4 h-1.5 w-12 bg-stone-300" />
+            <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Jump to section</p>
             <div className="mt-4 space-y-3">
               {headings.map((heading) => (
                 <TrackedLink
                   key={heading.id}
                   href={`#${heading.id}`}
-                  className="block rounded-xl border border-zinc-800 px-4 py-3 text-sm text-zinc-200 hover:border-cyan-400/40 hover:text-cyan-200"
+                  className="block border border-stone-200 bg-neutral-50 px-4 py-3 text-sm text-stone-700 hover:border-red-900/30 hover:text-red-900"
                   eventType="toc_jump"
                   articleSlug={articleSlug}
                   metadata={{
@@ -85,7 +85,7 @@ export default function MobileProgressSheet({ articleSlug, category, headings }:
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="mt-5 inline-flex w-full items-center justify-center rounded-xl border border-zinc-700 px-4 py-2.5 text-sm text-zinc-300 hover:border-zinc-500 hover:text-white"
+              className="mt-5 inline-flex w-full items-center justify-center border border-stone-300 px-4 py-2.5 text-sm text-stone-700 hover:border-red-900/40 hover:text-red-900"
             >
               Close
             </button>
