@@ -17,7 +17,12 @@ dist/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+logs/
+screenshots/
+artifacts/ops/
+artifacts/qa/
 artifacts/newsletter/
+data/kpi/
 
 # Local env files
 .env
