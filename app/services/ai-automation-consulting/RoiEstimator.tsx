@@ -123,7 +123,7 @@ export default function RoiEstimator() {
       }
 
       setLeadStatus('success');
-      setLeadMessage('Thanks. Your automation plan request is in queue. Expect a response within 1 business day.');
+      setLeadMessage('Thanks. Your interest was sent over. Expect a response within 1 business day.');
     } catch (error) {
       setLeadStatus('error');
       setLeadMessage(error instanceof Error ? error.message : 'Failed to submit request. Please try again.');
@@ -140,7 +140,7 @@ export default function RoiEstimator() {
     }
 
     setQuickIntakeStatus('success');
-    setQuickIntakeMessage('Quick intake saved. Continue below to request your full plan.');
+    setQuickIntakeMessage('Quick intake saved. Add your contact info below and send it over.');
 
     setForm((prev) => ({
       ...prev,
@@ -166,7 +166,7 @@ export default function RoiEstimator() {
         <p className="text-xs font-semibold uppercase tracking-wider text-red-800">Automation ROI calculator</p>
         <h2 className="mt-2 font-display text-2xl font-bold text-stone-950 md:text-3xl">Calculate your automation upside</h2>
         <p className="mt-2 max-w-3xl text-stone-700">
-          Estimate monthly savings, payback period, and annual ROI from your current workflows.
+          Estimate the upside, then send your project interest directly from this page.
         </p>
       </div>
 
@@ -259,10 +259,10 @@ export default function RoiEstimator() {
       </div>
 
       <section id="quick-intake" className="mt-8 border border-red-900/25 bg-red-50 p-5">
-        <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Quick intake</p>
-        <h3 className="mt-2 font-display text-xl font-semibold text-stone-950">Save context before full request</h3>
+        <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Project interest</p>
+        <h3 className="mt-2 font-display text-xl font-semibold text-stone-950">Tell us what you want automated</h3>
         <p className="mt-1 text-sm text-stone-700">
-          Share three details now. You can complete the full contact flow after this step.
+          Three quick fields unlock the contact form so the lead arrives with useful context attached.
         </p>
 
         <form className="mt-4 grid gap-4 md:grid-cols-3" onSubmit={handleQuickIntakeSubmit}>
@@ -288,7 +288,7 @@ export default function RoiEstimator() {
             onChange={(event) => setQuickIntake((prev) => ({ ...prev, targetOutcome: event.target.value }))}
           />
           <button type="submit" className="btn-secondary w-fit">
-            Continue to Full Plan Request
+            Continue
           </button>
         </form>
 
@@ -301,9 +301,9 @@ export default function RoiEstimator() {
 
       {submitted && (
         <form className="mt-8 border border-stone-300 bg-stone-50 p-5" onSubmit={handleLeadSubmit}>
-          <h3 className="font-display text-xl font-semibold text-stone-950">Get My Automation Plan</h3>
+          <h3 className="font-display text-xl font-semibold text-stone-950">Email My Interest</h3>
           <p className="mt-1 text-sm text-stone-600">
-            Share a few details and we will send a practical ROI-backed automation plan.
+            Add your name and email. This creates a lead record and sends the project interest over immediately.
           </p>
 
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -340,10 +340,10 @@ export default function RoiEstimator() {
 
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <button disabled={leadStatus === 'loading'} className="btn-primary" type="submit">
-              {leadStatus === 'loading' ? 'Submitting...' : 'Request Automation Plan'}
+              {leadStatus === 'loading' ? 'Sending...' : 'Email My Interest'}
             </button>
             <p className="text-xs text-stone-500">
-              Response within 1 business day. No generic pitch deck, only workflow-specific recommendations.
+              Response within 1 business day. The lead details stay structured for future referral or agency handoff.
             </p>
           </div>
 

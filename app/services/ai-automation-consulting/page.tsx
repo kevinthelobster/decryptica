@@ -105,6 +105,9 @@ const heroImage = {
   credit: 'Photo by Christina @ wocintechchat.com on Unsplash',
 };
 
+const directEmailHref =
+  'mailto:brian@renegadereels.com?subject=Automation%20project%20interest%20from%20Decryptica&body=I%27m%20interested%20in%20automation%20help.%0A%0AWorkflow%20I%20want%20to%20improve%3A%0ATeam%20size%3A%0ACurrent%20tools%3A%0ABest%20way%20to%20reach%20me%3A';
+
 const signals = [
   'Manual handoffs decide too much of the customer experience.',
   'AI tools are being tested, but nobody owns the operating system around them.',
@@ -214,12 +217,12 @@ export default function AIAutomationConsultingPage() {
                 </p>
                 <div className="mt-7 flex flex-wrap items-center gap-3">
                   <TrackedLink
-                    href="#roi-calculator"
+                    href="#quick-intake"
                     className="btn-primary"
                     eventType="cta_click"
-                    metadata={{ location: 'automation_consulting_hero', cta: 'estimate_roi' }}
+                    metadata={{ location: 'automation_consulting_hero', cta: 'email_interest' }}
                   >
-                    Estimate ROI
+                    Email My Interest
                   </TrackedLink>
                   <TrackedLink
                     href="#process"
@@ -348,25 +351,25 @@ export default function AIAutomationConsultingPage() {
                 Quantify the upside before the build.
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-stone-300">
-                Use the calculator, then send the workflow details needed for a practical automation plan.
+                Push one button, share the workflow details, and the interest gets sent over with enough context to route later.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 md:justify-end">
               <TrackedLink
-                href="#roi-calculator"
+                href="#quick-intake"
                 className="border border-white bg-white px-5 py-3 text-sm font-bold text-stone-950 hover:bg-stone-200"
                 eventType="cta_click"
-                metadata={{ location: 'automation_consulting_footer', cta: 'estimate_roi' }}
+                metadata={{ location: 'automation_consulting_footer', cta: 'email_interest' }}
               >
-                Estimate ROI
+                Email My Interest
               </TrackedLink>
               <TrackedLink
-                href="/contact"
+                href={directEmailHref}
                 className="border border-stone-500 px-5 py-3 text-sm font-bold text-white hover:border-white"
                 eventType="cta_click"
-                metadata={{ location: 'automation_consulting_footer', cta: 'contact_fallback' }}
+                metadata={{ location: 'automation_consulting_footer', cta: 'direct_email' }}
               >
-                Contact
+                Email Brian Directly
               </TrackedLink>
             </div>
           </div>

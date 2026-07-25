@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { kv } from '@vercel/kv';
 
 const TTL_90_DAYS = 60 * 60 * 24 * 90;
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 type AutomationAuditLead = {
   name: string;
@@ -61,10 +63,50 @@ export async function POST(request: NextRequest) {
     const day = ts.split('T')[0];
     await kv.incr(`lead:counter:automation_audit:${day}`);
     await kv.expire(`lead:counter:automation_audit:${day}`, TTL_90_DAYS);
+    await notifyLead({ ...payload, createdAt: ts });
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
     console.error('[Automation Audit API] POST error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
+
+async function notifyLead(payload: AutomationAuditLead & { createdAt: string }): Promise<void> {
+  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+    console.warn('[Automation Audit API] Telegram notification skipped: missing bot token or chat ID');
+    return;
+  }
+
+  const message = [
+    'New Decryptica automation lead',
+    '',
+    `Name: ${payload.name}`,
+    `Email: ${payload.email}`,
+    `Team size: ${payload.teamSize}`,
+    `Workflow: ${payload.workflow}`,
+    `Current stack / outcome: ${payload.stack}`,
+    payload.monthlySavings !== undefined ? `Estimated monthly savings: $${payload.monthlySavings.toLocaleString()}` : null,
+    payload.annualRoi !== undefined ? `Projected annual ROI: ${payload.annualRoi}%` : null,
+    `Submitted: ${payload.createdAt}`,
+  ].filter(Boolean).join('\n');
+
+  try {
+    const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text: message,
+        disable_web_page_preview: true,
+      }),
+    });
+
+    if (!response.ok) {
+      const body = await response.text();
+      console.error('[Automation Audit API] Telegram notification failed:', response.status, body.slice(0, 200));
+    }
+  } catch (error) {
+    console.error('[Automation Audit API] Telegram notification error:', error);
   }
 }
