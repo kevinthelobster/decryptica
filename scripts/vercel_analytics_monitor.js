@@ -111,6 +111,15 @@ function writeState(state) {
   fs.writeFileSync(STATE_FILE, `${JSON.stringify(state, null, 2)}\n`);
 }
 
+function shouldSendAlert(state, key, signature, now, cooldownHours = 6) {
+  const previous = state.alerts?.[key];
+  if (!previous) return true;
+  if (previous.signature !== signature) return true;
+  const previousTime = Date.parse(previous.sentAt || '');
+  if (!Number.isFinite(previousTime)) return true;
+  return now.getTime() - previousTime >= cooldownHours * 60 * 60 * 1000;
+}
+
 async function query(token, endpoint, params) {
   const url = new URL(`${API_BASE}/${endpoint}`);
   for (const [key, value] of Object.entries(params)) {
@@ -188,20 +197,34 @@ async function main() {
 
   const state = readState();
   const alerts = [];
+  const alertState = { ...(state.alerts || {}) };
 
   if (currentViews >= options.minViews && change >= options.spikePct) {
-    alerts.push(`traffic spike: ${currentViews} views in the last ${options.hours}h, up ${Math.round(change)}% vs previous window`);
+    const signature = `${currentViews}:${previousViews}:${Math.round(change)}`;
+    if (shouldSendAlert(state, 'traffic-spike', signature, now)) {
+      alerts.push(`traffic spike: ${currentViews} views in the last ${options.hours}h, up ${Math.round(change)}% vs previous window`);
+      alertState['traffic-spike'] = { signature, sentAt: iso(now) };
+    }
   }
 
   if (previousViews >= options.minViews && change <= -options.dropPct) {
-    alerts.push(`traffic drop: ${currentViews} views in the last ${options.hours}h, down ${Math.abs(Math.round(change))}% vs previous window`);
+    const signature = `${currentViews}:${previousViews}:${Math.round(change)}`;
+    if (shouldSendAlert(state, 'traffic-drop', signature, now)) {
+      alerts.push(`traffic drop: ${currentViews} views in the last ${options.hours}h, down ${Math.abs(Math.round(change))}% vs previous window`);
+      alertState['traffic-drop'] = { signature, sentAt: iso(now) };
+    }
   }
 
   for (const page of watchedRaw) {
     const previous = state.watched?.[page.requestPath]?.count || 0;
     const watchedChange = pctChange(page.count, previous);
     if (page.count >= options.minViews && watchedChange >= options.spikePct) {
-      alerts.push(`${page.requestPath} is moving: ${page.count} views, up ${Math.round(watchedChange)}% since the last monitor snapshot`);
+      const alertKey = `watched:${page.requestPath}`;
+      const signature = `${page.count}:${previous}:${Math.round(watchedChange)}`;
+      if (shouldSendAlert(state, alertKey, signature, now)) {
+        alerts.push(`${page.requestPath} is moving: ${page.count} views, up ${Math.round(watchedChange)}% since the last monitor snapshot`);
+        alertState[alertKey] = { signature, sentAt: iso(now) };
+      }
     }
   }
 
@@ -212,6 +235,7 @@ async function main() {
     previousViews,
     topPages,
     watched: Object.fromEntries(watchedRaw.map((page) => [page.requestPath, { count: page.count }])),
+    alerts: alertState,
   });
 
   const lines = [

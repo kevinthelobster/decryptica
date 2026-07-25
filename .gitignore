@@ -23,6 +23,7 @@ artifacts/ops/
 artifacts/qa/
 artifacts/newsletter/
 data/kpi/
+data/vercel-analytics/
 
 # Local env files
 .env
