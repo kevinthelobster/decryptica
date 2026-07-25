@@ -4,63 +4,52 @@ import { FormEvent, useMemo, useState } from 'react';
 import { trackEvent } from '@/app/lib/analytics';
 
 export const PROVIDERS = [
-  // OpenAI
-  { id: "openai-gpt-4o", name: "GPT-4o", provider: "OpenAI", input: 2.5, output: 10.0, supports: ["text", "vision", "function"], contextWindow: 128000, color: "#10a37f", link: "https://openai.com/api/pricing", openSource: false },
-  { id: "openai-gpt-4o-mini", name: "GPT-4o mini", provider: "OpenAI", input: 0.15, output: 0.6, supports: ["text", "vision", "function"], contextWindow: 128000, color: "#10a37f", link: "https://openai.com/api/pricing", openSource: false },
-  { id: "openai-gpt-4.1", name: "GPT-4.1", provider: "OpenAI", input: 2.0, output: 8.0, supports: ["text", "function"], contextWindow: 1000000, color: "#10a37f", link: "https://openai.com/api/pricing", openSource: false },
-  { id: "openai-gpt-4.1-mini", name: "GPT-4.1 mini", provider: "OpenAI", input: 0.4, output: 1.6, supports: ["text", "function"], contextWindow: 1000000, color: "#10a37f", link: "https://openai.com/api/pricing", openSource: false },
-  { id: "openai-gpt-4.1-nano", name: "GPT-4.1 nano", provider: "OpenAI", input: 0.1, output: 0.4, supports: ["text", "function"], contextWindow: 1000000, color: "#10a37f", link: "https://openai.com/api/pricing", openSource: false },
-  { id: "openai-o1", name: "o1", provider: "OpenAI", input: 15.0, output: 60.0, supports: ["text", "reasoning"], contextWindow: 200000, color: "#10a37f", link: "https://openai.com/api/pricing", openSource: false },
-  { id: "openai-o3", name: "o3", provider: "OpenAI", input: 10.0, output: 40.0, supports: ["text", "reasoning"], contextWindow: 200000, color: "#10a37f", link: "https://openai.com/api/pricing", openSource: false },
-  { id: "openai-o4-mini", name: "o4-mini", provider: "OpenAI", input: 1.1, output: 4.4, supports: ["text", "reasoning"], contextWindow: 200000, color: "#10a37f", link: "https://openai.com/api/pricing", openSource: false },
-  { id: "openai-o3-mini", name: "o3-mini", provider: "OpenAI", input: 1.1, output: 4.4, supports: ["text", "reasoning"], contextWindow: 200000, color: "#10a37f", link: "https://openai.com/api/pricing", openSource: false },
+  // OpenAI - direct API standard rates, short context where split pricing exists.
+  { id: "openai-gpt-5.6-sol", name: "GPT-5.6 Sol", provider: "OpenAI", input: 5.0, output: 30.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-5.6-terra", name: "GPT-5.6 Terra", provider: "OpenAI", input: 2.5, output: 15.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-5.6-luna", name: "GPT-5.6 Luna", provider: "OpenAI", input: 1.0, output: 6.0, supports: ["text", "vision", "function", "reasoning"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-5.5", name: "GPT-5.5", provider: "OpenAI", input: 5.0, output: 30.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-5.5-pro", name: "GPT-5.5 Pro", provider: "OpenAI", input: 30.0, output: 180.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-5.4", name: "GPT-5.4", provider: "OpenAI", input: 2.5, output: 15.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-5.4-mini", name: "GPT-5.4 Mini", provider: "OpenAI", input: 0.75, output: 4.5, supports: ["text", "vision", "function", "reasoning"], contextWindow: 200000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-5.4-nano", name: "GPT-5.4 Nano", provider: "OpenAI", input: 0.2, output: 1.25, supports: ["text", "function"], contextWindow: 200000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
 
-  // Anthropic
-  { id: "anthropic-sonnet-3-5", name: "Claude 3.5 Sonnet", provider: "Anthropic", input: 3.0, output: 15.0, supports: ["text", "vision", "function", "extended"], contextWindow: 200000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
-  { id: "anthropic-haiku-3-5", name: "Claude 3.5 Haiku", provider: "Anthropic", input: 0.8, output: 4.0, supports: ["text", "vision", "function"], contextWindow: 200000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
-  { id: "anthropic-sonnet-4", name: "Claude Sonnet 4.6", provider: "Anthropic", input: 3.0, output: 15.0, supports: ["text", "vision", "function", "extended"], contextWindow: 200000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
-  { id: "anthropic-haiku-4", name: "Claude Haiku 4.5", provider: "Anthropic", input: 1.0, output: 5.0, supports: ["text", "vision", "function"], contextWindow: 200000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
-  { id: "anthropic-opus-4", name: "Claude Opus 4.6", provider: "Anthropic", input: 5.0, output: 25.0, supports: ["text", "vision", "function", "extended"], contextWindow: 1000000, color: "#d4a574", link: "https://www.anthropic.com/api/pricing", openSource: false },
+  // Anthropic - first-party Claude API.
+  { id: "anthropic-claude-fable-5", name: "Claude Fable 5", provider: "Anthropic", input: 10.0, output: 50.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#d4a574", link: "https://platform.claude.com/docs/en/about-claude/pricing", openSource: false },
+  { id: "anthropic-claude-opus-5", name: "Claude Opus 5", provider: "Anthropic", input: 5.0, output: 25.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#d4a574", link: "https://platform.claude.com/docs/en/about-claude/pricing", openSource: false },
+  { id: "anthropic-claude-sonnet-5", name: "Claude Sonnet 5", provider: "Anthropic", input: 2.0, output: 10.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#d4a574", link: "https://platform.claude.com/docs/en/about-claude/pricing", openSource: false },
+  { id: "anthropic-claude-haiku-4-5", name: "Claude Haiku 4.5", provider: "Anthropic", input: 1.0, output: 5.0, supports: ["text", "vision", "function"], contextWindow: 200000, color: "#d4a574", link: "https://platform.claude.com/docs/en/about-claude/pricing", openSource: false },
 
-  // Google
-  { id: "google-gemini-2-0-flash", name: "Gemini 2.0 Flash", provider: "Google", input: 0.1, output: 0.4, supports: ["text", "vision", "function"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/pricing", openSource: false },
-  { id: "google-gemini-2-5-flash", name: "Gemini 2.5 Flash", provider: "Google", input: 0.35, output: 1.5, supports: ["text", "vision", "function"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/pricing", openSource: false },
-  { id: "google-gemini-2-5-pro", name: "Gemini 2.5 Pro", provider: "Google", input: 1.25, output: 5.0, supports: ["text", "vision", "function"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/pricing", openSource: false },
-  { id: "google-gemini-1-5-pro", name: "Gemini 1.5 Pro", provider: "Google", input: 1.25, output: 5.0, supports: ["text", "vision", "function"], contextWindow: 2000000, color: "#4285f4", link: "https://ai.google.dev/pricing", openSource: false },
-  { id: "google-gemini-1-5-flash", name: "Gemini 1.5 Flash", provider: "Google", input: 0.075, output: 0.3, supports: ["text", "vision", "function"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/pricing", openSource: false },
-  { id: "google-gemma-3-27b", name: "Gemma 3 27B", provider: "Google", input: 0.08, output: 0.16, supports: ["text"], contextWindow: 128000, color: "#4285f4", link: "https://ai.google.dev/pricing", openSource: true },
+  // Google - Gemini API paid tier, standard rates for text/image/video inputs.
+  { id: "google-gemini-3.1-pro-preview", name: "Gemini 3.1 Pro Preview", provider: "Google", input: 2.0, output: 12.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
+  { id: "google-gemini-3-flash-preview", name: "Gemini 3 Flash Preview", provider: "Google", input: 0.5, output: 3.0, supports: ["text", "vision", "function", "reasoning"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
+  { id: "google-gemini-2.5-pro", name: "Gemini 2.5 Pro", provider: "Google", input: 1.25, output: 10.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
+  { id: "google-gemini-2.5-flash", name: "Gemini 2.5 Flash", provider: "Google", input: 0.3, output: 2.5, supports: ["text", "vision", "function", "reasoning"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
+  { id: "google-gemini-2.5-flash-lite", name: "Gemini 2.5 Flash-Lite", provider: "Google", input: 0.1, output: 0.4, supports: ["text", "vision", "function"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
 
-  // DeepSeek
-  { id: "deepseek-chat", name: "DeepSeek Chat V3", provider: "DeepSeek", input: 0.28, output: 1.1, supports: ["text", "vision", "function"], contextWindow: 164000, color: "#6366f1", link: "https://www.deepseek.com", openSource: true },
-  { id: "deepseek-r1", name: "DeepSeek R1", provider: "DeepSeek", input: 0.55, output: 2.19, supports: ["text", "reasoning"], contextWindow: 128000, color: "#6366f1", link: "https://www.deepseek.com", openSource: true },
-  { id: "deepseek-coder-2", name: "DeepSeek Coder 2.0", provider: "DeepSeek", input: 0.27, output: 1.1, supports: ["text", "coding"], contextWindow: 128000, color: "#6366f1", link: "https://www.deepseek.com", openSource: true },
-
-  // Mistral
-  { id: "mistral-large-3", name: "Mistral Large 3", provider: "Mistral", input: 2.0, output: 6.0, supports: ["text", "function"], contextWindow: 128000, color: "#cb20dd", link: "https://mistral.ai/technology", openSource: false },
-  { id: "mistral-small-3-1-24b", name: "Mistral Small 3.1 24B", provider: "Mistral", input: 0.2, output: 0.6, supports: ["text", "function"], contextWindow: 128000, color: "#cb20dd", link: "https://mistral.ai/technology", openSource: true },
+  // DeepSeek - official API model names; old deepseek-chat/deepseek-reasoner aliases were deprecated July 24, 2026.
+  { id: "deepseek-v4-flash", name: "DeepSeek V4 Flash", provider: "DeepSeek", input: 0.14, output: 0.28, supports: ["text", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#6366f1", link: "https://api-docs.deepseek.com/quick_start/pricing/", openSource: true },
+  { id: "deepseek-v4-pro", name: "DeepSeek V4 Pro", provider: "DeepSeek", input: 0.435, output: 0.87, supports: ["text", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#6366f1", link: "https://api-docs.deepseek.com/quick_start/pricing/", openSource: true },
 
   // xAI
-  { id: "xai-grok-2", name: "Grok 2", provider: "xAI", input: 2.0, output: 8.0, supports: ["text", "function"], contextWindow: 131000, color: "#f97316", link: "https://x.ai/api", openSource: false },
+  { id: "xai-grok-4.5", name: "Grok 4.5", provider: "xAI", input: 2.0, output: 6.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 500000, color: "#f97316", link: "https://docs.x.ai/developers/models", openSource: false },
+  { id: "xai-grok-build-0.1", name: "Grok Build 0.1", provider: "xAI", input: 1.0, output: 2.0, supports: ["text", "function", "coding"], contextWindow: 256000, color: "#f97316", link: "https://docs.x.ai/developers/pricing", openSource: false },
 
-  // Meta (Llama via API)
-  { id: "meta-llama-4-scout", name: "Llama 4 Scout", provider: "Meta", input: 0.08, output: 0.3, supports: ["text"], contextWindow: 328000, color: "#8000ff", link: "https://llama.meta.com", openSource: true },
-  { id: "meta-llama-3-2-11b-vision", name: "Llama 3.2 11B Vision", provider: "Meta", input: 0.049, output: 0.049, supports: ["text", "vision"], contextWindow: 131000, color: "#8000ff", link: "https://llama.meta.com", openSource: true },
-  { id: "meta-llama-3-2-3b", name: "Llama 3.2 3B", provider: "Meta", input: 0.03, output: 0.05, supports: ["text"], contextWindow: 80000, color: "#8000ff", link: "https://llama.meta.com", openSource: true },
+  // Mistral - current public API lineup.
+  { id: "mistral-medium-3.5", name: "Mistral Medium 3.5", provider: "Mistral", input: 1.5, output: 7.5, supports: ["text", "function", "coding"], contextWindow: 262000, color: "#cb20dd", link: "https://mistral.ai/pricing/", openSource: false },
+  { id: "mistral-large-3", name: "Mistral Large 3", provider: "Mistral", input: 0.5, output: 1.5, supports: ["text", "function", "coding"], contextWindow: 128000, color: "#cb20dd", link: "https://mistral.ai/pricing/", openSource: false },
+  { id: "mistral-small-4", name: "Mistral Small 4", provider: "Mistral", input: 0.15, output: 0.6, supports: ["text", "function"], contextWindow: 128000, color: "#cb20dd", link: "https://mistral.ai/pricing/", openSource: true },
+  { id: "mistral-codestral", name: "Codestral", provider: "Mistral", input: 0.3, output: 0.9, supports: ["text", "function", "coding"], contextWindow: 256000, color: "#cb20dd", link: "https://mistral.ai/pricing/", openSource: false },
 
   // Cohere
-  { id: "cohere-command-r-plus", name: "Command R+", provider: "Cohere", input: 3.0, output: 15.0, supports: ["text", "vision", "function"], contextWindow: 128000, color: "#f47b5a", link: "https://cohere.com/api", openSource: false },
-  { id: "cohere-command-r7b", name: "Command R7B", provider: "Cohere", input: 0.035, output: 0.15, supports: ["text", "function"], contextWindow: 128000, color: "#f47b5a", link: "https://cohere.com/api", openSource: false },
-
-  // Microsoft
-  { id: "microsoft-phi-4", name: "Phi-4", provider: "Microsoft", input: 0.065, output: 0.14, supports: ["text"], contextWindow: 16000, color: "#00a4ef", link: "https://azure.microsoft.com/en-us/products/ai-services/phi", openSource: true },
+  { id: "cohere-command-r-plus-08-2024", name: "Command R+ 08-2024", provider: "Cohere", input: 2.5, output: 10.0, supports: ["text", "function"], contextWindow: 128000, color: "#f47b5a", link: "https://cohere.com/pricing", openSource: false },
+  { id: "cohere-command-r-03-2024", name: "Command R 03-2024", provider: "Cohere", input: 0.5, output: 1.5, supports: ["text", "function"], contextWindow: 128000, color: "#f47b5a", link: "https://cohere.com/pricing", openSource: false },
+  { id: "cohere-aya-expanse", name: "Aya Expanse", provider: "Cohere", input: 0.5, output: 1.5, supports: ["text"], contextWindow: 128000, color: "#f47b5a", link: "https://cohere.com/pricing", openSource: false },
 
   // Amazon Bedrock
-  { id: "amazon-nova-micro", name: "Nova Micro", provider: "Amazon", input: 0.035, output: 0.14, supports: ["text"], contextWindow: 128000, color: "#ff9900", link: "https://aws.amazon.com/bedrock/pricing", openSource: false },
-  { id: "amazon-nova-lite", name: "Nova Lite", provider: "Amazon", input: 0.06, output: 0.24, supports: ["text", "vision"], contextWindow: 300000, color: "#ff9900", link: "https://aws.amazon.com/bedrock/pricing", openSource: false },
-
-  // MiniMax
-  { id: "minimax-m2.7", name: "MiniMax M2.7", provider: "MiniMax", input: 0.3, output: 1.2, supports: ["text", "vision", "function"], contextWindow: 200000, color: "#00d474", link: "https://platform.minimax.io/docs/pricing/overview", openSource: false },
-  { id: "minimax-m2.5", name: "MiniMax M2.5", provider: "MiniMax", input: 0.3, output: 1.2, supports: ["text", "vision", "function"], contextWindow: 128000, color: "#00d474", link: "https://platform.minimax.io/docs/pricing/overview", openSource: false },
+  { id: "amazon-nova-micro", name: "Nova Micro", provider: "Amazon", input: 0.035, output: 0.14, supports: ["text"], contextWindow: 128000, color: "#ff9900", link: "https://aws.amazon.com/bedrock/pricing/", openSource: false },
+  { id: "amazon-nova-lite", name: "Nova Lite", provider: "Amazon", input: 0.06, output: 0.24, supports: ["text", "vision"], contextWindow: 300000, color: "#ff9900", link: "https://aws.amazon.com/bedrock/pricing/", openSource: false },
+  { id: "amazon-nova-pro", name: "Nova Pro", provider: "Amazon", input: 0.8, output: 3.2, supports: ["text", "vision", "function"], contextWindow: 300000, color: "#ff9900", link: "https://aws.amazon.com/bedrock/pricing/", openSource: false },
 ];
 
 type SortKey = 'total' | 'input' | 'output' | 'provider' | 'context';
@@ -178,13 +167,13 @@ export default function AIPriceCalculator() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-stone-950 mb-2">AI Model Price Calculator</h1>
-          <p className="text-stone-600">Compare LLM API costs across {PROVIDERS.length} models from OpenAI, Anthropic, Google, Meta, DeepSeek, and more.</p>
+          <p className="text-stone-600">Compare current LLM API costs across {PROVIDERS.length} production models from OpenAI, Anthropic, Google, DeepSeek, xAI, Mistral, Cohere, and Amazon.</p>
         </div>
 
         <div className="card-elevated p-5 mb-6 border border-stone-200">
           <h2 className="text-lg font-semibold text-stone-950 mb-3">What is this tool?</h2>
           <p className="text-stone-600 text-sm leading-relaxed mb-3">
-            When you use AI APIs like GPT-4o, Claude, or Gemini, you pay per token — roughly $0.001–$15 per 1,000 tokens depending on the model. A token is about 4 characters or 3/4 of a word. This calculator helps you estimate exactly how much your AI usage will cost before you write a single line of code.
+            When you use AI APIs like GPT-5.6, Claude, or Gemini, you pay per token — roughly a few cents to tens of dollars per 1M tokens depending on the model. A token is about 4 characters or 3/4 of a word. This calculator helps you estimate exactly how much your AI usage will cost before you write a single line of code.
           </p>
           <p className="text-stone-600 text-sm leading-relaxed mb-3">
             Whether you are building an app, running a business, or just exploring AI costs — enter your expected input and output tokens above, and instantly compare prices across {PROVIDERS.length} models from every major provider.
@@ -370,7 +359,7 @@ export default function AIPriceCalculator() {
           </div>
         </div>
 
-        <p className="text-xs text-stone-500 mt-4 text-center">Prices are indicative and may vary. Data as of April 2026. Always check provider pricing pages for latest rates.</p>
+        <p className="text-xs text-stone-500 mt-4 text-center">Prices use standard API token rates and may vary by tier, region, context length, caching, batch, or priority mode. Data checked July 25, 2026.</p>
       </div>
     </div>
   );

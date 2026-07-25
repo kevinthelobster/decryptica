@@ -11,19 +11,19 @@ import DestinationConfidenceLayer from '../../components/DestinationConfidenceLa
 
 export const metadata: Metadata = {
   title: 'AI Model Price Calculator — Compare LLM API Costs (2026)',
-  description: 'Free AI model price calculator to compare GPT-4o, Claude, Gemini, Llama, DeepSeek and 75+ LLM API costs. Find the cheapest AI provider for your use case. Updated April 2026.',
-  keywords: ['AI model price calculator', 'LLM API pricing', 'AI API cost comparison', 'GPT-4o price', 'Claude API cost', 'Gemini API pricing', 'AI provider comparison', 'token cost calculator', 'AI cheapest option'],
+  description: 'Free AI model price calculator to compare GPT-5.6, Claude, Gemini, DeepSeek, Grok, Mistral and more. Find the cheapest AI provider for your use case. Updated July 2026.',
+  keywords: ['AI model price calculator', 'LLM API pricing', 'AI API cost comparison', 'GPT-5.6 price', 'Claude API cost', 'Gemini API pricing', 'AI provider comparison', 'token cost calculator', 'AI cheapest option'],
   openGraph: {
-    title: 'AI Model Price Calculator — 75+ Models Compared',
-    description: 'Compare AI API costs across OpenAI, Anthropic, Google, Meta, DeepSeek, and more. Updated April 2026.',
+    title: 'AI Model Price Calculator — Latest Models Compared',
+    description: 'Compare AI API costs across OpenAI, Anthropic, Google, DeepSeek, xAI, Mistral, and more. Updated July 2026.',
     type: 'website',
   },
 };
 
 // Variant B metadata for A/B CTR testing (not a Next.js Page export — internal only)
 const META_VARIANT_B = {
-  title: 'AI API Cost Calculator — Find the Cheapest LLM (75+ Models) | Decryptica',
-  description: 'Stop overpaying for AI. Compare GPT-4o, Claude, Gemini pricing side-by-side and calculate your exact API spend. 100% free, no signup required.',
+  title: 'AI API Cost Calculator — Find the Cheapest LLM | Decryptica',
+  description: 'Stop overpaying for AI. Compare GPT-5.6, Claude, Gemini pricing side-by-side and calculate your exact API spend. 100% free, no signup required.',
 };
 
 const faqData = {
@@ -32,10 +32,10 @@ const faqData = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How much does the GPT-4o API cost?",
+      "name": "How much does the GPT-5.6 Sol API cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "GPT-4o costs $2.50 per 1M input tokens and $10.00 per 1M output tokens as of April 2026."
+        "text": "GPT-5.6 Sol costs $5.00 per 1M input tokens and $30.00 per 1M output tokens on standard short-context OpenAI API pricing as of July 2026."
       }
     },
     {
@@ -43,7 +43,7 @@ const faqData = {
       "name": "What is the cheapest AI API provider?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The cheapest AI API providers are typically open-source models like DeepSeek V3, Llama 3.1 8B, and Mistral Small 3.1 24B, which are free or cost fractions of a cent per 1M tokens."
+        "text": "The cheapest listed production APIs are typically small routing models like Amazon Nova Micro, Gemini 2.5 Flash-Lite, DeepSeek V4 Flash, and Mistral Small 4. The best choice depends on quality needs, context length, and provider fit."
       }
     },
     {
@@ -59,7 +59,7 @@ const faqData = {
       "name": "What is the difference between open source and commercial AI models?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Open source AI models like Llama and Mistral are free to use and can be self-hosted. Commercial models like GPT-4o and Claude require API payment but offer managed infrastructure and often higher quality."
+        "text": "Open-weight models like DeepSeek and Mistral publish model weights that can be self-hosted, but managed API usage is still billed by the provider. Closed commercial models like GPT-5.6 and Claude are API products with managed infrastructure and provider-hosted availability."
       }
     }
   ]
@@ -92,7 +92,7 @@ function ToolCTACompare() {
       <h3 className="font-display text-sm font-semibold text-red-800 uppercase tracking-wider mb-2">Compare</h3>
       <p className="text-stone-950 font-medium mb-1">Ready to pick a model?</p>
       <p className="text-stone-600 text-sm mb-3">Enter your token volumes above to see exactly how much each provider costs.</p>
-      <p className="text-xs text-stone-500">75+ models across 11 providers — updated April 2026</p>
+      <p className="text-xs text-stone-500">Current production models across major API providers — updated July 2026</p>
     </div>
   );
 }
