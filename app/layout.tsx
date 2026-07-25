@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Header from "./components/Header";
 import SeoCwvTracker from "./components/SeoCwvTracker";
@@ -63,6 +64,7 @@ export default function RootLayout({
         {/* SEO CWV & Telemetry Collector */}
         <SeoCwvTracker />
         <VercelAnalytics />
+        <SpeedInsights />
 
         <footer className="border-t border-stone-200 bg-white">
           <div className="mx-auto max-w-7xl px-5 py-12">
