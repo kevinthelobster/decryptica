@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { getArticleBySlug, articles } from '../../data/articles';
+import { getArticleBySlug, articles, type Article } from '../../data/articles';
 import { getArticleImage } from '../../data/article-images';
 import SubscribeForm from '../../components/SubscribeForm';
 import AnalyticsTracker from '../../components/AnalyticsTracker';
@@ -13,7 +13,7 @@ import IntentContextBanner from '../../components/IntentContextBanner';
 import IntentAwareConversionStrip from '../../components/IntentAwareConversionStrip';
 import TrackedFAQSection from '../../components/TrackedFAQSection';
 import HubSectionNav from '../../components/HubSectionNav';
-import HubRelatedModule from '../../components/HubRelatedModule';
+import ArticleNextJourney, { type ArticleNextJourneyCard } from '../../components/ArticleNextJourney';
 import { ArticleSerpPromiseModules } from '../../components/ArticleSerpPromiseModules';
 import RouteDepthTracker from '../../components/RouteDepthTracker';
 import { getSubpillarBySlug, getSubpillarPath, inferSubpillarFromArticle, type PillarSlug } from '../../data/topic-routing';
@@ -206,61 +206,162 @@ function extractHeadings(content: string): { id: string; label: string }[] {
 
 // ─── Smart Related Articles (topical cluster linking) ───────────────────────
 
-function getRelatedArticles(article: any, allArticles: any[]): any[] {
+function scoreRelatedArticle(article: Article, candidate: Article) {
   const articleSubpillar = inferSubpillarFromArticle(article);
   const articleTags = new Set((article.tags || []).map((tag: string) => tag.toLowerCase()));
+  const candidateSubpillar = inferSubpillarFromArticle(candidate);
+  const candidateTags = (candidate.tags || []).map((tag: string) => tag.toLowerCase());
+  const sharedTags = candidateTags.filter((tag: string) => articleTags.has(tag)).length;
 
-  return allArticles
+  let score = 0;
+
+  if (candidate.category === article.category) score += 6;
+  if (candidateSubpillar === articleSubpillar) score += 5;
+  score += sharedTags * 2;
+
+  if (article.supportingInternalLinks?.includes(`/blog/${candidate.slug}`)) score += 4;
+  if (candidate.supportingInternalLinks?.includes(`/blog/${article.slug}`)) score += 3;
+
+  const title = `${candidate.title} ${candidate.excerpt}`.toLowerCase();
+  const sourceTitle = `${article.title} ${article.excerpt}`.toLowerCase();
+  const sourceKeywords = sourceTitle
+    .split(/[^a-z0-9]+/i)
+    .filter((token) => token.length >= 5);
+  const keywordOverlap = sourceKeywords.filter((token) => title.includes(token)).length;
+  score += Math.min(keywordOverlap, 3);
+
+  return score;
+}
+
+function isComparisonArticle(article: Article) {
+  const lower = `${article.title} ${article.slug} ${(article.tags || []).join(' ')}`.toLowerCase();
+  return /\b(best|vs|versus|compare|compared|which|pricing|calculator|roi)\b/.test(lower);
+}
+
+function isImplementationArticle(article: Article) {
+  const lower = `${article.title} ${article.slug} ${(article.tags || []).join(' ')}`.toLowerCase();
+  return /\b(how to|setup|guide|workflow|build|implement|run|benchmark|checklist)\b/.test(lower);
+}
+
+function getArticleFromBlogHref(href?: string) {
+  const slug = href?.match(/^\/blog\/([^/?#]+)/)?.[1];
+  return slug ? getArticleBySlug(slug) : undefined;
+}
+
+function getPrimaryToolHref(article: Article, subpillarPath: string) {
+  if (article.primaryConversionHref && !article.primaryConversionHref.startsWith('/blog/')) {
+    return article.primaryConversionHref;
+  }
+
+  if (article.category === 'ai') return '/tools/ai-price-calculator';
+  if (article.category === 'automation') return '/services/ai-automation-consulting';
+  return subpillarPath;
+}
+
+function buildArticleNextJourney(article: Article, allArticles: Article[], subpillarPath: string): ArticleNextJourneyCard[] {
+  const subpillar = inferSubpillarFromArticle(article);
+  const ranked = allArticles
     .filter((candidate) => candidate.slug !== article.slug)
-    .map((candidate) => {
-      const candidateSubpillar = inferSubpillarFromArticle(candidate);
-      const candidateTags = (candidate.tags || []).map((tag: string) => tag.toLowerCase());
-      const sharedTags = candidateTags.filter((tag: string) => articleTags.has(tag)).length;
+    .map((candidate) => ({
+      article: candidate,
+      score: scoreRelatedArticle(article, candidate),
+      sameSubpillar: candidate.category === article.category && inferSubpillarFromArticle(candidate) === subpillar,
+    }))
+    .sort((a, b) => b.score - a.score || a.article.title.localeCompare(b.article.title));
 
-      let score = 0;
+  const selected = new Set<string>();
+  const pickArticle = (predicate: (candidate: Article, sameSubpillar: boolean) => boolean) => {
+    const match = ranked.find(({ article: candidate, sameSubpillar }) => !selected.has(candidate.slug) && predicate(candidate, sameSubpillar));
+    if (!match) return undefined;
+    selected.add(match.article.slug);
+    return match.article;
+  };
 
-      if (candidate.category === article.category) score += 6;
-      if (candidateSubpillar === articleSubpillar) score += 5;
-      score += sharedTags * 2;
-
-      if (article.supportingInternalLinks?.includes(`/blog/${candidate.slug}`)) score += 4;
-      if (candidate.supportingInternalLinks?.includes(`/blog/${article.slug}`)) score += 3;
-
-      const title = `${candidate.title} ${candidate.excerpt}`.toLowerCase();
-      const sourceTitle = `${article.title} ${article.excerpt}`.toLowerCase();
-      const sourceKeywords = sourceTitle
-        .split(/[^a-z0-9]+/i)
-        .filter((token) => token.length >= 5);
-      const keywordOverlap = sourceKeywords.filter((token) => title.includes(token)).length;
-      score += Math.min(keywordOverlap, 3);
-
-      return { candidate, score };
-    })
-    .sort((a, b) => b.score - a.score || a.candidate.title.localeCompare(b.candidate.title))
-    .slice(0, 3)
-    .map(({ candidate }) => candidate);
-}
-
-function getIntentBadgeFromTitle(title: string): 'Learn' | 'Calculate' | 'Implement' {
-  const lower = title.toLowerCase();
-  if (lower.includes('best') || lower.includes('vs') || lower.includes('compare')) {
-    return 'Calculate';
+  const primaryLinkedArticle = getArticleFromBlogHref(article.primaryConversionHref);
+  if (primaryLinkedArticle && primaryLinkedArticle.slug !== article.slug) {
+    selected.add(primaryLinkedArticle.slug);
   }
-  if (lower.includes('how to') || lower.includes('setup') || lower.includes('guide')) {
-    return 'Implement';
-  }
-  return 'Learn';
-}
 
-function toRelatedModuleItems(related: any[]) {
-  return related.slice(0, 3).map((item) => ({
-    href: `/blog/${item.slug}`,
-    title: item.title,
-    valueProp: item.excerpt,
-    readTime: item.readTime,
-    intentBadge: getIntentBadgeFromTitle(item.title),
-    articleSlug: item.slug,
-  }));
+  const startArticle =
+    pickArticle((candidate, sameSubpillar) => sameSubpillar && !isComparisonArticle(candidate) && !isImplementationArticle(candidate)) ||
+    pickArticle((candidate, sameSubpillar) => sameSubpillar) ||
+    pickArticle((candidate) => candidate.category === article.category);
+
+  const compareArticle =
+    primaryLinkedArticle ||
+    pickArticle((candidate, sameSubpillar) => sameSubpillar && isComparisonArticle(candidate)) ||
+    pickArticle((candidate) => candidate.category === article.category && isComparisonArticle(candidate));
+
+  const deeperArticle =
+    pickArticle((candidate, sameSubpillar) => sameSubpillar && isImplementationArticle(candidate)) ||
+    pickArticle((candidate, sameSubpillar) => sameSubpillar) ||
+    pickArticle((candidate) => candidate.category === article.category);
+
+  const cards: ArticleNextJourneyCard[] = [];
+
+  if (startArticle) {
+    cards.push({
+      id: 'start',
+      eyebrow: 'Start here',
+      title: startArticle.title,
+      body: startArticle.excerpt,
+      href: `/blog/${startArticle.slug}`,
+      ctaLabel: 'Read the context',
+      targetLabel: startArticle.slug,
+      targetKind: 'article',
+    });
+  }
+
+  if (compareArticle) {
+    cards.push({
+      id: 'compare',
+      eyebrow: 'Compare',
+      title: compareArticle.title,
+      body: compareArticle.excerpt,
+      href: `/blog/${compareArticle.slug}`,
+      ctaLabel: 'Compare options',
+      targetLabel: compareArticle.slug,
+      targetKind: 'article',
+    });
+  } else {
+    const href = getPrimaryToolHref(article, subpillarPath);
+    cards.push({
+      id: 'compare',
+      eyebrow: 'Compare',
+      title: article.category === 'ai' ? 'Estimate AI model costs before you choose' : 'Use the practical decision path',
+      body: 'Move from reading into a concrete comparison step with clearer assumptions and less tab-hopping.',
+      href,
+      ctaLabel: href.startsWith('/tools/') ? 'Open the tool' : 'Compare paths',
+      targetLabel: href,
+      targetKind: href.startsWith('/tools/') ? 'tool' : 'topic',
+    });
+  }
+
+  if (deeperArticle) {
+    cards.push({
+      id: 'deepen',
+      eyebrow: 'Go deeper',
+      title: deeperArticle.title,
+      body: deeperArticle.excerpt,
+      href: `/blog/${deeperArticle.slug}`,
+      ctaLabel: 'Keep going',
+      targetLabel: deeperArticle.slug,
+      targetKind: 'article',
+    });
+  } else {
+    cards.push({
+      id: 'deepen',
+      eyebrow: 'Go deeper',
+      title: 'Browse the full topic path',
+      body: 'See the rest of this cluster in one place, including newer articles and neighboring subtopics.',
+      href: subpillarPath,
+      ctaLabel: 'Open the topic path',
+      targetLabel: subpillarPath,
+      targetKind: 'topic',
+    });
+  }
+
+  return cards.slice(0, 3);
 }
 
 // ─── SEO Copy Framework: Headline/Deck Conventions by Surface ──────────────
@@ -922,8 +1023,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const canonicalUrl = `https://decryptica.com/blog/${slug}`;
   const wordCount = estimateWordCount(article.content);
   const readTime = estimateReadTimeFromWordCount(wordCount);
-  const relatedArticles = getRelatedArticles(article, articles);
-  const relatedModuleItems = toRelatedModuleItems(relatedArticles);
   const headings = extractHeadings(article.content);
   const articleImage = getArticleImage(article);
 
@@ -946,6 +1045,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const subpillarConfig = getSubpillarBySlug(article.category as PillarSlug, subpillarSlug);
   const subpillarName = subpillarConfig?.name || subpillarSlug;
   const subpillarPath = getSubpillarPath(article.category as PillarSlug, subpillarSlug);
+  const nextJourneyCards = buildArticleNextJourney(article, articles, subpillarPath);
   const readingListArticle = {
     slug,
     title: article.title,
@@ -1126,15 +1226,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <TrackedFAQSection faqs={faqs} articleSlug={slug} />
 
             <section className="mt-8">
-              <HubRelatedModule
-                heading="Keep Reading"
-                description="Pick the next guide while this topic is still fresh."
-                items={relatedModuleItems}
-                surface="article"
-                location="article_related_module_footer"
-                moduleVariant="footer"
-                slug={slug}
+              <ArticleNextJourney
+                articleSlug={slug}
                 category={article.category}
+                subpillarName={subpillarName}
+                subpillarPath={subpillarPath}
+                cards={nextJourneyCards}
               />
             </section>
 
