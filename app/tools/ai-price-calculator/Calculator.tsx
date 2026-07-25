@@ -2,6 +2,7 @@
 
 import { FormEvent, useMemo, useState } from 'react';
 import { trackEvent } from '@/app/lib/analytics';
+import { resolveIntentContext, type IntentValue } from '@/app/lib/intent-continuity';
 
 export const PROVIDERS = [
   // OpenAI - direct API standard rates, short context where split pricing exists.
@@ -132,12 +133,24 @@ export default function AIPriceCalculator() {
     setQuickCaptureStatus('loading');
     setQuickCaptureMessage('');
 
+    const intentContext = resolveIntentContext();
+    const activeIntent: IntentValue = intentContext.intent || 'calculate';
+    const sourceSurface = ['home_intent_router', 'topic_intent_router', 'article_conversion_strip'].includes(
+      intentContext.intentSource
+    )
+      ? intentContext.intentSource
+      : 'direct';
+
     trackEvent({
       type: 'quick_capture_submit',
       metadata: {
         location: 'quick_capture',
         pageType: 'calculator',
-        capturedIntent: 'calculate',
+        intent: activeIntent,
+        intentSource: intentContext.intentDerivedFrom === 'default' ? 'default' : intentContext.intentDerivedFrom,
+        intentDerivedFrom: intentContext.intentDerivedFrom,
+        sourceSurface,
+        capturedIntent: activeIntent,
       },
     }).catch(() => undefined);
 

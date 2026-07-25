@@ -2,6 +2,7 @@
 
 import { FormEvent, useMemo, useState } from 'react';
 import { trackEvent } from '@/app/lib/analytics';
+import { resolveIntentContext, type IntentValue } from '@/app/lib/intent-continuity';
 
 type EstimatorForm = {
   teamSize: string;
@@ -150,12 +151,24 @@ export default function RoiEstimator() {
     }));
     setSubmitted(true);
 
+    const intentContext = resolveIntentContext();
+    const activeIntent: IntentValue = intentContext.intent || 'implement';
+    const sourceSurface = ['home_intent_router', 'topic_intent_router', 'article_conversion_strip'].includes(
+      intentContext.intentSource
+    )
+      ? intentContext.intentSource
+      : 'direct';
+
     trackEvent({
       type: 'quick_capture_submit',
       metadata: {
         location: 'quick_capture',
         pageType: 'consulting',
-        capturedIntent: 'implement',
+        intent: activeIntent,
+        intentSource: intentContext.intentDerivedFrom === 'default' ? 'default' : intentContext.intentDerivedFrom,
+        intentDerivedFrom: intentContext.intentDerivedFrom,
+        sourceSurface,
+        capturedIntent: activeIntent,
       },
     }).catch(() => undefined);
   }

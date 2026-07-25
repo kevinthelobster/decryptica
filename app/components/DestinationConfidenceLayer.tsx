@@ -26,6 +26,11 @@ interface StepAction {
   cta: string;
 }
 
+interface ProofItem {
+  label: string;
+  text: string;
+}
+
 const INTENT_LABEL: Record<IntentValue, string> = {
   learn: 'learn',
   calculate: 'calculate',
@@ -121,6 +126,21 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
         stickySteps: steps,
         rescueHref: '#save-recommendation',
         rescueLabel: 'Send This Estimate to Yourself',
+        eyebrow: 'Action guide',
+        proofItems: [
+          {
+            label: 'Updated',
+            text: 'Model pricing checked July 25, 2026.',
+          },
+          {
+            label: 'Decision Support',
+            text: 'Compares input, output, total cost, context, and capability fit.',
+          },
+          {
+            label: 'No Gate',
+            text: 'Use the calculator first. Saving picks is optional.',
+          },
+        ] satisfies ProofItem[],
       };
     }
 
@@ -156,6 +176,21 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
       stickySteps: steps,
       rescueHref: '#quick-intake',
       rescueLabel: 'Get a 1-Page ROI Checklist',
+      eyebrow: 'Action guide',
+      proofItems: [
+        {
+          label: 'Fresh Assumptions',
+          text: 'ROI math uses current workflow-cost assumptions for 2026.',
+        },
+        {
+          label: 'Outcome Proof',
+          text: 'Example workflows show 24% to 42% measurable lift.',
+        },
+        {
+          label: 'Risk Control',
+          text: 'Start with payback math before any build commitment.',
+        },
+      ] satisfies ProofItem[],
     };
   }, [effectiveIntent, pageType]);
 
@@ -175,12 +210,13 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
       metadata: {
         intent: INTENT_LABEL[effectiveIntent],
         intentSource,
+        intentDerivedFrom: context.intentDerivedFrom,
         location: headerLocation,
         pageType,
         sourceSurface,
       },
     }).catch(() => undefined);
-  }, [effectiveIntent, headerLocation, intentSource, pageType, sourceSurface]);
+  }, [context.intentDerivedFrom, effectiveIntent, headerLocation, intentSource, pageType, sourceSurface]);
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -208,6 +244,7 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
           metadata: {
             intent: INTENT_LABEL[effectiveIntent],
             intentSource,
+            intentDerivedFrom: context.intentDerivedFrom,
             location: 'exit_rescue',
             pageType,
             sourceSurface,
@@ -227,7 +264,7 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };
-  }, [effectiveIntent, intentSource, pageType, rescueSeenKey, showRescue, sourceSurface]);
+  }, [context.intentDerivedFrom, effectiveIntent, intentSource, pageType, rescueSeenKey, showRescue, sourceSurface]);
 
   useEffect(() => {
     if (!showStickyRail || stickyTracked.current) {
@@ -240,12 +277,13 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
       metadata: {
         intent: INTENT_LABEL[effectiveIntent],
         intentSource,
+        intentDerivedFrom: context.intentDerivedFrom,
         location: stickyLocation,
         pageType,
         sourceSurface,
       },
     }).catch(() => undefined);
-  }, [effectiveIntent, intentSource, pageType, showStickyRail, sourceSurface, stickyLocation]);
+  }, [context.intentDerivedFrom, effectiveIntent, intentSource, pageType, showStickyRail, sourceSurface, stickyLocation]);
 
   const navigateWithTracking = (
     href: string,
@@ -265,6 +303,7 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
       metadata: {
         intent: INTENT_LABEL[effectiveIntent],
         intentSource,
+        intentDerivedFrom: context.intentDerivedFrom,
         location,
         pageType,
         sourceSurface,
@@ -279,6 +318,7 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
         metadata: {
           intent: INTENT_LABEL[effectiveIntent],
           intentSource,
+          intentDerivedFrom: context.intentDerivedFrom,
           location,
           pageType,
           sourceSurface,
@@ -305,7 +345,7 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
     <>
       <section className="mx-auto mb-8 max-w-7xl px-4 md:px-8" aria-label="Conversion confidence layer">
         <div className="border border-stone-200 bg-white p-5 md:p-6">
-          <p className="text-xs font-semibold uppercase tracking-wider text-red-800">Conversion Confidence Layer</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-red-800">{ctaConfig.eyebrow}</p>
           <h2 className="mt-2 font-display text-2xl font-bold text-stone-950 md:text-3xl">{ctaConfig.title}</h2>
           <p className="mt-2 max-w-3xl text-sm text-stone-600 md:text-base">{ctaConfig.body}</p>
 
@@ -327,18 +367,12 @@ export default function DestinationConfidenceLayer({ pageType }: DestinationConf
           </div>
 
           <div className="mt-5 grid gap-3 md:grid-cols-3">
-            <article className="border border-stone-200 bg-neutral-50 p-3">
-              <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Updated</p>
-              <p className="mt-1 text-sm text-stone-700">Pricing and ROI assumptions refreshed April 2026.</p>
-            </article>
-            <article className="border border-stone-200 bg-neutral-50 p-3">
-              <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Outcome Proof</p>
-              <p className="mt-1 text-sm text-stone-700">Recent teams reported 24% to 42% measurable workflow lift.</p>
-            </article>
-            <article className="border border-stone-200 bg-neutral-50 p-3">
-              <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Risk Control</p>
-              <p className="mt-1 text-sm text-stone-700">No lock-in required. Start with estimates before any commitment.</p>
-            </article>
+            {ctaConfig.proofItems.map((item) => (
+              <article key={item.label} className="border border-stone-200 bg-neutral-50 p-3">
+                <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">{item.label}</p>
+                <p className="mt-1 text-sm text-stone-700">{item.text}</p>
+              </article>
+            ))}
           </div>
 
           {showRescue && (
