@@ -14,6 +14,7 @@ import IntentAwareConversionStrip from '../../components/IntentAwareConversionSt
 import TrackedFAQSection from '../../components/TrackedFAQSection';
 import HubSectionNav from '../../components/HubSectionNav';
 import ArticleNextJourney, { type ArticleNextJourneyCard } from '../../components/ArticleNextJourney';
+import ArticleBuyerDecisionModule from '../../components/ArticleBuyerDecisionModule';
 import { ArticleSerpPromiseModules } from '../../components/ArticleSerpPromiseModules';
 import RouteDepthTracker from '../../components/RouteDepthTracker';
 import { getSubpillarBySlug, getSubpillarPath, inferSubpillarFromArticle, type PillarSlug } from '../../data/topic-routing';
@@ -1046,6 +1047,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const subpillarName = subpillarConfig?.name || subpillarSlug;
   const subpillarPath = getSubpillarPath(article.category as PillarSlug, subpillarSlug);
   const nextJourneyCards = buildArticleNextJourney(article, articles, subpillarPath);
+  const showBuyerDecisionModule = isComparisonArticle(article) || Boolean(article.primaryConversionHref?.startsWith('/tools/'));
   const readingListArticle = {
     slug,
     title: article.title,
@@ -1202,6 +1204,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 excerpt={article.excerpt}
                 primaryActionHref={article.primaryConversionHref}
               />
+              {showBuyerDecisionModule && (
+                <ArticleBuyerDecisionModule
+                  articleSlug={slug}
+                  category={article.category}
+                  title={article.title}
+                  primaryActionHref={article.primaryConversionHref}
+                  subpillarPath={subpillarPath}
+                />
+              )}
             </section>
 
             {/* Article Content */}
