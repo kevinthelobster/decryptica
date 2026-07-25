@@ -68,6 +68,175 @@ export const topics: Topic[] = [
 
 export const articles: Article[] = [
   {
+    id: '1784981479786-4592',
+    slug: 'the-infrastructure-problem-nobody-talks-about',
+    title: "The Infrastructure Problem Nobody Talks About",
+    excerpt: "Most AI tools do not break because the model is weak. They break when the demo collides with real company systems: identity, permissions, stale...",
+    content: `# The Infrastructure Problem Nobody Talks About
+
+Most AI tools do not break because the model is weak. They break when the demo collides with real company systems: identity, permissions, stale indexes, audit requirements, spend controls, retries, and rate limits.
+
+That is the part vendors keep pushing below the fold. The current market for **ai tools** still rewards polished outputs and benchmark screenshots, even though the real buying decision is about data plumbing, trust boundaries, and operational control.
+
+**TL;DR**
+
+- The practical bottleneck in **ai tools** is not model quality. It is the infrastructure around data access, permissions, tool execution, logging, and budget control.
+- Buyers keep comparing models when they should be comparing architectures: indexed knowledge, live connectors, workflow orchestration, or tightly scoped copilots.
+- Pricing pages understate the real cost shape. Spend is driven by retries, long context, tool loops, credit pools, workflow runs, and connector overhead, not just a headline seat price or token rate.
+- Security claims deserve hard scrutiny. Prompt injection, oversharing through bad ACL mapping, and excessive connector scope remain live risks in public documentation.
+- Serious readers should stop asking “Which model is best?” and start asking “How does this system fetch data, enforce identity, recover from failure, and prove what it did?”
+
+## What We Checked
+
+This analysis is based on public documentation, pricing pages, protocol docs, benchmark materials, and user-facing admin guidance from vendors including [OpenAI](https://openai.com/api/pricing/?target=blank), [Anthropic](https://www.anthropic.com/pricing), [Google](https://ai.google.dev/gemini-api/docs/pricing?authuser=4), [GitHub](https://github.com/features/copilot/plans), [Microsoft](https://learn.microsoft.com/en-us/microsoft-365/copilot/connectors/), [Zapier](https://zapier.com/pricing?m=1), and [n8n](https://n8n.io/pricing/).
+
+We also looked at protocol and security guidance such as the [Model Context Protocol security best practices](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices) and the [OWASP prompt injection guidance](https://genai.owasp.org/llmrisk/llm01-prompt-injection/).
+
+What we did not do is pretend this was original hands-on testing. Where the evidence is solid, we say so. Where the evidence is mostly vendor documentation or public user reports, we say that too.
+
+## The Real Problem: The Control Plane Around the Model
+
+An LLM answer is the easy part. The hard part is making sure the model sees the right data, under the right identity, at the right time, with the right guardrails.
+
+That is why so many **ai tools** feel impressive for a week and frustrating by week five. The model can summarize a document. It is much harder to safely summarize the right document, avoid hidden prompt attacks in that document, respect user-specific permissions, cite the source, and leave an audit trail.
+
+### Freshness vs. Permissioning Is a Design Choice, Not a Footnote
+
+Microsoft’s connector docs make a useful distinction that most vendor marketing blurs: some systems are **synced and indexed**, while others are **federated and live**.  [Synced Copilot connectors](https://learn.microsoft.com/en-us/microsoft-365/copilot/connectors/prerequisites) index external content on a recurring schedule.  [Federated connectors](https://learn.microsoft.com/en-us/microsoft-365/copilot/connectors/federated-connectors-overview) fetch data in real time through MCP and leave the data in place.
+
+That tradeoff matters more than another benchmark chart. Indexed systems are faster and often better at retrieval and citations. Live systems are fresher and can preserve source-of-truth boundaries better, but they inherit API latency, source outages, and connector fragility.
+
+The ugly edge case is permission drift.  Microsoft’s admin docs explicitly warn that bad connector permission settings can lead to oversharing, including a connector configured as [“Visible to everyone”](https://learn.microsoft.com/en-us/microsoft-365/copilot/connectors/manage-access-permissions).  That is not a hallucination problem.  It is a governance problem.
+
+If you are building your own stack, the same issue shows up in search infrastructure.  [Elastic’s document-level security](https://www.elastic.co/docs/reference/search-connectors/document-level-security) exists for a reason: vector retrieval without ACL enforcement is not enterprise search.  It is a data leak waiting for the wrong query.
+
+### “Tool Use” Means You Now Own Workflow Failure
+
+Vendors love to say their agents can take action. That line is technically true and commercially evasive.
+
+Once an AI tool can call systems, you need retry logic, approval paths, idempotency, budget caps, and rollback plans. If the agent creates the same Jira ticket twice, emails the wrong customer, or loops through a CRM update because the source system returned a partial error, you have an operations problem, not a prompt problem.
+
+This is where coding and workflow tools expose the real infrastructure tax.  [GitHub Copilot code review](https://docs.github.com/en/copilot/concepts/agents/code-review) uses GitHub Actions for fuller context gathering, falls back when that infrastructure is unavailable, and consumes both AI credits and, from June 2026, GitHub Actions minutes.  That is a concrete reminder that “AI review” is not just chat over a diff.
+
+Workflow vendors reveal the same truth in their billing models.  [Zapier](https://zapier.com/pricing?m=1) now sells AI orchestration across workflows, tables, forms, and MCP, but AI-heavy steps use [task multipliers](https://help.zapier.com/hc/en-us/articles/46425475442829-AI-by-Zapier-model-tier-pricing), and MCP tool calls count separately.
+
+[n8n](https://n8n.io/pricing/) takes the opposite route and bills by full workflow executions, which is easier to forecast in some cases, but governance features like SSO, log retention, and scaling controls sit higher in the stack.
+
+## A Practical Decision Table
+
+| Pattern | Best for | Hidden failure mode | Pricing trap | Who should avoid it |
+| --- | --- | --- | --- | --- |
+| Seat-based copilots like [ChatGPT Business](https://openai.com/api/pricing/?target=blank), [Claude Team](https://www.anthropic.com/pricing), or Microsoft 365 Copilot | Fast rollout for writing, analysis, and general internal help | Weak connector coverage, limited admin visibility, stale or partial context | “Per seat” looks simple until premium usage, connector licensing, or enterprise controls appear | Teams that need deterministic workflows or fine-grained action logging |
+| Coding copilots like [GitHub Copilot](https://github.com/features/copilot/plans) | Code completion, review assistance, narrow engineering acceleration | Repo context gaps, disabled runners, policy conflicts, noisy reviews | Credits and infrastructure usage can rise faster than the seat price suggests | Orgs expecting autonomous software delivery with minimal review |
+| Workflow AI tools like [Zapier](https://zapier.com/pricing?m=1) or [n8n](https://n8n.io/pricing/) | Operational automation across apps | Duplicate actions, bad retries, approval gaps, brittle connectors | Task multipliers or execution overages distort budget forecasts | Teams without process owners or failure-handling discipline |
+| Custom API stacks with [OpenAI](https://developers.openai.com/api/docs/models/compare), [Anthropic](https://docs.anthropic.com/en/docs/about-claude/pricing), or [Gemini](https://ai.google.dev/gemini-api/docs/pricing?authuser=4) | Productized AI, custom workflows, proprietary data paths | You own evals, observability, auth, caching, prompt hygiene, and every outage | Token pricing is only one layer; embeddings, storage, retries, and throughput limits do the damage | Anyone hoping to “just plug in a model” |
+
+## Where the marketing overreaches
+
+The biggest overreach is the word “agent.” In most public docs, it means a model that can loop through tools under constraints. It does not mean reliable autonomy in the way buyers often hear it.
+
+Google’s [Gemini agents documentation](https://ai.google.dev/gemini-api/docs/agents) is unusually candid here.
+
+A single managed-agent interaction can consume a large token range, and the docs still recommend least-privilege credentials and human oversight.  That is a useful correction to the sales pitch.
+
+The second overreach is “enterprise-ready. ” Often that means one plan has SSO, another has audit logs, and a third has the retention or residency features legal actually wants.  [OpenAI’s Business plan](https://openai.com/api/pricing/?target=blank) includes SAML SSO and spend controls, but enterprise-grade retention and residency controls go higher.  [Anthropic](https://www.anthropic.com/pricing) likewise splits consumer, team, and enterprise capabilities.  [n8n](https://n8n.io/pricing/) does the same for SSO, auditability, and scaling.
+
+The third overreach is benchmark theater.  Benchmarks like [SWE-bench](https://github.com/swe-bench/SWE-bench) are useful for measuring coding ability inside constrained tasks.
+
+They do not answer whether a tool can safely traverse your permissions model, survive your rate limits, or fit your budget model.
+
+If you are still deciding whether the broader agent category deserves a bigger budget line at all, start with Decryptica’s [AI Agents in 2026: What's Working and What's Not](/blog/ai-agents-in-2026-what-s-working-and-what-s-not). The relevant point here is simple: even the useful agent cases tend to be narrow, supervised, and infrastructure-heavy.
+
+## Security Review: The Real Risk Surface
+
+Prompt injection is not a fringe bug. It is a structural property of systems that mix instructions, retrieved content, and tool access.
+
+The [OWASP LLM risk guidance](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) spells out the obvious consequence: once the model is allowed to read external content and call connected tools, malicious text can influence actions, leak data, or manipulate output.
+
+RAG does not solve that by itself.
+
+The [MCP security guidance](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices) adds another uncomfortable detail.  Remote and local connectors expand the trust boundary in ways that raise risks around token passthrough, SSRF, overbroad scopes, and local server compromise.
+
+In plain English: more tools mean more ways to get owned.
+
+That should change how buyers review AI products.  The question is not whether a vendor has a “secure system prompt. ” System prompts are not security controls.
+
+The real questions are:
+
+### What matters in a security review
+
+- Does the tool enforce least privilege at the connector and user level?
+- Is external content indexed, fetched live, or both?
+- Are tool calls logged with enough detail for incident review?
+- Can admins stage rollouts, limit scopes, and disable risky connectors cleanly?
+- What data is retained, for how long, and on which surfaces?
+
+GitHub’s own [Copilot pricing and privacy documentation](https://github.com/features/copilot/plans) is a good example of why surface-level claims are not enough.  Retention defaults vary depending on how the product is accessed.
+
+That is the sort of detail procurement teams need before rollout, not after an audit.
+
+## Pricing Is Not a Spreadsheet Problem. It Is an Architecture Problem.
+
+AI buyers keep trying to compare a seat price to a token price. That is not the real choice.
+
+The real choice is between different billing units attached to different failure modes.  [OpenAI](https://developers.openai.com/api/docs/models/compare) combines token pricing, cached input discounts, and tiered throughput limits.  [Anthropic](https://docs.anthropic.com/en/docs/about-claude/pricing) layers prompt caching, long-context pricing, and separate tool charges.  [Google](https://ai.google.dev/gemini-api/docs/rate-limits?hl=en) adds spend-based rate limits, project caps, and tier gating on top of token pricing.
+
+That means the cheapest model on paper can still be the worst option in practice. A long-context workflow that repeatedly crosses higher pricing thresholds, times out, retries, and calls two external tools is not cheap just because the input token number looked low.
+
+The same applies to app-layer AI tools.  [GitHub Copilot](https://github.com/features/copilot/plans) uses pooled credits and budget controls.
+
+[Zapier](https://help.zapier.com/hc/en-us/articles/15279018245901-How-pay-per-task-billing-works-in-Zapier) can keep workflows running past plan limits through pay-per-task billing.
+
+[n8n](https://n8n.io/pricing/) may look simpler because executions are predictable, but then you decide whether you want hosted convenience or self-hosted operational burden.
+
+For serious adoption, finance and security need the same model: what triggers extra spend, what pauses usage, what degrades under load, and what happens when one connector fails halfway through a chain.
+
+## What a serious reader should do next
+
+Do not start with a model bake-off. Start with one workflow.
+
+Pick a narrow use case with clear business value and real operational friction. Then force the vendor, or your internal build team, to answer a boring list of questions before rollout.
+
+- Is the data copied into an index or fetched live?
+- How are permissions inherited, mapped, and updated?
+- What happens on rate limits, timeouts, and partial failures?
+- Which actions require explicit approval?
+- What logs exist for each tool call and output?
+- What is the real billing unit: seats, credits, tasks, executions, or tokens?
+- Which features are only available on higher plans?
+
+If those answers are vague, the tool is not ready for sensitive deployment. That does not mean it is useless. It means it belongs in a narrower, lower-risk lane.
+
+## FAQ
+
+### Are better models enough to fix weak AI tools?
+
+No. Better models help with reasoning and output quality, but they do not fix stale retrieval, broken ACLs, weak audit trails, or runaway workflow costs. Most enterprise pain in **ai tools** sits outside the model.
+
+### Should most teams buy a copilot or build on APIs?
+
+Most teams should buy first and build later. A seat-based tool is usually the fastest way to learn where the real friction is. Build on APIs only when you need custom workflows, custom data boundaries, or product-level control that packaged tools cannot provide.
+
+### Is self-hosting the safest option?
+
+Sometimes, but not automatically. Self-hosting can improve control over deployment, data location, and connector design. It also shifts patching, secret management, observability, and incident response onto your team.
+
+## The Bottom Line
+
+The infrastructure problem nobody talks about is that **ai tools** are not mainly model purchases. They are identity systems, search systems, workflow systems, and billing systems wearing a chat interface.
+
+That is why the winners in actual adoption will not be the vendors with the prettiest demos. They will be the ones that can explain, in plain language, how data moves, how permissions hold, how failures recover, how spend is bounded, and how humans stay in control.
+
+*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`.trim(),
+    category: 'ai',
+    readTime: '11 min',
+    date: '2026-07-25',
+    author: 'Decryptica',
+    status: 'published',
+    primaryKeyword: "ai tools",
+    wordCount: 2051,
+  },
+  {
     id: '1784892840005-2640',
     slug: 'ai-agents-in-2026-what-s-working-and-what-s-not',
     title: "AI Agents in 2026: What's Working and What's Not",
