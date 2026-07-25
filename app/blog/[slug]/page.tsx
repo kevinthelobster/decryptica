@@ -1075,6 +1075,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 category={article.category}
                 title={article.title}
                 excerpt={article.excerpt}
+                primaryActionHref={article.primaryConversionHref}
               />
             </section>
 

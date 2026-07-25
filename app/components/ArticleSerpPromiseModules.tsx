@@ -12,6 +12,7 @@ interface ArticleSerpPromiseModulesProps {
   category: string;
   title: string;
   excerpt: string;
+  primaryActionHref?: string;
 }
 
 type OutcomeOption = {
@@ -90,14 +91,22 @@ function bestForChips(category: string): string[] {
   return map[category] || ['Technical readers', 'Decision makers', 'Builders'];
 }
 
-function actionTargets(category: string) {
-  const toolHref = category === 'crypto' ? '/articles' : '/tools/ai-price-calculator';
-
+function actionTargets(category: string, primaryActionHref?: string) {
   return {
     keepReading: '#article-content',
-    runTool: toolHref,
+    runTool: primaryActionHref || (category === 'crypto' ? '/topic/crypto/trading' : '/tools/ai-price-calculator'),
     implement: '/services/ai-automation-consulting',
   };
+}
+
+function primaryActionLabel(href: string, title: string): string {
+  const lowerTitle = title.toLowerCase();
+  if (href.startsWith('/tools/')) return 'Run the Tool';
+  if (href.startsWith('/services/')) return 'Get Help';
+  if (lowerTitle.includes('compare') || lowerTitle.includes('vs') || lowerTitle.includes('best')) {
+    return 'Compare Options';
+  }
+  return 'Explore Next';
 }
 
 function baseMetadata(args: {
@@ -122,6 +131,7 @@ export function ArticleSerpPromiseModules({
   category,
   title,
   excerpt,
+  primaryActionHref,
 }: ArticleSerpPromiseModulesProps) {
   const [context, setContext] = useState(() => resolveIntentContext());
   const [selectedOutcome, setSelectedOutcome] = useState<OutcomeOption['id'] | null>(null);
@@ -132,7 +142,8 @@ export function ArticleSerpPromiseModules({
   const intent = context.intent || inferredIntent;
   const intentSource = sanitizeIntentSource(context.intentDerivedFrom);
   const copy = useMemo(() => buildIntentCopy(intent, excerpt), [intent, excerpt]);
-  const targets = useMemo(() => actionTargets(category), [category]);
+  const targets = useMemo(() => actionTargets(category, primaryActionHref), [category, primaryActionHref]);
+  const actionLabel = useMemo(() => primaryActionLabel(targets.runTool, title), [targets.runTool, title]);
   const chips = useMemo(() => bestForChips(category), [category]);
 
   useEffect(() => {
@@ -276,7 +287,7 @@ export function ArticleSerpPromiseModules({
               : 'border-stone-300 bg-white text-stone-700 hover:border-stone-950 hover:text-stone-950'
           }`}
         >
-          Run the Tool
+          {actionLabel}
         </Link>
         <Link
           href={targets.implement}
