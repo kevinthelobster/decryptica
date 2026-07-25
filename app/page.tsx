@@ -115,10 +115,10 @@ export default function IndexPage() {
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-red-800">
                     Lead Analysis
                   </p>
-                  <h1 className="max-w-5xl break-words font-serif text-4xl font-black leading-[0.98] text-stone-950 sm:text-5xl md:text-7xl">
+                  <h1 className="max-w-[21rem] break-words font-serif text-2xl font-black leading-tight text-stone-950 sm:max-w-5xl sm:text-5xl md:text-7xl">
                     {leadArticle.title}
                   </h1>
-                  <p className="mt-5 max-w-3xl break-words border-l-4 border-red-800 pl-4 text-base leading-7 text-stone-700 sm:text-lg sm:leading-8">
+                  <p className="mt-5 max-w-[20rem] break-words border-l-4 border-red-800 pl-4 text-base leading-7 text-stone-700 sm:max-w-3xl sm:text-lg sm:leading-8">
                     {leadArticle.excerpt}
                   </p>
                   <div className="mt-7 overflow-hidden border border-stone-200 bg-white">

@@ -77,7 +77,7 @@ export default function IntentRouter({
 
   return (
     <section
-      className={`border border-stone-300 bg-white ${variant === 'compact' ? 'p-4 md:p-5' : 'p-5 md:p-6'}`}
+      className={`max-w-[20rem] border border-stone-300 bg-white sm:max-w-none ${variant === 'compact' ? 'p-4 md:p-5' : 'p-5 md:p-6'}`}
       aria-label="Intent router"
     >
       <div className="mb-4 border-b-2 border-stone-900 pb-2 md:mb-5">

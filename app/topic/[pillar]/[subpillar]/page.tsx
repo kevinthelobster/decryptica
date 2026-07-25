@@ -90,18 +90,18 @@ export default async function SubpillarPage({ params }: SubpillarPageProps) {
 
       <section className="border-y-2 border-stone-900 bg-white py-7 md:py-8">
         <p className="text-xs font-bold uppercase tracking-[0.14em] text-red-800">Sub-Pillar Index</p>
-        <h1 className="mt-2 break-words font-serif text-4xl font-black leading-[1.02] text-stone-950 sm:text-5xl md:text-6xl">
+        <h1 className="mt-2 max-w-[21rem] break-words font-serif text-2xl font-black leading-tight text-stone-950 sm:max-w-none sm:text-5xl md:text-6xl">
           {topic.name} {currentSubpillar.name}
         </h1>
-        <p className="mt-4 max-w-3xl text-base leading-7 text-stone-700">{currentSubpillar.description}</p>
+        <p className="mt-4 max-w-[20rem] text-base leading-7 text-stone-700 sm:max-w-3xl">{currentSubpillar.description}</p>
 
-        <div className="mt-6 flex flex-wrap gap-2">
+        <div className="mt-6 grid max-w-[20rem] grid-cols-2 gap-2 sm:flex sm:max-w-none sm:flex-wrap">
           {subpillars.map((item) => (
             <Link
               key={item.slug}
               href={getSubpillarPath(pillarSlug, item.slug)}
               className={[
-                'inline-flex items-center border px-3 py-2 text-sm font-bold transition-colors',
+                'inline-flex items-center justify-center border px-3 py-2 text-center text-sm font-bold transition-colors',
                 item.slug === subpillar
                   ? 'border-red-900 bg-red-900 text-white'
                   : 'border-stone-300 bg-stone-50 text-stone-800 hover:border-stone-950 hover:bg-white hover:text-stone-950',

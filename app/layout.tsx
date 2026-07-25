@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
-import NewsletterPopup from "./components/NewsletterPopup";
 import SeoCwvTracker from "./components/SeoCwvTracker";
 import VercelAnalytics from "./components/VercelAnalytics";
 import { getOrganizationSchema, getWebsiteSchema, jsonLdScript } from "./lib/schema";
@@ -64,7 +63,6 @@ export default function RootLayout({
         {/* SEO CWV & Telemetry Collector */}
         <SeoCwvTracker />
         <VercelAnalytics />
-        <NewsletterPopup />
 
         <footer className="border-t border-stone-200 bg-white">
           <div className="mx-auto max-w-7xl px-5 py-12">

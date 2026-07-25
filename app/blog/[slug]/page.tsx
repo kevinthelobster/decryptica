@@ -13,7 +13,7 @@ import IntentAwareConversionStrip from '../../components/IntentAwareConversionSt
 import TrackedFAQSection from '../../components/TrackedFAQSection';
 import HubSectionNav from '../../components/HubSectionNav';
 import HubRelatedModule from '../../components/HubRelatedModule';
-import { ArticleMilestoneStrip, ArticleSerpPromiseModules } from '../../components/ArticleSerpPromiseModules';
+import { ArticleSerpPromiseModules } from '../../components/ArticleSerpPromiseModules';
 import RouteDepthTracker from '../../components/RouteDepthTracker';
 import { getSubpillarBySlug, getSubpillarPath, inferSubpillarFromArticle, type PillarSlug } from '../../data/topic-routing';
 
@@ -415,14 +415,12 @@ function renderContent(
   insertions?: {
     trustStrip?: React.ReactNode;
     midCapture?: React.ReactNode;
-    relatedMid?: React.ReactNode;
   }
 ) {
   const elements: React.ReactNode[] = [];
   const blocks = content.split(/(?:^|\n)(?=## )/);
   let majorSectionsSeen = 0;
   let trustInserted = false;
-  let relatedInserted = false;
   let midInserted = false;
 
   blocks.forEach((block, blockIndex) => {
@@ -455,11 +453,6 @@ function renderContent(
         trustInserted = true;
       }
 
-      if (majorSectionsSeen === 2 && insertions?.relatedMid && !relatedInserted) {
-        elements.push(<div key="related-mid">{insertions.relatedMid}</div>);
-        relatedInserted = true;
-      }
-
       if (majorSectionsSeen === 3 && insertions?.midCapture && !midInserted) {
         elements.push(<div key="mid-capture">{insertions.midCapture}</div>);
         midInserted = true;
@@ -475,10 +468,6 @@ function renderContent(
 
   if (!midInserted && insertions?.midCapture) {
     elements.push(<div key="mid-capture-fallback">{insertions.midCapture}</div>);
-  }
-
-  if (!relatedInserted && insertions?.relatedMid) {
-    elements.push(<div key="related-mid-fallback">{insertions.relatedMid}</div>);
   }
 
   return elements;
@@ -896,132 +885,6 @@ function FreshnessEvidenceStrip({
   );
 }
 
-// ─── SEO Copy Framework: Funnel-Stage CTA Blocks ───────────────────────────
-// EXPLORE (top of funnel): Awareness — "learn more" intent
-// COMPARE (mid funnel): Consideration — "evaluate options" intent
-// START (bottom of funnel): Decision — "get started now" intent
-
-function CTAExplore({ articleSlug, category }: { articleSlug: string; category: string }) {
-  const categoryContent: Record<string, { heading: string; body: string; cta: string; href: string }> = {
-    ai: {
-      heading: 'Explore AI Tools & Guides',
-      body: 'Discover how teams are using AI to automate workflows, cut costs, and ship faster in 2026.',
-      cta: 'Browse AI Articles',
-      href: '/topic/ai/tooling',
-    },
-    crypto: {
-      heading: 'Stay Ahead of Crypto Markets',
-      body: 'Data-driven crypto analysis and DeFi guides to help you make smarter investment decisions.',
-      cta: 'Explore Crypto Content',
-      href: '/topic/crypto/trading',
-    },
-    automation: {
-      heading: 'Automate Your Workflow',
-      body: 'Step-by-step guides to automate repetitive tasks and reclaim hours every week.',
-      cta: 'See Automation Guides',
-      href: '/topic/automation/workflows',
-    },
-  };
-  const content = categoryContent[category] || categoryContent.ai;
-  return (
-    <div className="mb-6 border border-stone-200 bg-white p-5 transition-colors duration-200 md:hover:border-red-900 md:focus-within:border-red-900">
-      <h4 className="mb-2 font-display text-sm font-semibold uppercase tracking-wider text-red-900">
-        Explore
-      </h4>
-      <p className="mb-1 font-medium text-stone-950">{content.heading}</p>
-      <p className="mb-3 text-sm text-stone-600">{content.body}</p>
-      <TrackedLink
-        href={content.href}
-        className="inline-flex items-center gap-1.5 text-sm font-bold text-red-900 transition-colors hover:text-stone-950"
-        eventType="cta_click"
-        articleSlug={articleSlug}
-        metadata={{ location: 'article_conversion_strip', cta: 'explore_topic', category, funnel: 'explore' }}
-      >
-        {content.cta} →
-      </TrackedLink>
-    </div>
-  );
-}
-
-function CTACompare({ articleSlug, category, title }: { articleSlug: string; category: string; title: string }) {
-  const categoryContent: Record<string, { heading: string; body: string; cta: string; href: string }> = {
-    ai: {
-      heading: 'Compare AI Models & Tools',
-      body: 'Not sure which AI tool fits your needs? See head-to-head comparisons of the top options.',
-      cta: 'View AI Comparisons',
-      href: '/articles',
-    },
-    crypto: {
-      heading: 'Compare Crypto Strategies',
-      body: 'Evaluate different approaches to DeFi, staking, and portfolio allocation side by side.',
-      cta: 'See Comparison Guides',
-      href: '/articles',
-    },
-    automation: {
-      heading: 'Compare Automation Tools',
-      body: 'Zapier vs Make vs n8n? We break down pricing, features, and real-world use cases.',
-      cta: 'Browse Comparisons',
-      href: '/articles',
-    },
-  };
-  const content = categoryContent[category] || categoryContent.ai;
-  return (
-    <div className="mb-6 border border-stone-200 bg-white p-5 transition-colors duration-200 md:hover:border-red-900 md:focus-within:border-red-900">
-      <h4 className="mb-2 font-display text-sm font-semibold uppercase tracking-wider text-red-900">
-        Compare
-      </h4>
-      <p className="mb-1 font-medium text-stone-950">{content.heading}</p>
-      <p className="mb-3 text-sm text-stone-600">{content.body}</p>
-      <TrackedLink
-        href={content.href}
-        className="inline-flex items-center gap-1.5 text-sm font-bold text-red-900 transition-colors hover:text-stone-950"
-        eventType="cta_click"
-        articleSlug={articleSlug}
-        metadata={{ location: 'article_conversion_strip', cta: 'compare_tools', category, funnel: 'compare' }}
-      >
-        {content.cta} →
-      </TrackedLink>
-    </div>
-  );
-}
-
-function CTAStart({ articleSlug, category }: { articleSlug: string; category: string }) {
-  return (
-    <div className="border border-stone-950 bg-stone-950 p-5 text-white transition-colors duration-200 md:hover:border-red-800 md:focus-within:border-red-800">
-      <h4 className="mb-2 font-display text-sm font-semibold uppercase tracking-wider text-stone-300">
-        Get Started
-      </h4>
-      <p className="mb-1 font-medium text-white">Ready to put this into practice?</p>
-      <p className="mb-3 text-sm text-stone-300">Get the latest implementation guides and tool walkthroughs delivered to your inbox.</p>
-      <TrackedLink
-        href="#subscribe"
-        className="btn-primary"
-        eventType="cta_click"
-        articleSlug={articleSlug}
-        metadata={{ location: 'article_conversion_strip', cta: 'start_workflow', category, funnel: 'start' }}
-      >
-        Subscribe for Free
-      </TrackedLink>
-    </div>
-  );
-}
-
-// ─── SEO Copy Framework: ConversionStrip with Funnel-Stage CTAs ─────────────
-
-function ConversionStrip({ articleSlug, category, title }: { articleSlug: string; category: string; title: string }) {
-  return (
-    <section className="mt-10 border border-stone-200 bg-neutral-50 p-6 md:p-8">
-      {/* Meta variant data for CTR testing — hidden from users, visible to crawlers */}
-      <meta name="decryptica:meta:variant" content="explore|compare|start" />
-      <div className="grid md:grid-cols-3 gap-4">
-        <CTAExplore articleSlug={articleSlug} category={category} />
-        <CTACompare articleSlug={articleSlug} category={category} title={title} />
-        <CTAStart articleSlug={articleSlug} category={category} />
-      </div>
-    </section>
-  );
-}
-
 // ─── Article Page Component ────────────────────────────────────────────────
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -1114,7 +977,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <article className="min-w-0 lg:col-span-3">
             {/* Header */}
             <header id="overview" className="mb-8 scroll-mt-28">
-              <div className="flex items-center gap-3 mb-4">
+              <div className="mb-4 flex flex-wrap items-center gap-3">
                 <Link
                   href={`/topic/${article.category}`}
                   className="topic-tag transition-colors hover:border-red-900 hover:bg-neutral-50"
@@ -1154,12 +1017,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     {article.status === 'in_review' ? 'In Review' : article.status.charAt(0).toUpperCase() + article.status.slice(1)}
                   </span>
                 )}
-                <span className="text-stone-300">•</span>
-                <span className="text-sm text-stone-500">{readTime}</span>
-                <span className="text-stone-300">•</span>
+                <span className="hidden text-stone-300 sm:inline">•</span>
+                <span className="basis-full text-sm text-stone-500 sm:basis-auto">{readTime}</span>
+                <span className="hidden text-stone-300 sm:inline">•</span>
                 <span className="text-sm text-stone-500">{wordCount.toLocaleString()} words</span>
               </div>
-              <h1 className="mb-4 font-display text-3xl font-bold leading-tight text-stone-950 md:text-4xl">
+              <h1 className="mb-4 max-w-[20rem] break-words font-display text-2xl font-bold leading-tight text-stone-950 sm:max-w-none sm:text-3xl md:text-4xl">
                 {article.title}
               </h1>
               <div className="flex items-center gap-4 text-sm text-stone-500">
@@ -1203,7 +1066,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               />
             </div>
 
-            <ArticleMilestoneStrip articleSlug={slug} category={article.category} />
             <FreshnessEvidenceStrip article={article} methodAnchorId="methodology" />
 
             <section id="key-questions" className="scroll-mt-28">
@@ -1221,18 +1083,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div id="article-content" className="prose prose-stone max-w-none article-reading-body">
                 <div className="max-w-[75ch] min-w-0">
                   {renderContent(article.content, {
-                    relatedMid: (
-                      <HubRelatedModule
-                        heading="Related Guides"
-                        description="Continue with adjacent implementation and comparison guides."
-                        items={relatedModuleItems}
-                        surface="article"
-                        location="article_related_module"
-                        moduleVariant="mid_article"
-                        slug={slug}
-                        category={article.category}
-                      />
-                    ),
                     midCapture: <MidArticleLeadCapture articleSlug={slug} category={article.category} />,
                   })}
                 </div>

@@ -63,7 +63,7 @@ export default function ArticlesPage() {
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-red-800">Archive</p>
             <div className="mt-3 flex flex-col gap-5 border-y border-stone-900 py-6 lg:flex-row lg:items-end lg:justify-between">
               <div>
-                <h1 className="font-serif text-5xl font-black leading-none md:text-7xl">Latest Reports</h1>
+                <h1 className="font-serif text-4xl font-black leading-tight md:text-7xl">Latest Reports</h1>
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-stone-700">
                   Independent analysis on crypto markets, AI tooling, and automation systems. {articles.length} reports in the archive.
                 </p>
