@@ -104,6 +104,28 @@ export default function IndexPage() {
               <span>Updated {leadArticle?.date}</span>
             </div>
 
+            <form
+              action="/search"
+              className="mt-5 grid gap-3 border border-stone-200 bg-neutral-50 p-4 md:grid-cols-[minmax(0,1fr)_9rem]"
+            >
+              <label className="sr-only" htmlFor="home-search">
+                Search Decryptica
+              </label>
+              <input
+                id="home-search"
+                name="q"
+                type="search"
+                placeholder="Search articles, prompts, and tools"
+                className="min-h-11 w-full border border-stone-300 bg-white px-4 text-sm text-stone-950 placeholder:text-stone-400 focus:border-red-900 focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="min-h-11 border border-stone-950 bg-stone-950 px-4 text-sm font-bold uppercase tracking-[0.12em] text-white hover:bg-red-900"
+              >
+                Search
+              </button>
+            </form>
+
             <div className="grid min-w-0 gap-8 py-8 lg:grid-cols-[minmax(0,1.45fr)_minmax(20rem,0.75fr)]">
               {leadArticle && (
                 <TrackedLink
