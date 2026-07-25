@@ -12,6 +12,8 @@
     "kwr:pull": "zsh scripts/run_kwr_pull.sh",
     "seo:checkpoint": "zsh scripts/run_seo_checkpoint.sh",
     "seo:checkpoint:date": "zsh scripts/run_seo_checkpoint.sh",
+    "analytics:vercel": "zsh scripts/run_vercel_analytics_monitor.sh --mode report",
+    "analytics:vercel:check": "zsh scripts/run_vercel_analytics_monitor.sh --mode check",
     "newsletter:weekly": "zsh scripts/run_weekly_dispatch.sh",
     "kpi:sprint-dashboard": "tsx scripts/export_sprint_dashboard.ts"
   },
