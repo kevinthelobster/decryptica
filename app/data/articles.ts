@@ -262,19 +262,7 @@ Based on public documentation, pricing pages, benchmark reports, protocol docs, 
 
 This analysis is based on public sources rather than private testing.
 
-That includes benchmark reports such as [SWE-bench](https://www. swebench. com/), [Terminal-Bench](https://www.
-
-tbench. ai/benchmarks), and [GAIA](https://huggingface. co/gaia-benchmark); pricing and usage docs from [OpenAI](https://developers.
-
-openai. com/api/docs/models/compare), [Anthropic](https://docs. anthropic.
-
-com/en/docs/about-claude/pricing? 4810b549_page=3&73cdfb14_page=2&939688b5_page=1&e768fcd2_page=2), [Zapier](https://zapier. com/pricing), [n8n](https://n8n.
-
-io/pricing/), [Microsoft Copilot Studio](https://www. microsoft. com/en-us/microsoft-365-copilot/pricing/copilot-studio), and [Salesforce Agentforce](https://www.
-
-salesforce. com/agentforce/pricing/? bc=OTH); governance docs from Microsoft, Salesforce, n8n, OpenAI, and Anthropic; and adoption signals such as LangChain’s 2026 public [State of Agent Engineering](https://www.
-
-langchain. com/state-of-agent-engineering) survey.
+That includes benchmark reports such as [SWE-bench](https://www.swebench.com/), [Terminal-Bench](https://www.tbench.ai/benchmarks), and [GAIA](https://huggingface.co/gaia-benchmark); pricing and usage docs from [OpenAI](https://developers.openai.com/api/docs/models/compare), [Anthropic](https://docs.anthropic.com/en/docs/about-claude/pricing?4810b549_page=3&73cdfb14_page=2&939688b5_page=1&e768fcd2_page=2), [Zapier](https://zapier.com/pricing), [n8n](https://n8n.io/pricing/), [Microsoft Copilot Studio](https://www.microsoft.com/en-us/microsoft-365-copilot/pricing/copilot-studio), and [Salesforce Agentforce](https://www.salesforce.com/agentforce/pricing/?bc=OTH); governance docs from Microsoft, Salesforce, n8n, OpenAI, and Anthropic; and adoption signals such as LangChain’s 2026 public [State of Agent Engineering](https://www.langchain.com/state-of-agent-engineering) survey.
 
 That evidence base has limits. Vendor benchmarks favor the vendor, self-reported surveys skew toward early adopters, and user reports often overrepresent edge cases. Still, taken together, they are good enough to separate the useful patterns from the expensive theater.
 
@@ -288,19 +276,13 @@ That does not mean every code agent is reliable.  It means the environment is un
 
 A bad patch fails tests, breaks the build, or looks wrong in a diff.
 
-That is why tools like OpenAI’s agent stack and Codex-related products, Anthropic’s [Claude Code](https://www. anthropic. com/product/claude-code?
+That is why tools like OpenAI’s agent stack and Codex-related products, Anthropic’s [Claude Code](https://www.anthropic.com/product/claude-code?r=0), and Cursor’s [agent plans](https://cursor.com/en-US/pricing) have real traction.  LangChain’s 2026 survey says coding agents dominate daily agent usage, which matches what benchmark culture has been signaling for months.
 
-r=0), and Cursor’s [agent plans](https://cursor. com/en-US/pricing) have real traction.  LangChain’s 2026 survey says coding agents dominate daily agent usage, which matches what benchmark culture has been signaling for months.
-
-Even here, buyers should stay skeptical.  Public agent benchmarks are improving, but they are not stable enough to treat as purchasing truth.  Terminal-Bench itself released a [2.
-
-1 revision](https://www. tbench. ai/news/terminal-bench-2-1) after fixing tasks, and several model-agent scores moved materially.
+Even here, buyers should stay skeptical.  Public agent benchmarks are improving, but they are not stable enough to treat as purchasing truth.  Terminal-Bench itself released a [2.1 revision](https://www.tbench.ai/news/terminal-bench-2-1) after fixing tasks, and several model-agent scores moved materially.
 
 The mechanism matters. Coding agents work because they can plan, act, and verify in the same environment. That loop is much stronger than what you get in sales ops, recruiting, or finance, where the “correct” answer often depends on ambiguous business rules and messy human exceptions.
 
-The tradeoff is cost and control.  OpenAI’s higher-end API models can get expensive fast, especially once long context, tool calls, or premium processing enter the picture, while Anthropic’s long-context pricing on Sonnet 4 increases once input passes the threshold described on its [pricing page](https://docs. anthropic.
-
-com/en/docs/about-claude/pricing? 4810b549_page=3&73cdfb14_page=2&939688b5_page=1&e768fcd2_page=2).  Cursor also makes the economics explicit: agent-heavy users consume included usage quickly and move into usage-based spend.
+The tradeoff is cost and control.  OpenAI’s higher-end API models can get expensive fast, especially once long context, tool calls, or premium processing enter the picture, while Anthropic’s long-context pricing on Sonnet 4 increases once input passes the threshold described on its [pricing page](https://docs.anthropic.com/en/docs/about-claude/pricing?4810b549_page=3&73cdfb14_page=2&939688b5_page=1&e768fcd2_page=2).  Cursor also makes the economics explicit: agent-heavy users consume included usage quickly and move into usage-based spend.
 
 Who should avoid this category?  Teams with weak test coverage, fragile deployment practices, or regulated code paths that still lack clean review gates.  The agent is not the main risk there.
 
@@ -310,7 +292,7 @@ Your software process is.
 
 The second category that is genuinely working is not “autonomous digital workers.” It is agentic layers on top of ordinary automation.
 
-That is where tools like [Zapier Agents](https://zapier. com/pricing) and [n8n](https://n8n. io/pricing/) make sense.
+That is where tools like [Zapier Agents](https://zapier.com/pricing) and [n8n](https://n8n.io/pricing/) make sense.
 
 The agent is useful when it classifies, routes, drafts, or selects among approved actions.  It is much less useful when it is allowed to wander across fifty apps looking for a clever answer.
 
@@ -326,23 +308,15 @@ The reason is simple. A deterministic workflow with one agentic decision point i
 
 The big enterprise players are not wrong that support and CRM are real agent markets. They are wrong when they imply the hard part is already solved.
 
-[Salesforce Agentforce](https://www. salesforce. com/agentforce/pricing/?
-
-bc=OTH) has a pricing model that at least makes the meter visible: action-based Flex Credits or per-conversation pricing.  [Microsoft Copilot Studio](https://learn. microsoft.
-
-com/en-us/microsoft-copilot-studio/requirements-messages-management) also makes clear that answers, actions, grounding, and reasoning consume different amounts of Copilot Credits.
+[Salesforce Agentforce](https://www.salesforce.com/agentforce/pricing/?bc=OTH) has a pricing model that at least makes the meter visible: action-based Flex Credits or per-conversation pricing.  [Microsoft Copilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-messages-management) also makes clear that answers, actions, grounding, and reasoning consume different amounts of Copilot Credits.
 
 That matters because the hidden cost in customer-facing agents is not just token spend. It is orchestration spend. A cheap single answer can become an expensive chain when the agent retrieves context, grounds on enterprise data, executes a flow, and hands off across tools.
 
 Still, this category can be worth deploying. The strongest use cases are account lookup, order status, authenticated FAQ, internal help desk flows, and narrow service actions with a well-defined approval path.
 
-The failure mode is almost always permissions.  Microsoft’s governance docs explicitly warn about [maker-provided credentials](https://learn. microsoft.
+The failure mode is almost always permissions.  Microsoft’s governance docs explicitly warn about [maker-provided credentials](https://learn.microsoft.com/en-us/microsoft-copilot-studio/configure-no-maker-authentication), where an agent can end up acting with the builder’s access rather than the user’s.  Microsoft also warns that connector permissions can accidentally expose content too broadly if ACLs are configured carelessly.
 
-com/en-us/microsoft-copilot-studio/configure-no-maker-authentication), where an agent can end up acting with the builder’s access rather than the user’s.  Microsoft also warns that connector permissions can accidentally expose content too broadly if ACLs are configured carelessly.
-
-Salesforce is equally blunt in its [shared responsibility guidance](https://help. salesforce. com/s/articleView?
-
-id=005315874&language=en_US&type=1).  The platform can provide trust controls and monitoring, but customers still own least privilege, field permissions, and the agent’s action boundaries.
+Salesforce is equally blunt in its [shared responsibility guidance](https://help.salesforce.com/s/articleView?id=005315874&language=en_US&type=1).  The platform can provide trust controls and monitoring, but customers still own least privilege, field permissions, and the agent’s action boundaries.
 
 That is the real pattern of 2026. Enterprise agents work where authorization is explicit. They break where authorization is assumed.
 
@@ -364,9 +338,7 @@ The headline demos are real. The operational reliability is still not.
 
 OpenAI’s computer-use stack and Anthropic’s computer-use capability show why the category is exciting. They also show why it is not ready to be the default way your business software talks to other business software.
 
-Anthropic’s own [computer use launch](https://www. anthropic. com/news/3-5-models-and-computer-use?
-
-s=08) and research notes describe the capability as experimental and error-prone.  That honesty is useful.  Browser agents fail because interfaces change, screenshots are partial, timing is messy, and small UI shifts cascade into wrong actions.
+Anthropic’s own [computer use launch](https://www.anthropic.com/news/3-5-models-and-computer-use?s=08) and research notes describe the capability as experimental and error-prone.  That honesty is useful.  Browser agents fail because interfaces change, screenshots are partial, timing is messy, and small UI shifts cascade into wrong actions.
 
 This is not a reason to ignore them.  It is a reason to place them correctly.  They are good for filling gaps where no API exists, especially in low-volume internal tasks.
 
@@ -400,9 +372,7 @@ That issue is adjacent to one Decryptica has already covered in [The Copyright P
 
 “Enterprise-ready” often means the vendor has an admin console. It does not mean your legal, security, and platform teams will approve the deployment.
 
-“Uses your data securely” needs inspection.  OpenAI’s [Business pricing page](https://openai. com/business/pricing/?
-
-LanguageId=1) says business data is not used for training by default, and Anthropic says commercial inputs and outputs are not used for training by default while its [computer-use privacy note](https://privacy. anthropic. com/en/articles/10030352-what-personal-data-will-be-processed-by-computer-use) explains screenshot processing and retention.
+“Uses your data securely” needs inspection.  OpenAI’s [Business pricing page](https://openai.com/business/pricing/?LanguageId=1) says business data is not used for training by default, and Anthropic says commercial inputs and outputs are not used for training by default while its [computer-use privacy note](https://privacy.anthropic.com/en/articles/10030352-what-personal-data-will-be-processed-by-computer-use) explains screenshot processing and retention.
 
 Those are better signals than vague trust-language, but they still do not answer where your data goes inside your own stack.
 
@@ -419,7 +389,7 @@ If you are evaluating AI tools seriously, this is the checklist that matters mor
 - What is the fallback path when the agent stalls, loops, or exceeds quota?
 - Can you estimate unit economics before rollout, not after the invoice lands?
 
-n8n gets attention here because its [enterprise positioning](https://n8n. io/enterprise/) leans on self-hosting, secret-store integration, and auditability.  Microsoft gets attention because its docs are unusually explicit about connector governance and oversharing risk.
+n8n gets attention here because its [enterprise positioning](https://n8n.io/enterprise/) leans on self-hosting, secret-store integration, and auditability.  Microsoft gets attention because its docs are unusually explicit about connector governance and oversharing risk.
 
 Salesforce gets attention because it frames agent security as shared responsibility rather than pretending the model solved it.
 
@@ -483,11 +453,7 @@ They are not decisive because copyright law asks different questions than produc
 
 ### 1. Training legality is still being fought
 
-The biggest unresolved issue is whether model training on copyrighted images is licensed, fair use, infringing, or some mixture depending on the facts.  The [U. S.
-
-Copyright Office AI page](https://www. copyright. gov/ai/?
-
-country=1049) now links a pre-publication Part 3 report released on May 9, 2025, and the Office did not bless blanket scraping.
+The biggest unresolved issue is whether model training on copyrighted images is licensed, fair use, infringing, or some mixture depending on the facts.  The [U.S. Copyright Office AI page](https://www.copyright.gov/ai/?country=1049) now links a pre-publication Part 3 report released on May 9, 2025, and the Office did not bless blanket scraping.
 
 Its position is more careful than vendor marketing. The Office says copying can occur during dataset building and training, and fair use turns on specifics such as the works used, the purpose, and the market effect.
 
@@ -497,21 +463,17 @@ That matters because most buyers do not buy models in the abstract. They buy leg
 
 Even if a vendor eventually wins a training fight, output risk remains. A model that can generate something very close to Darth Vader, Elsa, or the Minions still creates a downstream problem for the user.
 
-That is why the June 11, 2025 lawsuit from [Disney and Universal against Midjourney](https://www. investing. com/news/stock-market-news/disney-universal-sue-image-creator-midjourney-for-copyright-infringement-4091419) matters.
+That is why the June 11, 2025 lawsuit from [Disney and Universal against Midjourney](https://www.investing.com/news/stock-market-news/disney-universal-sue-image-creator-midjourney-for-copyright-infringement-4091419) matters.
 
 The case is not just about what went into training.  It is also about what came out.
 
-The same distinction shows up in stock-style products.  [Shutterstock’s license terms](https://www. shutterstock.
-
-com/license) spell out that indemnity is not automatic for outputs depicting trademarks, copyrights, public personalities, or famous characters.
+The same distinction shows up in stock-style products.  [Shutterstock’s license terms](https://www.shutterstock.com/license) spell out that indemnity is not automatic for outputs depicting trademarks, copyrights, public personalities, or famous characters.
 
 ### 3. “You own it” does not mean “it is copyrighted”
 
 This is where many teams still get lost. A platform can assign whatever rights it has in output to you by contract, but that does not guarantee that the image qualifies for copyright protection under the law.
 
-OpenAI’s [Terms of Use](https://openai. com/es-US/policies/terms-of-use/) say users own output as between user and vendor, to the extent allowed by law.  Midjourney’s [Terms of Service](https://docs.
-
-midjourney. com/hc/en-us/articles/32083055291277-Terms-of-Service) say users own assets to the fullest extent possible under applicable law.
+OpenAI’s [Terms of Use](https://openai.com/es-US/policies/terms-of-use/) say users own output as between user and vendor, to the extent allowed by law.  Midjourney’s [Terms of Service](https://docs.midjourney.com/hc/en-us/articles/32083055291277-Terms-of-Service) say users own assets to the fullest extent possible under applicable law.
 
 Those are useful contract terms. They are not a shortcut around human authorship doctrine.
 
@@ -519,27 +481,9 @@ Those are useful contract terms. They are not a shortcut around human authorship
 
 This analysis is based on public documentation, pricing pages, product terms, government guidance, court filings, policy reports, and user reports about workflow fit and moderation behavior. It does not rely on private benchmarks, unpublished tests, or unnamed sources.
 
-The core evidence includes the [U. S.  Copyright Office registration guidance from March 16, 2023](https://www.
+The core evidence includes the [U. S.  Copyright Office registration guidance from March 16, 2023](https://www.govinfo.gov/app/details/FR-2023-03-16/2023-05321), the Office’s [January 29, 2025 report on copyrightability](https://copyright.gov/newsnet/2025/1060.html), the [March 18, 2025 *Thaler* appellate ruling](https://www.investing.com/news/world-news/us-appeals-court-rejects-copyrights-for-aigenerated-art-lacking-human-creator-3934826), the Copyright Office’s [May 9, 2025 pre-publication training report](https://www.copyright.gov/ai/?_bhlid=dd7219fa885b79044d1af64793d7590881bcf01b), the [UK government’s March 18, 2026 copyright-and-AI report](https://www.gov.uk/government/publications/report-and-impact-assessment-on-copyright-and-artificial-intelligence), and public litigation materials in the Andersen, Getty, and Midjourney disputes.
 
-govinfo. gov/app/details/FR-2023-03-16/2023-05321), the Office’s [January 29, 2025 report on copyrightability](https://copyright. gov/newsnet/2025/1060.
-
-html), the [March 18, 2025 *Thaler* appellate ruling](https://www. investing. com/news/world-news/us-appeals-court-rejects-copyrights-for-aigenerated-art-lacking-human-creator-3934826), the Copyright Office’s [May 9, 2025 pre-publication training report](https://www.
-
-copyright. gov/ai/? _bhlid=dd7219fa885b79044d1af64793d7590881bcf01b), the [UK government’s March 18, 2026 copyright-and-AI report](https://www.
-
-gov. uk/government/publications/report-and-impact-assessment-on-copyright-and-artificial-intelligence), and public litigation materials in the Andersen, Getty, and Midjourney disputes.
-
-On the product side, we checked the current public terms and pricing pages for [Adobe Firefly](https://www. adobe. com/products/firefly/plans.
-
-html? msockid=1c246063c6d0676f15e67607c71e66eb), [Adobe’s Firefly AI approach](https://www. adobe.
-
-com/ai/overview/firefly/gen-ai-approach. html? msockid=175039ebd6426fe51bfe2f0cd7d56ea2), [OpenAI service terms](https://openai.
-
-com/es-US/policies/service-terms/), [OpenAI enterprise privacy](https://openai. com/enterprise-privacy/), [Midjourney plans](https://docs. midjourney.
-
-com/hc/en-us/articles/27870484040333-Comparing-Midjourney-Plans), [Shutterstock license terms](https://www. shutterstock. com/license), and [Stability licensing](https://stability.
-
-ai/license).
+On the product side, we checked the current public terms and pricing pages for [Adobe Firefly](https://www.adobe.com/products/firefly/plans.html?msockid=1c246063c6d0676f15e67607c71e66eb), [Adobe’s Firefly AI approach](https://www.adobe.com/ai/overview/firefly/gen-ai-approach.html?msockid=175039ebd6426fe51bfe2f0cd7d56ea2), [OpenAI service terms](https://openai.com/es-US/policies/service-terms/), [OpenAI enterprise privacy](https://openai.com/enterprise-privacy/), [Midjourney plans](https://docs.midjourney.com/hc/en-us/articles/27870484040333-Comparing-Midjourney-Plans), [Shutterstock license terms](https://www.shutterstock.com/license), and [Stability licensing](https://stability.ai/license).
 
 ## How the main ai tools actually compare
 
@@ -565,9 +509,7 @@ Adobe’s public materials say Firefly is trained on public-domain and licensed 
 
 It still does not mean every output is protected, every feature is covered, or every jurisdiction will read the same facts the same way. Adobe’s own product descriptions limit which features, surfaces, and release states qualify.
 
-The second overreach is “you own your output. ” You may have contractual ownership against the vendor, but the [Copyright Office’s guidance](https://www. govinfo.
-
-gov/app/details/FR-2023-03-16/2023-05321) and the [January 29, 2025 report](https://copyright. gov/newsnet/2025/1060. html) make clear that prompts alone usually do not supply enough human authorship.
+The second overreach is “you own your output. ” You may have contractual ownership against the vendor, but the [Copyright Office’s guidance](https://www.govinfo.gov/app/details/FR-2023-03-16/2023-05321) and the [January 29, 2025 report](https://copyright.gov/newsnet/2025/1060.html) make clear that prompts alone usually do not supply enough human authorship.
 
 The third overreach is treating training transparency as optional. It is not optional if you are a publisher, advertiser, studio, or platform operator that may need to defend provenance later.
 
@@ -603,9 +545,7 @@ Midjourney is the clearest example. Its plan docs say Stealth mode requires Pro 
 
 That is a serious blocker for agencies, newsrooms, and larger brands. If a tool cannot pass procurement, its image quality is irrelevant.
 
-OpenAI takes the opposite path for business users.  Its [enterprise privacy commitments](https://openai. com/enterprise-privacy/) say business data is not used to train models by default, and the [service terms](https://openai.
-
-com/es-US/policies/service-terms/) include IP indemnity for API customers with exclusions.
+OpenAI takes the opposite path for business users.  Its [enterprise privacy commitments](https://openai.com/enterprise-privacy/) say business data is not used to train models by default, and the [service terms](https://openai.com/es-US/policies/service-terms/) include IP indemnity for API customers with exclusions.
 
 That is stronger for governed internal workflows. It still requires the customer to handle inputs, approvals, and trademark or publicity review.
 
@@ -694,25 +634,15 @@ Art NFTs were mostly bought for cultural positioning and resale optionality. The
 
 Gaming NFTs can work because they represent state that players may repeatedly care about. That state can be a rare card, an equipped skin, a tournament-eligible asset, a land plot, a crafted item, or an account-bound achievement that later becomes tradable under specific rules.
 
-This is not theoretical.  [Immutable’s public documentation](https://docs. immutable.
-
-com/product-philosophy/zkevm/in-game-items/) explicitly distinguishes between ERC-721 assets for higher-value unique items and ERC-1155 assets for more liquid in-game items and consumables.  That distinction matters because it is market structure, not branding.
+This is not theoretical.  [Immutable’s public documentation](https://docs.immutable.com/docs/products/asset-contracts/overview) explicitly distinguishes between ERC-721 assets for higher-value unique items and ERC-1155 assets for more liquid in-game items and consumables.  That distinction matters because it is market structure, not branding.
 
 A good game economy does not put everything on-chain. It puts the economically meaningful parts on-chain.
 
-That is also why the better gaming NFT models look less like collectible mania and more like inventory management.  [Gods Unchained](https://portal. godsunchained.
-
-com/blog/gods-unchained-cards-and-sets) separates playable non-NFT cards from tradable NFT versions.  [Pixels’ public economics docs](https://docs. pixels.
-
-xyz/economics) frame the economy around gameplay value first, not extraction first.  [Illuvium’s published terms and whitepaper materials](https://docs. illuvium.
-
-io/illuvium-whitepaper/fusion-of-defi-and-gaming/game-objects-as-nfts) map different asset types to different standards and use cases.
+That is also why the better gaming NFT models look less like collectible mania and more like inventory management.  [Gods Unchained](https://portal.godsunchained.com/blog/gods-unchained-cards-and-sets) separates playable non-NFT cards from tradable NFT versions.  [Pixels’ public economics docs](https://docs.pixels.xyz/economics) frame the economy around gameplay value first, not extraction first.  [Illuvium’s published terms and whitepaper materials](https://docs.illuvium.io/illuvium-whitepaper/fusion-of-defi-and-gaming/game-objects-as-nfts) map different asset types to different standards and use cases.
 
 That is the real shift. The asset is not the product. The game loop is the product, and the NFT is one settlement layer inside it.
 
-There is a useful parallel from DeFi.  [Uniswap’s developer docs](https://developers. uniswap.
-
-org/docs/get-started/concepts/how-uniswap-works) note that concentrated liquidity positions are individualized and represented as non-fungible positions.  In other words, crypto already uses NFTs where state is unique and economically specific.
+There is a useful parallel from DeFi.  [Uniswap’s developer docs](https://developers.uniswap.org/docs/get-started/concepts/how-uniswap-works) note that concentrated liquidity positions are individualized and represented as non-fungible positions.  In other words, crypto already uses NFTs where state is unique and economically specific.
 
 The lesson is blunt: NFTs are not dead weight by definition. They are just poor instruments for assets that have no recurring reason to exist.
 
@@ -738,21 +668,17 @@ This is where most NFT commentary stays too shallow. Not every game asset should
 
 High-frequency items and currencies belong in liquid pools or routing systems. Scarce one-off assets belong in marketplace-style venues. Semi-fungible items often work best as ERC-1155s because they batch better and trade more efficiently.
 
-[Immutable’s docs](https://devsupport. immutable. com/v1/products/zkevm/contracts/erc1155/) make this point directly for gaming items.
+[Immutable’s docs](https://devsupport.immutable.com/v1/products/zkevm/contracts/erc1155/) make this point directly for gaming items.
 
-[OpenSea’s Seaport docs](https://docs. opensea. io/docs/seaport) show how NFT marketplace orders can support complex transfers.
+[OpenSea’s Seaport docs](https://docs.opensea.io/docs/seaport) show how NFT marketplace orders can support complex transfers.
 
-[Ronin documentation](https://wiki. roninchain. com/) pairs NFT-heavy gaming activity with [Katana DEX](https://wiki.
-
-roninchain. com/) for token swaps and LP activity.
+[Ronin documentation](https://wiki.roninchain.com/) pairs NFT-heavy gaming activity with [Katana DEX](https://wiki.roninchain.com/) for token swaps and LP activity.
 
 That combination matters more than floor price screenshots. A durable economy routes different asset classes through the least bad market design for each.
 
 ### 3. AMMs keep the economy alive even when orderbooks and routers get smarter
 
-Orderbook growth and intent-based routing have improved execution for liquid crypto assets.  [Jupiter’s docs](https://developers. jup.
-
-ag/docs/swap/order-and-execute) on Solana make that clear.
+Orderbook growth and intent-based routing have improved execution for liquid crypto assets.  [Jupiter’s docs](https://developers.jup.ag/docs/swap/order-and-execute) on Solana make that clear.
 
 But the underlying liquidity still has to live somewhere. For long-tail game currencies, crafting materials, reward tokens, and new launches, AMMs remain structurally important.
 
@@ -776,7 +702,7 @@ AMMs are not the answer to everything. They are just still the least bad answer 
 
 AMMs are good for companion currencies, reward tokens, stablecoin pairs, and liquid crafting inputs. They are also useful when a studio, guild, or treasury needs continuous conversion between in-game assets and stable reserves.
 
-[Uniswap’s concentrated liquidity design](https://developers. uniswap. org/docs/get-started/concepts/liquidity-providers/concentrated-liquidity) improves capital efficiency near the reference price.
+[Uniswap’s concentrated liquidity design](https://developers.uniswap.org/docs/get-started/concepts/liquidity-providers/concentrated-liquidity) improves capital efficiency near the reference price.
 
 That can make game-token markets look deeper than older constant-product pools.
 
@@ -808,9 +734,7 @@ TVL matters only as a supporting signal. If a game’s liquidity pools, bridges,
 
 ETF flows are mostly irrelevant here. They matter for broad crypto beta and risk appetite, not for whether a sword, card, or land parcel has durable in-game demand.
 
-Stablecoin supply matters more than many NFT bulls admit.  Stablecoin rails reduce friction, help price items in something players understand, and give treasuries a cleaner reserve asset.  [BGA’s published report page](https://blockchaingamealliance.
-
-net/bga-reports/) points to stablecoins as increasingly important gaming infrastructure, which fits the plumbing-first view.
+Stablecoin supply matters more than many NFT bulls admit.  Stablecoin rails reduce friction, help price items in something players understand, and give treasuries a cleaner reserve asset.  [BGA’s published report page](https://blockchaingamealliance.net/bga-reports/) points to stablecoins as increasingly important gaming infrastructure, which fits the plumbing-first view.
 
 Here is the decision matrix serious readers should use:
 
@@ -829,15 +753,7 @@ No single row proves anything. The point is to stop pretending that one floor-pr
 
 This analysis draws on public documentation, not private tests or invented KPIs.
 
-The evidence base includes [game economy docs and whitepapers](https://docs. pixels. xyz/economics) from live or live-adjacent projects, [NFT and item standard documentation from Immutable](https://docs.
-
-immutable. com/product-philosophy/zkevm/in-game-items/), [Ronin ecosystem docs](https://docs. roninchain.
-
-com/), [marketplace protocol docs from OpenSea and Seaport](https://docs. opensea. io/docs/seaport), [AMM and liquidity documentation from Uniswap](https://developers.
-
-uniswap. org/docs/get-started/concepts/how-uniswap-works), [routing documentation from Jupiter](https://developers. jup.
-
-ag/docs/swap/order-and-execute), and public industry reporting from [DappRadar](https://dappradar. com/reports) and [Blockchain Game Alliance](https://blockchaingamealliance. net/bga-reports/).
+The evidence base includes [game economy docs and whitepapers](https://docs.pixels.xyz/economics) from live or live-adjacent projects, [NFT and item standard documentation from Immutable](https://docs.immutable.com/docs/products/asset-contracts/overview), [Ronin ecosystem docs](https://docs.roninchain.com/), [marketplace protocol docs from OpenSea and Seaport](https://docs.opensea.io/docs/seaport), [AMM and liquidity documentation from Uniswap](https://developers.uniswap.org/docs/get-started/concepts/how-uniswap-works), [routing documentation from Jupiter](https://developers.jup.ag/docs/swap/order-and-execute), and public industry reporting from [DappRadar](https://dappradar.com/reports) and [Blockchain Game Alliance](https://blockchaingamealliance.net/bga-reports/).
 
 The useful takeaway is not any one number. It is the repeated pattern across docs, reports, and on-chain market design: the gaming projects with the best survival odds treat NFTs as one asset layer inside a broader economy, not as the entire business model.
 
@@ -3029,7 +2945,7 @@ Even as orderbook and RFQ systems grow, AMMs still do the heavy lifting for:
 - passive LP participation
 - arbitrage-linked price synchronization across venues
 
-That is why concentrated liquidity systems like [Raydium CLMM](https://docs.raydium.io/raydium/for-liquidity-providers/providing-concentrated-liquidity-clmm), Orca Whirlpools, and bin-based designs like Meteora’s DLMM still matter. They are not relics. They are the base liquidity substrate for a chain that keeps creating new assets faster than professional market makers can staff them.
+That is why concentrated liquidity systems like [Raydium CLMM](https://docs.raydium.io/products/clmm/overview), Orca Whirlpools, and bin-based designs like Meteora’s DLMM still matter. They are not relics. They are the base liquidity substrate for a chain that keeps creating new assets faster than professional market makers can staff them.
 
 But their economics are harder than the marketing decks suggest.
 
@@ -3103,7 +3019,7 @@ First, fewer teams want to build standalone exchanges that own user flow directl
 
 Second, more engineering effort is moving toward wallet-level distribution, private execution, tip optimization, rebalance automation, and MEV-aware market making. These are rational businesses. They are also businesses that make the app layer thinner.
 
-Third, token launch infrastructure has compressed differentiation. Raydium’s docs now include [LaunchLab](https://docs.raydium.io/raydium/for-liquidity-providers/providing-concentrated-liquidity-clmm) in the broader product stack, which tells you something important: deployment, listing, and liquidity initialization are increasingly productized. The fewer bespoke pieces a team has to invent, the less new design work gets funded.
+Third, token launch infrastructure has compressed differentiation. Raydium’s docs now include [LaunchLab](https://docs.raydium.io/products/launchlab/overview) in the broader product stack, which tells you something important: deployment, listing, and liquidity initialization are increasingly productized. The fewer bespoke pieces a team has to invent, the less new design work gets funded.
 
 Fourth, the most compelling non-speculative Solana development is shifting toward specialized rails such as [Token Extensions](https://solana.com/docs/tokens/extensions) and [ZK Compression](https://www.zkcompression.com/home). Token Extensions open real design space around transfer fees, confidential transfers, interest-bearing tokens, and permissioned behaviors. ZK Compression claims to reduce token account and PDA creation costs by 99%, which is meaningful for payments, rewards, and high-scale consumer distribution.
 
@@ -16306,7 +16222,7 @@ For serious **crypto analysis**, that distinction matters. Solana is no longer j
 - Orderbooks and RFQ systems are better on majors and block-sized flow. AMMs are better at breadth, bootstrapping, and permissionless liquidity warehousing.
 - The real Solana edge is not “cheap fees.” It is fast feedback between traders, routers, LPs, liquidators, and MEV searchers.
 
-*Data points cited here use June 13, 2026 snapshots from [DeFiLlama’s Solana chain dashboard](https://defillama.com/chain/Solana), [Solana DEX dashboard](https://defillama.com/dexs/chain/solana), and official docs from [Jupiter](https://developers.jup.ag/docs/swap), [Meteora](https://docs.meteora.ag/overview/products/dlmm/what-is-dlmm), and [Jito](https://www.jito.network/docs/jitosol/jitosol-liquid-staking/maximum-extractible-value/).*
+*Data points cited here use June 13, 2026 snapshots from [DeFiLlama’s Solana chain dashboard](https://defillama.com/chain/Solana), [Solana DEX dashboard](https://defillama.com/dexs/chain/solana), and official docs from [Jupiter](https://developers.jup.ag/docs/swap), [Meteora](https://docs.meteora.ag/core-products/dlmm/what-is-dlmm), and [Jito](https://www.jito.network/docs/jitosol/jitosol-liquid-staking/maximum-extractible-value/).*
 
 ## The Renaissance Is Showing Up in Hard Numbers
 
@@ -17563,7 +17479,7 @@ For anyone doing serious **crypto analysis**, that distinction is everything.
 
 The bullish Bitcoin case has become almost too elegant.
 
-The supply cap is fixed. The halving reduces new issuance. [BlackRock’s IBIT](https://www.ishares.com/us/products/333011/ishares-bitcoin-trust-etf) alone now represents a massive institutional access point, with net assets near $49 billion in early June 2026. [Strategy](https://www.strategy.com/press/strategy-acquires-4020-btc-achieves-btc-yield-16-8-ytd-2026-now-holds-580250-btc_05-26-2026) and similar treasury vehicles continue to convert capital-market access into Bitcoin accumulation. [Glassnode’s long-term holder supply data](https://studio.glassnode.com/metrics?a=BTC&c=native&m=supply.LthSum&resolution=24h) shows a structurally sticky holder base.
+The supply cap is fixed. The halving reduces new issuance. [BlackRock’s IBIT](https://www.ishares.com/us/products/333011/ishares-bitcoin-trust-etf) alone now represents a massive institutional access point, with net assets near $49 billion in early June 2026. [Strategy](https://www.strategy.com/press/strategy-acquires-4020-btc-now-holds-580250-btc_05-26-2025) and similar treasury vehicles continue to convert capital-market access into Bitcoin accumulation. [Glassnode’s long-term holder supply data](https://studio.glassnode.com/metrics?a=BTC&c=native&m=supply.LthSum&resolution=24h) shows a structurally sticky holder base.
 
 If markets were linear, that combination should have produced a much cleaner outcome.
 
@@ -17594,7 +17510,7 @@ That is a very different regime.
 
 Spot ETF demand is real. So is corporate treasury demand. But neither one eliminates the role of derivatives in price discovery.
 
-CME remains central because it gives institutions a regulated venue for directional exposure, basis capture, and hedging. The [CME CF Bitcoin Reference Rate](https://www.cmegroup.com/markets/cryptocurrencies/bitcoin/cme-cf-bitcoin-reference-rate.html) anchors a large part of institutional settlement logic. Futures and options around that benchmark turn spot demand into something tradable, hedgeable, and arbitrageable.
+CME remains central because it gives institutions a regulated venue for directional exposure, basis capture, and hedging. The [CME CF Cryptocurrency Benchmarks](https://www.cmegroup.com/markets/cryptocurrencies/cme-cf-cryptocurrency-benchmarks.html) anchor a large part of institutional settlement logic. Futures and options around those benchmarks turn spot demand into something tradable, hedgeable, and arbitrageable.
 
 That matters because markets do not move on stories. They move on the marginal trade.
 
@@ -17614,7 +17530,7 @@ That is why “institutions are here” is not automatically bullish in the simp
 
 ### Options Positioning Keeps Telling a More Cautious Story
 
-One of the more revealing details in Bitcoin’s recent structure is options skew. [CME has noted](https://www.cmegroup.com/openmarkets/crypto/2026/Bitcoin-Options-Views-Reflect-Weakening-Sentiment.html) persistent demand for downside protection and a negative 25-delta risk reversal regime since August 2025. That is not what a market looks like when institutions are pricing smooth upside continuation.
+One of the more revealing details in Bitcoin’s recent structure is options skew. [CME has noted](https://www.cmegroup.com/articles/2026/bitcoin-options-volatility-spikes-and-recovery-signals.html) persistent demand for downside protection and a negative 25-delta risk reversal regime. That is not what a market looks like when institutions are pricing smooth upside continuation.
 
 It looks like a market where participants are willing to own Bitcoin, but they do not trust the path.
 
@@ -20820,7 +20736,7 @@ Process mining fixes that blindness. It shows how work really moves through syst
 - The best automation targets are high-volume, repeatable, policy-driven steps with measurable delay, rework, or exception patterns.
 - Your data model matters more than your dashboard. At minimum, capture \`case_id\`, \`activity\`, \`timestamp\`, actor/resource, and key business attributes.
 - Use [XES](https://www.xes-standard.org/) when a single case notion works. Use [OCEL 2.0](https://www.ocel-standard.org/) when orders, invoices, deliveries, tickets, and payments interact in many-to-many ways.
-- Tool choice should follow your operating model: [Celonis](https://docs.celonis.com/en/connecting-data-sources.html) for large-scale enterprise process intelligence, [UiPath Process Mining](https://docs.uipath.com/process-mining) when mining must feed robots quickly, [Microsoft Process Mining](https://learn.microsoft.com/en-us/power-automate/process-mining-processes-and-data) for Power Platform environments, [SAP Signavio](https://help.sap.com/docs/signavio-process-intelligence?locale=en-US) for SAP-heavy programs, and [PM4Py](https://processintelligence.solutions/pm4py) or [ProM](https://promtools.org/prom-documentation/) for custom or research-grade analysis.
+- Tool choice should follow your operating model: [Celonis](https://docs.celonis.com/en/data-integration.html) for large-scale enterprise process intelligence, [UiPath Process Mining](https://docs.uipath.com/process-mining/automation-cloud/latest/user-guide/introduction-to-process-mining) when mining must feed robots quickly, [Microsoft Process Mining](https://learn.microsoft.com/en-us/power-automate/process-mining-processes-and-data) for Power Platform environments, [SAP Signavio](https://help.sap.com/docs/signavio-process-intelligence?locale=en-US) for SAP-heavy programs, and [PM4Py](https://processintelligence.solutions/pm4py) or [ProM](https://promtools.org/prom-documentation/) for custom or research-grade analysis.
 - CSV uploads are acceptable for a pilot. They are a bad operating model for serious automation at scale.
 
 ## Why Process Mining Is So Effective for Automation
@@ -20968,8 +20884,8 @@ The practical pattern is simple: use process mining to choose the automation tar
 
 | Tool | Best fit | Strengths | Trade-offs | Integration notes |
 | --- | --- | --- | --- | --- |
-| [Celonis](https://docs.celonis.com/en/connecting-data-sources.html) | Large enterprise transformation programs | Broad connector catalog, object-centric modeling, Kafka/JDBC/Delta Sharing options, strong action layer | Heavyweight implementation, licensing and governance overhead | Strong for SAP, ServiceNow, Salesforce, Snowflake, Databricks, and real-time-ish enterprise pipelines |
-| [UiPath Process Mining](https://docs.uipath.com/process-mining) | Teams already invested in UiPath automation | Tight path from discovery to RPA, SQL connector model, DataBridgeAgent, on-prem extractor | Still needs solid data engineering; best leverage comes when robots are part of the operating model | Useful when mining findings need to feed UiPath robots, Orchestrator, or automation intake quickly |
+| [Celonis](https://docs.celonis.com/en/data-integration.html) | Large enterprise transformation programs | Broad connector catalog, object-centric modeling, Kafka/JDBC/Delta Sharing options, strong action layer | Heavyweight implementation, licensing and governance overhead | Strong for SAP, ServiceNow, Salesforce, Snowflake, Databricks, and real-time-ish enterprise pipelines |
+| [UiPath Process Mining](https://docs.uipath.com/process-mining/automation-cloud/latest/user-guide/introduction-to-process-mining) | Teams already invested in UiPath automation | Tight path from discovery to RPA, SQL connector model, DataBridgeAgent, on-prem extractor | Still needs solid data engineering; best leverage comes when robots are part of the operating model | Useful when mining findings need to feed UiPath robots, Orchestrator, or automation intake quickly |
 | [Microsoft Process Mining](https://learn.microsoft.com/en-us/power-automate/process-mining-processes-and-data) | Power Platform organizations | Fast start, Power Query connectors, easy CSV pilots, OData path for Dataverse | As an implementation inference, it is usually strongest in Microsoft-centric estates rather than highly heterogeneous, multi-object process landscapes | Dataverse via OData, SQL Server, CSV through OneDrive, Power Platform adjacency is the main advantage |
 | [SAP Signavio Process Intelligence](https://help.sap.com/docs/signavio-process-intelligence?locale=en-US) | SAP-led process governance | Good fit for SAP-heavy environments, XES/CSV ingestion, process dashboards, governance alignment | Better when SAP is the center of gravity; less compelling if your automation fabric is spread across many non-SAP platforms | Note the product shift: according to SAP Help, new investigations could no longer be created as of May 26, 2026, with dashboards taking over |
 | [PM4Py](https://processintelligence.solutions/pm4py) / [ProM](https://promtools.org/prom-documentation/) | Analysts, researchers, custom engineering teams | Deep algorithmic flexibility, low software cost, strong support for discovery/conformance/object-centric analysis | You own UX, connectors, security, ops, and stakeholder adoption | Excellent for notebooks, prototypes, custom scoring, and specialized pipelines |
@@ -23634,7 +23550,7 @@ Start moving away when:
 - Large payloads become normal
 - Debugging requires event replay and richer observability
 
-Its own docs are revealing. [Code by Zapier](https://help.zapier.com/hc/en-us/articles/8496310939021-Use-JavaScript-code-in-Zaps) runs in AWS Lambda, has a 6 MB I/O limit, and Zapier recommends building a custom app if you need more than two HTTP requests or authenticated HTTP requests. That is a clean signal. The tool is telling you where its design boundary is.
+Its own docs are revealing. [Code by Zapier](https://help.zapier.com/hc/en-us/articles/8496310939021-Use-JavaScript-code-in-Zap-workflows) runs in AWS Lambda, has a 6 MB I/O limit, and Zapier recommends building a custom app if you need more than two HTTP requests or authenticated HTTP requests. That is a clean signal. The tool is telling you where its design boundary is.
 
 ### Make: better orchestration, but operational complexity hides in the canvas
 
@@ -25913,7 +25829,7 @@ That shift matters. A modern task stack is no longer just a board with due dates
 - Native automation inside tools like [Linear](https://linear.app/docs), [Jira](https://support.atlassian.com/cloud-automation/docs/jira-automation-triggers/), [Asana](https://help.asana.com/s/article/ai-studio-words-to-workflows?language=en_US), [ClickUp](https://help.clickup.com/hc/en-us/articles/6312128853015-Use-Automation-Triggers), [Notion](https://www.notion.com/en-gb/help/database-automations), and [GitHub Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project) should handle most routine routing before you reach for external middleware.
 - AI is useful for triage, deduplication, summarization, and suggested ownership. It is still weak at making real prioritization trade-offs across teams with conflicting incentives.
 - Typed fields beat prose. If priority, source, severity, owner, SLA, and dependency state are buried in paragraph text, your automation will be brittle.
-- For orchestration, [Zapier](https://help.zapier.com/hc/en-us/articles/8496288555917-Add-branching-logic-to-Zaps-with-Paths) is fastest to launch, [Make](https://help.make.com/webhooks) is stronger for visual branching and queue behavior, [n8n](https://docs.n8n.io/hosting/scaling/queue-mode/) is best when engineering wants control and scale, and [Power Automate](https://learn.microsoft.com/en-us/power-automate/) is strongest inside Microsoft-heavy organizations.
+- For orchestration, [Zapier](https://help.zapier.com/hc/en-us/articles/8496288555917-Add-branching-logic-to-Zap-workflows-with-Paths) is fastest to launch, [Make](https://help.make.com/webhooks) is stronger for visual branching and queue behavior, [n8n](https://docs.n8n.io/hosting/scaling/queue-mode/) is best when engineering wants control and scale, and [Power Automate](https://learn.microsoft.com/en-us/power-automate/) is strongest inside Microsoft-heavy organizations.
 - The real scaling problems are looped automations, polling where webhooks should exist, weak schema design, timezone bugs, and bad permissions.
 
 ## Why the Old Model Broke
@@ -26073,7 +25989,7 @@ The task app gets the attention. The automation layer determines whether it surv
 
 ### Zapier: fastest to ship, easiest to outgrow
 
-Zapier is still the fastest way to connect SaaS tools and stand up useful automation. Its [Paths](https://help.zapier.com/hc/en-us/articles/8496288555917-Add-branching-logic-to-Zaps-with-Paths) feature handles conditional branching, [Tables](https://help.zapier.com/hc/en-us/articles/9804340895245-Create-tables-and-store-data-with-Zapier-Tables) can act as a lightweight state store, and webhooks make it easy to catch external events.
+Zapier is still the fastest way to connect SaaS tools and stand up useful automation. Its [Paths](https://help.zapier.com/hc/en-us/articles/8496288555917-Add-branching-logic-to-Zap-workflows-with-Paths) feature handles conditional branching, [Tables](https://help.zapier.com/hc/en-us/articles/9804340895245-Create-tables-and-store-data-with-Zapier-Tables) can act as a lightweight state store, and webhooks make it easy to catch external events.
 
 But there are real trade-offs:
 - Webhooks can be throttled during bursts.
@@ -27713,7 +27629,7 @@ Best for: most US small businesses that want broad compatibility and can add aut
 
 Its strongest area is bank reconciliation. Xero’s workflow combines automated bank feeds, rule-driven coding, bulk coding on higher plans, and AI-assisted suggestions in a way that feels cleaner than many rivals. It also pairs well with [Hubdoc](https://learning.central.xero.com/student/page/2018-explore-hubdoc), which extracts key document data and creates transactions in Xero.
 
-Xero is also attractive if you plan to build custom integrations. Its developer stack uses [OAuth 2.0](https://developer.xero.com/faq/getting-started), and in the US it supports [Custom Connections](https://developer.xero.com/announcements/introducing-custom-connections/) for machine-to-machine integrations. That is useful if you want a bespoke workflow between your ops system, your CRM, and your ledger without putting a human in the loop.
+Xero is also attractive if you plan to build custom integrations. Its developer stack uses [OAuth 2.0](https://developer.xero.com/faq/getting-started), and in the US it supports [Custom Connections](https://developer.xero.com/documentation/guides/oauth2/custom-connections/) for machine-to-machine integrations. That is useful if you want a bespoke workflow between your ops system, your CRM, and your ledger without putting a human in the loop.
 
 The downside is that Xero often needs add-ons sooner for AP control, and the US market still has a deeper QuickBooks consultant bench than Xero does.
 
@@ -27781,7 +27697,7 @@ Best for: businesses where spend management and AP are merging into one operatio
 
 Its QuickBooks sync is easy to understand: bills, invoices, vendors, and payment status move between systems, with real-time auto-sync supported on current plans. The UX is lighter than many AP suites, which matters for founder-led businesses that do not want to train around a finance platform.
 
-But Melio’s trade-offs are not trivial. The [Go plan only syncs the first 10 payments](https://help.melio.com/hc/en-us/articles/4447203757714), which makes it a poor fit for serious ongoing automation. It is also less powerful than BILL if you need sophisticated approvals or matching logic.
+But Melio’s trade-offs are not trivial. The [Go plan only syncs the first 10 payments](https://help.melio.com/hc/en-us/articles/4447203757714-What-versions-of-QuickBooks-does-Melio-support), which makes it a poor fit for serious ongoing automation. It is also less powerful than BILL if you need sophisticated approvals or matching logic.
 
 Best for: QuickBooks users who want to simplify payables without standing up a heavier AP stack.
 
