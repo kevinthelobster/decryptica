@@ -885,6 +885,19 @@ function FreshnessEvidenceStrip({
   );
 }
 
+function ArticleDisclosureNotice() {
+  return (
+    <aside className="mb-6 border border-stone-200 bg-white p-4 text-sm leading-6 text-stone-700">
+      <strong className="font-semibold text-stone-950">Disclosure:</strong>{' '}
+      Decryptica publishes independent analysis. Some links may be affiliate or partner links, which means Renegade Reels LLC may earn a commission at no extra cost to you. Read the full{' '}
+      <Link href="/affiliate-disclosure" className="text-red-900 underline underline-offset-4 hover:text-stone-950">
+        affiliate disclosure
+      </Link>
+      .
+    </aside>
+  );
+}
+
 // ─── Article Page Component ────────────────────────────────────────────────
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -1067,6 +1080,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
 
             <FreshnessEvidenceStrip article={article} methodAnchorId="methodology" />
+            <ArticleDisclosureNotice />
 
             <section id="key-questions" className="scroll-mt-28">
               <TLDNRBox excerpt={article.excerpt} />

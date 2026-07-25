@@ -10,7 +10,7 @@ export default function AffiliateDisclosurePage() {
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="card-elevated p-8 md:p-12">
         <h1 className="section-heading mb-6">Affiliate Disclosure</h1>
-        <p className="text-stone-600 text-sm mb-8">Effective: April 13, 2026 | Last updated: April 13, 2026</p>
+        <p className="text-stone-600 text-sm mb-8">Effective: April 13, 2026 | Last updated: July 25, 2026</p>
         
         <div className="prose prose-invert prose-zinc space-y-6">
           <p className="text-stone-700 leading-relaxed">
@@ -19,7 +19,7 @@ export default function AffiliateDisclosurePage() {
           
           <div className="p-6 bg-red-900/5 border border-red-900/20 ">
             <p className="text-red-700 font-medium leading-relaxed">
-              <strong>FTC Disclosure:</strong> The Federal Trade Commission requires us to disclose that we may earn an affiliate commission at no additional cost to you when you click certain links on our site and make a purchase or sign up for a service. We only recommend products, services, and tools we believe deliver genuine value.
+              <strong>FTC Disclosure:</strong> We may earn an affiliate commission at no additional cost to you when you click certain links on our site and make a purchase or sign up for a service. We only recommend products, services, and tools we believe deliver genuine value.
             </p>
           </div>
           
@@ -28,7 +28,7 @@ export default function AffiliateDisclosurePage() {
             When you click an affiliate link on Decryptica and complete a purchase or sign-up, the affiliate program operator typically pays us a small commission. These commissions help support Decryptica's operations and content creation. The price you pay is not affected by our use of affiliate links—you pay the same price whether you use our link or go directly to the merchant.
           </p>
           
-          <h2 className="font-display text-xl font-semibold text-stone-950 mt-8 mb-3">What We Affiliate Promote</h2>
+          <h2 className="font-display text-xl font-semibold text-stone-950 mt-8 mb-3">What We May Promote</h2>
           <p className="text-stone-700 leading-relaxed">
             We may promote products and services related to our content areas, including but not limited to:
           </p>
@@ -43,6 +43,11 @@ export default function AffiliateDisclosurePage() {
           <h2 className="font-display text-xl font-semibold text-stone-950 mt-8 mb-3">How We Choose What to Promote</h2>
           <p className="text-stone-700 leading-relaxed">
             We only promote products, services, and tools that we have personally evaluated or believe genuinely deliver value to our readers. We do not accept payment in exchange for reviews or recommendations. Our affiliate relationships do not influence our editorial decisions or the content we produce.
+          </p>
+
+          <h2 className="font-display text-xl font-semibold text-stone-950 mt-8 mb-3">Sponsored Content and Ads</h2>
+          <p className="text-stone-700 leading-relaxed">
+            If Decryptica publishes sponsored content, paid placements, or display advertising, we will identify those commercial relationships where they appear. Sponsored or affiliate relationships do not turn Decryptica content into financial, investment, legal, or tax advice.
           </p>
           
           <h2 className="font-display text-xl font-semibold text-stone-950 mt-8 mb-3">Our Promise to You</h2>
