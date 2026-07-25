@@ -197,7 +197,7 @@ export default function IndexPage() {
                     articleSlug={article.slug}
                     metadata={{ location: "home_latest_reports", category: article.category }}
                   >
-                    <div className="-mx-5 -mt-5 mb-4 overflow-hidden border-b border-stone-200">
+                    <div className="-mx-5 mb-4 overflow-hidden border-y border-stone-200">
                       <img src={article.image.src} alt={article.image.alt} className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     </div>
                     <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800">
