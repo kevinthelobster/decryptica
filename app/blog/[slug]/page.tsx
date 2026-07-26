@@ -13,6 +13,7 @@ import TrackedLink from '../../components/TrackedLink';
 import IntentContextBanner from '../../components/IntentContextBanner';
 import IntentAwareConversionStrip from '../../components/IntentAwareConversionStrip';
 import TrackedFAQSection from '../../components/TrackedFAQSection';
+import ArticleTrustLayer from '../../components/ArticleTrustLayer';
 import HubSectionNav from '../../components/HubSectionNav';
 import ArticleNextJourney, { type ArticleNextJourneyCard } from '../../components/ArticleNextJourney';
 import ArticleBuyerDecisionModule from '../../components/ArticleBuyerDecisionModule';
@@ -993,7 +994,7 @@ function ArticleDisclosureNotice() {
   return (
     <aside className="mb-6 border border-stone-200 bg-white p-4 text-sm leading-6 text-stone-700">
       <strong className="font-semibold text-stone-950">Disclosure:</strong>{' '}
-      Decryptica publishes independent analysis. Some links may be affiliate or partner links, which means Renegade Reels LLC may earn a commission at no extra cost to you. Read the full{' '}
+      Decryptica publishes independent analysis and does not sell editorial placement. Some links may be affiliate or partner links, which means Renegade Reels LLC may earn a commission at no extra cost to you. Commercial relationships do not change our review standards or update process. Read the full{' '}
       <Link href="/affiliate-disclosure" className="text-red-900 underline underline-offset-4 hover:text-stone-950">
         affiliate disclosure
       </Link>
@@ -1194,6 +1195,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
 
             <FreshnessEvidenceStrip article={article} methodAnchorId="methodology" />
+            <ArticleTrustLayer article={article} methodAnchorId="methodology" />
             <ArticleDisclosureNotice />
 
             <section id="key-questions" className="scroll-mt-28">
@@ -1230,7 +1232,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <section id="methodology" className="mt-8 scroll-mt-28 border border-stone-200 bg-neutral-50 p-4">
               <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-stone-500">Method & Sources</h3>
               <p className="mt-2 text-sm text-stone-700">
-                Articles are reviewed by Decryptica editorial and updated when source conditions change. Treat this content as informational research, then validate assumptions with current primary data before execution.
+                We publish after checking major claims against current documentation, product pages, pricing pages, and other primary materials we can verify. When a tool, pricing model, or market condition changes enough to affect the recommendation, we revise the page and record the change above. Treat this content as informed research, then validate critical assumptions with live primary data before execution.
               </p>
             </section>
 

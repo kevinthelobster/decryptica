@@ -28,6 +28,12 @@ export interface FAQ {
   order?: number;
 }
 
+export interface ArticleUpdateEvent {
+  date: string;
+  label: string;
+  note?: string;
+}
+
 export interface Article {
   // Identity
   id: string;
@@ -44,6 +50,10 @@ export interface Article {
   // Authorship
   author?: string;
   authorId?: string;
+  authorRole?: string;
+  reviewedBy?: string;
+  reviewedByRole?: string;
+  reviewSummary?: string;
 
   // Publishing
   status?: ArticleStatus; // Optional for backward compat; defaults to 'published'
@@ -53,6 +63,7 @@ export interface Article {
 
   // Computed
   wordCount?: number;
+  updateHistory?: ArticleUpdateEvent[];
   faqs?: FAQ[];
 
   // SEO

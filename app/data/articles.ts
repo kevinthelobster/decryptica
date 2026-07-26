@@ -3,6 +3,12 @@ export interface FAQ {
   answer: string;
 }
 
+export interface ArticleUpdateEvent {
+  date: string;
+  label: string;
+  note?: string;
+}
+
 export interface KwrScore {
   businessValue: number;
   intentClarity: number;
@@ -26,10 +32,15 @@ export interface Article {
   readTime: string;
   date: string;
   author?: string;
+  authorRole?: string;
+  reviewedBy?: string;
+  reviewedByRole?: string;
+  reviewSummary?: string;
   tags?: string[];
   lastUpdated?: string;
   wordCount?: number;
   sourcesReviewed?: number;
+  updateHistory?: ArticleUpdateEvent[];
   faqs?: FAQ[];
   status?: 'draft' | 'in_review' | 'published' | 'archived';
   primaryKeyword?: string;
