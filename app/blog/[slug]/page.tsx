@@ -530,7 +530,8 @@ function renderContent(
   }
 ) {
   const elements: React.ReactNode[] = [];
-  const blocks = content.split(/(?:^|\n)(?=## )/);
+  const bodyContent = content.replace(/^#\s+.+\n+/, '');
+  const blocks = bodyContent.split(/(?:^|\n)(?=## )/);
   let majorSectionsSeen = 0;
   let trustInserted = false;
   let midInserted = false;
@@ -657,44 +658,21 @@ function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[
           .filter((c) => c.trim())
           .map((h) => h.trim());
         const rows = tableLines.slice(2);
+        const parsedRows = rows
+          .map((row) =>
+            row
+              .split('|')
+              .filter((c) => c.trim())
+              .map((c) => c.trim())
+          )
+          .filter((cells) => cells.length > 0);
 
         elements.push(
-          <div key={`table-${keyPrefix}-${paraIndex}`} className="my-6 overflow-x-auto">
-            <table className="w-full overflow-hidden border border-stone-300 text-sm">
-              <thead className="bg-stone-100">
-                <tr>
-                  {headers.map((header, i) => (
-                    <th
-                      key={i}
-                      className="border-b border-stone-300 px-4 py-3 text-left font-semibold text-stone-950"
-                    >
-                      {header}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {rows.map((row, rowIndex) => {
-                  const cells = row
-                    .split('|')
-                    .filter((c) => c.trim())
-                    .map((c) => c.trim());
-                  return (
-                    <tr
-                      key={rowIndex}
-                      className="border-b border-stone-200 hover:bg-neutral-50"
-                    >
-                      {cells.map((cell, cellIndex) => (
-                        <td key={cellIndex} className="px-4 py-3 text-stone-700">
-                          {renderInline(cell)}
-                        </td>
-                      ))}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+          <ResponsiveMarkdownTable
+            key={`table-${keyPrefix}-${paraIndex}`}
+            headers={headers}
+            rows={parsedRows}
+          />
         );
         return;
       }
@@ -783,6 +761,82 @@ function parseListOrParagraph(text: string, keyPrefix: string): React.ReactNode[
   });
 
   return elements;
+}
+
+function ResponsiveMarkdownTable({
+  headers,
+  rows,
+}: {
+  headers: string[];
+  rows: string[][];
+}) {
+  return (
+    <div className="my-6">
+      <div className="hidden overflow-x-auto sm:block">
+        <table className="min-w-[760px] overflow-hidden border border-stone-300 text-sm">
+          <thead className="bg-stone-100">
+            <tr>
+              {headers.map((header, i) => (
+                <th
+                  key={i}
+                  className="border-b border-stone-300 px-4 py-3 text-left align-bottom font-semibold text-stone-950"
+                >
+                  {header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((cells, rowIndex) => (
+              <tr
+                key={rowIndex}
+                className="border-b border-stone-200 hover:bg-neutral-50"
+              >
+                {headers.map((_, cellIndex) => (
+                  <td key={cellIndex} className="px-4 py-3 align-top text-stone-700">
+                    {renderInline(cells[cellIndex] || '')}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="space-y-3 sm:hidden">
+        {rows.map((cells, rowIndex) => {
+          const title = cells[0] || `Option ${rowIndex + 1}`;
+          const detailCells = headers.map((header, cellIndex) => ({
+            header,
+            value: cells[cellIndex] || '',
+          }));
+
+          return (
+            <article key={rowIndex} className="border border-stone-300 bg-white">
+              <div className="border-b border-stone-200 bg-neutral-50 px-4 py-3">
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-stone-500">
+                  {headers[0] || 'Option'}
+                </p>
+                <h4 className="mt-1 font-display text-base font-semibold leading-snug text-stone-950">
+                  {renderInline(title)}
+                </h4>
+              </div>
+              <dl className="divide-y divide-stone-200">
+                {detailCells.slice(1).map(({ header, value }) => (
+                  <div key={header} className="grid gap-1 px-4 py-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-[0.12em] text-stone-500">
+                      {header}
+                    </dt>
+                    <dd className="text-sm leading-6 text-stone-700">{renderInline(value)}</dd>
+                  </div>
+                ))}
+              </dl>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 function renderInline(text: string): React.ReactNode {
@@ -1082,9 +1136,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <AnalyticsTracker articleSlug={slug} category={article.category} />
       <RouteDepthTracker depth={3} pillar={article.category} subpillar={subpillarSlug} />
 
-      <div className="mx-auto max-w-6xl overflow-x-hidden px-4 py-10 sm:px-6 sm:py-12">
+      <div className="mx-auto max-w-6xl overflow-x-hidden px-4 py-6 sm:px-6 sm:py-12">
         {/* Breadcrumb */}
-        <nav className="mb-8 flex min-w-0 flex-wrap items-center gap-2 text-sm text-stone-500" aria-label="Breadcrumb">
+        <nav className="mb-5 flex min-w-0 flex-wrap items-center gap-2 text-sm text-stone-500 sm:mb-8" aria-label="Breadcrumb">
           <Link href="/" className="transition-colors hover:text-red-900">
             Home
           </Link>
@@ -1111,7 +1165,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Main Content */}
           <article className="min-w-0 lg:col-span-3">
             {/* Header */}
-            <header id="overview" className="mb-8 scroll-mt-28">
+            <header id="overview" className="mb-5 scroll-mt-28 sm:mb-8">
               <div className="mb-4 flex flex-wrap items-center gap-3">
                 <Link
                   href={`/topic/${article.category}`}
@@ -1169,8 +1223,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </>
                 )}
               </div>
-              <ArticleSaveControls article={readingListArticle} />
-              <figure className="mt-8 border border-stone-200 bg-white">
+              <div className="hidden sm:block">
+                <ArticleSaveControls article={readingListArticle} />
+              </div>
+              <figure className="mt-8 hidden border border-stone-200 bg-white sm:block">
                 <img
                   src={articleImage.src}
                   alt={articleImage.alt}
@@ -1189,9 +1245,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </figure>
             </header>
 
-            <IntentContextBanner pageType="article" category={article.category} articleSlug={slug} />
+            <div className="hidden sm:block">
+              <IntentContextBanner pageType="article" category={article.category} articleSlug={slug} />
+            </div>
 
-            <div className="mb-8">
+            <div className="mb-8 hidden sm:block">
               <HubSectionNav
                 sections={navSections}
                 surface="article"
@@ -1202,27 +1260,31 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               />
             </div>
 
-            <FreshnessEvidenceStrip article={article} methodAnchorId="methodology" />
-            <ArticleDisclosureNotice />
+            <div className="hidden sm:block">
+              <FreshnessEvidenceStrip article={article} methodAnchorId="methodology" />
+              <ArticleDisclosureNotice />
+            </div>
 
             <section id="key-questions" className="scroll-mt-28">
               <TLDNRBox excerpt={article.excerpt} />
-              <ArticleSerpPromiseModules
-                articleSlug={slug}
-                category={article.category}
-                title={article.title}
-                excerpt={article.excerpt}
-                primaryActionHref={primaryToolHref}
-              />
-              {showBuyerDecisionModule && (
-                <ArticleBuyerDecisionModule
+              <div className="hidden sm:block">
+                <ArticleSerpPromiseModules
                   articleSlug={slug}
                   category={article.category}
                   title={article.title}
                   primaryActionHref={primaryToolHref}
-                  subpillarPath={subpillarPath}
+                  excerpt={article.excerpt}
                 />
-              )}
+                {showBuyerDecisionModule && (
+                  <ArticleBuyerDecisionModule
+                    articleSlug={slug}
+                    category={article.category}
+                    title={article.title}
+                    primaryActionHref={primaryToolHref}
+                    subpillarPath={subpillarPath}
+                  />
+                )}
+              </div>
             </section>
 
             {/* Article Content */}
@@ -1242,6 +1304,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   })}
                 </div>
               </div>
+            </section>
+
+            <section className="mt-8 scroll-mt-28 sm:hidden" aria-label="Article next steps">
+              <ArticleSerpPromiseModules
+                articleSlug={slug}
+                category={article.category}
+                title={article.title}
+                excerpt={article.excerpt}
+                primaryActionHref={primaryToolHref}
+              />
+              {showBuyerDecisionModule && (
+                <ArticleBuyerDecisionModule
+                  articleSlug={slug}
+                  category={article.category}
+                  title={article.title}
+                  primaryActionHref={primaryToolHref}
+                  subpillarPath={subpillarPath}
+                />
+              )}
             </section>
 
             <ArticleToolPathway article={article} />

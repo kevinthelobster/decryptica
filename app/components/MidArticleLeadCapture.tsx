@@ -49,7 +49,7 @@ export default function MidArticleLeadCapture({
   }, [articleSlug, category, context.intent, primaryConversionHref, tags, title]);
 
   return (
-    <div className="my-10">
+    <div className="my-10 hidden sm:block">
       <LeadMagnetCapture
         offer={offer}
         location="article_mid_capture"

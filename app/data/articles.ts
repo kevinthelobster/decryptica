@@ -120,9 +120,7 @@ Pipedrive’s main advantage is lower friction at the start.  Its [Growth plan a
 
 For a small sales-led team, that is often enough.
 
-The split appears when workflows get cross-functional.  HubSpot is better positioned when sales automation turns into revenue operations: routing, enrichment, lifecycle changes, handoff to service, and field normalization across multiple objects.  Pipedrive can do useful automation, but more often needs outside help from Zapier, Make, n8n, Airtable, or custom API workers once the workflow stops being “move a deal and send a task.
-
-”
+The split appears when workflows get cross-functional.  HubSpot is better positioned when sales automation turns into revenue operations: routing, enrichment, lifecycle changes, handoff to service, and field normalization across multiple objects.  Pipedrive can do useful automation, but more often needs outside help from Zapier, Make, n8n, Airtable, or custom API workers once the workflow stops being “move a deal and send a task.”
 
 That external glue is not free. It creates another place to manage credentials, retries, logs, and ownership. That is the operational tax behind many no-code stacks, and it is exactly the problem behind [The Hidden Costs of No-Code Solutions](/blog/the-hidden-costs-of-no-code-solutions).
 
