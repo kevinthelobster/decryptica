@@ -16,6 +16,7 @@
     "analytics:vercel:check": "zsh scripts/run_vercel_analytics_monitor.sh --mode check",
     "newsletter:weekly": "zsh scripts/run_weekly_dispatch.sh",
     "qa:mobile-articles": "node scripts/check_mobile_article_layout.js",
+    "qa:article-images": "tsx scripts/check_article_image_reuse.ts",
     "kpi:sprint-dashboard": "tsx scripts/export_sprint_dashboard.ts"
   },
   "dependencies": {

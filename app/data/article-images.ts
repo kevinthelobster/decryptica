@@ -46,9 +46,24 @@ const imageSet = {
     credit: 'Photo by Christina @ wocintechchat.com on Unsplash',
     creditUrl: 'https://unsplash.com/photos/group-of-people-sitting-beside-rectangular-wooden-table-with-laptops-faEfWCdOKIg',
   },
+  workflowMeeting: {
+    src: `https://images.unsplash.com/photo-1542744095-fcf48d80b0fd${unsplashParams}`,
+    alt: 'Operators reviewing workflow plans around laptops in a conference room',
+    credit: 'Photo by Campaign Creators on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/people-sitting-near-table-with-laptop-computer-qCi_MzVODoU',
+  },
+} satisfies Record<string, ArticleImage>;
+
+const articleImageOverrides = {
+  'make-vs-n8n-which-workflow-builder-should-operators-choose': imageSet.workflowMeeting,
 } satisfies Record<string, ArticleImage>;
 
 export function getArticleImage(article: Article): ArticleImage {
+  const override = articleImageOverrides[article.slug as keyof typeof articleImageOverrides];
+  if (override) {
+    return override;
+  }
+
   const haystack = `${article.title} ${article.excerpt} ${(article.tags || []).join(' ')}`.toLowerCase();
 
   if (haystack.includes('copyright') || haystack.includes('image') || haystack.includes('art')) {
