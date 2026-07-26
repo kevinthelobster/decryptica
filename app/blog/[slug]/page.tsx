@@ -6,6 +6,7 @@ import SubscribeForm from '../../components/SubscribeForm';
 import AnalyticsTracker from '../../components/AnalyticsTracker';
 import ArticleProgressNav from '../../components/ArticleProgressNav';
 import ArticleSaveControls from '../../components/ArticleSaveControls';
+import ArticleMobileActionDock from '../../components/ArticleMobileActionDock';
 import MidArticleLeadCapture from '../../components/MidArticleLeadCapture';
 import MobileProgressSheet from '../../components/MobileProgressSheet';
 import TrackedLink from '../../components/TrackedLink';
@@ -1246,6 +1247,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               />
             </section>
 
+            <section id="subscribe" className="mt-8 scroll-mt-28 border border-stone-200 bg-stone-950 p-5 text-white md:p-6">
+              <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_22rem] md:items-center">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-red-200">Decryptica Brief</p>
+                  <h2 className="mt-2 font-serif text-3xl font-black leading-tight">
+                    Keep the research queue moving
+                  </h2>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-200">
+                    Get the next practical guide, tool update, or market-read straight to your inbox.
+                  </p>
+                </div>
+                <SubscribeForm />
+              </div>
+            </section>
+
             <section id="next-step" className="scroll-mt-28">
               <IntentAwareConversionStrip articleSlug={slug} category={article.category} />
             </section>
@@ -1325,6 +1341,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </div>
       <MobileProgressSheet articleSlug={slug} category={article.category} headings={headings} />
+      <ArticleMobileActionDock articleSlug={slug} category={article.category} />
     </>
   );
 }
