@@ -1226,11 +1226,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="hidden sm:block">
                 <ArticleSaveControls article={readingListArticle} />
               </div>
-              <figure className="mt-8 hidden border border-stone-200 bg-white sm:block">
+              <figure className="mt-5 border border-stone-200 bg-white sm:mt-8">
                 <img
                   src={articleImage.src}
                   alt={articleImage.alt}
-                  className="aspect-[16/9] w-full object-cover"
+                  className="aspect-[5/3] w-full object-cover sm:aspect-[16/9]"
                 />
                 <figcaption className="border-t border-stone-200 px-4 py-2 text-xs text-stone-500">
                   <a
