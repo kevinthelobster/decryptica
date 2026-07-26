@@ -1,11 +1,9 @@
 'use client';
 
-import Link from 'next/link';
-import { FormEvent, useEffect, useMemo, useState } from 'react';
-import { trackEvent } from '../lib/analytics';
+import { useEffect, useMemo, useState } from 'react';
+import LeadMagnetCapture from './LeadMagnetCapture';
+import { getLeadMagnetBySlug, getLeadMagnetForCategory } from '../data/lead-magnets';
 import { resolveIntentContext } from '../lib/intent-continuity';
-
-type CaptureState = 'idle' | 'loading' | 'success' | 'error';
 
 interface MidArticleLeadCaptureProps {
   articleSlug: string;
@@ -14,164 +12,33 @@ interface MidArticleLeadCaptureProps {
 
 export default function MidArticleLeadCapture({ articleSlug, category }: MidArticleLeadCaptureProps) {
   const [context, setContext] = useState(() => resolveIntentContext());
-  const [email, setEmail] = useState('');
-  const [state, setState] = useState<CaptureState>('idle');
-  const [message, setMessage] = useState('');
 
   useEffect(() => {
     setContext(resolveIntentContext());
   }, []);
 
-  const variantCopy = useMemo(() => {
+  const offer = useMemo(() => {
     if (context.intent === 'calculate') {
-      return {
-        heading: 'Estimate ROI before you build',
-        body: 'Run the numbers first, then decide where to invest effort.',
-        secondaryHref: '/tools/ai-price-calculator',
-        secondaryLabel: 'Open the free calculator',
-      };
+      return getLeadMagnetBySlug('ai-model-pricing-sheet');
     }
 
     if (context.intent === 'implement') {
-      return {
-        heading: 'Turn strategy into a 7-day rollout plan',
-        body: 'Get scoped execution guidance so your team can ship faster.',
-        secondaryHref: '/services/ai-automation-consulting',
-        secondaryLabel: 'Book an automation audit',
-      };
+      return category === 'ai'
+        ? getLeadMagnetBySlug('ai-workflow-risk-register')
+        : getLeadMagnetBySlug('automation-sop-template');
     }
 
-    return {
-      heading: 'Get weekly operator insights for your stack',
-      body: 'One practical breakdown each week on AI, crypto, and automation shifts that matter.',
-      secondaryHref: '/articles',
-      secondaryLabel: 'Read more tactical guides',
-    };
-  }, [context.intent]);
-
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    setState('loading');
-    setMessage('');
-
-    trackEvent({
-      type: 'form_submit',
-      articleSlug,
-      metadata: {
-        location: 'article_mid_capture',
-        cta: 'subscribe',
-        category,
-        intent: context.intent || 'learn',
-      },
-    }).catch(() => undefined);
-
-    trackEvent({
-      type: 'cta_click',
-      articleSlug,
-      metadata: {
-        location: 'article_mid_capture',
-        cta: 'subscribe',
-        category,
-        intent: context.intent || 'learn',
-        intentSource: context.intentSource,
-        intentDerivedFrom: context.intentDerivedFrom,
-      },
-    }).catch(() => undefined);
-
-    try {
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setState('error');
-        setMessage(data.error || 'Something went wrong.');
-        return;
-      }
-
-      setState('success');
-      setMessage('You are on the list. Weekly strategy briefs start next issue.');
-      setEmail('');
-
-      trackEvent({
-        type: 'signup',
-        articleSlug,
-        metadata: {
-          location: 'article_mid_capture',
-          cta: 'subscribe',
-          category,
-          intent: context.intent || 'learn',
-          intentSource: context.intentSource,
-          intentDerivedFrom: context.intentDerivedFrom,
-        },
-      }).catch(() => undefined);
-    } catch {
-      setState('error');
-      setMessage('Subscription failed. Please try again.');
-    }
-  };
+    return getLeadMagnetForCategory(category);
+  }, [category, context.intent]);
 
   return (
-    <section
-      className="my-10 border border-stone-200 bg-neutral-50 p-5 md:p-6"
-      aria-label="Mid-article signup"
-    >
-      <p className="text-xs font-semibold uppercase tracking-wider text-red-900">Mid-Article Brief</p>
-      <h3 className="mt-2 font-display text-xl font-semibold text-stone-950">{variantCopy.heading}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-stone-700">{variantCopy.body}</p>
-
-      <div className="mt-4 min-h-24">
-        <form onSubmit={onSubmit} className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={state === 'loading' || state === 'success'}
-            placeholder="you@company.com"
-            onFocus={() => {
-              trackEvent({
-                type: 'form_start',
-                articleSlug,
-                metadata: {
-                  location: 'article_mid_capture',
-                  cta: 'subscribe',
-                  category,
-                  intent: context.intent || 'learn',
-                },
-              }).catch(() => undefined);
-            }}
-            className="h-11 w-full border border-stone-300 bg-white px-4 text-sm text-stone-950 placeholder:text-stone-400 focus:border-red-900 focus:outline-none focus:ring-2 focus:ring-red-900/20 sm:flex-1"
-          />
-          <button
-            type="submit"
-            disabled={state === 'loading' || state === 'success'}
-            className="inline-flex h-11 items-center justify-center bg-red-900 px-5 text-sm font-semibold text-white transition hover:bg-stone-950 disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {state === 'loading' ? 'Joining...' : state === 'success' ? 'Joined' : 'Get Weekly Brief'}
-          </button>
-        </form>
-
-        <p className="mt-2 text-xs text-stone-500">No spam. Unsubscribe anytime.</p>
-
-        {message && (
-          <p className={`mt-3 text-sm ${state === 'error' ? 'text-red-800' : 'text-emerald-700'}`}>
-            {message}
-          </p>
-        )}
-      </div>
-
-      <Link
-        href={variantCopy.secondaryHref}
-        className="mt-3 inline-flex text-sm font-medium text-red-900 underline decoration-stone-300 underline-offset-4 hover:text-stone-950"
-      >
-        {variantCopy.secondaryLabel}
-      </Link>
-    </section>
+    <div className="my-10">
+      <LeadMagnetCapture
+        offer={offer}
+        location="article_mid_capture"
+        articleSlug={articleSlug}
+        category={category}
+      />
+    </div>
   );
 }

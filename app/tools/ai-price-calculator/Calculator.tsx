@@ -3,6 +3,7 @@
 import { FormEvent, useMemo, useState } from 'react';
 import { trackEvent } from '@/app/lib/analytics';
 import { resolveIntentContext, type IntentValue } from '@/app/lib/intent-continuity';
+import { getLeadMagnetBySlug } from '@/app/data/lead-magnets';
 
 export const PROVIDERS = [
   // OpenAI - direct API standard rates, short context where split pricing exists.
@@ -127,6 +128,7 @@ export default function AIPriceCalculator() {
   }, []);
 
   const topThree = pricedResults.slice(0, 3);
+  const pricingSheetOffer = getLeadMagnetBySlug('ai-model-pricing-sheet');
 
   async function handleQuickCaptureSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -151,6 +153,8 @@ export default function AIPriceCalculator() {
         intentDerivedFrom: intentContext.intentDerivedFrom,
         sourceSurface,
         capturedIntent: activeIntent,
+        offerSlug: pricingSheetOffer.slug,
+        offerTitle: pricingSheetOffer.title,
       },
     }).catch(() => undefined);
 
@@ -158,7 +162,13 @@ export default function AIPriceCalculator() {
       const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: quickCaptureEmail }),
+        body: JSON.stringify({
+          email: quickCaptureEmail,
+          source: 'ai_price_calculator_quick_capture',
+          offerSlug: pricingSheetOffer.slug,
+          offerTitle: pricingSheetOffer.title,
+          category: 'ai',
+        }),
       });
       const payload = await response.json();
 
@@ -167,7 +177,7 @@ export default function AIPriceCalculator() {
       }
 
       setQuickCaptureStatus('success');
-      setQuickCaptureMessage('Recommendation saved. We sent your top picks to this inbox.');
+      setQuickCaptureMessage('Recommendation saved. We sent your top picks and the pricing sheet to this inbox.');
       setQuickCaptureEmail('');
     } catch (error) {
       setQuickCaptureStatus('error');
@@ -290,10 +300,10 @@ export default function AIPriceCalculator() {
 
         {totalTokens > 0 && pricedResults.length > 0 && (
           <section id="save-recommendation" className="card-elevated mb-6 border border-red-900/30 bg-red-900/5 p-5">
-            <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Save recommendation</p>
-            <h2 className="mt-2 text-lg font-semibold text-stone-950">Email my top 3 model picks</h2>
+            <p className="text-xs font-semibold uppercase tracking-wider text-red-700">Pricing sheet</p>
+            <h2 className="mt-2 text-lg font-semibold text-stone-950">Email my top 3 picks and pricing worksheet</h2>
             <p className="mt-1 text-sm text-stone-700">
-              Keep your shortlist handy without committing to a full sales flow.
+              Keep your shortlist handy with the Decryptica cost worksheet for later budget reviews.
             </p>
             {topThree.length > 0 && (
               <p className="mt-2 text-xs text-stone-600">
@@ -315,7 +325,7 @@ export default function AIPriceCalculator() {
                 disabled={quickCaptureStatus === 'loading' || quickCaptureStatus === 'success'}
                 className="btn-primary h-11 justify-center"
               >
-                {quickCaptureStatus === 'loading' ? 'Sending...' : quickCaptureStatus === 'success' ? 'Sent' : 'Send Picks'}
+                {quickCaptureStatus === 'loading' ? 'Sending...' : quickCaptureStatus === 'success' ? 'Sent' : 'Send Worksheet'}
               </button>
             </form>
             {quickCaptureMessage && (

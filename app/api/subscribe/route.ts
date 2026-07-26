@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { kv } from '@vercel/kv';
 import { createHash } from 'crypto';
-import { normalizeSubscriberEmail, subscribeToNewsletter } from '../../lib/newsletter';
+import { normalizeSubscriberEmail, subscribeToNewsletter, type NewsletterSubscribeMetadata } from '../../lib/newsletter';
 
 const TTL_90_DAYS = 60 * 60 * 24 * 90;
 
@@ -11,7 +11,7 @@ const TTL_90_DAYS = 60 * 60 * 24 * 90;
  */
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json();
+    const { email, source, offerSlug, offerTitle, category, articleSlug } = await request.json();
 
     const normalizedEmail = normalizeSubscriberEmail(email);
 
@@ -22,9 +22,17 @@ export async function POST(request: Request) {
       );
     }
 
-    const result = await subscribeToNewsletter(normalizedEmail);
+    const metadata: NewsletterSubscribeMetadata = {
+      source: typeof source === 'string' ? source.slice(0, 80) : undefined,
+      offerSlug: typeof offerSlug === 'string' ? offerSlug.slice(0, 80) : undefined,
+      offerTitle: typeof offerTitle === 'string' ? offerTitle.slice(0, 120) : undefined,
+      category: typeof category === 'string' ? category.slice(0, 40) : undefined,
+      articleSlug: typeof articleSlug === 'string' ? articleSlug.slice(0, 120) : undefined,
+    };
 
-    await trackSignup(normalizedEmail);
+    const result = await subscribeToNewsletter(normalizedEmail, metadata);
+
+    await trackSignup(normalizedEmail, metadata);
 
     return NextResponse.json(
       {
@@ -46,7 +54,7 @@ export async function POST(request: Request) {
 /**
  * Track a signup KPI event in Vercel KV
  */
-async function trackSignup(email: string): Promise<void> {
+async function trackSignup(email: string, metadata: NewsletterSubscribeMetadata = {}): Promise<void> {
   try {
     const date = new Date().toISOString().split('T')[0];
     const timestamp = new Date().toISOString();
@@ -58,6 +66,11 @@ async function trackSignup(email: string): Promise<void> {
       date,
       emailHash,
       method: 'email_form',
+      source: metadata.source || 'decryptica-site',
+      offerSlug: metadata.offerSlug || null,
+      offerTitle: metadata.offerTitle || null,
+      category: metadata.category || null,
+      articleSlug: metadata.articleSlug || null,
     };
 
     // Store the event with session context (anonymous session if available)

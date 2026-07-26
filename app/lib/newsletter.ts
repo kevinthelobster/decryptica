@@ -14,6 +14,14 @@ export type NewsletterSubscribeResult = {
   warning?: string;
 };
 
+export type NewsletterSubscribeMetadata = {
+  source?: string;
+  offerSlug?: string;
+  offerTitle?: string;
+  category?: string;
+  articleSlug?: string;
+};
+
 export function normalizeSubscriberEmail(email: unknown): string | null {
   if (typeof email !== 'string') return null;
 
@@ -23,11 +31,14 @@ export function normalizeSubscriberEmail(email: unknown): string | null {
   return valid ? normalized : null;
 }
 
-export async function subscribeToNewsletter(email: string): Promise<NewsletterSubscribeResult> {
-  await persistSubscriber(email);
+export async function subscribeToNewsletter(
+  email: string,
+  metadata: NewsletterSubscribeMetadata = {}
+): Promise<NewsletterSubscribeResult> {
+  await persistSubscriber(email, metadata);
 
   if (BUTTONDOWN_API_KEY) {
-    const buttondownResult = await subscribeWithButtondown(email);
+    const buttondownResult = await subscribeWithButtondown(email, metadata);
     if (buttondownResult.ok) return buttondownResult;
 
     return {
@@ -39,7 +50,7 @@ export async function subscribeToNewsletter(email: string): Promise<NewsletterSu
   }
 
   if (GOOGLE_SCRIPT_URL) {
-    const googleResult = await subscribeWithGoogleScript(email);
+    const googleResult = await subscribeWithGoogleScript(email, metadata);
     if (googleResult.ok) return googleResult;
 
     return {
@@ -57,21 +68,32 @@ export async function subscribeToNewsletter(email: string): Promise<NewsletterSu
   };
 }
 
-async function persistSubscriber(email: string): Promise<void> {
+async function persistSubscriber(email: string, metadata: NewsletterSubscribeMetadata): Promise<void> {
   const now = new Date().toISOString();
   const key = `${SUBSCRIBER_KEY_PREFIX}:${hashEmail(email)}`;
 
   await kv.sadd(SUBSCRIBER_SET_KEY, email);
   await kv.hset(key, {
     email,
-    source: 'decryptica-site',
+    source: metadata.source || 'decryptica-site',
+    offerSlug: metadata.offerSlug || '',
+    offerTitle: metadata.offerTitle || '',
+    category: metadata.category || '',
+    articleSlug: metadata.articleSlug || '',
     subscribedAt: now,
     updatedAt: now,
   });
 }
 
-async function subscribeWithButtondown(email: string): Promise<NewsletterSubscribeResult> {
+async function subscribeWithButtondown(
+  email: string,
+  metadata: NewsletterSubscribeMetadata
+): Promise<NewsletterSubscribeResult> {
   try {
+    const tags = ['decryptica-site'];
+    if (metadata.offerSlug) tags.push(`offer:${metadata.offerSlug}`);
+    if (metadata.category) tags.push(`category:${metadata.category}`);
+
     const response = await fetch('https://api.buttondown.com/v1/subscribers', {
       method: 'POST',
       headers: {
@@ -81,9 +103,13 @@ async function subscribeWithButtondown(email: string): Promise<NewsletterSubscri
       },
       body: JSON.stringify({
         email_address: email,
-        tags: ['decryptica-site'],
+        tags,
         metadata: {
-          source: 'decryptica-site',
+          source: metadata.source || 'decryptica-site',
+          offerSlug: metadata.offerSlug || '',
+          offerTitle: metadata.offerTitle || '',
+          category: metadata.category || '',
+          articleSlug: metadata.articleSlug || '',
         },
       }),
     });
@@ -113,12 +139,15 @@ async function subscribeWithButtondown(email: string): Promise<NewsletterSubscri
   }
 }
 
-async function subscribeWithGoogleScript(email: string): Promise<NewsletterSubscribeResult> {
+async function subscribeWithGoogleScript(
+  email: string,
+  metadata: NewsletterSubscribeMetadata
+): Promise<NewsletterSubscribeResult> {
   try {
     const response = await fetch(GOOGLE_SCRIPT_URL!, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, ...metadata }),
     });
 
     if (response.ok) {

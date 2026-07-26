@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import SubscribeForm from '../components/SubscribeForm';
+import LeadMagnetCapture from '../components/LeadMagnetCapture';
+import { getLeadMagnetBySlug, leadMagnets } from '../data/lead-magnets';
 import { getBreadcrumbSchema, jsonLdScript } from '../lib/schema';
 
 export const metadata: Metadata = {
@@ -118,6 +119,23 @@ export default function ToolsPage() {
 
               <div className="mt-10">
                 <div className="mb-5 border-b-2 border-stone-900 pb-2">
+                  <h2 className="font-serif text-3xl font-black text-stone-950">Research Packets</h2>
+                </div>
+                <div className="grid gap-5 md:grid-cols-2">
+                  {leadMagnets.map((offer) => (
+                    <LeadMagnetCapture
+                      key={offer.slug}
+                      offer={offer}
+                      location="tools_research_packets"
+                      category={offer.category}
+                      compact
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-10">
+                <div className="mb-5 border-b-2 border-stone-900 pb-2">
                   <h2 className="font-serif text-3xl font-black text-stone-950">Coming Next</h2>
                 </div>
                 <div className="grid gap-4 md:grid-cols-3">
@@ -155,16 +173,13 @@ export default function ToolsPage() {
                 </div>
               </div>
 
-              <div className="border border-stone-950 bg-stone-950 p-5 text-white">
-                <p className="text-xs font-bold uppercase tracking-[0.14em] text-red-300">Dispatch</p>
-                <h2 className="mt-2 font-serif text-2xl font-black">Get tool updates</h2>
-                <p className="mt-3 text-sm leading-6 text-stone-300">
-                  New calculators and checklists will land here first.
-                </p>
-                <div className="mt-5">
-                  <SubscribeForm />
-                </div>
-              </div>
+              <LeadMagnetCapture
+                offer={getLeadMagnetBySlug('ai-workflow-risk-register')}
+                location="tools_sidebar_risk_register"
+                category="automation"
+                compact
+                dark
+              />
             </aside>
           </div>
         </section>

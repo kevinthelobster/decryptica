@@ -3,8 +3,10 @@ import { Metadata } from "next";
 import SubscribeForm from "./components/SubscribeForm";
 import TrackedLink from "./components/TrackedLink";
 import IntentRouter from "./components/IntentRouter";
+import LeadMagnetCapture from "./components/LeadMagnetCapture";
 import { articles } from "./data/articles";
 import { getArticleImage } from "./data/article-images";
+import { leadMagnets } from "./data/lead-magnets";
 import { absoluteUrl, getBreadcrumbSchema, jsonLdScript } from "./lib/schema";
 
 export const metadata: Metadata = {
@@ -267,6 +269,31 @@ export default function IndexPage() {
                 </dl>
               </div>
             </aside>
+          </div>
+        </section>
+
+        <section className="border-b border-stone-200 bg-neutral-50">
+          <div className="mx-auto max-w-7xl px-5 py-10">
+            <div className="mb-5 flex flex-col gap-3 border-b-2 border-stone-900 pb-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-red-800">Research Downloads</p>
+                <h2 className="mt-2 font-serif text-3xl font-black text-stone-950">Field notes worth saving</h2>
+              </div>
+              <p className="max-w-xl text-sm leading-6 text-stone-600">
+                Practical worksheets from the reporting desk: pricing sheets, infrastructure checks, and rollout templates.
+              </p>
+            </div>
+            <div className="grid gap-5 lg:grid-cols-3">
+              {leadMagnets.slice(0, 3).map((offer) => (
+                <LeadMagnetCapture
+                  key={offer.slug}
+                  offer={offer}
+                  location="home_research_downloads"
+                  category={offer.category}
+                  compact
+                />
+              ))}
+            </div>
           </div>
         </section>
 

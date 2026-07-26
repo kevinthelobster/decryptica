@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Calculator from './Calculator';
-import SubscribeForm from '../../components/SubscribeForm';
 import DestinationConfidenceLayer from '../../components/DestinationConfidenceLayer';
+import LeadMagnetCapture from '../../components/LeadMagnetCapture';
+import { getLeadMagnetBySlug } from '../../data/lead-magnets';
 
 // ─── SEO Copy Framework: Meta Title/Description Variants (CTR Tests) ─────────
 //
@@ -99,12 +100,12 @@ function ToolCTACompare() {
 
 function ToolCTAStart() {
   return (
-    <div className="p-5 bg-white border border-stone-200 ">
-      <h3 className="font-display text-sm font-semibold text-red-800 uppercase tracking-wider mb-2">Get Started</h3>
-      <p className="text-stone-950 font-medium mb-1">Want updates when models change price?</p>
-      <p className="text-stone-600 text-sm mb-3">New models launch every month. Get notified when we update the calculator.</p>
-      <SubscribeForm />
-    </div>
+    <LeadMagnetCapture
+      offer={getLeadMagnetBySlug('ai-model-pricing-sheet')}
+      location="ai_price_calculator_pricing_sheet"
+      category="ai"
+      compact
+    />
   );
 }
 
