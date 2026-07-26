@@ -9,6 +9,7 @@ export type LeadMagnet = {
   deliverable: string;
   cadence: string;
   ctaLabel: string;
+  compactCtaLabel?: string;
   successMessage: string;
   bullets: string[];
   secondaryHref: string;
@@ -26,6 +27,7 @@ export const leadMagnets: LeadMagnet[] = [
     deliverable: 'Provider pricing sheet plus budget notes',
     cadence: 'Updated when major pricing changes ship',
     ctaLabel: 'Send the pricing sheet',
+    compactCtaLabel: 'Send sheet',
     successMessage: 'Pricing sheet queued. Check your inbox for the Decryptica cost desk note.',
     bullets: ['Token-cost fields', 'Provider notes', 'Budget worksheet'],
     secondaryHref: '/tools/ai-price-calculator',
@@ -41,6 +43,7 @@ export const leadMagnets: LeadMagnet[] = [
     deliverable: 'Benchmark checklist and acceptance criteria',
     cadence: 'Reviewed with Solana infrastructure coverage',
     ctaLabel: 'Send the RPC checklist',
+    compactCtaLabel: 'Send checklist',
     successMessage: 'Checklist queued. Check your inbox for the Solana RPC benchmark note.',
     bullets: ['Latency tests', 'Failover prompts', 'Provider questions'],
     secondaryHref: '/blog/solana-rpc-providers-compared',
@@ -56,6 +59,7 @@ export const leadMagnets: LeadMagnet[] = [
     deliverable: 'Editable SOP structure for automation rollouts',
     cadence: 'Maintained with automation implementation guides',
     ctaLabel: 'Send the SOP template',
+    compactCtaLabel: 'Send template',
     successMessage: 'SOP template queued. Check your inbox for the automation rollout note.',
     bullets: ['Trigger map', 'Owner matrix', 'Rollback checklist'],
     secondaryHref: '/topic/automation/workflows',
@@ -71,6 +75,7 @@ export const leadMagnets: LeadMagnet[] = [
     deliverable: 'Risk review worksheet for AI automations',
     cadence: 'Updated with AI automation risk coverage',
     ctaLabel: 'Send the risk register',
+    compactCtaLabel: 'Send register',
     successMessage: 'Risk register queued. Check your inbox for the AI workflow review packet.',
     bullets: ['Approval gates', 'Data exposure checks', 'Monitoring owners'],
     secondaryHref: '/services/ai-automation-consulting',

@@ -85,6 +85,7 @@ export default function LeadMagnetCapture({
   const borderClass = dark ? 'border-stone-700 bg-stone-950 text-white' : 'border-stone-200 bg-white text-stone-950';
   const mutedClass = dark ? 'text-stone-300' : 'text-stone-600';
   const eyebrowClass = dark ? 'text-red-200' : 'text-red-800';
+  const buttonLabel = compact && offer.compactCtaLabel ? offer.compactCtaLabel : offer.ctaLabel;
 
   return (
     <section className={`border p-5 ${borderClass}`} aria-label={offer.title}>
@@ -108,7 +109,12 @@ export default function LeadMagnetCapture({
         {offer.deliverable}. {offer.cadence}.
       </p>
 
-      <form className="mt-4 flex flex-col gap-3 sm:flex-row" onSubmit={onSubmit}>
+      <form
+        className={`mt-4 grid gap-2 ${
+          compact ? 'sm:grid-cols-[minmax(10rem,1fr)_auto]' : 'sm:grid-cols-[minmax(12rem,1fr)_auto]'
+        }`}
+        onSubmit={onSubmit}
+      >
         <label className="sr-only" htmlFor={`${offer.slug}-${location}-email`}>
           Email address
         </label>
@@ -133,7 +139,7 @@ export default function LeadMagnetCapture({
               },
             }).catch(() => undefined);
           }}
-          className={`h-11 min-w-0 flex-1 border px-4 text-sm focus:outline-none ${
+          className={`h-11 min-w-0 border px-4 text-sm focus:outline-none ${
             dark
               ? 'border-stone-700 bg-stone-900 text-white placeholder:text-stone-500 focus:border-red-300'
               : 'border-stone-300 bg-white text-stone-950 placeholder:text-stone-400 focus:border-red-900'
@@ -142,11 +148,11 @@ export default function LeadMagnetCapture({
         <button
           type="submit"
           disabled={state === 'loading' || state === 'success'}
-          className={`h-11 px-5 text-sm font-bold uppercase tracking-[0.1em] transition disabled:cursor-not-allowed disabled:opacity-60 ${
+          className={`h-11 shrink-0 px-4 text-xs font-bold uppercase tracking-[0.08em] transition disabled:cursor-not-allowed disabled:opacity-60 ${
             dark ? 'bg-white text-stone-950 hover:bg-red-100' : 'bg-red-900 text-white hover:bg-stone-950'
           }`}
         >
-          {state === 'loading' ? 'Sending...' : state === 'success' ? 'Sent' : offer.ctaLabel}
+          {state === 'loading' ? 'Sending...' : state === 'success' ? 'Sent' : buttonLabel}
         </button>
       </form>
 
