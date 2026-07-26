@@ -1,11 +1,6 @@
 {
   "posted": [
     {
-      "title": "The Death of AMMs Has Been Greatly Exaggerated",
-      "slug": "the-death-of-amms-has-been-greatly-exaggerated",
-      "date": 1777289415801
-    },
-    {
       "title": "The On-Chain Metrics That Actually Predict Price",
       "slug": "the-on-chain-metrics-that-actually-predict-price",
       "date": 1777378684316
@@ -409,6 +404,11 @@
       "title": "The Infrastructure Problem Nobody Talks About",
       "slug": "the-infrastructure-problem-nobody-talks-about",
       "date": 1784981479787
+    },
+    {
+      "title": "HubSpot vs Pipedrive: Which CRM Automation Stack Fits Small Teams",
+      "slug": "hubspot-vs-pipedrive-which-crm-automation-stack-fits-small-t",
+      "date": 1785065966337
     }
   ],
   "lastResearch": null
