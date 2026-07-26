@@ -1195,7 +1195,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
 
             <FreshnessEvidenceStrip article={article} methodAnchorId="methodology" />
-            <ArticleTrustLayer article={article} methodAnchorId="methodology" />
             <ArticleDisclosureNotice />
 
             <section id="key-questions" className="scroll-mt-28">
@@ -1235,6 +1234,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 We publish after checking major claims against current documentation, product pages, pricing pages, and other primary materials we can verify. When a tool, pricing model, or market condition changes enough to affect the recommendation, we revise the page and record the change above. Treat this content as informed research, then validate critical assumptions with live primary data before execution.
               </p>
             </section>
+
+            <ArticleTrustLayer article={article} methodAnchorId="methodology" />
 
             {/* FAQ Section */}
             <TrackedFAQSection faqs={faqs} articleSlug={slug} />

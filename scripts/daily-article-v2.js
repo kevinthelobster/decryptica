@@ -28,6 +28,8 @@ const CONFIG = {
   telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || ''
 };
 
+const DAILY_ARTICLE_LIMIT = Number.parseInt(process.env.DAILY_ARTICLE_LIMIT || '3', 10);
+
 // Categories to research
 const CATEGORIES = ['crypto', 'ai', 'automation'];
 
@@ -80,13 +82,17 @@ function getTodayDate() {
 }
 
 function hasArticleForDate(date) {
+  return countArticlesForDate(date) > 0;
+}
+
+function countArticlesForDate(date) {
   try {
     const content = fs.readFileSync(CONFIG.articlesFile, 'utf-8');
-    const pattern = new RegExp(`date:\\s*['"]${date}['"]`);
-    return pattern.test(content);
+    const pattern = new RegExp(`date:\\s*['"]${date}['"]`, 'g');
+    return [...content.matchAll(pattern)].length;
   } catch (e) {
     log(`Date check error: ${e.message}`);
-    return false;
+    return 0;
   }
 }
 
@@ -193,6 +199,9 @@ async function researchKeywords(category) {
       'ai productivity 2026',
       'best ai assistants',
       'chatgpt alternatives',
+      'chatgpt vs claude comparison',
+      'best ai coding tools comparison',
+      'ai model pricing comparison',
       'ai coding tools',
       'ai image generation',
       'llm comparison',
@@ -205,6 +214,7 @@ async function researchKeywords(category) {
       'productivity apps',
       'api tools',
       'zapier alternatives',
+      'zapier vs make vs n8n comparison',
       'n8n workflows',
       'business automation'
     ]
@@ -250,6 +260,11 @@ const RESEARCH_BRIEFS = {
       'Add a "Where the marketing overreaches" section.',
       'Include an evaluation checklist or comparison table.',
       'Make implementation tradeoffs explicit.'
+    ],
+    comparisonSignals: [
+      'When the topic supports it, frame the piece as a buyer-intent comparison page with clear winners by use case.',
+      'Compare pricing shape, data controls, workflow fit, integration depth, setup burden, reliability, and switching cost.',
+      'Avoid maintaining exact prices unless the article is explicitly about pricing; use pricing tiers and cost drivers instead.'
     ]
   },
   automation: {
@@ -264,6 +279,11 @@ const RESEARCH_BRIEFS = {
       'Add a "Failure modes" section.',
       'Include a build-vs-buy or workflow readiness table.',
       'Give a concrete implementation path.'
+    ],
+    comparisonSignals: [
+      'When the topic supports it, turn the article into a practical tool/workflow comparison rather than a generic explainer.',
+      'Compare operational limits: retries, approvals, data ownership, observability, handoff burden, plan limits, and maintenance cost.',
+      'End with a clear recommendation by team type or workflow maturity.'
     ]
   }
 };
@@ -359,6 +379,8 @@ const FORBIDDEN_PHRASE_REPLACEMENTS = new Map([
 function getResearchBrief(category, title, primaryKeyword) {
   const brief = RESEARCH_BRIEFS[category] || RESEARCH_BRIEFS.automation;
   const playbook = GEO_SEARCH_PLAYBOOK[category] || GEO_SEARCH_PLAYBOOK.automation;
+  const lowerTitle = normalizePhrase(`${title || ''} ${primaryKeyword || ''}`);
+  const isComparison = /\b(vs|versus|compare|comparison|best|alternative|alternatives|ranked|which)\b/.test(lowerTitle);
   return {
     desk: brief.desk,
     title,
@@ -368,7 +390,11 @@ function getResearchBrief(category, title, primaryKeyword) {
     sourcePriority: playbook.sourcePriority,
     conversionPath: playbook.conversionPath,
     evidenceChecklist: brief.evidenceChecklist,
-    trustSignals: brief.trustSignals
+    trustSignals: [
+      ...brief.trustSignals,
+      ...(isComparison ? (brief.comparisonSignals || []) : [])
+    ],
+    isComparison
   };
 }
 
@@ -559,6 +585,15 @@ const TITLE_POOLS = {
     "Crypto Market Correlation: When Everything Moves Together"
   ],
   ai: [
+    // Buyer-intent comparisons
+    "ChatGPT vs Claude: Which Assistant Fits Real Work?",
+    "Claude vs Gemini: Which AI Assistant Makes More Sense?",
+    "Cursor vs GitHub Copilot: Which Coding Assistant Should You Use?",
+    "Perplexity vs ChatGPT: Which Research Tool Is Better?",
+    "ChatGPT Team vs Claude Team: Which Plan Fits Small Teams?",
+    "Midjourney vs Adobe Firefly: Which Image Tool Is Safer for Work?",
+    "OpenAI API vs Anthropic API: Which Model Stack Fits Your Product?",
+    "Best AI Coding Tools: What Actually Matters Before You Pay",
     // AI Assistants & Chatbots
     "Claude vs GPT-5: The Comparison That Matters",
     "Why AI Assistants Still Can't Replace Real Research",
@@ -594,6 +629,13 @@ const TITLE_POOLS = {
     "Why Context Windows Aren't the Answer"
   ],
   automation: [
+    // Buyer-intent comparisons
+    "Zapier vs Make vs n8n: Which Automation Platform Fits Your Workflow?",
+    "Airtable vs Notion: Which Operational Database Makes More Sense?",
+    "HubSpot vs Pipedrive: Which CRM Automation Stack Fits Small Teams?",
+    "Make vs n8n: Which Workflow Builder Should Operators Choose?",
+    "Zapier vs Native Integrations: When the Middleware Is Worth It",
+    "Best AI Automation Tools: What to Compare Before You Buy",
     // No-Code & Tools
     "The No-Code Ceiling: When Tools Hit Their Limit",
     "Why Bubble.io Is Both Winning and Losing",
@@ -837,6 +879,25 @@ function slugExists(slug, existingArticles = loadExistingArticleFingerprints()) 
   return existingArticles.some((article) => article.slug === slug);
 }
 
+function isComparisonTopic(value) {
+  return /\b(vs|versus|compare|comparison|best|alternative|alternatives|ranked|which)\b/i.test(value || '');
+}
+
+function comparisonIntentBoost(candidate) {
+  const haystack = `${candidate?.keyword || ''} ${candidate?.suggestedTitle || ''}`;
+  return isComparisonTopic(haystack) ? 22 : 0;
+}
+
+function selectTitleFromPool(availableTitles, category) {
+  const comparisonTitles = availableTitles.filter(isComparisonTopic);
+
+  if ((category === 'ai' || category === 'automation') && comparisonTitles.length) {
+    return fitTitleForSchema(comparisonTitles[Math.floor(Math.random() * comparisonTitles.length)]);
+  }
+
+  return fitTitleForSchema(availableTitles[Math.floor(Math.random() * availableTitles.length)]);
+}
+
 function pickKeywordCandidate(targetCategory, tracker) {
   const payload = loadKeywordCandidates();
   if (!payload.candidates.length) return null;
@@ -857,7 +918,11 @@ function pickKeywordCandidate(targetCategory, tracker) {
     const scoreB = typeof b.opportunityScore === 'number' ? b.opportunityScore : 0;
     const gapA = clusterGapBoost(a, targetCategory, existingArticles).boost;
     const gapB = clusterGapBoost(b, targetCategory, existingArticles).boost;
-    if ((scoreB + gapB) !== (scoreA + gapA)) return (scoreB + gapB) - (scoreA + gapA);
+    const comparisonA = comparisonIntentBoost(a);
+    const comparisonB = comparisonIntentBoost(b);
+    if ((scoreB + gapB + comparisonB) !== (scoreA + gapA + comparisonA)) {
+      return (scoreB + gapB + comparisonB) - (scoreA + gapA + comparisonA);
+    }
     const volA = typeof a.volume === 'number' ? a.volume : Number.MAX_SAFE_INTEGER;
     const volB = typeof b.volume === 'number' ? b.volume : Number.MAX_SAFE_INTEGER;
     return volA - volB;
@@ -970,9 +1035,7 @@ async function researchTopic() {
   }
   
   // Pick a random available title
-  const selectedTitle = fitTitleForSchema(availableTitles[
-    Math.floor(Math.random() * availableTitles.length)
-  ]);
+  const selectedTitle = selectTitleFromPool(availableTitles, category);
   
   // Determine primary keyword from title
   const primary_keyword = extractKeyword(selectedTitle, category);
@@ -1109,6 +1172,14 @@ function generateContent(title, primary_keyword, category) {
 
   const guidance = categoryGuidance[category] || categoryGuidance.automation;
   const researchBrief = getResearchBrief(category, title, primary_keyword);
+  const comparisonRequirements = researchBrief.isComparison
+    ? [
+        '- Treat this as a comparison page, not a loose essay.',
+        '- Include a section titled "## Who Should Choose Which Option" with clear recommendations by user type.',
+        '- Include a table comparing best fit, main advantage, main drawback, pricing shape, setup burden, and risk/control tradeoff.',
+        '- Include a section titled "## What to Compare Before You Buy" focused on decision criteria rather than exact maintained numbers.'
+      ]
+    : [];
   const siteInventory = loadSiteInventory(category);
   const promptInventory = loadPromptInventory(category);
   const internalLinkList = siteInventory.length
@@ -1136,6 +1207,7 @@ Hard requirements:
 - Include a section titled "## What We Checked" that describes the evidence categories without pretending original hands-on testing happened
 - Include at least one markdown table that helps a reader make a decision
 - Include concrete examples, tool/protocol references, failure modes, and mechanism-level explanation where relevant
+- For comparison topics, make the article useful to a buyer choosing between options, with a clear recommendation by use case
 - Include one natural internal link from the inventory below if it genuinely fits
 - Include one natural prompt-guide link from the prompt inventory below if it genuinely helps the reader act on the article
 - Format every URL as a clickable markdown hyperlink. Do not leave bare URLs as plain text.
@@ -1168,6 +1240,9 @@ ${formatPromptList(researchBrief.evidenceChecklist)}
 
 Trust signals to include:
 ${formatPromptList(researchBrief.trustSignals)}
+
+Comparison-page requirements:
+${formatPromptList(comparisonRequirements.length ? comparisonRequirements : ['No extra comparison-page structure required for this title.'])}
 
 Internal link inventory:
 ${formatPromptList(internalLinkList)}
@@ -1637,10 +1712,12 @@ async function main() {
   log(`Date: ${getTodayDate()}`);
   
   try {
-    if (process.env.ALLOW_TODAY_DUPLICATE !== '1' && hasArticleForDate(getTodayDate())) {
-      log(`Article for ${getTodayDate()} already exists, skipping generation`);
+    const todayCount = countArticlesForDate(getTodayDate());
+    if (process.env.ALLOW_TODAY_DUPLICATE !== '1' && todayCount >= DAILY_ARTICLE_LIMIT) {
+      log(`${todayCount} article(s) for ${getTodayDate()} already exist; daily limit is ${DAILY_ARTICLE_LIMIT}, skipping generation`);
       return;
     }
+    log(`${todayCount}/${DAILY_ARTICLE_LIMIT} article(s) already published for ${getTodayDate()}`);
 
     // Step 1: Research with keyword analysis
     const research = await researchTopic();

@@ -75,62 +75,50 @@ export default function ArticleTrustLayer({
       : 'Primary-source review where available';
 
   return (
-    <section className="mb-8 border border-stone-200 bg-white" aria-label="Editorial trust">
-      <div className="border-b border-stone-200 bg-neutral-50 px-5 py-4 md:px-6">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-stone-500">
+    <section className="mt-6 border border-stone-200 bg-white px-4 py-3" aria-label="Editorial trust">
+      <details>
+        <summary className="cursor-pointer list-none font-display text-sm font-semibold uppercase tracking-wider text-stone-500 marker:hidden">
           Why trust this page
-        </p>
-        <p className="mt-2 max-w-3xl text-sm leading-6 text-stone-700">
-          Independent analysis from Decryptica, published by Renegade Reels LLC. We show who wrote the page,
-          how it was reviewed, and when material updates were made so you can judge the information before acting on it.
-        </p>
-      </div>
-
-      <div className="grid gap-6 px-5 py-5 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:px-6">
-        <div className="space-y-5">
-          <div className="grid gap-3 sm:grid-cols-2">
-            <div className="border border-stone-200 bg-neutral-50 p-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-stone-500">Author</p>
-              <p className="mt-2 text-sm font-semibold text-stone-950">{authorName}</p>
-              <p className="mt-1 text-sm text-stone-600">{authorRole}</p>
-            </div>
-            <div className="border border-stone-200 bg-neutral-50 p-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-stone-500">Reviewed by</p>
-              <p className="mt-2 text-sm font-semibold text-stone-950">{reviewerName}</p>
-              <p className="mt-1 text-sm text-stone-600">{reviewerRole}</p>
-            </div>
-          </div>
-
-          <div className="border border-stone-200 bg-neutral-50 p-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-stone-500">How we review</p>
-            <p className="mt-2 text-sm leading-6 text-stone-700">{reviewSummary}</p>
-            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs text-stone-500">
+        </summary>
+        <div className="mt-3 grid gap-4 text-sm leading-6 text-stone-700 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div>
+            <p>
+              Independent analysis from Decryptica, published by Renegade Reels LLC. Written by{' '}
+              <span className="font-semibold text-stone-950">{authorName}</span>
+              {authorRole ? `, ${authorRole}` : ''}. Reviewed by{' '}
+              <span className="font-semibold text-stone-950">{reviewerName}</span>
+              {reviewerRole ? `, ${reviewerRole}` : ''}.
+            </p>
+            <p className="mt-2">
+              {reviewSummary}
+            </p>
+            <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-xs text-stone-500">
               <span>{sourcesReviewed}</span>
               <a href={`#${methodAnchorId}`} className="text-red-900 underline underline-offset-4 hover:text-stone-950">
-                View methodology
+                Method
               </a>
               <Link href="/about" className="text-red-900 underline underline-offset-4 hover:text-stone-950">
                 About Decryptica
               </Link>
             </div>
           </div>
-        </div>
 
-        <div className="border border-stone-200 bg-neutral-50 p-4">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-stone-500">Update history</p>
-          <ol className="mt-3 space-y-3">
-            {updateHistory.map((event) => (
-              <li key={`${event.label}-${event.date}`} className="border-l-2 border-red-900/70 pl-3">
-                <p className="text-sm font-semibold text-stone-950">
-                  {event.label}
-                  <span className="ml-2 font-normal text-stone-500">{formatDisplayDate(event.date)}</span>
-                </p>
-                {event.note ? <p className="mt-1 text-sm leading-6 text-stone-700">{event.note}</p> : null}
-              </li>
-            ))}
-          </ol>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-stone-500">Update history</p>
+            <ol className="mt-2 space-y-2">
+              {updateHistory.map((event) => (
+                <li key={`${event.label}-${event.date}`} className="border-l-2 border-red-900/70 pl-3">
+                  <p className="font-semibold text-stone-950">
+                    {event.label}
+                    <span className="ml-2 font-normal text-stone-500">{formatDisplayDate(event.date)}</span>
+                  </p>
+                  {event.note ? <p className="text-sm leading-6 text-stone-700">{event.note}</p> : null}
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
-      </div>
+      </details>
     </section>
   );
 }
