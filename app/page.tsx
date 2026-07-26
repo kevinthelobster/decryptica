@@ -65,6 +65,27 @@ const topics = [
   },
 ];
 
+const toolDeskItems = [
+  {
+    title: "AI price calculator",
+    description: "Compare model costs before a stack decision turns into recurring spend.",
+    href: "/tools/ai-price-calculator",
+    label: "Calculator",
+  },
+  {
+    title: "Prompt library",
+    description: "Reuse automation prompts for monitoring, research, coding, and communication workflows.",
+    href: "/prompts",
+    label: "Library",
+  },
+  {
+    title: "Search the archive",
+    description: "Find the report, prompt, tool, or checklist that matches the question in front of you.",
+    href: "/search",
+    label: "Utility",
+  },
+];
+
 export default function IndexPage() {
   const websitePageSchema = {
     "@context": "https://schema.org",
@@ -269,6 +290,47 @@ export default function IndexPage() {
                 </dl>
               </div>
             </aside>
+          </div>
+        </section>
+
+        <section className="border-b border-stone-200 bg-neutral-50">
+          <div className="mx-auto max-w-7xl px-5 py-10">
+            <div className="mb-5 flex flex-col gap-3 border-b-2 border-stone-900 pb-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-red-800">Tools Desk</p>
+                <h2 className="mt-2 font-serif text-3xl font-black text-stone-950">Return when the research turns practical</h2>
+              </div>
+              <TrackedLink
+                href="/tools"
+                className="text-sm font-bold uppercase tracking-[0.12em] text-red-800 hover:text-red-950"
+                eventType="cta_click"
+                metadata={{ location: "home_tools_desk", cta: "view_tools" }}
+              >
+                View all tools
+              </TrackedLink>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {toolDeskItems.map((item) => (
+                <TrackedLink
+                  key={item.href}
+                  href={item.href}
+                  className="news-card group flex min-h-[13rem] flex-col p-5"
+                  eventType="cta_click"
+                  metadata={{ location: "home_tools_desk", cta: item.label.toLowerCase() }}
+                >
+                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800">
+                    {item.label}
+                  </p>
+                  <h3 className="mt-3 font-serif text-2xl font-black leading-tight text-stone-950 group-hover:text-red-900">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-stone-600">{item.description}</p>
+                  <p className="mt-auto border-t border-stone-200 pt-4 text-sm font-bold text-red-800 group-hover:text-red-950">
+                    Open {'->'}
+                  </p>
+                </TrackedLink>
+              ))}
+            </div>
           </div>
         </section>
 

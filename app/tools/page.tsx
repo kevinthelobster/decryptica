@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import LeadMagnetCapture from '../components/LeadMagnetCapture';
 import { getLeadMagnetBySlug, leadMagnets } from '../data/lead-magnets';
-import { getBreadcrumbSchema, jsonLdScript } from '../lib/schema';
+import { absoluteUrl, getBreadcrumbSchema, jsonLdScript } from '../lib/schema';
 
 export const metadata: Metadata = {
-  title: 'Tools | Decryptica',
+  title: 'Tools Desk',
   description:
-    'Free Decryptica tools for comparing AI costs, pressure-testing crypto infrastructure, and planning automation work.',
+    'Free Decryptica tools, calculators, checklists, and research packets for comparing AI costs, pressure-testing infrastructure, and planning automation work.',
   alternates: {
     canonical: '/tools',
   },
@@ -18,6 +18,7 @@ const liveTools = [
     title: 'AI Model Price Calculator',
     kicker: 'Live tool',
     href: '/tools/ai-price-calculator',
+    track: 'AI costs',
     description:
       'Compare current model pricing across major AI API providers before choosing a stack or estimating monthly spend.',
     bestFor: 'Model selection, budget planning, and vendor comparison',
@@ -26,6 +27,7 @@ const liveTools = [
     title: 'OpenClaw Prompt Library',
     kicker: 'Live library',
     href: '/prompts',
+    track: 'Reusable workflows',
     description:
       'Browse copy-pasteable automations for research, monitoring, communication, coding, and memory workflows.',
     bestFor: 'Operators who want reusable automation patterns',
@@ -34,6 +36,7 @@ const liveTools = [
     title: 'Site Search',
     kicker: 'Live utility',
     href: '/search',
+    track: 'Archive navigation',
     description:
       'Search reports, prompts, and tools when you need a specific answer instead of browsing the full archive.',
     bestFor: 'Returning readers and fast research sessions',
@@ -43,18 +46,45 @@ const liveTools = [
 const plannedTools = [
   {
     title: 'Solana RPC Benchmark Checklist',
+    status: 'Next infrastructure packet',
+    anchorHref: '/blog/solana-rpc-providers-compared',
     description:
       'A guided checklist for testing latency, rate limits, websocket stability, and failover before buying RPC infrastructure.',
   },
   {
     title: 'Automation ROI Estimator',
+    status: 'Upcoming calculator',
+    anchorHref: '/services/ai-automation-consulting',
     description:
       'A calculator for deciding whether an automation project saves enough time or revenue leakage to be worth building.',
   },
   {
     title: 'AI Workflow Risk Review',
+    status: 'Upcoming review template',
+    anchorHref: '/topic/ai/use-cases',
     description:
       'A quick review template for spotting prompt injection, approval-gate, privacy, and external-action risks.',
+  },
+];
+
+const deskTracks = [
+  {
+    title: 'Compare the stack',
+    description: 'Use calculators and buyer guides before choosing AI models, providers, or automation platforms.',
+    href: '/topic/ai/tooling',
+    label: 'AI tooling',
+  },
+  {
+    title: 'Check infrastructure risk',
+    description: 'Pair crypto infrastructure reporting with pre-purchase checklists and benchmark criteria.',
+    href: '/blog/solana-rpc-providers-compared',
+    label: 'Crypto infrastructure',
+  },
+  {
+    title: 'Plan the operating model',
+    description: 'Move from article research into SOPs, risk registers, and rollout decisions.',
+    href: '/topic/automation/workflows',
+    label: 'Automation workflows',
   },
 ];
 
@@ -63,29 +93,79 @@ export default function ToolsPage() {
     { name: 'Home', path: '/' },
     { name: 'Tools', path: '/tools' },
   ]);
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Decryptica Tools Desk',
+    description:
+      'Free calculators, checklists, search utilities, and research packets from the Decryptica digital economy desk.',
+    url: absoluteUrl('/tools'),
+    isPartOf: { '@id': `${absoluteUrl()}/#website` },
+    hasPart: liveTools.map((tool) => ({
+      '@type': 'WebPage',
+      name: tool.title,
+      url: absoluteUrl(tool.href),
+      description: tool.description,
+    })),
+  };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(breadcrumbSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(collectionSchema)} />
 
       <div className="bg-white text-stone-950">
         <section className="border-b border-stone-200">
           <div className="mx-auto max-w-7xl px-5 py-10">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-red-800">Tools</p>
-            <div className="mt-3 grid gap-6 border-y border-stone-900 py-6 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-red-800">Tools Desk</p>
+            <div className="mt-3 grid gap-6 border-y border-stone-900 py-6 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-end">
               <div>
                 <h1 className="font-serif text-4xl font-black leading-tight md:text-7xl">
-                  Practical tools for digital economy decisions
+                  Practical tools worth returning to
                 </h1>
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-stone-700">
-                  Calculators, checklists, and searchable libraries built around the same questions
-                  Decryptica covers in its reporting.
+                  Calculators, checklists, search utilities, and research packets built around the same
+                  AI, crypto, and automation decisions Decryptica covers in its reporting.
                 </p>
               </div>
               <div className="border border-stone-200 bg-neutral-50 p-5">
-                <p className="text-xs font-bold uppercase tracking-[0.14em] text-stone-500">Current focus</p>
-                <p className="mt-2 font-serif text-2xl font-black text-stone-950">AI costs, automation prompts, and infrastructure choices</p>
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-stone-500">Reader use case</p>
+                <p className="mt-2 font-serif text-2xl font-black text-stone-950">
+                  Come back when a report turns into a budget, checklist, or rollout decision.
+                </p>
+                <div className="mt-5 grid grid-cols-3 gap-3 border-t border-stone-200 pt-4 text-center">
+                  <div>
+                    <p className="font-serif text-2xl font-black text-stone-950">{liveTools.length}</p>
+                    <p className="text-[0.62rem] font-bold uppercase tracking-[0.1em] text-stone-500">Live</p>
+                  </div>
+                  <div>
+                    <p className="font-serif text-2xl font-black text-stone-950">{plannedTools.length}</p>
+                    <p className="text-[0.62rem] font-bold uppercase tracking-[0.1em] text-stone-500">Queued</p>
+                  </div>
+                  <div>
+                    <p className="font-serif text-2xl font-black text-stone-950">{leadMagnets.length}</p>
+                    <p className="text-[0.62rem] font-bold uppercase tracking-[0.1em] text-stone-500">Packets</p>
+                  </div>
+                </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-stone-200 bg-neutral-50">
+          <div className="mx-auto max-w-7xl px-5 py-6">
+            <div className="grid gap-3 md:grid-cols-3">
+              {deskTracks.map((track) => (
+                <Link key={track.title} href={track.href} className="group border border-stone-200 bg-white p-4 hover:border-red-800">
+                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800">
+                    {track.label}
+                  </p>
+                  <h2 className="mt-2 font-serif text-xl font-black leading-tight text-stone-950 group-hover:text-red-900">
+                    {track.title}
+                  </h2>
+                  <p className="mt-2 text-sm leading-6 text-stone-600">{track.description}</p>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
@@ -93,28 +173,59 @@ export default function ToolsPage() {
         <section>
           <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
             <div>
-              <div className="mb-5 border-b-2 border-stone-900 pb-2">
-                <h2 className="font-serif text-3xl font-black text-stone-950">Use Now</h2>
+              <div className="mb-5 flex flex-col gap-2 border-b-2 border-stone-900 pb-2 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-red-800">Live tools</p>
+                  <h2 className="font-serif text-3xl font-black text-stone-950">Use Now</h2>
+                </div>
+                <p className="max-w-lg text-sm leading-6 text-stone-600">
+                  These are working destinations, not gated placeholders. Use them alongside articles and saved guides.
+                </p>
               </div>
               <div className="grid gap-5 md:grid-cols-3">
                 {liveTools.map((tool) => (
                   <Link
                     key={tool.href}
                     href={tool.href}
-                    className="news-card group flex min-h-[18rem] flex-col p-5"
+                    className="news-card group flex min-h-[21rem] flex-col p-5"
                   >
-                    <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800">
-                      {tool.kicker}
-                    </p>
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800">
+                        {tool.kicker}
+                      </p>
+                      <p className="border border-stone-200 bg-neutral-50 px-2 py-1 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-stone-500">
+                        {tool.track}
+                      </p>
+                    </div>
                     <h3 className="mt-3 font-serif text-2xl font-black leading-tight text-stone-950 group-hover:text-red-900">
                       {tool.title}
                     </h3>
                     <p className="mt-3 text-sm leading-6 text-stone-600">{tool.description}</p>
-                    <p className="mt-auto border-t border-stone-200 pt-4 text-xs font-bold uppercase tracking-[0.1em] text-stone-500">
-                      {tool.bestFor}
-                    </p>
+                    <div className="mt-auto border-t border-stone-200 pt-4">
+                      <p className="text-xs font-bold uppercase tracking-[0.1em] text-stone-500">
+                        {tool.bestFor}
+                      </p>
+                      <p className="mt-3 text-sm font-bold text-red-800 group-hover:text-red-950">
+                        Open tool {'->'}
+                      </p>
+                    </div>
                   </Link>
                 ))}
+              </div>
+
+              <div className="mt-6 grid gap-3 border border-stone-200 bg-neutral-50 p-5 md:grid-cols-[minmax(0,1fr)_12rem] md:items-center">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-stone-500">Returning reader path</p>
+                  <p className="mt-2 text-sm leading-6 text-stone-700">
+                    Start with search if you remember the problem, use the calculator when numbers matter, then save or download the packet that matches the decision.
+                  </p>
+                </div>
+                <Link
+                  href="/search"
+                  className="inline-flex min-h-11 items-center justify-center border border-stone-950 bg-white px-4 text-sm font-bold uppercase tracking-[0.1em] text-stone-950 hover:bg-stone-950 hover:text-white"
+                >
+                  Search desk
+                </Link>
               </div>
 
               <div className="mt-10">
@@ -140,14 +251,20 @@ export default function ToolsPage() {
                 </div>
                 <div className="grid gap-4 md:grid-cols-3">
                   {plannedTools.map((tool) => (
-                    <article key={tool.title} className="border border-stone-200 bg-neutral-50 p-5">
+                    <article key={tool.title} className="flex min-h-[16rem] flex-col border border-stone-200 bg-neutral-50 p-5">
                       <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-stone-500">
-                        Planned
+                        {tool.status}
                       </p>
                       <h3 className="mt-3 font-serif text-xl font-black leading-tight text-stone-950">
                         {tool.title}
                       </h3>
                       <p className="mt-3 text-sm leading-6 text-stone-600">{tool.description}</p>
+                      <Link
+                        href={tool.anchorHref}
+                        className="mt-auto border-t border-stone-200 pt-4 text-sm font-bold text-red-800 hover:text-red-950"
+                      >
+                        Read the related coverage {'->'}
+                      </Link>
                     </article>
                   ))}
                 </div>
@@ -171,6 +288,15 @@ export default function ToolsPage() {
                     <span aria-hidden="true">{'->'}</span>
                   </Link>
                 </div>
+              </div>
+
+              <div className="border border-stone-900 bg-white p-5">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-red-800">Editorial standard</p>
+                <h2 className="mt-2 font-serif text-2xl font-black text-stone-950">Tools follow the coverage.</h2>
+                <p className="mt-3 text-sm leading-6 text-stone-700">
+                  Decryptica adds tools where repeat reader questions show up in reporting: pricing math,
+                  infrastructure checks, workflow planning, and risk review.
+                </p>
               </div>
 
               <LeadMagnetCapture
