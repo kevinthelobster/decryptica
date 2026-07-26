@@ -52,10 +52,17 @@ const imageSet = {
     credit: 'Photo by Campaign Creators on Unsplash',
     creditUrl: 'https://unsplash.com/photos/people-sitting-near-table-with-laptop-computer-qCi_MzVODoU',
   },
+  operationalWorkspace: {
+    src: `https://images.unsplash.com/photo-1551434678-e076c223a692${unsplashParams}`,
+    alt: 'A product and operations team reviewing work on laptops around a shared table',
+    credit: 'Photo by You X Ventures on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/people-sitting-down-near-table-with-assorted-laptop-computers-g1Kr4Ozfoac',
+  },
 } satisfies Record<string, ArticleImage>;
 
 const articleImageOverrides = {
   'make-vs-n8n-which-workflow-builder-should-operators-choose': imageSet.workflowMeeting,
+  'airtable-vs-notion-which-operational-database-makes-more-sen': imageSet.operationalWorkspace,
 } satisfies Record<string, ArticleImage>;
 
 export function getArticleImage(article: Article): ArticleImage {
