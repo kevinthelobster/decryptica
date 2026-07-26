@@ -302,7 +302,7 @@ const GEO_SEARCH_PLAYBOOK = {
       'filings, fund-flow reports, and reputable data aggregators',
       'transparent methodology pages'
     ],
-    conversionPath: 'Point readers toward related Decryptica crypto guides when they need deeper market context.'
+    conversionPath: 'Point readers toward related Decryptica crypto guides, and route Solana infrastructure topics into the Solana RPC benchmark checker.'
   },
   ai: {
     searchIntent: 'tool evaluation for builders and operators comparing AI products, workflows, costs, and implementation risk',
@@ -317,7 +317,7 @@ const GEO_SEARCH_PLAYBOOK = {
       'benchmark reports with clear caveats',
       'public changelogs and integration docs'
     ],
-    conversionPath: 'Link naturally to one prompt guide when the article describes a repeatable workflow a reader can copy.'
+    conversionPath: 'Link naturally to one prompt guide when the article describes a repeatable workflow, and route model/pricing/tool evaluation topics into the AI model price calculator or AI workflow risk checker.'
   },
   automation: {
     searchIntent: 'implementation planning for small businesses and operators deciding what automation to build, buy, or delegate',
@@ -332,7 +332,7 @@ const GEO_SEARCH_PLAYBOOK = {
       'API docs, webhook docs, and status pages',
       'case studies with concrete workflow detail'
     ],
-    conversionPath: 'When relevant, point readers toward the AI automation consulting page or a prompt guide they can run immediately.'
+    conversionPath: 'When relevant, point readers toward the automation ROI estimator, AI workflow risk checker, consulting page, or a prompt guide they can run immediately.'
   }
 };
 
@@ -883,6 +883,28 @@ function isComparisonTopic(value) {
   return /\b(vs|versus|compare|comparison|best|alternative|alternatives|ranked|which)\b/i.test(value || '');
 }
 
+function getPrimaryConversionHrefForArticle({ title, primaryKeyword, category, topicCluster }) {
+  const haystack = normalizePhrase(`${title || ''} ${primaryKeyword || ''} ${topicCluster || ''}`);
+
+  if (/\bsolana\b/.test(haystack) && /\brpc\b|\bhelius\b|\bquicknode\b|\balchemy\b|\btriton\b|\bchainstack\b/.test(haystack)) {
+    return '/tools/solana-rpc-benchmark';
+  }
+
+  if (/\brisk\b|\bsecurity\b|\bprompt injection\b|\bagent\b|\bapproval\b|\bgovernance\b|\bprivacy\b/.test(haystack)) {
+    return '/tools/ai-workflow-risk-checker';
+  }
+
+  if (category === 'automation') {
+    return '/tools/automation-roi-estimator';
+  }
+
+  if (category === 'ai') {
+    return '/tools/ai-price-calculator';
+  }
+
+  return undefined;
+}
+
 function comparisonIntentBoost(candidate) {
   const haystack = `${candidate?.keyword || ''} ${candidate?.suggestedTitle || ''}`;
   return isComparisonTopic(haystack) ? 22 : 0;
@@ -1145,6 +1167,12 @@ async function generateArticle(research) {
     author: 'Decryptica',
     status: 'published',
     primaryKeyword: primary_keyword,
+    primaryConversionHref: getPrimaryConversionHrefForArticle({
+      title,
+      primaryKeyword: primary_keyword,
+      category,
+      topicCluster,
+    }),
     tags: [topicCluster, primary_keyword].filter(Boolean),
     wordCount: countWords(content)
   };
@@ -1594,6 +1622,9 @@ function addArticleToFile(article) {
   
   // Escape content for template literal
   const escapedContent = escapeTemplateLiteral(article.content);
+  const primaryConversionLine = article.primaryConversionHref
+    ? `    primaryConversionHref: "${article.primaryConversionHref}",\n`
+    : '';
   
   const articleEntry = `
   {
@@ -1608,7 +1639,7 @@ function addArticleToFile(article) {
     author: '${article.author}',
     status: '${article.status}',
     primaryKeyword: "${article.primaryKeyword.replace(/"/g, '\\"')}",
-    tags: ${JSON.stringify(article.tags || [])},
+${primaryConversionLine}    tags: ${JSON.stringify(article.tags || [])},
     wordCount: ${article.wordCount},
   },`;
   

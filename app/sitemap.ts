@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { articles } from './data/articles';
+import { tools } from './data/tools';
 import { SUBPILLARS_BY_PILLAR } from './data/topic-routing';
 import promptsDb from '../data/prompts/prompts.json';
 
@@ -98,13 +99,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.85,
     },
-    {
-      url: `${baseUrl}/tools/ai-price-calculator`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    },
   ];
+
+  const toolPages: MetadataRoute.Sitemap = tools.map((tool) => ({
+    url: `${baseUrl}${tool.href}`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
 
   const subpillarPages: MetadataRoute.Sitemap = (Object.entries(SUBPILLARS_BY_PILLAR) as [string, { slug: string }[]][])
     .flatMap(([pillar, subpillars]) =>
@@ -136,5 +138,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: prompt.is_staff_pick ? 0.85 : 0.75,
   }));
 
-  return [...staticPages, ...subpillarPages, ...articlePages, ...promptPages];
+  return [...staticPages, ...toolPages, ...subpillarPages, ...articlePages, ...promptPages];
 }

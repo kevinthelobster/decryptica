@@ -18,8 +18,10 @@ import HubSectionNav from '../../components/HubSectionNav';
 import ArticleNextJourney, { type ArticleNextJourneyCard } from '../../components/ArticleNextJourney';
 import ArticleBuyerDecisionModule from '../../components/ArticleBuyerDecisionModule';
 import { ArticleSerpPromiseModules } from '../../components/ArticleSerpPromiseModules';
+import ArticleToolPathway from '../../components/ArticleToolPathway';
 import RouteDepthTracker from '../../components/RouteDepthTracker';
 import { getSubpillarBySlug, getSubpillarPath, inferSubpillarFromArticle, type PillarSlug } from '../../data/topic-routing';
+import { getRecommendedTool } from '../../data/tools';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -256,9 +258,14 @@ function getPrimaryToolHref(article: Article, subpillarPath: string) {
     return article.primaryConversionHref;
   }
 
-  if (article.category === 'ai') return '/tools/ai-price-calculator';
-  if (article.category === 'automation') return '/services/ai-automation-consulting';
-  return subpillarPath;
+  const tool = getRecommendedTool({
+    category: article.category,
+    title: article.title,
+    slug: article.slug,
+    tags: article.tags,
+  });
+
+  return tool?.href || subpillarPath;
 }
 
 function buildArticleNextJourney(article: Article, allArticles: Article[], subpillarPath: string): ArticleNextJourneyCard[] {
@@ -1048,8 +1055,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const subpillarConfig = getSubpillarBySlug(article.category as PillarSlug, subpillarSlug);
   const subpillarName = subpillarConfig?.name || subpillarSlug;
   const subpillarPath = getSubpillarPath(article.category as PillarSlug, subpillarSlug);
+  const primaryToolHref = getPrimaryToolHref(article, subpillarPath);
   const nextJourneyCards = buildArticleNextJourney(article, articles, subpillarPath);
-  const showBuyerDecisionModule = isComparisonArticle(article) || Boolean(article.primaryConversionHref?.startsWith('/tools/'));
+  const showBuyerDecisionModule = isComparisonArticle(article) || primaryToolHref.startsWith('/tools/');
   const readingListArticle = {
     slug,
     title: article.title,
@@ -1204,14 +1212,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 category={article.category}
                 title={article.title}
                 excerpt={article.excerpt}
-                primaryActionHref={article.primaryConversionHref}
+                primaryActionHref={primaryToolHref}
               />
               {showBuyerDecisionModule && (
                 <ArticleBuyerDecisionModule
                   articleSlug={slug}
                   category={article.category}
                   title={article.title}
-                  primaryActionHref={article.primaryConversionHref}
+                  primaryActionHref={primaryToolHref}
                   subpillarPath={subpillarPath}
                 />
               )}
@@ -1222,11 +1230,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div id="article-content" className="prose prose-stone max-w-none article-reading-body">
                 <div className="max-w-[75ch] min-w-0">
                   {renderContent(article.content, {
-                    midCapture: <MidArticleLeadCapture articleSlug={slug} category={article.category} />,
+                    midCapture: (
+                      <MidArticleLeadCapture
+                        articleSlug={slug}
+                        category={article.category}
+                        title={article.title}
+                        tags={article.tags}
+                        primaryConversionHref={article.primaryConversionHref}
+                      />
+                    ),
                   })}
                 </div>
               </div>
             </section>
+
+            <ArticleToolPathway article={article} />
 
             <section id="methodology" className="mt-8 scroll-mt-28 border border-stone-200 bg-neutral-50 p-4">
               <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-stone-500">Method & Sources</h3>

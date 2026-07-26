@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import LeadMagnetCapture from '../components/LeadMagnetCapture';
 import { getLeadMagnetBySlug, leadMagnets } from '../data/lead-magnets';
+import { tools } from '../data/tools';
 import { absoluteUrl, getBreadcrumbSchema, jsonLdScript } from '../lib/schema';
 
 export const metadata: Metadata = {
@@ -14,15 +15,7 @@ export const metadata: Metadata = {
 };
 
 const liveTools = [
-  {
-    title: 'AI Model Price Calculator',
-    kicker: 'Live tool',
-    href: '/tools/ai-price-calculator',
-    track: 'AI costs',
-    description:
-      'Compare current model pricing across major AI API providers before choosing a stack or estimating monthly spend.',
-    bestFor: 'Model selection, budget planning, and vendor comparison',
-  },
+  ...tools,
   {
     title: 'OpenClaw Prompt Library',
     kicker: 'Live library',
@@ -40,30 +33,6 @@ const liveTools = [
     description:
       'Search reports, prompts, and tools when you need a specific answer instead of browsing the full archive.',
     bestFor: 'Returning readers and fast research sessions',
-  },
-];
-
-const plannedTools = [
-  {
-    title: 'Solana RPC Benchmark Checklist',
-    status: 'Next infrastructure packet',
-    anchorHref: '/blog/solana-rpc-providers-compared',
-    description:
-      'A guided checklist for testing latency, rate limits, websocket stability, and failover before buying RPC infrastructure.',
-  },
-  {
-    title: 'Automation ROI Estimator',
-    status: 'Upcoming calculator',
-    anchorHref: '/services/ai-automation-consulting',
-    description:
-      'A calculator for deciding whether an automation project saves enough time or revenue leakage to be worth building.',
-  },
-  {
-    title: 'AI Workflow Risk Review',
-    status: 'Upcoming review template',
-    anchorHref: '/topic/ai/use-cases',
-    description:
-      'A quick review template for spotting prompt injection, approval-gate, privacy, and external-action risks.',
   },
 ];
 
@@ -139,8 +108,8 @@ export default function ToolsPage() {
                     <p className="text-[0.62rem] font-bold uppercase tracking-[0.1em] text-stone-500">Live</p>
                   </div>
                   <div>
-                    <p className="font-serif text-2xl font-black text-stone-950">{plannedTools.length}</p>
-                    <p className="text-[0.62rem] font-bold uppercase tracking-[0.1em] text-stone-500">Queued</p>
+                    <p className="font-serif text-2xl font-black text-stone-950">{tools.length}</p>
+                    <p className="text-[0.62rem] font-bold uppercase tracking-[0.1em] text-stone-500">Tools</p>
                   </div>
                   <div>
                     <p className="font-serif text-2xl font-black text-stone-950">{leadMagnets.length}</p>
@@ -179,10 +148,10 @@ export default function ToolsPage() {
                   <h2 className="font-serif text-3xl font-black text-stone-950">Use Now</h2>
                 </div>
                 <p className="max-w-lg text-sm leading-6 text-stone-600">
-                  These are working destinations, not gated placeholders. Use them alongside articles and saved guides.
+                  These are working destinations, not gated placeholders. Use them alongside articles, saved guides, and packets.
                 </p>
               </div>
-              <div className="grid gap-5 md:grid-cols-3">
+              <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                 {liveTools.map((tool) => (
                   <Link
                     key={tool.href}
@@ -206,7 +175,7 @@ export default function ToolsPage() {
                         {tool.bestFor}
                       </p>
                       <p className="mt-3 text-sm font-bold text-red-800 group-hover:text-red-950">
-                        Open tool {'->'}
+                        {tool.href.startsWith('/tools/') ? 'Open tool' : 'Open resource'} {'->'}
                       </p>
                     </div>
                   </Link>
@@ -245,29 +214,12 @@ export default function ToolsPage() {
                 </div>
               </div>
 
-              <div className="mt-10">
-                <div className="mb-5 border-b-2 border-stone-900 pb-2">
-                  <h2 className="font-serif text-3xl font-black text-stone-950">Coming Next</h2>
-                </div>
-                <div className="grid gap-4 md:grid-cols-3">
-                  {plannedTools.map((tool) => (
-                    <article key={tool.title} className="flex min-h-[16rem] flex-col border border-stone-200 bg-neutral-50 p-5">
-                      <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-stone-500">
-                        {tool.status}
-                      </p>
-                      <h3 className="mt-3 font-serif text-xl font-black leading-tight text-stone-950">
-                        {tool.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-6 text-stone-600">{tool.description}</p>
-                      <Link
-                        href={tool.anchorHref}
-                        className="mt-auto border-t border-stone-200 pt-4 text-sm font-bold text-red-800 hover:text-red-950"
-                      >
-                        Read the related coverage {'->'}
-                      </Link>
-                    </article>
-                  ))}
-                </div>
+              <div className="mt-10 border border-stone-900 bg-white p-5">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-red-800">Growth loop</p>
+                <h2 className="mt-2 font-serif text-3xl font-black text-stone-950">Articles now route into tools.</h2>
+                <p className="mt-3 max-w-3xl text-sm leading-7 text-stone-700">
+                  Relevant reports point readers into the calculator, checker, or packet that matches the article topic. That turns one-time search traffic into repeat-use workflows.
+                </p>
               </div>
             </div>
 

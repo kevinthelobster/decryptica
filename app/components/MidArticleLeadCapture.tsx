@@ -3,14 +3,24 @@
 import { useEffect, useMemo, useState } from 'react';
 import LeadMagnetCapture from './LeadMagnetCapture';
 import { getLeadMagnetBySlug, getLeadMagnetForCategory } from '../data/lead-magnets';
+import { getRecommendedTool } from '../data/tools';
 import { resolveIntentContext } from '../lib/intent-continuity';
 
 interface MidArticleLeadCaptureProps {
   articleSlug: string;
   category: string;
+  title?: string;
+  tags?: string[];
+  primaryConversionHref?: string;
 }
 
-export default function MidArticleLeadCapture({ articleSlug, category }: MidArticleLeadCaptureProps) {
+export default function MidArticleLeadCapture({
+  articleSlug,
+  category,
+  title,
+  tags,
+  primaryConversionHref,
+}: MidArticleLeadCaptureProps) {
   const [context, setContext] = useState(() => resolveIntentContext());
 
   useEffect(() => {
@@ -19,7 +29,14 @@ export default function MidArticleLeadCapture({ articleSlug, category }: MidArti
 
   const offer = useMemo(() => {
     if (context.intent === 'calculate') {
-      return getLeadMagnetBySlug('ai-model-pricing-sheet');
+      const tool = getRecommendedTool({
+        category,
+        title,
+        slug: articleSlug,
+        tags,
+        primaryConversionHref,
+      });
+      return getLeadMagnetBySlug(tool.leadMagnetSlug);
     }
 
     if (context.intent === 'implement') {
@@ -29,7 +46,7 @@ export default function MidArticleLeadCapture({ articleSlug, category }: MidArti
     }
 
     return getLeadMagnetForCategory(category);
-  }, [category, context.intent]);
+  }, [articleSlug, category, context.intent, primaryConversionHref, tags, title]);
 
   return (
     <div className="my-10">
