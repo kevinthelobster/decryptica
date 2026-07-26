@@ -86,6 +86,12 @@ const toolDeskItems = [
   },
 ];
 
+const mobilePrimaryChoices = [
+  { href: "/articles", label: "Reports" },
+  { href: "/tools", label: "Tools" },
+  { href: "#downloads", label: "Downloads" },
+];
+
 export default function IndexPage() {
   const websitePageSchema = {
     "@context": "https://schema.org",
@@ -120,7 +126,7 @@ export default function IndexPage() {
 
       <div className="min-h-screen overflow-x-hidden bg-white text-stone-950">
         <section className="border-b border-stone-200 bg-white">
-          <div className="mx-auto max-w-7xl px-5 py-6">
+          <div className="mx-auto max-w-7xl px-4 py-4 sm:px-5 sm:py-6">
             <div className="flex min-w-0 flex-col items-start gap-3 border-y border-stone-900 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-stone-700 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
               <span>Independent digital economy coverage</span>
               <span>Crypto / AI / Automation</span>
@@ -149,7 +155,22 @@ export default function IndexPage() {
               </button>
             </form>
 
-            <div className="grid min-w-0 gap-8 py-8 lg:grid-cols-[minmax(0,1.45fr)_minmax(20rem,0.75fr)]">
+            <nav
+              className="mt-4 grid grid-cols-3 border border-stone-200 bg-white text-center sm:hidden"
+              aria-label="Primary homepage choices"
+            >
+              {mobilePrimaryChoices.map((choice) => (
+                <Link
+                  key={choice.href}
+                  href={choice.href}
+                  className="border-r border-stone-200 px-2 py-3 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-stone-700 last:border-r-0 hover:bg-neutral-50 hover:text-red-900"
+                >
+                  {choice.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="grid min-w-0 gap-6 py-6 sm:gap-8 sm:py-8 lg:grid-cols-[minmax(0,1.45fr)_minmax(20rem,0.75fr)]">
               {leadArticle && (
                 <TrackedLink
                   href={`/blog/${leadArticle.slug}`}
@@ -161,23 +182,23 @@ export default function IndexPage() {
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-red-800">
                     Lead Analysis
                   </p>
-                  <h1 className="max-w-[21rem] break-words font-serif text-2xl font-black leading-tight text-stone-950 sm:max-w-5xl sm:text-5xl md:text-7xl">
+                  <h1 className="max-w-[21rem] break-words font-serif text-[1.75rem] font-black leading-[1.02] text-stone-950 sm:max-w-5xl sm:text-5xl md:text-7xl">
                     {leadArticle.title}
                   </h1>
-                  <p className="mt-5 max-w-[20rem] break-words border-l-4 border-red-800 pl-4 text-base leading-7 text-stone-700 sm:max-w-3xl sm:text-lg sm:leading-8">
+                  <p className="mt-4 max-w-[20rem] break-words border-l-4 border-red-800 pl-4 text-sm leading-6 text-stone-700 sm:mt-5 sm:max-w-3xl sm:text-lg sm:leading-8">
                     {leadArticle.excerpt}
                   </p>
-                  <div className="mt-7 overflow-hidden border border-stone-200 bg-white">
+                  <div className="mt-5 overflow-hidden border border-stone-200 bg-white sm:mt-7">
                     <img
                       src={leadArticle.image.src}
                       alt={leadArticle.image.alt}
-                      className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      className="aspect-[5/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] sm:aspect-[16/9]"
                     />
-                    <p className="border-t border-stone-200 px-3 py-2 text-xs text-stone-500">
+                    <p className="hidden border-t border-stone-200 px-3 py-2 text-xs text-stone-500 sm:block">
                       {leadArticle.image.credit}
                     </p>
                   </div>
-                  <div className="mt-5 flex flex-wrap items-center gap-3 text-sm font-medium text-stone-600">
+                  <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-medium text-stone-600 sm:mt-5 sm:gap-3 sm:text-sm">
                     <span>{leadArticle.category}</span>
                     <span className="h-1 w-1 rounded-full bg-stone-400" />
                     <span>{leadArticle.date}</span>
@@ -219,10 +240,10 @@ export default function IndexPage() {
         </section>
 
         <section className="border-b border-stone-200 bg-white">
-          <div className="mx-auto grid max-w-7xl min-w-0 gap-8 px-5 py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
+          <div className="mx-auto grid max-w-7xl min-w-0 gap-7 px-4 py-8 sm:px-5 sm:py-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
             <div className="min-w-0">
               <div className="mb-5 flex items-center justify-between gap-4 border-b-2 border-stone-900 pb-2">
-                <h2 className="font-serif text-3xl font-black text-stone-950">Latest Reports</h2>
+                <h2 className="font-serif text-2xl font-black text-stone-950 sm:text-3xl">Latest Reports</h2>
                 <TrackedLink
                   href="/articles"
                   className="text-sm font-bold uppercase tracking-[0.12em] text-red-800 hover:text-red-950"
@@ -233,31 +254,34 @@ export default function IndexPage() {
                 </TrackedLink>
               </div>
 
-              <div className="grid gap-5 md:grid-cols-3">
+              <div className="grid divide-y divide-stone-200 border-y border-stone-200 md:grid-cols-3 md:gap-5 md:divide-y-0 md:border-y-0">
                 {latestArticles.map((article) => (
                   <TrackedLink
                     key={article.id}
                     href={`/blog/${article.slug}`}
-                    className="news-card group flex min-h-[18rem] flex-col p-5"
+                    className="group grid min-w-0 grid-cols-[4.75rem_minmax(0,1fr)] gap-3 py-3 transition-colors md:flex md:min-h-[18rem] md:flex-col md:border md:border-stone-300 md:bg-white md:p-5 md:hover:border-red-800 md:hover:bg-neutral-50"
                     eventType="article_click"
                     articleSlug={article.slug}
                     metadata={{ location: "home_latest_reports", category: article.category }}
                   >
-                    <div className="-mx-5 mb-4 overflow-hidden border-y border-stone-200">
-                      <img src={article.image.src} alt={article.image.alt} className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div className="overflow-hidden border border-stone-200 md:-mx-5 md:mb-4 md:border-x-0">
+                      <img src={article.image.src} alt={article.image.alt} className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105 md:aspect-[4/3]" />
                     </div>
-                    <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800">
-                      {article.category}
-                    </p>
-                    <h3 className="break-words font-serif text-2xl font-black leading-tight text-stone-950 group-hover:text-red-900">
-                      {article.title}
-                    </h3>
-                    <p className="mt-3 line-clamp-4 break-words text-sm leading-6 text-stone-600">
-                      {article.excerpt}
-                    </p>
-                    <div className="mt-auto flex items-center justify-between border-t border-stone-200 pt-4 text-xs font-medium text-stone-500">
-                      <span>{article.date}</span>
-                      <span>{article.readTime}</span>
+                    <div className="min-w-0 md:flex md:flex-1 md:flex-col">
+                      <p className="mb-2 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800 md:mb-3">
+                        {article.category}
+                      </p>
+                      <h3 className="break-words font-serif text-lg font-black leading-tight text-stone-950 group-hover:text-red-900 md:text-2xl">
+                        {article.title}
+                      </h3>
+                      <p className="mt-2 line-clamp-2 break-words text-sm leading-5 text-stone-600 md:mt-3 md:line-clamp-4 md:leading-6">
+                        {article.excerpt}
+                      </p>
+                      <div className="mt-2 flex items-center gap-2 text-xs font-medium text-stone-500 md:mt-auto md:justify-between md:border-t md:border-stone-200 md:pt-4">
+                        <span>{article.date}</span>
+                        <span className="h-1 w-1 rounded-full bg-stone-300 md:hidden" />
+                        <span>{article.readTime}</span>
+                      </div>
                     </div>
                   </TrackedLink>
                 ))}
@@ -294,11 +318,11 @@ export default function IndexPage() {
         </section>
 
         <section className="border-b border-stone-200 bg-neutral-50">
-          <div className="mx-auto max-w-7xl px-5 py-10">
+          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-5 sm:py-10">
             <div className="mb-5 flex flex-col gap-3 border-b-2 border-stone-900 pb-3 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-red-800">Tools Desk</p>
-                <h2 className="mt-2 font-serif text-3xl font-black text-stone-950">Return when the research turns practical</h2>
+                <h2 className="mt-2 font-serif text-2xl font-black text-stone-950 sm:text-3xl">Return when the research turns practical</h2>
               </div>
               <TrackedLink
                 href="/tools"
@@ -309,23 +333,23 @@ export default function IndexPage() {
                 View all tools
               </TrackedLink>
             </div>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-3 md:grid-cols-3 md:gap-4">
               {toolDeskItems.map((item) => (
                 <TrackedLink
                   key={item.href}
                   href={item.href}
-                  className="news-card group flex min-h-[13rem] flex-col p-5"
+                  className="news-card group flex min-h-0 flex-col p-4 md:min-h-[13rem] md:p-5"
                   eventType="cta_click"
                   metadata={{ location: "home_tools_desk", cta: item.label.toLowerCase() }}
                 >
                   <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800">
                     {item.label}
                   </p>
-                  <h3 className="mt-3 font-serif text-2xl font-black leading-tight text-stone-950 group-hover:text-red-900">
+                  <h3 className="mt-2 font-serif text-xl font-black leading-tight text-stone-950 group-hover:text-red-900 md:mt-3 md:text-2xl">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-stone-600">{item.description}</p>
-                  <p className="mt-auto border-t border-stone-200 pt-4 text-sm font-bold text-red-800 group-hover:text-red-950">
+                  <p className="mt-2 text-sm leading-6 text-stone-600 md:mt-3">{item.description}</p>
+                  <p className="mt-3 border-t border-stone-200 pt-3 text-sm font-bold text-red-800 group-hover:text-red-950 md:mt-auto md:pt-4">
                     Open {'->'}
                   </p>
                 </TrackedLink>
@@ -334,18 +358,18 @@ export default function IndexPage() {
           </div>
         </section>
 
-        <section className="border-b border-stone-200 bg-neutral-50">
-          <div className="mx-auto max-w-7xl px-5 py-10">
+        <section id="downloads" className="border-b border-stone-200 bg-neutral-50">
+          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-5 sm:py-10">
             <div className="mb-5 flex flex-col gap-3 border-b-2 border-stone-900 pb-3 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-red-800">Research Downloads</p>
-                <h2 className="mt-2 font-serif text-3xl font-black text-stone-950">Field notes worth saving</h2>
+                <h2 className="mt-2 font-serif text-2xl font-black text-stone-950 sm:text-3xl">Field notes worth saving</h2>
               </div>
               <p className="max-w-xl text-sm leading-6 text-stone-600">
                 Practical worksheets from the reporting desk: pricing sheets, infrastructure checks, and rollout templates.
               </p>
             </div>
-            <div className="grid gap-5 lg:grid-cols-3">
+            <div className="grid gap-4 lg:grid-cols-3 lg:gap-5">
               {leadMagnets.slice(0, 3).map((offer) => (
                 <LeadMagnetCapture
                   key={offer.slug}
@@ -360,26 +384,26 @@ export default function IndexPage() {
         </section>
 
         <section className="bg-white">
-          <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.42fr)]">
+          <div className="mx-auto grid max-w-7xl gap-7 px-4 py-8 sm:px-5 sm:py-10 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.42fr)]">
             <div>
-              <h2 className="border-b-2 border-stone-900 pb-2 font-serif text-3xl font-black text-stone-950">
+              <h2 className="border-b-2 border-stone-900 pb-2 font-serif text-2xl font-black text-stone-950 sm:text-3xl">
                 Sections
               </h2>
-              <div className="mt-5 grid gap-4 md:grid-cols-3">
+              <div className="mt-5 grid gap-3 md:grid-cols-3 md:gap-4">
                 {topics.map((topic) => (
-                  <Link key={topic.slug} href={`/topic/${topic.slug}`} className="news-card group p-5">
+                  <Link key={topic.slug} href={`/topic/${topic.slug}`} className="news-card group p-4 md:p-5">
                     <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800">
                       {topic.count} reports
                     </p>
-                    <h3 className="mt-3 font-serif text-2xl font-black text-stone-950 group-hover:text-red-900">
+                    <h3 className="mt-2 font-serif text-xl font-black text-stone-950 group-hover:text-red-900 md:mt-3 md:text-2xl">
                       {topic.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-6 text-stone-600">{topic.deck}</p>
+                    <p className="mt-2 text-sm leading-6 text-stone-600 md:mt-3">{topic.deck}</p>
                   </Link>
                 ))}
               </div>
 
-              <div className="mt-10">
+              <div className="mt-8 sm:mt-10">
                 <IntentRouter
                   location="home_intent_router"
                   category="all"
@@ -389,7 +413,7 @@ export default function IndexPage() {
               </div>
             </div>
 
-            <aside className="space-y-6">
+            <aside className="space-y-5 sm:space-y-6">
               <div className="border border-stone-200 bg-white p-5">
                 <h2 className="font-serif text-2xl font-black text-stone-950">Briefing List</h2>
                 <div className="mt-4 divide-y divide-stone-200">
