@@ -4,9 +4,34 @@ set -euo pipefail
 
 ROOT="/Users/kevinsimac/.openclaw/workspace/decryptica"
 LOG_DIR="$ROOT/logs"
+LOCK_ROOT="$ROOT/.locks"
+LOCK_DIR="$LOCK_ROOT/daily-article.lock"
 
-mkdir -p "$LOG_DIR"
+mkdir -p "$LOG_DIR" "$LOCK_ROOT"
 cd "$ROOT"
+
+if [[ -d "$LOCK_DIR" ]]; then
+  lock_age_seconds=$(($(date +%s) - $(stat -f %m "$LOCK_DIR" 2>/dev/null || echo 0)))
+  if (( lock_age_seconds > 10800 )); then
+    rm -rf "$LOCK_DIR"
+  fi
+fi
+
+if ! mkdir "$LOCK_DIR" 2>/dev/null; then
+  echo "Daily article run already active; skipping duplicate invocation."
+  exit 0
+fi
+
+cleanup_lock() {
+  rm -f "$LOCK_DIR/run.meta" 2>/dev/null || true
+  rmdir "$LOCK_DIR" 2>/dev/null || true
+}
+trap cleanup_lock EXIT INT TERM
+
+{
+  echo "pid=$$"
+  echo "started_at=$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+} > "$LOCK_DIR/run.meta"
 
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export WORKSPACE="$ROOT"

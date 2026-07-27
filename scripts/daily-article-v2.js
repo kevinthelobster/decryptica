@@ -1616,6 +1616,11 @@ function escapeTemplateLiteral(str) {
 
 function addArticleToFile(article) {
   log('Adding article to articles.ts...');
+
+  const todayCount = countArticlesForDate(getTodayDate());
+  if (process.env.ALLOW_TODAY_DUPLICATE !== '1' && todayCount >= DAILY_ARTICLE_LIMIT) {
+    throw new Error(`${todayCount} article(s) for ${getTodayDate()} already exist; daily limit is ${DAILY_ARTICLE_LIMIT}, refusing to add another article`);
+  }
   
   const articlesPath = CONFIG.articlesFile;
   let content = fs.readFileSync(articlesPath, 'utf-8');
