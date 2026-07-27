@@ -1,11 +1,6 @@
 {
   "posted": [
     {
-      "title": "The On-Chain Metrics That Actually Predict Price",
-      "slug": "the-on-chain-metrics-that-actually-predict-price",
-      "date": 1777378684316
-    },
-    {
       "title": "What the SEC's Latest Move Actually Means for Crypto",
       "slug": "what-the-sec-s-latest-move-actually-means-for-crypto",
       "date": 1777462243797
@@ -424,6 +419,11 @@
       "title": "Zapier vs Native Integrations: When the Middleware Is Worth It",
       "slug": "zapier-vs-native-integrations-when-the-middleware-is-worth-i",
       "date": 1785151963792
+    },
+    {
+      "title": "Zapier vs Make vs n8n: Which Automation Platform Fits Your Workflow",
+      "slug": "zapier-vs-make-vs-n8n-which-automation-platform-fits-your-wo",
+      "date": 1785170162146
     }
   ],
   "lastResearch": null
