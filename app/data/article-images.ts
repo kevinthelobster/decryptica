@@ -58,9 +58,16 @@ const imageSet = {
     credit: 'Photo by You X Ventures on Unsplash',
     creditUrl: 'https://unsplash.com/photos/people-sitting-down-near-table-with-assorted-laptop-computers-g1Kr4Ozfoac',
   },
+  integrationDashboard: {
+    src: `https://images.unsplash.com/photo-1551288049-bebda4e38f71${unsplashParams}`,
+    alt: 'A dashboard-style analytics display representing connected business systems',
+    credit: 'Photo by Luke Chesser on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/JKUTrJ4vK00',
+  },
 } satisfies Record<string, ArticleImage>;
 
 const articleImageOverrides = {
+  'zapier-vs-native-integrations-when-the-middleware-is-worth-i': imageSet.integrationDashboard,
   'make-vs-n8n-which-workflow-builder-should-operators-choose': imageSet.workflowMeeting,
   'airtable-vs-notion-which-operational-database-makes-more-sen': imageSet.operationalWorkspace,
 } satisfies Record<string, ArticleImage>;
