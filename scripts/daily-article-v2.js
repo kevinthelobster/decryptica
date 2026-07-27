@@ -1652,11 +1652,17 @@ ${primaryConversionLine}    tags: ${JSON.stringify(article.tags || [])},
   return article.slug;
 }
 
+function assignLatestArticleImage() {
+  log('Assigning fresh hero image...');
+
+  run('./node_modules/.bin/tsx scripts/assign_latest_article_image.ts', { cwd: CONFIG.workspace });
+}
+
 async function pushToGitHub(slug) {
   log('Committing and pushing to GitHub...');
   
   try {
-    run('git add app/data/articles.ts', { cwd: CONFIG.workspace });
+    run('git add app/data/articles.ts app/data/article-images.ts', { cwd: CONFIG.workspace });
     run(`git commit -m "Daily article: ${slug}"`, { cwd: CONFIG.workspace });
     run(`git push origin main`, { cwd: CONFIG.workspace });
     log('Pushed to GitHub successfully');
@@ -1758,6 +1764,7 @@ async function main() {
     
     // Step 3: Add to file
     const slug = addArticleToFile(article);
+    assignLatestArticleImage();
 
     if (research.keywordCandidateId) {
       markKeywordCandidateUsed(research.keywordCandidateId, {

@@ -9,7 +9,7 @@ export type ArticleImage = {
 
 const unsplashParams = '?auto=format&fit=crop&w=1600&q=80';
 
-const imageSet = {
+export const imageSet = {
   aiArt: {
     src: `https://images.unsplash.com/photo-1675557009317-bb59e35aba82${unsplashParams}`,
     alt: 'A laptop displaying an AI interface in a clean workspace',
@@ -64,28 +64,77 @@ const imageSet = {
     credit: 'Photo by Luke Chesser on Unsplash',
     creditUrl: 'https://unsplash.com/photos/JKUTrJ4vK00',
   },
+  marketingDashboard: {
+    src: `https://images.unsplash.com/photo-1686061594225-3e92c0cd51b0${unsplashParams}`,
+    alt: 'A close view of a digital analytics dashboard on a computer screen',
+    credit: 'Photo by 1981 Digital on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-data-on-it-bMWHu8wU1Vk',
+  },
+  workflowPlanner: {
+    src: `https://images.unsplash.com/photo-1743385779347-1549dabf1320${unsplashParams}`,
+    alt: 'A workflow diagram, product brief, and user goals laid out on a desk',
+    credit: 'Photo by Kelly Sikkema on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/workflow-diagram-product-brief-and-user-goals-are-shown-wdnpaTNwOEQ',
+  },
+  appDashboard: {
+    src: `https://images.unsplash.com/photo-1771922748624-b205cf5d002d${unsplashParams}`,
+    alt: 'A laptop and phone showing a business control dashboard',
+    credit: 'Photo by Neil Fernandez on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/laptop-and-phone-displaying-financial-data-_rAKDw1Fd54',
+  },
+  hiringDashboard: {
+    src: `https://images.unsplash.com/photo-1763718528755-4bca23f82ac3${unsplashParams}`,
+    alt: 'A hiring operations dashboard with charts and activity metrics',
+    credit: 'Photo by prashant hiremath on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/employer-dashboard-showing-application-trends-and-key-metrics-phS1wAgXOQI',
+  },
+  operatorLaptop: {
+    src: `https://images.unsplash.com/photo-1573496130596-7b29974bd137${unsplashParams}`,
+    alt: 'A small team discussing work around a laptop',
+    credit: 'Photo by Christina @ wocintechchat.com on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/person-using-macbook-air-at-the-table-03hBSIiFikE',
+  },
+  productWorkspace: {
+    src: `https://images.unsplash.com/photo-1564424555153-04228f0aa7ee${unsplashParams}`,
+    alt: 'A product team member working at a monitor in a shared office',
+    credit: 'Photo by Alvaro Reyes on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/man-using-monitor-6avV9oeHxfo',
+  },
 } satisfies Record<string, ArticleImage>;
 
-const articleImageOverrides = {
-  'zapier-vs-native-integrations-when-the-middleware-is-worth-i': imageSet.integrationDashboard,
+export type ArticleImageKey = keyof typeof imageSet;
+
+export const articleImageOverrides = {
+  'zapier-vs-native-integrations-when-the-middleware-is-worth-i': imageSet.workflowPlanner,
   'make-vs-n8n-which-workflow-builder-should-operators-choose': imageSet.workflowMeeting,
   'airtable-vs-notion-which-operational-database-makes-more-sen': imageSet.operationalWorkspace,
 } satisfies Record<string, ArticleImage>;
 
-export function getArticleImage(article: Article): ArticleImage {
-  const override = articleImageOverrides[article.slug as keyof typeof articleImageOverrides];
-  if (override) {
-    return override;
-  }
+export const articleImagePools = {
+  ai: ['aiTools', 'code', 'aiArt', 'marketingDashboard', 'productWorkspace'],
+  automation: [
+    'integrationDashboard',
+    'workflowPlanner',
+    'appDashboard',
+    'hiringDashboard',
+    'operatorLaptop',
+    'workflowMeeting',
+    'operationalWorkspace',
+    'productWorkspace',
+    'automation',
+  ],
+  crypto: ['crypto', 'analytics', 'appDashboard', 'marketingDashboard', 'code'],
+} satisfies Record<Article['category'], ArticleImageKey[]>;
 
+export function getArticleImageCandidateKeys(article: Article): ArticleImageKey[] {
   const haystack = `${article.title} ${article.excerpt} ${(article.tags || []).join(' ')}`.toLowerCase();
 
   if (haystack.includes('copyright') || haystack.includes('image') || haystack.includes('art')) {
-    return imageSet.aiArt;
+    return ['aiArt', ...articleImagePools.ai.filter((key) => key !== 'aiArt')];
   }
 
   if (haystack.includes('code') || haystack.includes('coding') || haystack.includes('developer') || haystack.includes('api')) {
-    return imageSet.code;
+    return ['code', ...articleImagePools[article.category].filter((key) => key !== 'code')];
   }
 
   if (
@@ -95,12 +144,23 @@ export function getArticleImage(article: Article): ArticleImage {
     haystack.includes('trading') ||
     haystack.includes('portfolio')
   ) {
-    return haystack.includes('tracker') || haystack.includes('analysis') ? imageSet.analytics : imageSet.crypto;
+    const preferredKey = haystack.includes('tracker') || haystack.includes('analysis') ? 'analytics' : 'crypto';
+    return [preferredKey, ...articleImagePools.crypto.filter((key) => key !== preferredKey)];
   }
 
-  if (article.category === 'automation' || haystack.includes('workflow') || haystack.includes('automation')) {
-    return imageSet.automation;
+  return articleImagePools[article.category] || articleImagePools.ai;
+}
+
+export function getArticleImageKey(article: Article): ArticleImageKey {
+  const override = articleImageOverrides[article.slug as keyof typeof articleImageOverrides];
+  if (override) {
+    const overrideKey = (Object.entries(imageSet) as [ArticleImageKey, ArticleImage][]).find(([, image]) => image.src === override.src)?.[0];
+    if (overrideKey) return overrideKey;
   }
 
-  return imageSet.aiTools;
+  return getArticleImageCandidateKeys(article)[0] || 'aiTools';
+}
+
+export function getArticleImage(article: Article): ArticleImage {
+  return imageSet[getArticleImageKey(article)];
 }

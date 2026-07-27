@@ -20,4 +20,5 @@ set +a
 export AI_MODEL="${AI_MODEL:-gpt-5.5}"
 
 /opt/homebrew/bin/node "$ROOT/scripts/daily-article-v2.js"
+npm run article:image:auto-assign
 npm run qa:article-images
