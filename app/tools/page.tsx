@@ -44,6 +44,12 @@ const deskTracks = [
     label: 'AI tooling',
   },
   {
+    title: 'Size local AI hardware',
+    description: 'Check what your current machine can run, or what machine you need for a specific local model class.',
+    href: '/tools/local-ai-hardware-calculator',
+    label: 'Local AI',
+  },
+  {
     title: 'Check infrastructure risk',
     description: 'Pair crypto infrastructure reporting with pre-purchase checklists and benchmark criteria.',
     href: '/blog/solana-rpc-providers-compared',
@@ -123,7 +129,7 @@ export default function ToolsPage() {
 
         <section className="border-b border-stone-200 bg-neutral-50">
           <div className="mx-auto max-w-7xl px-5 py-6">
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
               {deskTracks.map((track) => (
                 <Link key={track.title} href={track.href} className="group border border-stone-200 bg-white p-4 hover:border-red-800">
                   <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-red-800">
