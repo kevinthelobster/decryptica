@@ -111,6 +111,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'why-junior-developers-should-embrace-ai-coding-tools': imageSet.automation,
   'chatgpt-vs-claude-which-assistant-fits-real-work': imageSet.aiWorkspace,
   'the-10x-developer-myth-what-the-data-actually-shows': imageSet.productWorkspace,
   'zapier-vs-make-vs-n8n-which-automation-platform-fits-your-wo': imageSet.marketingDashboard,
