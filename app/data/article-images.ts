@@ -105,6 +105,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'the-10x-developer-myth-what-the-data-actually-shows': imageSet.productWorkspace,
   'zapier-vs-make-vs-n8n-which-automation-platform-fits-your-wo': imageSet.marketingDashboard,
   'zapier-vs-native-integrations-when-the-middleware-is-worth-i': imageSet.workflowPlanner,
   'make-vs-n8n-which-workflow-builder-should-operators-choose': imageSet.workflowMeeting,
