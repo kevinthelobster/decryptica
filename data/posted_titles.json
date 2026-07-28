@@ -1,11 +1,6 @@
 {
   "posted": [
     {
-      "title": "What the SEC's Latest Move Actually Means for Crypto",
-      "slug": "what-the-sec-s-latest-move-actually-means-for-crypto",
-      "date": 1777462243797
-    },
-    {
       "title": "Why Bitcoin's Price Action Contradicts the Narrative",
       "slug": "why-bitcoin-s-price-action-contradicts-the-narrative",
       "date": 1777548682205
@@ -424,6 +419,11 @@
       "title": "Zapier vs Make vs n8n: Which Automation Platform Fits Your Workflow",
       "slug": "zapier-vs-make-vs-n8n-which-automation-platform-fits-your-wo",
       "date": 1785170162146
+    },
+    {
+      "title": "The 10x Developer Myth: What the Data Actually Shows",
+      "slug": "the-10x-developer-myth-what-the-data-actually-shows",
+      "date": 1785238342851
     }
   ],
   "lastResearch": null
