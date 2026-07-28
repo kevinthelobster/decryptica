@@ -48,6 +48,12 @@ function chooseImageKey(latestArticle: Article): ArticleImageKey {
     return unusedCandidate;
   }
 
+  const unusedCatalogKey = (Object.keys(imageSet) as ArticleImageKey[]).find((key) => !recentImageSources.has(imageSet[key].src));
+
+  if (unusedCatalogKey) {
+    return unusedCatalogKey;
+  }
+
   return candidates[stableHash(latestArticle.slug) % candidates.length] || 'aiTools';
 }
 

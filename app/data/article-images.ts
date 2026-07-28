@@ -22,6 +22,12 @@ export const imageSet = {
     credit: 'Photo by Planet Volumes on Unsplash',
     creditUrl: 'https://unsplash.com/photos/gemini-ai-interface-asking-where-should-we-start--watxsKZK9E',
   },
+  aiWorkspace: {
+    src: `https://images.unsplash.com/photo-1745201504924-29f92f9c355e${unsplashParams}`,
+    alt: 'A laptop in a bright workspace showing a focused digital interface',
+    credit: 'Photo by Yuhun Kim on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-laptop-screen-displaying-a-login-form-8u9kMalQKnM',
+  },
   code: {
     src: `https://images.unsplash.com/photo-1774901128187-22df3f261ad8${unsplashParams}`,
     alt: 'A computer screen showing code in an engineering workspace',
@@ -105,7 +111,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
-  'chatgpt-vs-claude-which-assistant-fits-real-work': imageSet.aiArt,
+  'chatgpt-vs-claude-which-assistant-fits-real-work': imageSet.aiWorkspace,
   'the-10x-developer-myth-what-the-data-actually-shows': imageSet.productWorkspace,
   'zapier-vs-make-vs-n8n-which-automation-platform-fits-your-wo': imageSet.marketingDashboard,
   'zapier-vs-native-integrations-when-the-middleware-is-worth-i': imageSet.workflowPlanner,
@@ -114,7 +120,7 @@ export const articleImageOverrides = {
 } satisfies Record<string, ArticleImage>;
 
 export const articleImagePools = {
-  ai: ['aiTools', 'code', 'aiArt', 'marketingDashboard', 'productWorkspace'],
+  ai: ['aiTools', 'aiWorkspace', 'code', 'aiArt', 'marketingDashboard', 'productWorkspace'],
   automation: [
     'integrationDashboard',
     'workflowPlanner',
