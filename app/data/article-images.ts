@@ -111,6 +111,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'cursor-vs-github-copilot-which-coding-assistant-should-you-u': imageSet.aiArt,
   'why-context-windows-aren-t-the-answer': imageSet.aiArt,
   'when-ai-summarization-actually-hurts-understanding': imageSet.productWorkspace,
   'best-ai-coding-tools-what-actually-matters-before-you-pay': imageSet.operatorLaptop,
