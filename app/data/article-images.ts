@@ -111,6 +111,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'when-ai-summarization-actually-hurts-understanding': imageSet.productWorkspace,
   'best-ai-coding-tools-what-actually-matters-before-you-pay': imageSet.operatorLaptop,
   'the-compute-cost-problem-limiting-ai-progress': imageSet.hiringDashboard,
   'what-1000-hours-of-ai-assistant-use-taught-me': imageSet.appDashboard,
