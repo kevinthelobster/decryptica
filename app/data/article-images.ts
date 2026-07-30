@@ -111,6 +111,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'why-context-windows-aren-t-the-answer': imageSet.aiArt,
   'when-ai-summarization-actually-hurts-understanding': imageSet.productWorkspace,
   'best-ai-coding-tools-what-actually-matters-before-you-pay': imageSet.operatorLaptop,
   'the-compute-cost-problem-limiting-ai-progress': imageSet.hiringDashboard,
