@@ -1,16 +1,6 @@
 {
   "posted": [
     {
-      "title": "Why Bitcoin's Price Action Contradicts the Narrative",
-      "slug": "why-bitcoin-s-price-action-contradicts-the-narrative",
-      "date": 1777548682205
-    },
-    {
-      "title": "The True Cost of Compliance for Crypto Projects",
-      "slug": "the-true-cost-of-compliance-for-crypto-projects",
-      "date": 1777635087371
-    },
-    {
       "title": "Why Your Crypto TA Is Probably Wrong",
       "slug": "why-your-crypto-ta-is-probably-wrong",
       "date": 1777721481226
@@ -429,6 +419,41 @@
       "title": "ChatGPT vs Claude: Which Assistant Fits Real Work",
       "slug": "chatgpt-vs-claude-which-assistant-fits-real-work",
       "date": 1785256427315
+    },
+    {
+      "title": "Why Junior Developers Should Embrace AI Coding Tools",
+      "slug": "why-junior-developers-should-embrace-ai-coding-tools",
+      "date": 1785274367168
+    },
+    {
+      "title": "What 1000 Hours of AI Assistant Use Taught Me",
+      "slug": "what-1000-hours-of-ai-assistant-use-taught-me",
+      "date": 1785324748905
+    },
+    {
+      "title": "The Compute Cost Problem Limiting AI Progress",
+      "slug": "the-compute-cost-problem-limiting-ai-progress",
+      "date": 1785342810812
+    },
+    {
+      "title": "Best AI Coding Tools: What Actually Matters Before You Pay",
+      "slug": "best-ai-coding-tools-what-actually-matters-before-you-pay",
+      "date": 1785360769023
+    },
+    {
+      "title": "When AI Summarization Actually Hurts Understanding",
+      "slug": "when-ai-summarization-actually-hurts-understanding",
+      "date": 1785411159626
+    },
+    {
+      "title": "Why Context Windows Aren't the Answer",
+      "slug": "why-context-windows-aren-t-the-answer",
+      "date": 1785429202960
+    },
+    {
+      "title": "Cursor vs GitHub Copilot: Which Coding Assistant Should You Use",
+      "slug": "cursor-vs-github-copilot-which-coding-assistant-should-you-u",
+      "date": 1785447167706
     }
   ],
   "lastResearch": null

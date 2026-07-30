@@ -34,6 +34,12 @@ export const imageSet = {
     credit: 'Photo by Bernd Dittrich on Unsplash',
     creditUrl: 'https://unsplash.com/photos/computer-screen-displaying-lines-of-code-AAMq3jN2B3E',
   },
+  codeEditor: {
+    src: `https://images.unsplash.com/photo-1763568258696-32147bb44379${unsplashParams}`,
+    alt: 'A code editor open on a desktop monitor',
+    credit: 'Photo by Daniil Komov on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/computer-screen-showing-lines-of-code-d75zdRe5g_s',
+  },
   crypto: {
     src: `https://images.unsplash.com/photo-1748439435495-722cc1728b7e${unsplashParams}`,
     alt: 'A trading desk with market charts on multiple screens',
@@ -111,7 +117,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
-  'cursor-vs-github-copilot-which-coding-assistant-should-you-u': imageSet.aiArt,
+  'cursor-vs-github-copilot-which-coding-assistant-should-you-u': imageSet.codeEditor,
   'why-context-windows-aren-t-the-answer': imageSet.aiArt,
   'when-ai-summarization-actually-hurts-understanding': imageSet.productWorkspace,
   'best-ai-coding-tools-what-actually-matters-before-you-pay': imageSet.operatorLaptop,
@@ -127,7 +133,7 @@ export const articleImageOverrides = {
 } satisfies Record<string, ArticleImage>;
 
 export const articleImagePools = {
-  ai: ['aiTools', 'aiWorkspace', 'code', 'aiArt', 'marketingDashboard', 'productWorkspace'],
+  ai: ['aiTools', 'aiWorkspace', 'code', 'codeEditor', 'aiArt', 'marketingDashboard', 'productWorkspace'],
   automation: [
     'integrationDashboard',
     'workflowPlanner',
