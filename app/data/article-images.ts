@@ -117,6 +117,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'why-ai-image-generation-is-plateauing': imageSet.aiWorkspace,
   'the-truth-about-ai-coding-assistants-in-2026': imageSet.marketingDashboard,
   'why-ai-assistants-are-getting-worse-at-reasoning': imageSet.code,
   'cursor-vs-github-copilot-which-coding-assistant-should-you-u': imageSet.codeEditor,
