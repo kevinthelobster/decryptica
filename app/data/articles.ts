@@ -80,6 +80,214 @@ export const topics: Topic[] = [
 
 export const articles: Article[] = [
   {
+    id: '1785497555785-4301',
+    slug: 'why-ai-assistants-are-getting-worse-at-reasoning',
+    title: "Why AI Assistants Are Getting Worse at Reasoning",
+    excerpt: "AI assistants did not simply wake up dumber. The more useful explanation is sharper: many AI tools are being pushed into workflows where “reasoning”...",
+    content: `# Why AI Assistants Are Getting Worse at Reasoning
+
+AI assistants did not simply wake up dumber. The more useful explanation is sharper: many AI tools are being pushed into workflows where “reasoning” means longer context, cheaper routing, hidden thinking budgets, tool calls, memory, browsing, code execution, safety filters, and enterprise data controls all interacting at once.
+
+That is a brittle stack.
+
+The result is familiar to anyone using ChatGPT, Claude, Gemini, Cursor, GitHub Copilot, or agentic coding tools for real work.  The assistant sounds confident.  It remembers just enough to be dangerous.
+
+It solves the easy version of the task, misses the constraint that mattered, then apologizes in fluent prose.
+
+The question is not whether frontier models are improving on benchmarks. They are. The question is why so many serious users feel that AI assistants are getting worse at reasoning when the model cards, launch posts, and leaderboards say the opposite.
+
+## Quick Answer
+
+AI tools are best used by teams that can define the task, verify the output, and afford retries. They should be avoided for unattended decisions where a plausible but wrong answer creates legal, financial, security, medical, or operational damage. The most important tradeoff is that “more capable” assistants often become more expensive, slower, more complex to govern, and harder to predict.
+
+Vendor features translate directly into workflow consequences. Larger context windows reduce copy-paste friction, but they do not guarantee the model will attend to the right evidence. Reasoning modes can improve hard math, coding, and planning, but they also add latency and token cost, as OpenAI, Anthropic, and Google now describe in their public model and pricing documentation.
+
+A practical evaluation checklist is simple: pin the model or plan, define success criteria, test on your own tasks, measure factual error rate, track cost per completed job, inspect security and retention terms, and decide where a human must approve the result. If an AI assistant cannot pass that workflow-specific bar, the right answer is not better prompting. It is narrower deployment.
+
+## **TL;DR**
+
+AI assistants feel worse at reasoning because the product surface has changed faster than user evaluation habits.
+
+Frontier models can score better on selected benchmarks while still failing more often in messy workflows. Long context, tool use, retrieval, memory, hidden routing, and reasoning budgets create new failure modes that old benchmark screenshots do not capture.
+
+For buyers, the safe pattern is not “pick the smartest model.” Use expensive reasoning models for high-value complex work, cheaper models for routine extraction and classification, coding agents only with tests and review, and general chat assistants only where mistakes are easy to catch. For repeatable context-heavy workflows, build a routine such as [Nightly Memory Consolidation](/prompts/nightly-memory-consolidation) instead of trusting chat history to behave like institutional memory.
+
+## What We Checked
+
+This analysis is based on public documentation, pricing pages, benchmark reports, security and data-control documentation, public changelogs, integration docs, and user reports. It does not claim private access to vendor systems or original hands-on testing.
+
+The evidence base includes OpenAI’s public [model documentation](https://developers.openai.com/api/docs/models), [model comparison pages](https://developers.openai.com/api/docs/models/compare), and [data controls documentation](https://platform.openai.com/docs/models/default-usage-policies-by-endpoint); Anthropic’s [extended thinking documentation](https://platform.claude.com/docs/en/build-with-claude/extended-thinking), [API data retention docs](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention), and [pricing pages](https://www.anthropic.com/pricing); Google’s [Gemini thinking documentation](https://ai.google.dev/gemini-api/docs/thinking) and [Gemini API pricing](https://ai.google.dev/gemini-api/docs/pricing); GitHub Copilot’s [plans](https://docs.github.com/en/copilot/get-started/plans) and [billing docs](https://docs.github.com/en/billing/concepts/product-billing/github-copilot-billing); Cursor’s [pricing page](https://cursor.com/pricing); and benchmark work from [Apple Machine Learning Research](https://machinelearning.apple.com/research/illusion-of-thinking), [METR](https://metr.org/time-horizons/), [SWE-bench](https://www.swebench.com/), [ARC Prize](https://arcprize.org/blog/arc-agi-2-technical-report), [LiveBench](https://mlanthology.org/iclr/2025/white2025iclr-livebench/), and OpenAI’s [SimpleQA](https://openai.com/index/introducing-simpleqa/).
+
+The strongest signal is not that models are uniformly declining. It is that AI assistants are being sold as general reasoning systems while the reliable use cases remain narrower than the interface suggests.
+
+## The Evidence Does Not Say “All Models Are Getting Worse”
+
+The headline is intentionally provocative, but the honest answer is conditional. Base model capability has improved across many benchmark categories, especially coding, math, tool use, and multimodal understanding. Public leaderboards such as SWE-bench show clear progress in software issue resolution.
+
+But “reasoning” in a chat product is not the same as benchmark score. A benchmark isolates a task, defines the answer format, controls the environment, and grades the result. A workplace assistant has to infer intent, select context, call tools, obey policies, handle stale files, respect data boundaries, and produce an answer the user can act on.
+
+That is where the degradation shows up.
+
+A model can improve at contest math and still become less dependable for contract review. It can improve at coding benchmarks and still botch a migration because it missed a repository convention. It can handle a million-token context window and still fail to use the one paragraph that matters.
+
+For a deeper treatment of that trap, Decryptica’s earlier piece [Why Context Windows Aren't the Answer](/blog/why-context-windows-aren-t-the-answer) remains relevant. Bigger input capacity helps packaging. It does not solve judgment.
+
+## Why The Assistants Feel Worse
+
+### 1. Product Routing Hides The Model You Think You Are Using
+
+Many consumer and team plans now rely on automatic model selection, usage pools, credits, and tiered access. GitHub Copilot documents AI credits and model access by plan. Cursor separates individual, team, and enterprise features, with frontier models and cloud agents tied to plan limits.
+
+That matters because users often compare “the assistant” across days without knowing whether the same model, effort level, latency tier, tool access, or context policy was used.
+
+If yesterday’s answer came from a high-reasoning frontier model and today’s came from a cheaper or faster route, the user experiences a decline. The vendor may still be telling the truth when it says the platform improved overall.
+
+For buyers, this means model identity is not a detail. It is part of the product.
+
+### 2. Reasoning Is Now A Budget, Not A Vibe
+
+OpenAI’s current model docs expose reasoning effort controls. Anthropic documents extended or adaptive thinking and warns that thinking tokens are billed even when the visible answer only shows a summary. Google’s Gemini docs similarly describe thought tokens and pricing for thinking models.
+
+This is the quiet change many users miss: reasoning is now an adjustable compute allocation.
+
+Low effort can be faster and cheaper. High effort can be better for hard tasks, but it can be slower and more expensive. Some simple tasks do not benefit much from more reasoning, while multi-step coding, math, planning, and analysis often do.
+
+If a product defaults to lower effort to control latency or margin, users may see more shallow answers. If a user forces high effort everywhere, the bill can climb without proportional quality gains.
+
+### 3. Long Context Creates Attention Debt
+
+A long context window lets an assistant ingest more source material. It does not guarantee faithful use of that material.
+
+The failure mode is subtle. The model may mention the right files, summarize the wrong section, overweight recent chat turns, ignore contradictory evidence, or synthesize an answer from partial context. The interface makes this look like comprehension.
+
+For operators, the practical risk is false confidence. A 300-page policy upload feels safer than asking a question from memory. But unless the workflow verifies citations, quotes, page references, or structured extraction, the assistant can still hallucinate inside the provided context.
+
+### 4. Tool Use Adds More Ways To Fail
+
+Agentic assistants call search, code execution, file readers, calendars, CRMs, browsers, databases, and MCP servers. That turns a language model into a workflow engine, but it also multiplies the failure surface.
+
+Common failures include stale retrieval, malformed tool arguments, missing permissions, duplicated actions, silent truncation, tool output misread as instruction, and incomplete state handoff between turns. Anthropic’s extended thinking docs even warn developers to preserve special thinking blocks during multi-turn tool use, because dropping them can break the protocol.
+
+This is not academic.  A coding agent that misses a test command may ship a broken patch.  A research assistant that retrieves the wrong document version may produce a polished but obsolete memo.
+
+A support agent that misreads a CRM field may make the customer experience worse than a simple rules-based flow.
+
+### 5. Benchmarks Are Useful, But They Are Not Procurement
+
+SWE-bench is valuable because it measures resolved software issues.  METR’s time-horizon work is valuable because it asks how long and complex tasks can be before agents lose reliability.  ARC-AGI-2 is valuable because it pressures abstract reasoning rather than memorized patterns.
+
+LiveBench is valuable because it updates questions to reduce contamination.
+
+But benchmark reports come with caveats.  Scaffolds matter.  Tool access matters.
+
+Prompting matters.  Cost matters.  Evaluation leakage matters.
+
+Human grading choices matter.
+
+The marketing problem begins when a vendor turns a benchmark improvement into a broad claim about reasoning. A buyer should read “higher benchmark score” as “worth evaluating,” not “ready for unattended deployment.”
+
+## Decision Table: Which AI Tools Pattern Should You Use?
+
+| Use case | Best fit | Avoid when | What to measure |
+|---|---|---|---|
+| Routine summarization | Low-cost general model with citation checks | The source text is legal, medical, financial, or adversarial | Missed caveats, unsupported claims, time saved |
+| Coding autocomplete | GitHub Copilot, Cursor Tab, IDE-native assistants | The team lacks tests or code review discipline | Accepted suggestions, defect rate, review time |
+| Multi-file code changes | Cursor agent, Copilot agent, Claude Code, Codex-style tools | The repo has weak tests, unclear build steps, or sensitive secrets | Pass rate, rollback rate, cost per merged change |
+| Research and analysis | Frontier model with retrieval and explicit source requirements | The user cannot verify sources | Citation accuracy, hallucination rate, latency |
+| Customer support | Narrow assistant with retrieval, policy guardrails, escalation | Refunds, compliance, safety, or account actions are automated without review | Containment rate, escalation quality, error severity |
+| Data extraction | Structured output model with validation | Inputs vary wildly or labels are ambiguous | Field accuracy, schema failure rate, retry cost |
+| Autonomous operations | Agent with permissions, logs, sandboxing, approval gates | The task can spend money, delete data, message customers, or alter production | Action auditability, permission violations, human approvals |
+
+The recommendation is blunt: buy by workflow, not by model hype.
+
+Use frontier reasoning models only where the marginal quality is worth the latency and cost.  Use cheaper models for high-volume classification, extraction, and routing.  Use coding agents when tests can reject bad work.
+
+Avoid autonomous assistants in workflows where the first bad action is expensive.
+
+## Where The Marketing Overreaches
+
+The first overreach is treating “reasoning” as a single capability. Reasoning over a logic puzzle, a codebase, a spreadsheet, and a compliance policy are different tasks. A model that improves in one may regress or remain fragile in another.
+
+The second overreach is presenting hidden chain-of-thought or thinking summaries as proof of better reasoning. Anthropic and Google both explain that visible summaries are not the same thing as full internal thought tokens. The buyer sees a polished trace, not a guarantee.
+
+The third overreach is suggesting that memory makes assistants more like colleagues. Memory can help personalization, but it can also preserve bad assumptions, stale preferences, and accidental context. Serious teams should treat memory as a governed data store, not as intuition.
+
+The fourth overreach is selling agent autonomy before auditability. If a tool can browse, edit files, run commands, open pull requests, or call business systems, the security review should happen before rollout. Ask what data is stored, what third-party tools receive, which logs exist, and how permissions are scoped.
+
+## Security Review: The Boring Part That Matters
+
+Security is not separate from reasoning quality. A model that can access the wrong context will reason from the wrong facts. A model that can call the wrong tool can turn a reasoning error into an operational incident.
+
+Start with data retention.  OpenAI’s platform docs describe default API retention and controls such as Zero Data Retention eligibility, while also noting feature-specific exceptions.  Anthropic documents ZDR arrangements and feature eligibility.
+
+Google’s pricing page distinguishes free-tier product improvement treatment from paid-tier treatment for Gemini API usage.
+
+Then review tool boundaries. Remote connectors, MCP servers, browser tools, code execution, file search, and customer-data integrations can send sensitive material outside the immediate model call. A security review should map every external system the assistant can touch.
+
+Finally, require logs. If an assistant changes code, sends a message, retrieves a file, or calls an internal API, the organization needs traceability. Without logs, failures become folklore.
+
+## What Remains Uncertain
+
+The biggest uncertainty is black-box product behavior. Many chat and IDE products do not expose every routing decision, prompt change, safety intervention, or model snapshot update. That makes controlled comparison difficult.
+
+Another uncertainty is benchmark transfer. A model’s improvement on math, coding, or agent benchmarks may not predict performance on your internal workflows. The only reliable answer is a task-specific evaluation set.
+
+There is also uncertainty around user reports. Complaints that AI assistants are getting worse can reflect real regressions, changed defaults, higher expectations, worse prompts, larger tasks, overloaded context, or silent model routing. The reports are useful adoption signals, but they are not clean measurements.
+
+## Practical Evaluation Checklist
+
+Before adopting or renewing AI tools, evaluate the workflow rather than the demo.
+
+Define the job: what task, what input, what output, what decision follows.
+
+Pin the setup: model, plan, effort level, tools, retrieval source, context size, and permissions.
+
+Measure the unit economics: cost per completed task, not cost per token alone.
+
+Score failures by severity: harmless formatting error, factual error, missed constraint, security issue, customer-impacting action.
+
+Check latency: interactive assistants need different thresholds than overnight batch workflows.
+
+Review data controls: retention, training use, third-party connectors, audit logs, SSO, SCIM, RBAC, and deletion behavior.
+
+Set human gates: approvals for external messages, production writes, financial actions, legal decisions, and destructive operations.
+
+Re-run periodically: models, pricing, and routing policies change.
+
+## FAQ
+
+### Are AI assistants actually getting worse at reasoning?
+
+Not universally. Public benchmarks show continued progress in many categories, but users often experience worse reasoning because assistants are being used for broader, messier, higher-stakes work. Hidden routing, lower reasoning budgets, long-context failures, and tool errors can make a stronger model feel weaker in practice.
+
+### Should I pay for the most expensive reasoning model?
+
+Only for tasks where better reasoning changes the outcome. Complex coding, mathematical analysis, legal research support, and multi-step planning may justify frontier models. High-volume summarization, tagging, extraction, and routing often work better economically on cheaper models with validation.
+
+### How do I know whether an AI assistant is safe enough for my team?
+
+Build a small evaluation set from real work, then measure accuracy, cost, latency, and failure severity. Review data retention and connector permissions before deployment. If the assistant can take external action, require logs and human approval for risky steps.
+
+## The Bottom Line
+
+AI assistants are not getting worse in a simple technical sense. They are getting harder to evaluate because the product has become a stack of models, routers, tools, memories, policies, and pricing gates.
+
+For serious users, the response should be discipline, not cynicism. Treat AI tools like junior operators with uneven skill, fast output, poor self-awareness, and no inherent authority. Give them narrow jobs, strong context, clear tests, limited permissions, and a human review path.
+
+The buyer’s rule is simple: if you cannot measure the assistant’s failures, you are not ready to trust its reasoning.
+
+*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`.trim(),
+    category: 'ai',
+    readTime: '13 min',
+    date: '2026-07-31',
+    author: 'Decryptica',
+    status: 'published',
+    primaryKeyword: "ai tools",
+    primaryConversionHref: "/tools/ai-price-calculator",
+    tags: ["ai-general","ai tools"],
+    wordCount: 2528,
+  },
+  {
     id: '1785447167705-4699',
     slug: 'cursor-vs-github-copilot-which-coding-assistant-should-you-u',
     title: "Cursor vs GitHub Copilot: Which Coding Assistant Should You Use",
