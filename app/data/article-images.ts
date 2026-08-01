@@ -117,6 +117,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'openai-api-vs-anthropic-api-which-model-stack-fits-your-prod': imageSet.marketingDashboard,
   'why-ai-image-generation-is-plateauing': imageSet.aiWorkspace,
   'the-truth-about-ai-coding-assistants-in-2026': imageSet.marketingDashboard,
   'why-ai-assistants-are-getting-worse-at-reasoning': imageSet.code,
