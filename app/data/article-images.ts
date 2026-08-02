@@ -112,12 +112,18 @@ export const imageSet = {
     credit: 'Photo by Alvaro Reyes on Unsplash',
     creditUrl: 'https://unsplash.com/photos/man-using-monitor-6avV9oeHxfo',
   },
+  transformerArchitecture: {
+    src: `https://images.unsplash.com/photo-1770210217380-d78a69acdc77${unsplashParams}`,
+    alt: 'An abstract grid of connected lights representing model architecture constraints',
+    credit: 'Photo by Zach M on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/concentric-circles-with-ai-logo-in-center-bUybBtjhqEg',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
-  'what-transformer-architecture-limits-mean-for-ai': imageSet.aiWorkspace,
+  'what-transformer-architecture-limits-mean-for-ai': imageSet.transformerArchitecture,
   'claude-vs-gpt-5-the-comparison-that-matters': imageSet.codeEditor,
   'midjourney-vs-stable-diffusion-4-the-real-difference': imageSet.aiArt,
   'perplexity-vs-chatgpt-which-research-tool-is-better': imageSet.marketingDashboard,
