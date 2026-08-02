@@ -141,6 +141,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'midjourney-vs-adobe-firefly-which-image-tool-is-safer-for-wo': imageSet.aiIntegrationLaptop,
   'what-transformer-architecture-limits-mean-for-ai': imageSet.transformerArchitecture,
   'claude-vs-gpt-5-the-comparison-that-matters': imageSet.codeEditor,
   'midjourney-vs-stable-diffusion-4-the-real-difference': imageSet.aiArt,
