@@ -1663,6 +1663,12 @@ function assignLatestArticleImage() {
   run('./node_modules/.bin/tsx scripts/assign_latest_article_image.ts', { cwd: CONFIG.workspace });
 }
 
+function validateLatestArticleImage() {
+  log('Checking latest hero image for recent reuse...');
+
+  run('./node_modules/.bin/tsx scripts/check_article_image_reuse.ts', { cwd: CONFIG.workspace });
+}
+
 async function pushToGitHub(slug) {
   log('Committing and pushing to GitHub...');
   
@@ -1770,6 +1776,7 @@ async function main() {
     // Step 3: Add to file
     const slug = addArticleToFile(article);
     assignLatestArticleImage();
+    validateLatestArticleImage();
 
     if (research.keywordCandidateId) {
       markKeywordCandidateUsed(research.keywordCandidateId, {

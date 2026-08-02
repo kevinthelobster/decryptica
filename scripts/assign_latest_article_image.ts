@@ -13,14 +13,6 @@ function dateValue(date: string) {
   return Number.isFinite(value) ? value : 0;
 }
 
-function stableHash(value: string) {
-  let hash = 0;
-  for (let index = 0; index < value.length; index += 1) {
-    hash = (hash * 31 + value.charCodeAt(index)) >>> 0;
-  }
-  return hash;
-}
-
 function sortByNewest(entries: Article[]) {
   return [...entries].sort((a, b) => dateValue(b.date) - dateValue(a.date));
 }
@@ -54,7 +46,12 @@ function chooseImageKey(latestArticle: Article): ArticleImageKey {
     return unusedCatalogKey;
   }
 
-  return candidates[stableHash(latestArticle.slug) % candidates.length] || 'aiTools';
+  throw new Error(
+    [
+      `No unused article image is available within ${recentWindowDays} days for ${latestArticle.slug}.`,
+      'Add a fresh image to imageSet/articleImagePools before publishing.',
+    ].join(' ')
+  );
 }
 
 function upsertArticleImageOverride(slug: string, imageKey: ArticleImageKey) {

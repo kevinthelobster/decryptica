@@ -118,6 +118,24 @@ export const imageSet = {
     credit: 'Photo by Zach M on Unsplash',
     creditUrl: 'https://unsplash.com/photos/concentric-circles-with-ai-logo-in-center-bUybBtjhqEg',
   },
+  aiIntegrationLaptop: {
+    src: `https://images.unsplash.com/photo-1758626042818-b05e9c91b84a${unsplashParams}`,
+    alt: 'A laptop showing an AI integration interface in a bright workspace',
+    credit: 'Photo by Jo Lin on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/person-using-laptop-with-ai-integration-logo-displayed-U48gtf_qhVM',
+  },
+  serverRack: {
+    src: `https://images.unsplash.com/photo-1695668548342-c0c1ad479aee${unsplashParams}`,
+    alt: 'A server rack with network equipment representing infrastructure limits',
+    credit: 'Photo by Kevin Ache on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-rack-of-servers-in-a-server-room-2JJ3wBHu4_0',
+  },
+  codeProject: {
+    src: `https://images.unsplash.com/photo-1774901128281-a884cd447af5${unsplashParams}`,
+    alt: 'A development environment showing source code and project files',
+    credit: 'Photo by Bernd Dittrich on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/computer-screen-displaying-code-and-project-files-A9jp72Owzvs',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -147,13 +165,25 @@ export const articleImageOverrides = {
 } satisfies Record<string, ArticleImage>;
 
 export const articleImagePools = {
-  ai: ['aiTools', 'aiWorkspace', 'code', 'codeEditor', 'aiArt', 'marketingDashboard', 'productWorkspace'],
+  ai: [
+    'aiTools',
+    'aiWorkspace',
+    'aiIntegrationLaptop',
+    'code',
+    'codeEditor',
+    'codeProject',
+    'serverRack',
+    'aiArt',
+    'marketingDashboard',
+    'productWorkspace',
+  ],
   automation: [
     'integrationDashboard',
     'workflowPlanner',
     'appDashboard',
     'hiringDashboard',
     'operatorLaptop',
+    'aiIntegrationLaptop',
     'workflowMeeting',
     'operationalWorkspace',
     'productWorkspace',
