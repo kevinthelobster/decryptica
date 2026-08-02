@@ -117,6 +117,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'claude-vs-gpt-5-the-comparison-that-matters': imageSet.codeEditor,
   'midjourney-vs-stable-diffusion-4-the-real-difference': imageSet.aiArt,
   'perplexity-vs-chatgpt-which-research-tool-is-better': imageSet.marketingDashboard,
   'openai-api-vs-anthropic-api-which-model-stack-fits-your-prod': imageSet.marketingDashboard,
