@@ -12,11 +12,11 @@ import { getLeadMagnetBySlug } from '../../data/lead-magnets';
 
 export const metadata: Metadata = {
   title: 'AI Model Price Calculator — Compare LLM API Costs (2026)',
-  description: 'Free AI model price calculator to compare GPT-5.6, Claude, Gemini, DeepSeek, Grok, Mistral and more. Find the cheapest AI provider for your use case. Updated July 27, 2026.',
+  description: 'Free AI model price calculator to compare GPT-5.6, Claude, Gemini, DeepSeek, Grok, Mistral and more. Find the cheapest AI provider for your use case. Updated August 3, 2026.',
   keywords: ['AI model price calculator', 'LLM API pricing', 'AI API cost comparison', 'GPT-5.6 price', 'Claude API cost', 'Gemini API pricing', 'AI provider comparison', 'token cost calculator', 'AI cheapest option'],
   openGraph: {
     title: 'AI Model Price Calculator — Latest Models Compared',
-    description: 'Compare AI API costs across OpenAI, Anthropic, Google, DeepSeek, xAI, Mistral, and more. Updated July 27, 2026.',
+    description: 'Compare AI API costs across OpenAI, Anthropic, Google, DeepSeek, xAI, Mistral, and more. Updated August 3, 2026.',
     type: 'website',
   },
 };
@@ -36,7 +36,7 @@ const faqData = {
       "name": "How much does the GPT-5.6 Sol API cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "GPT-5.6 Sol costs $5.00 per 1M input tokens and $30.00 per 1M output tokens on standard short-context OpenAI API pricing as of July 27, 2026."
+        "text": "GPT-5.6 Sol costs $5.00 per 1M input tokens and $30.00 per 1M output tokens on standard short-context OpenAI API pricing as of August 3, 2026."
       }
     },
     {
@@ -44,7 +44,7 @@ const faqData = {
       "name": "What is the cheapest AI API provider?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The cheapest listed production APIs are typically small routing models like Amazon Nova Micro, Gemini 2.5 Flash-Lite, DeepSeek V4 Flash, and Mistral Small 4. The best choice depends on quality needs, context length, and provider fit."
+        "text": "The cheapest listed production APIs are typically small routing models like Amazon Nova Micro, Gemini 2.5 Flash-Lite, DeepSeek V4 Flash, Mistral Small 4, and Command R7B. The best choice depends on quality needs, context length, and provider fit."
       }
     },
     {
@@ -93,7 +93,7 @@ function ToolCTACompare() {
       <h3 className="font-display text-sm font-semibold text-red-800 uppercase tracking-wider mb-2">Compare</h3>
       <p className="text-stone-950 font-medium mb-1">Ready to pick a model?</p>
       <p className="text-stone-600 text-sm mb-3">Enter your token volumes above to see exactly how much each provider costs.</p>
-      <p className="text-xs text-stone-500">Current production models across major API providers — updated July 27, 2026</p>
+      <p className="text-xs text-stone-500">Current production models across major API providers — updated August 3, 2026</p>
     </div>
   );
 }
