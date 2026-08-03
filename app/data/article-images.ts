@@ -136,11 +136,102 @@ export const imageSet = {
     credit: 'Photo by Bernd Dittrich on Unsplash',
     creditUrl: 'https://unsplash.com/photos/computer-screen-displaying-code-and-project-files-A9jp72Owzvs',
   },
+  analyticsMonitor: {
+    src: `https://images.unsplash.com/photo-1526628953301-3e589a6a8b74${unsplashParams}`,
+    alt: 'A reporting dashboard shown on a laptop screen',
+    credit: 'Photo by Stephen Dawson on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/turned-on-monitoring-screen-qwtCeJ5cLYs',
+  },
+  reactCodeEditor: {
+    src: `https://images.unsplash.com/photo-1619410283995-43d9134e7656${unsplashParams}`,
+    alt: 'A code editor displaying React source code on a laptop',
+    credit: 'Photo by Juanjo Jaramillo on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/code-editor-displaying-react-source-code-mZnx9429i94',
+  },
+  aiTabletWorkspace: {
+    src: `https://images.unsplash.com/photo-1758626052247-79003b45f802${unsplashParams}`,
+    alt: 'Hands holding a tablet displaying an AI software interface',
+    credit: 'Photo by Jo Lin on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/hands-holding-a-tablet-displaying-ai-logo-Gy1p3CkNLms',
+  },
+  darkCodeScreen: {
+    src: `https://images.unsplash.com/photo-1781787346847-179b5c773b08${unsplashParams}`,
+    alt: 'A dark computer screen showing code and development icons',
+    credit: 'Photo by MARCO on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/computer-code-on-a-dark-screen-with-development-icons-PKqKwpAmr5g',
+  },
+  warmCodeMonitor: {
+    src: `https://images.unsplash.com/photo-1785615795052-bede921957ea${unsplashParams}`,
+    alt: 'A monitor showing source code with warm desk lighting',
+    credit: 'Photo by Harshit Katiyar on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/computer-screen-displaying-lines-of-code-5sLNGV2EFRM',
+  },
+  aiNetworkLaptop: {
+    src: `https://images.unsplash.com/photo-1674027444454-97b822a997b6${unsplashParams}`,
+    alt: 'A generated network visualization surrounding a laptop',
+    credit: 'Photo by Growtika on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-computer-generated-image-of-a-network-and-a-laptop-f0JGorLOkw0',
+  },
+  chatgptLaptopDesk: {
+    src: `https://images.unsplash.com/photo-1678347123725-2d0d31bc06bd${unsplashParams}`,
+    alt: 'A laptop on a table showing an AI assistant interface',
+    credit: 'Photo by Deng Xiang on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-table-ILyeoImR8Uk',
+  },
+  aiScreenCloseup: {
+    src: `https://images.unsplash.com/photo-1675557009483-e6cf3867976b${unsplashParams}`,
+    alt: 'A close view of an AI interface on a computer screen',
+    credit: 'Photo by Jonathan Kemper on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-a-blurry-background-MMUzS5Qzuus',
+  },
+  securityDashboard: {
+    src: `https://images.unsplash.com/photo-1667372283536-a832e74401c2${unsplashParams}`,
+    alt: 'A security and privacy dashboard shown on a blue computer interface',
+    credit: 'Photo by Growtika on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-blue-and-white-logo-ahgsuFHlIFo',
+  },
+  circuitControlBoard: {
+    src: `https://images.unsplash.com/photo-1782155789492-3ea097e779cf${unsplashParams}`,
+    alt: 'A circuit board with a central chip and golden contacts',
+    credit: 'Photo by Brecht Corbeel on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-circuit-board-with-a-central-microchip-and-golden-contacts--Ejdz381VUk',
+  },
+  automationControlPanel: {
+    src: `https://images.unsplash.com/photo-1780034766228-3fd70d9463c3${unsplashParams}`,
+    alt: 'An industrial control panel with modules and colorful wiring',
+    credit: 'Photo by Raymond Sime on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/industrial-control-panel-with-electronic-modules-and-colorful-wiring-UEx6fTODHzI',
+  },
+  marketInterface: {
+    src: `https://images.unsplash.com/photo-1651341050677-24dba59ce0fd${unsplashParams}`,
+    alt: 'A trading-style interface with market data and dark charts',
+    credit: 'Photo by Anne Nygard on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/graphical-user-interface-application-x07ELaNFt34',
+  },
+  aiKnowledgeGraph: {
+    src: `https://images.unsplash.com/photo-1674027444484-cf52149ea050${unsplashParams}`,
+    alt: 'A generated network of connected nodes representing AI memory',
+    credit: 'Photo by Growtika on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-computer-generated-image-of-a-ball-of-string-P5mCQ4KACbM',
+  },
+  darkAutomationDashboard: {
+    src: `https://images.unsplash.com/photo-1771923082503-0a3381c46cef${unsplashParams}`,
+    alt: 'A modern laptop displaying a dark business automation dashboard',
+    credit: 'Photo by Neil Fernandez on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-modern-laptop-displaying-a-dark-themed-dashboard-6-0ajRI1cgs',
+  },
+  studentOpsDashboard: {
+    src: `https://images.unsplash.com/photo-1763718432504-7716caff6e99${unsplashParams}`,
+    alt: 'A blue operations dashboard with quick access panels and alerts',
+    credit: 'Photo by prashant hiremath on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/student-dashboard-with-quick-access-and-alerts-0pjqSMqYlyU',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'why-ai-agent-memory-is-still-fundamentally-broken': imageSet.circuitControlBoard,
   'claude-vs-gemini-which-ai-assistant-makes-more-sense': imageSet.serverRack,
   'chatgpt-team-vs-claude-team-which-plan-fits-small-teams': imageSet.codeProject,
   'midjourney-vs-adobe-firefly-which-image-tool-is-safer-for-wo': imageSet.aiIntegrationLaptop,
@@ -169,6 +260,17 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'aiKnowledgeGraph',
+    'circuitControlBoard',
+    'securityDashboard',
+    'aiScreenCloseup',
+    'chatgptLaptopDesk',
+    'aiNetworkLaptop',
+    'warmCodeMonitor',
+    'darkCodeScreen',
+    'aiTabletWorkspace',
+    'reactCodeEditor',
+    'analyticsMonitor',
     'aiTools',
     'aiWorkspace',
     'aiIntegrationLaptop',
@@ -181,6 +283,13 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'studentOpsDashboard',
+    'darkAutomationDashboard',
+    'automationControlPanel',
+    'circuitControlBoard',
+    'securityDashboard',
+    'aiTabletWorkspace',
+    'analyticsMonitor',
     'integrationDashboard',
     'workflowPlanner',
     'appDashboard',
@@ -192,7 +301,19 @@ export const articleImagePools = {
     'productWorkspace',
     'automation',
   ],
-  crypto: ['crypto', 'analytics', 'appDashboard', 'marketingDashboard', 'code'],
+  crypto: [
+    'marketInterface',
+    'securityDashboard',
+    'aiNetworkLaptop',
+    'analyticsMonitor',
+    'darkAutomationDashboard',
+    'aiKnowledgeGraph',
+    'crypto',
+    'analytics',
+    'appDashboard',
+    'marketingDashboard',
+    'code',
+  ],
 } satisfies Record<Article['category'], ArticleImageKey[]>;
 
 export function getArticleImageCandidateKeys(article: Article): ArticleImageKey[] {

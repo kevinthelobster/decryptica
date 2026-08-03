@@ -1,0 +1,136 @@
+{
+  "keywords": [
+    "artificial intelligence laptop",
+    "AI interface workspace",
+    "automation dashboard",
+    "analytics dashboard laptop",
+    "code editor screen",
+    "developer workspace",
+    "cloud infrastructure",
+    "server rack",
+    "data visualization",
+    "crypto trading dashboard"
+  ],
+  "candidates": [
+    {
+      "key": "analyticsMonitor",
+      "categories": ["ai", "automation", "crypto"],
+      "src": "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74",
+      "alt": "A reporting dashboard shown on a laptop screen",
+      "credit": "Photo by Stephen Dawson on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/turned-on-monitoring-screen-qwtCeJ5cLYs"
+    },
+    {
+      "key": "reactCodeEditor",
+      "categories": ["ai"],
+      "src": "https://images.unsplash.com/photo-1619410283995-43d9134e7656",
+      "alt": "A code editor displaying React source code on a laptop",
+      "credit": "Photo by Juanjo Jaramillo on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/code-editor-displaying-react-source-code-mZnx9429i94"
+    },
+    {
+      "key": "aiTabletWorkspace",
+      "categories": ["ai", "automation"],
+      "src": "https://images.unsplash.com/photo-1758626052247-79003b45f802",
+      "alt": "Hands holding a tablet displaying an AI software interface",
+      "credit": "Photo by Jo Lin on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/hands-holding-a-tablet-displaying-ai-logo-Gy1p3CkNLms"
+    },
+    {
+      "key": "darkCodeScreen",
+      "categories": ["ai"],
+      "src": "https://images.unsplash.com/photo-1781787346847-179b5c773b08",
+      "alt": "A dark computer screen showing code and development icons",
+      "credit": "Photo by MARCO on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/computer-code-on-a-dark-screen-with-development-icons-PKqKwpAmr5g"
+    },
+    {
+      "key": "warmCodeMonitor",
+      "categories": ["ai"],
+      "src": "https://images.unsplash.com/photo-1785615795052-bede921957ea",
+      "alt": "A monitor showing source code with warm desk lighting",
+      "credit": "Photo by Harshit Katiyar on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/computer-screen-displaying-lines-of-code-5sLNGV2EFRM"
+    },
+    {
+      "key": "aiNetworkLaptop",
+      "categories": ["ai", "crypto"],
+      "src": "https://images.unsplash.com/photo-1674027444454-97b822a997b6",
+      "alt": "A generated network visualization surrounding a laptop",
+      "credit": "Photo by Growtika on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-generated-image-of-a-network-and-a-laptop-f0JGorLOkw0"
+    },
+    {
+      "key": "chatgptLaptopDesk",
+      "categories": ["ai"],
+      "src": "https://images.unsplash.com/photo-1678347123725-2d0d31bc06bd",
+      "alt": "A laptop on a table showing an AI assistant interface",
+      "credit": "Photo by Deng Xiang on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-table-ILyeoImR8Uk"
+    },
+    {
+      "key": "aiScreenCloseup",
+      "categories": ["ai"],
+      "src": "https://images.unsplash.com/photo-1675557009483-e6cf3867976b",
+      "alt": "A close view of an AI interface on a computer screen",
+      "credit": "Photo by Jonathan Kemper on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-a-blurry-background-MMUzS5Qzuus"
+    },
+    {
+      "key": "securityDashboard",
+      "categories": ["ai", "automation", "crypto"],
+      "src": "https://images.unsplash.com/photo-1667372283536-a832e74401c2",
+      "alt": "A security and privacy dashboard shown on a blue computer interface",
+      "credit": "Photo by Growtika on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-blue-and-white-logo-ahgsuFHlIFo"
+    },
+    {
+      "key": "circuitControlBoard",
+      "categories": ["ai", "automation"],
+      "src": "https://images.unsplash.com/photo-1782155789492-3ea097e779cf",
+      "alt": "A circuit board with a central chip and golden contacts",
+      "credit": "Photo by Brecht Corbeel on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-circuit-board-with-a-central-microchip-and-golden-contacts--Ejdz381VUk"
+    },
+    {
+      "key": "automationControlPanel",
+      "categories": ["automation"],
+      "src": "https://images.unsplash.com/photo-1780034766228-3fd70d9463c3",
+      "alt": "An industrial control panel with modules and colorful wiring",
+      "credit": "Photo by Raymond Sime on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/industrial-control-panel-with-electronic-modules-and-colorful-wiring-UEx6fTODHzI"
+    },
+    {
+      "key": "marketInterface",
+      "categories": ["crypto"],
+      "src": "https://images.unsplash.com/photo-1651341050677-24dba59ce0fd",
+      "alt": "A trading-style interface with market data and dark charts",
+      "credit": "Photo by Anne Nygard on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/graphical-user-interface-application-x07ELaNFt34"
+    },
+    {
+      "key": "aiKnowledgeGraph",
+      "categories": ["ai", "crypto"],
+      "src": "https://images.unsplash.com/photo-1674027444484-cf52149ea050",
+      "alt": "A generated network of connected nodes representing AI memory",
+      "credit": "Photo by Growtika on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-generated-image-of-a-ball-of-string-P5mCQ4KACbM"
+    },
+    {
+      "key": "darkAutomationDashboard",
+      "categories": ["automation", "crypto"],
+      "src": "https://images.unsplash.com/photo-1771923082503-0a3381c46cef",
+      "alt": "A modern laptop displaying a dark business automation dashboard",
+      "credit": "Photo by Neil Fernandez on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-modern-laptop-displaying-a-dark-themed-dashboard-6-0ajRI1cgs"
+    },
+    {
+      "key": "studentOpsDashboard",
+      "categories": ["automation"],
+      "src": "https://images.unsplash.com/photo-1763718432504-7716caff6e99",
+      "alt": "A blue operations dashboard with quick access panels and alerts",
+      "credit": "Photo by prashant hiremath on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/student-dashboard-with-quick-access-and-alerts-0pjqSMqYlyU"
+    }
+  ]
+}
