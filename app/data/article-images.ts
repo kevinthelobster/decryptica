@@ -141,6 +141,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'claude-vs-gemini-which-ai-assistant-makes-more-sense': imageSet.serverRack,
   'chatgpt-team-vs-claude-team-which-plan-fits-small-teams': imageSet.codeProject,
   'midjourney-vs-adobe-firefly-which-image-tool-is-safer-for-wo': imageSet.aiIntegrationLaptop,
   'what-transformer-architecture-limits-mean-for-ai': imageSet.transformerArchitecture,
