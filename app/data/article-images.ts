@@ -867,6 +867,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'the-debugging-problem-ai-coding-assistants-can-t-solve': imageSet.apiCodeScreenMPKQiDpMyq,
   'the-hidden-costs-of-ai-assistant-dependency': imageSet.apiCodeScreenDwDZ5mgwhs,
   'building-reliable-ai-agents-the-hard-truth': imageSet.securityDashboard,
   'why-ai-agent-memory-is-still-fundamentally-broken': imageSet.circuitControlBoard,
