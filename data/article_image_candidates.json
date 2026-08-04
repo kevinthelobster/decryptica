@@ -9,12 +9,34 @@
     "cloud infrastructure",
     "server rack",
     "data visualization",
-    "crypto trading dashboard"
+    "crypto trading dashboard",
+    "machine learning dashboard",
+    "AI data center",
+    "API code screen",
+    "business operations dashboard",
+    "workflow planning desk",
+    "product management workspace",
+    "cloud infrastructure server rack",
+    "cybersecurity dashboard",
+    "data visualization screen",
+    "financial market charts laptop",
+    "blockchain technology laptop",
+    "startup team laptops",
+    "newsletter analytics dashboard"
   ],
+  "policy": {
+    "targetUnusedImages": 120,
+    "recentWindowDays": 90,
+    "selectionNotes": "Reserve entries are tagged by site category and replenished before the daily article publisher runs out of unused hero images."
+  },
   "candidates": [
     {
       "key": "analyticsMonitor",
-      "categories": ["ai", "automation", "crypto"],
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
       "src": "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74",
       "alt": "A reporting dashboard shown on a laptop screen",
       "credit": "Photo by Stephen Dawson on Unsplash",
@@ -22,7 +44,9 @@
     },
     {
       "key": "reactCodeEditor",
-      "categories": ["ai"],
+      "categories": [
+        "ai"
+      ],
       "src": "https://images.unsplash.com/photo-1619410283995-43d9134e7656",
       "alt": "A code editor displaying React source code on a laptop",
       "credit": "Photo by Juanjo Jaramillo on Unsplash",
@@ -30,7 +54,10 @@
     },
     {
       "key": "aiTabletWorkspace",
-      "categories": ["ai", "automation"],
+      "categories": [
+        "ai",
+        "automation"
+      ],
       "src": "https://images.unsplash.com/photo-1758626052247-79003b45f802",
       "alt": "Hands holding a tablet displaying an AI software interface",
       "credit": "Photo by Jo Lin on Unsplash",
@@ -38,7 +65,9 @@
     },
     {
       "key": "darkCodeScreen",
-      "categories": ["ai"],
+      "categories": [
+        "ai"
+      ],
       "src": "https://images.unsplash.com/photo-1781787346847-179b5c773b08",
       "alt": "A dark computer screen showing code and development icons",
       "credit": "Photo by MARCO on Unsplash",
@@ -46,7 +75,9 @@
     },
     {
       "key": "warmCodeMonitor",
-      "categories": ["ai"],
+      "categories": [
+        "ai"
+      ],
       "src": "https://images.unsplash.com/photo-1785615795052-bede921957ea",
       "alt": "A monitor showing source code with warm desk lighting",
       "credit": "Photo by Harshit Katiyar on Unsplash",
@@ -54,7 +85,10 @@
     },
     {
       "key": "aiNetworkLaptop",
-      "categories": ["ai", "crypto"],
+      "categories": [
+        "ai",
+        "crypto"
+      ],
       "src": "https://images.unsplash.com/photo-1674027444454-97b822a997b6",
       "alt": "A generated network visualization surrounding a laptop",
       "credit": "Photo by Growtika on Unsplash",
@@ -62,7 +96,9 @@
     },
     {
       "key": "chatgptLaptopDesk",
-      "categories": ["ai"],
+      "categories": [
+        "ai"
+      ],
       "src": "https://images.unsplash.com/photo-1678347123725-2d0d31bc06bd",
       "alt": "A laptop on a table showing an AI assistant interface",
       "credit": "Photo by Deng Xiang on Unsplash",
@@ -70,7 +106,9 @@
     },
     {
       "key": "aiScreenCloseup",
-      "categories": ["ai"],
+      "categories": [
+        "ai"
+      ],
       "src": "https://images.unsplash.com/photo-1675557009483-e6cf3867976b",
       "alt": "A close view of an AI interface on a computer screen",
       "credit": "Photo by Jonathan Kemper on Unsplash",
@@ -78,7 +116,11 @@
     },
     {
       "key": "securityDashboard",
-      "categories": ["ai", "automation", "crypto"],
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
       "src": "https://images.unsplash.com/photo-1667372283536-a832e74401c2",
       "alt": "A security and privacy dashboard shown on a blue computer interface",
       "credit": "Photo by Growtika on Unsplash",
@@ -86,7 +128,10 @@
     },
     {
       "key": "circuitControlBoard",
-      "categories": ["ai", "automation"],
+      "categories": [
+        "ai",
+        "automation"
+      ],
       "src": "https://images.unsplash.com/photo-1782155789492-3ea097e779cf",
       "alt": "A circuit board with a central chip and golden contacts",
       "credit": "Photo by Brecht Corbeel on Unsplash",
@@ -94,7 +139,9 @@
     },
     {
       "key": "automationControlPanel",
-      "categories": ["automation"],
+      "categories": [
+        "automation"
+      ],
       "src": "https://images.unsplash.com/photo-1780034766228-3fd70d9463c3",
       "alt": "An industrial control panel with modules and colorful wiring",
       "credit": "Photo by Raymond Sime on Unsplash",
@@ -102,7 +149,9 @@
     },
     {
       "key": "marketInterface",
-      "categories": ["crypto"],
+      "categories": [
+        "crypto"
+      ],
       "src": "https://images.unsplash.com/photo-1651341050677-24dba59ce0fd",
       "alt": "A trading-style interface with market data and dark charts",
       "credit": "Photo by Anne Nygard on Unsplash",
@@ -110,7 +159,10 @@
     },
     {
       "key": "aiKnowledgeGraph",
-      "categories": ["ai", "crypto"],
+      "categories": [
+        "ai",
+        "crypto"
+      ],
       "src": "https://images.unsplash.com/photo-1674027444484-cf52149ea050",
       "alt": "A generated network of connected nodes representing AI memory",
       "credit": "Photo by Growtika on Unsplash",
@@ -118,7 +170,10 @@
     },
     {
       "key": "darkAutomationDashboard",
-      "categories": ["automation", "crypto"],
+      "categories": [
+        "automation",
+        "crypto"
+      ],
       "src": "https://images.unsplash.com/photo-1771923082503-0a3381c46cef",
       "alt": "A modern laptop displaying a dark business automation dashboard",
       "credit": "Photo by Neil Fernandez on Unsplash",
@@ -126,11 +181,2103 @@
     },
     {
       "key": "studentOpsDashboard",
-      "categories": ["automation"],
+      "categories": [
+        "automation"
+      ],
       "src": "https://images.unsplash.com/photo-1763718432504-7716caff6e99",
       "alt": "A blue operations dashboard with quick access panels and alerts",
       "credit": "Photo by prashant hiremath on Unsplash",
       "creditUrl": "https://unsplash.com/photos/student-dashboard-with-quick-access-and-alerts-0pjqSMqYlyU"
+    },
+    {
+      "key": "artificialIntelligenceLaptopeGGFZ5X2Ln",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf",
+      "alt": "A computer chip with the letter a on top of it",
+      "credit": "Photo by Igor Omilaev on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-chip-with-the-letter-a-on-top-of-it-eGGFZ5X2LnA"
+    },
+    {
+      "key": "artificialIntelligenceLaptopBd7gNnWJBk",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2",
+      "alt": "MacBook Pro turned on",
+      "credit": "Photo by Andras Vas on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/macbook-pro-turned-on-Bd7gNnWJBkU"
+    },
+    {
+      "key": "artificialIntelligenceLaptopzwd435ewb4",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485",
+      "alt": "Black and white robot toy on red wooden table",
+      "credit": "Photo by Andrea De Santis on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-and-white-robot-toy-on-red-wooden-table-zwd435-ewb4"
+    },
+    {
+      "key": "artificialIntelligenceLaptopGi3iUJ1Fwx",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6",
+      "alt": "Laptop on white table",
+      "credit": "Photo by Dell on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/laptop-on-white-table-Gi3iUJ1FwxI"
+    },
+    {
+      "key": "artificialIntelligenceLaptoptGBXiHcPKr",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1591696331111-ef9586a5b17a",
+      "alt": "White and black typewriter with white printer paper",
+      "credit": "Photo by Markus Winkler on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/white-and-black-typewriter-with-white-printer-paper-tGBXiHcPKrM"
+    },
+    {
+      "key": "artificialIntelligenceLaptoplzh3hPtJz9",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1603302576837-37561b2e2302",
+      "alt": "Macbook pro turned on displaying music",
+      "credit": "Photo by Joshua Woroniecki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/macbook-pro-turned-on-displaying-music-lzh3hPtJz9c"
+    },
+    {
+      "key": "artificialIntelligenceLaptopWhAQMsdRKM",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1677442135136-760c813028c0",
+      "alt": "A person's head with a circuit board in front of it",
+      "credit": "Photo by Steve A Johnson on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-persons-head-with-a-circuit-board-in-front-of-it-WhAQMsdRKMI"
+    },
+    {
+      "key": "artificialIntelligenceLaptopw69Z8KHGQU",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1744640326166-433469d102f2",
+      "alt": "Glowing ai chip on a circuit board",
+      "credit": "Photo by Immo Wegmann on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/glowing-ai-chip-on-a-circuit-board-w69Z8K-HGQU"
+    },
+    {
+      "key": "artificialIntelligenceLaptopSqLyNHbsLK",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1611078489935-0cb964de46d6",
+      "alt": "Macbook pro on black table",
+      "credit": "Photo by Artin Bakhan on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/macbook-pro-on-black-table-SqLyNHbsLKQ"
+    },
+    {
+      "key": "artificialIntelligenceLaptopdwOcAJxSuD",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1718241905916-1f9786324de9",
+      "alt": "A computer keyboard with a blue light on it",
+      "credit": "Photo by BoliviaInteligente on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-keyboard-with-a-blue-light-on-it-dwOcAJxSuD8"
+    },
+    {
+      "key": "artificialIntelligenceLaptopWecngmATKY",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae",
+      "alt": "Photo of half-flipped laptop",
+      "credit": "Photo by Michał Kubalczyk on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/photo-of-half-flipped-laptop-WecngmAT-KY"
+    },
+    {
+      "key": "artificialIntelligenceLaptop0xMiYQmk8g",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1684369175833-4b445ad6bfb5",
+      "alt": "A white robot with blue eyes and a laptop",
+      "credit": "Photo by Mohamed Nohassi on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-white-robot-with-blue-eyes-and-a-laptop--0xMiYQmk8g"
+    },
+    {
+      "key": "aiInterfaceWorkspaceXIpm0bnYOQ",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1775994121020-86426451f8bf",
+      "alt": "Computer screen displaying code and text",
+      "credit": "Photo by Bernd 📷 Dittrich on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/computer-screen-displaying-code-and-text-XIpm0bnYOQE"
+    },
+    {
+      "key": "aiInterfaceWorkspace4CCD0YYODL",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1777503809793-e9e3c5109aa3",
+      "alt": "Laptop displaying a website with colorful abstract elements",
+      "credit": "Photo by Creatvise on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/laptop-displaying-a-website-with-colorful-abstract-elements-4CCD0YYODL8"
+    },
+    {
+      "key": "machineLearningDashboardJKUTrJ4vK0",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+      "alt": "Graphs of performance analytics on a laptop screen",
+      "credit": "Photo by Luke Chesser on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00"
+    },
+    {
+      "key": "machineLearningDashboardbf9sZBcGQl",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1686061593213-98dad7c599b9",
+      "alt": "A computer screen with a bunch of data on it",
+      "credit": "Photo by 1981 Digital on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-data-on-it-bf9sZBcGQl4"
+    },
+    {
+      "key": "machineLearningDashboardyqaskj8lQB",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1686061592689-312bbfb5c055",
+      "alt": "A computer screen with a bar chart on it",
+      "credit": "Photo by 1981 Digital on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bar-chart-on-it-yqaskj8lQBE"
+    },
+    {
+      "key": "machineLearningDashboardphS1wAgXOQ",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1763718528755-4bca23f82ac3",
+      "alt": "Employer dashboard showing application trends and key metrics",
+      "credit": "Photo by prashant hiremath on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/employer-dashboard-showing-application-trends-and-key-metrics-phS1wAgXOQI"
+    },
+    {
+      "key": "machineLearningDashboardQSwg0rZouw",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1585123607190-72ec2979a269",
+      "alt": "Black flat screen computer monitor",
+      "credit": "Photo by Sharad Bhat on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-computer-monitor-Q_Swg0rZouw"
+    },
+    {
+      "key": "machineLearningDashboard5KxA53UU6Y",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1584931423312-5d53d862446a",
+      "alt": "Black flat screen tv showing game",
+      "credit": "Photo by Martin Sanchez on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-tv-showing-game-5KxA53UU6Yo"
+    },
+    {
+      "key": "machineLearningDashboardsUiUI7FuT3",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1720962158937-7ea890052166",
+      "alt": "A close up of a control panel in a dark room",
+      "credit": "Photo by Egor Komarov on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-of-a-control-panel-in-a-dark-room-sUiUI7FuT34"
+    },
+    {
+      "key": "machineLearningDashboard3yb7ZsaY0L",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1723987251277-18fc0a1effd0",
+      "alt": "A group of people working on computers in a room",
+      "credit": "Photo by Anastassia Anufrieva on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-group-of-people-working-on-computers-in-a-room-3yb7ZsaY0LY"
+    },
+    {
+      "key": "machineLearningDashboardVxLhYXuLQN",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1625296276703-3fbc924f07b5",
+      "alt": "A computer screen with a bunch of data on it",
+      "credit": "Photo by Justin Morgan on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-data-on-it-VxLhYXuLQN8"
+    },
+    {
+      "key": "machineLearningDashboardw7ZyuGYNpR",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1504639725590-34d0984388bd",
+      "alt": "Closeup photo of eyeglasses",
+      "credit": "Photo by Kevin Ku on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/closeup-photo-of-eyeglasses-w7ZyuGYNpRQ"
+    },
+    {
+      "key": "machineLearningDashboardmcSDtbWXUZ",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3",
+      "alt": "Turned on black and grey laptop computer",
+      "credit": "Photo by Lukas Blazek on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/turned-on-black-and-grey-laptop-computer-mcSDtbWXUZU"
+    },
+    {
+      "key": "machineLearningDashboardjekCMTpm27",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1649881927251-46644283751a",
+      "alt": "A black and white poster with a bunch of diagrams on it",
+      "credit": "Photo by Bernd 📷 Dittrich on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-black-and-white-poster-with-a-bunch-of-diagrams-on-it-jekCMTpm278"
+    },
+    {
+      "key": "aiDataCenteriM8dxccK1s",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1642775196125-38a9eb496568",
+      "alt": "A bunch of television screens hanging from the ceiling",
+      "credit": "Photo by Leif Christoph Gottwald on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-bunch-of-television-screens-hanging-from-the-ceiling-iM8dxccK1sY"
+    },
+    {
+      "key": "aiDataCenterYvv7u8qX4",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1782338938900-a15304523070",
+      "alt": "Green circuit board with a central processor and glowing components",
+      "credit": "Photo by Brecht Corbeel on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/green-circuit-board-with-a-central-processor-and-glowing-components-Yvv7u8q-_X4"
+    },
+    {
+      "key": "aiDataCenterEZmzcZQjIG",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1739054730163-8fb4b927efd1",
+      "alt": "A green and black background with lines",
+      "credit": "Photo by Logan Voss on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-green-and-black-background-with-lines-EZmzcZQjIGI"
+    },
+    {
+      "key": "aiDataCenterg3QpHrlyWW",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1739054729970-45f867e65aee",
+      "alt": "An orange and black plaid pattern is shown",
+      "credit": "Photo by Logan Voss on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/an-orange-and-black-plaid-pattern-is-shown-g3QpHrlyWWs"
+    },
+    {
+      "key": "aiDataCenteroJBlbMy4cg",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1739054729925-7069f7790e4d",
+      "alt": "A black and white photo of a grid pattern",
+      "credit": "Photo by Logan Voss on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-black-and-white-photo-of-a-grid-pattern-oJBlbMy4cgM"
+    },
+    {
+      "key": "aiDataCenterGw1YY4uGqv",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1739054729987-4b3c60f072a2",
+      "alt": "A pink and black background with lines",
+      "credit": "Photo by Logan Voss on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-pink-and-black-background-with-lines-Gw1YY4uGqv8"
+    },
+    {
+      "key": "aiDataCenterAaVMipmSOY",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1739054730201-4b6463484e3c",
+      "alt": "A blue and black abstract background with lines",
+      "credit": "Photo by Logan Voss on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-blue-and-black-abstract-background-with-lines-AaVMipmSOY8"
+    },
+    {
+      "key": "aiDataCentersg3BySp9nU",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1739054730060-2cfb438ed96a",
+      "alt": "A purple and black background with lines",
+      "credit": "Photo by Logan Voss on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-purple-and-black-background-with-lines-sg3B-ySp9nU"
+    },
+    {
+      "key": "aiDataCenterlex2rihvms",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1739054729971-c27157b0c580",
+      "alt": "A black and yellow plaid pattern is shown",
+      "credit": "Photo by Logan Voss on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-black-and-yellow-plaid-pattern-is-shown-lex2rihvms4"
+    },
+    {
+      "key": "aiDataCenterQ7PjXBCuhE",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1739054730144-7d1b922d0ede",
+      "alt": "A blue and black abstract background with lines",
+      "credit": "Photo by Logan Voss on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-blue-and-black-abstract-background-with-lines-Q7PjXBCuhEU"
+    },
+    {
+      "key": "aiDataCenterllmS9c2Ug8",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1739054730073-f62ecb33ff18",
+      "alt": "A green and black background with lines",
+      "credit": "Photo by Logan Voss on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-green-and-black-background-with-lines-llmS9-c2Ug8"
+    },
+    {
+      "key": "aiDataCenterix5PAxF661",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1782330135555-bc7aff2b5f92",
+      "alt": "A computer motherboard with a cpu surrounded by glowing elements",
+      "credit": "Photo by Brecht Corbeel on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-motherboard-with-a-cpu-surrounded-by-glowing-elements-ix5PAxF661U"
+    },
+    {
+      "key": "codeEditorScreenieic5Tq8YM",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+      "alt": "A computer screen with a bunch of code on it",
+      "credit": "Photo by Chris Ried on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-code-on-it-ieic5Tq8YMk"
+    },
+    {
+      "key": "codeEditorScreenOqtafYT5kT",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+      "alt": "Monitor showing Java programming",
+      "credit": "Photo by Ilya Pavlov on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/monitor-showing-java-programming-OqtafYT5kTw"
+    },
+    {
+      "key": "codeEditorScreenoXlXu2qukG",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1607706189992-eae578626c86",
+      "alt": "Black flat screen computer monitor",
+      "credit": "Photo by Mohammad Rahmani on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-computer-monitor-oXlXu2qukGE"
+    },
+    {
+      "key": "codeEditorScreen4hbJeymZ1o",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1542831371-29b0f74f9713",
+      "alt": "Lines of HTML codes",
+      "credit": "Photo by Florian Olivo on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/lines-of-html-codes-4hbJ-eymZ1o"
+    },
+    {
+      "key": "codeEditorScreen8qEB0fTe9V",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1607799279861-4dd421887fb3",
+      "alt": "Laptop screen displaying colorful code",
+      "credit": "Photo by Mohammad Rahmani on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/laptop-screen-displaying-colorful-code-8qEB0fTe9Vw"
+    },
+    {
+      "key": "codeEditorScreencvBBO4PzWP",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2",
+      "alt": "CAPTCHA",
+      "credit": "Photo by Markus Spiske on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/captcha-cvBBO4PzWPg"
+    },
+    {
+      "key": "codeEditorScreenPzkeY0i98i",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1551302175-952301267d19",
+      "alt": "Monitor showing dialog boxes",
+      "credit": "Photo by Skye Studios on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/monitor-showing-dialog-boxes-PzkeY0i98io"
+    },
+    {
+      "key": "codeEditorScreenu2Ru4QBXA5",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1518773553398-650c184e0bb3",
+      "alt": "Turned on monitor displaying programming language",
+      "credit": "Photo by Pankaj Patel on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/turned-on-monitor-displaying-programming-language-u2Ru4QBXA5Q"
+    },
+    {
+      "key": "codeEditorScreenSgRNwAVNKw",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1537884944318-390069bb8665",
+      "alt": "Monitor displaying index.html codes",
+      "credit": "Photo by Pankaj Patel on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/monitor-displaying-indexhtml-codes-_SgRNwAVNKw"
+    },
+    {
+      "key": "codeEditorScreen1LLh8k2YFk",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1551033406-611cf9a28f67",
+      "alt": "A computer screen with a bunch of text on it",
+      "credit": "Photo by Markus Spiske on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-text-on-it-1LLh8k2_YFk"
+    },
+    {
+      "key": "codeEditorScreenKNZHyTpre1",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1615525137689-198778541af6",
+      "alt": "Text",
+      "credit": "Photo by Krishna Pandey on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/text-KNZHyTpre18"
+    },
+    {
+      "key": "codeEditorScreenSrewPUfo2c",
+      "categories": [
+        "ai"
+      ],
+      "src": "https://images.unsplash.com/photo-1607743386760-88ac62b89b8a",
+      "alt": "Black flat screen computer monitor turned on near blue and white sky",
+      "credit": "Photo by David Schultz on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-computer-monitor-turned-on-near-blue-and-white-sky-SrewPUfo2c0"
+    },
+    {
+      "key": "developerWorkspaceRSvJQIPpk",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1614790871804-fe037bdc1214",
+      "alt": "Black and white ceramic mug on brown wooden table",
+      "credit": "Photo by Diego Gennaro on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-and-white-ceramic-mug-on-brown-wooden-table-RSvJQ-IP_pk"
+    },
+    {
+      "key": "developerWorkspacekLEAXnMAp0",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1707528041466-83a325f01a3c",
+      "alt": "A desk with a laptop and a potted plant on it",
+      "credit": "Photo by Michel Isamuna on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-desk-with-a-laptop-and-a-potted-plant-on-it-kL-EAXnMAp0"
+    },
+    {
+      "key": "developerWorkspacepOmrqQRgiU",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1566915896913-549d796d2166",
+      "alt": "A computer monitor sitting on top of a desk",
+      "credit": "Photo by Fernando Hernandez on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-monitor-sitting-on-top-of-a-desk-pOmr_qQRgiU"
+    },
+    {
+      "key": "developerWorkspacebWVBCDtTRJ",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1753715613434-9c7cb58876b9",
+      "alt": "Programmer coding at a desk with several monitors",
+      "credit": "Photo by Jakub Żerdzicki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/programmer-coding-at-a-desk-with-several-monitors-bWVBCDtTRJI"
+    },
+    {
+      "key": "developerWorkspaceaEv8ednzJ2",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1651684195895-38708dc94cfa",
+      "alt": "A person working on a laptop",
+      "credit": "Photo by The Connected Narrative on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-person-working-on-a-laptop-aEv8ednzJ2E"
+    },
+    {
+      "key": "developerWorkspace6DfEbkqsTi",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1556636530-6b7482d80e3d",
+      "alt": "Person holding a computer mouse in a room",
+      "credit": "Photo by Patrick Amoy on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-holding-a-computer-mouse-in-a-room-6DfEbkqsTiA"
+    },
+    {
+      "key": "developerWorkspaceRs9ypWXB1v",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1558181445-eca4774b2a37",
+      "alt": "Person using smartphone while resting both feet on computer desk",
+      "credit": "Photo by Kay on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-using-smartphone-while-resting-both-feet-on-computer-desk-Rs9ypWXB1vE"
+    },
+    {
+      "key": "developerWorkspaceEd2fRK5ify",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1660810731526-0720827cbd38",
+      "alt": "A computer on a desk",
+      "credit": "Photo by Boitumelo on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-on-a-desk-Ed2fRK5ify4"
+    },
+    {
+      "key": "developerWorkspaceXyaFyD87o6",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1487523117656-d5d117ad47c5",
+      "alt": "Two computer monitors sitting on top of a wooden desk",
+      "credit": "Photo by Tran Mau Tri Tam ✪ on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/two-computer-monitors-sitting-on-top-of-a-wooden-desk-XyaFyD87o6E"
+    },
+    {
+      "key": "developerWorkspaceoYzjGQ7LCV",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1778146476147-5f8d4bd03c79",
+      "alt": "Laptop and phone on a desk with coding software open",
+      "credit": "Photo by Bayu Syaits on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/laptop-and-phone-on-a-desk-with-coding-software-open-oYzjGQ7LCVE"
+    },
+    {
+      "key": "developerWorkspace2JDDn7iSGH",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1573164574472-797cdf4a583a",
+      "alt": "MacBook Pro",
+      "credit": "Photo by Christina @ wocintechchat.com M on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/macbook-pro-2JDDn7iSGH8"
+    },
+    {
+      "key": "developerWorkspaceUTw3jaoIKM",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1573164574230-db1d5e960238",
+      "alt": "Person using smartphone and MacBook",
+      "credit": "Photo by Christina @ wocintechchat.com M on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-using-smartphone-and-macbook-UTw3j_aoIKM"
+    },
+    {
+      "key": "apiCodeScreenf77Bh3inUp",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
+      "alt": "Turned-on MacBook Pro wit programming codes display",
+      "credit": "Photo by Arnold Francisca on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/turned-on-macbook-pro-wit-programming-codes-display-f77Bh3inUpE"
+    },
+    {
+      "key": "apiCodeScreenehyVXOZ4iA",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1623282033815-40b05d96c903",
+      "alt": "A laptop computer sitting on top of a wooden desk",
+      "credit": "Photo by Douglas Lopes on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-wooden-desk-ehyV_XOZ4iA"
+    },
+    {
+      "key": "apiCodeScreenXJXWbfSo2f",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+      "alt": "Turned on gray laptop computer",
+      "credit": "Photo by Luca Bravo on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/turned-on-gray-laptop-computer-XJXWbfSo2f0"
+    },
+    {
+      "key": "apiCodeScreeng5jpH62pwe",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1627398242454-45a1465c2479",
+      "alt": "Text",
+      "credit": "Photo by Gabriel Heinzer on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/text-g5jpH62pwes"
+    },
+    {
+      "key": "apiCodeScreenyGQmjh2uOT",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1669023414162-5bb06bbff0ec",
+      "alt": "A computer with a keyboard and mouse",
+      "credit": "Photo by Growtika on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-with-a-keyboard-and-mouse-yGQmjh2uOTg"
+    },
+    {
+      "key": "apiCodeScreendwigDz0t6T",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1690585703267-de31ea667ef0",
+      "alt": "A close up of a computer screen with a lot of text on it",
+      "credit": "Photo by Walkator on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-a-lot-of-text-on-it-dwigDz0t6TY"
+    },
+    {
+      "key": "apiCodeScreenN5bT5RctFZ",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1608306448197-e83633f1261c",
+      "alt": "Black laptop computer turned on displaying blue screen",
+      "credit": "Photo by Mohammad Rahmani on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-laptop-computer-turned-on-displaying-blue-screen-N5bT5RctFZ8"
+    },
+    {
+      "key": "apiCodeScreenFBNxmwEVpA",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1555066931-bf19f8fd1085",
+      "alt": "Turned-on grey laptop computer",
+      "credit": "Photo by Arnold Francisca on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/turned-on-grey-laptop-computer-FBNxmwEVpAc"
+    },
+    {
+      "key": "apiCodeScreenYlVjrBkfXt",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1557853197-aefb550b6fdc",
+      "alt": "Multicolored text",
+      "credit": "Photo by Roozbeh Eslami on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/multicolored-text-YlVjrBkfXt8"
+    },
+    {
+      "key": "apiCodeScreenMPKQiDpMyq",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1608742213509-815b97c30b36",
+      "alt": "Black flat screen computer monitor",
+      "credit": "Photo by Jake Walker on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-computer-monitor-MPKQiDpMyqU"
+    },
+    {
+      "key": "apiCodeScreenDwDZ5mgwhs",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1607706009771-de8808640bcf",
+      "alt": "Black flat screen computer monitor",
+      "credit": "Photo by Mohammad Rahmani on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-computer-monitor-DwDZ5mgwhsc"
+    },
+    {
+      "key": "apiCodeScreeng5rxRjvKmg",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1624953587687-daf255b6b80a",
+      "alt": "Black flat screen computer monitor",
+      "credit": "Photo by Artturi Jalli on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-computer-monitor-g5_rxRjvKmg"
+    },
+    {
+      "key": "automationDashboardbMWHu8wU1V",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1686061594225-3e92c0cd51b0",
+      "alt": "A computer screen with a bunch of data on it",
+      "credit": "Photo by 1981 Digital on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-data-on-it-bMWHu8wU1Vk"
+    },
+    {
+      "key": "automationDashboardshrXn8S8QU",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43",
+      "alt": "Monitor screengrab",
+      "credit": "Photo by Stephen Phillips - Hostreviews.co.uk on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/monitor-screengrab-shr_Xn8S8QU"
+    },
+    {
+      "key": "automationDashboardIBUAdG0EW4",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1762673761879-8d85409a1ab2",
+      "alt": "Control panel with gauges and levers",
+      "credit": "Photo by Cuvii on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/control-panel-with-gauges-and-levers-_IBUAdG0EW4"
+    },
+    {
+      "key": "automationDashboardfkXEan7w1e",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1763296479464-fe8bee23eb65",
+      "alt": "Inside a train's control cabin with screens and screens",
+      "credit": "Photo by aLgivari Rizchy on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/inside-a-trains-control-cabin-with-screens-and-screens-fkXEan7w1eI"
+    },
+    {
+      "key": "automationDashboardmSHvcgrE5z",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1784622526494-835c653f3e6f",
+      "alt": "Teal dashboard and steering wheel of a ride-on toy",
+      "credit": "Photo by giyofloor floor machine on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/teal-dashboard-and-steering-wheel-of-a-ride-on-toy-mSHvcgrE5zo"
+    },
+    {
+      "key": "automationDashboardZfRXaTHKEu",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1779278617909-f29b6064ca1f",
+      "alt": "Three colleagues viewing a business presentation on a large screen",
+      "credit": "Photo by Rodrigo Rodrigues | WOLF Λ R T on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/three-colleagues-viewing-a-business-presentation-on-a-large-screen-ZfRXaTHKEu0"
+    },
+    {
+      "key": "automationDashboardGrdhcwNc51",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1672991281490-bcaecb8df17a",
+      "alt": "A red car parked in front of a mcdonald's",
+      "credit": "Photo by Ammy Singh on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-red-car-parked-in-front-of-a-mcdonalds-GrdhcwNc51E"
+    },
+    {
+      "key": "automationDashboardz41dNJVqSx",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1648134859187-71dadc9f815a",
+      "alt": "A computer screen with a phone and a tablet",
+      "credit": "Photo by Team Nocoloco on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-phone-and-a-tablet-z41dNJVqSxo"
+    },
+    {
+      "key": "automationDashboardAGQZprOABg",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1655204903983-73007f15cb3e",
+      "alt": "A close-up of a control panel",
+      "credit": "Photo by iSawRed on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-of-a-control-panel-AGQZprOABgQ"
+    },
+    {
+      "key": "automationDashboardyo5wIVapll",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1584472666879-7d92db132958",
+      "alt": "White red and blue calendar",
+      "credit": "Photo by Christine Sandu on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/white-red-and-blue-calendar-yo5wIVapll0"
+    },
+    {
+      "key": "automationDashboardAfbBHCXeEI",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1618986919307-ed52427d0bd4",
+      "alt": "A close up of a cell phone's display screen",
+      "credit": "Photo by Brett Jordan on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-of-a-cell-phones-display-screen-AfbBHC_XeEI"
+    },
+    {
+      "key": "automationDashboardu9GNoXX53Y",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1720962158924-6b1d12429ffd",
+      "alt": "A close up view of a sound board",
+      "credit": "Photo by Egor Komarov on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-view-of-a-sound-board-u9_GNoXX53Y"
+    },
+    {
+      "key": "analyticsDashboardLaptoptR0jvlsmCu",
+      "categories": [
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1608222351212-18fe0ec7b13b",
+      "alt": "Black and silver laptop computer",
+      "credit": "Photo by path digital on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-and-silver-laptop-computer-tR0jvlsmCuQ"
+    },
+    {
+      "key": "analyticsDashboardLaptophpjSkU2UYS",
+      "categories": [
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+      "alt": "Laptop computer on glass-top table",
+      "credit": "Photo by Carlos Muza on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/laptop-computer-on-glass-top-table-hpjSkU2UYSU"
+    },
+    {
+      "key": "analyticsDashboardLaptoppypeCEaJeZ",
+      "categories": [
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1542744173-05336fcc7ad4",
+      "alt": "Person using MacBook Pro",
+      "credit": "Photo by Campaign Creators on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-using-macbook-pro-pypeCEaJeZY"
+    },
+    {
+      "key": "analyticsDashboardLaptopeveI7MOcSm",
+      "categories": [
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1599658880436-c61792e70672",
+      "alt": "Person using macbook pro on black table",
+      "credit": "Photo by Myriam Jessier on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-using-macbook-pro-on-black-table-eveI7MOcSmw"
+    },
+    {
+      "key": "analyticsDashboardLaptopIrRbSND5EU",
+      "categories": [
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1591696205602-2f950c417cb9",
+      "alt": "Stock market chart displayed on laptop screen",
+      "credit": "Photo by Markus Winkler on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/stock-market-chart-displayed-on-laptop-screen-IrRbSND5EUc"
+    },
+    {
+      "key": "analyticsDashboardLaptoptKf03CkdEj",
+      "categories": [
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1613347761493-4060c969cd28",
+      "alt": "Person using macbook pro on table",
+      "credit": "Photo by Myriam Jessier on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-using-macbook-pro-on-table-tKf03CkdEjo"
+    },
+    {
+      "key": "analyticsDashboardLaptoprqMWNKRLVu",
+      "categories": [
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1745847768367-893e989d3a98",
+      "alt": "Person working on a laptop with a cup of coffee",
+      "credit": "Photo by dlxmedia.hu on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-working-on-a-laptop-with-a-cup-of-coffee-rqMWNKRLVuw"
+    },
+    {
+      "key": "analyticsDashboardLaptopdBIMy696Rk",
+      "categories": [
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1518186285589-2f7649de83e0",
+      "alt": "Turned on flat screen monitor",
+      "credit": "Photo by Chris Liverani on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/turned-on-flat-screen-monitor-dBI_My696Rk"
+    },
+    {
+      "key": "analyticsDashboardLaptopPu96DJ6rct",
+      "categories": [
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1613347761513-0f37baebfd20",
+      "alt": "Person using macbook pro on black table",
+      "credit": "Photo by Myriam Jessier on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-using-macbook-pro-on-black-table-Pu96DJ6rct8"
+    },
+    {
+      "key": "analyticsDashboardLaptopiOykDIkZLQ",
+      "categories": [
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1499673610122-01c7122c5dcb",
+      "alt": "Turned on MacBook Air on desk",
+      "credit": "Photo by Goran Ivos on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/turned-on-macbook-air-on-desk-iOykDIkZLQw"
+    },
+    {
+      "key": "analyticsDashboardLaptopVCtI0qlVgA",
+      "categories": [
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1600469984476-c713650f1b1b",
+      "alt": "Person using macbook air on brown wooden table",
+      "credit": "Photo by Myriam Jessier on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-using-macbook-air-on-brown-wooden-table-VCtI-0qlVgA"
+    },
+    {
+      "key": "analyticsDashboardLaptopf4pUuCc3M0",
+      "categories": [
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1580983559367-0dc2f8934365",
+      "alt": "Person using black laptop computer",
+      "credit": "Photo by ThisisEngineering on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-using-black-laptop-computer-f4pUuCc3M0g"
+    },
+    {
+      "key": "businessOperationsDashboardpPpUCaudT5",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1768483538267-fce52de424d5",
+      "alt": "Person working on a laptop at a desk",
+      "credit": "Photo by Gabriel Weyand on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-working-on-a-laptop-at-a-desk-pPpUCaudT5Q"
+    },
+    {
+      "key": "businessOperationsDashboard9fZuqBYlV1",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1783115259399-3a5a3e0e4592",
+      "alt": "Hands typing on a laptop displaying a data spreadsheet",
+      "credit": "Photo by Gorilla ROI Data Connector on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/hands-typing-on-a-laptop-displaying-a-data-spreadsheet-9fZuqBYlV1w"
+    },
+    {
+      "key": "businessOperationsDashboardfVi9Ipk7f6",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1587401048173-456fe247f0ae",
+      "alt": "Black digital device at 19 00",
+      "credit": "Photo by KOBU Agency on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-digital-device-at-19-00-fVi9Ipk7f60"
+    },
+    {
+      "key": "businessOperationsDashboardNph1oyRsHm",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1620365744528-88da1e08ac96",
+      "alt": "Black flat screen computer monitor",
+      "credit": "Photo by Markus Spiske on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-computer-monitor-Nph1oyRsHm4"
+    },
+    {
+      "key": "businessOperationsDashboard1peUWo68Hg",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1586974175111-967d0ab10c7b",
+      "alt": "A close up of a screen with numbers on it",
+      "credit": "Photo by Martin Sanchez on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-of-a-screen-with-numbers-on-it-1peUWo68Hg4"
+    },
+    {
+      "key": "businessOperationsDashboardhTtK6tvTRY",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1586448317606-cb1ec00298fc",
+      "alt": "Green and yellow beaded necklace",
+      "credit": "Photo by KOBU Agency on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/green-and-yellow-beaded-necklace-hTtK6tvTRY0"
+    },
+    {
+      "key": "businessOperationsDashboard2G4naJvRoz",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1587401048167-d1a4d727abd6",
+      "alt": "A close up of a computer screen with numbers on it",
+      "credit": "Photo by KOBU Agency on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-numbers-on-it-2G4naJvRozk"
+    },
+    {
+      "key": "businessOperationsDashboardfDisDvdiqr",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1784729553968-07da5d7b7c99",
+      "alt": "A laptop screen displays data analytics, charts, and statistics",
+      "credit": "Photo by Swello on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-laptop-screen-displays-data-analytics-charts-and-statistics-fDisDvdiqrQ"
+    },
+    {
+      "key": "businessOperationsDashboardWb63zqJ5gn",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1560221328-12fe60f83ab8",
+      "alt": "Close-up photo of monitor displaying graph",
+      "credit": "Photo by Nicholas Cappello on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/close-up-photo-of-monitor-displaying-graph-Wb63zqJ5gnE"
+    },
+    {
+      "key": "businessOperationsDashboarddJCBtdUu74",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1600132806370-bf17e65e942f",
+      "alt": "Text",
+      "credit": "Photo by Compagnons on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/text-_dJCBtdUu74"
+    },
+    {
+      "key": "businessOperationsDashboardctSkCiVrdG",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1595383892613-3831355376c0",
+      "alt": "Text",
+      "credit": "Photo by Adam Kring on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/text-ctSkCiVrdGA"
+    },
+    {
+      "key": "businessOperationsDashboardEL16ACtwLx",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1748609160056-7b95f30041f0",
+      "alt": "Someone analyzes financial data on a tablet",
+      "credit": "Photo by Jakub Żerdzicki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/someone-analyzes-financial-data-on-a-tablet-EL16ACtwLxg"
+    },
+    {
+      "key": "workflowPlanningDeskE9abH9GTio",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1754039984995-a91721ce1870",
+      "alt": "A cluttered desk with various office supplies",
+      "credit": "Photo by Jakub Żerdzicki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-cluttered-desk-with-various-office-supplies-E9abH9GT-io"
+    },
+    {
+      "key": "workflowPlanningDeskv9iowyOH7Q",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1754039985001-ccafee437736",
+      "alt": "Developer working on multiple screens in a dark office",
+      "credit": "Photo by Jakub Żerdzicki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/developer-working-on-multiple-screens-in-a-dark-office-v9iowyOH7QQ"
+    },
+    {
+      "key": "workflowPlanningDeskncgGmQSNUI",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1767190041030-f2f3a6654c5e",
+      "alt": "Keyboard and paper with pen on desk",
+      "credit": "Photo by Joost Crop on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/keyboard-and-paper-with-pen-on-desk-n-cgGmQSNUI"
+    },
+    {
+      "key": "productManagementWorkspaceRbQ4j2ggOm",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1783113938335-ba83ccde7f5f",
+      "alt": "Person working on a laptop with a spreadsheet outdoors",
+      "credit": "Photo by Gorilla ROI Data Connector on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-working-on-a-laptop-with-a-spreadsheet-outdoors-RbQ4j2ggOmY"
+    },
+    {
+      "key": "productManagementWorkspaceGy7GjLyVs",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1617529497832-5ad49d9b5928",
+      "alt": "White printer paper on white table",
+      "credit": "Photo by Jexo on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/white-printer-paper-on-white-table--Gy7GjLy-Vs"
+    },
+    {
+      "key": "productManagementWorkspaceIf8U33wram",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1758873272414-c0bf30332738",
+      "alt": "Two people drawing on a chalkboard wall",
+      "credit": "Photo by Vitaly Gariev on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/two-people-drawing-on-a-chalkboard-wall-If8U33wram4"
+    },
+    {
+      "key": "cloudInfrastructureServerM5tzZtFCOf",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31",
+      "alt": "Cable network",
+      "credit": "Photo by Taylor Vick on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/cable-network-M5tzZtFCOfs"
+    },
+    {
+      "key": "cloudInfrastructureServer2JJ3wBHu40",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee",
+      "alt": "A rack of servers in a server room",
+      "credit": "Photo by Kevin Ache on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-rack-of-servers-in-a-server-room-2JJ3wBHu4_0"
+    },
+    {
+      "key": "cloudInfrastructureServeriYnpYeyu57",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1639066648921-82d4500abf1a",
+      "alt": "A very large array of electronic equipment in a room",
+      "credit": "Photo by Matthieu Beaumont on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-very-large-array-of-electronic-equipment-in-a-room-iYnpYeyu57k"
+    },
+    {
+      "key": "cloudInfrastructureServerklWUhrwPJ8",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1506399558188-acca6f8cbf41",
+      "alt": "Img IX mining rig inside white and gray room",
+      "credit": "Photo by imgix on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/img-ix-mining-rig-inside-white-and-gray-room-klWUhr-wPJ8"
+    },
+    {
+      "key": "cloudInfrastructureServerclSQecD9oI",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1698668975271-2ba9a323be6b",
+      "alt": "A rack of servers with wires and wires attached to them",
+      "credit": "Photo by Yuriy Vertikov on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-rack-of-servers-with-wires-and-wires-attached-to-them-c-lSQecD9oI"
+    },
+    {
+      "key": "cloudInfrastructureServer3Nwt6wKU3E",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1667264501379-c1537934c7ab",
+      "alt": "A close-up of a server room",
+      "credit": "Photo by Kier in Sight Archives on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-of-a-server-room-3Nwt6w-KU3E"
+    },
+    {
+      "key": "cloudInfrastructureServerpgdaAwf6IJ",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1506399309177-3b43e99fead2",
+      "alt": "Black ImgIX server system",
+      "credit": "Photo by imgix on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-imgix-server-system-pgdaAwf6IJg"
+    },
+    {
+      "key": "cloudInfrastructureServerdyUp7WPu5q",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1691435828932-911a7801adfb",
+      "alt": "A close up of a network with wires connected to it",
+      "credit": "Photo by Albert Stoynov on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-of-a-network-with-wires-connected-to-it-dyUp7WPu5q4"
+    },
+    {
+      "key": "cloudInfrastructureServerca9Ex6yVRg",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1702478475268-aa8ef54c084e",
+      "alt": "A rack with many wires and wires attached to it",
+      "credit": "Photo by Yuriy Vertikov on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-rack-with-many-wires-and-wires-attached-to-it-ca9Ex6yVRgw"
+    },
+    {
+      "key": "cloudInfrastructureServerVHmBX7FnXw",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1762163516269-3c143e04175c",
+      "alt": "Server rack with blinking green lights",
+      "credit": "Photo by Domaintechnik on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/server-rack-with-blinking-green-lights-VHmBX7FnXw0"
+    },
+    {
+      "key": "cloudInfrastructureServeruq5RMAZdZG",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1489436969537-cf0c1dc69cba",
+      "alt": "Black and gray electronic device",
+      "credit": "Photo by Quilia on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-and-gray-electronic-device-uq5RMAZdZG4"
+    },
+    {
+      "key": "cloudInfrastructureServeriJUAdanGH0",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1597138768744-9f97be8cdd64",
+      "alt": "A close up of a server's nameplates on the side of a",
+      "credit": "Photo by Marc PEZIN on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-of-a-servers-nameplates-on-the-side-of-a-i_JUAdanGH0"
+    },
+    {
+      "key": "cybersecurityDashboardnBClEqKKVM",
+      "categories": [
+        "ai",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1751448555253-f39c06e29d82",
+      "alt": "A security and privacy dashboard with its status",
+      "credit": "Photo by Zulfugar Karimov on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-security-and-privacy-dashboard-with-its-status--nBClEqKKVM"
+    },
+    {
+      "key": "cybersecurityDashboard7Og0reGku4",
+      "categories": [
+        "ai",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1762340916350-ad5a3d620c16",
+      "alt": "Security, privacy, and performance status with fix options",
+      "credit": "Photo by Zulfugar Karimov on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/security-privacy-and-performance-status-with-fix-options-7Og0reGku4M"
+    },
+    {
+      "key": "cybersecurityDashboardJb1TF3kvsA",
+      "categories": [
+        "ai",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1584291527908-033f4d6542c8",
+      "alt": "Black flat screen computer monitor",
+      "credit": "Photo by Clay Banks on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-computer-monitor-_Jb1TF3kvsA"
+    },
+    {
+      "key": "cybersecurityDashboardz5k5vWGh7N",
+      "categories": [
+        "ai",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1590122696319-152756c73526",
+      "alt": "Black and silver laptop computer",
+      "credit": "Photo by Isaac Quesada on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-and-silver-laptop-computer-z5k5vWGh7Nk"
+    },
+    {
+      "key": "cybersecurityDashboard2d3s0kpCU4",
+      "categories": [
+        "ai",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1584931421154-2bf69492aa2c",
+      "alt": "Black flat screen tv showing UNK",
+      "credit": "Photo by Martin Sanchez on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-tv-showing-unk-2d3s0kpCU4s"
+    },
+    {
+      "key": "cybersecurityDashboardpYe2wAf3tg",
+      "categories": [
+        "ai",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1678809768466-43d610e470b1",
+      "alt": "A close up of a clock on a computer screen",
+      "credit": "Photo by Xavier Cee on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-of-a-clock-on-a-computer-screen-pYe2-wAf3tg"
+    },
+    {
+      "key": "cybersecurityDashboard9XjTaSUbYb",
+      "categories": [
+        "ai",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1586448910484-69aad26aba8a",
+      "alt": "Black and white digital device",
+      "credit": "Photo by KOBU Agency on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-and-white-digital-device-9XjTaSUbYbI"
+    },
+    {
+      "key": "cybersecurityDashboardXU1L22IUKn",
+      "categories": [
+        "ai",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1590971862391-06cac0657603",
+      "alt": "Black flat screen computer monitor",
+      "credit": "Photo by Joan Gamell on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-computer-monitor-XU1L22IUKnc"
+    },
+    {
+      "key": "cybersecurityDashboardAh4F6gOmgI",
+      "categories": [
+        "ai",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1518734549841-b417d28c22aa",
+      "alt": "Computer screen displaying 4.7k",
+      "credit": "Photo by Quilia on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/computer-screen-displaying-47k-Ah4F6g-OmgI"
+    },
+    {
+      "key": "cybersecurityDashboardTzWuSdXMWu",
+      "categories": [
+        "ai",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1585123607296-3e3357c5a7ae",
+      "alt": "Text",
+      "credit": "Photo by Sharad Bhat on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/text-TzWuSdXMWuk"
+    },
+    {
+      "key": "cybersecurityDashboardyKb2hzGFgE",
+      "categories": [
+        "ai",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1586448910433-965efd06eb38",
+      "alt": "Black digital device at 20",
+      "credit": "Photo by KOBU Agency on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-digital-device-at-20-yKb2hzGFgEo"
+    },
+    {
+      "key": "cybersecurityDashboardH0r6LB9rz4",
+      "categories": [
+        "ai",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1559028006-448665bd7c7f",
+      "alt": "QR code screenshot",
+      "credit": "Photo by Eftakher Alam on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/qr-code-screenshot-H0r6LB_9rz4"
+    },
+    {
+      "key": "dataVisualizationScreenU0r0JMypE0",
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1584291527905-f930791fb1ce",
+      "alt": "Red and black heart illustration",
+      "credit": "Photo by Clay Banks on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/red-and-black-heart-illustration-U0-r0JMypE0"
+    },
+    {
+      "key": "dataVisualizationScreenno2blvVYoJ",
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1584291527935-456e8e2dd734",
+      "alt": "Red and white heart illustration",
+      "credit": "Photo by Clay Banks on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/red-and-white-heart-illustration-no2blvVYoJw"
+    },
+    {
+      "key": "dataVisualizationScreenqLfMLRfq8",
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1784334312040-5b3d4cf78b88",
+      "alt": "Hand operating laptop displaying data spreadsheet on a desk",
+      "credit": "Photo by Gorilla ROI Data Connector on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/hand-operating-laptop-displaying-data-spreadsheet-on-a-desk-qLf_ML_Rfq8"
+    },
+    {
+      "key": "dataVisualizationScreenadFEOdO7RA",
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1770681381576-f1fdceb2ea01",
+      "alt": "Laptop displaying charts next to notebook and mug",
+      "credit": "Photo by nicoll camacho on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/laptop-displaying-charts-next-to-notebook-and-mug-adFE-OdO7RA"
+    },
+    {
+      "key": "dataVisualizationScreenf65Fz7TI9U",
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1745301754104-4effee07d6ac",
+      "alt": "Trading on the tablet with stock data",
+      "credit": "Photo by Jakub Żerdzicki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/trading-on-the-tablet-with-stock-data-f65Fz7TI9UA"
+    },
+    {
+      "key": "dataVisualizationScreenVM6EtTAfDQ",
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1744782211816-c5224434614f",
+      "alt": "Stock charts are displayed on multiple screens",
+      "credit": "Photo by Jakub Żerdzicki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/stock-charts-are-displayed-on-multiple-screens-VM_6EtTAfDQ"
+    },
+    {
+      "key": "dataVisualizationScreenolQgFvCqTp",
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1763568258586-da55ea292766",
+      "alt": "Laptop screen displaying code and graphs with glasses on keyboard",
+      "credit": "Photo by Daniil Komov on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/laptop-screen-displaying-code-and-graphs-with-glasses-on-keyboard-olQgFvCqTpc"
+    },
+    {
+      "key": "dataVisualizationScreen1fhzUGpPk5",
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1781914476939-91a41b914899",
+      "alt": "Dark workspace with laptop, monitor displaying code, and plant",
+      "credit": "Photo by JEFERSON DA PAULINO on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/dark-workspace-with-laptop-monitor-displaying-code-and-plant-1fhzUGpPk5I"
+    },
+    {
+      "key": "dataVisualizationScreenF6RNOgXyPt",
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1765445666054-b039548214d4",
+      "alt": "Abstract digital art with glitch effects and text",
+      "credit": "Photo by Egor Komarov on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/abstract-digital-art-with-glitch-effects-and-text-F6RNOgXyPtM"
+    },
+    {
+      "key": "dataVisualizationScreenmu8pIUwoWe",
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1764496018639-d5c7426b1331",
+      "alt": "Vintage television displaying a colorful scene",
+      "credit": "Photo by Mohammad Bahadori on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/vintage-television-displaying-a-colorful-scene-mu8pIUwoWeo"
+    },
+    {
+      "key": "dataVisualizationScreenlffWAt8ubM",
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1765445666264-361d2a9c5e24",
+      "alt": "Digital glitch art with text and abstract shapes",
+      "credit": "Photo by Egor Komarov on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/digital-glitch-art-with-text-and-abstract-shapes-lffWAt8u_bM"
+    },
+    {
+      "key": "dataVisualizationScreenMY6NSSWE94",
+      "categories": [
+        "ai",
+        "automation",
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1762341123514-01ac9f563350",
+      "alt": "Smartphone screen displays risk analysis with number 18",
+      "credit": "Photo by Zulfugar Karimov on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/smartphone-screen-displays-risk-analysis-with-number-18-MY6NSSWE94c"
+    },
+    {
+      "key": "cryptoTradingDashboardmp11hrQXf8",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1621264448270-9ef00e88a935",
+      "alt": "Black flat screen computer monitor",
+      "credit": "Photo by Behnam Norouzi on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-computer-monitor-mp11_hrQXf8"
+    },
+    {
+      "key": "cryptoTradingDashboard9rz5x8LGBb",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1745270917331-787c80129680",
+      "alt": "Stock market graph shows fluctuating trends",
+      "credit": "Photo by Arturo Añez on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/stock-market-graph-shows-fluctuating-trends-9rz5x8LGBb8"
+    },
+    {
+      "key": "cryptoTradingDashboardRDXcFY5g5O",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1639754390580-2e7437267698",
+      "alt": "A computer screen displaying a stock market chart",
+      "credit": "Photo by Behnam Norouzi on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-screen-displaying-a-stock-market-chart-RDXcFY5g5O4"
+    },
+    {
+      "key": "cryptoTradingDashboardNBnvQw18",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f",
+      "alt": "Screen showing bitcoin trading chart",
+      "credit": "Photo by Nick Chong on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/screen-showing-bitcoin-trading-chart-N__BnvQ_w18"
+    },
+    {
+      "key": "cryptoTradingDashboardDfjJMVhwH8",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1563986768711-b3bde3dc821e",
+      "alt": "Turned-on MacBook Pro",
+      "credit": "Photo by Austin Distel on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/turned-on-macbook-pro-DfjJMVhwH_8"
+    },
+    {
+      "key": "cryptoTradingDashboardZzOa5G8hSP",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1535320903710-d993d3d77d29",
+      "alt": "Selective focus photography of graph",
+      "credit": "Photo by m. on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/selective-focus-photography-of-graph-ZzOa5G8hSPI"
+    },
+    {
+      "key": "cryptoTradingDashboardeNStVITP10",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1589560989620-61bf48e97abb",
+      "alt": "Black flat screen computer monitor",
+      "credit": "Photo by Vladislav Maslow on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-flat-screen-computer-monitor-eNStVITP_10"
+    },
+    {
+      "key": "cryptoTradingDashboardQvhJv5im8",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1745270917233-65e776a47547",
+      "alt": "Stock chart indicates growth and potential profit",
+      "credit": "Photo by Arturo Añez on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/stock-chart-indicates-growth-and-potential-profit-Q_vhJv5im-8"
+    },
+    {
+      "key": "cryptoTradingDashboardOmPqCwX422",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d",
+      "alt": "Black android smartphone turned on screen",
+      "credit": "Photo by Marga Santoso on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-android-smartphone-turned-on-screen-OmPqCwX422Y"
+    },
+    {
+      "key": "cryptoTradingDashboardztYmIQecyH",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1614028674026-a65e31bfd27c",
+      "alt": "Laptop showing stock chart on desk",
+      "credit": "Photo by Tech Daily on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/laptop-showing-stock-chart-on-desk-ztYmIQecyH4"
+    },
+    {
+      "key": "cryptoTradingDashboardwX062biT50",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1737301214226-3f959016436f",
+      "alt": "A laptop computer sitting on top of a desk",
+      "credit": "Photo by Jakub Żerdzicki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-desk-wX062bi-T50"
+    },
+    {
+      "key": "cryptoTradingDashboardXihAgOYNHn",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1621629057099-c7cf1fb8ca1e",
+      "alt": "Black android smartphone on brown wooden table",
+      "credit": "Photo by Sajad Nori on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-android-smartphone-on-brown-wooden-table-XihAgOYNHn4"
+    },
+    {
+      "key": "financialMarketChartstcJ6sJTtTW",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1651340981821-b519ad14da7c",
+      "alt": "A close-up of a screen",
+      "credit": "Photo by Anne Nygård on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-close-up-of-a-screen-tcJ6sJTtTWI"
+    },
+    {
+      "key": "financialMarketChartsU4I4oH4xlg",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1707762890671-52ef6d6f51e7",
+      "alt": "A person writing on a piece of paper next to a computer monitor",
+      "credit": "Photo by Jakub Żerdzicki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-person-writing-on-a-piece-of-paper-next-to-a-computer-monitor-U4-I4oH4xlg"
+    },
+    {
+      "key": "financialMarketChartsfchVIvuMGB",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1640451859877-1374a1155215",
+      "alt": "A pair of glasses sitting on top of a laptop computer",
+      "credit": "Photo by Nimisha Mekala on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-pair-of-glasses-sitting-on-top-of-a-laptop-computer-fchVIvuMGBI"
+    },
+    {
+      "key": "financialMarketChartsPydnIdcY",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1738737271801-d404a575d870",
+      "alt": "A person using a laptop computer on a desk",
+      "credit": "Photo by Jakub Żerdzicki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-person-using-a-laptop-computer-on-a-desk-Pyd-_nId-cY"
+    },
+    {
+      "key": "financialMarketChartsd01CoAsDR0",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1712640183722-ec59693f7c82",
+      "alt": "A person holding a remote control in front of a computer screen",
+      "credit": "Photo by Jakub Żerdzicki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-person-holding-a-remote-control-in-front-of-a-computer-screen-d0_1CoAsDR0"
+    },
+    {
+      "key": "financialMarketChartsW7wEqy01K3",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1638481826540-7710b13f7d53",
+      "alt": "A computer screen with a red line on it",
+      "credit": "Photo by m. on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-computer-screen-with-a-red-line-on-it-W7wEqy01K3s"
+    },
+    {
+      "key": "financialMarketChartsynllMMWBdi",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1734503937317-3b88a42ac50c",
+      "alt": "A laptop computer sitting on top of a desk",
+      "credit": "Photo by Jakub Żerdzicki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-desk-ynllMMWBdi0"
+    },
+    {
+      "key": "financialMarketChartsnJ9k6iU6g",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1737703638422-2cfa152cdcb7",
+      "alt": "A laptop computer sitting on top of a desk",
+      "credit": "Photo by Jakub Żerdzicki on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-desk--nJ9k6iU6_g"
+    },
+    {
+      "key": "financialMarketChartsHASoyURgPM",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1606189934390-2b10bb7f8094",
+      "alt": "Macbook pro on brown wooden table",
+      "credit": "Photo by Joshua Mayo on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/macbook-pro-on-brown-wooden-table-HASoyURgPMY"
+    },
+    {
+      "key": "financialMarketChartsamLfrL8LGl",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1569025690938-a00729c9e1f9",
+      "alt": "Person using MacBook Pro on table",
+      "credit": "Photo by Jason Briscoe on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-using-macbook-pro-on-table-amLfrL8LGls"
+    },
+    {
+      "key": "financialMarketChartsCb6MWqFITs",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1720135885458-0af8193c4a0f",
+      "alt": "Two laptops and a calculator on a marble table",
+      "credit": "Photo by Coinstash Australia on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/two-laptops-and-a-calculator-on-a-marble-table-Cb6MWqFITsk"
+    },
+    {
+      "key": "financialMarketChartsUqILKDhWiF",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1635236190542-d43e4d4b9e4b",
+      "alt": "A person is holding a pencil in front of a laptop",
+      "credit": "Photo by rc.xyz NFT gallery on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-person-is-holding-a-pencil-in-front-of-a-laptop-UqILKDhWiFw"
+    },
+    {
+      "key": "blockchainTechnologyLaptopJNxTZzpHms",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1526378800651-c32d170fe6f8",
+      "alt": "Person holding sticky note",
+      "credit": "Photo by Hitesh Choudhary on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-holding-sticky-note-JNxTZzpHmsI"
+    },
+    {
+      "key": "blockchainTechnologyLaptopRDolnHtjVC",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1577375729152-4c8b5fcda381",
+      "alt": "Turned-on laptop computer",
+      "credit": "Photo by Pakata Goh on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/turned-on-laptop-computer-RDolnHtjVCY"
+    },
+    {
+      "key": "blockchainTechnologyLaptopG78c3DPmDA",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1610465299993-e6675c9f9efa",
+      "alt": "Pink and black heart shape light",
+      "credit": "Photo by Martin Sanchez on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/pink-and-black-heart-shape-light-G78c3DPmD_A"
+    },
+    {
+      "key": "blockchainTechnologyLaptopQxPRz2oTOW",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1588620353536-ded12e518f45",
+      "alt": "Black and gray laptop computer turned on in dark room",
+      "credit": "Photo by Nakul on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-and-gray-laptop-computer-turned-on-in-dark-room-QxPRz2oTOWo"
+    },
+    {
+      "key": "blockchainTechnologyLaptopejLplrQvyI",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1584433305355-9cb73387fc61",
+      "alt": "Black asus laptop computer on brown wooden table",
+      "credit": "Photo by Yash Menghani on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-asus-laptop-computer-on-brown-wooden-table-ejLp_lrQvyI"
+    },
+    {
+      "key": "blockchainTechnologyLaptopSyYmXSDnJ5",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1580927752452-89d86da3fa0a",
+      "alt": "Macbook pro on brown wooden table",
+      "credit": "Photo by Joshua Reddekopp on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/macbook-pro-on-brown-wooden-table-SyYmXSDnJ54"
+    },
+    {
+      "key": "blockchainTechnologyLaptopNHRM1u4GDA",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1622630998477-20aa696ecb05",
+      "alt": "Silver and black round emblem",
+      "credit": "Photo by Jievani Weerasinghe on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/silver-and-black-round-emblem-NHRM1u4GD_A"
+    },
+    {
+      "key": "blockchainTechnologyLaptopkmAFNdXBo0",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1613398773682-9e272a85f203",
+      "alt": "Black and gray laptop computer with black corded mouse on brown wooden table",
+      "credit": "Photo by Sajad Nori on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/black-and-gray-laptop-computer-with-black-corded-mouse-on-brown-wooden-table-kmAFNd-XBo0"
+    },
+    {
+      "key": "blockchainTechnologyLaptopmpU2mzGR0D",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1665211097514-93f9b5c2bf8c",
+      "alt": "A laptop with a red light",
+      "credit": "Photo by Aashish Yadav on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-laptop-with-a-red-light-mpU2mzGR0Dg"
+    },
+    {
+      "key": "blockchainTechnologyLaptopCm8YFLxaGw",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1649371176738-dfc088e7a037",
+      "alt": "A laptop computer sitting on top of a table",
+      "credit": "Photo by Facu Montanaro on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-table-Cm8YFLxaGww"
+    },
+    {
+      "key": "blockchainTechnologyLaptop2K7z8JNOyG",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1540905866768-8784562bfc61",
+      "alt": "MacBook Pro turned-on in dark room",
+      "credit": "Photo by Szabo Viktor on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/macbook-pro-turned-on-in-dark-room-2K7z8JNOyGU"
+    },
+    {
+      "key": "blockchainTechnologyLaptopf3hGH3oLcM",
+      "categories": [
+        "crypto"
+      ],
+      "src": "https://images.unsplash.com/photo-1631864033538-00ceb373906c",
+      "alt": "A laptop computer sitting on top of a table",
+      "credit": "Photo by Morthy Jameson on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-table-f3hGH3oLcMM"
+    },
+    {
+      "key": "startupTeamLaptopsQckxruozjR",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+      "alt": "Group of people using laptop computer",
+      "credit": "Photo by Annie Spratt on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/group-of-people-using-laptop-computer-QckxruozjRg"
+    },
+    {
+      "key": "startupTeamLaptopsSYTO3xs06f",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      "alt": "People sitting down near table with assorted laptop computers",
+      "credit": "Photo by Marvin Meyer on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/people-sitting-down-near-table-with-assorted-laptop-computers-SYTO3xs06fU"
+    },
+    {
+      "key": "startupTeamLaptopsg1Kr4Ozfoa",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+      "alt": "Three people sitting in front of table laughing together",
+      "credit": "Photo by Brooke Cagle on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/three-people-sitting-in-front-of-table-laughing-together-g1Kr4Ozfoac"
+    },
+    {
+      "key": "startupTeamLaptopsMChSQHxGZr",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1521737711867-e3b97375f902",
+      "alt": "Men sitting in front of their laptop computer",
+      "credit": "Photo by Annie Spratt on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/men-sitting-in-front-of-their-laptop-computer-MChSQHxGZrQ"
+    },
+    {
+      "key": "startupTeamLaptopssggw4qDD54",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5",
+      "alt": "Selective focus photography of people sits in front of table inside room",
+      "credit": "Photo by Annie Spratt on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/selective-focus-photography-of-people-sits-in-front-of-table-inside-room-sggw4-qDD54"
+    },
+    {
+      "key": "startupTeamLaptopsTLLb3EU6ti",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1662394028800-72d251e4bdbb",
+      "alt": "Laptops on a table",
+      "credit": "Photo by Taylor Flowe on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/laptops-on-a-table-TLLb3EU6tiU"
+    },
+    {
+      "key": "startupTeamLaptopsrMILC1PIwM",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1603201667141-5a2d4c673378",
+      "alt": "People sitting on chair in front of laptop computers",
+      "credit": "Photo by Cherrydeck on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/people-sitting-on-chair-in-front-of-laptop-computers-rMILC1PIwM0"
+    },
+    {
+      "key": "startupTeamLaptopsrtDlcsN6U",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1690378820474-b468b8ee64d3",
+      "alt": "A group of people sitting around a table with laptops",
+      "credit": "Photo by Lyubomyr Reverchuk on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-with-laptops-rtD_lcsN6_U"
+    },
+    {
+      "key": "startupTeamLaptopsoMtJYEbniH",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1702047094974-a3475a6e37f5",
+      "alt": "A group of people looking at a laptop",
+      "credit": "Photo by Creatopy on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-group-of-people-looking-at-a-laptop-oMtJYEbniH8"
+    },
+    {
+      "key": "startupTeamLaptopsbrq6r83uD8",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1583300599061-ae5ebf5208e9",
+      "alt": "Person using macbook pro on brown wooden table",
+      "credit": "Photo by Joshua Sun on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/person-using-macbook-pro-on-brown-wooden-table-brq6r83uD8U"
     }
   ]
 }

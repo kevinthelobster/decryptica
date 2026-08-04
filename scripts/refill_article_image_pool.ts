@@ -24,8 +24,8 @@ const root = path.join(__dirname, '..');
 const articleImagesPath = path.join(root, 'app', 'data', 'article-images.ts');
 const candidatesPath = path.join(root, 'data', 'article_image_candidates.json');
 const recentWindowDays = Number(process.env.ARTICLE_IMAGE_RECENT_DAYS || 90);
-const targetUnusedImages = Number(process.env.ARTICLE_IMAGE_MIN_UNUSED || 12);
-const maxAdditions = Number(process.env.ARTICLE_IMAGE_REFILL_LIMIT || 12);
+const targetUnusedImages = Number(process.env.ARTICLE_IMAGE_MIN_UNUSED || 120);
+const maxAdditions = Number(process.env.ARTICLE_IMAGE_REFILL_LIMIT || 120);
 
 function dateValue(date: string) {
   const value = new Date(date).getTime();
