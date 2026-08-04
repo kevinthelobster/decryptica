@@ -231,6 +231,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'building-reliable-ai-agents-the-hard-truth': imageSet.securityDashboard,
   'why-ai-agent-memory-is-still-fundamentally-broken': imageSet.circuitControlBoard,
   'claude-vs-gemini-which-ai-assistant-makes-more-sense': imageSet.serverRack,
   'chatgpt-team-vs-claude-team-which-plan-fits-small-teams': imageSet.codeProject,
