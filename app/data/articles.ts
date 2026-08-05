@@ -80,6 +80,253 @@ export const topics: Topic[] = [
 
 export const articles: Article[] = [
   {
+    id: '1785929529218-4253',
+    slug: 'why-ai-generated-code-creates-more-work-than-it-saves',
+    title: "Why AI-Generated Code Creates More Work Than It Saves",
+    excerpt: "AI-generated code rarely fails in the dramatic way vendors imply it will soon eliminate. It fails in the boring way software teams already understand:...",
+    content: `# Why AI-Generated Code Creates More Work Than It Saves
+
+AI-generated code rarely fails in the dramatic way vendors imply it will soon eliminate. It fails in the boring way software teams already understand: almost-correct patches, mismatched assumptions, unreviewed security edges, swollen pull requests, and follow-up debugging nobody budgeted for.
+
+That is why the serious question is not whether AI coding tools can write code. They can. The question is whether the code arrives with less total work after review, testing, security approval, incident risk, and long-term maintenance are counted.
+
+For many teams, the answer is uncomfortable: AI-generated code saves typing, but often creates more engineering work downstream.
+
+## Quick Answer
+
+AI coding tools are useful for experienced developers working on bounded, low-risk tasks: test scaffolds, migrations with clear patterns, documentation-adjacent changes, small refactors, throwaway prototypes, and first-pass explanations of unfamiliar code. Teams with strong tests, code review discipline, dependency controls, and security scanning can extract value from tools such as GitHub Copilot, Cursor, Claude Code, OpenAI Codex, and Gemini Code Assist.
+
+They are a bad fit for teams that want to replace engineering judgment, ship large AI-authored patches without review, or use AI-generated code in security-sensitive paths without extra controls. The main tradeoff is simple: these ai tools reduce the cost of producing code, but increase the burden of deciding whether that code is correct, secure, maintainable, and aligned with the system.
+
+A reusable checklist: evaluate task type, repository context, test coverage, data exposure, model pricing, rate limits, review burden, rollback plan, and ownership. If a tool cannot be measured against those items, it is not ready for production adoption.
+
+**TL;DR**
+
+AI-generated code creates more work than it saves when teams treat output volume as productivity. The evidence from public documentation, benchmark reports, pricing pages, security research, and user reports points to a narrower conclusion: AI coding assistants help most when they are used as controlled accelerators inside mature workflows.
+
+The winners are not the teams generating the most code. The winners are the teams rejecting bad code faster.
+
+Use AI coding tools for repetitive, well-specified work. Avoid them for vague product requirements, authentication changes, payment logic, cryptography, permissions, data deletion flows, production incident fixes, and large architectural rewrites unless a senior engineer owns the result.
+
+## What We Checked
+
+This analysis is based on public documentation, pricing pages, security and data-control documentation, benchmark reports, academic security studies, and public user reports. It does not claim original hands-on testing, private benchmark access, or confidential buyer data.
+
+The evidence base includes official pricing and billing material from [GitHub Copilot](https://docs.github.com/en/copilot/concepts/billing/organizations-and-enterprises), [Cursor](https://cursor.com/pricing), [OpenAI Codex](https://help.openai.com/en/articles/20001106-codex-rate-card), [Claude pricing](https://claude.com/pricing), and [Google Gemini Code Assist](https://cloud.google.com/products/gemini/pricing).
+
+It also includes security and privacy documentation from [Cursor](https://docs.cursor.com/account/privacy), [Google Cloud](https://docs.cloud.google.com/gemini/docs/codeassist/security-privacy-compliance), and GitHub’s Copilot documentation on [code referencing](https://docs.github.com/en/copilot/concepts/completions/code-referencing?tool=webui).
+
+For capability evidence, we looked at public benchmark reports such as [SWE-bench](https://www.swebench.com/), OpenAI’s notes on [SWE-bench Verified](https://openai.com/index/introducing-swe-bench-verified/), and later benchmark caveats about contamination and broken evaluation tasks in [SWE-bench Verified](https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/) and [SWE-Bench Pro](https://openai.com/index/separating-signal-from-noise-coding-evaluations/).
+
+For security risk, we considered peer-reviewed and preprint work on AI-generated code vulnerabilities, including studies of Copilot-generated code weaknesses in [ACM](https://dl.acm.org/doi/10.1145/3610721) and [arXiv](https://arxiv.org/abs/2310.02059).
+
+## The Mechanism: Why More Code Becomes More Work
+
+AI coding assistants make code cheaper to produce. That sounds like an obvious win until the bottleneck moves.
+
+In a mature software organization, typing is rarely the limiting factor. The expensive parts are understanding the system, choosing the right change, proving it works, avoiding regressions, securing the path, and maintaining the result six months later.
+
+AI-generated code attacks the cheapest part of that chain. It produces candidate patches quickly, but it cannot reliably absorb all project history, stakeholder intent, runtime behavior, deployment constraints, compliance obligations, and unstated team conventions.
+
+That creates a review inversion. Instead of a developer writing code they understand and asking reviewers to check it, the developer receives code they may only partly understand and must reverse-engineer whether it is safe.
+
+The failure mode is not always a red build. The worse failure is a green build with the wrong abstraction, leaky authorization, brittle tests, silent data mismatch, or an API call that behaves differently under production load.
+
+## What The Evidence Actually Suggests
+
+The clearest public counterweight to vendor productivity claims is METR’s randomized study of experienced open-source developers. In its early 2025 experiment, developers working on real tasks in repositories they knew were slower when allowed to use AI tools, with METR later noting that early 2026 follow-up data showed possible speedups but weak evidence because of selection effects and measurement issues.
+
+That matters because it separates “AI can write code” from “AI improves total task completion time.” Developers in the study expected speedups, but the measured workflow included prompting, waiting, reviewing, editing, and recovering from poor generations.
+
+Benchmarks tell a different but compatible story. SWE-bench and similar evaluations show that coding agents can resolve real repository issues at meaningful rates, but benchmark maintainers and model labs have also documented major caveats: underspecified tasks, flawed tests, contamination, and gaps between benchmark patches and production engineering.
+
+Security research adds another layer. Studies have found AI-generated code can include insecure patterns such as cross-site scripting, weak randomness, injection risks, and unsafe deserialization. GitHub’s own Copilot materials acknowledge that public code may contain insecure patterns and that generated suggestions still require testing, review, and security tools.
+
+So the evidence does not say “AI coding tools are useless.” It says they are uneven. They help in narrower conditions than the marketing suggests, and they transfer work from generation to verification.
+
+## Where The Marketing Overreaches
+
+The most common marketing overreach is the implied conversion from “accepted suggestion” to “productivity gain.” Acceptance is not productivity. A developer can accept a bad suggestion, spend time fixing it, and still report that the tool felt fast.
+
+The second overreach is treating benchmark scores as buyer proof. A strong score on SWE-bench-style tasks is useful evidence of model capability, but it does not measure your repo’s dependency graph, CI speed, incident history, code ownership, permissions model, or compliance obligations.
+
+The third overreach is “agentic” language. Agents sound autonomous, but in real teams every autonomous action becomes a governance question: what can it read, what can it edit, what can it run, what can it send externally, and who is accountable when it is wrong?
+
+The fourth overreach is price framing. A $20 or $40 monthly seat looks cheap until heavy usage, premium model routing, token-based billing, cloud agents, slower CI, extra review time, and security remediation enter the budget.
+
+## Tool Comparison: What Buyers Should Actually Choose
+
+The right choice depends less on headline model quality and more on workflow fit.
+
+| Use case | Better fit | Why it works | Who should avoid it |
+|---|---|---|---|
+| Individual developer autocomplete and chat | GitHub Copilot Pro or Cursor Pro | Fast IDE assistance, broad language coverage, low procurement burden | Developers working with sensitive client code without clear data settings |
+| Repository-aware agent work | Cursor Teams/Enterprise, Codex, Claude Code | Better for multi-file edits, refactors, and command-line workflows | Teams without strong tests or senior review capacity |
+| GitHub-native teams | GitHub Copilot Business/Enterprise | Central policy controls, code referencing, GitHub workflow integration | Teams spread across non-GitHub SCMs or strict network isolation requirements |
+| Google Cloud-heavy teams | Gemini Code Assist Standard/Enterprise | Cloud-native controls, IAM alignment, enterprise security documentation | Teams outside Google Cloud that do not need its platform integrations |
+| Regulated enterprise pilots | Enterprise-tier plans only | SSO, audit logs, policy controls, data handling terms, admin analytics | Any team trying to use individual seats as shadow infrastructure |
+| Rapid prototypes | Cursor, Claude Code, Codex, Gemini CLI | High leverage for disposable scaffolds and exploration | Teams likely to ship prototypes unchanged into production |
+
+The practical recommendation is blunt: start with the tool that fits your existing development surface.  GitHub-first teams should evaluate Copilot first.  Cursor-heavy teams should compare Cursor Teams against Codex and Claude Code for agent workflows.
+
+Google Cloud shops should include Gemini Code Assist because the security review may be easier.
+
+Do not choose a coding assistant because one model tops a leaderboard. Choose based on controls, observability, total workflow cost, and how easily the tool can be turned off without breaking engineering habits.
+
+## Pricing Is No Longer Just Seat Cost
+
+AI coding pricing has shifted from simple subscriptions toward hybrid seat-plus-usage models.
+
+GitHub’s public Copilot documentation lists business and enterprise pricing with included AI credits and usage-based billing mechanics.  Cursor’s pricing page lists individual and team plans, with higher tiers tied to more agent usage and enterprise features such as pooled usage, access controls, audit logs, and service accounts.  OpenAI’s Codex rate card now maps usage to token consumption for input, cached input, and output tokens.
+
+Claude Code draws from Claude plan usage pools, while heavy coding can move into API-style usage.  Google prices Gemini Code Assist Standard and Enterprise through Google Cloud licensing.
+
+For buyers, the key metric is not “price per seat.” The key metric is cost per accepted production change after review.
+
+Track these items during a pilot: AI spend by user, prompts per merged PR, rejected generations, CI runs per AI-assisted PR, review time, escaped defects, security findings, and rollback rate. Those are the numbers that reveal whether a tool saves work or simply moves it into harder-to-see buckets.
+
+A lightweight calculator can help model this before rollout; Decryptica readers comparing model usage and budget exposure should route pricing assumptions through an AI model price calculator or equivalent internal spreadsheet before approving broad seats.
+
+## Security Review: The Hidden Tax
+
+Security is where AI-generated code creates the most dangerous extra work.
+
+A coding assistant can produce plausible authentication middleware that forgets tenant boundaries.  It can add a SQL query with weak parameter handling.  It can create a webhook verifier that compares signatures incorrectly.
+
+It can generate logging code that leaks tokens.  It can “fix” a permissions bug by widening access.
+
+The model is not malicious. It is pattern-matching under incomplete constraints.
+
+Vendor controls matter.  GitHub offers code referencing for suggestions that match public code and organization policy controls.  Cursor documents privacy modes, codebase indexing behavior, model-provider routing, and enterprise controls.
+
+Google’s Gemini Code Assist documentation covers IAM, VPC Service Controls, customer data handling, and enterprise compliance claims.
+
+Those controls reduce risk. They do not remove the need for review.
+
+At minimum, AI-assisted teams need secret scanning, dependency scanning, SAST, branch protection, CODEOWNERS, human review on sensitive directories, test requirements, and a written rule that AI output is treated as third-party code until reviewed.
+
+For more on the debugging side of this problem, see Decryptica’s analysis of [the debugging problem AI coding assistants can’t solve](/blog/the-debugging-problem-ai-coding-assistants-can-t-solve).
+
+## The Real Failure Modes
+
+### Almost-Correct Business Logic
+
+AI tools are good at syntax and common patterns. They are weaker at local business meaning.
+
+A billing system may require refunds to preserve audit trails.  An AI-generated helper may delete rows directly.  A permissions system may distinguish account owners from workspace admins.
+
+The generated patch may collapse them because the names look similar.
+
+### Test Theater
+
+AI tools can write tests that confirm their own assumptions. That is useful for scaffolding, but dangerous when the tests merely lock in a flawed interpretation.
+
+A serious workflow separates implementation prompts from test prompts. Ask for edge cases before asking for code. Decryptica’s [Prompt Library Gap Finder](/prompts/prompt-library-gap-finder) is a useful pattern for identifying missing repeatable prompts in team workflows, including security review, regression planning, and test coverage prompts.
+
+### Dependency Sprawl
+
+Generated code often reaches for new packages. Each package adds license review, vulnerability surface, version drift, and operational risk.
+
+A five-line helper can become a new transitive dependency chain. That is not productivity. That is deferred maintenance.
+
+### Architectural Drift
+
+AI agents tend to solve the visible task in front of them. They may duplicate logic rather than find the existing abstraction, add a parallel validation path, or create a new configuration format because it fits the prompt.
+
+This is how teams end up with more code, more patterns, and less clarity.
+
+### Review Fatigue
+
+Large AI-authored pull requests are hard to review because the author may not have a strong mental model of every line. Reviewers then become the first real engineers to understand the change.
+
+That is backwards. AI-assisted PRs should be smaller than normal PRs, not larger.
+
+## Adoption Checklist For Serious Teams
+
+Before rolling out AI-generated code broadly, require a pilot with measurable constraints.
+
+| Question | Why it matters | Pass signal |
+|---|---|---|
+| Which tasks are allowed? | Prevents vague “use AI everywhere” mandates | Approved task list by risk level |
+| What code is off-limits? | Protects auth, payments, secrets, crypto, deletion, and regulated flows | Sensitive paths require human-authored changes or senior approval |
+| What data can leave the machine? | Determines privacy and compliance exposure | Documented vendor settings, retention terms, and model routing |
+| How is cost tracked? | Seat price hides usage and review costs | Spend tied to merged PRs and team outcomes |
+| How are generated changes reviewed? | AI output needs ownership | Human author accepts accountability for every line |
+| What security tools run automatically? | AI can generate vulnerable code | SAST, dependency checks, secret scanning, and required CI |
+| How is success measured? | Prevents vibes-based procurement | Cycle time, review time, defects, rollback rate, and security findings |
+
+This checklist should be boring. Boring is the point.
+
+## Recommendations By Use Case
+
+### For Solo Builders
+
+Use AI coding tools aggressively for prototypes, scripts, UI scaffolding, documentation, small tests, and learning unfamiliar APIs. Keep production code small, readable, and manually reviewed.
+
+Cursor Pro, Copilot Pro, Claude Code, and Codex can all make sense depending on preferred editor and model access. The winning setup is the one that keeps you moving without hiding cost or context.
+
+Avoid using AI to generate security-sensitive code outside your competence. If you cannot review the code, you cannot safely ship it.
+
+### For Startups
+
+Start with a narrow policy: allow AI for tests, migrations, admin UI, typed clients, documentation, and well-contained feature work. Block or escalate auth, billing, data deletion, customer isolation, infrastructure permissions, and incident response patches.
+
+Cursor Teams and GitHub Copilot Business are the most obvious starting points for many small engineering teams because they map to common IDE and GitHub workflows. Codex and Claude Code are stronger candidates where terminal-based agent workflows are central.
+
+The adoption risk is cultural. If founders reward PR volume, AI tools will generate PR volume.
+
+### For Enterprises
+
+Enterprises should not buy individual AI coding seats as a stealth productivity experiment. That creates unmanaged data exposure and inconsistent review standards.
+
+Require SSO, admin controls, audit logs, codebase access controls, model/data retention review, procurement approval, and security sign-off. Gemini Code Assist Enterprise, GitHub Copilot Enterprise, Cursor Enterprise, ChatGPT Enterprise/Codex, and Claude enterprise plans belong in the comparison set because the security paperwork matters as much as model quality.
+
+The recommendation: run department-level pilots with strict task categories and metrics before broad deployment.
+
+## What Remains Uncertain
+
+The tooling is improving quickly. Models are better at repository navigation, long-context reasoning, test generation, and tool use than they were two years ago.
+
+But the measurement problem remains hard.  Benchmarks can be contaminated.  Tests can reject correct answers.
+
+User surveys can confuse perceived speed with actual throughput.  Vendor demos tend to show clean tasks, not messy production systems with flaky CI, legacy constraints, and ambiguous ownership.
+
+The open question is not whether AI coding assistants will improve. They will. The open question is whether organizations will improve their engineering systems enough to benefit from them.
+
+## FAQ
+
+### Does AI-generated code always create more work?
+
+No. It creates less work when the task is narrow, the desired output is easy to verify, and the team has strong tests and review. It creates more work when the task is ambiguous, high-risk, or poorly covered by automated checks.
+
+### Which AI coding tool is best?
+
+There is no universal winner. GitHub Copilot is strongest for GitHub-native workflows, Cursor is compelling for repository-aware editor workflows, Codex and Claude Code are useful for agentic terminal work, and Gemini Code Assist makes the most sense for Google Cloud-aligned enterprises. Choose by workflow, controls, and total cost, not leaderboard rank.
+
+### Should junior developers use AI coding assistants?
+
+Yes, but with guardrails. AI can help juniors read code, generate tests, and understand APIs, but it can also teach bad patterns with confidence. Junior developers should use AI output as draft material, not authority.
+
+## The Bottom Line
+
+AI-generated code creates more work than it saves when teams confuse generation with delivery. The code is the easy part; confidence is the expensive part.
+
+Use these ai tools where verification is cheap.  Avoid them where correctness depends on hidden business rules, security judgment, or architectural taste.  The best teams will not be the ones that let AI write the most code.
+
+They will be the ones that build the sharpest filters.
+
+*This article presents independent analysis. Always conduct your own research before making investment or technology decisions.*`.trim(),
+    category: 'ai',
+    readTime: '15 min',
+    date: '2026-08-05',
+    author: 'Decryptica',
+    status: 'published',
+    primaryKeyword: "ai tools",
+    primaryConversionHref: "/tools/ai-price-calculator",
+    tags: ["ai-coding","ai tools"],
+    wordCount: 2842,
+  },
+  {
     id: '1785879147712-3461',
     slug: 'the-debugging-problem-ai-coding-assistants-can-t-solve',
     title: "The Debugging Problem AI Coding Assistants Can't Solve",
