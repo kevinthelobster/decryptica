@@ -862,6 +862,18 @@ export const imageSet = {
     credit: 'Photo by Adam Kring on Unsplash',
     creditUrl: 'https://unsplash.com/photos/text-ctSkCiVrdGA',
   },
+  businessOperationsDashboardEL16ACtwLx: {
+    src: `https://images.unsplash.com/photo-1748609160056-7b95f30041f0${unsplashParams}`,
+    alt: 'Someone analyzes financial data on a tablet',
+    credit: 'Photo by Jakub Żerdzicki on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/someone-analyzes-financial-data-on-a-tablet-EL16ACtwLxg',
+  },
+  workflowPlanningDeskE9abH9GTio: {
+    src: `https://images.unsplash.com/photo-1754039984995-a91721ce1870${unsplashParams}`,
+    alt: 'A cluttered desk with various office supplies',
+    credit: 'Photo by Jakub Żerdzicki on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-cluttered-desk-with-various-office-supplies-E9abH9GT-io',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -994,6 +1006,8 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'workflowPlanningDeskE9abH9GTio',
+    'businessOperationsDashboardEL16ACtwLx',
     'businessOperationsDashboardctSkCiVrdG',
     'businessOperationsDashboarddJCBtdUu74',
     'businessOperationsDashboardWb63zqJ5gn',
