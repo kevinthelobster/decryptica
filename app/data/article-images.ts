@@ -897,6 +897,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'the-gap-between-ai-agent-hype-and-reality': imageSet.apiCodeScreendwigDz0t6T,
   'why-ai-productivity-claims-don-t-match-reality': imageSet.apiCodeScreenN5bT5RctFZ,
   'why-ai-assistants-still-can-t-replace-real-research': imageSet.apiCodeScreenFBNxmwEVpA,
   'why-ai-generated-code-creates-more-work-than-it-saves': imageSet.apiCodeScreenYlVjrBkfXt,
