@@ -874,6 +874,24 @@ export const imageSet = {
     credit: 'Photo by Jakub Żerdzicki on Unsplash',
     creditUrl: 'https://unsplash.com/photos/a-cluttered-desk-with-various-office-supplies-E9abH9GT-io',
   },
+  workflowPlanningDeskv9iowyOH7Q: {
+    src: `https://images.unsplash.com/photo-1754039985001-ccafee437736${unsplashParams}`,
+    alt: 'Developer working on multiple screens in a dark office',
+    credit: 'Photo by Jakub Żerdzicki on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/developer-working-on-multiple-screens-in-a-dark-office-v9iowyOH7QQ',
+  },
+  workflowPlanningDeskncgGmQSNUI: {
+    src: `https://images.unsplash.com/photo-1767190041030-f2f3a6654c5e${unsplashParams}`,
+    alt: 'Keyboard and paper with pen on desk',
+    credit: 'Photo by Joost Crop on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/keyboard-and-paper-with-pen-on-desk-n-cgGmQSNUI',
+  },
+  productManagementWorkspaceRbQ4j2ggOm: {
+    src: `https://images.unsplash.com/photo-1783113938335-ba83ccde7f5f${unsplashParams}`,
+    alt: 'Person working on a laptop with a spreadsheet outdoors',
+    credit: 'Photo by Gorilla ROI Data Connector on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/person-working-on-a-laptop-with-a-spreadsheet-outdoors-RbQ4j2ggOmY',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1009,6 +1027,9 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'productManagementWorkspaceRbQ4j2ggOm',
+    'workflowPlanningDeskncgGmQSNUI',
+    'workflowPlanningDeskv9iowyOH7Q',
     'workflowPlanningDeskE9abH9GTio',
     'businessOperationsDashboardEL16ACtwLx',
     'businessOperationsDashboardctSkCiVrdG',
