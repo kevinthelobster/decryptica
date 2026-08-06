@@ -897,6 +897,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'why-open-source-llms-are-catching-up-fast': imageSet.apiCodeScreenyGQmjh2uOT,
   'the-gap-between-ai-agent-hype-and-reality': imageSet.apiCodeScreendwigDz0t6T,
   'why-ai-productivity-claims-don-t-match-reality': imageSet.apiCodeScreenN5bT5RctFZ,
   'why-ai-assistants-still-can-t-replace-real-research': imageSet.apiCodeScreenFBNxmwEVpA,
