@@ -915,6 +915,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-ai-automation-tools-what-to-compare-before-you-buy': imageSet.productManagementWorkspaceIf8U33wram,
   'cursor-vs-windsurf-the-ai-ide-showdown': imageSet.apiCodeScreenXJXWbfSo2f,
   'how-ai-is-changing-commercial-photography': imageSet.apiCodeScreeng5rxRjvKmg,
   'the-attention-economy-problem-ai-creates': imageSet.apiCodeScreeng5jpH62pwe,
