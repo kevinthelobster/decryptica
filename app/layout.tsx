@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import SeoCwvTracker from "./components/SeoCwvTracker";
 import VercelAnalytics from "./components/VercelAnalytics";
 import { getOrganizationSchema, getWebsiteSchema, jsonLdScript } from "./lib/schema";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ 
   subsets: ["latin"], 
