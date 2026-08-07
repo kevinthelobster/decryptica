@@ -892,6 +892,24 @@ export const imageSet = {
     credit: 'Photo by Gorilla ROI Data Connector on Unsplash',
     creditUrl: 'https://unsplash.com/photos/person-working-on-a-laptop-with-a-spreadsheet-outdoors-RbQ4j2ggOmY',
   },
+  productManagementWorkspaceGy7GjLyVs: {
+    src: `https://images.unsplash.com/photo-1617529497832-5ad49d9b5928${unsplashParams}`,
+    alt: 'White printer paper on white table',
+    credit: 'Photo by Jexo on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/white-printer-paper-on-white-table--Gy7GjLy-Vs',
+  },
+  productManagementWorkspaceIf8U33wram: {
+    src: `https://images.unsplash.com/photo-1758873272414-c0bf30332738${unsplashParams}`,
+    alt: 'Two people drawing on a chalkboard wall',
+    credit: 'Photo by Vitaly Gariev on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/two-people-drawing-on-a-chalkboard-wall-If8U33wram4',
+  },
+  cloudInfrastructureServerM5tzZtFCOf: {
+    src: `https://images.unsplash.com/photo-1558494949-ef010cbdcc31${unsplashParams}`,
+    alt: 'Cable network',
+    credit: 'Photo by Taylor Vick on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/cable-network-M5tzZtFCOfs',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -935,6 +953,7 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'cloudInfrastructureServerM5tzZtFCOf',
     'apiCodeScreeng5rxRjvKmg',
     'apiCodeScreenDwDZ5mgwhs',
     'apiCodeScreenMPKQiDpMyq',
@@ -1030,6 +1049,9 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'cloudInfrastructureServerM5tzZtFCOf',
+    'productManagementWorkspaceIf8U33wram',
+    'productManagementWorkspaceGy7GjLyVs',
     'productManagementWorkspaceRbQ4j2ggOm',
     'workflowPlanningDeskncgGmQSNUI',
     'workflowPlanningDeskv9iowyOH7Q',
