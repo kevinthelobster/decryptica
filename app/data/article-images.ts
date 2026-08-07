@@ -915,6 +915,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'how-ai-is-changing-commercial-photography': imageSet.apiCodeScreeng5rxRjvKmg,
   'the-attention-economy-problem-ai-creates': imageSet.apiCodeScreeng5jpH62pwe,
   'why-open-source-llms-are-catching-up-fast': imageSet.apiCodeScreenyGQmjh2uOT,
   'the-gap-between-ai-agent-hype-and-reality': imageSet.apiCodeScreendwigDz0t6T,
