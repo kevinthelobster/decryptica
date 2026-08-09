@@ -570,8 +570,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-09T21:32:56.802Z",
+      "usedBy": {
+        "slug": "best-ticketing-tool-for-workflow-automation-what-matters-in-",
+        "title": "Best Ticketing Tool For Workflow Automation: What Matters in 2026",
+        "date": "2026-08-09"
+      },
       "updatedAt": "2026-08-09T12:27:03.762Z"
     },
     {
