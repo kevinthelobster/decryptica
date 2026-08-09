@@ -70,29 +70,74 @@ function ensureDir(filePath) {
 }
 
 function titleCaseWords(input) {
+  const acronyms = new Map([
+    ['ai', 'AI'],
+    ['api', 'API'],
+    ['ap', 'AP'],
+    ['amm', 'AMM'],
+    ['btc', 'BTC'],
+    ['crm', 'CRM'],
+    ['defi', 'DeFi'],
+    ['dex', 'DEX'],
+    ['eth', 'ETH'],
+    ['llm', 'LLM'],
+    ['mev', 'MEV'],
+    ['nft', 'NFT'],
+    ['nfts', 'NFTs'],
+    ['rag', 'RAG'],
+    ['roi', 'ROI'],
+    ['rpc', 'RPC'],
+    ['seo', 'SEO'],
+    ['ui', 'UI'],
+    ['ux', 'UX']
+  ]);
+
   return input
     .split(/\s+/)
     .filter(Boolean)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word) => acronyms.get(word.toLowerCase()) || word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
+}
+
+function normalizeKnownAcronyms(title) {
+  return title
+    .replace(/\bAi\b/g, 'AI')
+    .replace(/\bApi\b/g, 'API')
+    .replace(/\bAp\b/g, 'AP')
+    .replace(/\bAmm\b/g, 'AMM')
+    .replace(/\bBtc\b/g, 'BTC')
+    .replace(/\bCrm\b/g, 'CRM')
+    .replace(/\bDefi\b/g, 'DeFi')
+    .replace(/\bDex\b/g, 'DEX')
+    .replace(/\bEth\b/g, 'ETH')
+    .replace(/\bLlm\b/g, 'LLM')
+    .replace(/\bMev\b/g, 'MEV')
+    .replace(/\bNft\b/g, 'NFT')
+    .replace(/\bNfts\b/g, 'NFTs')
+    .replace(/\bRag\b/g, 'RAG')
+    .replace(/\bRoi\b/g, 'ROI')
+    .replace(/\bRpc\b/g, 'RPC')
+    .replace(/\bSeo\b/g, 'SEO')
+    .replace(/\bUi\b/g, 'UI')
+    .replace(/\bUx\b/g, 'UX');
 }
 
 function createTitleFromKeyword(keyword, category) {
   const normalized = keyword.trim().replace(/\s+/g, ' ');
   const lower = normalized.toLowerCase();
 
-  if (lower.startsWith('best ')) return `${titleCaseWords(normalized)}: What Actually Matters in 2026`;
-  if (lower.startsWith('how ')) return `${titleCaseWords(normalized)}: What Actually Works in 2026`;
-  if (lower.startsWith('what ')) return `${titleCaseWords(normalized)}: A Practical 2026 Guide`;
-  if (lower.startsWith('why ')) return `${titleCaseWords(normalized)}: The Real Answer in 2026`;
-  if (lower.includes(' vs ')) return `${titleCaseWords(normalized)}: Which One Makes More Sense in 2026?`;
+  if (lower.startsWith('best ')) return normalizeKnownAcronyms(`${titleCaseWords(normalized)}: What Actually Matters in 2026`);
+  if (lower.startsWith('how ')) return normalizeKnownAcronyms(`${titleCaseWords(normalized)}: What Actually Works in 2026`);
+  if (lower.startsWith('what ')) return normalizeKnownAcronyms(`${titleCaseWords(normalized)}: A Practical 2026 Guide`);
+  if (lower.startsWith('why ')) return normalizeKnownAcronyms(`${titleCaseWords(normalized)}: The Real Answer in 2026`);
+  if (lower.includes(' vs ')) return normalizeKnownAcronyms(`${titleCaseWords(normalized)}: Which One Makes More Sense in 2026?`);
 
   const suffix = category === 'crypto'
     ? 'What the Market Gets Wrong in 2026'
     : category === 'ai'
       ? 'What Actually Matters in 2026'
       : 'A Practical 2026 Guide';
-  return `${titleCaseWords(normalized)}: ${suffix}`;
+  return normalizeKnownAcronyms(`${titleCaseWords(normalized)}: ${suffix}`);
 }
 
 function normalizeKeyword(keyword) {
@@ -541,7 +586,7 @@ async function main() {
       sourceQuery: candidate.sourceQuery,
       sourceFile: candidate.sourceFile,
       topicCluster: candidate.topicCluster,
-      suggestedTitle: previous.suggestedTitle || createTitleFromKeyword(candidate.keyword, candidate.category),
+      suggestedTitle: normalizeKnownAcronyms(previous.suggestedTitle || createTitleFromKeyword(candidate.keyword, candidate.category)),
       intentScore,
       monetizationScore,
       volumeScore,

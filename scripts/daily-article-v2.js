@@ -666,15 +666,60 @@ const TITLE_POOLS = {
 };
 
 function titleCaseWords(input) {
+  const acronyms = new Map([
+    ['ai', 'AI'],
+    ['api', 'API'],
+    ['ap', 'AP'],
+    ['amm', 'AMM'],
+    ['btc', 'BTC'],
+    ['crm', 'CRM'],
+    ['defi', 'DeFi'],
+    ['dex', 'DEX'],
+    ['eth', 'ETH'],
+    ['llm', 'LLM'],
+    ['mev', 'MEV'],
+    ['nft', 'NFT'],
+    ['nfts', 'NFTs'],
+    ['rag', 'RAG'],
+    ['roi', 'ROI'],
+    ['rpc', 'RPC'],
+    ['seo', 'SEO'],
+    ['ui', 'UI'],
+    ['ux', 'UX']
+  ]);
+
   return input
     .split(/\s+/)
     .filter(Boolean)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word) => acronyms.get(word.toLowerCase()) || word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 }
 
+function normalizeKnownAcronyms(title) {
+  return title
+    .replace(/\bAi\b/g, 'AI')
+    .replace(/\bApi\b/g, 'API')
+    .replace(/\bAp\b/g, 'AP')
+    .replace(/\bAmm\b/g, 'AMM')
+    .replace(/\bBtc\b/g, 'BTC')
+    .replace(/\bCrm\b/g, 'CRM')
+    .replace(/\bDefi\b/g, 'DeFi')
+    .replace(/\bDex\b/g, 'DEX')
+    .replace(/\bEth\b/g, 'ETH')
+    .replace(/\bLlm\b/g, 'LLM')
+    .replace(/\bMev\b/g, 'MEV')
+    .replace(/\bNft\b/g, 'NFT')
+    .replace(/\bNfts\b/g, 'NFTs')
+    .replace(/\bRag\b/g, 'RAG')
+    .replace(/\bRoi\b/g, 'ROI')
+    .replace(/\bRpc\b/g, 'RPC')
+    .replace(/\bSeo\b/g, 'SEO')
+    .replace(/\bUi\b/g, 'UI')
+    .replace(/\bUx\b/g, 'UX');
+}
+
 function fitTitleForSchema(title, maxLength = 70) {
-  title = title.trim().replace(/[.!?]+$/, '');
+  title = normalizeKnownAcronyms(title.trim()).replace(/[.!?]+$/, '');
   if (title.length <= maxLength) return title;
 
   const replacements = [
@@ -803,6 +848,32 @@ function countSharedWords(left, right) {
   return shared;
 }
 
+function topicTokens(value) {
+  const stopWords = new Set([
+    'actually', 'after', 'before', 'best', 'business', 'cost', 'costs', 'for', 'from', 'guide',
+    'how', 'in', 'is', 'matter', 'matters', 'most', 'real', 'should', 'that', 'the', 'their',
+    'tool', 'tools', 'top', 'what', 'when', 'which', 'why', 'with', 'without', 'work', 'works',
+    'worth', 'your', '2025', '2026'
+  ]);
+
+  return normalizePhrase(value)
+    .split(' ')
+    .map((word) => word.endsWith('s') && word.length > 4 ? word.slice(0, -1) : word)
+    .filter((word) => word.length > 2 && !stopWords.has(word));
+}
+
+function hasMeaningfulTopicOverlap(candidate, article) {
+  const candidateTokens = topicTokens(`${candidate.keyword || ''} ${candidate.suggestedTitle || ''}`);
+  const articleTokens = topicTokens(`${article.primaryKeyword || ''} ${article.title || ''}`);
+  if (!candidateTokens.length || !articleTokens.length) return false;
+
+  const articleSet = new Set(articleTokens);
+  const shared = [...new Set(candidateTokens)].filter((token) => articleSet.has(token));
+  const minLength = Math.min(new Set(candidateTokens).size, articleSet.size);
+
+  return minLength >= 3 && shared.length >= Math.max(3, Math.ceil(minLength * 0.75));
+}
+
 function overlapsExistingContent(candidate, existingArticles) {
   const candidateTitle = candidate.suggestedTitle || createTitleFromKeyword(candidate.keyword, candidate.category);
   const candidateSlug = generateSlug(candidateTitle);
@@ -813,7 +884,7 @@ function overlapsExistingContent(candidate, existingArticles) {
     if (article.slug === candidateSlug) return true;
     if (article.normalizedTitle === normalizedTitle) return true;
     if (article.keywordLike && article.keywordLike === normalizedKeyword) return true;
-    return countSharedWords(article.normalizedTitle, normalizedTitle) >= 4;
+    return hasMeaningfulTopicOverlap(candidate, article);
   });
 }
 
