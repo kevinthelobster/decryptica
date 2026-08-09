@@ -19,6 +19,8 @@ const { execSync, execFileSync } = require('child_process');
 // === CONFIGURATION ===
 const CONFIG = {
   model: process.env.AI_MODEL || 'gpt-5.4',
+  codexBin: process.env.CODEX_BIN || '/opt/homebrew/bin/codex',
+  codexHome: process.env.DECRYPTICA_CODEX_HOME || '/Users/kevinsimac/.codex',
   workspace: process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica',
   articlesFile: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/app/data/articles.ts',
   postedTracker: (process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica') + '/data/posted_titles.json',
@@ -104,6 +106,13 @@ function estimateReadTime(content) {
 
 function countWords(content) {
   return stripMarkdown(content || '').split(/\s+/).filter(Boolean).length;
+}
+
+function getCodexCommand() {
+  if (fs.existsSync(CONFIG.codexBin)) return CONFIG.codexBin;
+  const bundledCodex = '/Users/kevinsimac/.openclaw/npm/node_modules/@openclaw/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex/codex';
+  if (fs.existsSync(bundledCodex)) return bundledCodex;
+  return 'codex';
 }
 
 // === DEDUPLICATION TRACKING ===
@@ -1359,10 +1368,11 @@ Return only the final article in markdown.`;
   const runCodexArticlePrompt = (articlePrompt) => {
     const tmpOutFile = `/tmp/decryptica_codex_output_${Date.now()}_${Math.random().toString(16).slice(2)}.md`;
 
-    execFileSync('codex', ['exec', '--model', CONFIG.model, '--output-last-message', tmpOutFile, articlePrompt], {
+    execFileSync(getCodexCommand(), ['exec', '--model', CONFIG.model, '--output-last-message', tmpOutFile, articlePrompt], {
       cwd: CONFIG.workspace,
       encoding: 'utf-8',
       maxBuffer: 50 * 1024 * 1024,
+      env: { ...process.env, CODEX_HOME: CONFIG.codexHome },
       stdio: 'pipe'
     });
 
@@ -1408,7 +1418,7 @@ Return only the final article in markdown.`;
       }
       return fallback;
     }
-    throw new Error('Article generation failed editorial gate; refusing to publish fallback content');
+    throw new Error(`Article generation failed; refusing to publish fallback content. Details: ${detail}`);
   }
 }
 
