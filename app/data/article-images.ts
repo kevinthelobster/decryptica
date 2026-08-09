@@ -933,6 +933,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-marketing-automation-software-for-small-business': imageSet.cloudInfrastructureServerklWUhrwPJ8,
   'the-human-in-the-loop-problem-for-automation': imageSet.cloudInfrastructureServerM5tzZtFCOf,
   'best-ai-automation-tools-what-to-compare-before-you-buy': imageSet.productManagementWorkspaceIf8U33wram,
   'cursor-vs-windsurf-the-ai-ide-showdown': imageSet.apiCodeScreenXJXWbfSo2f,
