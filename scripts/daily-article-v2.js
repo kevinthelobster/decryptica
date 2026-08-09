@@ -879,6 +879,11 @@ function slugExists(slug, existingArticles = loadExistingArticleFingerprints()) 
   return existingArticles.some((article) => article.slug === slug);
 }
 
+function titleExists(title, existingArticles = loadExistingArticleFingerprints()) {
+  const normalizedTitle = normalizePhrase(title);
+  return existingArticles.some((article) => article.normalizedTitle === normalizedTitle);
+}
+
 function isComparisonTopic(value) {
   return /\b(vs|versus|compare|comparison|best|alternative|alternatives|ranked|which)\b/i.test(value || '');
 }
@@ -1050,10 +1055,7 @@ async function researchTopic() {
         };
       }
     }
-    // Last resort: pick random from any category (force rotate)
-    const allTitles = TITLE_POOLS[category];
-    const randomTitle = allTitles[Math.floor(Math.random() * allTitles.length)];
-    return { category, title: fitTitleForSchema(randomTitle), primary_keyword: category, topicCluster: inferArticleCluster(randomTitle, category, category), keywordCandidateId: null, keywordData, tracker };
+    throw new Error('No unused article titles or keyword candidates are available; refusing to publish a duplicate title');
   }
   
   // Pick a random available title
@@ -1621,6 +1623,11 @@ function addArticleToFile(article) {
   if (process.env.ALLOW_TODAY_DUPLICATE !== '1' && todayCount >= DAILY_ARTICLE_LIMIT) {
     throw new Error(`${todayCount} article(s) for ${getTodayDate()} already exist; daily limit is ${DAILY_ARTICLE_LIMIT}, refusing to add another article`);
   }
+
+  const existingArticles = loadExistingArticleFingerprints();
+  if (process.env.ALLOW_DUPLICATE_ARTICLE !== '1' && (slugExists(article.slug, existingArticles) || titleExists(article.title, existingArticles))) {
+    throw new Error(`Article title or slug already exists (${article.slug}); refusing to publish duplicate`);
+  }
   
   const articlesPath = CONFIG.articlesFile;
   let content = fs.readFileSync(articlesPath, 'utf-8');
@@ -1673,7 +1680,7 @@ async function pushToGitHub(slug) {
   log('Committing and pushing to GitHub...');
   
   try {
-    run('git add app/data/articles.ts app/data/article-images.ts', { cwd: CONFIG.workspace });
+    run('git add app/data/articles.ts app/data/article-images.ts data/posted_titles.json data/kwr/keyword_candidates.json', { cwd: CONFIG.workspace });
     run(`git commit -m "Daily article: ${slug}"`, { cwd: CONFIG.workspace });
     run(`git push origin main`, { cwd: CONFIG.workspace });
     log('Pushed to GitHub successfully');
