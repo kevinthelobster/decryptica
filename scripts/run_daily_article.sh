@@ -33,7 +33,7 @@ trap cleanup_lock EXIT INT TERM
   echo "started_at=$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
 } > "$LOCK_DIR/run.meta"
 
-export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="/Users/kevinsimac/.codex/plugins/.plugin-appserver:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export WORKSPACE="$ROOT"
 export CODEX_HOME="/Users/kevinsimac/.codex"
 export AI_MODEL="${AI_MODEL:-gpt-5.5}"
