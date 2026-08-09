@@ -159,8 +159,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-09T16:40:17.371Z",
+      "usedBy": {
+        "slug": "best-business-process-automation-software-for-salesforce",
+        "title": "Best Business Process Automation Software For Salesforce",
+        "date": "2026-08-09"
+      },
       "updatedAt": "2026-08-09T12:27:02.492Z"
     },
     {
