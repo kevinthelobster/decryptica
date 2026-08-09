@@ -922,6 +922,12 @@ export const imageSet = {
     credit: 'Photo by imgix on Unsplash',
     creditUrl: 'https://unsplash.com/photos/img-ix-mining-rig-inside-white-and-gray-room-klWUhr-wPJ8',
   },
+  cloudInfrastructureServerclSQecD9oI: {
+    src: `https://images.unsplash.com/photo-1698668975271-2ba9a323be6b${unsplashParams}`,
+    alt: 'A rack of servers with wires and wires attached to them',
+    credit: 'Photo by Yuriy Vertikov on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-rack-of-servers-with-wires-and-wires-attached-to-them-c-lSQecD9oI',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -969,6 +975,7 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'cloudInfrastructureServerclSQecD9oI',
     'cloudInfrastructureServerklWUhrwPJ8',
     'cloudInfrastructureServeriYnpYeyu57',
     'cloudInfrastructureServerM5tzZtFCOf',
@@ -1067,6 +1074,7 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'cloudInfrastructureServerclSQecD9oI',
     'cloudInfrastructureServerklWUhrwPJ8',
     'cloudInfrastructureServeriYnpYeyu57',
     'cloudInfrastructureServerM5tzZtFCOf',
