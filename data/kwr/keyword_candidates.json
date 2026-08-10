@@ -426,8 +426,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-10T16:33:38.432Z",
+      "usedBy": {
+        "slug": "best-tool-for-api-testing-what-actually-matters-in-2026",
+        "title": "Best Tool For API Testing: What Actually Matters in 2026",
+        "date": "2026-08-10"
+      },
       "updatedAt": "2026-08-09T12:27:05.768Z"
     },
     {
