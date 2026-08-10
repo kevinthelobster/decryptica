@@ -20,7 +20,7 @@ export const PROVIDERS = [
   // Anthropic - first-party Claude API.
   { id: "anthropic-claude-fable-5", name: "Claude Fable 5", provider: "Anthropic", input: 10.0, output: 50.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#d4a574", link: "https://platform.claude.com/docs/en/about-claude/pricing", openSource: false },
   { id: "anthropic-claude-opus-5", name: "Claude Opus 5", provider: "Anthropic", input: 5.0, output: 25.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#d4a574", link: "https://platform.claude.com/docs/en/about-claude/pricing", openSource: false },
-  { id: "anthropic-claude-sonnet-5", name: "Claude Sonnet 5", provider: "Anthropic", input: 3.0, output: 15.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#d4a574", link: "https://platform.claude.com/docs/en/about-claude/pricing", openSource: false },
+  { id: "anthropic-claude-sonnet-5", name: "Claude Sonnet 5", provider: "Anthropic", input: 2.0, output: 10.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#d4a574", link: "https://platform.claude.com/docs/en/about-claude/pricing", openSource: false },
   { id: "anthropic-claude-haiku-4-5", name: "Claude Haiku 4.5", provider: "Anthropic", input: 1.0, output: 5.0, supports: ["text", "vision", "function"], contextWindow: 200000, color: "#d4a574", link: "https://platform.claude.com/docs/en/about-claude/pricing", openSource: false },
 
   // Google - Gemini API paid tier, standard rates for text/image/video inputs.
@@ -59,6 +59,7 @@ export const PROVIDERS = [
   { id: "cohere-command-r7b-12-2024", name: "Command R7B 12-2024", provider: "Cohere", input: 0.0375, output: 0.15, supports: ["text", "function"], contextWindow: 128000, color: "#f47b5a", link: "https://docs.cohere.com/docs/command-r7b", openSource: false },
 
   // Amazon Bedrock
+  { id: "amazon-nova-2-lite", name: "Nova 2 Lite", provider: "Amazon", input: 0.33, output: 2.75, supports: ["text", "vision"], contextWindow: 1000000, color: "#ff9900", link: "https://aws.amazon.com/bedrock/pricing/", openSource: false },
   { id: "amazon-nova-micro", name: "Nova Micro", provider: "Amazon", input: 0.035, output: 0.14, supports: ["text"], contextWindow: 128000, color: "#ff9900", link: "https://aws.amazon.com/bedrock/pricing/", openSource: false },
   { id: "amazon-nova-lite", name: "Nova Lite", provider: "Amazon", input: 0.06, output: 0.24, supports: ["text", "vision"], contextWindow: 300000, color: "#ff9900", link: "https://aws.amazon.com/bedrock/pricing/", openSource: false },
   { id: "amazon-nova-pro", name: "Nova Pro", provider: "Amazon", input: 0.8, output: 3.2, supports: ["text", "vision", "function"], contextWindow: 300000, color: "#ff9900", link: "https://aws.amazon.com/bedrock/pricing/", openSource: false },
