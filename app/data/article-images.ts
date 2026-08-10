@@ -928,6 +928,24 @@ export const imageSet = {
     credit: 'Photo by Yuriy Vertikov on Unsplash',
     creditUrl: 'https://unsplash.com/photos/a-rack-of-servers-with-wires-and-wires-attached-to-them-c-lSQecD9oI',
   },
+  cloudInfrastructureServer3Nwt6wKU3E: {
+    src: `https://images.unsplash.com/photo-1667264501379-c1537934c7ab${unsplashParams}`,
+    alt: 'A close-up of a server room',
+    credit: 'Photo by Kier in Sight Archives on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-close-up-of-a-server-room-3Nwt6w-KU3E',
+  },
+  cloudInfrastructureServerpgdaAwf6IJ: {
+    src: `https://images.unsplash.com/photo-1506399309177-3b43e99fead2${unsplashParams}`,
+    alt: 'Black ImgIX server system',
+    credit: 'Photo by imgix on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/black-imgix-server-system-pgdaAwf6IJg',
+  },
+  cloudInfrastructureServerdyUp7WPu5q: {
+    src: `https://images.unsplash.com/photo-1691435828932-911a7801adfb${unsplashParams}`,
+    alt: 'A close up of a network with wires connected to it',
+    credit: 'Photo by Albert Stoynov on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-close-up-of-a-network-with-wires-connected-to-it-dyUp7WPu5q4',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -978,6 +996,9 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'cloudInfrastructureServerdyUp7WPu5q',
+    'cloudInfrastructureServerpgdaAwf6IJ',
+    'cloudInfrastructureServer3Nwt6wKU3E',
     'cloudInfrastructureServerclSQecD9oI',
     'cloudInfrastructureServerklWUhrwPJ8',
     'cloudInfrastructureServeriYnpYeyu57',
@@ -1077,6 +1098,9 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'cloudInfrastructureServerdyUp7WPu5q',
+    'cloudInfrastructureServerpgdaAwf6IJ',
+    'cloudInfrastructureServer3Nwt6wKU3E',
     'cloudInfrastructureServerclSQecD9oI',
     'cloudInfrastructureServerklWUhrwPJ8',
     'cloudInfrastructureServeriYnpYeyu57',
