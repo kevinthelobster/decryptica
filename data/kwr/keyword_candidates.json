@@ -541,8 +541,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-10T21:32:20.954Z",
+      "usedBy": {
+        "slug": "best-automation-software-for-reducing-manual-tasks",
+        "title": "Best Automation Software For Reducing Manual Tasks",
+        "date": "2026-08-10"
+      },
       "updatedAt": "2026-08-09T12:27:02.311Z"
     },
     {

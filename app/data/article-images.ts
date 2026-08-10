@@ -951,6 +951,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-automation-software-for-reducing-manual-tasks': imageSet.cloudInfrastructureServerclSQecD9oI,
   'best-tool-for-api-testing-what-actually-matters-in-2026': imageSet.cloudInfrastructureServer3Nwt6wKU3E,
   'best-tool-for-automation-what-actually-matters-in-2026': imageSet.cloudInfrastructureServerpgdaAwf6IJ,
   'best-ticketing-tool-for-workflow-automation-what-matters-in-': imageSet.productManagementWorkspaceRbQ4j2ggOm,
