@@ -951,6 +951,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-tool-for-automation-what-actually-matters-in-2026': imageSet.cloudInfrastructureServerpgdaAwf6IJ,
   'best-ticketing-tool-for-workflow-automation-what-matters-in-': imageSet.productManagementWorkspaceRbQ4j2ggOm,
   'best-business-process-automation-software-for-salesforce': imageSet.productManagementWorkspaceGy7GjLyVs,
   'best-marketing-automation-software-for-small-business': imageSet.cloudInfrastructureServerklWUhrwPJ8,
