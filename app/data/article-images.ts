@@ -969,6 +969,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-crypto-wallet-for-beginners-what-actually-matters-in-20': imageSet.analyticsDashboardLaptopVCtI0qlVgA,
   'best-crypto-tax-software-for-turbotax-what-actually-matters-': imageSet.analyticsDashboardLaptopf4pUuCc3M0,
   'best-internal-linking-tools-for-seo-what-actually-matters-in': imageSet.cloudInfrastructureServerVHmBX7FnXw,
   'best-automation-software-for-reducing-manual-tasks': imageSet.cloudInfrastructureServerclSQecD9oI,
