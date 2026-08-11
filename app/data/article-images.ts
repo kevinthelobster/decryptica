@@ -969,6 +969,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-internal-linking-tools-for-seo-what-actually-matters-in': imageSet.cloudInfrastructureServerVHmBX7FnXw,
   'best-automation-software-for-reducing-manual-tasks': imageSet.cloudInfrastructureServerclSQecD9oI,
   'best-tool-for-api-testing-what-actually-matters-in-2026': imageSet.cloudInfrastructureServer3Nwt6wKU3E,
   'best-tool-for-automation-what-actually-matters-in-2026': imageSet.cloudInfrastructureServerpgdaAwf6IJ,
