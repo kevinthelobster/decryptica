@@ -946,6 +946,24 @@ export const imageSet = {
     credit: 'Photo by Albert Stoynov on Unsplash',
     creditUrl: 'https://unsplash.com/photos/a-close-up-of-a-network-with-wires-connected-to-it-dyUp7WPu5q4',
   },
+  cloudInfrastructureServerca9Ex6yVRg: {
+    src: `https://images.unsplash.com/photo-1702478475268-aa8ef54c084e${unsplashParams}`,
+    alt: 'A rack with many wires and wires attached to it',
+    credit: 'Photo by Yuriy Vertikov on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-rack-with-many-wires-and-wires-attached-to-it-ca9Ex6yVRgw',
+  },
+  cloudInfrastructureServerVHmBX7FnXw: {
+    src: `https://images.unsplash.com/photo-1762163516269-3c143e04175c${unsplashParams}`,
+    alt: 'Server rack with blinking green lights',
+    credit: 'Photo by Domaintechnik on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/server-rack-with-blinking-green-lights-VHmBX7FnXw0',
+  },
+  cloudInfrastructureServeruq5RMAZdZG: {
+    src: `https://images.unsplash.com/photo-1489436969537-cf0c1dc69cba${unsplashParams}`,
+    alt: 'Black and gray electronic device',
+    credit: 'Photo by Quilia on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/black-and-gray-electronic-device-uq5RMAZdZG4',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -999,6 +1017,9 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'cloudInfrastructureServeruq5RMAZdZG',
+    'cloudInfrastructureServerVHmBX7FnXw',
+    'cloudInfrastructureServerca9Ex6yVRg',
     'cloudInfrastructureServerdyUp7WPu5q',
     'cloudInfrastructureServerpgdaAwf6IJ',
     'cloudInfrastructureServer3Nwt6wKU3E',
@@ -1101,6 +1122,9 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'cloudInfrastructureServeruq5RMAZdZG',
+    'cloudInfrastructureServerVHmBX7FnXw',
+    'cloudInfrastructureServerca9Ex6yVRg',
     'cloudInfrastructureServerdyUp7WPu5q',
     'cloudInfrastructureServerpgdaAwf6IJ',
     'cloudInfrastructureServer3Nwt6wKU3E',
