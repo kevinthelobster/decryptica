@@ -81,8 +81,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-12T11:32:22.102Z",
+      "usedBy": {
+        "slug": "best-ai-automation-tools-for-business-what-actually-matters-",
+        "title": "Best AI Automation Tools For Business: What Actually Matters in 2026",
+        "date": "2026-08-12"
+      },
       "updatedAt": "2026-08-09T12:27:01.973Z"
     },
     {
