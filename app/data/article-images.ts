@@ -964,6 +964,24 @@ export const imageSet = {
     credit: 'Photo by Quilia on Unsplash',
     creditUrl: 'https://unsplash.com/photos/black-and-gray-electronic-device-uq5RMAZdZG4',
   },
+  cloudInfrastructureServeriJUAdanGH0: {
+    src: `https://images.unsplash.com/photo-1597138768744-9f97be8cdd64${unsplashParams}`,
+    alt: 'A close up of a server\'s nameplates on the side of a',
+    credit: 'Photo by Marc PEZIN on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-close-up-of-a-servers-nameplates-on-the-side-of-a-i_JUAdanGH0',
+  },
+  cybersecurityDashboardnBClEqKKVM: {
+    src: `https://images.unsplash.com/photo-1751448555253-f39c06e29d82${unsplashParams}`,
+    alt: 'A security and privacy dashboard with its status',
+    credit: 'Photo by Zulfugar Karimov on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-security-and-privacy-dashboard-with-its-status--nBClEqKKVM',
+  },
+  cybersecurityDashboard7Og0reGku4: {
+    src: `https://images.unsplash.com/photo-1762340916350-ad5a3d620c16${unsplashParams}`,
+    alt: 'Security, privacy, and performance status with fix options',
+    credit: 'Photo by Zulfugar Karimov on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/security-privacy-and-performance-status-with-fix-options-7Og0reGku4M',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1020,6 +1038,9 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'cybersecurityDashboard7Og0reGku4',
+    'cybersecurityDashboardnBClEqKKVM',
+    'cloudInfrastructureServeriJUAdanGH0',
     'cloudInfrastructureServeruq5RMAZdZG',
     'cloudInfrastructureServerVHmBX7FnXw',
     'cloudInfrastructureServerca9Ex6yVRg',
@@ -1125,6 +1146,7 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'cloudInfrastructureServeriJUAdanGH0',
     'cloudInfrastructureServeruq5RMAZdZG',
     'cloudInfrastructureServerVHmBX7FnXw',
     'cloudInfrastructureServerca9Ex6yVRg',
@@ -1243,6 +1265,8 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'cybersecurityDashboard7Og0reGku4',
+    'cybersecurityDashboardnBClEqKKVM',
     'analyticsDashboardLaptopf4pUuCc3M0',
     'analyticsDashboardLaptopVCtI0qlVgA',
     'analyticsDashboardLaptopiOykDIkZLQ',
