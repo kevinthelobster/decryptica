@@ -282,8 +282,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-12T21:32:29.390Z",
+      "usedBy": {
+        "slug": "best-app-for-tracking-crypto-portfolio-what-actually-matters",
+        "title": "Best App For Tracking Crypto Portfolio: What Actually Matters in 2026",
+        "date": "2026-08-12"
+      },
       "updatedAt": "2026-08-09T12:27:03.137Z"
     },
     {
