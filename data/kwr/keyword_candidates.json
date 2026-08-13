@@ -245,8 +245,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-13T11:32:24.819Z",
+      "usedBy": {
+        "slug": "best-ai-agent-tools-for-coding-what-actually-matters-in-2026",
+        "title": "Best AI Agent Tools For Coding: What Actually Matters in 2026",
+        "date": "2026-08-13"
+      },
       "updatedAt": "2026-08-09T12:27:05.106Z"
     },
     {
