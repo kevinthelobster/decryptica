@@ -982,6 +982,30 @@ export const imageSet = {
     credit: 'Photo by Zulfugar Karimov on Unsplash',
     creditUrl: 'https://unsplash.com/photos/security-privacy-and-performance-status-with-fix-options-7Og0reGku4M',
   },
+  cybersecurityDashboardJb1TF3kvsA: {
+    src: `https://images.unsplash.com/photo-1584291527908-033f4d6542c8${unsplashParams}`,
+    alt: 'Black flat screen computer monitor',
+    credit: 'Photo by Clay Banks on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/black-flat-screen-computer-monitor-_Jb1TF3kvsA',
+  },
+  cybersecurityDashboardz5k5vWGh7N: {
+    src: `https://images.unsplash.com/photo-1590122696319-152756c73526${unsplashParams}`,
+    alt: 'Black and silver laptop computer',
+    credit: 'Photo by Isaac Quesada on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/black-and-silver-laptop-computer-z5k5vWGh7Nk',
+  },
+  cybersecurityDashboard2d3s0kpCU4: {
+    src: `https://images.unsplash.com/photo-1584931421154-2bf69492aa2c${unsplashParams}`,
+    alt: 'Black flat screen tv showing UNK',
+    credit: 'Photo by Martin Sanchez on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/black-flat-screen-tv-showing-unk-2d3s0kpCU4s',
+  },
+  cybersecurityDashboardpYe2wAf3tg: {
+    src: `https://images.unsplash.com/photo-1678809768466-43d610e470b1${unsplashParams}`,
+    alt: 'A close up of a clock on a computer screen',
+    credit: 'Photo by Xavier Cee on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-close-up-of-a-clock-on-a-computer-screen-pYe2-wAf3tg',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1041,6 +1065,10 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'cybersecurityDashboardpYe2wAf3tg',
+    'cybersecurityDashboard2d3s0kpCU4',
+    'cybersecurityDashboardz5k5vWGh7N',
+    'cybersecurityDashboardJb1TF3kvsA',
     'cybersecurityDashboard7Og0reGku4',
     'cybersecurityDashboardnBClEqKKVM',
     'cloudInfrastructureServeriJUAdanGH0',
@@ -1268,6 +1296,10 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'cybersecurityDashboardpYe2wAf3tg',
+    'cybersecurityDashboard2d3s0kpCU4',
+    'cybersecurityDashboardz5k5vWGh7N',
+    'cybersecurityDashboardJb1TF3kvsA',
     'cybersecurityDashboard7Og0reGku4',
     'cybersecurityDashboardnBClEqKKVM',
     'analyticsDashboardLaptopf4pUuCc3M0',
