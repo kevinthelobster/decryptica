@@ -532,8 +532,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-14T11:32:19.094Z",
+      "usedBy": {
+        "slug": "chatgpt-alternatives-for-software-development-what-matters-i",
+        "title": "Chatgpt Alternatives For Software Development: What Matters in 2026",
+        "date": "2026-08-14"
+      },
       "updatedAt": "2026-08-09T12:27:06.606Z"
     },
     {
