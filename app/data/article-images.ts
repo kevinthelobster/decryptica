@@ -1006,6 +1006,24 @@ export const imageSet = {
     credit: 'Photo by Xavier Cee on Unsplash',
     creditUrl: 'https://unsplash.com/photos/a-close-up-of-a-clock-on-a-computer-screen-pYe2-wAf3tg',
   },
+  cybersecurityDashboard9XjTaSUbYb: {
+    src: `https://images.unsplash.com/photo-1586448910484-69aad26aba8a${unsplashParams}`,
+    alt: 'Black and white digital device',
+    credit: 'Photo by KOBU Agency on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/black-and-white-digital-device-9XjTaSUbYbI',
+  },
+  cybersecurityDashboardXU1L22IUKn: {
+    src: `https://images.unsplash.com/photo-1590971862391-06cac0657603${unsplashParams}`,
+    alt: 'Black flat screen computer monitor',
+    credit: 'Photo by Joan Gamell on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/black-flat-screen-computer-monitor-XU1L22IUKnc',
+  },
+  cybersecurityDashboardAh4F6gOmgI: {
+    src: `https://images.unsplash.com/photo-1518734549841-b417d28c22aa${unsplashParams}`,
+    alt: 'Computer screen displaying 4.7k',
+    credit: 'Photo by Quilia on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/computer-screen-displaying-47k-Ah4F6g-OmgI',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1068,6 +1086,9 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'cybersecurityDashboardAh4F6gOmgI',
+    'cybersecurityDashboardXU1L22IUKn',
+    'cybersecurityDashboard9XjTaSUbYb',
     'cybersecurityDashboardpYe2wAf3tg',
     'cybersecurityDashboard2d3s0kpCU4',
     'cybersecurityDashboardz5k5vWGh7N',
@@ -1299,6 +1320,9 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'cybersecurityDashboardAh4F6gOmgI',
+    'cybersecurityDashboardXU1L22IUKn',
+    'cybersecurityDashboard9XjTaSUbYb',
     'cybersecurityDashboardpYe2wAf3tg',
     'cybersecurityDashboard2d3s0kpCU4',
     'cybersecurityDashboardz5k5vWGh7N',
