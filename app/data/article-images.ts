@@ -1024,6 +1024,12 @@ export const imageSet = {
     credit: 'Photo by Quilia on Unsplash',
     creditUrl: 'https://unsplash.com/photos/computer-screen-displaying-47k-Ah4F6g-OmgI',
   },
+  cybersecurityDashboardTzWuSdXMWu: {
+    src: `https://images.unsplash.com/photo-1585123607296-3e3357c5a7ae${unsplashParams}`,
+    alt: 'Text',
+    credit: 'Photo by Sharad Bhat on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/text-TzWuSdXMWuk',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1087,6 +1093,7 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'cybersecurityDashboardTzWuSdXMWu',
     'cybersecurityDashboardAh4F6gOmgI',
     'cybersecurityDashboardXU1L22IUKn',
     'cybersecurityDashboard9XjTaSUbYb',
@@ -1321,6 +1328,7 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'cybersecurityDashboardTzWuSdXMWu',
     'cybersecurityDashboardAh4F6gOmgI',
     'cybersecurityDashboardXU1L22IUKn',
     'cybersecurityDashboard9XjTaSUbYb',
