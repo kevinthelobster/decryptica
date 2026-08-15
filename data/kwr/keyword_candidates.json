@@ -751,8 +751,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-15T21:32:14.138Z",
+      "usedBy": {
+        "slug": "zapier-alternatives-for-small-business-a-practical-2026-guid",
+        "title": "Zapier Alternatives For Small Business: A Practical 2026 Guide",
+        "date": "2026-08-15"
+      },
       "updatedAt": "2026-08-15T12:02:25.215Z"
     },
     {
