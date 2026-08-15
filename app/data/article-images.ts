@@ -1035,6 +1035,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-crm-for-service-business-automation-what-matters-in-202': imageSet.cloudInfrastructureServerdyUp7WPu5q,
   'chatgpt-alternatives-for-software-development-what-matters-i': imageSet.cybersecurityDashboardXU1L22IUKn,
   'best-ai-tool-for-image-generator-what-actually-matters-in-20': imageSet.cybersecurityDashboardJb1TF3kvsA,
   'best-ai-tools-for-ai-agents-what-actually-matters-in-2026': imageSet.cybersecurityDashboardz5k5vWGh7N,
