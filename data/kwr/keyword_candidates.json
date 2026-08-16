@@ -1293,8 +1293,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-16T11:32:13.924Z",
+      "usedBy": {
+        "slug": "best-ollama-model-for-n8n-tools-what-actually-matters-in-202",
+        "title": "Best Ollama Model For N8n Tools: What Actually Matters in 2026",
+        "date": "2026-08-16"
+      },
       "updatedAt": "2026-08-15T12:02:25.215Z"
     },
     {

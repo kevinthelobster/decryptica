@@ -1047,6 +1047,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-ollama-model-for-n8n-tools-what-actually-matters-in-202': imageSet.cybersecurityDashboardyKb2hzGFgE,
   'zapier-alternatives-for-small-business-a-practical-2026-guid': imageSet.workflowPlanningDeskncgGmQSNUI,
   'best-crm-for-service-business-automation-what-matters-in-202': imageSet.cloudInfrastructureServerdyUp7WPu5q,
   'chatgpt-alternatives-for-software-development-what-matters-i': imageSet.cybersecurityDashboardXU1L22IUKn,

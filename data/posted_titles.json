@@ -1,11 +1,6 @@
 {
   "posted": [
     {
-      "title": "Event-Driven Architecture: When It Actually Helps",
-      "slug": "event-driven-architecture-when-it-actually-helps",
-      "date": 1779103803577
-    },
-    {
       "title": "Why Developer Portals Are Getting Worse",
       "slug": "why-developer-portals-are-getting-worse",
       "date": 1779190206735
@@ -629,6 +624,11 @@
       "title": "Zapier Alternatives For Small Business: A Practical 2026 Guide",
       "slug": "zapier-alternatives-for-small-business-a-practical-2026-guid",
       "date": 1786829533515
+    },
+    {
+      "title": "Best Ollama Model For N8n Tools: What Actually Matters in 2026",
+      "slug": "best-ollama-model-for-n8n-tools-what-actually-matters-in-202",
+      "date": 1786879932561
     }
   ],
   "lastResearch": null
