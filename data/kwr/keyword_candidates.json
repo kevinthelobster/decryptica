@@ -1486,8 +1486,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-16T21:32:17.898Z",
+      "usedBy": {
+        "slug": "free-http-monitoring-tool-for-websites-a-practical-2026-guid",
+        "title": "Free Http Monitoring Tool For Websites: A Practical 2026 Guide",
+        "date": "2026-08-16"
+      },
       "updatedAt": "2026-08-15T12:02:25.217Z"
     }
   ]
