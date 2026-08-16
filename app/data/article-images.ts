@@ -1030,6 +1030,18 @@ export const imageSet = {
     credit: 'Photo by Sharad Bhat on Unsplash',
     creditUrl: 'https://unsplash.com/photos/text-TzWuSdXMWuk',
   },
+  cybersecurityDashboardyKb2hzGFgE: {
+    src: `https://images.unsplash.com/photo-1586448910433-965efd06eb38${unsplashParams}`,
+    alt: 'Black digital device at 20',
+    credit: 'Photo by KOBU Agency on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/black-digital-device-at-20-yKb2hzGFgEo',
+  },
+  cybersecurityDashboardH0r6LB9rz4: {
+    src: `https://images.unsplash.com/photo-1559028006-448665bd7c7f${unsplashParams}`,
+    alt: 'QR code screenshot',
+    credit: 'Photo by Eftakher Alam on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/qr-code-screenshot-H0r6LB_9rz4',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1095,6 +1107,8 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'cybersecurityDashboardH0r6LB9rz4',
+    'cybersecurityDashboardyKb2hzGFgE',
     'cybersecurityDashboardTzWuSdXMWu',
     'cybersecurityDashboardAh4F6gOmgI',
     'cybersecurityDashboardXU1L22IUKn',
@@ -1330,6 +1344,8 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'cybersecurityDashboardH0r6LB9rz4',
+    'cybersecurityDashboardyKb2hzGFgE',
     'cybersecurityDashboardTzWuSdXMWu',
     'cybersecurityDashboardAh4F6gOmgI',
     'cybersecurityDashboardXU1L22IUKn',
