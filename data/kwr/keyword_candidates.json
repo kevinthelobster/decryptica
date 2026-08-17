@@ -447,8 +447,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-17T21:32:29.997Z",
+      "usedBy": {
+        "slug": "what-is-the-best-bitcoin-wallet-for-beginners-a-practical-20",
+        "title": "What Is The Best Bitcoin Wallet For Beginners: A Practical 2026 Guide",
+        "date": "2026-08-17"
+      },
       "updatedAt": "2026-08-15T12:02:25.215Z"
     },
     {
