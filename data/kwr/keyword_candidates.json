@@ -870,8 +870,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-17T16:35:34.213Z",
+      "usedBy": {
+        "slug": "best-practices-for-prompt-management-what-actually-matters-i",
+        "title": "Best Practices For Prompt Management: What Actually Matters in 2026",
+        "date": "2026-08-17"
+      },
       "updatedAt": "2026-08-15T12:02:25.217Z"
     },
     {

@@ -1065,6 +1065,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-practices-for-prompt-management-what-actually-matters-i': imageSet.dataVisualizationScreenqLfMLRfq8,
   'best-crypto-wallet-for-investing-what-actually-matters-in-20': imageSet.dataVisualizationScreenadFEOdO7RA,
   'free-http-monitoring-tool-for-websites-a-practical-2026-guid': imageSet.workflowPlanningDeskE9abH9GTio,
   'best-code-less-application-for-automation-what-matters-in-20': imageSet.workflowPlanningDeskv9iowyOH7Q,
