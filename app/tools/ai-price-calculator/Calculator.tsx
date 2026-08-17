@@ -25,7 +25,7 @@ export const PROVIDERS = [
 
   // Google - Gemini API paid tier, standard rates for text/image/video inputs.
   { id: "google-gemini-3.1-pro-preview", name: "Gemini 3.1 Pro Preview", provider: "Google", input: 2.0, output: 12.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
-  { id: "google-gemini-3.6-flash", name: "Gemini 3.6 Flash", provider: "Google", input: 1.5, output: 7.5, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
+  { id: "google-gemini-3.6-flash", name: "Gemini 3.6 Flash", provider: "Google", input: 0.75, output: 3.75, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
   { id: "google-gemini-3.5-flash", name: "Gemini 3.5 Flash", provider: "Google", input: 1.5, output: 9.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
   { id: "google-gemini-3.5-flash-lite", name: "Gemini 3.5 Flash-Lite", provider: "Google", input: 0.3, output: 2.5, supports: ["text", "vision", "function", "reasoning"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
   { id: "google-gemini-3.1-flash-lite", name: "Gemini 3.1 Flash-Lite", provider: "Google", input: 0.25, output: 1.5, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
@@ -33,22 +33,19 @@ export const PROVIDERS = [
   { id: "google-gemini-2.5-flash", name: "Gemini 2.5 Flash", provider: "Google", input: 0.3, output: 2.5, supports: ["text", "vision", "function", "reasoning"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
   { id: "google-gemini-2.5-flash-lite", name: "Gemini 2.5 Flash-Lite", provider: "Google", input: 0.1, output: 0.4, supports: ["text", "vision", "function"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
 
-  // DeepSeek - official API model names; old deepseek-chat/deepseek-reasoner aliases were deprecated July 24, 2026.
-  { id: "deepseek-v4-flash", name: "DeepSeek V4 Flash", provider: "DeepSeek", input: 0.14, output: 0.28, supports: ["text", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#6366f1", link: "https://api-docs.deepseek.com/quick_start/pricing/", openSource: true },
-  { id: "deepseek-v4-pro", name: "DeepSeek V4 Pro", provider: "DeepSeek", input: 0.435, output: 0.87, supports: ["text", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#6366f1", link: "https://api-docs.deepseek.com/quick_start/pricing/", openSource: true },
+  // DeepSeek switched to peak/off-peak billing on August 16, 2026; entries below use the current peak rates.
+  { id: "deepseek-v4-flash", name: "DeepSeek V4 Flash", provider: "DeepSeek", input: 0.44, output: 1.32, supports: ["text", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#6366f1", link: "https://api-docs.deepseek.com/quick_start/pricing/", openSource: true },
+  { id: "deepseek-v4-pro", name: "DeepSeek V4 Pro", provider: "DeepSeek", input: 1.32, output: 3.96, supports: ["text", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#6366f1", link: "https://api-docs.deepseek.com/quick_start/pricing/", openSource: true },
 
   // xAI
-  { id: "xai-grok-4.5", name: "Grok 4.5", provider: "xAI", input: 2.0, output: 6.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 500000, color: "#f97316", link: "https://docs.x.ai/developers/models", openSource: false },
+  { id: "xai-grok-4.6", name: "Grok 4.6", provider: "xAI", input: 2.0, output: 6.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 500000, color: "#f97316", link: "https://docs.x.ai/developers/pricing", openSource: false },
+  { id: "xai-grok-4.5", name: "Grok 4.5", provider: "xAI", input: 2.0, output: 6.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 500000, color: "#f97316", link: "https://docs.x.ai/developers/pricing", openSource: false },
   { id: "xai-grok-build-0.1", name: "Grok Build 0.1", provider: "xAI", input: 1.0, output: 2.0, supports: ["text", "function", "coding"], contextWindow: 256000, color: "#f97316", link: "https://docs.x.ai/developers/pricing", openSource: false },
 
   // Mistral - current public API lineup.
-  { id: "mistral-medium-3.5", name: "Mistral Medium 3.5", provider: "Mistral", input: 1.5, output: 7.5, supports: ["text", "function", "coding"], contextWindow: 262000, color: "#cb20dd", link: "https://mistral.ai/pricing/", openSource: false },
-  { id: "mistral-large-3", name: "Mistral Large 3", provider: "Mistral", input: 0.5, output: 1.5, supports: ["text", "function", "coding"], contextWindow: 128000, color: "#cb20dd", link: "https://mistral.ai/pricing/", openSource: false },
-  { id: "mistral-small-4", name: "Mistral Small 4", provider: "Mistral", input: 0.15, output: 0.6, supports: ["text", "function"], contextWindow: 128000, color: "#cb20dd", link: "https://mistral.ai/pricing/", openSource: true },
-  { id: "mistral-devstral-2", name: "Devstral 2", provider: "Mistral", input: 0.4, output: 2.0, supports: ["text", "function", "coding"], contextWindow: 256000, color: "#cb20dd", link: "https://mistral.ai/pricing/", openSource: true },
-  { id: "mistral-devstral-small-2", name: "Devstral Small 2", provider: "Mistral", input: 0.1, output: 0.3, supports: ["text", "function", "coding"], contextWindow: 256000, color: "#cb20dd", link: "https://mistral.ai/pricing/", openSource: true },
-  { id: "mistral-magistral-medium", name: "Magistral Medium", provider: "Mistral", input: 2.0, output: 5.0, supports: ["text", "reasoning"], contextWindow: 128000, color: "#cb20dd", link: "https://mistral.ai/pricing/", openSource: false },
-  { id: "mistral-magistral-small", name: "Magistral Small", provider: "Mistral", input: 0.5, output: 1.5, supports: ["text", "reasoning"], contextWindow: 128000, color: "#cb20dd", link: "https://mistral.ai/pricing/", openSource: false },
+  { id: "mistral-medium-3.5", name: "Mistral Medium 3.5", provider: "Mistral", input: 1.5, output: 7.5, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 256000, color: "#cb20dd", link: "https://docs.mistral.ai/inference/pricing", openSource: false },
+  { id: "mistral-large-3", name: "Mistral Large 3", provider: "Mistral", input: 0.5, output: 1.5, supports: ["text", "vision", "function", "coding"], contextWindow: 256000, color: "#cb20dd", link: "https://docs.mistral.ai/inference/pricing", openSource: true },
+  { id: "mistral-small-4", name: "Mistral Small 4", provider: "Mistral", input: 0.15, output: 0.6, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 256000, color: "#cb20dd", link: "https://docs.mistral.ai/inference/pricing", openSource: true },
   { id: "mistral-codestral", name: "Codestral", provider: "Mistral", input: 0.3, output: 0.9, supports: ["text", "function", "coding"], contextWindow: 256000, color: "#cb20dd", link: "https://mistral.ai/pricing/", openSource: false },
 
   // Cohere
@@ -393,7 +390,7 @@ export default function AIPriceCalculator() {
           </div>
         </div>
 
-        <p className="text-xs text-stone-500 mt-4 text-center">Prices use standard API token rates and may vary by tier, region, context length, caching, batch, or priority mode. Data checked July 25, 2026.</p>
+        <p className="text-xs text-stone-500 mt-4 text-center">Prices use standard API token rates and may vary by tier, region, context length, caching, batch, or priority mode. DeepSeek entries reflect current peak rates because that provider now uses peak/off-peak billing. Data checked August 17, 2026.</p>
       </div>
     </div>
   );

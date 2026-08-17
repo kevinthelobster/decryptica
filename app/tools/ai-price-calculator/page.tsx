@@ -12,11 +12,11 @@ import { getLeadMagnetBySlug } from '../../data/lead-magnets';
 
 export const metadata: Metadata = {
   title: 'AI Model Price Calculator — Compare LLM API Costs (2026)',
-  description: 'Free AI model price calculator to compare GPT-5.6, Claude, Gemini, DeepSeek, Grok, Mistral and more. Find the cheapest AI provider for your use case. Updated August 10, 2026.',
+  description: 'Free AI model price calculator to compare GPT-5.6, Claude, Gemini, DeepSeek, Grok, Mistral and more. Find the cheapest AI provider for your use case. Updated August 17, 2026.',
   keywords: ['AI model price calculator', 'LLM API pricing', 'AI API cost comparison', 'GPT-5.6 price', 'Claude API cost', 'Gemini API pricing', 'AI provider comparison', 'token cost calculator', 'AI cheapest option'],
   openGraph: {
     title: 'AI Model Price Calculator — Latest Models Compared',
-    description: 'Compare AI API costs across OpenAI, Anthropic, Google, DeepSeek, xAI, Mistral, and more. Updated August 10, 2026.',
+    description: 'Compare AI API costs across OpenAI, Anthropic, Google, DeepSeek, xAI, Mistral, and more. Updated August 17, 2026.',
     type: 'website',
   },
 };
@@ -36,7 +36,7 @@ const faqData = {
       "name": "How much does the GPT-5.6 Sol API cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "GPT-5.6 Sol costs $5.00 per 1M input tokens and $30.00 per 1M output tokens on standard short-context OpenAI API pricing as of August 10, 2026."
+        "text": "GPT-5.6 Sol costs $5.00 per 1M input tokens and $30.00 per 1M output tokens on standard OpenAI API pricing as of August 17, 2026."
       }
     },
     {
@@ -93,7 +93,7 @@ function ToolCTACompare() {
       <h3 className="font-display text-sm font-semibold text-red-800 uppercase tracking-wider mb-2">Compare</h3>
       <p className="text-stone-950 font-medium mb-1">Ready to pick a model?</p>
       <p className="text-stone-600 text-sm mb-3">Enter your token volumes above to see exactly how much each provider costs.</p>
-      <p className="text-xs text-stone-500">Current production models across major API providers — updated August 10, 2026</p>
+      <p className="text-xs text-stone-500">Current production models across major API providers — updated August 17, 2026</p>
     </div>
   );
 }
