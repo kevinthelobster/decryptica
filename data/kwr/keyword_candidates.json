@@ -837,8 +837,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-18T11:32:37.182Z",
+      "usedBy": {
+        "slug": "best-llm-api-for-openclaw-what-actually-matters-in-2026",
+        "title": "Best LLM API For Openclaw: What Actually Matters in 2026",
+        "date": "2026-08-18"
+      },
       "updatedAt": "2026-08-15T12:02:25.216Z"
     },
     {
