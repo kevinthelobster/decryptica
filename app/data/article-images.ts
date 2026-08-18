@@ -1060,6 +1060,18 @@ export const imageSet = {
     credit: 'Photo by Jakub Żerdzicki on Unsplash',
     creditUrl: 'https://unsplash.com/photos/trading-on-the-tablet-with-stock-data-f65Fz7TI9UA',
   },
+  dataVisualizationScreenVM6EtTAfDQ: {
+    src: `https://images.unsplash.com/photo-1744782211816-c5224434614f${unsplashParams}`,
+    alt: 'Stock charts are displayed on multiple screens',
+    credit: 'Photo by Jakub Żerdzicki on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/stock-charts-are-displayed-on-multiple-screens-VM_6EtTAfDQ',
+  },
+  dataVisualizationScreenolQgFvCqTp: {
+    src: `https://images.unsplash.com/photo-1763568258586-da55ea292766${unsplashParams}`,
+    alt: 'Laptop screen displaying code and graphs with glasses on keyboard',
+    credit: 'Photo by Daniil Komov on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/laptop-screen-displaying-code-and-graphs-with-glasses-on-keyboard-olQgFvCqTpc',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1131,6 +1143,8 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'dataVisualizationScreenolQgFvCqTp',
+    'dataVisualizationScreenVM6EtTAfDQ',
     'dataVisualizationScreenf65Fz7TI9U',
     'dataVisualizationScreenadFEOdO7RA',
     'dataVisualizationScreenqLfMLRfq8',
@@ -1252,6 +1266,8 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'dataVisualizationScreenolQgFvCqTp',
+    'dataVisualizationScreenVM6EtTAfDQ',
     'dataVisualizationScreenf65Fz7TI9U',
     'dataVisualizationScreenadFEOdO7RA',
     'dataVisualizationScreenqLfMLRfq8',
@@ -1374,6 +1390,8 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'dataVisualizationScreenolQgFvCqTp',
+    'dataVisualizationScreenVM6EtTAfDQ',
     'dataVisualizationScreenf65Fz7TI9U',
     'dataVisualizationScreenadFEOdO7RA',
     'dataVisualizationScreenqLfMLRfq8',
