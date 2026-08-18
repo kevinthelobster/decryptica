@@ -648,8 +648,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-18T21:32:37.408Z",
+      "usedBy": {
+        "slug": "best-ai-tool-for-meeting-minutes-what-actually-matters-in-20",
+        "title": "Best AI Tool For Meeting Minutes: What Actually Matters in 2026",
+        "date": "2026-08-18"
+      },
       "updatedAt": "2026-08-15T12:02:25.215Z"
     },
     {
