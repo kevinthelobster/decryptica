@@ -533,8 +533,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-19T16:33:09.882Z",
+      "usedBy": {
+        "slug": "best-design-tools-for-claude-code-what-actually-matters-in-2",
+        "title": "Best Design Tools For Claude Code: What Actually Matters in 2026",
+        "date": "2026-08-19"
+      },
       "updatedAt": "2026-08-15T12:02:25.215Z"
     },
     {
