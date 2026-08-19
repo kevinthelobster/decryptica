@@ -1072,6 +1072,24 @@ export const imageSet = {
     credit: 'Photo by Daniil Komov on Unsplash',
     creditUrl: 'https://unsplash.com/photos/laptop-screen-displaying-code-and-graphs-with-glasses-on-keyboard-olQgFvCqTpc',
   },
+  dataVisualizationScreen1fhzUGpPk5: {
+    src: `https://images.unsplash.com/photo-1781914476939-91a41b914899${unsplashParams}`,
+    alt: 'Dark workspace with laptop, monitor displaying code, and plant',
+    credit: 'Photo by JEFERSON DA PAULINO on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/dark-workspace-with-laptop-monitor-displaying-code-and-plant-1fhzUGpPk5I',
+  },
+  dataVisualizationScreenF6RNOgXyPt: {
+    src: `https://images.unsplash.com/photo-1765445666054-b039548214d4${unsplashParams}`,
+    alt: 'Abstract digital art with glitch effects and text',
+    credit: 'Photo by Egor Komarov on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/abstract-digital-art-with-glitch-effects-and-text-F6RNOgXyPtM',
+  },
+  dataVisualizationScreenmu8pIUwoWe: {
+    src: `https://images.unsplash.com/photo-1764496018639-d5c7426b1331${unsplashParams}`,
+    alt: 'Vintage television displaying a colorful scene',
+    credit: 'Photo by Mohammad Bahadori on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/vintage-television-displaying-a-colorful-scene-mu8pIUwoWeo',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1146,6 +1164,9 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'dataVisualizationScreenmu8pIUwoWe',
+    'dataVisualizationScreenF6RNOgXyPt',
+    'dataVisualizationScreen1fhzUGpPk5',
     'dataVisualizationScreenolQgFvCqTp',
     'dataVisualizationScreenVM6EtTAfDQ',
     'dataVisualizationScreenf65Fz7TI9U',
@@ -1269,6 +1290,9 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'dataVisualizationScreenmu8pIUwoWe',
+    'dataVisualizationScreenF6RNOgXyPt',
+    'dataVisualizationScreen1fhzUGpPk5',
     'dataVisualizationScreenolQgFvCqTp',
     'dataVisualizationScreenVM6EtTAfDQ',
     'dataVisualizationScreenf65Fz7TI9U',
@@ -1393,6 +1417,9 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'dataVisualizationScreenmu8pIUwoWe',
+    'dataVisualizationScreenF6RNOgXyPt',
+    'dataVisualizationScreen1fhzUGpPk5',
     'dataVisualizationScreenolQgFvCqTp',
     'dataVisualizationScreenVM6EtTAfDQ',
     'dataVisualizationScreenf65Fz7TI9U',
