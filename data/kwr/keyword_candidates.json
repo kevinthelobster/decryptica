@@ -1169,8 +1169,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-19T11:32:12.309Z",
+      "usedBy": {
+        "slug": "best-ai-tool-for-meetings-what-actually-matters-in-2026",
+        "title": "Best AI Tool For Meetings: What Actually Matters in 2026",
+        "date": "2026-08-19"
+      },
       "updatedAt": "2026-08-15T12:02:25.215Z"
     },
     {
