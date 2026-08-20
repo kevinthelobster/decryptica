@@ -1090,6 +1090,24 @@ export const imageSet = {
     credit: 'Photo by Mohammad Bahadori on Unsplash',
     creditUrl: 'https://unsplash.com/photos/vintage-television-displaying-a-colorful-scene-mu8pIUwoWeo',
   },
+  dataVisualizationScreenlffWAt8ubM: {
+    src: `https://images.unsplash.com/photo-1765445666264-361d2a9c5e24${unsplashParams}`,
+    alt: 'Digital glitch art with text and abstract shapes',
+    credit: 'Photo by Egor Komarov on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/digital-glitch-art-with-text-and-abstract-shapes-lffWAt8u_bM',
+  },
+  dataVisualizationScreenMY6NSSWE94: {
+    src: `https://images.unsplash.com/photo-1762341123514-01ac9f563350${unsplashParams}`,
+    alt: 'Smartphone screen displays risk analysis with number 18',
+    credit: 'Photo by Zulfugar Karimov on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/smartphone-screen-displays-risk-analysis-with-number-18-MY6NSSWE94c',
+  },
+  cryptoTradingDashboardmp11hrQXf8: {
+    src: `https://images.unsplash.com/photo-1621264448270-9ef00e88a935${unsplashParams}`,
+    alt: 'Black flat screen computer monitor',
+    credit: 'Photo by Behnam Norouzi on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/black-flat-screen-computer-monitor-mp11_hrQXf8',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1167,6 +1185,8 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'dataVisualizationScreenMY6NSSWE94',
+    'dataVisualizationScreenlffWAt8ubM',
     'dataVisualizationScreenmu8pIUwoWe',
     'dataVisualizationScreenF6RNOgXyPt',
     'dataVisualizationScreen1fhzUGpPk5',
@@ -1293,6 +1313,8 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'dataVisualizationScreenMY6NSSWE94',
+    'dataVisualizationScreenlffWAt8ubM',
     'dataVisualizationScreenmu8pIUwoWe',
     'dataVisualizationScreenF6RNOgXyPt',
     'dataVisualizationScreen1fhzUGpPk5',
@@ -1420,6 +1442,9 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'cryptoTradingDashboardmp11hrQXf8',
+    'dataVisualizationScreenMY6NSSWE94',
+    'dataVisualizationScreenlffWAt8ubM',
     'dataVisualizationScreenmu8pIUwoWe',
     'dataVisualizationScreenF6RNOgXyPt',
     'dataVisualizationScreen1fhzUGpPk5',
