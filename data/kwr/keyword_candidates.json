@@ -615,8 +615,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-20T11:32:19.420Z",
+      "usedBy": {
+        "slug": "best-ai-note-taking-tool-for-microsoft-teams-what-matters-in",
+        "title": "Best AI Note Taking Tool For Microsoft Teams: What Matters in 2026",
+        "date": "2026-08-20"
+      },
       "updatedAt": "2026-08-15T12:02:25.215Z"
     },
     {
