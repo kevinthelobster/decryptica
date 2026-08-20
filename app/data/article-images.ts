@@ -1113,6 +1113,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-ai-tool-for-audio-transcription-what-actually-matters-i': imageSet.dataVisualizationScreenmu8pIUwoWe,
   'best-ai-note-taking-tool-for-microsoft-teams-what-matters-in': imageSet.dataVisualizationScreenlffWAt8ubM,
   'best-crypto-tracker-for-taxes-what-actually-matters-in-2026': imageSet.analytics,
   'best-design-tools-for-claude-code-what-actually-matters-in-2': imageSet.dataVisualizationScreen1fhzUGpPk5,

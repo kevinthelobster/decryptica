@@ -1140,8 +1140,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-20T16:33:11.441Z",
+      "usedBy": {
+        "slug": "best-ai-tool-for-audio-transcription-what-actually-matters-i",
+        "title": "Best AI Tool For Audio Transcription: What Actually Matters in 2026",
+        "date": "2026-08-20"
+      },
       "updatedAt": "2026-08-15T12:02:25.215Z"
     },
     {
