@@ -1131,6 +1131,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-ai-tools-for-crypto-trading-bot-what-actually-matters-i': imageSet.cryptoTradingDashboardNBnvQw18,
   'which-platform-is-best-for-bitcoin-what-the-market-gets-wron': imageSet.cryptoTradingDashboardmp11hrQXf8,
   'best-ai-tool-for-audio-transcription-what-actually-matters-i': imageSet.dataVisualizationScreenmu8pIUwoWe,
   'best-ai-note-taking-tool-for-microsoft-teams-what-matters-in': imageSet.dataVisualizationScreenlffWAt8ubM,
