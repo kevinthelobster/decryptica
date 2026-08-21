@@ -1464,8 +1464,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-21T16:33:18.147Z",
+      "usedBy": {
+        "slug": "alternative-sounds-for-ai-what-actually-matters-in-2026",
+        "title": "Alternative Sounds For AI: What Actually Matters in 2026",
+        "date": "2026-08-21"
+      },
       "updatedAt": "2026-08-15T12:02:25.216Z"
     },
     {
