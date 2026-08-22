@@ -1513,8 +1513,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-22T16:32:46.126Z",
+      "usedBy": {
+        "slug": "what-is-a-rag-tool-for-ai-a-practical-2026-guide",
+        "title": "What Is A RAG Tool For AI: A Practical 2026 Guide",
+        "date": "2026-08-22"
+      },
       "updatedAt": "2026-08-15T12:02:25.216Z"
     },
     {

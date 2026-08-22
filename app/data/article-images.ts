@@ -1149,6 +1149,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'what-is-a-rag-tool-for-ai-a-practical-2026-guide': imageSet.cybersecurityDashboard9XjTaSUbYb,
   'ethereum-alternatives-for-smart-contracts-what-the-market-ge': imageSet.cybersecurityDashboardAh4F6gOmgI,
   'best-solana-dex-for-beginners-what-actually-matters-in-2026': imageSet.cryptoTradingDashboardRDXcFY5g5O,
   'alternative-sounds-for-ai-what-actually-matters-in-2026': imageSet.dataVisualizationScreenolQgFvCqTp,
