@@ -697,8 +697,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-22T11:31:47.826Z",
+      "usedBy": {
+        "slug": "ethereum-alternatives-for-smart-contracts-what-the-market-ge",
+        "title": "Ethereum Alternatives For Smart Contracts: What the Market Gets Wrong",
+        "date": "2026-08-22"
+      },
       "updatedAt": "2026-08-15T12:02:25.217Z"
     },
     {

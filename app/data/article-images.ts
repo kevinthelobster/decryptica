@@ -1149,6 +1149,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'ethereum-alternatives-for-smart-contracts-what-the-market-ge': imageSet.cybersecurityDashboardAh4F6gOmgI,
   'best-solana-dex-for-beginners-what-actually-matters-in-2026': imageSet.cryptoTradingDashboardRDXcFY5g5O,
   'alternative-sounds-for-ai-what-actually-matters-in-2026': imageSet.dataVisualizationScreenolQgFvCqTp,
   'best-ai-tools-for-crypto-trading-bot-what-actually-matters-i': imageSet.cryptoTradingDashboardNBnvQw18,
