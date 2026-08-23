@@ -1,11 +1,6 @@
 {
   "posted": [
     {
-      "title": "The Pomodoro Problem: Why Timers Don't Work",
-      "slug": "the-pomodoro-problem-why-timers-don-t-work",
-      "date": 1779708604026
-    },
-    {
       "title": "The ROI of Business Automation: Real Numbers",
       "slug": "the-roi-of-business-automation-real-numbers",
       "date": 1779795109290
@@ -694,6 +689,11 @@
       "title": "What Is A RAG Tool For AI: A Practical 2026 Guide",
       "slug": "what-is-a-rag-tool-for-ai-a-practical-2026-guide",
       "date": 1787416365473
+    },
+    {
+      "title": "Best Tools For Automation: What Actually Matters in 2026",
+      "slug": "best-tools-for-automation-what-actually-matters-in-2026",
+      "date": 1787484755145
     }
   ],
   "lastResearch": null
