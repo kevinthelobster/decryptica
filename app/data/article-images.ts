@@ -1144,6 +1144,18 @@ export const imageSet = {
     credit: 'Photo by Vladislav Maslow on Unsplash',
     creditUrl: 'https://unsplash.com/photos/black-flat-screen-computer-monitor-eNStVITP_10',
   },
+  cryptoTradingDashboardQvhJv5im8: {
+    src: `https://images.unsplash.com/photo-1745270917233-65e776a47547${unsplashParams}`,
+    alt: 'Stock chart indicates growth and potential profit',
+    credit: 'Photo by Arturo Añez on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/stock-chart-indicates-growth-and-potential-profit-Q_vhJv5im-8',
+  },
+  cryptoTradingDashboardOmPqCwX422: {
+    src: `https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d${unsplashParams}`,
+    alt: 'Black android smartphone turned on screen',
+    credit: 'Photo by Marga Santoso on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/black-android-smartphone-turned-on-screen-OmPqCwX422Y',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1486,6 +1498,8 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'cryptoTradingDashboardOmPqCwX422',
+    'cryptoTradingDashboardQvhJv5im8',
     'cryptoTradingDashboardeNStVITP10',
     'cryptoTradingDashboardZzOa5G8hSP',
     'cryptoTradingDashboardDfjJMVhwH8',
