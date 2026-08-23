@@ -1161,6 +1161,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-tools-for-automating-your-workflow-what-actually-matter': imageSet.businessOperationsDashboardEL16ACtwLx,
   'best-tools-for-automation-what-actually-matters-in-2026': imageSet.cloudInfrastructureServeriJUAdanGH0,
   'what-is-a-rag-tool-for-ai-a-practical-2026-guide': imageSet.cybersecurityDashboard9XjTaSUbYb,
   'ethereum-alternatives-for-smart-contracts-what-the-market-ge': imageSet.cybersecurityDashboardAh4F6gOmgI,

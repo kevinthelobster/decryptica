@@ -943,8 +943,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-23T21:32:16.835Z",
+      "usedBy": {
+        "slug": "best-tools-for-automating-your-workflow-what-actually-matter",
+        "title": "Best Tools For Automating Your Workflow: What Actually Matters in 2026",
+        "date": "2026-08-23"
+      },
       "updatedAt": "2026-08-23T11:30:38.151Z"
     },
     {
