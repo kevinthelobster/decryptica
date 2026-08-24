@@ -6,16 +6,10 @@ import { resolveIntentContext, type IntentValue } from '@/app/lib/intent-continu
 import { getLeadMagnetBySlug } from '@/app/data/lead-magnets';
 
 export const PROVIDERS = [
-  // OpenAI - direct API standard rates, short context where split pricing exists.
-  { id: "openai-gpt-5.6-sol", name: "GPT-5.6 Sol", provider: "OpenAI", input: 5.0, output: 30.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
-  { id: "openai-gpt-5.6-terra", name: "GPT-5.6 Terra", provider: "OpenAI", input: 2.0, output: 12.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
-  { id: "openai-gpt-5.6-luna", name: "GPT-5.6 Luna", provider: "OpenAI", input: 0.2, output: 1.2, supports: ["text", "vision", "function", "reasoning"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
-  { id: "openai-gpt-5.5", name: "GPT-5.5", provider: "OpenAI", input: 5.0, output: 30.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
-  { id: "openai-gpt-5.5-pro", name: "GPT-5.5 Pro", provider: "OpenAI", input: 30.0, output: 180.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
-  { id: "openai-gpt-5.4", name: "GPT-5.4", provider: "OpenAI", input: 2.5, output: 15.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
-  { id: "openai-gpt-5.4-mini", name: "GPT-5.4 Mini", provider: "OpenAI", input: 0.75, output: 4.5, supports: ["text", "vision", "function", "reasoning"], contextWindow: 200000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
-  { id: "openai-gpt-5.4-nano", name: "GPT-5.4 Nano", provider: "OpenAI", input: 0.2, output: 1.25, supports: ["text", "function"], contextWindow: 200000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
-  { id: "openai-gpt-5.4-pro", name: "GPT-5.4 Pro", provider: "OpenAI", input: 30.0, output: 180.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  // OpenAI - current standard short-context rates on the official pricing page.
+  { id: "openai-gpt-5.6-sol", name: "GPT-5.6 Sol", provider: "OpenAI", input: 2.0, output: 10.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-5.6-terra", name: "GPT-5.6 Terra", provider: "OpenAI", input: 1.0, output: 6.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-5.6-luna", name: "GPT-5.6 Luna", provider: "OpenAI", input: 0.1, output: 0.6, supports: ["text", "vision", "function", "reasoning"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
 
   // Anthropic - first-party Claude API.
   { id: "anthropic-claude-fable-5", name: "Claude Fable 5", provider: "Anthropic", input: 10.0, output: 50.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#d4a574", link: "https://platform.claude.com/docs/en/about-claude/pricing", openSource: false },
@@ -50,7 +44,7 @@ export const PROVIDERS = [
 
   // Cohere
   { id: "cohere-command-a-plus-05-2026", name: "Command A+ 05-2026", provider: "Cohere", input: null, output: null, supports: ["text", "vision", "function", "reasoning"], contextWindow: 128000, color: "#f47b5a", link: "https://docs.cohere.com/docs/command-a-plus", openSource: true },
-  { id: "cohere-command-a-03-2025", name: "Command A", provider: "Cohere", input: 2.5, output: 10.0, supports: ["text", "vision", "function", "reasoning"], contextWindow: 256000, color: "#f47b5a", link: "https://docs.cohere.com/docs/command-a", openSource: false },
+  { id: "cohere-command-a-03-2025", name: "Command A", provider: "Cohere", input: 1.0, output: 2.0, supports: ["text", "vision", "function", "reasoning"], contextWindow: 256000, color: "#f47b5a", link: "https://docs.cohere.com/docs/command-a", openSource: false },
   { id: "cohere-command-r-plus-08-2024", name: "Command R+ 08-2024", provider: "Cohere", input: 2.5, output: 10.0, supports: ["text", "function"], contextWindow: 128000, color: "#f47b5a", link: "https://cohere.com/pricing", openSource: false },
   { id: "cohere-command-r-08-2024", name: "Command R 08-2024", provider: "Cohere", input: 0.15, output: 0.6, supports: ["text", "function"], contextWindow: 128000, color: "#f47b5a", link: "https://docs.cohere.com/docs/command-r", openSource: false },
   { id: "cohere-command-r7b-12-2024", name: "Command R7B 12-2024", provider: "Cohere", input: 0.0375, output: 0.15, supports: ["text", "function"], contextWindow: 128000, color: "#f47b5a", link: "https://docs.cohere.com/docs/command-r7b", openSource: false },
