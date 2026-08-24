@@ -248,8 +248,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-24T21:32:35.623Z",
+      "usedBy": {
+        "slug": "best-process-automation-solutions-for-enterprise-what-matter",
+        "title": "Best Process Automation Solutions For Enterprise: What Matters in 2026",
+        "date": "2026-08-24"
+      },
       "updatedAt": "2026-08-24T10:18:27.444Z"
     },
     {
