@@ -1191,6 +1191,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-automation-tool-for-web-applications-what-matters-in-20': imageSet.businessOperationsDashboardfDisDvdiqr,
   'best-process-automation-solutions-for-enterprise-what-matter': imageSet.businessOperationsDashboardWb63zqJ5gn,
   'best-sales-automation-software-for-b2b-what-actually-matters': imageSet.businessOperationsDashboarddJCBtdUu74,
   'best-automation-tool-for-desktop-application-what-matters-in': imageSet.businessOperationsDashboardctSkCiVrdG,
