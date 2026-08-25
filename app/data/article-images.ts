@@ -1168,6 +1168,24 @@ export const imageSet = {
     credit: 'Photo by Jakub Żerdzicki on Unsplash',
     creditUrl: 'https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-desk-wX062bi-T50',
   },
+  cryptoTradingDashboardXihAgOYNHn: {
+    src: `https://images.unsplash.com/photo-1621629057099-c7cf1fb8ca1e${unsplashParams}`,
+    alt: 'Black android smartphone on brown wooden table',
+    credit: 'Photo by Sajad Nori on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/black-android-smartphone-on-brown-wooden-table-XihAgOYNHn4',
+  },
+  financialMarketChartstcJ6sJTtTW: {
+    src: `https://images.unsplash.com/photo-1651340981821-b519ad14da7c${unsplashParams}`,
+    alt: 'A close-up of a screen',
+    credit: 'Photo by Anne Nygård on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-close-up-of-a-screen-tcJ6sJTtTWI',
+  },
+  financialMarketChartsU4I4oH4xlg: {
+    src: `https://images.unsplash.com/photo-1707762890671-52ef6d6f51e7${unsplashParams}`,
+    alt: 'A person writing on a piece of paper next to a computer monitor',
+    credit: 'Photo by Jakub Żerdzicki on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-person-writing-on-a-piece-of-paper-next-to-a-computer-monitor-U4-I4oH4xlg',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1515,6 +1533,9 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'financialMarketChartsU4I4oH4xlg',
+    'financialMarketChartstcJ6sJTtTW',
+    'cryptoTradingDashboardXihAgOYNHn',
     'cryptoTradingDashboardwX062biT50',
     'cryptoTradingDashboardztYmIQecyH',
     'cryptoTradingDashboardOmPqCwX422',
