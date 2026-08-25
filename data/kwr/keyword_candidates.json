@@ -1585,8 +1585,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-25T21:32:48.348Z",
+      "usedBy": {
+        "slug": "best-automation-software-tools-what-actually-matters-in-2026",
+        "title": "Best Automation Software Tools: What Actually Matters in 2026",
+        "date": "2026-08-25"
+      },
       "updatedAt": "2026-08-25T10:18:39.521Z"
     },
     {
