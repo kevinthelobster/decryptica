@@ -1507,8 +1507,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-25T16:33:35.262Z",
+      "usedBy": {
+        "slug": "best-robotic-process-automation-tools-what-actually-matters-",
+        "title": "Best Robotic Process Automation Tools: What Actually Matters in 2026",
+        "date": "2026-08-25"
+      },
       "updatedAt": "2026-08-25T10:18:39.074Z"
     },
     {
