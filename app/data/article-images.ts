@@ -1209,6 +1209,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'online-workflow-tool-for-document-approval-a-practical-2026-': imageSet.businessOperationsDashboardNph1oyRsHm,
   'which-is-the-best-automation-tool-a-practical-2026-guide': imageSet.businessOperationsDashboard1peUWo68Hg,
   'best-automation-software-tools-what-actually-matters-in-2026': imageSet.businessOperationsDashboardhTtK6tvTRY,
   'best-robotic-process-automation-tools-what-actually-matters-': imageSet.businessOperationsDashboard2G4naJvRoz,

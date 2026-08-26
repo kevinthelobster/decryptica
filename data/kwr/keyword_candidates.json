@@ -1356,8 +1356,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-26T16:33:15.810Z",
+      "usedBy": {
+        "slug": "online-workflow-tool-for-document-approval-a-practical-2026-",
+        "title": "Online Workflow Tool For Document Approval: A Practical 2026 Guide",
+        "date": "2026-08-26"
+      },
       "updatedAt": "2026-08-26T10:18:46.069Z"
     },
     {
