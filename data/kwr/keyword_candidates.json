@@ -20,10 +20,6 @@
     "autocomplete_2026-08-25_06-18.csv",
     "autocomplete_2026-08-26_06-18.csv"
   ],
-  "clustering": {
-    "maxPerCluster": 4,
-    "serpCandidatePoolSize": 720
-  },
   "candidates": [
     {
       "id": "best-accounting-automation-software-for-small-businesses",
@@ -1353,8 +1349,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-26T21:32:52.474Z",
+      "usedBy": {
+        "slug": "alternatives-to-pega-for-business-automation-a-practical-202",
+        "title": "Alternatives To Pega For Business Automation: A Practical 2026 Guide",
+        "date": "2026-08-26"
+      },
       "updatedAt": "2026-08-26T18:18:39.319Z"
     },
     {
