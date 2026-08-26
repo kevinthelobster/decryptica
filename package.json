@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "article:daily": "zsh scripts/run_daily_article.sh",
+    "kwr:ensure": "node scripts/ensure_kwr_capacity.js",
     "kwr:build": "node scripts/kwr_build_candidates.js",
     "kwr:pull": "zsh scripts/run_kwr_pull.sh",
     "seo:checkpoint": "zsh scripts/run_seo_checkpoint.sh",

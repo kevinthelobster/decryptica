@@ -237,6 +237,10 @@ function inferTopicCluster(keyword, category, sourceSeed) {
     if (match(/\bbitcoin\b|\bbtc\b|\betf\b/)) return 'bitcoin';
     if (match(/\bethereum\b|\beth\b/)) return 'ethereum';
     if (match(/\bsolana\b|\bsol\b/)) return 'solana';
+    if (match(/\brpc\b|\bapi\b|\bnode\b|\binfrastructure\b/)) return 'crypto-infra';
+    if (match(/\bexchange\b|\bcoinbase\b|\bkraken\b|\bbinance\b|\bbybit\b/)) return 'exchanges';
+    if (match(/\bstablecoin\b|\byield\b|\bapy\b/)) return 'stablecoins-yield';
+    if (match(/\bcard\b|\bpayment\b|\bpayments\b/)) return 'crypto-payments';
     if (match(/\bdefi\b|\bdex\b|\bamm\b|\bliquidity\b/)) return 'defi';
     if (match(/\btax\b/)) return 'crypto-tax';
     if (match(/\bwallet\b|\bledger\b|\btrezor\b/)) return 'wallets';
@@ -446,6 +450,28 @@ function isUsefulKeyword(keyword) {
   return true;
 }
 
+function isReadyUnusedCandidate(candidate) {
+  return !candidate.usedAt && (!candidate.status || candidate.status === 'ready');
+}
+
+function isRelevantKeywordForCategory(keyword, category) {
+  const normalized = normalizeKeyword(keyword);
+
+  if (/\bgambling\b|\bcasino\b|\bbetting\b|\bsportsbook\b|\bslots?\b|\bcraps\b|\broulette\b|\bmakeup\b|\bbeauty\b|\bskincare\b|\bhome automation\b|\bsmart home\b/.test(normalized)) {
+    return false;
+  }
+
+  if (category === 'crypto') {
+    return /\bbitcoin\b|\bethereum\b|\bsolana\b|\bcrypto\b|\bdefi\b|\bwallet\b|\bstablecoin\b|\bdex\b|\bstaking\b|\bon-chain\b|\btrading bot\b|\bportfolio\b|\btoken\b|\bblockchain\b|\btc\b/.test(normalized);
+  }
+
+  if (category === 'ai') {
+    return /\bai\b|\bllm\b|\bchatgpt\b|\bclaude\b|\bcursor\b|\bcopilot\b|\bopenrouter\b|\brag\b|\bagent\b|\bprompt\b|\btranscription\b|\bmeeting\b|\bnote taking\b|\bnote taking\b|\bvoice\b|\bchatbot\b|\bcoding\b|\bcode\b|\bmodel\b|\bapi\b/.test(normalized);
+  }
+
+  return /\bautomation\b|\bworkflow\b|\bzapier\b|\bn8n\b|\bmake\b|\bairtable\b|\bcrm\b|\bapi\b|\bmonitoring\b|\bwebhook\b|\binternal\b|\bticketing\b|\bsalesforce\b|\bprocess\b|\bapproval\b|\bemail\b|\blead routing\b|\bsmall business\b|\bseo\b/.test(normalized);
+}
+
 function normalizeRecord(record, fallbackCategory, sourceFile) {
   const keyword = pickField(record, ['keyword', 'keywords', 'search term', 'search terms', 'question', 'query']);
   if (!keyword) return null;
@@ -460,6 +486,7 @@ function normalizeRecord(record, fallbackCategory, sourceFile) {
   const sourceSeed = pickField(record, ['source seed', 'seed']) || '';
   const sourceQuery = pickField(record, ['source query', 'query']) || '';
   const category = inferCategory(keyword, fallbackCategory);
+  if (!isRelevantKeywordForCategory(normalizedKeyword, category)) return null;
 
   return {
     keyword: normalizedKeyword,
@@ -500,7 +527,8 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
   const inputFiles = parseInputFiles(args.input);
   const fallbackCategory = args.category || null;
-  const limit = Number(args.limit || 20);
+  const limit = Number(args.limit || process.env.KWR_CANDIDATE_LIMIT || 180);
+  const skipSerp = args['skip-serp'] === 'true' || process.env.KWR_SKIP_SERP === '1';
 
   if (!inputFiles.length) {
     throw new Error('No CSV inputs found. Put AnswerThePublic exports in data/kwr/imports or pass --input path/to/file.csv');
@@ -559,10 +587,12 @@ async function main() {
 
   for (const candidate of selectedKeywords) {
     let serp = { weakCount: 0, strongCount: 0, neutralCount: 0, results: [] };
-    try {
-      serp = await fetchSerpProfile(candidate.keyword);
-    } catch (error) {
-      console.warn(`[KWR] SERP fetch failed for "${candidate.keyword}": ${error.message}`);
+    if (!skipSerp) {
+      try {
+        serp = await fetchSerpProfile(candidate.keyword);
+      } catch (error) {
+        console.warn(`[KWR] SERP fetch failed for "${candidate.keyword}": ${error.message}`);
+      }
     }
 
     const intentScore = candidate.intentScore;
@@ -606,20 +636,26 @@ async function main() {
     builtCandidates.push(built);
   }
 
-  builtCandidates.sort((a, b) => b.opportunityScore - a.opportunityScore);
+  builtCandidates.sort((a, b) => {
+    const availabilityDelta = Number(isReadyUnusedCandidate(b)) - Number(isReadyUnusedCandidate(a));
+    if (availabilityDelta !== 0) return availabilityDelta;
+    return b.opportunityScore - a.opportunityScore;
+  });
 
-  const maxPerCluster = Math.max(1, Number(args['max-per-cluster'] || 2));
+  const maxPerCluster = Math.max(1, Number(args['max-per-cluster'] || process.env.KWR_MAX_PER_CLUSTER || 4));
   const finalCandidates = [];
   const clusterCounts = new Map();
+  const readyCandidates = builtCandidates.filter(isReadyUnusedCandidate);
+  const historicalCandidates = builtCandidates.filter((candidate) => !isReadyUnusedCandidate(candidate));
   const clusterOrder = [];
 
-  for (const candidate of builtCandidates) {
+  for (const candidate of readyCandidates) {
     const clusterKey = `${candidate.category}:${candidate.topicCluster || 'general'}`;
     if (!clusterOrder.includes(clusterKey)) clusterOrder.push(clusterKey);
   }
 
   for (const clusterKey of clusterOrder) {
-    const next = builtCandidates.find((candidate) => {
+    const next = readyCandidates.find((candidate) => {
       const candidateClusterKey = `${candidate.category}:${candidate.topicCluster || 'general'}`;
       return candidateClusterKey === clusterKey && !finalCandidates.includes(candidate) && !isNearDuplicateKeyword(candidate, finalCandidates);
     });
@@ -629,7 +665,7 @@ async function main() {
     if (finalCandidates.length >= limit) break;
   }
 
-  for (const candidate of builtCandidates) {
+  for (const candidate of readyCandidates) {
     if (finalCandidates.length >= limit) break;
     if (finalCandidates.includes(candidate)) continue;
     if (isNearDuplicateKeyword(candidate, finalCandidates)) continue;
@@ -638,6 +674,13 @@ async function main() {
     if (currentCount >= maxPerCluster) continue;
     finalCandidates.push(candidate);
     clusterCounts.set(clusterKey, currentCount + 1);
+  }
+
+  for (const candidate of historicalCandidates) {
+    if (finalCandidates.length >= limit) break;
+    if (finalCandidates.includes(candidate)) continue;
+    if (isNearDuplicateKeyword(candidate, finalCandidates)) continue;
+    finalCandidates.push(candidate);
   }
 
   const output = {
@@ -675,6 +718,7 @@ async function main() {
 
   console.log(`[KWR] Scored ${builtCandidates.length} candidates from ${inputFiles.length} file(s)`);
   console.log(`[KWR] Selected ${finalCandidates.length} clustered candidates (max ${maxPerCluster} per cluster)`);
+  if (skipSerp) console.log('[KWR] SERP soft-check skipped for this run');
   console.log(`[KWR] JSON: ${OUTPUT_FILE}`);
   console.log(`[KWR] Report: ${REPORT_FILE}`);
 }

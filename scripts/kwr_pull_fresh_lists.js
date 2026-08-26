@@ -8,6 +8,9 @@ const ROOT = process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/dec
 const SEEDS_FILE = path.join(ROOT, 'data', 'kwr', 'seeds.json');
 const IMPORT_DIR = path.join(ROOT, 'data', 'kwr', 'imports');
 const MAX_FILES = 30;
+const BUILD_LIMIT = String(process.env.KWR_CANDIDATE_LIMIT || '180');
+const BUILD_MAX_PER_CLUSTER = String(process.env.KWR_MAX_PER_CLUSTER || '4');
+const MAX_QUERIES = Number(process.env.KWR_PULL_MAX_QUERIES || '0');
 
 const QUERY_TEMPLATES = [
   (seed) => seed,
@@ -77,6 +80,35 @@ function buildQueries(category, seeds) {
   return queries;
 }
 
+function limitQueriesBalanced(queries, maxQueries) {
+  if (!Number.isFinite(maxQueries) || maxQueries <= 0 || queries.length <= maxQueries) {
+    return queries;
+  }
+
+  const buckets = new Map();
+  for (const query of queries) {
+    if (!buckets.has(query.category)) buckets.set(query.category, []);
+    buckets.get(query.category).push(query);
+  }
+
+  const categories = Array.from(buckets.keys()).sort();
+  const limited = [];
+
+  while (limited.length < maxQueries) {
+    let addedAny = false;
+    for (const category of categories) {
+      const bucket = buckets.get(category);
+      if (!bucket || bucket.length === 0) continue;
+      limited.push(bucket.shift());
+      addedAny = true;
+      if (limited.length >= maxQueries) break;
+    }
+    if (!addedAny) break;
+  }
+
+  return limited;
+}
+
 async function fetchGoogleSuggestions(query) {
   const url = new URL('https://suggestqueries.google.com/complete/search');
   url.searchParams.set('client', 'firefox');
@@ -126,13 +158,14 @@ async function main() {
   ensureDir(IMPORT_DIR);
   const seeds = loadSeeds();
   const allQueries = Object.entries(seeds).flatMap(([category, values]) => buildQueries(category, values));
+  const queriesToRun = limitQueriesBalanced(allQueries, MAX_QUERIES);
   const byKeyword = new Map();
   const fetchers = [
     { sourceEngine: 'google-autocomplete', fetchSuggestions: fetchGoogleSuggestions },
     { sourceEngine: 'bing-autocomplete', fetchSuggestions: fetchBingSuggestions }
   ];
 
-  for (const item of allQueries) {
+  for (const item of queriesToRun) {
     for (const fetcher of fetchers) {
       try {
         const suggestions = await fetcher.fetchSuggestions(item.query);
@@ -191,8 +224,11 @@ async function main() {
   trimOldImports();
 
   console.log(`[KWR Pull] Wrote ${rows.length} keywords to ${outputFile}`);
+  if (MAX_QUERIES > 0) {
+    console.log(`[KWR Pull] Query limit applied: ${queriesToRun.length}/${allQueries.length}`);
+  }
 
-  execFileSync('node', ['scripts/kwr_build_candidates.js', '--limit', '20'], {
+  execFileSync('node', ['scripts/kwr_build_candidates.js', '--limit', BUILD_LIMIT, '--max-per-cluster', BUILD_MAX_PER_CLUSTER], {
     cwd: ROOT,
     stdio: 'inherit'
   });

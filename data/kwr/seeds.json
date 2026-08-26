@@ -7,7 +7,17 @@
     "crypto wallet",
     "defi portfolio",
     "on-chain analytics",
-    "crypto portfolio tracker"
+    "crypto portfolio tracker",
+    "solana rpc",
+    "bitcoin wallet",
+    "ethereum staking",
+    "crypto debit card",
+    "crypto exchange",
+    "stablecoin yield",
+    "defi wallet",
+    "crypto api",
+    "solana wallet",
+    "crypto trading bot"
   ],
   "ai": [
     "ai agents",
@@ -17,7 +27,17 @@
     "ai image generator",
     "ai automation",
     "prompt management",
-    "rag tool"
+    "rag tool",
+    "claude code",
+    "cursor ai",
+    "openrouter",
+    "ai meeting assistant",
+    "ai note taking",
+    "ai voice generator",
+    "ai transcription",
+    "ai research assistant",
+    "ai chatbot",
+    "ai website builder"
   ],
   "automation": [
     "workflow automation",
@@ -27,6 +47,15 @@
     "no code automation",
     "automation software",
     "business automation",
-    "process automation"
+    "process automation",
+    "n8n",
+    "make.com",
+    "airtable automation",
+    "crm automation",
+    "sales automation",
+    "lead routing",
+    "approval workflow",
+    "email automation",
+    "webhook monitoring"
   ]
 }

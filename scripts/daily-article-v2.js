@@ -905,6 +905,10 @@ function inferArticleCluster(title, primaryKeyword, category) {
     if (match(/\bbitcoin\b|\bbtc\b|\betf\b/)) return 'bitcoin';
     if (match(/\bethereum\b|\beth\b/)) return 'ethereum';
     if (match(/\bsolana\b|\bsol\b/)) return 'solana';
+    if (match(/\brpc\b|\bapi\b|\bnode\b|\binfrastructure\b/)) return 'crypto-infra';
+    if (match(/\bexchange\b|\bcoinbase\b|\bkraken\b|\bbinance\b|\bbybit\b/)) return 'exchanges';
+    if (match(/\bstablecoin\b|\byield\b|\bapy\b/)) return 'stablecoins-yield';
+    if (match(/\bcard\b|\bpayment\b|\bpayments\b/)) return 'crypto-payments';
     if (match(/\bdefi\b|\bdex\b|\bamm\b|\bliquidity\b/)) return 'defi';
     if (match(/\btax\b/)) return 'crypto-tax';
     if (match(/\bwallet\b|\bledger\b|\btrezor\b/)) return 'wallets';
