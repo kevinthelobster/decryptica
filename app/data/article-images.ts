@@ -1227,6 +1227,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'no-code-automation-tools-for-testing-a-practical-2026-guide': imageSet.businessOperationsDashboardpPpUCaudT5,
   'workflow-approval-software-for-businesses-a-practical-2026-g': imageSet.businessOperationsDashboard9fZuqBYlV1,
   'alternatives-to-pega-for-business-automation-a-practical-202': imageSet.businessOperationsDashboardfVi9Ipk7f6,
   'online-workflow-tool-for-document-approval-a-practical-2026-': imageSet.businessOperationsDashboardNph1oyRsHm,

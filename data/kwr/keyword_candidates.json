@@ -395,8 +395,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-27T16:33:13.362Z",
+      "usedBy": {
+        "slug": "no-code-automation-tools-for-testing-a-practical-2026-guide",
+        "title": "No Code Automation Tools For Testing: A Practical 2026 Guide",
+        "date": "2026-08-27"
+      },
       "updatedAt": "2026-08-27T10:18:35.928Z"
     },
     {
