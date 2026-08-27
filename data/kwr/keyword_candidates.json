@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T18:18:39.330Z",
+  "generatedAt": "2026-08-27T10:19:09.424Z",
   "sourceFiles": [
     "autocomplete_2026-05-05_19-51.csv",
     "autocomplete_2026-05-05_19-52.csv",
@@ -18,86 +18,13 @@
     "autocomplete_2026-08-23_07-30.csv",
     "autocomplete_2026-08-24_06-18.csv",
     "autocomplete_2026-08-25_06-18.csv",
-    "autocomplete_2026-08-26_06-18.csv"
+    "autocomplete_2026-08-26_06-18.csv",
+    "autocomplete_2026-08-27_06-18.csv"
   ],
   "candidates": [
     {
-      "id": "best-accounting-automation-software-for-small-businesses",
-      "keyword": "best accounting automation software for small businesses",
-      "category": "automation",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "automation software",
-      "sourceQuery": "automation software for small business",
-      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
-      "topicCluster": "automation-general",
-      "suggestedTitle": "Best Accounting Automation Software For Small Businesses: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 50,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 116,
-      "serpScore": 0,
-      "opportunityScore": 116,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.318Z"
-    },
-    {
-      "id": "best-ai-automation-tools-for-business",
-      "keyword": "best ai automation tools for business",
-      "category": "ai",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "ai automation",
-      "sourceQuery": "best ai automation",
-      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
-      "topicCluster": "ai-automation",
-      "suggestedTitle": "Best AI Automation Tools For Business: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 50,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 116,
-      "serpScore": 0,
-      "opportunityScore": 116,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.318Z"
-    },
-    {
-      "id": "best-marketing-automation-software-for-small-business",
-      "keyword": "best marketing automation software for small business",
+      "id": "best-ap-automation-software-for-small-business",
+      "keyword": "best ap automation software for small business",
       "category": "automation",
       "volume": null,
       "cpc": null,
@@ -107,15 +34,15 @@
       "sourceQuery": "automation software for small business",
       "sourceFile": "autocomplete_2026-05-05_19-51.csv",
       "topicCluster": "business-automation",
-      "suggestedTitle": "Best Marketing Automation Software For Small Business: What Actually Matters in 2026",
+      "suggestedTitle": "Best AP Automation Software For Small Business: What Actually Matters in 2026",
       "intentScore": 40,
       "monetizationScore": 50,
       "volumeScore": 8,
       "cpcScore": 4,
       "lengthScore": 14,
       "baseOpportunityScore": 116,
-      "serpScore": 0,
-      "opportunityScore": 116,
+      "serpScore": 16,
+      "opportunityScore": 132,
       "reasoning": [
         "strong commercial/problem-solving intent",
         "affiliate/comparison angle looks monetizable",
@@ -124,716 +51,54 @@
       "serp": {
         "weakCount": 0,
         "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
+        "neutralCount": 8,
+        "results": [
+          {
+            "title": "8 best accounts payable software for small businesses in 2026",
+            "url": "https://ramp.com/blog/accounts-payable/best-ap-software-for-small-businesses",
+            "strength": "neutral"
+          },
+          {
+            "title": "Best Accounts Payable Automation Software for Small Business",
+            "url": "https://www.g2.com/categories/ap-automation/small-business",
+            "strength": "neutral"
+          },
+          {
+            "title": "10 Best Accounts Payable Software for Small Business 2026",
+            "url": "https://thecfoclub.com/tools/accounts-payable-software-for-small-business/",
+            "strength": "neutral"
+          },
+          {
+            "title": "Best Accounts Payable Automation Software - G2",
+            "url": "https://www.g2.com/categories/ap-automation",
+            "strength": "neutral"
+          },
+          {
+            "title": "8 Best AP Automation Tools for Small Business - dokka.com",
+            "url": "https://dokka.com/best-ap-automation-tools-for-small-business/",
+            "strength": "neutral"
+          },
+          {
+            "title": "What are the best AP automation tools? 2026 comparison guide",
+            "url": "https://www.medius.com/blog/top-ap-automation-software-compared-features-fit-and-tradeoffs/",
+            "strength": "neutral"
+          },
+          {
+            "title": "13 Top Accounts Payable Automation Tools for 2026",
+            "url": "https://www.highradius.com/resources/Blog/best-ap-automation-tools/",
+            "strength": "neutral"
+          },
+          {
+            "title": "Best Accounts Payable (AP) Automation Software of 2026",
+            "url": "https://softwareconnect.com/roundups/best-accounts-payable-automation-software/",
+            "strength": "neutral"
+          }
+        ]
       },
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.318Z"
-    },
-    {
-      "id": "best-business-process-automation-software-for-salesforce",
-      "keyword": "best business process automation software for salesforce",
-      "category": "automation",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "business automation",
-      "sourceQuery": "best business automation",
-      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
-      "topicCluster": "workflow-ops",
-      "suggestedTitle": "Best Business Process Automation Software For Salesforce: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 50,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 116,
-      "serpScore": 0,
-      "opportunityScore": 116,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.318Z"
-    },
-    {
-      "id": "best-crypto-tax-software-for-turbotax",
-      "keyword": "best crypto tax software for turbotax",
-      "category": "crypto",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "crypto tax",
-      "sourceQuery": "best crypto tax",
-      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
-      "topicCluster": "crypto-tax",
-      "suggestedTitle": "Best Crypto Tax Software For Turbotax: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 50,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 116,
-      "serpScore": 0,
-      "opportunityScore": 116,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.318Z"
-    },
-    {
-      "id": "best-ai-agent-tools-for-coding",
-      "keyword": "best ai agent tools for coding",
-      "category": "ai",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "ai agents",
-      "sourceQuery": "best ai agents tools",
-      "sourceFile": "autocomplete_2026-05-05_19-52.csv",
-      "topicCluster": "ai-agents",
-      "suggestedTitle": "Best AI Agent Tools For Coding: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 44,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 110,
-      "serpScore": 0,
-      "opportunityScore": 110,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "best-app-for-tracking-crypto-portfolio",
-      "keyword": "best app for tracking crypto portfolio",
-      "category": "crypto",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "crypto portfolio tracker",
-      "sourceQuery": "best crypto portfolio tracker tools | crypto portfolio tracker for beginners | crypto portfolio tracker review | crypto portfolio tracker pricing | crypto portfolio tracker alternatives | how to use crypto portfolio tracker",
-      "sourceFile": "autocomplete_2026-05-05_20-12.csv",
-      "topicCluster": "portfolio-analytics",
-      "suggestedTitle": "Best App For Tracking Crypto Portfolio: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 50,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 116,
-      "serpScore": 0,
-      "opportunityScore": 116,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.318Z"
-    },
-    {
-      "id": "no-code-automation-tools-for-testing",
-      "keyword": "no code automation tools for testing",
-      "category": "automation",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "no code automation",
-      "sourceQuery": "no code automation software",
-      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
-      "topicCluster": "no-code",
-      "suggestedTitle": "No Code Automation Tools For Testing: A Practical 2026 Guide",
-      "intentScore": 40,
-      "monetizationScore": 36,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 102,
-      "serpScore": 0,
-      "opportunityScore": 102,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "best-crypto-app-for-beginners-free",
-      "keyword": "best crypto app for beginners free",
-      "category": "crypto",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "crypto api",
-      "sourceQuery": "crypto api for beginners",
-      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
-      "topicCluster": "crypto-infra",
-      "suggestedTitle": "Best Crypto App For Beginners Free: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 50,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 116,
-      "serpScore": 0,
-      "opportunityScore": 116,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "best-crypto-wallet-for-investing",
-      "keyword": "best crypto wallet for investing",
-      "category": "crypto",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "crypto wallet",
-      "sourceQuery": "crypto wallet for investors",
-      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
-      "topicCluster": "wallets",
-      "suggestedTitle": "Best Crypto Wallet For Investing: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 36,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 102,
-      "serpScore": 0,
-      "opportunityScore": 102,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "best-exchange-for-crypto-trading",
-      "keyword": "best exchange for crypto trading",
-      "category": "crypto",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "crypto exchange",
-      "sourceQuery": "best crypto exchange tools | crypto exchange for beginners",
-      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
-      "topicCluster": "exchanges",
-      "suggestedTitle": "Best Exchange For Crypto Trading: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 28,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 94,
-      "serpScore": 0,
-      "opportunityScore": 94,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.320Z"
-    },
-    {
-      "id": "what-is-the-best-bitcoin-wallet-for-beginners",
-      "keyword": "what is the best bitcoin wallet for beginners",
-      "category": "crypto",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "question",
-      "sourceSeed": "bitcoin wallet",
-      "sourceQuery": "bitcoin wallet for beginners",
-      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
-      "topicCluster": "bitcoin",
-      "suggestedTitle": "What Is The Best Bitcoin Wallet For Beginners: A Practical 2026 Guide",
-      "intentScore": 40,
-      "monetizationScore": 46,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 112,
-      "serpScore": 0,
-      "opportunityScore": 112,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "best-ai-tool-for-image-generator",
-      "keyword": "best ai tool for image generator",
-      "category": "ai",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "ai image generator",
-      "sourceQuery": "best ai image generator tools",
-      "sourceFile": "autocomplete_2026-05-05_20-12.csv",
-      "topicCluster": "ai-image",
-      "suggestedTitle": "Best AI Tool For Image Generator: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 44,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 110,
-      "serpScore": 0,
-      "opportunityScore": 110,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "best-design-tools-for-claude-code",
-      "keyword": "best design tools for claude code",
-      "category": "ai",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "claude code",
-      "sourceQuery": "best claude code tools",
-      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
-      "topicCluster": "ai-coding",
-      "suggestedTitle": "Best Design Tools For Claude Code: What Actually Matters in 2026",
-      "intentScore": 34,
-      "monetizationScore": 44,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 104,
-      "serpScore": 0,
-      "opportunityScore": 104,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "tools-for-testing-api-monitoring",
-      "keyword": "tools for testing api monitoring",
-      "category": "automation",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "api monitoring",
-      "sourceQuery": "api monitoring for beginners | how to use api monitoring",
-      "sourceFile": "autocomplete_2026-05-05_20-12.csv",
-      "topicCluster": "api-ops",
-      "suggestedTitle": "Tools For Testing API Monitoring: A Practical 2026 Guide",
-      "intentScore": 34,
-      "monetizationScore": 36,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 96,
-      "serpScore": 0,
-      "opportunityScore": 96,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "best-ai-note-taking-tool-for-microsoft-teams",
-      "keyword": "best ai note taking tool for microsoft teams",
-      "category": "ai",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "ai note taking",
-      "sourceQuery": "best ai note taking tools",
-      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
-      "topicCluster": "ai-general",
-      "suggestedTitle": "Best AI Note Taking Tool For Microsoft Teams: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 44,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 110,
-      "serpScore": 0,
-      "opportunityScore": 110,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "best-ai-tool-for-meeting-minutes",
-      "keyword": "best ai tool for meeting minutes",
-      "category": "ai",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "ai meeting assistant",
-      "sourceQuery": "ai meeting assistant for beginners",
-      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
-      "topicCluster": "chat-assistants",
-      "suggestedTitle": "Best AI Tool For Meeting Minutes: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 44,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 110,
-      "serpScore": 0,
-      "opportunityScore": 110,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "best-internal-linking-tools-for-seo",
-      "keyword": "best internal linking tools for seo",
-      "category": "automation",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "internal tools",
-      "sourceQuery": "best internal tools",
-      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
-      "topicCluster": "internal-tools",
-      "suggestedTitle": "Best Internal Linking Tools For SEO: What Actually Matters in 2026",
-      "intentScore": 34,
-      "monetizationScore": 44,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 104,
-      "serpScore": 0,
-      "opportunityScore": 104,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "zapier-alternatives-for-small-business",
-      "keyword": "zapier alternatives for small business",
-      "category": "automation",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "zapier alternatives",
-      "sourceQuery": "zapier alternatives",
-      "sourceFile": "autocomplete_2026-05-18_06-16.csv",
-      "topicCluster": "integration-tools",
-      "suggestedTitle": "Zapier Alternatives For Small Business: A Practical 2026 Guide",
-      "intentScore": 40,
-      "monetizationScore": 38,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 104,
-      "serpScore": 0,
-      "opportunityScore": 104,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "best-llm-api-for-openclaw",
-      "keyword": "best llm api for openclaw",
-      "category": "ai",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "llm api",
-      "sourceQuery": "best llm api",
-      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
-      "topicCluster": "llm-stack",
-      "suggestedTitle": "Best LLM API For Openclaw: What Actually Matters in 2026",
-      "intentScore": 34,
-      "monetizationScore": 36,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 96,
-      "serpScore": 0,
-      "opportunityScore": 96,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "best-online-card-for-crypto",
-      "keyword": "best online card for crypto",
-      "category": "crypto",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "crypto debit card",
-      "sourceQuery": "best crypto debit card tools",
-      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
-      "topicCluster": "crypto-payments",
-      "suggestedTitle": "Best Online Card For Crypto: What Actually Matters in 2026",
-      "intentScore": 40,
-      "monetizationScore": 28,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 94,
-      "serpScore": 0,
-      "opportunityScore": 94,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.320Z"
-    },
-    {
-      "id": "best-practices-for-prompt-management",
-      "keyword": "best practices for prompt management",
-      "category": "ai",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "prompt management",
-      "sourceQuery": "best prompt management",
-      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
-      "topicCluster": "prompting",
-      "suggestedTitle": "Best Practices For Prompt Management: What Actually Matters in 2026",
-      "intentScore": 34,
-      "monetizationScore": 28,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 88,
-      "serpScore": 0,
-      "opportunityScore": 88,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.321Z"
+      "updatedAt": "2026-08-27T10:18:24.509Z"
     },
     {
       "id": "best-automation-tool-for-desktop-application",
@@ -870,7 +135,84 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.318Z"
+      "updatedAt": "2026-08-27T10:18:28.636Z"
+    },
+    {
+      "id": "best-ai-automation-tools-for-business",
+      "keyword": "best ai automation tools for business",
+      "category": "ai",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "ai automation",
+      "sourceQuery": "best ai automation",
+      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
+      "topicCluster": "ai-automation",
+      "suggestedTitle": "Best AI Automation Tools For Business: What Actually Matters in 2026",
+      "intentScore": 40,
+      "monetizationScore": 50,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 116,
+      "serpScore": 8,
+      "opportunityScore": 124,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 1,
+        "neutralCount": 7,
+        "results": [
+          {
+            "title": "50 Best AI Tools for Business: 2026 (w/ Pros &amp; Cons) - HostAdvice",
+            "url": "https://hostadvice.com/blog/how-to-manage-a-business/best-ai-tools-for-business/",
+            "strength": "neutral"
+          },
+          {
+            "title": "10 Best AI Tools for Business (August 2026) - Unite.AI",
+            "url": "https://www.unite.ai/best-ai-tools-for-business/",
+            "strength": "neutral"
+          },
+          {
+            "title": "The 8 best AI automation tools in 2026 - Zapier",
+            "url": "https://zapier.com/blog/ai-automation-tools/",
+            "strength": "strong"
+          },
+          {
+            "title": "10 Best AI Automation Tools for Productivity in 2026 (Free &amp; Paid)",
+            "url": "https://clickup.com/blog/ai-tools-for-automation/",
+            "strength": "neutral"
+          },
+          {
+            "title": "12 Best AI Tools for Business Automation in 2026 - ekipa.ai",
+            "url": "https://www.ekipa.ai/ekipa-labs/ai-tools-for-business-automation",
+            "strength": "neutral"
+          },
+          {
+            "title": "10 Best AI Task Automation Tools for 2026 | GPT for Work",
+            "url": "https://gptforwork.com/blog/best-ai-task-automation-tools",
+            "strength": "neutral"
+          },
+          {
+            "title": "20+ Best AI Tools for Business to Automate and Scale",
+            "url": "https://www.salesforce.com/artificial-intelligence/business/best-ai-tools-for-business/",
+            "strength": "neutral"
+          },
+          {
+            "title": "Best AI Automation Tools for Business in 2026 (Save 10+ Hours a Week)",
+            "url": "https://aitoolclaw.com/articles/best-ai-automation-tools-for-business/",
+            "strength": "neutral"
+          }
+        ]
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:23.799Z"
     },
     {
       "id": "best-ticketing-tool-for-workflow-automation",
@@ -907,7 +249,673 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.318Z"
+      "updatedAt": "2026-08-27T10:18:29.270Z"
+    },
+    {
+      "id": "best-crypto-tax-software-for-turbotax",
+      "keyword": "best crypto tax software for turbotax",
+      "category": "crypto",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "crypto tax",
+      "sourceQuery": "best crypto tax",
+      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
+      "topicCluster": "crypto-tax",
+      "suggestedTitle": "Best Crypto Tax Software For Turbotax: What Actually Matters in 2026",
+      "intentScore": 40,
+      "monetizationScore": 50,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 116,
+      "serpScore": 0,
+      "opportunityScore": 116,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:28.026Z"
+    },
+    {
+      "id": "best-ai-agent-tools-for-coding",
+      "keyword": "best ai agent tools for coding",
+      "category": "ai",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "ai agents",
+      "sourceQuery": "best ai agents tools",
+      "sourceFile": "autocomplete_2026-05-05_19-52.csv",
+      "topicCluster": "ai-agents",
+      "suggestedTitle": "Best AI Agent Tools For Coding: What Actually Matters in 2026",
+      "intentScore": 40,
+      "monetizationScore": 44,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 110,
+      "serpScore": 0,
+      "opportunityScore": 110,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:31.551Z"
+    },
+    {
+      "id": "best-app-for-tracking-crypto-portfolio",
+      "keyword": "best app for tracking crypto portfolio",
+      "category": "crypto",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "crypto portfolio tracker",
+      "sourceQuery": "best crypto portfolio tracker tools | crypto portfolio tracker for beginners | crypto portfolio tracker review | crypto portfolio tracker pricing | crypto portfolio tracker alternatives | how to use crypto portfolio tracker",
+      "sourceFile": "autocomplete_2026-05-05_20-12.csv",
+      "topicCluster": "portfolio-analytics",
+      "suggestedTitle": "Best App For Tracking Crypto Portfolio: What Actually Matters in 2026",
+      "intentScore": 40,
+      "monetizationScore": 50,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 116,
+      "serpScore": 0,
+      "opportunityScore": 116,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:28.568Z"
+    },
+    {
+      "id": "no-code-automation-tools-for-testing",
+      "keyword": "no code automation tools for testing",
+      "category": "automation",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "no code automation",
+      "sourceQuery": "no code automation software",
+      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
+      "topicCluster": "no-code",
+      "suggestedTitle": "No Code Automation Tools For Testing: A Practical 2026 Guide",
+      "intentScore": 40,
+      "monetizationScore": 36,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 102,
+      "serpScore": 0,
+      "opportunityScore": 102,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:35.928Z"
+    },
+    {
+      "id": "best-crypto-app-for-beginners-free",
+      "keyword": "best crypto app for beginners free",
+      "category": "crypto",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "crypto api",
+      "sourceQuery": "crypto api for beginners",
+      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
+      "topicCluster": "crypto-infra",
+      "suggestedTitle": "Best Crypto App For Beginners Free: What Actually Matters in 2026",
+      "intentScore": 40,
+      "monetizationScore": 50,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 116,
+      "serpScore": 0,
+      "opportunityScore": 116,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:30.265Z"
+    },
+    {
+      "id": "best-crypto-wallet-for-investing",
+      "keyword": "best crypto wallet for investing",
+      "category": "crypto",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "crypto wallet",
+      "sourceQuery": "crypto wallet for investors",
+      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
+      "topicCluster": "wallets",
+      "suggestedTitle": "Best Crypto Wallet For Investing: What Actually Matters in 2026",
+      "intentScore": 40,
+      "monetizationScore": 36,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 102,
+      "serpScore": 0,
+      "opportunityScore": 102,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:35.533Z"
+    },
+    {
+      "id": "best-exchange-for-crypto-trading",
+      "keyword": "best exchange for crypto trading",
+      "category": "crypto",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "crypto exchange",
+      "sourceQuery": "best crypto exchange tools | crypto exchange for beginners",
+      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
+      "topicCluster": "exchanges",
+      "suggestedTitle": "Best Exchange For Crypto Trading: What Actually Matters in 2026",
+      "intentScore": 40,
+      "monetizationScore": 28,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 94,
+      "serpScore": 0,
+      "opportunityScore": 94,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:43.835Z"
+    },
+    {
+      "id": "what-is-the-best-bitcoin-wallet-for-beginners",
+      "keyword": "what is the best bitcoin wallet for beginners",
+      "category": "crypto",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "question",
+      "sourceSeed": "bitcoin wallet",
+      "sourceQuery": "bitcoin wallet for beginners",
+      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
+      "topicCluster": "bitcoin",
+      "suggestedTitle": "What Is The Best Bitcoin Wallet For Beginners: A Practical 2026 Guide",
+      "intentScore": 40,
+      "monetizationScore": 46,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 112,
+      "serpScore": 0,
+      "opportunityScore": 112,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:31.492Z"
+    },
+    {
+      "id": "best-ai-tool-for-image-generator",
+      "keyword": "best ai tool for image generator",
+      "category": "ai",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "ai image generator",
+      "sourceQuery": "best ai image generator tools",
+      "sourceFile": "autocomplete_2026-05-05_20-12.csv",
+      "topicCluster": "ai-image",
+      "suggestedTitle": "Best AI Tool For Image Generator: What Actually Matters in 2026",
+      "intentScore": 40,
+      "monetizationScore": 44,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 110,
+      "serpScore": 0,
+      "opportunityScore": 110,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:31.723Z"
+    },
+    {
+      "id": "best-design-tools-for-claude-code",
+      "keyword": "best design tools for claude code",
+      "category": "ai",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "claude code",
+      "sourceQuery": "best claude code tools",
+      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
+      "topicCluster": "ai-coding",
+      "suggestedTitle": "Best Design Tools For Claude Code: What Actually Matters in 2026",
+      "intentScore": 34,
+      "monetizationScore": 44,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 104,
+      "serpScore": 0,
+      "opportunityScore": 104,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:34.910Z"
+    },
+    {
+      "id": "tools-for-testing-api-monitoring",
+      "keyword": "tools for testing api monitoring",
+      "category": "automation",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "api monitoring",
+      "sourceQuery": "api monitoring for beginners | how to use api monitoring",
+      "sourceFile": "autocomplete_2026-05-05_20-12.csv",
+      "topicCluster": "api-ops",
+      "suggestedTitle": "Tools For Testing API Monitoring: A Practical 2026 Guide",
+      "intentScore": 34,
+      "monetizationScore": 36,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 96,
+      "serpScore": 0,
+      "opportunityScore": 96,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:41.148Z"
+    },
+    {
+      "id": "best-ai-note-taking-tool-for-microsoft-teams",
+      "keyword": "best ai note taking tool for microsoft teams",
+      "category": "ai",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "ai note taking",
+      "sourceQuery": "best ai note taking tools",
+      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
+      "topicCluster": "ai-general",
+      "suggestedTitle": "Best AI Note Taking Tool For Microsoft Teams: What Actually Matters in 2026",
+      "intentScore": 40,
+      "monetizationScore": 44,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 110,
+      "serpScore": 0,
+      "opportunityScore": 110,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:32.458Z"
+    },
+    {
+      "id": "best-ai-tool-for-meeting-minutes",
+      "keyword": "best ai tool for meeting minutes",
+      "category": "ai",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "ai meeting assistant",
+      "sourceQuery": "ai meeting assistant for beginners",
+      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
+      "topicCluster": "chat-assistants",
+      "suggestedTitle": "Best AI Tool For Meeting Minutes: What Actually Matters in 2026",
+      "intentScore": 40,
+      "monetizationScore": 44,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 110,
+      "serpScore": 0,
+      "opportunityScore": 110,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:32.771Z"
+    },
+    {
+      "id": "best-internal-linking-tools-for-seo",
+      "keyword": "best internal linking tools for seo",
+      "category": "automation",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "internal tools",
+      "sourceQuery": "best internal tools",
+      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
+      "topicCluster": "internal-tools",
+      "suggestedTitle": "Best Internal Linking Tools For SEO: What Actually Matters in 2026",
+      "intentScore": 34,
+      "monetizationScore": 44,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 104,
+      "serpScore": 0,
+      "opportunityScore": 104,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:34.025Z"
+    },
+    {
+      "id": "zapier-alternatives-for-automation",
+      "keyword": "zapier alternatives for automation",
+      "category": "automation",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "zapier alternatives",
+      "sourceQuery": "zapier alternatives",
+      "sourceFile": "autocomplete_2026-05-05_20-12.csv",
+      "topicCluster": "integration-tools",
+      "suggestedTitle": "Zapier Alternatives For Automation: A Practical 2026 Guide",
+      "intentScore": 40,
+      "monetizationScore": 36,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 102,
+      "serpScore": 0,
+      "opportunityScore": 102,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:37.477Z"
+    },
+    {
+      "id": "best-llm-api-for-openclaw",
+      "keyword": "best llm api for openclaw",
+      "category": "ai",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "llm api",
+      "sourceQuery": "best llm api",
+      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
+      "topicCluster": "llm-stack",
+      "suggestedTitle": "Best LLM API For Openclaw: What Actually Matters in 2026",
+      "intentScore": 34,
+      "monetizationScore": 36,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 96,
+      "serpScore": 0,
+      "opportunityScore": 96,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:40.643Z"
+    },
+    {
+      "id": "best-online-card-for-crypto",
+      "keyword": "best online card for crypto",
+      "category": "crypto",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "crypto debit card",
+      "sourceQuery": "best crypto debit card tools",
+      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
+      "topicCluster": "crypto-payments",
+      "suggestedTitle": "Best Online Card For Crypto: What Actually Matters in 2026",
+      "intentScore": 40,
+      "monetizationScore": 28,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 94,
+      "serpScore": 0,
+      "opportunityScore": 94,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:43.892Z"
+    },
+    {
+      "id": "best-practices-for-prompt-management",
+      "keyword": "best practices for prompt management",
+      "category": "ai",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "prompt management",
+      "sourceQuery": "best prompt management",
+      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
+      "topicCluster": "prompting",
+      "suggestedTitle": "Best Practices For Prompt Management: What Actually Matters in 2026",
+      "intentScore": 34,
+      "monetizationScore": 28,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 88,
+      "serpScore": 0,
+      "opportunityScore": 88,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:52.610Z"
     },
     {
       "id": "best-crm-for-service-automation",
@@ -944,7 +952,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:29.964Z"
     },
     {
       "id": "best-sales-automation-software-for-b2b",
@@ -981,7 +989,44 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:30.388Z"
+    },
+    {
+      "id": "best-marketing-automation-software-for-startups",
+      "keyword": "best marketing automation software for startups",
+      "category": "automation",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "crm automation",
+      "sourceQuery": "best crm automation tools",
+      "sourceFile": "autocomplete_2026-08-22_21-17.csv",
+      "topicCluster": "automation-general",
+      "suggestedTitle": "Best Marketing Automation Software For Startups: What Actually Matters in 2026",
+      "intentScore": 40,
+      "monetizationScore": 50,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 116,
+      "serpScore": 0,
+      "opportunityScore": 116,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:30.619Z"
     },
     {
       "id": "best-ai-tool-for-transcription",
@@ -1018,7 +1063,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:33.064Z"
     },
     {
       "id": "best-ai-tools-for-notes",
@@ -1055,7 +1100,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:33.365Z"
     },
     {
       "id": "best-ai-tools-for-research-work",
@@ -1092,7 +1137,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:33.435Z"
     },
     {
       "id": "chatgpt-alternatives-for-software-development",
@@ -1129,81 +1174,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "internal-communication-tools-for-small-business",
-      "keyword": "internal communication tools for small business",
-      "category": "automation",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "internal tools",
-      "sourceQuery": "internal tools for small business",
-      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
-      "topicCluster": "internal-tools",
-      "suggestedTitle": "Internal Communication Tools For Small Business: A Practical 2026 Guide",
-      "intentScore": 40,
-      "monetizationScore": 38,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 104,
-      "serpScore": 0,
-      "opportunityScore": 104,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "process-management-software-for-small-business",
-      "keyword": "process management software for small business",
-      "category": "automation",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "process automation",
-      "sourceQuery": "process automation for small business",
-      "sourceFile": "autocomplete_2026-05-05_19-51.csv",
-      "topicCluster": "workflow-ops",
-      "suggestedTitle": "Process Management Software For Small Business: A Practical 2026 Guide",
-      "intentScore": 40,
-      "monetizationScore": 38,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 104,
-      "serpScore": 0,
-      "opportunityScore": 104,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:34.085Z"
     },
     {
       "id": "best-ai-website-builder-for-beginners",
@@ -1240,7 +1211,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:34.617Z"
     },
     {
       "id": "best-process-automation-solutions-for-enterprise",
@@ -1277,7 +1248,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:35.758Z"
     },
     {
       "id": "ai-tools-for-automation",
@@ -1314,48 +1285,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "alternatives-to-pega-for-business-automation",
-      "keyword": "alternatives to pega for business automation",
-      "category": "automation",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "business automation",
-      "sourceQuery": "business automation alternatives",
-      "sourceFile": "autocomplete_2026-05-05_20-12.csv",
-      "topicCluster": "business-automation",
-      "suggestedTitle": "Alternatives To Pega For Business Automation: A Practical 2026 Guide",
-      "intentScore": 40,
-      "monetizationScore": 36,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 102,
-      "serpScore": 0,
-      "opportunityScore": 102,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": "2026-08-26T21:32:52.474Z",
-      "usedBy": {
-        "slug": "alternatives-to-pega-for-business-automation-a-practical-202",
-        "title": "Alternatives To Pega For Business Automation: A Practical 2026 Guide",
-        "date": "2026-08-26"
-      },
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:36.064Z"
     },
     {
       "id": "best-crypto-tracker-for-taxes",
@@ -1392,7 +1322,48 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:37.650Z"
+    },
+    {
+      "id": "workflow-approval-software-for-businesses",
+      "keyword": "workflow approval software for businesses",
+      "category": "automation",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "approval workflow",
+      "sourceQuery": "best approval workflow tools | approval workflow for beginners",
+      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
+      "topicCluster": "workflow-ops",
+      "suggestedTitle": "Workflow Approval Software For Businesses: A Practical 2026 Guide",
+      "intentScore": 34,
+      "monetizationScore": 36,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 96,
+      "serpScore": 0,
+      "opportunityScore": 96,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": "2026-08-27T11:31:56.336Z",
+      "usedBy": {
+        "slug": "workflow-approval-software-for-businesses-a-practical-2026-g",
+        "title": "Workflow Approval Software For Businesses: A Practical 2026 Guide",
+        "date": "2026-08-27"
+      },
+      "updatedAt": "2026-08-27T10:18:41.596Z"
     },
     {
       "id": "ai-tool-for-meeting",
@@ -1429,7 +1400,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:43.092Z"
     },
     {
       "id": "cursor-ai-alternative-for-vs-code",
@@ -1466,7 +1437,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.320Z"
+      "updatedAt": "2026-08-27T10:18:44.077Z"
     },
     {
       "id": "best-ai-automation-tools",
@@ -1503,7 +1474,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.320Z"
+      "updatedAt": "2026-08-27T10:18:44.716Z"
     },
     {
       "id": "top-ai-automation-tools",
@@ -1540,7 +1511,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.320Z"
+      "updatedAt": "2026-08-27T10:18:46.798Z"
     },
     {
       "id": "what-are-the-best-ai-tools",
@@ -1577,7 +1548,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.320Z"
+      "updatedAt": "2026-08-27T10:18:48.211Z"
     },
     {
       "id": "top-10-automation-tools",
@@ -1614,7 +1585,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.320Z"
+      "updatedAt": "2026-08-27T10:18:49.611Z"
     },
     {
       "id": "internal-tools-for-project-management",
@@ -1651,7 +1622,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.321Z"
+      "updatedAt": "2026-08-27T10:18:54.548Z"
     },
     {
       "id": "monitoring-tools-for-web-applications",
@@ -1688,7 +1659,44 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.321Z"
+      "updatedAt": "2026-08-27T10:18:55.681Z"
+    },
+    {
+      "id": "how-to-learn-automation-for-beginners",
+      "keyword": "how to learn automation for beginners",
+      "category": "automation",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "question",
+      "sourceSeed": "no code automation | automation software | business automation | process automation",
+      "sourceQuery": "no code automation for beginners | automation software for beginners | business automation for beginners | process automation for beginners",
+      "sourceFile": "autocomplete_2026-08-09_08-23.csv",
+      "topicCluster": "workflow-ops",
+      "suggestedTitle": "How To Learn Automation For Beginners: What Actually Works in 2026",
+      "intentScore": 30,
+      "monetizationScore": 30,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 86,
+      "serpScore": 0,
+      "opportunityScore": 86,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-08-27T10:18:56.373Z"
     },
     {
       "id": "best-rag-ai-tools",
@@ -1725,7 +1733,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.321Z"
+      "updatedAt": "2026-08-27T10:19:01.037Z"
     },
     {
       "id": "best-ai-agent-tools-2025",
@@ -1762,7 +1770,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.321Z"
+      "updatedAt": "2026-08-27T10:19:02.297Z"
     },
     {
       "id": "best-ai-agent-tools-2026",
@@ -1799,7 +1807,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.321Z"
+      "updatedAt": "2026-08-27T10:19:02.361Z"
     },
     {
       "id": "best-ai-agents-tools",
@@ -1836,7 +1844,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.321Z"
+      "updatedAt": "2026-08-27T10:19:02.474Z"
     },
     {
       "id": "best-ai-coding-tools",
@@ -1873,7 +1881,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.321Z"
+      "updatedAt": "2026-08-27T10:19:03.289Z"
     },
     {
       "id": "what-are-no-code-low-code-automation-tools",
@@ -1910,7 +1918,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.321Z"
+      "updatedAt": "2026-08-27T10:19:03.750Z"
     },
     {
       "id": "best-crypto-ai-tools",
@@ -1947,7 +1955,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.321Z"
+      "updatedAt": "2026-08-27T10:19:04.142Z"
     },
     {
       "id": "how-to-get-api-key-crypto-com-app",
@@ -1984,7 +1992,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.322Z"
+      "updatedAt": "2026-08-27T10:19:06.902Z"
     },
     {
       "id": "crypto-for-small-business",
@@ -2020,7 +2028,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.322Z"
+      "updatedAt": "2026-08-27T10:19:08.839Z"
     },
     {
       "id": "free-automation-software-like-n8n",
@@ -2056,7 +2064,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-08-26T18:18:39.322Z"
+      "updatedAt": "2026-08-27T10:19:09.287Z"
     },
     {
       "id": "best-automation-software-for-reducing-manual-tasks",
@@ -2077,8 +2085,8 @@
       "cpcScore": 4,
       "lengthScore": 14,
       "baseOpportunityScore": 116,
-      "serpScore": 0,
-      "opportunityScore": 116,
+      "serpScore": 16,
+      "opportunityScore": 132,
       "reasoning": [
         "strong commercial/problem-solving intent",
         "affiliate/comparison angle looks monetizable",
@@ -2087,8 +2095,49 @@
       "serp": {
         "weakCount": 0,
         "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
+        "neutralCount": 8,
+        "results": [
+          {
+            "title": "Task Automation Software: 15 Best Tools Compared (2026) - monday.com",
+            "url": "https://monday.com/blog/project-management/task-automation-software/",
+            "strength": "neutral"
+          },
+          {
+            "title": "I Tested 10 Workflow Automation Software In 2026: My Top Picks",
+            "url": "https://thedigitalprojectmanager.com/tools/best-workflow-automation-software/",
+            "strength": "neutral"
+          },
+          {
+            "title": "10 Best Task Automation Software for 2026 - The Digital Project Manager",
+            "url": "https://thedigitalprojectmanager.com/tools/best-task-automation-software/",
+            "strength": "neutral"
+          },
+          {
+            "title": "I Tested 7+ Automation Software Tools. Here Are the Best in 2026",
+            "url": "https://www.lindy.ai/blog/automation-software",
+            "strength": "neutral"
+          },
+          {
+            "title": "7 Best Workflow Automation Tools to Replace Manual Tasks in 2026",
+            "url": "https://ones.com/blog/ones-solutions/7-best-workflow-automation-tools-to-replace-manual-tasks-in-2026/",
+            "strength": "neutral"
+          },
+          {
+            "title": "Workflow Automation Software: 8 Picks to Replace Manual Tasks",
+            "url": "https://ones.com/blog/ones-solutions/workflow-automation-software-8-picks-to-replace-manual-tasks/",
+            "strength": "neutral"
+          },
+          {
+            "title": "Top 10 Best Task Automation Software - 2026 Buyer&#x27;s Guide",
+            "url": "https://worldmetrics.org/best/task-automation-software/",
+            "strength": "neutral"
+          },
+          {
+            "title": "12 Best Task Automation Software + Examples (2026)",
+            "url": "https://blaze.today/blog/best-task-automation-software-examples/",
+            "strength": "neutral"
+          }
+        ]
       },
       "status": "ready",
       "usedAt": "2026-08-10T21:32:20.954Z",
@@ -2097,7 +2146,7 @@
         "title": "Best Automation Software For Reducing Manual Tasks",
         "date": "2026-08-10"
       },
-      "updatedAt": "2026-08-26T18:18:39.318Z"
+      "updatedAt": "2026-08-27T10:18:27.585Z"
     },
     {
       "id": "best-tools-for-automation",
@@ -2138,7 +2187,7 @@
         "title": "Best Tools For Automation: What Actually Matters in 2026",
         "date": "2026-08-23"
       },
-      "updatedAt": "2026-08-26T18:18:39.318Z"
+      "updatedAt": "2026-08-27T10:18:29.329Z"
     },
     {
       "id": "best-ai-tools-for-ai-automation",
@@ -2179,7 +2228,7 @@
         "title": "Best AI Tools For AI Automation: What Actually Matters in 2026",
         "date": "2026-08-12"
       },
-      "updatedAt": "2026-08-26T18:18:39.318Z"
+      "updatedAt": "2026-08-27T10:18:29.559Z"
     },
     {
       "id": "best-tool-for-automation",
@@ -2220,7 +2269,7 @@
         "title": "Best Tool For Automation: What Actually Matters in 2026",
         "date": "2026-08-10"
       },
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:29.789Z"
     },
     {
       "id": "best-tools-for-automating-your-workflow",
@@ -2261,7 +2310,7 @@
         "title": "Best Tools For Automating Your Workflow: What Actually Matters in 2026",
         "date": "2026-08-23"
       },
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:32.034Z"
     },
     {
       "id": "best-ai-tools-for-ai-agents",
@@ -2302,7 +2351,7 @@
         "title": "Best AI Tools For AI Agents: What Actually Matters in 2026",
         "date": "2026-08-13"
       },
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:32.287Z"
     },
     {
       "id": "best-ai-tool-for-audio-transcription",
@@ -2343,7 +2392,7 @@
         "title": "Best AI Tool For Audio Transcription: What Actually Matters in 2026",
         "date": "2026-08-20"
       },
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:32.706Z"
     },
     {
       "id": "best-ai-tool-for-meetings",
@@ -2384,7 +2433,7 @@
         "title": "Best AI Tool For Meetings: What Actually Matters in 2026",
         "date": "2026-08-19"
       },
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:32.827Z"
     },
     {
       "id": "which-platform-is-best-for-bitcoin",
@@ -2425,7 +2474,7 @@
         "title": "Which Platform Is Best For Bitcoin: What the Market Gets Wrong in 2026",
         "date": "2026-08-20"
       },
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:34.326Z"
     },
     {
       "id": "best-ollama-model-for-n8n-tools",
@@ -2466,7 +2515,7 @@
         "title": "Best Ollama Model For N8n Tools: What Actually Matters in 2026",
         "date": "2026-08-16"
       },
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:34.966Z"
     },
     {
       "id": "best-solana-dex-for-beginners",
@@ -2507,48 +2556,7 @@
         "title": "Best Solana DEX For Beginners: What Actually Matters in 2026",
         "date": "2026-08-21"
       },
-      "updatedAt": "2026-08-26T18:18:39.319Z"
-    },
-    {
-      "id": "online-workflow-tool-for-document-approval",
-      "keyword": "online workflow tool for document approval",
-      "category": "automation",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "preposition",
-      "sourceSeed": "approval workflow",
-      "sourceQuery": "approval workflow for beginners",
-      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
-      "topicCluster": "workflow-ops",
-      "suggestedTitle": "Online Workflow Tool For Document Approval: A Practical 2026 Guide",
-      "intentScore": 34,
-      "monetizationScore": 36,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 96,
-      "serpScore": 0,
-      "opportunityScore": 96,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": "2026-08-26T16:33:15.810Z",
-      "usedBy": {
-        "slug": "online-workflow-tool-for-document-approval-a-practical-2026-",
-        "title": "Online Workflow Tool For Document Approval: A Practical 2026 Guide",
-        "date": "2026-08-26"
-      },
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:39.262Z"
     },
     {
       "id": "what-is-a-rag-tool-for-ai",
@@ -2589,7 +2597,7 @@
         "title": "What Is A RAG Tool For AI: A Practical 2026 Guide",
         "date": "2026-08-22"
       },
-      "updatedAt": "2026-08-26T18:18:39.319Z"
+      "updatedAt": "2026-08-27T10:18:42.764Z"
     },
     {
       "id": "best-automation-software-tools",
@@ -2630,7 +2638,7 @@
         "title": "Best Automation Software Tools: What Actually Matters in 2026",
         "date": "2026-08-25"
       },
-      "updatedAt": "2026-08-26T18:18:39.320Z"
+      "updatedAt": "2026-08-27T10:18:48.489Z"
     },
     {
       "id": "which-is-the-best-automation-tool",
@@ -2671,7 +2679,7 @@
         "title": "Which Is The Best Automation Tool: A Practical 2026 Guide",
         "date": "2026-08-26"
       },
-      "updatedAt": "2026-08-26T18:18:39.320Z"
+      "updatedAt": "2026-08-27T10:18:49.842Z"
     },
     {
       "id": "free-http-monitoring-tool-for-websites",
@@ -2712,7 +2720,7 @@
         "title": "Free Http Monitoring Tool For Websites: A Practical 2026 Guide",
         "date": "2026-08-16"
       },
-      "updatedAt": "2026-08-26T18:18:39.320Z"
+      "updatedAt": "2026-08-27T10:18:51.915Z"
     },
     {
       "id": "ethereum-alternatives-for-smart-contracts",
@@ -2753,7 +2761,7 @@
         "title": "Ethereum Alternatives For Smart Contracts: What the Market Gets Wrong",
         "date": "2026-08-22"
       },
-      "updatedAt": "2026-08-26T18:18:39.321Z"
+      "updatedAt": "2026-08-27T10:18:53.611Z"
     }
   ]
 }
