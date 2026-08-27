@@ -1204,6 +1204,24 @@ export const imageSet = {
     credit: 'Photo by Jakub Żerdzicki on Unsplash',
     creditUrl: 'https://unsplash.com/photos/a-person-holding-a-remote-control-in-front-of-a-computer-screen-d0_1CoAsDR0',
   },
+  financialMarketChartsW7wEqy01K3: {
+    src: `https://images.unsplash.com/photo-1638481826540-7710b13f7d53${unsplashParams}`,
+    alt: 'A computer screen with a red line on it',
+    credit: 'Photo by m. on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-computer-screen-with-a-red-line-on-it-W7wEqy01K3s',
+  },
+  financialMarketChartsynllMMWBdi: {
+    src: `https://images.unsplash.com/photo-1734503937317-3b88a42ac50c${unsplashParams}`,
+    alt: 'A laptop computer sitting on top of a desk',
+    credit: 'Photo by Jakub Żerdzicki on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-desk-ynllMMWBdi0',
+  },
+  financialMarketChartsnJ9k6iU6g: {
+    src: `https://images.unsplash.com/photo-1737703638422-2cfa152cdcb7${unsplashParams}`,
+    alt: 'A laptop computer sitting on top of a desk',
+    credit: 'Photo by Jakub Żerdzicki on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-desk--nJ9k6iU6_g',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1557,6 +1575,9 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'financialMarketChartsnJ9k6iU6g',
+    'financialMarketChartsynllMMWBdi',
+    'financialMarketChartsW7wEqy01K3',
     'financialMarketChartsd01CoAsDR0',
     'financialMarketChartsPydnIdcY',
     'financialMarketChartsfchVIvuMGB',
