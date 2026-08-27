@@ -1227,6 +1227,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'tools-for-testing-api-monitoring-a-practical-2026-guide': imageSet.analyticsDashboardLaptopiOykDIkZLQ,
   'no-code-automation-tools-for-testing-a-practical-2026-guide': imageSet.businessOperationsDashboardpPpUCaudT5,
   'workflow-approval-software-for-businesses-a-practical-2026-g': imageSet.businessOperationsDashboard9fZuqBYlV1,
   'alternatives-to-pega-for-business-automation-a-practical-202': imageSet.businessOperationsDashboardfVi9Ipk7f6,
