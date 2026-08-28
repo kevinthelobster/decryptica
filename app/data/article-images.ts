@@ -1245,6 +1245,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'api-tools-for-cybersecurity-a-practical-2026-guide': imageSet.analyticsDashboardLaptopdBIMy696Rk,
   'best-low-code-no-code-automation-tools-what-actually-matters': imageSet.analyticsDashboardLaptopPu96DJ6rct,
   'tools-for-testing-api-monitoring-a-practical-2026-guide': imageSet.analyticsDashboardLaptopiOykDIkZLQ,
   'no-code-automation-tools-for-testing-a-practical-2026-guide': imageSet.businessOperationsDashboardpPpUCaudT5,

@@ -655,8 +655,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-28T16:33:17.165Z",
+      "usedBy": {
+        "slug": "api-tools-for-cybersecurity-a-practical-2026-guide",
+        "title": "API Tools For Cybersecurity: A Practical 2026 Guide",
+        "date": "2026-08-28"
+      },
       "updatedAt": "2026-08-28T10:18:35.651Z"
     },
     {
