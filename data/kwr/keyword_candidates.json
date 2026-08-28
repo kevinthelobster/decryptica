@@ -1625,8 +1625,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-28T21:32:46.885Z",
+      "usedBy": {
+        "slug": "top-10-automation-tools-a-practical-2026-guide",
+        "title": "Top 10 Automation Tools: A Practical 2026 Guide",
+        "date": "2026-08-28"
+      },
       "updatedAt": "2026-08-28T10:18:43.797Z"
     },
     {
