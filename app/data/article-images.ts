@@ -1240,6 +1240,24 @@ export const imageSet = {
     credit: 'Photo by Coinstash Australia on Unsplash',
     creditUrl: 'https://unsplash.com/photos/two-laptops-and-a-calculator-on-a-marble-table-Cb6MWqFITsk',
   },
+  financialMarketChartsUqILKDhWiF: {
+    src: `https://images.unsplash.com/photo-1635236190542-d43e4d4b9e4b${unsplashParams}`,
+    alt: 'A person is holding a pencil in front of a laptop',
+    credit: 'Photo by rc.xyz NFT gallery on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-person-is-holding-a-pencil-in-front-of-a-laptop-UqILKDhWiFw',
+  },
+  blockchainTechnologyLaptopJNxTZzpHms: {
+    src: `https://images.unsplash.com/photo-1526378800651-c32d170fe6f8${unsplashParams}`,
+    alt: 'Person holding sticky note',
+    credit: 'Photo by Hitesh Choudhary on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/person-holding-sticky-note-JNxTZzpHmsI',
+  },
+  blockchainTechnologyLaptopRDolnHtjVC: {
+    src: `https://images.unsplash.com/photo-1577375729152-4c8b5fcda381${unsplashParams}`,
+    alt: 'Turned-on laptop computer',
+    credit: 'Photo by Pakata Goh on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/turned-on-laptop-computer-RDolnHtjVCY',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1599,6 +1617,9 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'blockchainTechnologyLaptopRDolnHtjVC',
+    'blockchainTechnologyLaptopJNxTZzpHms',
+    'financialMarketChartsUqILKDhWiF',
     'financialMarketChartsCb6MWqFITs',
     'financialMarketChartsamLfrL8LGl',
     'financialMarketChartsHASoyURgPM',
