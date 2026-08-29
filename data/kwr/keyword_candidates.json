@@ -1618,8 +1618,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-29T16:33:08.042Z",
+      "usedBy": {
+        "slug": "monitoring-tools-for-web-applications-a-practical-2026-guide",
+        "title": "Monitoring Tools For Web Applications: A Practical 2026 Guide",
+        "date": "2026-08-29"
+      },
       "updatedAt": "2026-08-29T10:18:40.029Z"
     },
     {
