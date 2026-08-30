@@ -1281,6 +1281,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'free-automation-software-like-n8n-a-practical-2026-guide': imageSet.analyticsDashboardLaptopIrRbSND5EU,
   'internal-tools-for-project-management-a-practical-2026-guide': imageSet.analyticsDashboardLaptoptKf03CkdEj,
   'monitoring-tools-for-web-applications-a-practical-2026-guide': imageSet.analyticsDashboardLaptoprqMWNKRLVu,
   'how-to-learn-automation-for-beginners-what-actually-works-in': imageSet.cybersecurityDashboard7Og0reGku4,

@@ -1,11 +1,6 @@
 {
   "posted": [
     {
-      "title": "The Productivity System That Actually Works",
-      "slug": "the-productivity-system-that-actually-works",
-      "date": 1780313511375
-    },
-    {
       "title": "The State of API Documentation in 2026",
       "slug": "the-state-of-api-documentation-in-2026",
       "date": 1780399999540
@@ -759,6 +754,11 @@
       "title": "Internal Tools For Project Management: A Practical 2026 Guide",
       "slug": "internal-tools-for-project-management-a-practical-2026-guide",
       "date": 1788039153857
+    },
+    {
+      "title": "Free Automation Software Like N8n: A Practical 2026 Guide",
+      "slug": "free-automation-software-like-n8n-a-practical-2026-guide",
+      "date": 1788089528983
     }
   ],
   "lastResearch": null
