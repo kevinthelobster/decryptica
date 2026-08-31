@@ -1113,8 +1113,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-31T21:32:40.394Z",
+      "usedBy": {
+        "slug": "best-ai-tools-for-notes-what-actually-matters-in-2026",
+        "title": "Best AI Tools For Notes: What Actually Matters in 2026",
+        "date": "2026-08-31"
+      },
       "updatedAt": "2026-08-30T10:18:28.020Z"
     },
     {
