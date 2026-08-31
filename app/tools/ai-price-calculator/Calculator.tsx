@@ -18,7 +18,6 @@ export const PROVIDERS = [
   { id: "anthropic-claude-haiku-4-5", name: "Claude Haiku 4.5", provider: "Anthropic", input: 1.0, output: 5.0, supports: ["text", "vision", "function"], contextWindow: 200000, color: "#d4a574", link: "https://platform.claude.com/docs/en/about-claude/pricing", openSource: false },
 
   // Google - Gemini API paid tier, standard rates for text/image/video inputs.
-  { id: "google-gemini-3.1-pro-preview", name: "Gemini 3.1 Pro Preview", provider: "Google", input: 2.0, output: 12.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
   { id: "google-gemini-3.6-flash", name: "Gemini 3.6 Flash", provider: "Google", input: 0.75, output: 3.75, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
   { id: "google-gemini-3.5-flash", name: "Gemini 3.5 Flash", provider: "Google", input: 1.5, output: 9.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
   { id: "google-gemini-3.5-flash-lite", name: "Gemini 3.5 Flash-Lite", provider: "Google", input: 0.3, output: 2.5, supports: ["text", "vision", "function", "reasoning"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
@@ -44,7 +43,7 @@ export const PROVIDERS = [
 
   // Cohere
   { id: "cohere-command-a-plus-05-2026", name: "Command A+ 05-2026", provider: "Cohere", input: null, output: null, supports: ["text", "vision", "function", "reasoning"], contextWindow: 128000, color: "#f47b5a", link: "https://docs.cohere.com/docs/command-a-plus", openSource: true },
-  { id: "cohere-command-a-03-2025", name: "Command A", provider: "Cohere", input: 1.0, output: 2.0, supports: ["text", "vision", "function", "reasoning"], contextWindow: 256000, color: "#f47b5a", link: "https://docs.cohere.com/docs/command-a", openSource: false },
+  { id: "cohere-command-a-03-2025", name: "Command A", provider: "Cohere", input: 2.5, output: 10.0, supports: ["text", "vision", "function", "reasoning"], contextWindow: 256000, color: "#f47b5a", link: "https://docs.cohere.com/docs/command-a", openSource: false },
   { id: "cohere-command-r-plus-08-2024", name: "Command R+ 08-2024", provider: "Cohere", input: 2.5, output: 10.0, supports: ["text", "function"], contextWindow: 128000, color: "#f47b5a", link: "https://cohere.com/pricing", openSource: false },
   { id: "cohere-command-r-08-2024", name: "Command R 08-2024", provider: "Cohere", input: 0.15, output: 0.6, supports: ["text", "function"], contextWindow: 128000, color: "#f47b5a", link: "https://docs.cohere.com/docs/command-r", openSource: false },
   { id: "cohere-command-r7b-12-2024", name: "Command R7B 12-2024", provider: "Cohere", input: 0.0375, output: 0.15, supports: ["text", "function"], contextWindow: 128000, color: "#f47b5a", link: "https://docs.cohere.com/docs/command-r7b", openSource: false },
