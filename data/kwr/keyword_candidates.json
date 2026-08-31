@@ -1146,8 +1146,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-08-31T11:32:09.550Z",
+      "usedBy": {
+        "slug": "best-ai-tools-for-research-work-what-actually-matters-in-202",
+        "title": "Best AI Tools For Research Work: What Actually Matters in 2026",
+        "date": "2026-08-31"
+      },
       "updatedAt": "2026-08-30T10:18:28.080Z"
     },
     {
