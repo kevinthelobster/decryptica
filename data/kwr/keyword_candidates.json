@@ -1136,8 +1136,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-09-01T16:33:18.816Z",
+      "usedBy": {
+        "slug": "best-ai-website-builder-for-beginners-what-actually-matters-",
+        "title": "Best AI Website Builder For Beginners: What Actually Matters in 2026",
+        "date": "2026-09-01"
+      },
       "updatedAt": "2026-09-01T10:16:44.957Z"
     },
     {
