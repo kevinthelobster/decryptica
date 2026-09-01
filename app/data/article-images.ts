@@ -1317,6 +1317,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'process-management-software-for-small-business-a-practical-2': imageSet.analyticsDashboardLaptopeveI7MOcSm,
   'best-ai-tools-for-notes-what-actually-matters-in-2026': imageSet.developerWorkspaceUTw3jaoIKM,
   'best-ai-tool-for-transcription-what-actually-matters-in-2026': imageSet.apiCodeScreenf77Bh3inUp,
   'best-ai-tools-for-research-work-what-actually-matters-in-202': imageSet.apiCodeScreenehyVXOZ4iA,
