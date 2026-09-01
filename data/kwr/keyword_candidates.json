@@ -1510,8 +1510,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-09-01T21:33:03.046Z",
+      "usedBy": {
+        "slug": "best-ai-automation-tools-what-actually-matters-in-2026",
+        "title": "Best AI Automation Tools: What Actually Matters in 2026",
+        "date": "2026-09-01"
+      },
       "updatedAt": "2026-09-01T10:16:44.957Z"
     },
     {
