@@ -1294,6 +1294,24 @@ export const imageSet = {
     credit: 'Photo by Sajad Nori on Unsplash',
     creditUrl: 'https://unsplash.com/photos/black-and-gray-laptop-computer-with-black-corded-mouse-on-brown-wooden-table-kmAFNd-XBo0',
   },
+  blockchainTechnologyLaptopmpU2mzGR0D: {
+    src: `https://images.unsplash.com/photo-1665211097514-93f9b5c2bf8c${unsplashParams}`,
+    alt: 'A laptop with a red light',
+    credit: 'Photo by Aashish Yadav on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-laptop-with-a-red-light-mpU2mzGR0Dg',
+  },
+  blockchainTechnologyLaptopCm8YFLxaGw: {
+    src: `https://images.unsplash.com/photo-1649371176738-dfc088e7a037${unsplashParams}`,
+    alt: 'A laptop computer sitting on top of a table',
+    credit: 'Photo by Facu Montanaro on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-table-Cm8YFLxaGww',
+  },
+  blockchainTechnologyLaptop2K7z8JNOyG: {
+    src: `https://images.unsplash.com/photo-1540905866768-8784562bfc61${unsplashParams}`,
+    alt: 'MacBook Pro turned-on in dark room',
+    credit: 'Photo by Szabo Viktor on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/macbook-pro-turned-on-in-dark-room-2K7z8JNOyGU',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1662,6 +1680,9 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'blockchainTechnologyLaptop2K7z8JNOyG',
+    'blockchainTechnologyLaptopCm8YFLxaGw',
+    'blockchainTechnologyLaptopmpU2mzGR0D',
     'blockchainTechnologyLaptopkmAFNdXBo0',
     'blockchainTechnologyLaptopNHRM1u4GDA',
     'blockchainTechnologyLaptopSyYmXSDnJ5',
