@@ -1473,8 +1473,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-09-02T11:32:13.565Z",
+      "usedBy": {
+        "slug": "cursor-ai-alternative-for-vs-code-which-one-makes-more-sense",
+        "title": "Cursor AI Alternative For Vs Code: Which One Makes More Sense in 2026",
+        "date": "2026-09-02"
+      },
       "updatedAt": "2026-09-01T10:16:44.957Z"
     },
     {
