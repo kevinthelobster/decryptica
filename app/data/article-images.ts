@@ -1335,6 +1335,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-ai-for-meetings-what-actually-matters-in-2026': imageSet.developerWorkspaceEd2fRK5ify,
   'cursor-ai-alternative-for-vs-code-which-one-makes-more-sense': imageSet.developerWorkspaceXyaFyD87o6,
   'best-ai-automation-tools-what-actually-matters-in-2026': imageSet.developerWorkspaceoYzjGQ7LCV,
   'best-ai-website-builder-for-beginners-what-actually-matters-': imageSet.developerWorkspace2JDDn7iSGH,
