@@ -1596,8 +1596,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-09-02T21:32:37.349Z",
+      "usedBy": {
+        "slug": "what-are-the-best-ai-tools-a-practical-2026-guide",
+        "title": "What Are The Best AI Tools: A Practical 2026 Guide",
+        "date": "2026-09-02"
+      },
       "updatedAt": "2026-09-01T10:16:44.958Z"
     },
     {
