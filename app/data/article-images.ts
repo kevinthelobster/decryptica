@@ -1330,6 +1330,30 @@ export const imageSet = {
     credit: 'Photo by Marvin Meyer on Unsplash',
     creditUrl: 'https://unsplash.com/photos/people-sitting-down-near-table-with-assorted-laptop-computers-SYTO3xs06fU',
   },
+  startupTeamLaptopsg1Kr4Ozfoa: {
+    src: `https://images.unsplash.com/photo-1522202176988-66273c2fd55f${unsplashParams}`,
+    alt: 'Three people sitting in front of table laughing together',
+    credit: 'Photo by Brooke Cagle on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/three-people-sitting-in-front-of-table-laughing-together-g1Kr4Ozfoac',
+  },
+  startupTeamLaptopsMChSQHxGZr: {
+    src: `https://images.unsplash.com/photo-1521737711867-e3b97375f902${unsplashParams}`,
+    alt: 'Men sitting in front of their laptop computer',
+    credit: 'Photo by Annie Spratt on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/men-sitting-in-front-of-their-laptop-computer-MChSQHxGZrQ',
+  },
+  startupTeamLaptopssggw4qDD54: {
+    src: `https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5${unsplashParams}`,
+    alt: 'Selective focus photography of people sits in front of table inside room',
+    credit: 'Photo by Annie Spratt on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/selective-focus-photography-of-people-sits-in-front-of-table-inside-room-sggw4-qDD54',
+  },
+  startupTeamLaptopsTLLb3EU6ti: {
+    src: `https://images.unsplash.com/photo-1662394028800-72d251e4bdbb${unsplashParams}`,
+    alt: 'Laptops on a table',
+    credit: 'Photo by Taylor Flowe on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/laptops-on-a-table-TLLb3EU6tiU',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1575,6 +1599,10 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'startupTeamLaptopsTLLb3EU6ti',
+    'startupTeamLaptopssggw4qDD54',
+    'startupTeamLaptopsMChSQHxGZr',
+    'startupTeamLaptopsg1Kr4Ozfoa',
     'startupTeamLaptopsSYTO3xs06f',
     'startupTeamLaptopsQckxruozjR',
     'dataVisualizationScreenMY6NSSWE94',
