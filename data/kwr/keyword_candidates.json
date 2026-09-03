@@ -1392,8 +1392,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-09-03T16:34:20.375Z",
+      "usedBy": {
+        "slug": "character-ai-alternatives-for-research-what-actually-matters",
+        "title": "Character AI Alternatives For Research: What Actually Matters in 2026",
+        "date": "2026-09-03"
+      },
       "updatedAt": "2026-09-03T10:17:33.652Z"
     },
     {
