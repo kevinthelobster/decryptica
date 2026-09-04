@@ -1354,6 +1354,24 @@ export const imageSet = {
     credit: 'Photo by Taylor Flowe on Unsplash',
     creditUrl: 'https://unsplash.com/photos/laptops-on-a-table-TLLb3EU6tiU',
   },
+  startupTeamLaptopsrMILC1PIwM: {
+    src: `https://images.unsplash.com/photo-1603201667141-5a2d4c673378${unsplashParams}`,
+    alt: 'People sitting on chair in front of laptop computers',
+    credit: 'Photo by Cherrydeck on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/people-sitting-on-chair-in-front-of-laptop-computers-rMILC1PIwM0',
+  },
+  startupTeamLaptopsrtDlcsN6U: {
+    src: `https://images.unsplash.com/photo-1690378820474-b468b8ee64d3${unsplashParams}`,
+    alt: 'A group of people sitting around a table with laptops',
+    credit: 'Photo by Lyubomyr Reverchuk on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-with-laptops-rtD_lcsN6_U',
+  },
+  startupTeamLaptopsoMtJYEbniH: {
+    src: `https://images.unsplash.com/photo-1702047094974-a3475a6e37f5${unsplashParams}`,
+    alt: 'A group of people looking at a laptop',
+    credit: 'Photo by Creatopy on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-group-of-people-looking-at-a-laptop-oMtJYEbniH8',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1602,6 +1620,9 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'startupTeamLaptopsoMtJYEbniH',
+    'startupTeamLaptopsrtDlcsN6U',
+    'startupTeamLaptopsrMILC1PIwM',
     'startupTeamLaptopsTLLb3EU6ti',
     'startupTeamLaptopssggw4qDD54',
     'startupTeamLaptopsMChSQHxGZr',
