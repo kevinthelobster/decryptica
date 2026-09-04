@@ -1552,8 +1552,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-09-04T11:32:16.049Z",
+      "usedBy": {
+        "slug": "best-ai-agent-tools-2025-what-actually-matters-in-2026",
+        "title": "Best AI Agent Tools 2025: What Actually Matters in 2026",
+        "date": "2026-09-04"
+      },
       "updatedAt": "2026-09-03T10:17:33.653Z"
     },
     {
