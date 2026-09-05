@@ -1627,8 +1627,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-09-05T21:33:32.697Z",
+      "usedBy": {
+        "slug": "best-ai-coding-tools-what-actually-matters-in-2026",
+        "title": "Best AI Coding Tools: What Actually Matters in 2026",
+        "date": "2026-09-05"
+      },
       "updatedAt": "2026-09-05T10:19:06.500Z"
     },
     {

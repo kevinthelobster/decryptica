@@ -1383,6 +1383,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-ai-coding-tools-what-actually-matters-in-2026': imageSet.codeEditorScreen1LLh8k2YFk,
   'the-best-ai-agent-tools-what-actually-matters-in-2026': imageSet.codeEditorScreenKNZHyTpre1,
   'best-ai-automation-tools-2026-what-actually-matters-in-2026': imageSet.codeEditorScreenSrewPUfo2c,
   'best-ai-agents-tools-what-actually-matters-in-2026': imageSet.developerWorkspaceRSvJQIPpk,
