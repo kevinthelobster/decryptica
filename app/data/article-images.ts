@@ -1372,6 +1372,12 @@ export const imageSet = {
     credit: 'Photo by Creatopy on Unsplash',
     creditUrl: 'https://unsplash.com/photos/a-group-of-people-looking-at-a-laptop-oMtJYEbniH8',
   },
+  startupTeamLaptopsbrq6r83uD8: {
+    src: `https://images.unsplash.com/photo-1583300599061-ae5ebf5208e9${unsplashParams}`,
+    alt: 'Person using macbook pro on brown wooden table',
+    credit: 'Photo by Joshua Sun on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/person-using-macbook-pro-on-brown-wooden-table-brq6r83uD8U',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1623,6 +1629,7 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'startupTeamLaptopsbrq6r83uD8',
     'startupTeamLaptopsoMtJYEbniH',
     'startupTeamLaptopsrtDlcsN6U',
     'startupTeamLaptopsrMILC1PIwM',
