@@ -1378,6 +1378,36 @@ export const imageSet = {
     credit: 'Photo by Joshua Sun on Unsplash',
     creditUrl: 'https://unsplash.com/photos/person-using-macbook-pro-on-brown-wooden-table-brq6r83uD8U',
   },
+  stockMarketDataScreen: {
+    src: `https://images.unsplash.com/photo-1748439146117-31978164865d${unsplashParams}`,
+    alt: 'A laptop screen showing stock market data and charts',
+    credit: 'Photo by Jakub Żerdzicki on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/stock-market-data-displayed-on-a-computer-screen-itgsDhR1e2w',
+  },
+  codeOnAComputerScreen: {
+    src: `https://images.unsplash.com/photo-1753998943619-b9cd910887e5${unsplashParams}`,
+    alt: 'A computer screen showing source code',
+    credit: 'Photo by Rob Wingate on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/code-on-a-computer-screen-LnzSzH24XS8',
+  },
+  laptopCodePlushOctopus: {
+    src: `https://images.unsplash.com/photo-1763568258612-0ae7f6eb1422${unsplashParams}`,
+    alt: 'A laptop displaying code beside a small plush octopus',
+    credit: 'Photo by Daniil Komov on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/laptop-with-code-and-a-small-plush-octopus-PlvRMqKVkRc',
+  },
+  darkThemeCodingScreen: {
+    src: `https://images.unsplash.com/photo-1774901128215-3549cc686921${unsplashParams}`,
+    alt: 'A dark computer screen showing code in a development workspace',
+    credit: 'Photo by Bernd Dittrich on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/coding-on-a-dark-theme-computer-screen-9-U8xW54Le0',
+  },
+  multiScreenCodingWorkspace: {
+    src: `https://images.unsplash.com/photo-1753715613373-90b1ea010731${unsplashParams}`,
+    alt: 'Multiple computer screens showing code in a developer workspace',
+    credit: 'Photo by Jakub Żerdzicki on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/coding-code-on-multiple-computer-screens-O3ChbcT94NM',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1504,6 +1534,10 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'multiScreenCodingWorkspace',
+    'darkThemeCodingScreen',
+    'laptopCodePlushOctopus',
+    'codeOnAComputerScreen',
     'dataVisualizationScreenMY6NSSWE94',
     'dataVisualizationScreenlffWAt8ubM',
     'dataVisualizationScreenmu8pIUwoWe',
@@ -1632,6 +1666,8 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'multiScreenCodingWorkspace',
+    'darkThemeCodingScreen',
     'startupTeamLaptopsbrq6r83uD8',
     'startupTeamLaptopsoMtJYEbniH',
     'startupTeamLaptopsrtDlcsN6U',
@@ -1771,6 +1807,7 @@ export const articleImagePools = {
     'automation',
   ],
   crypto: [
+    'stockMarketDataScreen',
     'blockchainTechnologyLaptopf3hGH3oLcM',
     'blockchainTechnologyLaptop2K7z8JNOyG',
     'blockchainTechnologyLaptopCm8YFLxaGw',
