@@ -1413,6 +1413,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-ai-tools-cursor-what-actually-matters-in-2026': imageSet.laptopCodePlushOctopus,
   'best-ai-coding-tool-what-actually-matters-in-2026': imageSet.darkThemeCodingScreen,
   'best-ai-coding-tools-what-actually-matters-in-2026': imageSet.codeEditorScreen1LLh8k2YFk,
   'the-best-ai-agent-tools-what-actually-matters-in-2026': imageSet.codeEditorScreenKNZHyTpre1,

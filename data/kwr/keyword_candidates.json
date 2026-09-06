@@ -1702,8 +1702,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-09-06T16:33:36.456Z",
+      "usedBy": {
+        "slug": "best-ai-tools-cursor-what-actually-matters-in-2026",
+        "title": "Best AI Tools Cursor: What Actually Matters in 2026",
+        "date": "2026-09-06"
+      },
       "updatedAt": "2026-09-06T10:19:23.605Z"
     },
     {
