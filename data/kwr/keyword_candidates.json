@@ -1743,8 +1743,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-09-06T21:33:09.466Z",
+      "usedBy": {
+        "slug": "best-ai-tools-like-cursor-what-actually-matters-in-2026",
+        "title": "Best AI Tools Like Cursor: What Actually Matters in 2026",
+        "date": "2026-09-06"
+      },
       "updatedAt": "2026-09-06T10:19:23.663Z"
     },
     {
