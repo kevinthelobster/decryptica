@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-05T10:19:12.522Z",
+  "generatedAt": "2026-09-06T10:19:27.207Z",
   "sourceFiles": [
     "autocomplete_2026-05-05_19-51.csv",
     "autocomplete_2026-05-05_19-52.csv",
@@ -26,7 +26,8 @@
     "autocomplete_2026-09-01_06-16.csv",
     "autocomplete_2026-09-03_06-17.csv",
     "autocomplete_2026-09-05_06-16.csv",
-    "autocomplete_2026-09-05_06-18.csv"
+    "autocomplete_2026-09-05_06-18.csv",
+    "autocomplete_2026-09-06_06-18.csv"
   ],
   "candidates": [
     {
@@ -61,33 +62,8 @@
         "neutralCount": 8,
         "results": [
           {
-            "title": "10 Best Accounting Software for Small Businesses in 2026",
-            "url": "https://thecfoclub.com/tools/best-accounting-software/",
-            "strength": "neutral"
-          },
-          {
-            "title": "Best Small Business Accounting Software (2026) - Solatatech",
-            "url": "https://solatatech.com/article/best-small-business-accounting-software",
-            "strength": "neutral"
-          },
-          {
-            "title": "The Best Accounting Software for Small Businesses in 2026",
+            "title": "The Best Small Business Accounting Software We&#x27;ve Tested for 2026",
             "url": "https://www.pcmag.com/picks/the-best-small-business-accounting-software",
-            "strength": "neutral"
-          },
-          {
-            "title": "7 Best Small Business Accounting Software for 2026",
-            "url": "https://fitsmallbusiness.com/best-small-business-accounting-software/",
-            "strength": "neutral"
-          },
-          {
-            "title": "10 Best Accounting Software for Small Businesses 2026 | Capterra",
-            "url": "https://www.capterra.com/accounting-software/s/small-businesses/",
-            "strength": "neutral"
-          },
-          {
-            "title": "Best Accounting Software for Small Businesses in 2026",
-            "url": "https://ramp.com/blog/accounting-software-for-small-business",
             "strength": "neutral"
           },
           {
@@ -96,8 +72,33 @@
             "strength": "neutral"
           },
           {
-            "title": "6 Best Accounting Software for Small Business Top Picks 2026",
-            "url": "https://www.softbliq.com/best-accounting-software-for-small-business/",
+            "title": "Best Small Business Accounting Software - 2026 Reviews &amp; Pricing",
+            "url": "https://www.softwareadvice.com/category/506-small-business-accounting/",
+            "strength": "neutral"
+          },
+          {
+            "title": "Best Accounting Software for Small Business (2026)",
+            "url": "https://www.business-software.com/blog/best-accounting-software-small-business/",
+            "strength": "neutral"
+          },
+          {
+            "title": "7 Best Small Business Accounting Software for 2026",
+            "url": "https://fitsmallbusiness.com/best-small-business-accounting-software/",
+            "strength": "neutral"
+          },
+          {
+            "title": "15 Best Small Business Accounting Software for 2026",
+            "url": "https://research.com/software/best-small-business-accounting-software",
+            "strength": "neutral"
+          },
+          {
+            "title": "10 Best Accounting Software for Small Businesses in 2026",
+            "url": "https://thecfoclub.com/tools/best-accounting-software/",
+            "strength": "neutral"
+          },
+          {
+            "title": "8 Best Automated Accounting Software for 2026 | Hubifi Blog",
+            "url": "https://www.hubifi.com/blog/best-automated-accounting-software",
             "strength": "neutral"
           }
         ]
@@ -105,7 +106,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:28.060Z"
+      "updatedAt": "2026-09-06T10:18:43.075Z"
     },
     {
       "id": "best-marketing-automation-software-for-small-business",
@@ -142,7 +143,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:32.488Z"
+      "updatedAt": "2026-09-06T10:18:47.430Z"
     },
     {
       "id": "best-ai-automation-tools-for-business",
@@ -175,11 +176,6 @@
         "neutralCount": 7,
         "results": [
           {
-            "title": "12 Best AI Tools for Business Automation in 2026 - ekipa.ai",
-            "url": "https://www.ekipa.ai/ekipa-labs/ai-tools-for-business-automation",
-            "strength": "neutral"
-          },
-          {
             "title": "50 Best AI Tools for Business: 2026 (w/ Pros &amp; Cons) - HostAdvice",
             "url": "https://hostadvice.com/blog/how-to-manage-a-business/best-ai-tools-for-business/",
             "strength": "neutral"
@@ -188,6 +184,11 @@
             "title": "The 8 best AI automation tools in 2026 - Zapier",
             "url": "https://zapier.com/blog/ai-automation-tools/",
             "strength": "strong"
+          },
+          {
+            "title": "12 Best AI Tools for Business Automation in 2026 - ekipa.ai",
+            "url": "https://www.ekipa.ai/ekipa-labs/ai-tools-for-business-automation",
+            "strength": "neutral"
           },
           {
             "title": "Top 15 Best AI Tools for Business Automation in 2026",
@@ -200,18 +201,18 @@
             "strength": "neutral"
           },
           {
-            "title": "10 Best AI Automation Tools for Productivity in 2026 (Free &amp; Paid)",
-            "url": "https://clickup.com/blog/ai-tools-for-automation/",
-            "strength": "neutral"
-          },
-          {
-            "title": "9 Best AI Business Tools in 2026: Tested Manually | Lindy",
-            "url": "https://www.lindy.ai/blog/best-ai-business-ops",
+            "title": "10 Best AI Tools for Business Reviewed in 2026",
+            "url": "https://peoplemanagingpeople.com/tools/best-ai-tools-for-business/",
             "strength": "neutral"
           },
           {
             "title": "10 Best AI Tools for Business (September 2026) - Unite.AI",
             "url": "https://www.unite.ai/best-ai-tools-for-business/",
+            "strength": "neutral"
+          },
+          {
+            "title": "9 Best AI Business Tools in 2026: Tested Manually | Lindy",
+            "url": "https://www.lindy.ai/blog/best-ai-business-ops",
             "strength": "neutral"
           }
         ]
@@ -219,7 +220,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:28.763Z"
+      "updatedAt": "2026-09-06T10:18:43.782Z"
     },
     {
       "id": "best-business-process-automation-software-for-salesforce",
@@ -256,7 +257,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:32.303Z"
+      "updatedAt": "2026-09-06T10:18:47.250Z"
     },
     {
       "id": "best-crypto-tax-software-for-turbotax",
@@ -293,7 +294,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:32.433Z"
+      "updatedAt": "2026-09-06T10:18:47.374Z"
     },
     {
       "id": "best-ai-agent-tools-for-coding",
@@ -330,7 +331,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:35.739Z"
+      "updatedAt": "2026-09-06T10:18:50.713Z"
     },
     {
       "id": "best-app-for-tracking-crypto-portfolio",
@@ -367,7 +368,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:32.962Z"
+      "updatedAt": "2026-09-06T10:18:47.873Z"
     },
     {
       "id": "no-code-automation-tools-for-testing",
@@ -404,7 +405,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:39.902Z"
+      "updatedAt": "2026-09-06T10:18:54.797Z"
     },
     {
       "id": "best-crypto-app-for-beginners-free",
@@ -441,7 +442,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:34.497Z"
+      "updatedAt": "2026-09-06T10:18:49.426Z"
     },
     {
       "id": "best-crypto-wallet-for-investing",
@@ -478,7 +479,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:39.413Z"
+      "updatedAt": "2026-09-06T10:18:54.419Z"
     },
     {
       "id": "best-exchange-for-crypto-trading",
@@ -515,7 +516,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:47.697Z"
+      "updatedAt": "2026-09-06T10:19:02.421Z"
     },
     {
       "id": "what-is-the-best-bitcoin-wallet-for-beginners",
@@ -552,7 +553,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:35.632Z"
+      "updatedAt": "2026-09-06T10:18:50.593Z"
     },
     {
       "id": "best-ai-tool-for-image-generator",
@@ -589,7 +590,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:35.899Z"
+      "updatedAt": "2026-09-06T10:18:50.880Z"
     },
     {
       "id": "best-design-tools-for-claude-code",
@@ -626,7 +627,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:38.809Z"
+      "updatedAt": "2026-09-06T10:18:53.810Z"
     },
     {
       "id": "tools-for-testing-api-monitoring",
@@ -663,7 +664,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:44.998Z"
+      "updatedAt": "2026-09-06T10:18:59.735Z"
     },
     {
       "id": "best-ai-note-taking-tool-for-microsoft-teams",
@@ -700,7 +701,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:36.557Z"
+      "updatedAt": "2026-09-06T10:18:51.553Z"
     },
     {
       "id": "best-ai-tool-for-meeting-minutes",
@@ -737,7 +738,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:36.823Z"
+      "updatedAt": "2026-09-06T10:18:51.836Z"
     },
     {
       "id": "best-internal-linking-tools-for-seo",
@@ -774,7 +775,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:37.969Z"
+      "updatedAt": "2026-09-06T10:18:52.967Z"
     },
     {
       "id": "zapier-alternatives-for-small-business",
@@ -811,7 +812,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:38.374Z"
+      "updatedAt": "2026-09-06T10:18:53.340Z"
     },
     {
       "id": "best-llm-api-for-openclaw",
@@ -848,7 +849,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:44.505Z"
+      "updatedAt": "2026-09-06T10:18:59.245Z"
     },
     {
       "id": "best-practices-for-prompt-management",
@@ -885,7 +886,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:56.403Z"
+      "updatedAt": "2026-09-06T10:19:11.120Z"
     },
     {
       "id": "best-automation-tool-for-desktop-application",
@@ -922,7 +923,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:33.016Z"
+      "updatedAt": "2026-09-06T10:18:47.933Z"
     },
     {
       "id": "best-ticketing-tool-for-workflow-automation",
@@ -959,7 +960,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:33.561Z"
+      "updatedAt": "2026-09-06T10:18:48.512Z"
     },
     {
       "id": "best-crm-for-service-automation",
@@ -996,7 +997,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:34.214Z"
+      "updatedAt": "2026-09-06T10:18:49.158Z"
     },
     {
       "id": "best-sales-automation-software-for-b2b",
@@ -1033,7 +1034,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:34.604Z"
+      "updatedAt": "2026-09-06T10:18:49.530Z"
     },
     {
       "id": "best-ai-tool-for-audio-transcription",
@@ -1070,7 +1071,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:36.770Z"
+      "updatedAt": "2026-09-06T10:18:51.774Z"
     },
     {
       "id": "best-ai-tools-for-research-work",
@@ -1107,7 +1108,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:37.423Z"
+      "updatedAt": "2026-09-06T10:18:52.426Z"
     },
     {
       "id": "chatgpt-alternatives-for-software-development",
@@ -1144,7 +1145,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:38.036Z"
+      "updatedAt": "2026-09-06T10:18:53.019Z"
     },
     {
       "id": "internal-communication-tools-for-small-business",
@@ -1181,7 +1182,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:38.095Z"
+      "updatedAt": "2026-09-06T10:18:53.072Z"
     },
     {
       "id": "best-process-automation-solutions-for-enterprise",
@@ -1218,7 +1219,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:39.625Z"
+      "updatedAt": "2026-09-06T10:18:54.634Z"
     },
     {
       "id": "alternatives-to-pega-for-business-automation",
@@ -1255,7 +1256,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:40.189Z"
+      "updatedAt": "2026-09-06T10:18:55.058Z"
     },
     {
       "id": "best-crypto-tracker-for-taxes",
@@ -1292,7 +1293,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:41.508Z"
+      "updatedAt": "2026-09-06T10:18:56.366Z"
     },
     {
       "id": "online-workflow-tool-for-document-approval",
@@ -1329,7 +1330,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:45.376Z"
+      "updatedAt": "2026-09-06T10:19:00.164Z"
     },
     {
       "id": "ai-software-for-transcription",
@@ -1366,7 +1367,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:46.916Z"
+      "updatedAt": "2026-09-06T10:19:01.662Z"
     },
     {
       "id": "ai-tool-for-meeting",
@@ -1403,7 +1404,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:46.971Z"
+      "updatedAt": "2026-09-06T10:19:01.718Z"
     },
     {
       "id": "ai-tools-for-transcription",
@@ -1440,7 +1441,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:47.085Z"
+      "updatedAt": "2026-09-06T10:19:01.827Z"
     },
     {
       "id": "top-ai-automation-tools",
@@ -1477,48 +1478,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:18:50.698Z"
-    },
-    {
-      "id": "best-ai-automation-tools-2026",
-      "keyword": "best ai automation tools 2026",
-      "category": "ai",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "suggestion",
-      "sourceSeed": "ai automation",
-      "sourceQuery": "best ai automation tools",
-      "sourceFile": "autocomplete_2026-05-05_19-52.csv",
-      "topicCluster": "ai-automation",
-      "suggestedTitle": "Best AI Automation Tools 2026: What Actually Matters in 2026",
-      "intentScore": 24,
-      "monetizationScore": 40,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 90,
-      "serpScore": 0,
-      "opportunityScore": 90,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": "2026-09-05T11:32:05.656Z",
-      "usedBy": {
-        "slug": "best-ai-automation-tools-2026-what-actually-matters-in-2026",
-        "title": "Best AI Automation Tools 2026: What Actually Matters in 2026",
-        "date": "2026-09-05"
-      },
-      "updatedAt": "2026-09-05T10:18:51.369Z"
+      "updatedAt": "2026-09-06T10:19:05.420Z"
     },
     {
       "id": "best-rag-ai-tools",
@@ -1555,7 +1515,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:19:04.320Z"
+      "updatedAt": "2026-09-06T10:19:18.961Z"
     },
     {
       "id": "top-ai-agents-tools",
@@ -1592,89 +1552,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:19:06.336Z"
-    },
-    {
-      "id": "best-ai-coding-tools",
-      "keyword": "best ai coding tools",
-      "category": "ai",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "suggestion",
-      "sourceSeed": "ai coding assistant",
-      "sourceQuery": "best ai coding assistant tools",
-      "sourceFile": "autocomplete_2026-05-05_20-12.csv",
-      "topicCluster": "ai-coding",
-      "suggestedTitle": "Best AI Coding Tools: What Actually Matters in 2026",
-      "intentScore": 24,
-      "monetizationScore": 32,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 82,
-      "serpScore": 0,
-      "opportunityScore": 82,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": "2026-09-05T21:33:32.697Z",
-      "usedBy": {
-        "slug": "best-ai-coding-tools-what-actually-matters-in-2026",
-        "title": "Best AI Coding Tools: What Actually Matters in 2026",
-        "date": "2026-09-05"
-      },
-      "updatedAt": "2026-09-05T10:19:06.500Z"
-    },
-    {
-      "id": "the-best-ai-agent-tools",
-      "keyword": "the best ai agent tools",
-      "category": "ai",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "suggestion",
-      "sourceSeed": "ai agents",
-      "sourceQuery": "best ai agents tools",
-      "sourceFile": "autocomplete_2026-05-05_20-12.csv",
-      "topicCluster": "ai-agents",
-      "suggestedTitle": "The Best AI Agent Tools: What Actually Matters in 2026",
-      "intentScore": 24,
-      "monetizationScore": 32,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 82,
-      "serpScore": 0,
-      "opportunityScore": 82,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": "2026-09-05T16:33:47.215Z",
-      "usedBy": {
-        "slug": "the-best-ai-agent-tools-what-actually-matters-in-2026",
-        "title": "The Best AI Agent Tools: What Actually Matters in 2026",
-        "date": "2026-09-05"
-      },
-      "updatedAt": "2026-09-05T10:19:06.893Z"
+      "updatedAt": "2026-09-06T10:19:20.977Z"
     },
     {
       "id": "what-are-no-code-low-code-automation-tools",
@@ -1711,7 +1589,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:19:06.962Z"
+      "updatedAt": "2026-09-06T10:19:21.600Z"
     },
     {
       "id": "best-crypto-ai-tools",
@@ -1748,7 +1626,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:19:07.342Z"
+      "updatedAt": "2026-09-06T10:19:22.030Z"
     },
     {
       "id": "best-ai-coding-tool",
@@ -1783,9 +1661,13 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-09-05T10:19:07.680Z"
+      "usedAt": "2026-09-06T11:32:18.810Z",
+      "usedBy": {
+        "slug": "best-ai-coding-tool-what-actually-matters-in-2026",
+        "title": "Best AI Coding Tool: What Actually Matters in 2026",
+        "date": "2026-09-06"
+      },
+      "updatedAt": "2026-09-06T10:19:22.358Z"
     },
     {
       "id": "best-ai-tools-cursor",
@@ -1822,7 +1704,44 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:19:08.893Z"
+      "updatedAt": "2026-09-06T10:19:23.605Z"
+    },
+    {
+      "id": "best-ai-tools-like-cursor",
+      "keyword": "best ai tools like cursor",
+      "category": "ai",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "suggestion",
+      "sourceSeed": "cursor ai",
+      "sourceQuery": "best cursor ai tools",
+      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
+      "topicCluster": "ai-coding",
+      "suggestedTitle": "Best AI Tools Like Cursor: What Actually Matters in 2026",
+      "intentScore": 24,
+      "monetizationScore": 32,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 82,
+      "serpScore": 0,
+      "opportunityScore": 82,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-09-06T10:19:23.663Z"
     },
     {
       "id": "how-to-get-api-key-crypto-com-app",
@@ -1859,7 +1778,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:19:10.096Z"
+      "updatedAt": "2026-09-06T10:19:24.835Z"
     },
     {
       "id": "crypto-for-small-business",
@@ -1895,7 +1814,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:19:11.963Z"
+      "updatedAt": "2026-09-06T10:19:26.677Z"
     },
     {
       "id": "free-automation-software-like-n8n",
@@ -1931,7 +1850,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-09-05T10:19:12.430Z"
+      "updatedAt": "2026-09-06T10:19:27.114Z"
     },
     {
       "id": "best-automation-software-for-reducing-manual-tasks",
@@ -1975,8 +1894,18 @@
             "strength": "neutral"
           },
           {
+            "title": "10 Best Task Automation Software for 2026 - The Digital Project Manager",
+            "url": "https://thedigitalprojectmanager.com/tools/best-task-automation-software/",
+            "strength": "neutral"
+          },
+          {
             "title": "10 Best Process Automation Software Reviewed in 2026",
             "url": "https://thedigitalprojectmanager.com/tools/best-process-automation-software/",
+            "strength": "neutral"
+          },
+          {
+            "title": "10 Best Workflow Automation Tools to Eliminate Manual Tasks",
+            "url": "https://ones.com/blog/ones-solutions/10-best-workflow-automation-tools-to-eliminate-manual-tasks/",
             "strength": "neutral"
           },
           {
@@ -1985,23 +1914,13 @@
             "strength": "neutral"
           },
           {
-            "title": "10 Best Task Automation Software for 2026 - The Digital Project Manager",
-            "url": "https://thedigitalprojectmanager.com/tools/best-task-automation-software/",
-            "strength": "neutral"
-          },
-          {
-            "title": "7 Workflow Automation Software Picks to Replace Manual Tasks",
-            "url": "https://ones.com/blog/ones-solutions/7-workflow-automation-software-picks-to-replace-manual-tasks/",
-            "strength": "neutral"
-          },
-          {
-            "title": "6 Best Robotic Process Automation Software I&#x27;d Recommend (2026) - G2",
-            "url": "https://learn.g2.com/best-robotic-process-automation-software",
-            "strength": "neutral"
-          },
-          {
             "title": "11 Best Workflow Automation Tools &amp; Software [2026]",
             "url": "https://www.intuz.com/blog/best-workflow-automation-tools/",
+            "strength": "neutral"
+          },
+          {
+            "title": "15 Best Workload Automation Software in 2026 - Cflow",
+            "url": "https://www.cflowapps.com/workload-automation-software/",
             "strength": "neutral"
           }
         ]
@@ -2013,7 +1932,7 @@
         "title": "Best Automation Software For Reducing Manual Tasks",
         "date": "2026-08-10"
       },
-      "updatedAt": "2026-09-05T10:18:32.037Z"
+      "updatedAt": "2026-09-06T10:18:46.988Z"
     },
     {
       "id": "best-tools-for-automation",
@@ -2054,7 +1973,7 @@
         "title": "Best Tools For Automation: What Actually Matters in 2026",
         "date": "2026-08-23"
       },
-      "updatedAt": "2026-09-05T10:18:33.613Z"
+      "updatedAt": "2026-09-06T10:18:48.566Z"
     },
     {
       "id": "best-ai-tools-for-ai-automation",
@@ -2095,7 +2014,7 @@
         "title": "Best AI Tools For AI Automation: What Actually Matters in 2026",
         "date": "2026-08-12"
       },
-      "updatedAt": "2026-09-05T10:18:33.836Z"
+      "updatedAt": "2026-09-06T10:18:48.782Z"
     },
     {
       "id": "best-tool-for-automation",
@@ -2136,7 +2055,7 @@
         "title": "Best Tool For Automation: What Actually Matters in 2026",
         "date": "2026-08-10"
       },
-      "updatedAt": "2026-09-05T10:18:34.057Z"
+      "updatedAt": "2026-09-06T10:18:49.000Z"
     },
     {
       "id": "best-tools-for-automating-your-workflow",
@@ -2177,7 +2096,7 @@
         "title": "Best Tools For Automating Your Workflow: What Actually Matters in 2026",
         "date": "2026-08-23"
       },
-      "updatedAt": "2026-09-05T10:18:36.171Z"
+      "updatedAt": "2026-09-06T10:18:51.156Z"
     },
     {
       "id": "best-ai-tools-for-ai-agents",
@@ -2218,7 +2137,7 @@
         "title": "Best AI Tools For AI Agents: What Actually Matters in 2026",
         "date": "2026-08-13"
       },
-      "updatedAt": "2026-09-05T10:18:36.397Z"
+      "updatedAt": "2026-09-06T10:18:51.374Z"
     },
     {
       "id": "best-ai-tool-for-meetings",
@@ -2259,7 +2178,7 @@
         "title": "Best AI Tool For Meetings: What Actually Matters in 2026",
         "date": "2026-08-19"
       },
-      "updatedAt": "2026-09-05T10:18:36.876Z"
+      "updatedAt": "2026-09-06T10:18:51.891Z"
     },
     {
       "id": "best-ai-tool-for-transcription",
@@ -2300,7 +2219,7 @@
         "title": "Best AI Tool For Transcription: What Actually Matters in 2026",
         "date": "2026-08-31"
       },
-      "updatedAt": "2026-09-05T10:18:37.088Z"
+      "updatedAt": "2026-09-06T10:18:52.104Z"
     },
     {
       "id": "best-ai-tools-for-notes",
@@ -2341,7 +2260,7 @@
         "title": "Best AI Tools For Notes: What Actually Matters in 2026",
         "date": "2026-08-31"
       },
-      "updatedAt": "2026-09-05T10:18:37.369Z"
+      "updatedAt": "2026-09-06T10:18:52.371Z"
     },
     {
       "id": "process-management-software-for-small-business",
@@ -2382,7 +2301,7 @@
         "title": "Process Management Software For Small Business: A Practical 2026 Guide",
         "date": "2026-09-01"
       },
-      "updatedAt": "2026-09-05T10:18:38.159Z"
+      "updatedAt": "2026-09-06T10:18:53.125Z"
     },
     {
       "id": "which-platform-is-best-for-bitcoin",
@@ -2423,7 +2342,7 @@
         "title": "Which Platform Is Best For Bitcoin: What the Market Gets Wrong in 2026",
         "date": "2026-08-20"
       },
-      "updatedAt": "2026-09-05T10:18:38.269Z"
+      "updatedAt": "2026-09-06T10:18:53.234Z"
     },
     {
       "id": "best-ai-website-builder-for-beginners",
@@ -2464,7 +2383,7 @@
         "title": "Best AI Website Builder For Beginners: What Actually Matters in 2026",
         "date": "2026-09-01"
       },
-      "updatedAt": "2026-09-05T10:18:38.536Z"
+      "updatedAt": "2026-09-06T10:18:53.498Z"
     },
     {
       "id": "best-ollama-model-for-n8n-tools",
@@ -2505,7 +2424,7 @@
         "title": "Best Ollama Model For N8n Tools: What Actually Matters in 2026",
         "date": "2026-08-16"
       },
-      "updatedAt": "2026-09-05T10:18:38.863Z"
+      "updatedAt": "2026-09-06T10:18:53.867Z"
     },
     {
       "id": "ai-tools-for-automation",
@@ -2546,7 +2465,7 @@
         "title": "AI Tools For Automation: What Actually Matters in 2026",
         "date": "2026-09-03"
       },
-      "updatedAt": "2026-09-05T10:18:40.015Z"
+      "updatedAt": "2026-09-06T10:18:54.899Z"
     },
     {
       "id": "best-solana-dex-for-beginners",
@@ -2587,7 +2506,7 @@
         "title": "Best Solana DEX For Beginners: What Actually Matters in 2026",
         "date": "2026-08-21"
       },
-      "updatedAt": "2026-09-05T10:18:43.100Z"
+      "updatedAt": "2026-09-06T10:18:57.881Z"
     },
     {
       "id": "what-is-a-rag-tool-for-ai",
@@ -2628,7 +2547,7 @@
         "title": "What Is A RAG Tool For AI: A Practical 2026 Guide",
         "date": "2026-08-22"
       },
-      "updatedAt": "2026-09-05T10:18:46.637Z"
+      "updatedAt": "2026-09-06T10:19:01.385Z"
     },
     {
       "id": "best-ai-for-meetings",
@@ -2669,7 +2588,7 @@
         "title": "Best AI For Meetings: What Actually Matters in 2026",
         "date": "2026-09-02"
       },
-      "updatedAt": "2026-09-05T10:18:47.253Z"
+      "updatedAt": "2026-09-06T10:19:01.988Z"
     },
     {
       "id": "best-online-card-for-crypto",
@@ -2710,48 +2629,7 @@
         "title": "Best Online Card For Crypto: What Actually Matters in 2026",
         "date": "2026-08-30"
       },
-      "updatedAt": "2026-09-05T10:18:47.776Z"
-    },
-    {
-      "id": "cursor-ai-alternative-for-vs-code",
-      "keyword": "cursor ai alternative for vs code",
-      "category": "ai",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "comparison",
-      "sourceSeed": "cursor ai",
-      "sourceQuery": "cursor ai alternatives",
-      "sourceFile": "autocomplete_2026-08-15_07-54.csv",
-      "topicCluster": "ai-coding",
-      "suggestedTitle": "Cursor AI Alternative For Vs Code: Which One Makes More Sense in 2026?",
-      "intentScore": 40,
-      "monetizationScore": 28,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 94,
-      "serpScore": 0,
-      "opportunityScore": 94,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": "2026-09-02T11:32:13.565Z",
-      "usedBy": {
-        "slug": "cursor-ai-alternative-for-vs-code-which-one-makes-more-sense",
-        "title": "Cursor AI Alternative For Vs Code: Which One Makes More Sense in 2026",
-        "date": "2026-09-02"
-      },
-      "updatedAt": "2026-09-05T10:18:47.946Z"
+      "updatedAt": "2026-09-06T10:19:02.478Z"
     },
     {
       "id": "best-ai-automation-tools",
@@ -2792,7 +2670,7 @@
         "title": "Best AI Automation Tools: What Actually Matters in 2026",
         "date": "2026-09-01"
       },
-      "updatedAt": "2026-09-05T10:18:48.598Z"
+      "updatedAt": "2026-09-06T10:19:03.332Z"
     },
     {
       "id": "best-ai-automation-tools-2025",
@@ -2833,7 +2711,48 @@
         "title": "Best AI Automation Tools 2025: What Actually Matters in 2026",
         "date": "2026-09-03"
       },
-      "updatedAt": "2026-09-05T10:18:51.314Z"
+      "updatedAt": "2026-09-06T10:19:06.033Z"
+    },
+    {
+      "id": "best-ai-automation-tools-2026",
+      "keyword": "best ai automation tools 2026",
+      "category": "ai",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "suggestion",
+      "sourceSeed": "ai automation",
+      "sourceQuery": "best ai automation tools",
+      "sourceFile": "autocomplete_2026-05-05_19-52.csv",
+      "topicCluster": "ai-automation",
+      "suggestedTitle": "Best AI Automation Tools 2026: What Actually Matters in 2026",
+      "intentScore": 24,
+      "monetizationScore": 40,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 90,
+      "serpScore": 0,
+      "opportunityScore": 90,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": "2026-09-05T11:32:05.656Z",
+      "usedBy": {
+        "slug": "best-ai-automation-tools-2026-what-actually-matters-in-2026",
+        "title": "Best AI Automation Tools 2026: What Actually Matters in 2026",
+        "date": "2026-09-05"
+      },
+      "updatedAt": "2026-09-06T10:19:06.088Z"
     },
     {
       "id": "what-are-the-best-ai-tools",
@@ -2874,7 +2793,7 @@
         "title": "What Are The Best AI Tools: A Practical 2026 Guide",
         "date": "2026-09-02"
       },
-      "updatedAt": "2026-09-05T10:18:52.125Z"
+      "updatedAt": "2026-09-06T10:19:06.834Z"
     },
     {
       "id": "best-automation-software-tools",
@@ -2915,7 +2834,7 @@
         "title": "Best Automation Software Tools: What Actually Matters in 2026",
         "date": "2026-08-25"
       },
-      "updatedAt": "2026-09-05T10:18:52.429Z"
+      "updatedAt": "2026-09-06T10:19:07.102Z"
     },
     {
       "id": "top-10-automation-tools",
@@ -2956,7 +2875,7 @@
         "title": "Top 10 Automation Tools: A Practical 2026 Guide",
         "date": "2026-08-28"
       },
-      "updatedAt": "2026-09-05T10:18:53.519Z"
+      "updatedAt": "2026-09-06T10:19:08.185Z"
     },
     {
       "id": "which-is-the-best-automation-tool",
@@ -2997,7 +2916,7 @@
         "title": "Which Is The Best Automation Tool: A Practical 2026 Guide",
         "date": "2026-08-26"
       },
-      "updatedAt": "2026-09-05T10:18:53.754Z"
+      "updatedAt": "2026-09-06T10:19:08.402Z"
     },
     {
       "id": "free-http-monitoring-tool-for-websites",
@@ -3038,7 +2957,7 @@
         "title": "Free Http Monitoring Tool For Websites: A Practical 2026 Guide",
         "date": "2026-08-16"
       },
-      "updatedAt": "2026-09-05T10:18:55.741Z"
+      "updatedAt": "2026-09-06T10:19:10.461Z"
     },
     {
       "id": "ethereum-alternatives-for-smart-contracts",
@@ -3079,7 +2998,7 @@
         "title": "Ethereum Alternatives For Smart Contracts: What the Market Gets Wrong",
         "date": "2026-08-22"
       },
-      "updatedAt": "2026-09-05T10:18:57.358Z"
+      "updatedAt": "2026-09-06T10:19:12.112Z"
     },
     {
       "id": "internal-tools-for-project-management",
@@ -3120,7 +3039,7 @@
         "title": "Internal Tools For Project Management: A Practical 2026 Guide",
         "date": "2026-08-29"
       },
-      "updatedAt": "2026-09-05T10:18:58.238Z"
+      "updatedAt": "2026-09-06T10:19:13.001Z"
     },
     {
       "id": "monitoring-tools-for-web-applications",
@@ -3161,7 +3080,7 @@
         "title": "Monitoring Tools For Web Applications: A Practical 2026 Guide",
         "date": "2026-08-29"
       },
-      "updatedAt": "2026-09-05T10:18:59.295Z"
+      "updatedAt": "2026-09-06T10:19:14.037Z"
     },
     {
       "id": "how-to-learn-automation-for-beginners",
@@ -3202,7 +3121,7 @@
         "title": "How To Learn Automation For Beginners: What Actually Works in 2026",
         "date": "2026-08-29"
       },
-      "updatedAt": "2026-09-05T10:18:59.949Z"
+      "updatedAt": "2026-09-06T10:19:14.695Z"
     },
     {
       "id": "best-ai-agent-tools-2025",
@@ -3243,7 +3162,7 @@
         "title": "Best AI Agent Tools 2025: What Actually Matters in 2026",
         "date": "2026-09-04"
       },
-      "updatedAt": "2026-09-05T10:19:05.497Z"
+      "updatedAt": "2026-09-06T10:19:20.171Z"
     },
     {
       "id": "best-ai-agent-tools-2026",
@@ -3284,7 +3203,7 @@
         "title": "Best AI Agent Tools 2026: What Actually Matters in 2026",
         "date": "2026-09-04"
       },
-      "updatedAt": "2026-09-05T10:19:05.562Z"
+      "updatedAt": "2026-09-06T10:19:20.226Z"
     },
     {
       "id": "best-ai-agents-tools",
@@ -3325,7 +3244,89 @@
         "title": "Best AI Agents Tools: What Actually Matters in 2026",
         "date": "2026-09-04"
       },
-      "updatedAt": "2026-09-05T10:19:05.683Z"
+      "updatedAt": "2026-09-06T10:19:20.335Z"
+    },
+    {
+      "id": "best-ai-coding-tools",
+      "keyword": "best ai coding tools",
+      "category": "ai",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "suggestion",
+      "sourceSeed": "ai coding assistant",
+      "sourceQuery": "best ai coding assistant tools",
+      "sourceFile": "autocomplete_2026-05-05_20-12.csv",
+      "topicCluster": "ai-coding",
+      "suggestedTitle": "Best AI Coding Tools: What Actually Matters in 2026",
+      "intentScore": 24,
+      "monetizationScore": 32,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 82,
+      "serpScore": 0,
+      "opportunityScore": 82,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": "2026-09-05T21:33:32.697Z",
+      "usedBy": {
+        "slug": "best-ai-coding-tools-what-actually-matters-in-2026",
+        "title": "Best AI Coding Tools: What Actually Matters in 2026",
+        "date": "2026-09-05"
+      },
+      "updatedAt": "2026-09-06T10:19:21.137Z"
+    },
+    {
+      "id": "the-best-ai-agent-tools",
+      "keyword": "the best ai agent tools",
+      "category": "ai",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "suggestion",
+      "sourceSeed": "ai agents",
+      "sourceQuery": "best ai agents tools",
+      "sourceFile": "autocomplete_2026-05-05_20-12.csv",
+      "topicCluster": "ai-agents",
+      "suggestedTitle": "The Best AI Agent Tools: What Actually Matters in 2026",
+      "intentScore": 24,
+      "monetizationScore": 32,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 82,
+      "serpScore": 0,
+      "opportunityScore": 82,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": "2026-09-05T16:33:47.215Z",
+      "usedBy": {
+        "slug": "the-best-ai-agent-tools-what-actually-matters-in-2026",
+        "title": "The Best AI Agent Tools: What Actually Matters in 2026",
+        "date": "2026-09-05"
+      },
+      "updatedAt": "2026-09-06T10:19:21.523Z"
     }
   ]
 }
