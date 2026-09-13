@@ -2,25 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://decryptica.com/blog/defi-s-real-problem-isn-t-regulatory-it-s-ux</loc>
+    <loc>https://decryptica.com/blog/solana-rpc-latency-for-trading-bots</loc>
     <news:news>
       <news:publication>
         <news:name>Decryptica</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-04-11</news:publication_date>
-      <news:title>DeFi's Real Problem Isn't Regulatory—It's UX</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://decryptica.com/blog/why-bitcoin-s-institutional-inflows-tell-a-different-story</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Decryptica</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-04-10</news:publication_date>
-      <news:title>Why Bitcoin's Institutional Inflows Tell a Different Story</news:title>
+      <news:publication_date>2026-09-13</news:publication_date>
+      <news:title>Solana RPC Latency for Trading Bots: What to Measure</news:title>
     </news:news>
   </url>
 </urlset>

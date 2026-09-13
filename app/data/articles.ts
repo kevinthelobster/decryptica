@@ -29,6 +29,7 @@ export interface Article {
   excerpt: string;
   content: string;
   category: 'crypto' | 'ai' | 'automation';
+  format?: 'review' | 'comparison' | 'tutorial' | 'explainer' | 'news' | 'listicle' | 'guide';
   readTime: string;
   date: string;
   author?: string;
@@ -67658,9 +67659,11 @@ That is the setup most people eventually arrive at, and it is usually the right 
       '/topic/crypto',
       '/topic/crypto/trading',
       '/blog/best-solana-rpc-for-trading-bots',
+      '/blog/solana-rpc-latency-for-trading-bots',
       '/blog/how-to-benchmark-solana-rpc-endpoints',
       '/blog/public-vs-private-solana-rpc',
       '/blog/helius-vs-quicknode-vs-alchemy-solana',
+      '/blog/solana-rpc-failover-for-trading-bots',
       '/blog/solana-vs-ethereum-2026',
       '/blog/the-solana-developer-exodus-that-s-going-unnoticed',
       '/contact',
@@ -68023,8 +68026,10 @@ For prototypes, **public RPC is fine**. For production, it is the wrong tool.
     primaryConversionHref: '/blog/solana-rpc-providers-compared',
     supportingInternalLinks: [
       '/blog/solana-rpc-providers-compared',
+      '/blog/solana-rpc-latency-for-trading-bots',
       '/blog/how-to-benchmark-solana-rpc-endpoints',
       '/blog/public-vs-private-solana-rpc',
+      '/blog/solana-rpc-failover-for-trading-bots',
       '/topic/crypto/trading',
       '/contact',
     ],
@@ -68154,7 +68159,9 @@ The right answer is the endpoint that wins your own benchmark, from your own ser
     supportingInternalLinks: [
       '/blog/solana-rpc-providers-compared',
       '/blog/best-solana-rpc-for-trading-bots',
+      '/blog/solana-rpc-latency-for-trading-bots',
       '/blog/public-vs-private-solana-rpc',
+      '/blog/solana-rpc-failover-for-trading-bots',
       '/topic/crypto/trading',
     ],
     kwrScore: { businessValue: 4, intentClarity: 5, topicalAuthorityFit: 5, executionConfidence: 5, internalLinkLeverage: 5, freshnessUpdateDefensibility: 5, serpDifferentiationPotential: 5, weightedScore: 462, gate: 'ship_now', notes: 'Implementation-intent article that supports the RPC comparison hub and captures technical search demand.' },
@@ -68284,6 +68291,8 @@ If you are building a bot, read [Best Solana RPC for Trading Bots](/blog/best-so
       '/blog/solana-rpc-providers-compared',
       '/blog/how-to-benchmark-solana-rpc-endpoints',
       '/blog/best-solana-rpc-for-trading-bots',
+      '/blog/solana-rpc-latency-for-trading-bots',
+      '/blog/solana-rpc-failover-for-trading-bots',
       '/topic/crypto/trading',
     ],
     kwrScore: { businessValue: 4, intentClarity: 5, topicalAuthorityFit: 5, executionConfidence: 5, internalLinkLeverage: 5, freshnessUpdateDefensibility: 5, serpDifferentiationPotential: 4, weightedScore: 448, gate: 'ship_now', notes: 'Beginner-to-commercial explainer that supports the Solana RPC comparison hub.' },
@@ -68419,7 +68428,9 @@ The moment reliability matters, free RPC has already done its job.
     supportingInternalLinks: [
       '/blog/solana-rpc-providers-compared',
       '/blog/best-solana-rpc-for-trading-bots',
+      '/blog/solana-rpc-latency-for-trading-bots',
       '/blog/how-to-benchmark-solana-rpc-endpoints',
+      '/blog/solana-rpc-failover-for-trading-bots',
       '/topic/crypto/trading',
     ],
     kwrScore: { businessValue: 5, intentClarity: 5, topicalAuthorityFit: 5, executionConfidence: 4, internalLinkLeverage: 5, freshnessUpdateDefensibility: 5, serpDifferentiationPotential: 5, weightedScore: 470, gate: 'ship_now', notes: 'Commercial comparison targeting branded Solana RPC alternatives queries.' },
@@ -68503,6 +68514,405 @@ For a serious production decision, test all three with [a real Solana RPC benchm
       {
         question: 'Should I test Helius, QuickNode, and Alchemy before choosing?',
         answer: 'Yes. Run the same benchmark against each provider using your actual RPC methods, server region, and traffic pattern before committing.',
+      },
+    ],
+  },
+  {
+    id: 'crypto-solana-rpc-latency-trading-bots-2026',
+    slug: 'solana-rpc-latency-for-trading-bots',
+    primaryKeyword: 'Solana RPC latency for trading bots',
+    targetSubpillar: 'trading',
+    primaryConversionHref: '/blog/solana-rpc-providers-compared',
+    supportingInternalLinks: [
+      '/blog/solana-rpc-providers-compared',
+      '/blog/best-solana-rpc-for-trading-bots',
+      '/blog/how-to-benchmark-solana-rpc-endpoints',
+      '/blog/solana-rpc-failover-for-trading-bots',
+      '/blog/public-vs-private-solana-rpc',
+      '/blog/helius-vs-quicknode-vs-alchemy-solana',
+      '/topic/crypto/trading',
+      '/tools/solana-rpc-benchmark',
+    ],
+    kwrScore: { businessValue: 5, intentClarity: 5, topicalAuthorityFit: 5, executionConfidence: 5, internalLinkLeverage: 5, freshnessUpdateDefensibility: 5, serpDifferentiationPotential: 4, weightedScore: 466, gate: 'ship_now', notes: 'Supporting technical page for Solana trading bot RPC selection focused on measurable latency, slot freshness, streaming delay, and transaction landing.' },
+    title: 'Solana RPC Latency for Trading Bots: What to Measure',
+    excerpt: 'Solana trading bots should measure p95 and p99 latency, slot lag, stream delay, transaction send timing, confirmation behavior, and throttling before choosing an RPC provider.',
+    format: 'explainer',
+    content: `
+Solana RPC latency for trading bots is not one number. A provider can look fast on a single \`getBalance\` request and still be the wrong endpoint for a bot that depends on fresh pool state, quick blockhash refreshes, reliable simulation, and transaction landing during congestion.
+
+The useful question is not "which RPC is fastest?" The useful question is: which endpoint stays fast enough, fresh enough, and predictable enough for the exact strategy you are running?
+
+For the provider shortlist, start with [Solana RPC Providers Compared 2026](/blog/solana-rpc-providers-compared). If you are still deciding which vendors belong in the test set, read [Best Solana RPC for Trading Bots](/blog/best-solana-rpc-for-trading-bots) first. This page focuses on the latency metrics that should decide the winner.
+
+## The Short Answer
+
+Measure latency by workflow, not by brand. A trading bot should separately track read latency, stream delay, blockhash freshness, simulation speed, transaction send timing, confirmation timing, slot lag, and provider errors.
+
+At minimum, record these:
+
+| Metric | Why it matters |
+|---|---|
+| p50 latency | Normal request speed |
+| p95 latency | The slow path your bot will hit regularly |
+| p99 latency | Tail behavior that can break execution |
+| Slot lag | Whether the provider is behind the chain |
+| Stream delay | How late account or program updates arrive |
+| Send latency | How quickly transactions leave your system |
+| Confirmation time | How quickly the bot can trust the result |
+| Throttle rate | Whether strategy bursts trigger 429s or provider limits |
+
+The winning provider is the one that performs best under your real method mix from your production region. Average latency is useful, but it is not enough for trading infrastructure.
+
+## Average Latency Is The Trap
+
+Average latency hides bad tail behavior. If nine requests complete in 70 ms and one request takes 2,000 ms, the average may still look acceptable on a dashboard. A bot does not experience averages. It experiences the slow request when the strategy needs a decision.
+
+That is why p95 and p99 matter. p95 tells you how slow the slowest five percent of requests are. p99 tells you what the bad edge looks like. Those numbers often separate a decent developer endpoint from infrastructure you can trust during busy market windows.
+
+For a wallet or dashboard, a high p99 may feel like a poor user experience. For a bot, it can mean stale quotes, missed opportunities, failed blockhash refreshes, late exits, or transactions that arrive after the profitable state has disappeared.
+
+## Measure Slot Freshness
+
+Latency only tells you how long the request took. It does not prove the answer was fresh.
+
+A Solana RPC endpoint can respond quickly while returning data from a slot that is behind another provider or behind the network tip your strategy expects. For bots, that distinction matters. A fast stale response is still stale.
+
+Track slot information wherever the method exposes it. Compare providers over the same time window and record:
+
+- latest slot returned by each provider
+- slot difference between primary and backup endpoints
+- commitment level used for the request
+- whether the response came from a cached path or live RPC path
+- how often a provider falls behind during high activity
+
+Do not compare processed data from one provider with confirmed data from another and call that a latency difference. Commitment level changes the meaning of the answer. Pick a commitment policy for each workflow and log it.
+
+## Separate Reads, Streams, And Sends
+
+Trading bots usually have three latency paths.
+
+The read path handles account data, pool state, token balances, recent blockhashes, and pre-trade checks. The stream path handles WebSocket, gRPC, or Geyser-style updates. The send path handles transaction submission, retries, fee settings, and confirmation.
+
+Those paths should be measured separately because the same provider can perform differently across them. A provider may be strong for enhanced reads and weaker for low-latency streaming. Another may be excellent for gRPC feeds but overkill for a simple bot. Another may look fine for reads but produce poor transaction landing under congestion.
+
+For serious systems, split the benchmark into categories:
+
+- read latency: \`getLatestBlockhash\`, \`getAccountInfo\`, \`getProgramAccounts\`
+- stream latency: subscription connect time, update delay, disconnects, reconnect time
+- send latency: \`simulateTransaction\`, \`sendTransaction\`, confirmation polling
+- failure behavior: 429s, 403s, timeouts, stale responses, provider-specific errors
+
+This also helps with vendor design. You might use one provider for primary reads, another for streaming, and a specific transaction path for sends. That decision should come from measured behavior, not marketing copy.
+
+## Test From The Bot Region
+
+Solana RPC latency depends on network distance. A benchmark from your laptop is useful for catching obvious problems, but it is not enough to choose production infrastructure.
+
+Run the benchmark from the same region where the bot will run. If the bot is deployed in Ashburn, New York, Frankfurt, Singapore, or a specific cloud region, test from there. If your strategy depends on a co-located or low-latency environment, make that part of the test plan.
+
+The same provider can look different from different regions. This is not a contradiction. It is the network showing up in the measurement.
+
+Also test during more than one market condition. Calm windows make almost every endpoint look better. Busy windows expose throttling, p99 spikes, queueing, and disconnect behavior.
+
+## A Practical Acceptance Matrix
+
+Before calling a provider "fast enough," define thresholds. The exact numbers depend on the strategy, but the structure is consistent.
+
+| Workflow | What to set before testing |
+|---|---|
+| Blockhash refresh | Maximum acceptable p95 and failure rate |
+| Account reads | Maximum p95/p99 latency and slot lag |
+| Pool or program scans | Maximum response time and throttle rate |
+| Streaming | Maximum update delay and disconnect count |
+| Simulation | Maximum simulation latency before a trade is skipped |
+| Sending | Maximum send latency and failed-send rate |
+| Confirmation | Maximum confirmation delay before retry or alert |
+
+Bots need skip rules. If latency crosses a threshold, the safest behavior may be no trade. That is better than executing from stale state because the RPC layer was slow but silent.
+
+## What To Log In Production
+
+Benchmarking is only the start. Production logs should keep the same shape so you can compare test behavior with live behavior.
+
+Log these fields for every critical RPC call:
+
+- provider name
+- endpoint role
+- RPC method
+- commitment level
+- request start time
+- latency
+- HTTP status or provider error
+- slot returned when available
+- blockhash used when sending
+- transaction signature when available
+- confirmation result
+- retry count
+- failover reason
+
+This makes provider decisions easier later. If a bot starts missing trades, you can see whether latency rose, slot lag widened, subscriptions disconnected, or transaction sends failed.
+
+## Where Provider Choice Fits
+
+For latency-sensitive Solana bots, Triton One and Helius usually belong in the first test set. Triton is important when low-latency streaming and Yellowstone gRPC-style infrastructure are central to the system. Helius is important when Solana-native APIs, Sender, priority-fee tooling, and developer support are part of the execution stack.
+
+QuickNode can belong in the test set for teams that want mature operations, team controls, logs, and multi-chain infrastructure. Chainstack and Alchemy can also make sense depending on method mix and cost model, especially for supporting services around the bot.
+
+The key is to benchmark the workflow that matters. A provider that is good for a token dashboard is not automatically good for a liquidation bot. A provider that is great for streaming may be unnecessary for a small alerting script.
+
+## Common Mistakes
+
+- Choosing the provider with the best average latency.
+- Measuring only \`getBalance\`.
+- Testing from a laptop instead of the production region.
+- Ignoring slot lag because the HTTP response was fast.
+- Mixing commitment levels across providers.
+- Assuming WebSocket stability from HTTP latency.
+- Treating transaction landing as the same thing as read latency.
+- Using public RPC as a production backup.
+- Skipping cost modeling for heavy methods.
+
+The public RPC mistake is especially costly. Public Solana endpoints are shared, rate-limited infrastructure. They are useful for learning and scripts, but not for production trading bots. The [public vs private Solana RPC](/blog/public-vs-private-solana-rpc) guide explains when free stops working.
+
+## Final Verdict
+
+Solana RPC latency for trading bots should be measured as a system: read latency, stream delay, slot freshness, send timing, confirmation timing, throttling, and failure behavior.
+
+Start with the shortlist in [Solana RPC Providers Compared 2026](/blog/solana-rpc-providers-compared), then run the same benchmark against each provider from your bot region. If the provider wins p50 but loses p95, p99, slot freshness, or transaction landing, it has not won the trading-bot workload.
+
+For the test process, use [How to Benchmark Solana RPC Endpoints Before You Buy](/blog/how-to-benchmark-solana-rpc-endpoints). For reliability design after choosing a primary provider, use [Solana RPC Failover for Trading Bots](/blog/solana-rpc-failover-for-trading-bots).
+
+## Sources checked
+
+- Solana public RPC and rate-limit documentation
+- Helius Sender, priority-fee, and Solana RPC documentation
+- Triton One and Yellowstone gRPC documentation
+- QuickNode Solana and gRPC documentation
+- Alchemy compute-unit documentation
+- Chainstack pricing and throughput documentation
+    `.trim(),
+    category: 'crypto',
+    readTime: '6 min',
+    date: '2026-09-13',
+    lastUpdated: '2026-09-13',
+    author: 'Decryptica',
+    tags: ['solana', 'rpc', 'trading-bots', 'latency', 'web3-infrastructure'],
+    wordCount: 1524,
+    sourcesReviewed: 6,
+    faqs: [
+      {
+        question: 'What Solana RPC latency metric matters most for trading bots?',
+        answer: 'p95 and p99 latency matter more than average latency because they show the slow path a trading bot will hit during real execution windows.',
+      },
+      {
+        question: 'Is low HTTP latency enough for a Solana trading bot?',
+        answer: 'No. A bot also needs fresh slots, stable streams, reliable transaction sends, confirmation visibility, and clear provider error behavior.',
+      },
+      {
+        question: 'Where should I run a Solana RPC latency benchmark?',
+        answer: 'Run it from the same server region where the trading bot runs, then repeat it during calm and busy network windows.',
+      },
+    ],
+  },
+  {
+    id: 'crypto-solana-rpc-failover-trading-bots-2026',
+    slug: 'solana-rpc-failover-for-trading-bots',
+    primaryKeyword: 'Solana RPC failover for trading bots',
+    targetSubpillar: 'trading',
+    primaryConversionHref: '/blog/solana-rpc-providers-compared',
+    supportingInternalLinks: [
+      '/blog/solana-rpc-providers-compared',
+      '/blog/best-solana-rpc-for-trading-bots',
+      '/blog/solana-rpc-latency-for-trading-bots',
+      '/blog/how-to-benchmark-solana-rpc-endpoints',
+      '/blog/public-vs-private-solana-rpc',
+      '/blog/helius-vs-quicknode-vs-alchemy-solana',
+      '/topic/crypto/trading',
+      '/tools/solana-rpc-benchmark',
+    ],
+    kwrScore: { businessValue: 5, intentClarity: 5, topicalAuthorityFit: 5, executionConfidence: 5, internalLinkLeverage: 5, freshnessUpdateDefensibility: 5, serpDifferentiationPotential: 4, weightedScore: 468, gate: 'ship_now', notes: 'Supporting technical buyer-intent page for Solana trading bot RPC selection, failover, and production reliability.' },
+    title: 'Solana RPC Failover for Trading Bots: The Practical Setup',
+    excerpt: 'Solana trading bots need RPC failover that protects transaction state, subscription freshness, and provider visibility without blindly rotating endpoints or hiding stale reads.',
+    format: 'explainer',
+    content: `
+Solana RPC failover for trading bots sounds simple: keep a backup endpoint and switch when the first one fails. In practice, bad failover can be worse than no failover because it can hide stale reads, duplicate sends, inconsistent confirmation checks, and provider-specific errors you needed to see.
+
+The right setup is deliberate. Use one primary paid RPC, one tested backup, clear switching rules, provider-specific logging, and a benchmark that proves both endpoints can handle your actual method mix.
+
+For provider selection, start with [Solana RPC Providers Compared 2026](/blog/solana-rpc-providers-compared). If you are still choosing the primary endpoint, read [Best Solana RPC for Trading Bots](/blog/best-solana-rpc-for-trading-bots) before implementing failover.
+
+## The Short Answer
+
+Most Solana trading bots should use a primary provider for normal operation and a backup provider for defined failure cases. Do not randomly round-robin reads and sends across providers unless you understand slot freshness, commitment levels, blockhash handling, and transaction status consistency.
+
+A practical setup looks like this:
+
+| Layer | Recommended approach | Why |
+|---|---|---|
+| Primary reads | One low-latency paid endpoint | Keeps state behavior predictable |
+| Backup reads | One separately monitored paid endpoint | Protects against provider outages and throttling |
+| Streaming | Prefer one stable WebSocket or gRPC source | Avoids conflicting account-update timelines |
+| Transaction sending | Route through the provider you benchmarked for landing | Execution reliability is separate from read latency |
+| Observability | Log every request by provider | You need to know which endpoint actually failed |
+
+This is especially important for arbitrage, liquidation, market-making, sniper, or alerting systems where stale state can create bad trades.
+
+## Why Blind Failover Breaks Bots
+
+Failover is not just "try another URL." Solana bots often depend on several pieces of state that need to line up:
+
+- latest blockhash
+- account data
+- slot freshness
+- priority-fee settings
+- simulation output
+- transaction send result
+- confirmation status
+- subscription events
+
+If those pieces come from different providers at different freshness levels, the bot can make a decision from one view of the chain and submit or confirm against another. That does not always fail loudly. Sometimes it just makes the strategy look unreliable.
+
+The simplest rule: fail over by workflow boundary. Do not mix providers inside one critical decision unless the code is intentionally designed for that.
+
+## When To Switch Providers
+
+Use explicit switching rules. Good triggers include:
+
+- repeated 429 or provider throttle errors
+- repeated timeouts over a short window
+- WebSocket or gRPC disconnects that do not recover cleanly
+- slot lag beyond your configured threshold
+- transaction send failures from the same provider path
+- provider status incident that matches your observed errors
+
+Weak triggers include one slow request, one failed simulation, or a single transaction that does not land. Those can happen for reasons that have nothing to do with the RPC provider.
+
+For most bots, a rolling error window is better than a one-event switch. Example: switch reads only after three failures in 30 seconds or after p95 latency crosses your limit for several consecutive checks.
+
+## Keep Reads And Sends Separate
+
+Read failover and send failover are different problems.
+
+Read failover protects account state, pool data, token balances, and quote inputs. Send failover protects transaction submission, priority-fee routing, retries, and confirmation. A provider can be excellent for reads and weaker for sends, or the reverse.
+
+For many bots, the cleanest design is:
+
+- primary read endpoint
+- backup read endpoint
+- primary transaction endpoint
+- optional emergency transaction endpoint
+
+Those may be the same vendor at first. They do not have to stay that way once volume grows.
+
+## What To Log
+
+If you cannot tell which provider failed, you do not have failover. You have a mystery.
+
+Log these fields at minimum:
+
+- provider name
+- endpoint role: primary_read, backup_read, primary_send, backup_send
+- RPC method
+- HTTP status or provider error code
+- latency
+- slot returned, when available
+- commitment level
+- blockhash used for sends
+- transaction signature
+- confirmation outcome
+- failover reason
+
+This makes the postmortem useful. You can separate provider throttling from Solana congestion, bad fee settings, stale blockhashes, and strategy logic bugs.
+
+## A Simple Failover Policy
+
+Start conservative:
+
+1. Use the primary provider for all normal reads.
+2. Health-check the backup provider continuously.
+3. Switch reads only when the primary crosses an error, timeout, or slot-lag threshold.
+4. Keep the switched state for a cooldown period instead of bouncing every request.
+5. Send transactions through the endpoint you benchmarked for transaction landing.
+6. Alert when failover activates.
+
+Do not hide failover from yourself. If failover triggers often, the system needs investigation, not a quieter dashboard.
+
+## Commitment Levels And Slot Freshness
+
+Solana RPC failover for trading bots also needs a commitment policy. If one provider is queried at processed commitment and another is queried at confirmed commitment, the bot may compare answers that are not meant to be equivalent. That can make a backup endpoint look wrong when the real issue is inconsistent read semantics.
+
+Pick the commitment level intentionally for each workflow. For early signal detection, processed data may be useful because it arrives quickly. For risk checks, accounting, and confirmation logic, confirmed or finalized data may be more appropriate. The important part is consistency: record the commitment level with each response and avoid comparing provider results without also comparing the slot and commitment.
+
+Slot freshness is the next guardrail. A backup provider should not become active just because it responds. It should be close enough to the primary view of the chain to be useful. Track the returned slot where the method exposes it, and define the maximum lag your strategy can tolerate before a response is rejected.
+
+## Benchmark Both Endpoints
+
+The backup endpoint has to be tested before it is needed. Use the same benchmark you used for the primary provider:
+
+- getLatestBlockhash
+- getAccountInfo
+- getProgramAccounts if your strategy uses it
+- simulateTransaction
+- sendTransaction
+- confirmation polling
+- WebSocket or gRPC subscription stability
+- p95 and p99 latency
+- throttle and timeout rate
+
+Run the benchmark from the same server region as the bot. A backup that looks fine from a laptop can still be a bad fit from production.
+
+For the testing plan, use [How to Benchmark Solana RPC Endpoints Before You Buy](/blog/how-to-benchmark-solana-rpc-endpoints).
+
+## Common Mistakes
+
+- Blindly rotating every request across providers.
+- Using public RPC as the production backup.
+- Failing over after one noisy error.
+- Combining a blockhash from one provider with stale account reads from another.
+- Not logging provider identity on every request.
+- Treating average latency as more important than p95 and p99 latency.
+- Assuming read performance proves transaction landing performance.
+- Forgetting to test WebSocket or gRPC reconnect behavior.
+
+The public endpoint mistake is the most common. Public Solana RPC is useful for learning and local tests, but it is shared, rate-limited infrastructure. The [public vs private Solana RPC](/blog/public-vs-private-solana-rpc) guide covers when free stops being a serious option.
+
+## Final Verdict
+
+The best Solana RPC failover setup for trading bots is boring on purpose: one primary paid endpoint, one tested backup, clear switching thresholds, separate thinking for reads and sends, and provider-level logs.
+
+Start with the provider shortlist in [Solana RPC Providers Compared 2026](/blog/solana-rpc-providers-compared), choose the primary using real benchmarks, then prove the backup can survive the same workload before the bot depends on it.
+
+Failover should reduce risk. If it makes state harder to reason about, it is just another failure mode.
+
+## Sources checked
+
+- Solana public RPC and rate-limit documentation
+- Helius Sender and priority-fee documentation
+- Triton One and Yellowstone gRPC documentation
+- QuickNode Solana and gRPC documentation
+- Alchemy compute-unit documentation
+- Chainstack pricing and throughput documentation
+    `.trim(),
+    category: 'crypto',
+    readTime: '5 min',
+    date: '2026-09-08',
+    lastUpdated: '2026-09-08',
+    author: 'Decryptica',
+    tags: ['solana', 'rpc', 'trading-bots', 'failover', 'latency', 'web3-infrastructure'],
+    wordCount: 1260,
+    sourcesReviewed: 6,
+    faqs: [
+      {
+        question: 'Should a Solana trading bot use RPC failover?',
+        answer: 'Yes, but failover should be explicit. Use a primary paid endpoint, a tested backup, clear switching thresholds, and provider-level logging instead of blindly rotating every request.',
+      },
+      {
+        question: 'Can public Solana RPC be a backup for a trading bot?',
+        answer: 'Public RPC is fine for local testing, but it is not a reliable production backup for a trading bot because it is shared, rate-limited, and not designed for production workloads.',
+      },
+      {
+        question: 'Should reads and transaction sends use the same Solana RPC endpoint?',
+        answer: 'They can, especially early, but reads and sends should be evaluated separately. Fast account reads do not prove reliable transaction landing under congestion.',
       },
     ],
   },
