@@ -1408,11 +1408,24 @@ export const imageSet = {
     credit: 'Photo by Jakub Żerdzicki on Unsplash',
     creditUrl: 'https://unsplash.com/photos/coding-code-on-multiple-computer-screens-O3ChbcT94NM',
   },
+  serverRackDiagnosticTool: {
+    src: `https://images.unsplash.com/photo-1785682117394-4c8d27afc12a${unsplashParams}`,
+    alt: 'A technician inspecting server racks with a handheld diagnostic tool',
+    credit: 'Photo by Valentin Lacoste on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/technician-inspecting-server-racks-with-a-handheld-diagnostic-tool-A-b2nPSSK6E',
+  },
+  serverRackMaintenance: {
+    src: `https://images.unsplash.com/photo-1785682117346-4b114502e9b8${unsplashParams}`,
+    alt: 'A technician working on a server rack with electronic equipment',
+    credit: 'Photo by Valentin Lacoste on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-technician-works-on-a-server-rack-with-electronic-equipment-Au6-AcBY-rg',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'solana-rpc-latency-for-trading-bots': imageSet.cryptoTradingDashboard9rz5x8LGBb,
   'best-ai-tools-like-cursor-what-actually-matters-in-2026': imageSet.codeOnAComputerScreen,
   'best-ai-tools-cursor-what-actually-matters-in-2026': imageSet.laptopCodePlushOctopus,
   'best-ai-coding-tool-what-actually-matters-in-2026': imageSet.darkThemeCodingScreen,
@@ -1669,6 +1682,8 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'serverRackMaintenance',
+    'serverRackDiagnosticTool',
     'multiScreenCodingWorkspace',
     'darkThemeCodingScreen',
     'startupTeamLaptopsbrq6r83uD8',

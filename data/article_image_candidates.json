@@ -2306,6 +2306,36 @@
       "alt": "Multiple computer screens showing code in a developer workspace",
       "credit": "Photo by Jakub Żerdzicki on Unsplash",
       "creditUrl": "https://unsplash.com/photos/coding-code-on-multiple-computer-screens-O3ChbcT94NM"
+    },
+    {
+      "key": "serverRackDiagnosticTool",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1785682117394-4c8d27afc12a",
+      "alt": "A technician inspecting server racks with a handheld diagnostic tool",
+      "credit": "Photo by Valentin Lacoste on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/technician-inspecting-server-racks-with-a-handheld-diagnostic-tool-A-b2nPSSK6E"
+    },
+    {
+      "key": "serverRackMaintenance",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1785682117346-4b114502e9b8",
+      "alt": "A technician working on a server rack with electronic equipment",
+      "credit": "Photo by Valentin Lacoste on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-technician-works-on-a-server-rack-with-electronic-equipment-Au6-AcBY-rg"
+    },
+    {
+      "key": "glowingAutomationServerRack",
+      "categories": [
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1783419231367-89bd75443ad7",
+      "alt": "A hand adjusting components in a glowing server rack",
+      "credit": "Photo by Aleksandr Lyaptsev on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/a-hand-adjusting-components-in-a-glowing-server-rack-5FS9ci4eHg0"
     }
   ]
 }
