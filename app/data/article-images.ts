@@ -1420,6 +1420,12 @@ export const imageSet = {
     credit: 'Photo by Valentin Lacoste on Unsplash',
     creditUrl: 'https://unsplash.com/photos/a-technician-works-on-a-server-rack-with-electronic-equipment-Au6-AcBY-rg',
   },
+  glowingAutomationServerRack: {
+    src: `https://images.unsplash.com/photo-1783419231367-89bd75443ad7${unsplashParams}`,
+    alt: 'A hand adjusting components in a glowing server rack',
+    credit: 'Photo by Aleksandr Lyaptsev on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/a-hand-adjusting-components-in-a-glowing-server-rack-5FS9ci4eHg0',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1682,6 +1688,7 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'glowingAutomationServerRack',
     'serverRackMaintenance',
     'serverRackDiagnosticTool',
     'multiScreenCodingWorkspace',
