@@ -12,11 +12,11 @@ import { getLeadMagnetBySlug } from '../../data/lead-magnets';
 
 export const metadata: Metadata = {
   title: 'AI Model Price Calculator — Compare LLM API Costs (2026)',
-  description: 'Free AI model price calculator to compare GPT-5.6, Claude, Gemini, DeepSeek, Grok, Mistral and more. Find the cheapest AI provider for your use case. Updated August 31, 2026.',
-  keywords: ['AI model price calculator', 'LLM API pricing', 'AI API cost comparison', 'GPT-5.6 price', 'Claude API cost', 'Gemini API pricing', 'AI provider comparison', 'token cost calculator', 'AI cheapest option'],
+  description: 'Free AI model price calculator to compare GPT-6 Astra, Claude, Gemini, DeepSeek, Grok, Mistral and more. Find the cheapest AI provider for your use case. Updated September 14, 2026.',
+  keywords: ['AI model price calculator', 'LLM API pricing', 'AI API cost comparison', 'GPT-6 Astra price', 'Claude API cost', 'Gemini API pricing', 'AI provider comparison', 'token cost calculator', 'AI cheapest option'],
   openGraph: {
     title: 'AI Model Price Calculator — Latest Models Compared',
-    description: 'Compare AI API costs across OpenAI, Anthropic, Google, DeepSeek, xAI, Mistral, and more. Updated August 31, 2026.',
+    description: 'Compare AI API costs across OpenAI, Anthropic, Google, DeepSeek, xAI, Mistral, and more. Updated September 14, 2026.',
     type: 'website',
   },
 };
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 // Variant B metadata for A/B CTR testing (not a Next.js Page export — internal only)
 const META_VARIANT_B = {
   title: 'AI API Cost Calculator — Find the Cheapest LLM | Decryptica',
-  description: 'Stop overpaying for AI. Compare GPT-5.6, Claude, Gemini pricing side-by-side and calculate your exact API spend. 100% free, no signup required.',
+  description: 'Stop overpaying for AI. Compare GPT-6 Astra, Claude, Gemini pricing side-by-side and calculate your exact API spend. 100% free, no signup required.',
 };
 
 const faqData = {
@@ -33,10 +33,10 @@ const faqData = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How much does the GPT-5.6 Sol API cost?",
+      "name": "How much does the GPT-6 Astra API cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "GPT-5.6 Sol costs $2.00 per 1M input tokens and $10.00 per 1M output tokens on standard OpenAI API pricing as of August 31, 2026."
+        "text": "GPT-6 Astra costs $5.00 per 1M input tokens and $25.00 per 1M output tokens on standard OpenAI API pricing as of September 14, 2026."
       }
     },
     {
@@ -60,7 +60,7 @@ const faqData = {
       "name": "What is the difference between open source and commercial AI models?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Open-weight models like DeepSeek and Mistral publish model weights that can be self-hosted, but managed API usage is still billed by the provider. Closed commercial models like GPT-5.6 and Claude are API products with managed infrastructure and provider-hosted availability."
+        "text": "Open-weight models like DeepSeek and Mistral publish model weights that can be self-hosted, but managed API usage is still billed by the provider. Closed commercial models like GPT-6 Astra and Claude are API products with managed infrastructure and provider-hosted availability."
       }
     }
   ]
@@ -93,7 +93,7 @@ function ToolCTACompare() {
       <h3 className="font-display text-sm font-semibold text-red-800 uppercase tracking-wider mb-2">Compare</h3>
       <p className="text-stone-950 font-medium mb-1">Ready to pick a model?</p>
       <p className="text-stone-600 text-sm mb-3">Enter your token volumes above to see exactly how much each provider costs.</p>
-      <p className="text-xs text-stone-500">Current production models across major API providers — updated August 31, 2026</p>
+      <p className="text-xs text-stone-500">Current production models across major API providers — updated September 14, 2026</p>
     </div>
   );
 }
