@@ -2336,6 +2336,17 @@
       "alt": "A hand adjusting components in a glowing server rack",
       "credit": "Photo by Aleksandr Lyaptsev on Unsplash",
       "creditUrl": "https://unsplash.com/photos/a-hand-adjusting-components-in-a-glowing-server-rack-5FS9ci4eHg0"
+    },
+    {
+      "key": "aiOfficeLaptopWorkspace",
+      "categories": [
+        "ai",
+        "automation"
+      ],
+      "src": "https://images.unsplash.com/photo-1758626104169-6835c0bd03e3",
+      "alt": "A laptop in an office workspace showing an AI assistant interface",
+      "credit": "Photo by Jo Lin on Unsplash",
+      "creditUrl": "https://unsplash.com/photos/qQrQcKqLhvs"
     }
   ]
 }

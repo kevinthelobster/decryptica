@@ -1426,6 +1426,12 @@ export const imageSet = {
     credit: 'Photo by Aleksandr Lyaptsev on Unsplash',
     creditUrl: 'https://unsplash.com/photos/a-hand-adjusting-components-in-a-glowing-server-rack-5FS9ci4eHg0',
   },
+  aiOfficeLaptopWorkspace: {
+    src: `https://images.unsplash.com/photo-1758626104169-6835c0bd03e3${unsplashParams}`,
+    alt: 'A laptop in an office workspace showing an AI assistant interface',
+    credit: 'Photo by Jo Lin on Unsplash',
+    creditUrl: 'https://unsplash.com/photos/qQrQcKqLhvs',
+  },
 } satisfies Record<string, ArticleImage>;
 
 export type ArticleImageKey = keyof typeof imageSet;
@@ -1556,6 +1562,7 @@ export const articleImageOverrides = {
 
 export const articleImagePools = {
   ai: [
+    'aiOfficeLaptopWorkspace',
     'multiScreenCodingWorkspace',
     'darkThemeCodingScreen',
     'laptopCodePlushOctopus',
@@ -1688,6 +1695,7 @@ export const articleImagePools = {
     'productWorkspace',
   ],
   automation: [
+    'aiOfficeLaptopWorkspace',
     'glowingAutomationServerRack',
     'serverRackMaintenance',
     'serverRackDiagnosticTool',
