@@ -7,10 +7,10 @@ import { getLeadMagnetBySlug } from '@/app/data/lead-magnets';
 
 export const PROVIDERS = [
   // OpenAI - current standard short-context rates on the official pricing page.
-  { id: "openai-gpt-6-astra", name: "GPT-6 Astra", provider: "OpenAI", input: 5.0, output: 25.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
-  { id: "openai-gpt-5.6-sol", name: "GPT-5.6 Sol", provider: "OpenAI", input: 2.0, output: 10.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
-  { id: "openai-gpt-5.6-terra", name: "GPT-5.6 Terra", provider: "OpenAI", input: 1.0, output: 6.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
-  { id: "openai-gpt-5.6-luna", name: "GPT-5.6 Luna", provider: "OpenAI", input: 0.1, output: 0.6, supports: ["text", "vision", "function", "reasoning"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-6-astra", name: "GPT-6 Astra", provider: "OpenAI", input: 10.0, output: 50.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-5.6-sol", name: "GPT-5.6 Sol", provider: "OpenAI", input: 4.0, output: 20.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-5.6-terra", name: "GPT-5.6 Terra", provider: "OpenAI", input: 2.0, output: 12.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
+  { id: "openai-gpt-5.6-luna", name: "GPT-5.6 Luna", provider: "OpenAI", input: 0.2, output: 1.2, supports: ["text", "vision", "function", "reasoning"], contextWindow: 1000000, color: "#10a37f", link: "https://developers.openai.com/api/docs/pricing", openSource: false },
 
   // Anthropic - first-party Claude API.
   { id: "anthropic-claude-fable-5-1", name: "Claude Fable 5.1", provider: "Anthropic", input: 10.0, output: 50.0, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#d4a574", link: "https://platform.claude.com/docs/en/about-claude/pricing", openSource: false },
@@ -29,8 +29,8 @@ export const PROVIDERS = [
   { id: "google-gemini-2.5-flash", name: "Gemini 2.5 Flash", provider: "Google", input: 0.3, output: 2.5, supports: ["text", "vision", "function", "reasoning"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
   { id: "google-gemini-2.5-flash-lite", name: "Gemini 2.5 Flash-Lite", provider: "Google", input: 0.1, output: 0.4, supports: ["text", "vision", "function"], contextWindow: 1000000, color: "#4285f4", link: "https://ai.google.dev/gemini-api/docs/pricing", openSource: false },
 
-  // DeepSeek switched to peak/off-peak billing on August 16, 2026; entries below use the current peak rates.
-  { id: "deepseek-v4-flash", name: "DeepSeek V4 Flash", provider: "DeepSeek", input: 0.44, output: 1.32, supports: ["text", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#6366f1", link: "https://api-docs.deepseek.com/quick_start/pricing/", openSource: true },
+  // DeepSeek uses peak/off-peak billing; entries below use peak cache-miss input and peak output rates.
+  { id: "deepseek-flash", name: "DeepSeek Flash (V4.1)", provider: "DeepSeek", input: 0.3, output: 1.2, supports: ["text", "vision", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#6366f1", link: "https://api-docs.deepseek.com/quick_start/pricing/", openSource: true },
   { id: "deepseek-v4-pro", name: "DeepSeek V4 Pro", provider: "DeepSeek", input: 1.32, output: 3.96, supports: ["text", "function", "reasoning", "coding"], contextWindow: 1000000, color: "#6366f1", link: "https://api-docs.deepseek.com/quick_start/pricing/", openSource: true },
 
   // xAI
@@ -386,7 +386,7 @@ export default function AIPriceCalculator() {
           </div>
         </div>
 
-        <p className="text-xs text-stone-500 mt-4 text-center">Prices use standard API token rates and may vary by tier, region, context length, caching, batch, or priority mode. DeepSeek entries reflect current peak rates because that provider now uses peak/off-peak billing. Data checked September 14, 2026.</p>
+        <p className="text-xs text-stone-500 mt-4 text-center">Prices use standard API token rates and may vary by tier, region, context length, caching, batch, or priority mode. DeepSeek entries reflect current peak rates because that provider now uses peak/off-peak billing. Data checked September 21, 2026.</p>
       </div>
     </div>
   );
