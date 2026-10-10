@@ -16,7 +16,6 @@ import TrackedFAQSection from '../../components/TrackedFAQSection';
 import ArticleTrustLayer from '../../components/ArticleTrustLayer';
 import HubSectionNav from '../../components/HubSectionNav';
 import ArticleNextJourney, { type ArticleNextJourneyCard } from '../../components/ArticleNextJourney';
-import ArticleBuyerDecisionModule from '../../components/ArticleBuyerDecisionModule';
 import { ArticleSerpPromiseModules } from '../../components/ArticleSerpPromiseModules';
 import ArticleToolPathway from '../../components/ArticleToolPathway';
 import RouteDepthTracker from '../../components/RouteDepthTracker';
@@ -1111,7 +1110,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const subpillarPath = getSubpillarPath(article.category as PillarSlug, subpillarSlug);
   const primaryToolHref = getPrimaryToolHref(article, subpillarPath);
   const nextJourneyCards = buildArticleNextJourney(article, articles, subpillarPath);
-  const showBuyerDecisionModule = isComparisonArticle(article) || primaryToolHref.startsWith('/tools/');
   const readingListArticle = {
     slug,
     title: article.title,
@@ -1275,15 +1273,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   primaryActionHref={primaryToolHref}
                   excerpt={article.excerpt}
                 />
-                {showBuyerDecisionModule && (
-                  <ArticleBuyerDecisionModule
-                    articleSlug={slug}
-                    category={article.category}
-                    title={article.title}
-                    primaryActionHref={primaryToolHref}
-                    subpillarPath={subpillarPath}
-                  />
-                )}
               </div>
             </section>
 
@@ -1314,15 +1303,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 excerpt={article.excerpt}
                 primaryActionHref={primaryToolHref}
               />
-              {showBuyerDecisionModule && (
-                <ArticleBuyerDecisionModule
-                  articleSlug={slug}
-                  category={article.category}
-                  title={article.title}
-                  primaryActionHref={primaryToolHref}
-                  subpillarPath={subpillarPath}
-                />
-              )}
             </section>
 
             <ArticleToolPathway article={article} />

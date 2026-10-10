@@ -33,7 +33,12 @@ assert(
 assert(
   articlePage.includes('<div className="hidden sm:block">') &&
     articlePage.includes('<section className="mt-8 scroll-mt-28 sm:hidden" aria-label="Article next steps">'),
-  'heavy decision modules should stay below the article body on mobile.'
+  'desktop and mobile article next-step modules should stay in separate responsive containers.'
+);
+
+assert(
+  !articlePage.includes('ArticleBuyerDecisionModule'),
+  'article pages should not render the decision matrix before or after the article body.'
 );
 
 const latestArticleMatch = articles.match(/\{\n\s*id: [\s\S]*?\n\s*\},(?=\n\s*\{|\n\];)/);
