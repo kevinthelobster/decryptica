@@ -1,176 +1,6 @@
 {
   "posted": [
     {
-      "title": "Why Bitcoin's Price Action Contradicts the Narrative",
-      "slug": "why-bitcoin-s-price-action-contradicts-the-narrative",
-      "date": 1781004793596
-    },
-    {
-      "title": "The True Cost of Compliance for Crypto Projects",
-      "slug": "the-true-cost-of-compliance-for-crypto-projects",
-      "date": 1781091091956
-    },
-    {
-      "title": "The On-Chain Metrics That Actually Predict Price",
-      "slug": "the-on-chain-metrics-that-actually-predict-price",
-      "date": 1781177554524
-    },
-    {
-      "title": "NFTs Aren't Dead—They're Just Finding Their Real Use Case",
-      "slug": "nfts-aren-t-dead-they-re-just-finding-their-real-use-case",
-      "date": 1781263975587
-    },
-    {
-      "title": "Solana's DeFi Renaissance: The Numbers Don't Lie",
-      "slug": "solana-s-defi-renaissance-the-numbers-don-t-lie",
-      "date": 1781350791848
-    },
-    {
-      "title": "DeFi's Real Problem Isn't Regulatory—It's UX",
-      "slug": "defi-s-real-problem-isn-t-regulatory-it-s-ux",
-      "date": 1781436685666
-    },
-    {
-      "title": "Obsidian vs Notion: The Real Tradeoff",
-      "slug": "obsidian-vs-notion-the-real-tradeoff",
-      "date": 1781523243899
-    },
-    {
-      "title": "Why Your Second Brain System Is Failing You",
-      "slug": "why-your-second-brain-system-is-failing-you",
-      "date": 1781609490061
-    },
-    {
-      "title": "Task Management in 2026: What's Actually Working",
-      "slug": "task-management-in-2026-what-s-actually-working",
-      "date": 1781695992848
-    },
-    {
-      "title": "Event-Driven Architecture: When It Actually Helps",
-      "slug": "event-driven-architecture-when-it-actually-helps",
-      "date": 1781782349995
-    },
-    {
-      "title": "Why Developer Portals Are Getting Worse",
-      "slug": "why-developer-portals-are-getting-worse",
-      "date": 1781868695532
-    },
-    {
-      "title": "Zapier vs Make: Which Automation Tool Wins?",
-      "slug": "zapier-vs-make-which-automation-tool-wins",
-      "date": 1781955157392
-    },
-    {
-      "title": "The Webhook Reliability Problem Nobody Fixes",
-      "slug": "the-webhook-reliability-problem-nobody-fixes",
-      "date": 1782041492136
-    },
-    {
-      "title": "Why Your Integration Architecture Matters",
-      "slug": "why-your-integration-architecture-matters",
-      "date": 1782127889433
-    },
-    {
-      "title": "The API Tools Actually Worth Your Time",
-      "slug": "the-api-tools-actually-worth-your-time",
-      "date": 1782214302529
-    },
-    {
-      "title": "When to Abandon No-Code for Real Code",
-      "slug": "when-to-abandon-no-code-for-real-code",
-      "date": 1782300782916
-    },
-    {
-      "title": "The Pomodoro Problem: Why Timers Don't Work",
-      "slug": "the-pomodoro-problem-why-timers-don-t-work",
-      "date": 1782387104372
-    },
-    {
-      "title": "The ROI of Business Automation: Real Numbers",
-      "slug": "the-roi-of-business-automation-real-numbers",
-      "date": 1782473495579
-    },
-    {
-      "title": "The No-Code Ceiling: When Tools Hit Their Limit",
-      "slug": "the-no-code-ceiling-when-tools-hit-their-limit",
-      "date": 1782559991699
-    },
-    {
-      "title": "Why Most Automation Projects Fail at Scale",
-      "slug": "why-most-automation-projects-fail-at-scale",
-      "date": 1782646296810
-    },
-    {
-      "title": "Why Bubble.io Is Both Winning and Losing",
-      "slug": "why-bubble-io-is-both-winning-and-losing",
-      "date": 1782732752423
-    },
-    {
-      "title": "The Human-in-the-Loop Problem for Automation",
-      "slug": "the-human-in-the-loop-problem-for-automation",
-      "date": 1782819103325
-    },
-    {
-      "title": "Process Mining: Finding Automation Opportunities",
-      "slug": "process-mining-finding-automation-opportunities",
-      "date": 1782905493003
-    },
-    {
-      "title": "The Productivity System That Actually Works",
-      "slug": "the-productivity-system-that-actually-works",
-      "date": 1782991899422
-    },
-    {
-      "title": "The State of API Documentation in 2026",
-      "slug": "the-state-of-api-documentation-in-2026",
-      "date": 1783078414786
-    },
-    {
-      "title": "Building Internal Tools: What Actually Scales",
-      "slug": "building-internal-tools-what-actually-scales",
-      "date": 1783164693538
-    },
-    {
-      "title": "The Hidden Costs of No-Code Solutions",
-      "slug": "the-hidden-costs-of-no-code-solutions",
-      "date": 1783251381283
-    },
-    {
-      "title": "What It Actually Takes to Build in Web3 Now",
-      "slug": "what-it-actually-takes-to-build-in-web3-now",
-      "date": 1783337513647
-    },
-    {
-      "title": "What On-Chain Data Says About Bitcoin's Next Move",
-      "slug": "what-on-chain-data-says-about-bitcoin-s-next-move",
-      "date": 1783424012333
-    },
-    {
-      "title": "Ethereum's Next Upgrade Could Change Everything",
-      "slug": "ethereum-s-next-upgrade-could-change-everything",
-      "date": 1783510382287
-    },
-    {
-      "title": "The Crypto Regulation Reality Check Nobody Wants",
-      "slug": "the-crypto-regulation-reality-check-nobody-wants",
-      "date": 1783596743694
-    },
-    {
-      "title": "Why Most DeFi Users Will Never Leave Ethereum",
-      "slug": "why-most-defi-users-will-never-leave-ethereum",
-      "date": 1783683098708
-    },
-    {
-      "title": "Why Bitcoin's Institutional Inflows Tell a Different Story",
-      "slug": "why-bitcoin-s-institutional-inflows-tell-a-different-story",
-      "date": 1783769486192
-    },
-    {
-      "title": "The Web3 Developer Experience Is Still Broken",
-      "slug": "the-web3-developer-experience-is-still-broken",
-      "date": 1783855894488
-    },
-    {
       "title": "NFTs Aren't Dead—They're Just Finding Their Real Use Case",
       "slug": "nfts-aren-t-dead-they-re-just-finding-their-real-use-case",
       "date": 1783942377189
@@ -839,6 +669,11 @@
       "title": "Best AI Tools Like Cursor: What Actually Matters in 2026",
       "slug": "best-ai-tools-like-cursor-what-actually-matters-in-2026",
       "date": 1788730388792
+    },
+    {
+      "title": "Best Make Garden Tools: What Actually Matters in 2026",
+      "slug": "best-make-garden-tools-what-actually-matters-in-2026",
+      "date": 1791649355800
     }
   ],
   "lastResearch": null
