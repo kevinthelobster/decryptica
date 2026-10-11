@@ -1437,6 +1437,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-make-of-tools-uk-what-actually-matters-in-2026': imageSet.serverRackMaintenance,
   'best-make-garden-tools-what-actually-matters-in-2026': imageSet.glowingAutomationServerRack,
   'solana-rpc-latency-for-trading-bots': imageSet.cryptoTradingDashboard9rz5x8LGBb,
   'best-ai-tools-like-cursor-what-actually-matters-in-2026': imageSet.codeOnAComputerScreen,

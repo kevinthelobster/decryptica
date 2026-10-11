@@ -1666,8 +1666,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-10-11T11:31:52.516Z",
+      "usedBy": {
+        "slug": "best-make-of-tools-uk-what-actually-matters-in-2026",
+        "title": "Best Make Of Tools Uk: What Actually Matters in 2026",
+        "date": "2026-10-11"
+      },
       "updatedAt": "2026-10-10T15:52:48.989Z"
     },
     {
