@@ -1250,8 +1250,12 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
+      "usedAt": "2026-10-13T11:31:40.821Z",
+      "usedBy": {
+        "slug": "automation-software-for-mac-tips-a-practical-2026-guide",
+        "title": "Automation Software For Mac Tips: A Practical 2026 Guide",
+        "date": "2026-10-13"
+      },
       "updatedAt": "2026-10-12T11:30:39.360Z"
     },
     {
