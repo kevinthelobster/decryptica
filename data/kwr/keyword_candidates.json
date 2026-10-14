@@ -1,7 +1,6 @@
 {
-  "generatedAt": "2026-10-12T11:30:39.396Z",
+  "generatedAt": "2026-10-14T11:30:39.167Z",
   "sourceFiles": [
-    "autocomplete_2026-09-01_06-16.csv",
     "autocomplete_2026-09-03_06-17.csv",
     "autocomplete_2026-09-05_06-16.csv",
     "autocomplete_2026-09-05_06-18.csv",
@@ -30,7 +29,8 @@
     "autocomplete_2026-10-08_07-30.csv",
     "autocomplete_2026-10-10_07-30.csv",
     "autocomplete_2026-10-10_11-46.csv",
-    "autocomplete_2026-10-12_07-30.csv"
+    "autocomplete_2026-10-12_07-30.csv",
+    "autocomplete_2026-10-14_07-30.csv"
   ],
   "candidates": [
     {
@@ -43,7 +43,7 @@
       "sourceType": "preposition",
       "sourceSeed": "crypto tax",
       "sourceQuery": "best crypto tax tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "defi",
       "suggestedTitle": "Best Crypto Tax Software For DeFi: What Actually Matters in 2026",
       "intentScore": 40,
@@ -68,7 +68,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.356Z"
+      "updatedAt": "2026-10-14T11:30:39.132Z"
     },
     {
       "id": "best-crypto-tracker-for-taxes",
@@ -80,7 +80,7 @@
       "sourceType": "preposition",
       "sourceSeed": "crypto tax",
       "sourceQuery": "best crypto tax tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "crypto-tax",
       "suggestedTitle": "Best Crypto Tracker For Taxes: What Actually Matters in 2026",
       "intentScore": 40,
@@ -105,7 +105,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.360Z"
+      "updatedAt": "2026-10-14T11:30:39.136Z"
     },
     {
       "id": "best-workflow-automation-software-for-small-business",
@@ -117,7 +117,7 @@
       "sourceType": "preposition",
       "sourceSeed": "workflow automation",
       "sourceQuery": "best workflow automation tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "workflow-ops",
       "suggestedTitle": "Best Workflow Automation Software For Small Business: What Actually Matters in 2026",
       "intentScore": 40,
@@ -142,7 +142,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.358Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-workflow-automation-tools-for-creating-ai-agents",
@@ -154,7 +154,7 @@
       "sourceType": "preposition",
       "sourceSeed": "workflow automation",
       "sourceQuery": "best workflow automation tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "ai-agents",
       "suggestedTitle": "Best Workflow Automation Tools For Creating AI Agents: What Actually Matters in 2026",
       "intentScore": 40,
@@ -179,7 +179,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.358Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-ai-automation-tools-for-small-business",
@@ -216,7 +216,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.358Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-automation-tool-for-desktop-application",
@@ -253,7 +253,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.358Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-crm-for-service-business-automation",
@@ -290,7 +290,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-crypto-app-for-beginners-free",
@@ -327,7 +327,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "automation-tools-for-testing-without-coding",
@@ -364,7 +364,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.360Z"
+      "updatedAt": "2026-10-14T11:30:39.136Z"
     },
     {
       "id": "best-stock-and-crypto-app-for-portfolio",
@@ -401,7 +401,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "what-is-the-best-bitcoin-wallet-for-beginners",
@@ -438,7 +438,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "how-to-use-crypto-wallet-app",
@@ -475,7 +475,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.365Z"
+      "updatedAt": "2026-10-14T11:30:39.140Z"
     },
     {
       "id": "best-exchange-for-crypto-trading",
@@ -512,7 +512,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "best-ai-tools-for-coding-assistance",
@@ -524,7 +524,7 @@
       "sourceType": "preposition",
       "sourceSeed": "ai coding assistant",
       "sourceQuery": "best ai coding assistant tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "ai-coding",
       "suggestedTitle": "Best AI Tools For Coding Assistance: What Actually Matters in 2026",
       "intentScore": 40,
@@ -549,7 +549,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-ai-note-taking-tool-for-microsoft-teams",
@@ -586,7 +586,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-ai-tool-for-image-generator",
@@ -623,7 +623,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-ai-tool-for-meeting-minutes",
@@ -660,7 +660,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "ethereum-alternatives-for-smart-contracts",
@@ -672,7 +672,7 @@
       "sourceType": "preposition",
       "sourceSeed": "ethereum",
       "sourceQuery": "ethereum alternatives",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "ethereum",
       "suggestedTitle": "Ethereum Alternatives For Smart Contracts: What the Market Gets Wrong in 2026",
       "intentScore": 34,
@@ -697,7 +697,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.362Z"
+      "updatedAt": "2026-10-14T11:30:39.138Z"
     },
     {
       "id": "zapier-alternatives-for-small-business",
@@ -709,7 +709,7 @@
       "sourceType": "preposition",
       "sourceSeed": "zapier alternatives",
       "sourceQuery": "zapier alternatives",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "integration-tools",
       "suggestedTitle": "Zapier Alternatives For Small Business: A Practical 2026 Guide",
       "intentScore": 40,
@@ -734,7 +734,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.136Z"
     },
     {
       "id": "internal-tools-for-collaboration",
@@ -746,7 +746,7 @@
       "sourceType": "preposition",
       "sourceSeed": "internal tools",
       "sourceQuery": "internal tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "internal-tools",
       "suggestedTitle": "Internal Tools For Collaboration: A Practical 2026 Guide",
       "intentScore": 34,
@@ -769,9 +769,13 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.362Z"
+      "usedAt": "2026-10-14T11:32:57.483Z",
+      "usedBy": {
+        "slug": "internal-tools-for-collaboration-a-practical-2026-guide",
+        "title": "Internal Tools For Collaboration: A Practical 2026 Guide",
+        "date": "2026-10-14"
+      },
+      "updatedAt": "2026-10-14T11:30:39.138Z"
     },
     {
       "id": "best-search-api-for-llm",
@@ -783,7 +787,7 @@
       "sourceType": "preposition",
       "sourceSeed": "llm api",
       "sourceQuery": "best llm api tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "llm-stack",
       "suggestedTitle": "Best Search API For LLM: What Actually Matters in 2026",
       "intentScore": 34,
@@ -808,7 +812,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.360Z"
+      "updatedAt": "2026-10-14T11:30:39.136Z"
     },
     {
       "id": "tools-for-testing-api-monitoring",
@@ -820,7 +824,7 @@
       "sourceType": "preposition",
       "sourceSeed": "api monitoring",
       "sourceQuery": "api monitoring for beginners | how to use api monitoring",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "api-ops",
       "suggestedTitle": "Tools For Testing API Monitoring: A Practical 2026 Guide",
       "intentScore": 34,
@@ -845,7 +849,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.360Z"
+      "updatedAt": "2026-10-14T11:30:39.136Z"
     },
     {
       "id": "best-online-card-for-crypto",
@@ -882,7 +886,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "tools-for-prompt-engineering",
@@ -919,7 +923,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.362Z"
+      "updatedAt": "2026-10-14T11:30:39.138Z"
     },
     {
       "id": "best-marketing-automation-software-for-startups",
@@ -956,7 +960,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-sales-automation-software-for-b2b",
@@ -993,7 +997,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-ai-tools-for-research-work",
@@ -1030,7 +1034,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-ai-website-builder-for-beginners",
@@ -1067,7 +1071,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.136Z"
     },
     {
       "id": "best-design-tools-for-claude-code",
@@ -1104,7 +1108,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.136Z"
     },
     {
       "id": "alternatives-to-asana-for-workflow-automation",
@@ -1116,7 +1120,7 @@
       "sourceType": "preposition",
       "sourceSeed": "workflow automation",
       "sourceQuery": "workflow automation alternatives",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "workflow-ops",
       "suggestedTitle": "Alternatives To Asana For Workflow Automation: A Practical 2026 Guide",
       "intentScore": 40,
@@ -1141,7 +1145,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.360Z"
+      "updatedAt": "2026-10-14T11:30:39.136Z"
     },
     {
       "id": "alternatives-to-pega-for-business-automation",
@@ -1178,7 +1182,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.360Z"
+      "updatedAt": "2026-10-14T11:30:39.136Z"
     },
     {
       "id": "best-automation-services-for-small-businesses",
@@ -1215,11 +1219,11 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.360Z"
+      "updatedAt": "2026-10-14T11:30:39.136Z"
     },
     {
-      "id": "automation-software-for-mac-tips",
-      "keyword": "automation software for mac tips",
+      "id": "automation-software-free-for-android",
+      "keyword": "automation software free for android",
       "category": "automation",
       "volume": null,
       "cpc": null,
@@ -1227,17 +1231,17 @@
       "sourceType": "preposition",
       "sourceSeed": "automation software",
       "sourceQuery": "automation software",
-      "sourceFile": "autocomplete_2026-09-17_06-18.csv",
+      "sourceFile": "autocomplete_2026-09-05_06-18.csv",
       "topicCluster": "automation-general",
-      "suggestedTitle": "Automation Software For Mac Tips: A Practical 2026 Guide",
+      "suggestedTitle": "Automation Software Free For Android: A Practical 2026 Guide",
       "intentScore": 40,
-      "monetizationScore": 36,
+      "monetizationScore": 32,
       "volumeScore": 8,
       "cpcScore": 4,
       "lengthScore": 14,
-      "baseOpportunityScore": 102,
+      "baseOpportunityScore": 98,
       "serpScore": 0,
-      "opportunityScore": 102,
+      "opportunityScore": 98,
       "reasoning": [
         "strong commercial/problem-solving intent",
         "affiliate/comparison angle looks monetizable",
@@ -1250,13 +1254,9 @@
         "results": []
       },
       "status": "ready",
-      "usedAt": "2026-10-13T11:31:40.821Z",
-      "usedBy": {
-        "slug": "automation-software-for-mac-tips-a-practical-2026-guide",
-        "title": "Automation Software For Mac Tips: A Practical 2026 Guide",
-        "date": "2026-10-13"
-      },
-      "updatedAt": "2026-10-12T11:30:39.360Z"
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-10-14T11:30:39.136Z"
     },
     {
       "id": "online-workflow-tool-for-document-approval",
@@ -1293,7 +1293,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.360Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "ai-software-for-transcription",
@@ -1330,7 +1330,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "ai-tool-for-meeting",
@@ -1367,7 +1367,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "ai-tool-for-video-transcription",
@@ -1404,7 +1404,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "cursor-ai-alternative-for-vs-code",
@@ -1441,7 +1441,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "n8n-alternatives-for-ai-agents",
@@ -1478,7 +1478,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "alternatives-for-chatgpt-free",
@@ -1490,7 +1490,7 @@
       "sourceType": "preposition",
       "sourceSeed": "chatgpt alternatives",
       "sourceQuery": "chatgpt alternatives for beginners",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "chat-assistants",
       "suggestedTitle": "Alternatives For Chatgpt Free: What Actually Matters in 2026",
       "intentScore": 40,
@@ -1515,7 +1515,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "best-workflow-automation-tools-like-n8n",
@@ -1527,7 +1527,7 @@
       "sourceType": "suggestion",
       "sourceSeed": "workflow automation",
       "sourceQuery": "best workflow automation tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "workflow-ops",
       "suggestedTitle": "Best Workflow Automation Tools Like N8n: What Actually Matters in 2026",
       "intentScore": 24,
@@ -1552,7 +1552,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "best-ai-automation-tools-like-n8n",
@@ -1589,7 +1589,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "best-low-code-no-code-automation-tools",
@@ -1626,7 +1626,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "ai-automation-easy-for-beginner",
@@ -1663,7 +1663,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.362Z"
+      "updatedAt": "2026-10-14T11:30:39.138Z"
     },
     {
       "id": "best-crypto-ai-tools",
@@ -1675,7 +1675,7 @@
       "sourceType": "suggestion",
       "sourceSeed": "bitcoin",
       "sourceQuery": "best bitcoin tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "bitcoin",
       "suggestedTitle": "Best Crypto AI Tools: What Actually Matters in 2026",
       "intentScore": 24,
@@ -1700,7 +1700,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.363Z"
+      "updatedAt": "2026-10-14T11:30:39.139Z"
     },
     {
       "id": "top-ai-agents-tools",
@@ -1712,7 +1712,7 @@
       "sourceType": "suggestion",
       "sourceSeed": "ai agents",
       "sourceQuery": "best ai agents tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "ai-agents",
       "suggestedTitle": "Top AI Agents Tools: What Actually Matters in 2026",
       "intentScore": 24,
@@ -1737,7 +1737,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.363Z"
+      "updatedAt": "2026-10-14T11:30:39.139Z"
     },
     {
       "id": "how-to-get-api-key-crypto-com-app",
@@ -1774,7 +1774,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.365Z"
+      "updatedAt": "2026-10-14T11:30:39.140Z"
     },
     {
       "id": "how-to-learn-ai-automation-for-free",
@@ -1810,7 +1810,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.365Z"
+      "updatedAt": "2026-10-14T11:30:39.140Z"
     },
     {
       "id": "what-are-some-build-automation-tools",
@@ -1847,43 +1847,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.365Z"
-    },
-    {
-      "id": "free-automation-tools-like-zapier",
-      "keyword": "free automation tools like zapier",
-      "category": "automation",
-      "volume": null,
-      "cpc": null,
-      "source": "bing-autocomplete",
-      "sourceType": "suggestion",
-      "sourceSeed": "zapier alternatives",
-      "sourceQuery": "best zapier alternatives tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
-      "topicCluster": "integration-tools",
-      "suggestedTitle": "Free Automation Tools Like Zapier: A Practical 2026 Guide",
-      "intentScore": 34,
-      "monetizationScore": 20,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 80,
-      "serpScore": 0,
-      "opportunityScore": 80,
-      "reasoning": [
-        "strong commercial/problem-solving intent",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": null,
-      "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.365Z"
+      "updatedAt": "2026-10-14T11:30:39.140Z"
     },
     {
       "id": "how-to-use-api-for-beginners",
@@ -1895,7 +1859,7 @@
       "sourceType": "question",
       "sourceSeed": "api monitoring",
       "sourceQuery": "api monitoring for beginners",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "api-ops",
       "suggestedTitle": "How To Use API For Beginners: What Actually Works in 2026",
       "intentScore": 24,
@@ -1920,7 +1884,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.365Z"
+      "updatedAt": "2026-10-14T11:30:39.140Z"
     },
     {
       "id": "best-crypto-tools",
@@ -1932,7 +1896,7 @@
       "sourceType": "suggestion",
       "sourceSeed": "bitcoin",
       "sourceQuery": "best bitcoin tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "bitcoin",
       "suggestedTitle": "Best Crypto Tools: What Actually Matters in 2026",
       "intentScore": 24,
@@ -1957,7 +1921,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.366Z"
+      "updatedAt": "2026-10-14T11:30:39.140Z"
     },
     {
       "id": "how-to-use-cursor-ai-for-beginners",
@@ -1993,7 +1957,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.366Z"
+      "updatedAt": "2026-10-14T11:30:39.140Z"
     },
     {
       "id": "make-com-automation-tutorial-for-beginners",
@@ -2030,47 +1994,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.366Z"
-    },
-    {
-      "id": "which-monitoring-tool-is-best",
-      "keyword": "which monitoring tool is best",
-      "category": "automation",
-      "volume": null,
-      "cpc": null,
-      "source": "google-autocomplete",
-      "sourceType": "suggestion",
-      "sourceSeed": "api monitoring",
-      "sourceQuery": "best api monitoring tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
-      "topicCluster": "api-ops",
-      "suggestedTitle": "Which Monitoring Tool Is Best: A Practical 2026 Guide",
-      "intentScore": 18,
-      "monetizationScore": 32,
-      "volumeScore": 8,
-      "cpcScore": 4,
-      "lengthScore": 14,
-      "baseOpportunityScore": 76,
-      "serpScore": 0,
-      "opportunityScore": 76,
-      "reasoning": [
-        "affiliate/comparison angle looks monetizable",
-        "no dominant authority domain in sampled results"
-      ],
-      "serp": {
-        "weakCount": 0,
-        "strongCount": 0,
-        "neutralCount": 0,
-        "results": []
-      },
-      "status": "ready",
-      "usedAt": "2026-10-12T11:32:27.569Z",
-      "usedBy": {
-        "slug": "which-monitoring-tool-is-best-a-practical-2026-guide",
-        "title": "Which Monitoring Tool Is Best: A Practical 2026 Guide",
-        "date": "2026-10-12"
-      },
-      "updatedAt": "2026-10-12T11:30:39.366Z"
+      "updatedAt": "2026-10-14T11:30:39.140Z"
     },
     {
       "id": "how-to-use-make-com-for-automation",
@@ -2106,7 +2030,43 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.367Z"
+      "updatedAt": "2026-10-14T11:30:39.141Z"
+    },
+    {
+      "id": "beginner-projects-for-n8n",
+      "keyword": "beginner projects for n8n",
+      "category": "automation",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "n8n",
+      "sourceQuery": "n8n for beginners",
+      "sourceFile": "autocomplete_2026-09-05_06-18.csv",
+      "topicCluster": "integration-tools",
+      "suggestedTitle": "Beginner Projects For N8n: A Practical 2026 Guide",
+      "intentScore": 26,
+      "monetizationScore": 22,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 74,
+      "serpScore": 0,
+      "opportunityScore": 74,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": null,
+      "usedBy": null,
+      "updatedAt": "2026-10-14T11:30:39.142Z"
     },
     {
       "id": "best-defi-portfolio-tracker",
@@ -2143,7 +2103,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.367Z"
+      "updatedAt": "2026-10-14T11:30:39.142Z"
     },
     {
       "id": "crypto-com-defi-wallet-app",
@@ -2180,7 +2140,7 @@
       "status": "ready",
       "usedAt": null,
       "usedBy": null,
-      "updatedAt": "2026-10-12T11:30:39.368Z"
+      "updatedAt": "2026-10-14T11:30:39.142Z"
     },
     {
       "id": "best-ai-tools-for-ai-automation",
@@ -2221,7 +2181,7 @@
         "title": "Best AI Tools For AI Automation: What Actually Matters in 2026",
         "date": "2026-08-12"
       },
-      "updatedAt": "2026-10-12T11:30:39.358Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-tools-for-automation",
@@ -2262,7 +2222,7 @@
         "title": "Best Tools For Automation: What Actually Matters in 2026",
         "date": "2026-08-23"
       },
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-ai-tools-for-ai-agents",
@@ -2274,7 +2234,7 @@
       "sourceType": "preposition",
       "sourceSeed": "ai agents",
       "sourceQuery": "best ai agents tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "ai-agents",
       "suggestedTitle": "Best AI Tools For AI Agents: What Actually Matters in 2026",
       "intentScore": 40,
@@ -2303,7 +2263,7 @@
         "title": "Best AI Tools For AI Agents: What Actually Matters in 2026",
         "date": "2026-08-13"
       },
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-ai-tool-for-meetings",
@@ -2344,7 +2304,7 @@
         "title": "Best AI Tool For Meetings: What Actually Matters in 2026",
         "date": "2026-08-19"
       },
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-ai-tools-for-notes",
@@ -2385,7 +2345,7 @@
         "title": "Best AI Tools For Notes: What Actually Matters in 2026",
         "date": "2026-08-31"
       },
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.135Z"
     },
     {
       "id": "best-ollama-model-for-n8n-tools",
@@ -2426,7 +2386,48 @@
         "title": "Best Ollama Model For N8n Tools: What Actually Matters in 2026",
         "date": "2026-08-16"
       },
-      "updatedAt": "2026-10-12T11:30:39.359Z"
+      "updatedAt": "2026-10-14T11:30:39.136Z"
+    },
+    {
+      "id": "automation-software-for-mac-tips",
+      "keyword": "automation software for mac tips",
+      "category": "automation",
+      "volume": null,
+      "cpc": null,
+      "source": "bing-autocomplete",
+      "sourceType": "preposition",
+      "sourceSeed": "automation software",
+      "sourceQuery": "automation software",
+      "sourceFile": "autocomplete_2026-09-17_06-18.csv",
+      "topicCluster": "automation-general",
+      "suggestedTitle": "Automation Software For Mac Tips: A Practical 2026 Guide",
+      "intentScore": 40,
+      "monetizationScore": 36,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 102,
+      "serpScore": 0,
+      "opportunityScore": 102,
+      "reasoning": [
+        "strong commercial/problem-solving intent",
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": "2026-10-13T11:31:40.821Z",
+      "usedBy": {
+        "slug": "automation-software-for-mac-tips-a-practical-2026-guide",
+        "title": "Automation Software For Mac Tips: A Practical 2026 Guide",
+        "date": "2026-10-13"
+      },
+      "updatedAt": "2026-10-14T11:30:39.136Z"
     },
     {
       "id": "best-ai-for-meetings",
@@ -2467,7 +2468,7 @@
         "title": "Best AI For Meetings: What Actually Matters in 2026",
         "date": "2026-09-02"
       },
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "what-is-a-rag-tool-for-ai",
@@ -2508,7 +2509,7 @@
         "title": "What Is A RAG Tool For AI: A Practical 2026 Guide",
         "date": "2026-08-22"
       },
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "what-are-the-best-ai-tools",
@@ -2520,7 +2521,7 @@
       "sourceType": "question",
       "sourceSeed": "ai coding assistant",
       "sourceQuery": "best ai coding assistant tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "ai-coding",
       "suggestedTitle": "What Are The Best AI Tools: A Practical 2026 Guide",
       "intentScore": 32,
@@ -2549,7 +2550,7 @@
         "title": "What Are The Best AI Tools: A Practical 2026 Guide",
         "date": "2026-09-02"
       },
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "best-ai-automation-tools",
@@ -2590,7 +2591,7 @@
         "title": "Best AI Automation Tools: What Actually Matters in 2026",
         "date": "2026-09-01"
       },
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "best-ai-automation-tools-2025",
@@ -2631,7 +2632,7 @@
         "title": "Best AI Automation Tools 2025: What Actually Matters in 2026",
         "date": "2026-09-03"
       },
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "best-ai-automation-tools-2026",
@@ -2672,7 +2673,7 @@
         "title": "Best AI Automation Tools 2026: What Actually Matters in 2026",
         "date": "2026-09-05"
       },
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "best-automation-software-tools",
@@ -2713,7 +2714,7 @@
         "title": "Best Automation Software Tools: What Actually Matters in 2026",
         "date": "2026-08-25"
       },
-      "updatedAt": "2026-10-12T11:30:39.361Z"
+      "updatedAt": "2026-10-14T11:30:39.137Z"
     },
     {
       "id": "top-10-automation-tools",
@@ -2754,7 +2755,7 @@
         "title": "Top 10 Automation Tools: A Practical 2026 Guide",
         "date": "2026-08-28"
       },
-      "updatedAt": "2026-10-12T11:30:39.362Z"
+      "updatedAt": "2026-10-14T11:30:39.138Z"
     },
     {
       "id": "which-is-the-best-automation-tool",
@@ -2795,7 +2796,7 @@
         "title": "Which Is The Best Automation Tool: A Practical 2026 Guide",
         "date": "2026-08-26"
       },
-      "updatedAt": "2026-10-12T11:30:39.362Z"
+      "updatedAt": "2026-10-14T11:30:39.138Z"
     },
     {
       "id": "best-ai-agent-tools-2025",
@@ -2807,7 +2808,7 @@
       "sourceType": "suggestion",
       "sourceSeed": "ai agents",
       "sourceQuery": "best ai agents tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "ai-agents",
       "suggestedTitle": "Best AI Agent Tools 2025: What Actually Matters in 2026",
       "intentScore": 24,
@@ -2836,7 +2837,7 @@
         "title": "Best AI Agent Tools 2025: What Actually Matters in 2026",
         "date": "2026-09-04"
       },
-      "updatedAt": "2026-10-12T11:30:39.363Z"
+      "updatedAt": "2026-10-14T11:30:39.139Z"
     },
     {
       "id": "best-ai-agent-tools-2026",
@@ -2848,7 +2849,7 @@
       "sourceType": "suggestion",
       "sourceSeed": "ai agents",
       "sourceQuery": "best ai agents tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "ai-agents",
       "suggestedTitle": "Best AI Agent Tools 2026: What Actually Matters in 2026",
       "intentScore": 24,
@@ -2877,7 +2878,7 @@
         "title": "Best AI Agent Tools 2026: What Actually Matters in 2026",
         "date": "2026-09-04"
       },
-      "updatedAt": "2026-10-12T11:30:39.363Z"
+      "updatedAt": "2026-10-14T11:30:39.139Z"
     },
     {
       "id": "best-ai-agents-tools",
@@ -2889,7 +2890,7 @@
       "sourceType": "suggestion",
       "sourceSeed": "ai agents",
       "sourceQuery": "best ai agents tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "ai-agents",
       "suggestedTitle": "Best AI Agents Tools: What Actually Matters in 2026",
       "intentScore": 24,
@@ -2918,7 +2919,7 @@
         "title": "Best AI Agents Tools: What Actually Matters in 2026",
         "date": "2026-09-04"
       },
-      "updatedAt": "2026-10-12T11:30:39.363Z"
+      "updatedAt": "2026-10-14T11:30:39.139Z"
     },
     {
       "id": "best-ai-coding-tool",
@@ -2930,7 +2931,7 @@
       "sourceType": "suggestion",
       "sourceSeed": "ai coding assistant",
       "sourceQuery": "best ai coding assistant tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "ai-coding",
       "suggestedTitle": "Best AI Coding Tool: What Actually Matters in 2026",
       "intentScore": 24,
@@ -2959,7 +2960,7 @@
         "title": "Best AI Coding Tool: What Actually Matters in 2026",
         "date": "2026-09-06"
       },
-      "updatedAt": "2026-10-12T11:30:39.363Z"
+      "updatedAt": "2026-10-14T11:30:39.139Z"
     },
     {
       "id": "the-best-ai-agent-tools",
@@ -2971,7 +2972,7 @@
       "sourceType": "suggestion",
       "sourceSeed": "ai agents",
       "sourceQuery": "best ai agents tools",
-      "sourceFile": "autocomplete_2026-09-01_06-16.csv",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
       "topicCluster": "ai-agents",
       "suggestedTitle": "The Best AI Agent Tools: What Actually Matters in 2026",
       "intentScore": 24,
@@ -3000,7 +3001,7 @@
         "title": "The Best AI Agent Tools: What Actually Matters in 2026",
         "date": "2026-09-05"
       },
-      "updatedAt": "2026-10-12T11:30:39.363Z"
+      "updatedAt": "2026-10-14T11:30:39.139Z"
     },
     {
       "id": "best-ai-tools-cursor",
@@ -3041,7 +3042,47 @@
         "title": "Best AI Tools Cursor: What Actually Matters in 2026",
         "date": "2026-09-06"
       },
-      "updatedAt": "2026-10-12T11:30:39.364Z"
+      "updatedAt": "2026-10-14T11:30:39.139Z"
+    },
+    {
+      "id": "which-monitoring-tool-is-best",
+      "keyword": "which monitoring tool is best",
+      "category": "automation",
+      "volume": null,
+      "cpc": null,
+      "source": "google-autocomplete",
+      "sourceType": "suggestion",
+      "sourceSeed": "api monitoring",
+      "sourceQuery": "best api monitoring tools",
+      "sourceFile": "autocomplete_2026-09-03_06-17.csv",
+      "topicCluster": "api-ops",
+      "suggestedTitle": "Which Monitoring Tool Is Best: A Practical 2026 Guide",
+      "intentScore": 18,
+      "monetizationScore": 32,
+      "volumeScore": 8,
+      "cpcScore": 4,
+      "lengthScore": 14,
+      "baseOpportunityScore": 76,
+      "serpScore": 0,
+      "opportunityScore": 76,
+      "reasoning": [
+        "affiliate/comparison angle looks monetizable",
+        "no dominant authority domain in sampled results"
+      ],
+      "serp": {
+        "weakCount": 0,
+        "strongCount": 0,
+        "neutralCount": 0,
+        "results": []
+      },
+      "status": "ready",
+      "usedAt": "2026-10-12T11:32:27.569Z",
+      "usedBy": {
+        "slug": "which-monitoring-tool-is-best-a-practical-2026-guide",
+        "title": "Which Monitoring Tool Is Best: A Practical 2026 Guide",
+        "date": "2026-10-12"
+      },
+      "updatedAt": "2026-10-14T11:30:39.141Z"
     },
     {
       "id": "best-make-of-tools-uk",
@@ -3081,7 +3122,7 @@
         "title": "Best Make Of Tools Uk: What Actually Matters in 2026",
         "date": "2026-10-11"
       },
-      "updatedAt": "2026-10-12T11:30:39.366Z"
+      "updatedAt": "2026-10-14T11:30:39.141Z"
     }
   ]
 }

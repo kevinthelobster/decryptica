@@ -1437,6 +1437,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'internal-tools-for-collaboration-a-practical-2026-guide': imageSet.startupTeamLaptopsbrq6r83uD8,
   'automation-software-for-mac-tips-a-practical-2026-guide': imageSet.multiScreenCodingWorkspace,
   'which-monitoring-tool-is-best-a-practical-2026-guide': imageSet.serverRackDiagnosticTool,
   'best-make-of-tools-uk-what-actually-matters-in-2026': imageSet.serverRackMaintenance,
