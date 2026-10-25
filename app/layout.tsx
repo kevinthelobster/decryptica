@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import SeoCwvTracker from "./components/SeoCwvTracker";
 import VercelAnalytics from "./components/VercelAnalytics";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getOrganizationSchema, getWebsiteSchema, jsonLdScript } from "./lib/schema";
 
 const inter = Inter({ 
