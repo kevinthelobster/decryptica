@@ -11,6 +11,7 @@ import {
   getSubpillarPath,
   getSubpillarsForPillar,
   inferSubpillarFromArticle,
+  SUBPILLARS_BY_PILLAR,
   type PillarSlug,
 } from '../../../data/topic-routing';
 
@@ -19,6 +20,12 @@ interface SubpillarPageProps {
     pillar: string;
     subpillar: string;
   }>;
+}
+
+export function generateStaticParams() {
+  return (Object.keys(SUBPILLARS_BY_PILLAR) as PillarSlug[]).flatMap((pillar) =>
+    SUBPILLARS_BY_PILLAR[pillar].map(({ slug }) => ({ pillar, subpillar: slug })),
+  );
 }
 
 export async function generateMetadata({ params }: SubpillarPageProps): Promise<Metadata> {

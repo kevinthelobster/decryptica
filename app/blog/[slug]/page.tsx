@@ -441,6 +441,17 @@ function getMetaVariants(article: any): { metaTitle: string; metaDesc: string; v
   return { metaTitle, metaDesc, variantB: { title: variantBTitle, description: variantBDesc } };
 }
 
+// ─── Static Generation ──────────────────────────────────────────────────────
+
+// Pre-render every article at build time so visits are served from the CDN
+// cache instead of invoking a serverless function on each request.
+export function generateStaticParams() {
+  return articles.map((article) => ({ slug: article.slug }));
+}
+
+// Unknown slugs fall through to app/not-found.tsx instead of rendering on demand.
+export const dynamicParams = false;
+
 // ─── Generate Metadata ──────────────────────────────────────────────────────
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
