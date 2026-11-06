@@ -18,7 +18,9 @@ const { execSync, execFileSync } = require('child_process');
 
 // === CONFIGURATION ===
 const CONFIG = {
-  model: process.env.AI_MODEL || 'gpt-5.4',
+  provider: process.env.AI_PROVIDER || 'claude',
+  model: process.env.AI_MODEL || 'claude-opus-5-5',
+  claudeBin: process.env.CLAUDE_BIN || '/opt/homebrew/bin/claude',
   codexBin: process.env.CODEX_BIN || '/opt/homebrew/bin/codex',
   codexHome: process.env.DECRYPTICA_CODEX_HOME || '/Users/kevinsimac/.codex',
   workspace: process.env.WORKSPACE || '/Users/kevinsimac/.openclaw/workspace/decryptica',
@@ -994,6 +996,23 @@ function getPrimaryConversionHrefForArticle({ title, primaryKeyword, category, t
   return undefined;
 }
 
+function getSupportingInternalLinksForArticle({ title, primaryKeyword, category, topicCluster }) {
+  const haystack = normalizePhrase(`${title || ''} ${primaryKeyword || ''} ${topicCluster || ''}`);
+
+  if (/\bsolana\b/.test(haystack) && /\brpc\b|\bhelius\b|\bquicknode\b|\balchemy\b|\btriton\b|\bchainstack\b/.test(haystack)) {
+    return [
+      '/blog/solana-rpc-providers-compared',
+      '/blog/best-solana-rpc-for-trading-bots',
+      '/blog/how-to-benchmark-solana-rpc-endpoints',
+      '/blog/public-vs-private-solana-rpc',
+      '/topic/crypto/trading',
+      '/tools/solana-rpc-benchmark',
+    ];
+  }
+
+  return [];
+}
+
 function comparisonIntentBoost(candidate) {
   const haystack = `${candidate?.keyword || ''} ${candidate?.suggestedTitle || ''}`;
   return isComparisonTopic(haystack) ? 22 : 0;
@@ -1239,7 +1258,13 @@ async function generateArticle(research) {
   const slug = generateSlug(title);
   
   // Generate content based on title and keyword
-  const content = generateContent(title, primary_keyword, category);
+  const content = generateContent(title, primary_keyword, category, topicCluster);
+  const supportingInternalLinks = getSupportingInternalLinksForArticle({
+    title,
+    primaryKeyword: primary_keyword,
+    category,
+    topicCluster,
+  });
   
   const article = {
     id: generateId(),
@@ -1259,6 +1284,7 @@ async function generateArticle(research) {
       category,
       topicCluster,
     }),
+    supportingInternalLinks,
     tags: [topicCluster, primary_keyword].filter(Boolean),
     wordCount: countWords(content)
   };
@@ -1275,7 +1301,7 @@ async function generateArticle(research) {
  * Generate article content with Codex CLI
  * Returns 1,500+ word SEO-optimized article
  */
-function generateContent(title, primary_keyword, category) {
+function generateContent(title, primary_keyword, category, topicCluster) {
   const today = getTodayDate();
 
   const categoryGuidance = {
@@ -1296,6 +1322,12 @@ function generateContent(title, primary_keyword, category) {
     : [];
   const siteInventory = loadSiteInventory(category);
   const promptInventory = loadPromptInventory(category);
+  const requiredInternalLinks = getSupportingInternalLinksForArticle({
+    title,
+    primaryKeyword: primary_keyword,
+    category,
+    topicCluster,
+  });
   const internalLinkList = siteInventory.length
     ? siteInventory.map((article) => `${article.title} (/blog/${article.slug})`)
     : ['No same-category inventory available. Do not invent internal links.'];
@@ -1323,6 +1355,7 @@ Hard requirements:
 - Include concrete examples, tool/protocol references, failure modes, and mechanism-level explanation where relevant
 - For comparison topics, make the article useful to a buyer choosing between options, with a clear recommendation by use case
 - Include one natural internal link from the inventory below if it genuinely fits
+- If the required internal link list below includes a specific Decryptica article, include at least one natural markdown link to that article in the body copy. Do not skip it.
 - Include one natural prompt-guide link from the prompt inventory below if it genuinely helps the reader act on the article
 - Format every URL as a clickable markdown hyperlink. Do not leave bare URLs as plain text.
 - Include a FAQ section with 3 useful questions and answers
@@ -1361,6 +1394,9 @@ ${formatPromptList(comparisonRequirements.length ? comparisonRequirements : ['No
 Internal link inventory:
 ${formatPromptList(internalLinkList)}
 
+Required internal links:
+${formatPromptList(requiredInternalLinks.length ? requiredInternalLinks : ['No mandatory internal links for this title.'])}
+
 Prompt guide inventory:
 ${formatPromptList(promptGuideList)}
 
@@ -1385,6 +1421,30 @@ Return only the final article in markdown.`;
     return text;
   };
 
+  // Claude Code CLI in print mode: prompt on stdin, no tools, no saved session.
+  const runClaudeArticlePrompt = (articlePrompt) => {
+    const text = execFileSync(CONFIG.claudeBin, [
+      '-p',
+      '--model', CONFIG.model,
+      '--output-format', 'text',
+      '--tools', '',
+      '--strict-mcp-config',
+      '--no-session-persistence',
+    ], {
+      cwd: '/tmp',
+      input: articlePrompt,
+      encoding: 'utf-8',
+      maxBuffer: 50 * 1024 * 1024,
+      timeout: 15 * 60 * 1000,
+      env: { ...process.env, USER: process.env.USER || 'kevinsimac', LOGNAME: process.env.LOGNAME || 'kevinsimac' },
+      stdio: 'pipe'
+    });
+    return String(text).trim();
+  };
+
+  const providerLabel = CONFIG.provider === 'codex' ? 'Codex' : 'Claude';
+  const runArticlePrompt = CONFIG.provider === 'codex' ? runCodexArticlePrompt : runClaudeArticlePrompt;
+
   try {
     const maxAttempts = Math.max(1, Number(process.env.CODEX_ARTICLE_ATTEMPTS || 3));
     let lastQuality = null;
@@ -1394,25 +1454,25 @@ Return only the final article in markdown.`;
         ? formatPromptList(lastQuality.errors.map((error) => `Fix this gate failure: ${error}`))
         : '';
 
-      log(`Using Codex model: ${CONFIG.model} (attempt ${attempt}/${maxAttempts})`);
-      const text = repairGeneratedContent(runCodexArticlePrompt(buildPrompt(revisionFeedback)));
+      log(`Using ${providerLabel} model: ${CONFIG.model} (attempt ${attempt}/${maxAttempts})`);
+      const text = repairGeneratedContent(runArticlePrompt(buildPrompt(revisionFeedback)));
       const quality = validateGeneratedContent(text, { title, primaryKeyword: primary_keyword });
 
       if (quality.ok) {
-        log(`Content generated with Codex: ${quality.wordCount} words`);
+        log(`Content generated with ${providerLabel}: ${quality.wordCount} words`);
         return text;
       }
 
       lastQuality = quality;
-      log(`Codex draft failed editorial gate on attempt ${attempt}: ${quality.errors.join('; ')}`);
+      log(`${providerLabel} draft failed editorial gate on attempt ${attempt}: ${quality.errors.join('; ')}`);
     }
 
-    throw new Error(`Codex content failed editorial gate after ${maxAttempts} attempts: ${lastQuality.errors.join('; ')}`);
+    throw new Error(`${providerLabel} content failed editorial gate after ${maxAttempts} attempts: ${lastQuality.errors.join('; ')}`);
   } catch (error) {
     const stderr = error && error.stderr ? String(error.stderr).trim() : '';
     const stdout = error && error.stdout ? String(error.stdout).trim() : '';
     const detail = stderr || stdout || error.message;
-    log(`Codex generation error with model ${CONFIG.model}: ${detail}`);
+    log(`${providerLabel} generation error with model ${CONFIG.model}: ${detail}`);
     if (process.env.ALLOW_FALLBACK_ARTICLE === '1') {
       log('ALLOW_FALLBACK_ARTICLE=1 set, using fallback content');
       const fallback = generateFallbackContent(title, primary_keyword, category);
@@ -1722,6 +1782,9 @@ function addArticleToFile(article) {
   const primaryConversionLine = article.primaryConversionHref
     ? `    primaryConversionHref: "${article.primaryConversionHref}",\n`
     : '';
+  const supportingInternalLinksLine = article.supportingInternalLinks?.length
+    ? `    supportingInternalLinks: ${JSON.stringify(article.supportingInternalLinks)},\n`
+    : '';
   
   const articleEntry = `
   {
@@ -1736,7 +1799,7 @@ function addArticleToFile(article) {
     author: '${article.author}',
     status: '${article.status}',
     primaryKeyword: "${article.primaryKeyword.replace(/"/g, '\\"')}",
-${primaryConversionLine}    tags: ${JSON.stringify(article.tags || [])},
+${primaryConversionLine}${supportingInternalLinksLine}    tags: ${JSON.stringify(article.tags || [])},
     wordCount: ${article.wordCount},
   },`;
   

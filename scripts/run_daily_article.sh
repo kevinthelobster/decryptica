@@ -36,13 +36,15 @@ trap cleanup_lock EXIT INT TERM
 export PATH="/Users/kevinsimac/.codex/plugins/.plugin-appserver:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export WORKSPACE="$ROOT"
 export CODEX_HOME="/Users/kevinsimac/.codex"
-export AI_MODEL="${AI_MODEL:-gpt-5.5}"
+export AI_PROVIDER="${AI_PROVIDER:-claude}"
+export AI_MODEL="${AI_MODEL:-claude-opus-5-5}"
 
 set -a
 source "$ROOT/.env.local"
 set +a
 
-export AI_MODEL="${AI_MODEL:-gpt-5.5}"
+export AI_PROVIDER="${AI_PROVIDER:-claude}"
+export AI_MODEL="${AI_MODEL:-claude-opus-5-5}"
 
 /opt/homebrew/bin/node "$ROOT/scripts/ensure_kwr_capacity.js"
 /opt/homebrew/bin/node "$ROOT/scripts/daily-article-v2.js"
