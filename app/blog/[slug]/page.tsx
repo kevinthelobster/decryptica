@@ -8,6 +8,7 @@ import ArticleProgressNav from '../../components/ArticleProgressNav';
 import ArticleSaveControls from '../../components/ArticleSaveControls';
 import ArticleMobileActionDock from '../../components/ArticleMobileActionDock';
 import MidArticleLeadCapture from '../../components/MidArticleLeadCapture';
+import NewsletterCornerPrompt from '../../components/NewsletterCornerPrompt';
 import MobileProgressSheet from '../../components/MobileProgressSheet';
 import TrackedLink from '../../components/TrackedLink';
 import IntentContextBanner from '../../components/IntentContextBanner';
@@ -1435,6 +1436,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </div>
       <MobileProgressSheet articleSlug={slug} category={article.category} headings={headings} />
       <ArticleMobileActionDock articleSlug={slug} category={article.category} />
+      <NewsletterCornerPrompt articleSlug={slug} category={article.category} />
     </>
   );
 }
