@@ -7,6 +7,13 @@ LOG_DIR="$ROOT/logs"
 LOCK_ROOT="$ROOT/.locks"
 LOCK_DIR="$LOCK_ROOT/daily-article.lock"
 
+# The legacy crontab entry runs without AI_PROVIDER and cannot reach the Claude
+# login keychain; skip it so it never grabs the lock from the OpenClaw run.
+if [[ -z "${AI_PROVIDER:-}" ]]; then
+  echo "AI_PROVIDER not set (legacy crontab invocation); skipping. Set AI_PROVIDER=claude to run manually."
+  exit 0
+fi
+
 mkdir -p "$LOG_DIR" "$LOCK_ROOT"
 cd "$ROOT"
 
