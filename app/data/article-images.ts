@@ -1437,6 +1437,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'most-popular-automation-tools-a-practical-2026-guide': imageSet.aiOfficeLaptopWorkspace,
   'best-website-monitoring-tools-what-actually-matters-in-2026': imageSet.code,
   'internal-tools-for-collaboration-a-practical-2026-guide': imageSet.startupTeamLaptopsbrq6r83uD8,
   'automation-software-for-mac-tips-a-practical-2026-guide': imageSet.multiScreenCodingWorkspace,
