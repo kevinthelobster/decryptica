@@ -1437,6 +1437,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'how-to-use-make-com-for-automation-what-actually-works-in-20': imageSet.startupTeamLaptopsoMtJYEbniH,
   'most-popular-automation-tools-a-practical-2026-guide': imageSet.aiOfficeLaptopWorkspace,
   'best-website-monitoring-tools-what-actually-matters-in-2026': imageSet.code,
   'internal-tools-for-collaboration-a-practical-2026-guide': imageSet.startupTeamLaptopsbrq6r83uD8,
