@@ -759,7 +759,8 @@ function fitTitleForSchema(title, maxLength = 70) {
 }
 
 function createTitleFromKeyword(keyword, category) {
-  const normalized = keyword.trim().replace(/\s+/g, ' ');
+  // Search phrases like "best top 10 x" read badly as headlines; drop the redundant "top N".
+  const normalized = keyword.trim().replace(/\s+/g, ' ').replace(/^best top \d+ /i, 'best ');
   const lower = normalized.toLowerCase();
   let title;
 
@@ -1348,6 +1349,7 @@ Editorial position:
 Hard requirements:
 - 1,800-2,500 words
 - Strong opening hook, then a "## Quick Answer" section and a bold **TL;DR** section near the top
+- The TL;DR must be a standalone line that starts exactly with "**TL;DR**" (bold, with the semicolon), followed by 2-4 bullet points
 - Use markdown with H2 and H3 headings
 - Include a section titled "## Quick Answer" with a direct, citation-ready answer in 2-3 short paragraphs
 - Include a section titled "## What We Checked" that describes the evidence categories without pretending original hands-on testing happened
