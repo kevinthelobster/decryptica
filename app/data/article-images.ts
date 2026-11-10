@@ -1437,6 +1437,7 @@ export const imageSet = {
 export type ArticleImageKey = keyof typeof imageSet;
 
 export const articleImageOverrides = {
+  'best-top-10-bitcoin-wallet-for-business-what-actually-matter': imageSet.aiArt,
   'how-to-use-n8n-for-automation-what-actually-works-in-2026': imageSet.startupTeamLaptopsrtDlcsN6U,
   'how-to-use-make-com-for-automation-what-actually-works-in-20': imageSet.startupTeamLaptopsoMtJYEbniH,
   'most-popular-automation-tools-a-practical-2026-guide': imageSet.aiOfficeLaptopWorkspace,
